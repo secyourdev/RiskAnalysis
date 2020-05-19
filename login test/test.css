@@ -32,3 +32,65 @@ html, body {
 .perso_bg{
     background-color: #f0f0f0;
 }
+
+/* ---------------------------------------*/
+.perso_form{
+    border-bottom: 1px solid grey;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    padding: 0 0.375rem!important;
+    border-radius: 0%!important;
+    color: #394C7A;
+    font-size: 0.8rem;
+    height: calc(1.2em + 0.7rem + 1px);
+}
+::placeholder {
+  color: grey;
+  opacity: 1; /* Firefox */
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: grey;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: grey;
+}
+.perso_form:focus{
+    color: #394C7A;
+    padding: 0 0.375rem!important;
+    border-radius: 0%!important;
+}
+:focus::placeholder {
+  color: #bac8f3;
+  opacity: 1; /* Firefox */
+}
+
+:focus:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: #bac8f3;
+}
+
+:focus::-ms-input-placeholder { /* Microsoft Edge */
+ color: #bac8f3;
+}
+/* ---------------------------------------*/
+
+.perso_btn_primary{
+    width: 45%;
+    color: #ffffff;
+    background-color: #394C7A;
+    border-color: #394C7A;
+}
+.perso_motdepass_center{
+    text-align: center !important;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+.perso_color_dark_blue{
+    color: #394C7A!important;
+}
+.perso_condition{
+    position: absolute;
+    bottom: 0.375rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
