@@ -70,17 +70,14 @@ html, body {
 :focus::placeholder {
     color: #bac8f3;
     opacity: 1; /* Firefox */
-    font-size: 63%!important;
 }
 
 :focus:-ms-input-placeholder { /* Internet Explorer 10-11 */
     color: #bac8f3;
-    font-size: 63%!important;
 }
 
 :focus::-ms-input-placeholder { /* Microsoft Edge */
     color: #bac8f3;
-    font-size: 63%!important;
 }
 
 
