@@ -2,22 +2,87 @@ html, body {
     height: 100%;
 }
 
+:root {
+    --bg-color: #f0f0f0;                /*  var(--bg-color)     */
+    --card-color:#fff;                  /*  var(--card-color)     */
+    --primary-color: #394C7A;           /*  var(--primary-color)     */
+    --secondary-color: #64789A;         /*  var(--secondary-color)     */
+    --placeholder-color: #9BB8CA;       /*  var(--placeholder-color)     */
+    --font-color: #2a3859;              /*  var(--font-color)     */
+    --shadow-color: rgba(0, 0, 0, 0.2); /*  var(--shadow-color)     */
+}
+[data-theme="dark"] {
+    --bg-color: #212027;            /*  var(--bg-color)     */
+    --card-color:#2C2C30;           /*  var(--card-color)     */
+    --primary-color: #6769C7;       /*  var(--primary-color)     */
+    --secondary-color: #64789A;     /*  var(--secondary-color)     */
+    --placeholder-color: #999BB0;   /*  var(--placeholder-color)     */
+    --font-color: #EAF1EB;          /*  var(--font-color)     */
+}
+body {
+    background-color: var(--bg-color);
+    color: var(--font-color);
+
+    /*other styles*/
+}
+/* -------------------------------------------------------------------------------------------------------------- */
+/* -----------------------------------------FIN CHARTE GRAPHIQUE------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------------------------- */
+
+
+.theme-switch-wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    position: relative;
+    top: -1rem;
+}
+.theme-switch{
+    margin-bottom: 0;
+}
+.perso_switch {
+  -webkit-appearance: none;
+  position: relative;
+  width: 3rem;
+  height: 1.5rem;
+  background-color: var(--bg-color);
+  /* background-image: url(https://i.postimg.cc/857jHw2q/Screenshot-2020-04-16-at-1-07-06-PM.png); */
+  background-size: cover;
+  border-radius: 50px;
+  outline: none;
+  transition: background-image .90s;
+  box-shadow: 1px 1px 3px 1px var(--shadow-color);
+}
+.perso_switch:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50px;
+  transition: all .9s;
+  background-color: #F7CA33;
+}
+.perso_switch:checked {
+  background-color: var(--bg-color);
+  /* background-image: url(https://i.postimg.cc/Hn0nstVK/Screenshot-2020-04-16-at-1-07-19-PM.png); */
+  transition: background-image .90s;
+}
+.perso_switch:checked:before {
+  transform: translate(100%);
+  transition: all .9s;
+  background-color: #ECF0F3;
+}
+/* -------------------------------------------------------------------------------------------------------------- */
+/* --------------------------------------FIN CSS SLIDER DARK MODE------------------------------------------------ */
+/* -------------------------------------------------------------------------------------------------------------- */
+
 /* CSS only for examples not required for centering */
 .container {
     height: 100%;
 }
-
-.note {
-    position: absolute;
-    z-index: 10;
-    right: 0;
-    top: 0;
-    padding: 5px;
-    background: #eee;
-    max-width: 360px;
-    border: 1px dotted #bbb;
-}
-
 .perso_card{
     width: 20rem;
     padding-top: 2rem;
@@ -25,70 +90,62 @@ html, body {
     padding-left: 1.5rem;
     padding-bottom: 0.5rem;
     font-size: 60%!important;
-    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.2);
-    background-color: #ffffff;
+    box-shadow: 1px 1px 3px 1px var(--shadow-color);
+    background-color: var(--card-color);
 }
-
-.perso_bg{
-    background-color: #f0f0f0;
+.perso_risk_manager{
+    color: var(--font-color)!important;
 }
-
-/* ---------------------------------------*/
 .perso_form{
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid var(--secondary-color);
     border-top: none;
     border-right: none;
     border-left: none;
     padding: 0 0.375rem!important;
     border-radius: 0%!important;
-    color: #394C7A;
+    background-color: var(--card-color);
+    color: var(--primary-color);
     height: calc(1.2em + 0.7rem + 1px);
 }
 .perso_form:valid {
-   border-bottom: 2px solid #394C7A;
+   border-bottom: 2px solid var(--primary-color);
 }
 
 
 /* placeholder */
 ::placeholder {
-    color: grey;
+    color: var(--secondary-color);
     opacity: 1; /* Firefox */
     font-size: 63%!important;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: grey;
+    color: var(--secondary-color);
     font-size: 63%!important;
 }
 ::-ms-input-placeholder { /* Microsoft Edge */
-    color: grey;
+    color: var(--secondary-color);
 }
 .perso_form:focus{
-    color: #394C7A;
+    color: var(--primary-color);
+    background-color: var(--card-color);
     padding: 0 0.375rem!important;
     border-radius: 0%!important;
 }
 :focus::placeholder {
-    color: #bac8f3;
+    color: var(--placeholder-color);
     opacity: 1; /* Firefox */
 }
-
 :focus:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: #bac8f3;
+    color: var(--placeholder-color);
 }
-
 :focus::-ms-input-placeholder { /* Microsoft Edge */
-    color: #bac8f3;
+    color: var(--placeholder-color);
 }
-
-
-
-/* ---------------------------------------*/
-
 .perso_btn_primary{
     width: 45%;
-    color: #ffffff;
-    background-color: #394C7A;
-    border-color: #394C7A;
+    color: var(--bg-color);
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
     font-size: 0.5rem;
 }
 .perso_motdepass_center{
@@ -103,19 +160,13 @@ html, body {
     font-size: 70%;
 }
 .perso_color_dark_blue{
-    color: #394C7A!important;
+    color: var(--primary-color)!important;
 }
 
 
-
-
-
-
-
-
-
-
-
+/* -------------------------------------------------------------------------------------------------------------- */
+/* --------------------------------------Gestion aspect responsif------------------------------------------------ */
+/* -------------------------------------------------------------------------------------------------------------- */
 
 @media (min-width: 576px){
 .perso_card {
@@ -147,7 +198,9 @@ html, body {
 .perso_btn_primary{
     font-size: 90%!important;
     }
-
+.theme-switch-wrapper{
+    top: -1rem;
+    }
 }
 @media (min-width: 768px){
 .perso_card {
@@ -179,7 +232,10 @@ html, body {
 .perso_btn_primary{
     font-size: 90%!important;
     }
-
+.theme-switch-wrapper{
+    top: -2rem;
+    right: -1rem;
+    }
 }
 @media (min-width: 992px){
 .perso_card{
@@ -211,5 +267,7 @@ html, body {
 .perso_btn_primary{
     font-size: 100%!important;
     }
-
+.theme-switch-wrapper{
+    top: -3rem;
+    }
 }
