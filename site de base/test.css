@@ -106,8 +106,9 @@ body {
 /* --------------------------------------FIN CSS SLIDER DARK MODE------------------------------------------------ */
 /* -------------------------------------------------------------------------------------------------------------- */
 
-
-
+/* -------------------------------------------------------------------------------------------------------------- */
+/*------------------------------------ overwrite des classes bootstrap -------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------- */
 #wrapper #content-wrapper{
     background-color: var(--bg-color)!important;
 }
@@ -115,8 +116,21 @@ body {
     background-color: var(--card-content-color)!important;
 }
 .card-header{
-    background-color: var(--card-header-color)!important;
-    border-bottom: 1px solid var(--card-divider);
+    background-color: var(--card-content-color)!important;
+    /* border-bottom: 1px solid var(--card-divider); */
+    border: none;
+    padding: 0;
+    padding-top: 1rem!important;
+    padding-left: 1rem!important;
+}
+.card-body{
+    padding-top: 0.5rem!important;
+    padding-bottom: 1rem!important;
+    padding-left: 1rem!important;
+    padding-right: 1rem!important;
+}
+h6{
+    font-size: 1.5rem;
 }
 .bg-gradient-primary{
     background-color: var(--side-nav-color)!important;
@@ -164,19 +178,200 @@ body {
     box-shadow: 1px 1px 3px 1px var(--shadow-color)!important;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* css perso */
+
+.container {
+    height: 100%;
+}
+
+.perso_form{
+    border-bottom: 1px solid var(--placeholder-idle);
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    padding: 0 0.375rem!important;
+    border-radius: 0%!important;
+    background-color: var(--card-content-color);
+    color: var(--button-color);
+    height: calc(1.2em + 0.7rem + 1px);
+    font-size: 1rem!important;
+}
+.perso_form:valid {
+   border-bottom: 2px solid var(--button-color);
+}
+
+
+/* placeholder */
+::placeholder {
+    color: var(--placeholder-idle);
+    opacity: 1; /* Firefox */
+    font-size: 63%!important;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: var(--placeholder-idle);
+    font-size: 63%!important;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: var(--placeholder-idle);
+}
+.perso_form:focus{
+    color: var(--button-color);
+    background-color: var(--card-content-color);
+    padding: 0 0.375rem!important;
+    border-radius: 0%!important;
+}
+:focus::placeholder {
+    color: var(--placeholder-focus);
+    opacity: 1; /* Firefox */
+}
+:focus:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: var(--placeholder-focus);
+}
+:focus::-ms-input-placeholder { /* Microsoft Edge */
+    color: var(--placeholder-focus);
+}
+.perso_btn{
+    color: var(--bg-color);
+    background-color: var(--button-color);
+    border-color: var(--button-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* -------------------------------------------------------------------------------------------------------------- */
 /* --------------------------------------Gestion aspect responsif------------------------------------------------ */
 /* -------------------------------------------------------------------------------------------------------------- */
 
 @media (min-width: 576px){
 
+::placeholder{
+    font-size: 63%!important;
+    }
+::-webkit-input-placeholder {
+   font-size: 63%!important;
+    }
 
+:-moz-placeholder { /* Firefox 18- */
+    font-size: 63%!important;
+    }
+
+::-moz-placeholder {  /* Firefox 19+ */
+    font-size: 63%!important;
+    }
+
+:-ms-input-placeholder {
+    font-size: 63%!important;
+    }
+.perso_btn_primary{
+    font-size: 90%!important;
+    }
+.theme-switch-wrapper{
+    top: -1rem;
+    }
 }
 @media (min-width: 768px){
 
+::placeholder{
+    font-size: 76%!important;
+    }
+::-webkit-input-placeholder {
+    font-size: 76%!important;
+    }
 
+:-moz-placeholder { /* Firefox 18- */
+    font-size: 76%!important;
+    }
+
+::-moz-placeholder {  /* Firefox 19+ */
+    font-size: 76%!important;
+    }
+
+:-ms-input-placeholder {
+    font-size: 76%!important;
+    }
+.perso_btn_primary{
+    font-size: 90%!important;
+    }
+.theme-switch-wrapper{
+    top: -2rem;
+    right: -1rem;
+    }
 }
 @media (min-width: 992px){
 
+::placeholder{
+    font-size: 82%!important;
+    }
+::-webkit-input-placeholder {
+    font-size: 82%!important;
+    }
 
+:-moz-placeholder { /* Firefox 18- */
+    font-size: 82%!important;
+    }
+
+::-moz-placeholder {  /* Firefox 19+ */
+    font-size: 82%!important;
+    }
+
+:-ms-input-placeholder {
+    font-size: 82%!important;
+    }
+.perso_btn_primary{
+    font-size: 100%!important;
+    }
+.theme-switch-wrapper{
+    top: -3rem;
+    }
 }
