@@ -1,0 +1,14 @@
+.perso_bg{
+    background-color: #f0f0f0;
+}
+.container{
+    height: 100%;
+}
+.perso_container{
+    align-content: center;
+}
+
+.perso_card{
+    background-color: #ffffff;
+
+}
