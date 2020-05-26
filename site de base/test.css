@@ -11,6 +11,7 @@ html, body {
     --nav-top-and-copyright-color:#fff;
     --side-nav-color:#394C7A;
     --button-color:#394C7A;
+    --button-color-hover:#222E49;
     --placeholder-idle: #64789A;
     --placeholder-focus:#9BB8CA;
     --font-color:#2A3859;
@@ -33,6 +34,7 @@ html, body {
     --nav-top-and-copyright-color:#2C2C30;
     --side-nav-color:#394C7A;
     --button-color:#6769C7;
+    --button-color-hover:#B0B7CA;
     --placeholder-idle: #64789A;
     --placeholder-focus:#999BB0;
     --font-color:#EAF1EB;
@@ -282,8 +284,8 @@ h6{
 }
 .perso_btn:hover{
     color: var(--reverse-font-color);
-    background-color: var(--font-color);
-    border-color: var(--font-color);
+    background-color: var(--button-color-hover);
+    border-color: var(--button-color-hover);
 }
 .perso_btn:not(:disabled):not(.disabled):active{
     color: var(--reverse-font-color);
@@ -326,7 +328,12 @@ h6{
 .perso_text_area:focus{
     background-color: var(--card-content-color);
 }
+.perso_btn_RACI{
+    float: right;
+    margin-right: 1rem;
+    width: 10rem;
 
+}
 
 
 
