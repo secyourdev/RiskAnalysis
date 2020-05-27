@@ -383,8 +383,17 @@ h6{
     float: right;
     margin-right: 1rem;
     width: 10rem;
-
 }
+.perso_border{
+    border: none!important;
+}
+.perso_middle_modal_footer{
+    justify-content: center;
+}
+.perso_modal_body{
+    padding: 1rem 8rem;
+}
+
 
 
 /* -------------------------------------------------------------------------------------------------------------- */
