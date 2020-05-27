@@ -7,7 +7,7 @@
   <meta name="description" content="RiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>RiskManager | Atelier 2.b</title>
+  <title>RiskManager | Atelier 3.c</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -33,6 +33,9 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-shield-alt"></i>
         </div>
+
+
+
         <div class="sidebar-brand-text mx-2">RISK MANAGER</div>
       </a>
 
@@ -47,16 +50,16 @@
       </li>
 
       <!-- Divider -->
-      <!--<hr class="sidebar-divider"> -->
+<!--       <hr class="sidebar-divider"> -->
 
       <!-- Heading -->
-      <!-- <div class="sidebar-heading">
+<!--       <div class="sidebar-heading">
         Interface
       </div> -->
 
 
       <!-- Nav Item - Utilities Collapse Menu -->
-      <!-- <li class="nav-item">
+<!--       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-folder"></i>
           <span>Pages</span>
@@ -363,7 +366,6 @@
           </div> -->
 
           <!-- Content Row -->
-
           <div class="row">
 
             <!-- Area Card -->
@@ -376,8 +378,11 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <p> Le but de l'atelier 2 est d'identifier les sources de risques (SR) et leurs objectifs visés (OV), en lien avec le contexte particulier de l'étude. 
-                    L'atelier vise à répondre à la question suivante : qui ou quoi pourrait porter atteint aux missions et valeurs métier identifiées dans l'atelier 1, et dans quels buts ?</p>
+                  <p>L'objectif de l'atelier 3 est de disposer d'une vision claire de l'écosystème, afin d'en identifier
+                    les parties prenantes les plus vulnérables. Il s'agit ensuite de bâtir des scénarios de haut niveau,
+                    appelés scénarios stratégiques. Ces derniers sont autant de chemins d'attaque que pourrait emprunter une
+                    source de risque pour empruter une source de risque pour atteindre son objectif.
+                  </p>
                   <!--text-->
                 </div>
               </div>
@@ -391,157 +396,324 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Evaluation des sources de risques</h6>
-                  
-
-                  <!-- pour avoir le menu 3-points -->
-                  <!-- <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div> -->
-
-
+                  <h6 class="m-0 font-weight-bold text-primary">Liste des parties prenantes</h6>
 
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <!--text-->
                   <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
                       <thead>
                         <tr>
-                          <th>Type d'attaquant</th>
-                          <th>Profil d'attaquant</th>
-                          <th>Description source de risque</th>
-                          <th>Objectifs visés</th>
-                          <th>Motivation</th>
-                          <th>Ressources</th>
-                          <th>Activité</th>
-                          <th>Modes opératoires</th>
-                          <th>Secteurs d'activité</th>
-                          <th>Arsenal d'attaque</th>
-                          <th>Faits d'armes</th>
-                          <th>Pertinence</th>
-                          <th>Choix</th>
-                          <th></th>
+                          <th>Catégorie</th>
+                          <th>Partie prenante</th>
+                          <th>Type</th>
+                          <th>Dépendance</th>
+                          <th>Pénétration</th>
+                          <th>Maturité</th>
+                          <th>Confiance</th>
+                          <th>Niveau de menace</th>
                         </tr>
                       </thead>
+                        
                       <tbody>
                         <tr>
-                          <td>Organisation structurée</td>
-                          <td>Etatique</td>
-                          <td>DGSE</td>
-                          <td>Saboter la campagne nationale de vaccination</td>
-                          <td>2</td>
-                          <td>3</td>
+                          <td>Clients</td>
+                          <td>C1 - Établissements de santé</td>
+                          <td>interne</td>
                           <td>1</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Moyenne</td>
-                          <td>P1</td>
-                          <td class="modification">
-                            <div class="col-1 centreVerticalement">
-                              <p>
-                                <img class="crayon" src ="content/img/crayon.svg"/>
-                              </p>
-                            </div>
-                            <div class="col-1 centreVerticalement">
-                              <p><img class="poubelle" src ="content/img/poubelle.svg"/></p>
-                            </div>
-                          </td>
+                          <td>1</td>
+                          <td>1</td>
+                          <td>1</td>
+                          <td>0.3</td>
+                            
                         </tr>
                         <tr>
-                          <td>Organisation idéologique</td>
-                          <td>Terroriste</td>
-                          <td>Al-Qaida</td>
-                          <td>Voler des informations</td>
-                          <td>2</td>
-                          <td>3</td>
-                          <td>2</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Elevée</td>
-                          <td>P2</td>
-                          <td class="modification">
-                            <div class="col-1 centreVerticalement">
-                              <p>
-                                <img class="crayon" src ="content/img/crayon.svg"/>
-                              </p>
-                            </div>
-                            <div class="col-1 centreVerticalement">
-                              <p><img class="poubelle" src ="content/img/poubelle.svg"/></p>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Individu isolé</td>
-                          <td>Amateur</td>
-                          <td>Hackeur</td>
-                          <td>Divulguer des informations sur les tests animaliers</td>
-                          <td>2</td>
-                          <td>2</td>
-                          <td>2</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Faible</td>
-                          <td>P1</td>
-                          <td class="modification">
-                            <div class="col-1 centreVerticalement">
-                              <p>
-                                <img class="crayon" src ="content/img/crayon.svg"/>
-                              </p>
-                            </div>
-                            <div class="col-1 centreVerticalement">
-                              <p><img class="poubelle" src ="content/img/poubelle.svg"/></p>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Organisation structurée</td>
-                          <td>Concurrent</td>
-                          <td>Amazon.com</td>
-                          <td>Altérer la compositionde vaccins à des fins bioterroristes</td>
+                          <td>Clients</td>
+                          <td>C2 - Pharmacies</td>
+                          <td>Interne</td>
+                          <td>1</td>
                           <td>1</td>
                           <td>2</td>
                           <td>3</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Faible</td>
-                          <td>P1</td>
-                          <td class="modification">
-                            <div class="col-1 centreVerticalement">
-                              <p>
-                                <img class="crayon" src ="content/img/crayon.svg"/>
-                              </p>
-                            </div>
-                            <div class="col-1 centreVerticalement">
-                              <p><img class="poubelle" src ="content/img/poubelle.svg"/></p>
-                            </div>
-                          </td>
+                          <td>0.2</td>
                         </tr>
+                        <tr>
+                          <td>Clients</td>
+                          <td>C3 - Dépositaires / Grossistes répartiteurs</td>
+                          <td>Interne</td>
+                          <td>1</td>
+                          <td>2</td>
+                          <td>2</td>
+                          <td>3</td>
+                          <td>0.3</td>
+                        </tr>
+                        <tr>
+                          <td>Partenaires</td>
+                          <td>P1 - Universités</td>
+                          <td>Interne</td>
+                          <td>2</td>
+                          <td>1</td>
+                          <td>1</td>
+                          <td>2</td>
+                          <td>1</td>
+                        </tr>
+                        <tr>
+                          <td>Partenaires</td>
+                          <td>P2 - Régulateurs</td>
+                          <td>Interne</td>
+                          <td>2</td>
+                          <td>1</td>
+                          <td>2</td>
+                          <td>4</td>
+                          <td>0.3</td>
+                        </tr>
+                        <tr>
+                          <td>Partenaires</td>
+                          <td>P3 - Laboratoires</td>
+                          <td>Interne</td>
+                          <td>3</td>
+                          <td>3</td>
+                          <td>2</td>
+                          <td>1</td>
+                          <td>2.25</td>
+                        </tr>
+                        <tr>
+                          <td>Prestataires</td>
+                          <td>F1 - Fournisseurs industriels chimistes</td>
+                          <td>Interne</td>
+                          <td>4</td>
+                          <td>2</td>
+                          <td>2</td>
+                          <td>3</td>
+                          <td>1.3</td>
+                        </tr>
+                        <tr>
+                          <td>Prestataires</td>
+                          <td>F2 - Fournisseurs de matériel de production</td>
+                          <td>Interne</td>
+                          <td>4</td>
+                          <td>3</td>
+                          <td>2</td>
+                          <td>3</td>
+                          <td>2</td>
+                        </tr>
+                        <tr>
+                          <td>Prestataires</td>
+                          <td>F3 - Prestataire informatique</td>
+                          <td>Interne</td>
+                          <td>3</td>
+                          <td>4</td>
+                          <td>2</td>
+                          <td>2</td>
+                          <td>3</td>
+                        </td>
+                        </tr>
+
                       </tbody>
                     </table>  
+                  </div>
+
+                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Liste des scénarios stratégiques</h6>
+  
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                              <th>Nom du scénario stratégique</th>
+                              <th>Description source de risque</th>
+                              <th>Objectifs visés</th>
+                              <th>Événements redoutés</th>
+                              <th>N° Risque</th>
+                              <th>Chemin d'attaques stratégiques</th>
+                              <th>Gravité</th>
+                              
+                            </tr>
+                          </thead>
+                            
+                            <tbody>
+                                <tr>
+                                    <td>Vol de travaux par canal d'exfiltration de données</td>
+                                    <td>Al-Qaida</td>
+                                    <td>Voler des informations en espionnant les travaux de R&D en vue d'obtenir un avantage concurrentiel
+                                    </td>
+                                    <td>Fuite des informations d'études et recherches de l'entreprise</td>
+                                    <td>R1</td>
+                                    <td>Portant directement dur le système d'information de la R&D</td>
+                                    <td>3 Grave</td>
+                                </tr>
+                                <tr>
+                                    <td>Vol de travaux par canal d'exfiltration de données</td>
+                                    <td>Al-Qaida</td>
+                                    <td>Voler des informations en espionnant les travaux de R&D en vue d'obtenir un avantage concurrentiel
+                                    </td>
+                                    <td>Fuite des informations d'études et recherches de l'entreprise</td>
+                                    <td>R2</td>
+                                    <td>Sur le système d'information du laboratoire (P3) qui détient une partie des travaux</td>
+                                    <td>3 Grave</td> 
+                                </tr>
+                                <tr>
+                                    <td>Vol de travaux par canal d'exfiltration de données</td>
+                                    <td>Al-Qaida</td>
+                                    <td>Voler des informations en espionnant les travaux de R&D en vue d'obtenir un avantage concurrentiel
+                                    </td>
+                                    <td>Fuite des informations d'études et recherches de l'entreprise</td>
+                                    <td>R3</td>
+                                    <td>En passant par le prestataire informatique F3</td>
+                                    <td>3 Grave</td> 
+                                </tr>
+                                <tr>
+                                    <td>Sabotage de la campagne nationale de vaccination</td>
+                                    <td>DGSE</td>
+                                    <td>Saboter la prochaine campagne nationale de vaccination pour générer
+                                        un choc psychologique sur la population et discréditer les pouvoirs publics
+                                    </td>
+                                    <td>Perte ou desctruction des informations d'études et recherches conduisanr à un fort impact,
+                                        notamment sur les futures autorisations de mises sur le marché de l'entreprise
+                                    </td>
+                                    <td>R4</td>
+                                    <td>Portant directement dur le système d'information de la R&D</td>
+                                    <td>4 critique</td> 
+                                </tr>
+                                <tr>
+                                    <td>Sabotage de la campagne nationale de vaccination</td>
+                                    <td>DGSE</td>
+                                    <td>Saboter la prochaine campagne nationale de vaccination pour générer
+                                        un choc psychologique sur la population et discréditer les pouvoirs publics
+                                    </td>
+                                    <td>Perte ou desctruction des informations d'études et recherches conduisanr à un fort impact,
+                                        notamment sur les futures autorisations de mises sur le marché de l'entreprise
+                                    </td>
+                                    <td>R5</td>
+                                    <td>Portant directement dur le système d'information de la R&D</td>
+                                    <td>4 critique</td> 
+                                </tr>
+                                <tr>
+                                    <td>Sabotage de la campagne nationale de vaccination</td>
+                                    <td>DGSE</td>
+                                    <td>Saboter la prochaine campagne nationale de vaccination pour générer
+                                        un choc psychologique sur la population et discréditer les pouvoirs publics
+                                    </td>
+                                    <td>Perte ou desctruction des informations d'études et recherches conduisanr à un fort impact,
+                                        notamment sur les futures autorisations de mises sur le marché de l'entreprise
+                                    </td>
+                                    <td>R6</td>
+                                    <td>Portant directement dur le système d'information de la R&D</td>
+                                    <td>4 critique</td>
+                                </tr>
+                            </tbody>
+                    </table>  
                   </div>    
+
+                </div>   
+
                 </div>
               </div>
-            </div>         
+            
+            <!-- Area Card -->
+            <div class="col-xl col-lg">
+                <div class="card shadow mb-4">
+                  <!-- Card Header - Dropdown -->
+                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Ajouter une mesure de sécurité</h6>
+                    
+                  </div>
+                  <!-- Card Body -->
+                  <div class="card-body">
+                    <!--text-->
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable3" width="100%" cellspacing="0">
+                          <thead>
+                            <tr>
+                              <th>Partie prenante</th>
+                              <th>Chemin d'attaque stratégique</th>
+                              <th>Mesures de sécurité</th>
+                              <th>Menace initiale</th>
+                              <th>Menace résiduelle</th>
+                              <th></th>
+                              
+                            </tr>
+                          </thead>
+                            
+                            <tbody>
+                                <tr>
+                                    <td>F2 - Fournisseurs de matériel</td>
+                                    <td>Arrêt de production par compromission de l'équipement de maintenance</td>
+                                    <td>Réduire le risque de piégeage des équipements de maintenance utilisés sur le 
+                                        système industriel. Dotation de matériels de maintenance administrés par la DSI 
+                                        et qui seront mis à disposition du prestataire sur site (permet de réduire la Pénétration
+                                        des fournisseurs de 3 à 2)
+                                    </td>
+                                    <td>2</td>
+                                    <td>1.3</td>
+                                    <td class="modification">
+                                      <div class="col-1 centreVerticalement">
+                                        <p>
+                                          <img class="crayon" src ="content/img/crayon.svg"/>
+                                        </p>
+                                      </div>
+                                      <div class="col-1 centreVerticalement">
+                                        <p><img class="poubelle" src ="content/img/poubelle.svg"/></p>
+                                      </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                    <td>F3 - Prestataire informatique</td>
+                                    <td>Vol d'informations en passant par le prestataire informatique</td>
+                                    <td>Accroitre la maturité cyber du prestataire (2 -> 3) : audit de sécurité (à inclure dans le contrat) ; suivi du plan d'action interne
+                                        Renforcer la protection des donnéees de R&D. Solution à investiguer : chiffrement, cloisonnement du réseau R&D
+                                    </td>
+                                    <td>3</td>
+                                    <td>2</td>
+                                    <td class="modification">
+                                      <div class="col-1 centreVerticalement">
+                                        <p>
+                                          <img class="crayon" src ="content/img/crayon.svg"/>
+                                        </p>
+                                      </div>
+                                      <div class="col-1 centreVerticalement">
+                                        <p><img class="poubelle" src ="content/img/poubelle.svg"/></p>
+                                      </div>
+                                  </td> 
+                                </tr>
+                                <tr>
+                                    <td>P3 - Laboratoires</td>
+                                    <td>Vol d'informations sur le système d'information du laboratoire</td>
+                                    <td>Diminuer la pénétration des laboratoires (3 -> 2):
+                                        Limitation des données transmises au laboratoire au juste besoin
+                                        (mauvaise habitude actuelle de "tout" diffuser)
+                                    </td>
+                                    <td>2.25</td>
+                                    <td>1.5</td>
+                                    <td class="modification">
+                                      <div class="col-1 centreVerticalement">
+                                        <p>
+                                          <img class="crayon" src ="content/img/crayon.svg"/>
+                                        </p>
+                                      </div>
+                                      <div class="col-1 centreVerticalement">
+                                        <p><img class="poubelle" src ="content/img/poubelle.svg"/></p>
+                                      </div>
+                                  </td> 
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                        
+                  </div>
+                </div>
+              </div>
+            </div>
+
+           
           </div>
+
+
+
       </div>
       <!-- End of Main Content -->
 
@@ -600,9 +772,10 @@
   <script src="content/vendor/datatables/dataTables.bootstrap4.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="content/js/modules/tableau/tableau-atelier2b.js"></script>
+  <script src="content/js/modules/tableau/tableau-atelier3c.js"></script>
 
   <!-- JS pour Dark Mode -->
   <script src="content/js/modules/dark_mode.js"></script>
 </body>
+
 </html>
