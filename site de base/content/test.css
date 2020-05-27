@@ -229,10 +229,20 @@ h6{
 }
 .perso_btn_primary{
     width: 45%;
-    color: var(--bg-color);
+    color: var(--reverse-font-color);
     background-color: var(--button-color);
     border-color: var(--button-color);
     font-size: 0.5rem;
+}
+.perso_btn_primary:hover{
+    color: var(--reverse-font-color);
+    background-color: var(--button-color-hover);
+    border-color: var(--button-color-hover);
+}
+.perso_btn_primary:not(:disabled):not(.disabled):active{
+    color: var(--reverse-font-color);
+    background-color: var(--button-color);
+    border-color: var(--button-color);
 }
 .perso_motdepass_center{
     text-align: center !important;
