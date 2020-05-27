@@ -598,3 +598,55 @@ h6{
     max-width: 50%;
     }
 }
+
+/* -------------------------------------------------------------------------------------------------------------- */
+/* ----------------------------------- Gestion icone modif/suppr ------------------------------------------------ */
+/* -------------------------------------------------------------------------------------------------------------- */
+.centreVerticalement{
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+    padding-top: 10px;
+  }
+
+  .crayon,
+  .poubelle{
+    width:2rem;
+    height:2rem;
+    padding: 5px 5px 5px 5px;
+  }
+
+  .modification{
+    padding-left: 0px !important;
+    padding-right: 24px !important;
+  }
+  
+/*------------------------------------------------------------------------------ */
+/*--------------------------------- Scroll-Bar --------------------------------- */ 
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background: var(---card-divider); 
+  }
+::-webkit-scrollbar-thumb {
+    background: var(--button-color);
+  }
+::-webkit-scrollbar-thumb:window-inactive {
+    background: var(--button-color);
+  }
+  
+  @keyframes progress{
+      from {
+          transform: scaleX(0);   
+          opacity: .1;
+      }
+      to {
+          transform: scaleX(1);
+      }
+    } 
+    
+/*------------------------------------------------------------------------------ */
+/*---------------------------------- Connexion --------------------------------- */
+.centreHorizontalement{
+    display: flex;
+}

@@ -4950,7 +4950,7 @@
 				start = 0;
 			}
 		}
-		else if ( action == "first" )
+		else if ( action == "début" )
 		{
 			start = 0;
 		}
@@ -4972,7 +4972,7 @@
 				start += len;
 			}
 		}
-		else if ( action == "last" )
+		else if ( action == "fin" )
 		{
 			start = Math.floor( (records-1) / len) * len;
 		}
@@ -11466,7 +11466,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+			"sInfo": "afficher _START_ à _END_ de _TOTAL_ entrées",
 	
 	
 			/**
@@ -11487,7 +11487,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoEmpty": "Showing 0 to 0 of 0 entries",
+			"sInfoEmpty": "Afficher 0 to 0 of 0 entrées",
 	
 	
 			/**
@@ -11509,7 +11509,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoFiltered": "(filtered from _MAX_ total entries)",
+			"sInfoFiltered": "(filtré from _MAX_ total entrées)",
 	
 	
 			/**
@@ -11627,7 +11627,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sLengthMenu": "Show _MENU_ entries",
+			"sLengthMenu": "Afficher _MENU_ entrées",
 	
 	
 			/**
@@ -11682,7 +11682,7 @@
 			 * control over where it appears in the string. If "_INPUT_" is not given
 			 * then the input box is appended to the string automatically.
 			 *  @type string
-			 *  @default Search:
+			 *  @default Rechercher:
 			 *
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.search
@@ -11707,7 +11707,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sSearch": "Search:",
+			"sSearch": "Rechercher:",
 	
 	
 			/**
@@ -14490,7 +14490,7 @@
 		},
 	
 		full: function ( page, pages ) {
-			return [  'first', 'previous', 'next', 'last' ];
+			return [  'début', 'previous', 'next', 'fin' ];
 		},
 	
 		numbers: function ( page, pages ) {
@@ -14502,11 +14502,11 @@
 		},
 	
 		full_numbers: function ( page, pages ) {
-			return [ 'first', 'previous', _numbers(page, pages), 'next', 'last' ];
+			return [ 'début', 'previous', _numbers(page, pages), 'next', 'fin' ];
 		},
 		
 		first_last_numbers: function (page, pages) {
-	 		return ['first', _numbers(page, pages), 'last'];
+	 		return ['début', _numbers(page, pages), 'fin'];
 	 	},
 	
 		// For testing and plug-ins to use
@@ -14548,7 +14548,7 @@
 									container.append('<span class="ellipsis">&#x2026;</span>');
 									break;
 	
-								case 'first':
+								case 'début':
 									btnDisplay = lang.sFirst;
 									btnClass = button + (page > 0 ?
 										'' : ' '+classes.sPageButtonDisabled);
@@ -14566,7 +14566,7 @@
 										'' : ' '+classes.sPageButtonDisabled);
 									break;
 	
-								case 'last':
+								case 'fin':
 									btnDisplay = lang.sLast;
 									btnClass = button + (page < pages-1 ?
 										'' : ' '+classes.sPageButtonDisabled);
