@@ -1,0 +1,4 @@
+Options +FollowSymlinks
+RewriteEngine on
+# Article avec numéro de page :
+RewriteRule ^atelier-([0-9]+)([a-d]+)$ /EBIOS_RM/RiskAnalysis/atelier$1$2.html [L]

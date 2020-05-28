@@ -19,6 +19,7 @@ html, body {
     --font-color:#2A3859;
     --reverse-font-color:#fff;
     --shadow-color:rgba(0, 0, 0, 0.2);
+    --top-bar-color:#394C7A;
 
     /* fff mais transparent avec un A à .4 */
     --reverse-font-color-fainted:#ffffff66;
@@ -42,6 +43,7 @@ html, body {
     --font-color:#EAF1EB;
     --reverse-font-color:#EAF1EB;
     --shadow-color:rgba(0, 0, 0, 0.2);
+    --top-bar-color:#fff;
 
     /* fff mais transparent avec un A à .4 */
     --reverse-font-color-fainted:#eaf1eb66;
@@ -649,4 +651,82 @@ h6{
 /*---------------------------------- Connexion --------------------------------- */
 .centreHorizontalement{
     display: flex;
+}
+
+
+/*------------------------------------------------------------------------------ */
+/*----------------------------------- Atelier ---------------------------------- */
+.number_activity{
+    fill:var(--reverse-font-color-fainted-3);
+}
+
+.number_activity.active{
+    fill:var(--reverse-font-color)!important;
+}
+
+.number_activity_text{
+    font-style: normal!important;
+}
+
+@media (min-width: 768px){
+    .nom_atelier{
+        font-size: 0.7em!important;
+    }
+}
+
+/*------------------------------------------------------------------------------ */
+/*----------------------------------- Top Bar ---------------------------------- */
+
+.top_bar_name_1{
+    background-color: var(--button-color) ;
+    color:var(--reverse-font-color);
+    padding: 5px 30px 4px 30px;
+    border-radius: 4px 0px 0px 4px;
+    font-size: 0.7em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.top_bar_name_2{
+    background-color: var(--placeholder-idle) ;
+    color:var(--reverse-font-color);
+    padding: 5px 30px 4px 30px;
+    font-size: 0.7em;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+}
+
+.top_bar_name_2:after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 12px solid var(--button-color);
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+}
+
+.top_bar_name_2:before{
+    content: "";
+    position: absolute;
+    right: -12px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 12px solid var(--placeholder-idle);
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+}
+
+.top_bar_name_3{
+    background-color: var(--card-divider) ;
+    color:var(--top-bar-color);
+    padding: 5px 30px 4px 30px;
+    border-radius: 2px;
+    font-size: 0.7em;
+    font-weight: bold;
+    text-align: center;
 }
