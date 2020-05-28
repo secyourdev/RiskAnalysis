@@ -650,3 +650,32 @@ h6{
 .centreHorizontalement{
     display: flex;
 }
+
+
+/*------------------------------------------------------------------------------ */
+/*---------------------------------- Popup atelier 2--------------------------------- */
+.colonne{
+    width: 49%;
+    float: left;
+    padding : 1rem 1rem;
+}
+
+.form-colonne{
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+
+
+.btn-bougé{
+    margin: 1rem;
+}
+
+/*------------------------------------------------------------------------------ */
+/*---------------------------------- Popup atelier 3--------------------------------- */
+
+
+.choix-valeur{
+    text-align: center;
+    margin: 0rem;
+}

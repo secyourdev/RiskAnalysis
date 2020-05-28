@@ -12,4 +12,8 @@ $(document).ready(function() {
         "paging":   false,
         "info":     false
     } );
+    $('#dataTable4').DataTable( {
+        "paging":   false,
+        "info":     false
+    } );
 } );

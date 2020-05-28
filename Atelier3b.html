@@ -641,7 +641,7 @@
                                     <td>R1</td>
                                     <td>Portant directement dur le système d'information de la R&D</td>
                                     <td>3 Grave</td>
-                                    <td class="modification">
+                                    <td class="modification perso_border">
                                       <div class="col-1 centreVerticalement">
                                         <p>
                                           <img class="crayon" src ="content/img/crayon.svg"/>
@@ -661,7 +661,7 @@
                                     <td>R2</td>
                                     <td>Sur le système d'information du laboratoire (P3) qui détient une partie des travaux</td>
                                     <td>3 Grave</td>
-                                    <td class="modification">
+                                    <td class="modification perso_border">
                                       <div class="col-1 centreVerticalement">
                                         <p>
                                           <img class="crayon" src ="content/img/crayon.svg"/>
@@ -681,7 +681,7 @@
                                     <td>R3</td>
                                     <td>En passant par le prestataire informatique F3</td>
                                     <td>3 Grave</td>
-                                    <td class="modification">
+                                    <td class="modification perso_border">
                                       <div class="col-1 centreVerticalement">
                                         <p>
                                           <img class="crayon" src ="content/img/crayon.svg"/>
@@ -704,7 +704,7 @@
                                     <td>R4</td>
                                     <td>Portant directement dur le système d'information de la R&D</td>
                                     <td>4 critique</td>
-                                    <td class="modification">
+                                    <td class="modification perso_border">
                                       <div class="col-1 centreVerticalement">
                                         <p>
                                           <img class="crayon" src ="content/img/crayon.svg"/>
@@ -727,7 +727,7 @@
                                     <td>R5</td>
                                     <td>Portant directement dur le système d'information de la R&D</td>
                                     <td>4 critique</td>
-                                    <td class="modification">
+                                    <td class="modification perso_border">
                                       <div class="col-1 centreVerticalement">
                                         <p>
                                           <img class="crayon" src ="content/img/crayon.svg"/>
@@ -750,7 +750,7 @@
                                     <td>R6</td>
                                     <td>Portant directement dur le système d'information de la R&D</td>
                                     <td>4 critique</td>
-                                    <td class="modification">
+                                    <td class="modification perso_border">
                                       <div class="col-1 centreVerticalement">
                                         <p>
                                           <img class="crayon" src ="content/img/crayon.svg"/>
@@ -764,7 +764,10 @@
                             </tbody>
                         </table>
                     </div>
-                        
+                    <!-- bouton Ajouter une nouvelle ligne -->
+                  <div class="text-center">
+                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_chemin_attaque">Ajouter une nouvelle ligne</button>
+                  </div>     
                   </div>
                 </div>
               </div>
@@ -798,7 +801,117 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
-
+<!-- -------------------------------------------------------------------------------------------------------------- 
+----------------------------------------- modal ajout de ligne ----------------------------------------------------
+--------------------------------------------------------------------------------------------------------------- -->
+<div class="modal fade" id="ajout_ligne_chemin_attaque" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Ajout d'un chemin d'attaque stratégique</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body ">
+      <form class="user" id="formchemin">
+        <div class="row">
+          <div class="col-12">
+            <input type="text" class="perso_form shadow-none form-control form-control-user" id="Nom du scénario stratégique"
+              placeholder="Nom du scénario stratégique" required>
+          </div>
+          <div class="form-group col-6">
+            <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="Source de risque" name="Source de risque" placeholder="Source de risque" required>
+            <datalist id="Source de risque">
+              <option value="SR1">
+              <option value="SR2"></option>
+              <option value="SR3">
+            </datalist>
+          </div>
+          <div class="form-group col-6">
+            <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="Événement redouté" name="Événement redouté" placeholder="Événement redouté" required>
+            <datalist id="Événement redouté">
+              <option value="ER1">
+              <option value="ER2">
+              <option value="ER3">  
+            </datalist>
+          </div>
+          <div class="form-group col-12">
+            <label for="Chemin d'attaque stratégique">Chemin d'attaque stratégique</label>
+            <textarea class="form-control perso_text_area" id="Chemin d'attaque stratégique" rows="5"></textarea>
+          </div>
+          <!-- bouton Ajouter un chemin stratégique -->
+          <div class="modal-footer perso_middle_modal_footer col-12">
+            <button type="button" class="btn perso_btn_primary shadow-none">Ajouter un chemin stratégique</button>
+          </div>
+          <div class="table-responsive col-12">
+            <table class="table table-bordered perso_border" id="dataTable4" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Chemin d'attaques stratégique</th>
+                  <th class="perso_border"></th>
+                  
+                </tr>
+              </thead>
+                
+                <tbody>
+                    <tr>
+                        <td>Portant directement sur le système d'information de la R&D</td>
+                        <td class="modification perso_border">
+                          <div class="col-1 centreVerticalement">
+                            <p>
+                              <img class="crayon" src ="content/img/crayon.svg"/>
+                            </p>
+                          </div>
+                          <div class="col-1 centreVerticalement">
+                            <p><img class="poubelle" src ="content/img/poubelle.svg"/></p>
+                          </div>
+                      </td>
+                    </tr>
+                    <tr>
+                        <td>sur le système d'informationtion du laboratoire (P3) qui détient une partie des travaux</td>
+                        <td class="modification perso_border">
+                          <div class="col-1 centreVerticalement">
+                            <p>
+                              <img class="crayon" src ="content/img/crayon.svg"/>
+                            </p>
+                          </div>
+                          <div class="col-1 centreVerticalement">
+                            <p><img class="poubelle" src ="content/img/poubelle.svg"/></p>
+                          </div>
+                      </td> 
+                    </tr>
+                    <tr>
+                        <td>En passant par le prestataire informatique F3</td>
+                        <td class="modification perso_border">
+                          <div class="col-1 centreVerticalement">
+                            <p>
+                              <img class="crayon" src ="content/img/crayon.svg"/>
+                            </p>
+                          </div>
+                          <div class="col-1 centreVerticalement">
+                            <p><img class="poubelle" src ="content/img/poubelle.svg"/></p>
+                          </div>
+                      </td> 
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+  
+        
+        </div>
+      </div>
+    </form>
+     
+    <!-- bouton Ajouter -->
+    <div class="modal-footer perso_middle_modal_footer">
+      <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
+    </div>
+    </div>
+</div>
+</div>
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

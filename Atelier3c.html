@@ -649,7 +649,7 @@
                                     </td>
                                     <td>2</td>
                                     <td>1.3</td>
-                                    <td class="modification">
+                                    <td class="modification perso_border">
                                       <div class="col-1 centreVerticalement">
                                         <p>
                                           <img class="crayon" src ="content/img/crayon.svg"/>
@@ -668,7 +668,7 @@
                                     </td>
                                     <td>3</td>
                                     <td>2</td>
-                                    <td class="modification">
+                                    <td class="modification perso_border">
                                       <div class="col-1 centreVerticalement">
                                         <p>
                                           <img class="crayon" src ="content/img/crayon.svg"/>
@@ -688,7 +688,7 @@
                                     </td>
                                     <td>2.25</td>
                                     <td>1.5</td>
-                                    <td class="modification">
+                                    <td class="modification perso_border">
                                       <div class="col-1 centreVerticalement">
                                         <p>
                                           <img class="crayon" src ="content/img/crayon.svg"/>
@@ -703,7 +703,10 @@
                             </tbody>
                         </table>
                     </div>
-                        
+                    <!-- bouton Ajouter une nouvelle ligne -->
+                    <div class="text-center">
+                      <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_mesure_sécurité">Ajouter une nouvelle ligne</button>
+                    </div>   
                   </div>
                 </div>
               </div>
@@ -737,6 +740,142 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
+<!-- -------------------------------------------------------------------------------------------------------------- 
+----------------------------------------- modal ajout de ligne ----------------------------------------------------
+--------------------------------------------------------------------------------------------------------------- -->
+<div class="modal fade" id="ajout_ligne_mesure_sécurité" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Ajout d'une partie prenante</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body ">
+      <form class="user" id="formpp">
+        <div class="row">
+          <div class="col-6">
+          <div class="form-group">
+            <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="Partie prenante" name="Partie prenante" placeholder="Partie prenante" required>
+            <datalist id="Partie prenante">
+              <option value="F2 - Fournisseurs de matériel">
+              <option value="F3 - Prestataire informatique">
+              <option value="P3 - Laboratoires">
+            </datalist>
+          </div>
+          
+          <input type="text" class="perso_form shadow-none form-control form-control-user" id="Nom de la partie prenante"
+              placeholder="Nom de la partie prenante" required>
+          
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="Chemin d'attaque stratégique" name="Chemin d'attaque stratégique" placeholder="Chemin d'attaque stratégique" required>
+              <datalist id="Type">
+                <option value="Arrêt de production de l'équipement de maintenance">
+                <option value="Vol d'information en passant par le prestataire informatique">
+                <option value="Vol d'informations sur le système d'information du laboratoire">
+              </datalist>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class=" col-6">
+            <div class="choix-valeur">
+              <div>Dépendance</div>
+              <div>
+                <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Motivation">
+                  <label class="btn perso_checkbox shadow-none">
+                    <input type="radio" name="options" id="option1" autocomplete="off"> 1
+                  </label>
+                  <label class="btn perso_checkbox shadow-none">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> 2
+                  </label>
+                  <label class="btn perso_checkbox shadow-none">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> 3
+                  </label>
+                  <label class="btn perso_checkbox shadow-none">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> 4
+                  </label>
+                </div>
+              </div>
+            </div>
+          
+
+            <div class="choix-valeur">
+              <div>Ressources</div>
+              <div>
+                <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Ressources">
+                  <label class="btn perso_checkbox shadow-none">
+                    <input type="radio" name="options" id="option1" autocomplete="off"> 1
+                  </label>
+                  <label class="btn perso_checkbox shadow-none">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> 2
+                  </label>
+                  <label class="btn perso_checkbox shadow-none">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> 3
+                  </label>
+                  <label class="btn perso_checkbox shadow-none">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> 4
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class=" col-6">
+            <div class="choix-valeur">
+              <div>Activité</div>
+              <div>
+                <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Activité">
+                  <label class="btn perso_checkbox shadow-none">
+                    <input type="radio" name="options" id="option1" autocomplete="off"> 1
+                  </label>
+                  <label class="btn perso_checkbox shadow-none">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> 2
+                  </label>
+                  <label class="btn perso_checkbox shadow-none">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> 3
+                  </label>
+                  <label class="btn perso_checkbox shadow-none">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> 4
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="choix-valeur">
+              <!-- <label for="Choix">Choix</label> -->
+              <div>Choix</div>
+              <div>
+                <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Choix">
+                  <label class="btn perso_checkbox shadow-none">
+                    <input type="radio" name="options" id="option1" autocomplete="off"> 1
+                  </label>
+                  <label class="btn perso_checkbox shadow-none">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> 2
+                  </label>
+                  <label class="btn perso_checkbox shadow-none">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> 3
+                  </label>
+                  <label class="btn perso_checkbox shadow-none">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> 4
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+     
+    <!-- bouton Ajouter -->
+    <div class="modal-footer perso_middle_modal_footer">
+      <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
+    </div>
+    </div>
+</div>
+</div>
 
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
