@@ -495,15 +495,13 @@
               placeholder="E-mail" required>
           </div>
           <div class="form-group">
-            <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="Typedecomtpe" name="Typedecomtpe"
-              placeholder="Type de comtpe" required>
-            <datalist id="Typedecomtpe">
-              <option value="Internet Explorer">
-              <option value="Firefox">
-              <option value="Chrome">
-              <option value="Opera">
-              <option value="Safari">
-            </datalist>
+            <label for="SelectTypeComptePop">Type de compte</label>
+            <select class="form-control" id="SelectTypeComptePop">
+              <option value="" selected>...</option>
+              <option value="1">Admin Logiciel</option>
+              <option value="2">Admin Projet</option>
+              <option value="3">Utilisateur</option>
+            </select>
           </div>
         </form>
         <div class="table-responsive">
