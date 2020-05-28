@@ -349,9 +349,9 @@ h6{
 .perso_img{
     padding: 1rem 2rem;
 }
-.perso_img_full_screen_div{
+/* .perso_img_full_screen_div{
     padding: 1rem 2rem;
-}
+} */
 .card-columns {
     padding-right: .75rem;
     padding-left: .75rem;
@@ -393,7 +393,12 @@ h6{
 .perso_modal_body{
     padding: 1rem 8rem;
 }
-
+.perso_card_body_row{
+    align-items: center;
+}
+.perso_btn_spacing{
+    margin-top: 1rem;
+}
 
 
 /* -------------------------------------------------------------------------------------------------------------- */
@@ -441,9 +446,9 @@ h6{
 .perso_img{
     padding: 1rem 2rem;
     }
-.perso_img_full_screen_div{
+/* .perso_img_full_screen_div{
     padding: 1rem 2rem;
-    }
+    } */
 .card-columns {
     -moz-column-count: 1;
     column-count: 1;
@@ -495,9 +500,9 @@ h6{
 .perso_img{
     padding: 1rem 1rem;
     }
-.perso_img_full_screen_div{
+/* .perso_img_full_screen_div{
     padding: 1rem 4rem;
-    }
+    } */
 .card-columns {
     -moz-column-count: 2;
     column-count: 2;
@@ -552,7 +557,7 @@ h6{
     padding: 1rem 1rem;
     }
 .perso_img_full_screen_div{
-    padding: 1rem 1rem;
+/*     padding: 1rem 1rem; */
     max-width: 50%;
     }
 .card-columns {
@@ -585,7 +590,7 @@ h6{
     padding: 1rem 3rem;
     }
 .perso_img_full_screen_div{
-    padding: 1rem 3rem;
+/*     padding: 1rem 3rem; */
     max-width: 50%;
     }
 }
@@ -594,7 +599,7 @@ h6{
     padding: 1rem 7rem;
     }
 .perso_img_full_screen_div{
-    padding: 1rem 7rem;
+/*     padding: 1rem 7rem; */
     max-width: 50%;
     }
 }
@@ -609,17 +614,16 @@ h6{
     padding-top: 10px;
   }
 
-  .crayon,
-  .poubelle{
+.crayon,
+.poubelle{
     width:2rem;
     height:2rem;
     padding: 5px 5px 5px 5px;
-  }
+}
 
-  .modification{
-    padding-left: 0px !important;
-    padding-right: 24px !important;
-  }
+.modification{
+    display: flex;
+}
   
 /*------------------------------------------------------------------------------ */
 /*--------------------------------- Scroll-Bar --------------------------------- */ 
@@ -644,9 +648,3 @@ h6{
           transform: scaleX(1);
       }
     } 
-    
-/*------------------------------------------------------------------------------ */
-/*---------------------------------- Connexion --------------------------------- */
-.centreHorizontalement{
-    display: flex;
-}

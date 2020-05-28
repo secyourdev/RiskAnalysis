@@ -381,32 +381,33 @@
                       <textarea class="form-control perso_text_area" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
 
-
-                    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons">
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" id="option1" autocomplete="off"> 1
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" id="option2" autocomplete="off"> 2
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" id="option2" autocomplete="off"> 3
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" id="option2" autocomplete="off"> 4
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" id="option3" autocomplete="off"> 5
-                      </label>
-                    </div>
-
+                    <div class="form-group" id="niveaudegranularite">
+                      <label for="niveaudegranularite">Niveau de granularité</label>
+                      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="options" id="option1" autocomplete="off"> 1
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="options" id="option2" autocomplete="off"> 2
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="options" id="option2" autocomplete="off"> 3
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="options" id="option2" autocomplete="off"> 4
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="options" id="option3" autocomplete="off"> 5
+                        </label>
+                      </div>
+                  </div>
 
                     <div class="form-group">
                       <input type="text" class="perso_form shadow-none form-control form-control-user" id="exampleInputCadre"
                         placeholder="Cadre temporel" required>
                     </div>
                   </form>
-                  <img src="content/img/image_atelier_1a_1.svg" class="img-fluid perso_img" alt="Responsive image">
+                  <img src="content/img/task.svg" class="img-fluid perso_img" alt="Responsive image">
 
                 </div>
               </div>
@@ -498,8 +499,8 @@
                   <h6 class="m-0">Choix des ateliers à mener</h6>
                 </div>
                 <!-- Card Body -->
-                <div class="card-body perso_text_img">
-                  <div>
+                <div class="card-body row perso_card_body_row">
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input" id="customCheck1">
                       <label class="custom-control-label" for="customCheck1">Activité 1.a - Cadrer l’étude</label>
@@ -566,7 +567,10 @@
                         résiduels</label>
                     </div>
                   </div>
-                  <img src="content/img/image_atelier_1a_2.svg" class="img-fluid perso_img_full_screen_div" alt="Responsive image">
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
+                    <img src="content/img/checklist.svg" class="img-fluid perso_img_full_screen_div" alt="Responsive image">
+                  </div>
+                  
               
                 </div>
               </div>
