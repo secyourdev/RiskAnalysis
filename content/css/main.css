@@ -129,9 +129,7 @@ body {
     background-color: var(--card-content-color)!important;
     /* border-bottom: 1px solid var(--card-divider); */
     border: none;
-    padding: 0;
-    padding-top: 1rem!important;
-    padding-left: 1rem!important;
+    padding: 1rem 1rem;
 }
 .card-body{
     padding-top: 0.5rem!important;
@@ -197,6 +195,16 @@ h6{
 .custom-control-label::before {
     background-color: var(--card-content-color);
         box-shadow: none!important;
+}
+.modal-content {
+    background-color: var(--card-content-color);
+}
+.form-control {
+    background-color: var(--card-content-color);
+}
+.form-control:focus {
+    background-color: var(--card-content-color);
+    color: var(--font-color);
 }
 
 
@@ -380,8 +388,6 @@ h6{
     background-color: var(--card-content-color);
 }
 .perso_btn_RACI{
-    float: right;
-    margin-right: 1rem;
     width: 10rem;
 }
 .perso_border{
@@ -399,8 +405,43 @@ h6{
 .perso_btn_spacing{
     margin-top: 1rem;
 }
-
-
+.perso_no_margin{
+    margin: 0;
+}
+.perso_header_right{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row-reverse;
+}
+.perso_icon_btn{
+    border: none;
+    background-color: var(--card-content-color);
+    color: var(--button-color);
+    font-size: 20px;
+}
+.perso_icon_btn:focus{
+    color: var(--button-color-hover);
+    outline: none;
+}
+.perso_icon_btn:hover{
+    color: var(--button-color-hover);
+    outline: none;
+}
+.perso_icon_btn:not(:disabled):not(.disabled):active{
+    color: var(--button-color-hover);
+    outline: none;
+}
+.popover{
+    background-color: var(--card-content-color)!important;
+    box-shadow: 1px 1px 3px 1px var(--shadow-color)!important;
+    color: var(--font-color);
+}
+.bs-popover-bottom > .arrow::after{
+    border-bottom-color: var(--card-content-color)!important;
+}
+.popover-body {
+    color: var(--font-color);
+}
 /* -------------------------------------------------------------------------------------------------------------- */
 /* --------------------------------------Gestion aspect responsif------------------------------------------------ */
 /* -------------------------------------------------------------------------------------------------------------- */
@@ -590,7 +631,7 @@ h6{
     padding: 1rem 3rem;
     }
 .perso_img_full_screen_div{
-/*     padding: 1rem 3rem; */
+    padding: 0rem 1rem;
     max-width: 50%;
     }
 }
@@ -599,7 +640,11 @@ h6{
     padding: 1rem 7rem;
     }
 .perso_img_full_screen_div{
-/*     padding: 1rem 7rem; */
+/*     padding: 0rem 3rem; */
+    max-width: 50%;
+    }
+.perso_img_full_screen_div2{
+    padding: 0rem 3rem;
     max-width: 50%;
     }
 }
