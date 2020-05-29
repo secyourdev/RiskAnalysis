@@ -291,8 +291,8 @@
 
             <!-- Dark Mode toggle switch -->
 
-              <label class="theme-switch" for="checkbox">
-                <input class="perso_switch" type="checkbox" id="checkbox" />
+              <label class="theme-switch" for="checkbox_dark_theme">
+                <input class="perso_switch" type="checkbox" id="checkbox_dark_theme" />
                 <div class="slider round"></div>
               </label>
 
@@ -373,40 +373,41 @@
                   <form class="user">
                   
                     <div class="form-group">
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="exampleInputNom"
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_nom_donnee_principale"
                       placeholder="Nom" required>
                     </div>
                     <div class="form-group">
-                      <label for="exampleFormControlTextarea1">Objectif à atteindre</label>
-                      <textarea class="form-control perso_text_area" id="exampleFormControlTextarea1" rows="3"></textarea>
+                      <label for="textarea_objectif_a_atteindre">Objectif à atteindre</label>
+                      <textarea class="form-control perso_text_area" id="textarea_objectif_a_atteindre" rows="3"></textarea>
                     </div>
 
-
-                    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons">
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" id="option1" autocomplete="off"> 1
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" id="option2" autocomplete="off"> 2
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" id="option2" autocomplete="off"> 3
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" id="option2" autocomplete="off"> 4
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" id="option3" autocomplete="off"> 5
-                      </label>
-                    </div>
-
+                    <div class="form-group" id="niveaudegranularite">
+                      <label for="niveaudegranularite">Niveau de granularité</label>
+                      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="options" id="granularite1" autocomplete="off"> 1
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="options" id="granularite2" autocomplete="off"> 2
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="options" id="granularite2" autocomplete="off"> 3
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="options" id="granularite2" autocomplete="off"> 4
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="options" id="granularite3" autocomplete="off"> 5
+                        </label>
+                      </div>
+                  </div>
 
                     <div class="form-group">
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="exampleInputCadre"
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_cadre_temporel"
                         placeholder="Cadre temporel" required>
                     </div>
                   </form>
-                  <img src="content/img/image_atelier_1a_1.svg" class="img-fluid perso_img" alt="Responsive image">
+                  <img src="content/img/task.svg" class="img-fluid perso_img" alt="Responsive image">
 
                 </div>
               </div>
@@ -427,11 +428,11 @@
                   <form class="user" id="formActeur">
                   
                     <div class="form-group">
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="exampleInputNom"
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_nom_acteur"
                         placeholder="Nom" required>
                     </div>
                     <div class="form-group">
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="exampleInputPrénom"
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_prénom_acteur"
                         placeholder="Prénom" required>
                     </div>
 
@@ -498,8 +499,8 @@
                   <h6 class="m-0">Choix des ateliers à mener</h6>
                 </div>
                 <!-- Card Body -->
-                <div class="card-body perso_text_img">
-                  <div>
+                <div class="card-body row perso_card_body_row">
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input" id="customCheck1">
                       <label class="custom-control-label" for="customCheck1">Activité 1.a - Cadrer l’étude</label>
@@ -566,7 +567,14 @@
                         résiduels</label>
                     </div>
                   </div>
+<<<<<<< HEAD:atelier1a.html
                   <img src="content/img/image_atelier_1a_2.svg" class="img-fluid perso_img_full_screen_div" alt="Responsive image">
+=======
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
+                    <img src="content/img/checklist.svg" class="img-fluid perso_img_full_screen_div" alt="Responsive image">
+                  </div>
+                  
+>>>>>>> origin/Guillaume:site de base/Atelier1.a.html
               
                 </div>
               </div>
@@ -577,12 +585,14 @@
             <div class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
-                <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">RACI</h6>
-                </div>
-                <!-- bouton ajouter -->
-                <div>
-                  <button type="button" class="btn perso_btn perso_btn_RACI shadow-none">Gérer les droits</button>
+                <div class="row perso_no_margin">
+                  <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <h6>RACI</h6>
+                  </div>
+                  <!-- bouton ajouter -->
+                  <div class="card-header perso_header_right col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <button type="button" class="btn perso_btn perso_btn_RACI shadow-none">Gérer les droits</button>
+                  </div>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
