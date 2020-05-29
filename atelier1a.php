@@ -333,26 +333,24 @@
 
               <!-- Area Card -->
               <!-- Acteurs -->
-              <div class="card shadow mb-4 perso_card_half_screen">
+              <div class="card shadow mb-4 perso_card_half_screen" id=acteurs>
                 <!-- Card Header - Dropdown -->
                 <div class="card-header d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0">Acteurs</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <form class="user" id="formActeur">
+                  <form method="post" action="content/php/test.php" class="user" id="formActeur">
                   
                     <div class="form-group">
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="exampleInputNom"
-                        placeholder="Nom" required>
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="exampleInputNom" name="nom" placeholder="Nom" required>
                     </div>
                     <div class="form-group">
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="exampleInputPrénom"
-                        placeholder="Prénom" required>
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="exampleInputPrénom" name="prenom" placeholder="Prénom" required>
                     </div>
 
                     <div class="form-group">
-                      <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="Postes" name="Poste" placeholder="Poste" required>
+                      <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="Postes" name="poste" placeholder="Poste" required>
                       <datalist id="Postes">
                         <option value="Internet Explorer">
                         <option value="Firefox">
@@ -361,12 +359,15 @@
                         <option value="Safari">
                       </datalist>
                     </div>
+                    <div>
+                    <input type="submit" name="valider" value="Ajouter" class="btn perso_btn shadow-none"></input>
+                  </div>
                   </form>
 
-                  <!-- bouton ajouter -->
+                  <!-- bouton ajouter 
                   <div>
                     <button type="button" class="btn perso_btn shadow-none">Ajouter</button>
-                  </div>
+                  </div>-->
 
                   <!--tableau-->
                   <div class="table-responsive perso_tableau">
