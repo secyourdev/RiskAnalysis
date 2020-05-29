@@ -679,3 +679,15 @@ h6{
     text-align: center;
     margin: 0rem;
 }
+
+/*------------------------------------------------------------------------------ */
+/*---------------------------------- Popup atelier 4--------------------------------- */
+
+.centre-vraisemblance{
+    text-align: center;
+}
+
+.texte-vraisemblance{
+    font-size: 0.8rem;
+    margin-bottom: 2rem;
+}

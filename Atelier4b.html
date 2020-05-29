@@ -515,7 +515,10 @@
                       </tbody>
                     </table>  
                   </div>    
-
+                  <!-- bouton Ajouter une nouvelle ligne -->
+                  <div class="text-center">
+                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_scénario_opérationnel">Ajouter une nouvelle ligne</button>
+                  </div>
 
 
 
@@ -554,6 +557,84 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
+<!-- -------------------------------------------------------------------------------------------------------------- 
+----------------------------------------- modal ajout de ligne ----------------------------------------------------
+--------------------------------------------------------------------------------------------------------------- -->
+<div class="modal fade" id="ajout_ligne_scénario_opérationnel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Ajout d'un chemin d'attaque stratégique</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body perso_modal_body">
+      <form class="user" id="formvraisemblance">
+        <div class="row">
+          <div class="form-group centre-vraisemblance col-12">
+            <div>
+              <input type="radio" id="Invraisemblable"
+               name="Vraisemblance" value="Invraisemblable">
+              <label for="Invraisemblable">Invraisemblable</label>
+            </div>
+            <div class="texte-vraisemblance">La source de risque a très peu de chances d'atteindre son objectif visé en 
+              empruntant l'un des modes opératoires envisagés.<br>
+              La vraisemblance du scénario de risque est très faible
+            </div>
+            <div>
+              <input type="radio" id="Peu vraisemblable"
+               name="Vraisemblance" value="Peu Vraisemblable">
+              <label for="Peu vraisemblable">Peu vraisemblable</label>
+            </div>
+            <div class="texte-vraisemblance">La source de risque a relativement peu de chances d'atteidre son objectif en
+              empruntant l'un des modes opératoires envisagé.<br>
+              La vraisemblance du scénario de risque est faible.
+            </div>
+            <div>
+              <input type="radio" id="Vraisemblable"
+               name="Vraisemblance" value="Vrasemblable">
+              <label for="Vraisemblable">Vraisemblable</label>
+            </div>
+            <div class="texte-vraisemblance">
+              La source de rsique est susceptible d'atteidre son objectif en empruntant
+              l'un des modes opératoires envisagés. <br>
+              La vraisemblance du scénario de risque est significative.
+            </div>
+            <div>
+              <input type="radio" id="Très vraisemblable"
+               name="Vraisemblance" value="Très vraisemblable">
+              <label for="Très vraisemblable">Très vraisemblable</label>
+            </div>
+            <div class="texte-vraisemblance">
+              La source de risque va probablement atteindre son objectif en empruntant
+              l'un des modes opératoires envisagés.<br>
+              La vraisemblance du scénario de risque est élevée.
+            </div>
+            <div>
+              <input type="radio" id="Quasi certain"
+               name="Vraisemblance" value="Quasi certain">
+              <label for="Quasi certain">Quasi certain</label>
+            </div>
+            <div class="texte-vraisemblance">
+              La source de risque va très certainement atteindre son objectif en empruntant
+              l'un des modes opératoires envisagés.<br>
+              La vraisemblance du scénario de risque est très élevée
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </form>
+     
+    <!-- bouton Ajouter -->
+    <div class="modal-footer perso_middle_modal_footer">
+      <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
+    </div>
+    </div>
+</div>
+</div>
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
