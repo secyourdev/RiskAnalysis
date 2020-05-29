@@ -822,20 +822,22 @@ aria-hidden="true">
               placeholder="Nom du scénario stratégique" required>
           </div>
           <div class="form-group col-6">
-            <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="Source de risque" name="Source de risque" placeholder="Source de risque" required>
-            <datalist id="Source de risque">
-              <option value="SR1">
-              <option value="SR2"></option>
-              <option value="SR3">
-            </datalist>
+            <label for="SelectSR">Source de risque</label>
+            <select class="form-control" id="SelectSR">
+              <option value="" selected>...</option>
+              <option value="1">SR1</option>
+              <option value="2">SR2</option>
+              <option value="3">SR3</option>
+            </select>
           </div>
           <div class="form-group col-6">
-            <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="Événement redouté" name="Événement redouté" placeholder="Événement redouté" required>
-            <datalist id="Événement redouté">
-              <option value="ER1">
-              <option value="ER2">
-              <option value="ER3">  
-            </datalist>
+            <label for="SelectER">Événement redouté</label>
+            <select class="form-control" id="SelectER">
+              <option value="" selected>...</option>
+              <option value="1">ER1</option>
+              <option value="2">ER2</option>
+              <option value="3">ER3</option>
+            </select>
           </div>
           <div class="form-group col-12">
             <label for="Chemin d'attaque stratégique">Chemin d'attaque stratégique</label>
@@ -860,11 +862,6 @@ aria-hidden="true">
                         <td>Portant directement sur le système d'information de la R&D</td>
                         <td class="modification perso_border">
                           <div class="col-1 centreVerticalement">
-                            <p>
-                              <img class="crayon" src ="content/img/crayon.svg"/>
-                            </p>
-                          </div>
-                          <div class="col-1 centreVerticalement">
                             <p><img class="poubelle" src ="content/img/poubelle.svg"/></p>
                           </div>
                       </td>
@@ -873,11 +870,6 @@ aria-hidden="true">
                         <td>sur le système d'informationtion du laboratoire (P3) qui détient une partie des travaux</td>
                         <td class="modification perso_border">
                           <div class="col-1 centreVerticalement">
-                            <p>
-                              <img class="crayon" src ="content/img/crayon.svg"/>
-                            </p>
-                          </div>
-                          <div class="col-1 centreVerticalement">
                             <p><img class="poubelle" src ="content/img/poubelle.svg"/></p>
                           </div>
                       </td> 
@@ -885,11 +877,6 @@ aria-hidden="true">
                     <tr>
                         <td>En passant par le prestataire informatique F3</td>
                         <td class="modification perso_border">
-                          <div class="col-1 centreVerticalement">
-                            <p>
-                              <img class="crayon" src ="content/img/crayon.svg"/>
-                            </p>
-                          </div>
                           <div class="col-1 centreVerticalement">
                             <p><img class="poubelle" src ="content/img/poubelle.svg"/></p>
                           </div>

@@ -525,7 +525,7 @@
                                     <td>Portant directement sur le système d'information de la R&D</td>
                                     <td></td>
                                     <td></td>
-                                    <td class="modification">
+                                    <td class="modification perso_border">
                                       <div class="col-1 centreVerticalement">
                                         <p>
                                           <img class="crayon" src ="content/img/crayon.svg"/>
@@ -541,7 +541,7 @@
                                     <td>Sur le système d'information du laboratoire (P3) qui détient une partie des travaux</td>
                                     <td></td>
                                     <td></td>
-                                    <td class="modification">
+                                    <td class="modification perso_border">
                                       <div class="col-1 centreVerticalement">
                                         <p>
                                           <img class="crayon" src ="content/img/crayon.svg"/>
@@ -557,7 +557,7 @@
                                     <td>En passant par le prestataire informatique F3</td>
                                     <td></td>
                                     <td></td>
-                                    <td class="modification">
+                                    <td class="modification perso_border">
                                       <div class="col-1 centreVerticalement">
                                         <p>
                                           <img class="crayon" src ="content/img/crayon.svg"/>
@@ -573,7 +573,7 @@
                                     <td>Portant directement sur le système d'information de la R&D</td>
                                     <td></td>
                                     <td></td>
-                                    <td class="modification">
+                                    <td class="modification perso_border">
                                       <div class="col-1 centreVerticalement">
                                         <p>
                                           <img class="crayon" src ="content/img/crayon.svg"/>
@@ -589,7 +589,7 @@
                                     <td>Sur le système d'information du laboratoire (P3) qui détient une partie des travaux</td>
                                     <td></td>
                                     <td></td>
-                                    <td class="modification">
+                                    <td class="modification perso_border">
                                       <div class="col-1 centreVerticalement">
                                         <p>
                                           <img class="crayon" src ="content/img/crayon.svg"/>
@@ -605,7 +605,7 @@
                                     <td>En passant par le prestataire informatique F3</td>
                                     <td></td>
                                     <td></td>
-                                    <td class="modification">
+                                    <td class="modification perso_border">
                                       <div class="col-1 centreVerticalement">
                                         <p>
                                           <img class="crayon" src ="content/img/crayon.svg"/>
@@ -666,7 +666,7 @@ aria-hidden="true">
 <div class="modal-dialog modal-lg" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Ajout d'un chemin d'attaque stratégique</h5>
+      <h5 class="modal-title" id="exampleModalLabel">Ajout d'un scénario opérationnel</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -675,12 +675,15 @@ aria-hidden="true">
       <form class="user" id="formopérationnel">
         <div class="row">
           <div class="form-group col-12">
-            <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="Choix du chemin stratégique" name="Choix du chemin stratégique" placeholder="Choix du chemin stratégique" required>
-            <datalist id="Choix du scénario stratégique">
-              <option value="Chemin 1">
-              <option value="Chemin 2"></option>
-              <option value="Chemin 3">
-            </datalist>
+            <div class="form-group">
+              <label for="SelectChemin">Chemin d'attaque stratégique</label>
+              <select class="form-control" id="SelectTypeComptePop">
+                <option value="" selected>...</option>
+                <option value="1">Arrêt de production de l'équipement</option>
+                <option value="2">Vol d'information en passant par le prestataire informatique</option>
+                <option value="3">Vol d'informations sur le système d'information du laboratoire</option>
+              </select>
+            </div>
             <div class="form-group">
               <input type="text" class="perso_form shadow-none form-control form-control-user" id="Scénario opérationnel"
                 placeholder="Scénario opérationnel" required>
@@ -710,11 +713,6 @@ aria-hidden="true">
                         <td>Portant directement sur le système d'information de la R&D</td>
                         <td class="modification perso_border">
                           <div class="col-1 centreVerticalement">
-                            <p>
-                              <img class="crayon" src ="content/img/crayon.svg"/>
-                            </p>
-                          </div>
-                          <div class="col-1 centreVerticalement">
                             <p><img class="poubelle" src ="content/img/poubelle.svg"/></p>
                           </div>
                       </td>
@@ -723,11 +721,6 @@ aria-hidden="true">
                         <td>sur le système d'informationtion du laboratoire (P3) qui détient une partie des travaux</td>
                         <td class="modification perso_border">
                           <div class="col-1 centreVerticalement">
-                            <p>
-                              <img class="crayon" src ="content/img/crayon.svg"/>
-                            </p>
-                          </div>
-                          <div class="col-1 centreVerticalement">
                             <p><img class="poubelle" src ="content/img/poubelle.svg"/></p>
                           </div>
                       </td> 
@@ -735,11 +728,6 @@ aria-hidden="true">
                     <tr>
                         <td>En passant par le prestataire informatique F3</td>
                         <td class="modification perso_border">
-                          <div class="col-1 centreVerticalement">
-                            <p>
-                              <img class="crayon" src ="content/img/crayon.svg"/>
-                            </p>
-                          </div>
                           <div class="col-1 centreVerticalement">
                             <p><img class="poubelle" src ="content/img/poubelle.svg"/></p>
                           </div>
