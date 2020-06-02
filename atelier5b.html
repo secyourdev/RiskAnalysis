@@ -7,7 +7,7 @@
   <meta name="description" content="RiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>RiskManager | Atelier 4.b</title>
+  <title>RiskManager | Atelier 5.b</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -378,8 +378,10 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <p>Le but de l'atelier 4 est de construire des scénarios techniques reprenant les modes opératoires susceptibles d'être utilisés par les sources de risque pour réaliser les scénarios stratégiues.
-                    Cet atelier adopte ue démarche similaire à celle de l'atelier précédent mais se concentre sur les biens supports critiques. Vous évaluez ensuite le niveau de vraisemblance des scénarios opérationnels obtenus.
+                  <p>Le but de cet atelier est de réaliser une synthèse des scénarios de risque identifiés et de défnir
+                      une stratégie de traitement de risque. Cette stratégie aboutit à la définition de mesures de 
+                      sécurité, recensées dans un plan d'amélioration continuee de la sécurité (PACS). Les risques résiduels sont ensuite
+                      identifiés ainsi que le cadre de suivi de ces risques.
                   </p>
                   <!--text-->
                 </div>
@@ -394,118 +396,84 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Évaluation de la vraisemblance</h6>
-          
+                  <h6 class="m-0 font-weight-bold text-primary">Cartographie du risque initial</h6>
+                  
+
+              
+
+
+
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <!--text-->
                   <div class="table-responsive">
                     <table class="table table-bordered perso_border" id="dataTable" width="100%" cellspacing="0">
-                      <thead>
-                        <tr>
-                          <th>N° Risque</th>
-                          <th>Chemin d'attaques stratégique</th>
-                          <th>Scénario opérationnel</th>
-                          <th>Vraisemblance</th>
-                          <th class="perso_border"></th>
-                        </tr>
-                      </thead>
-                        
+                 
                       <tbody>
                         <tr>
-                          <td>R1</td>
-                          <td>Portant directement sur le système d'information de la R&D</td>
-                          <td></td>
-                          <td>Vraisemblable</td>
-                          <td class="modification perso_border">
-                            <div class="col-1 centreVerticalement">
-                              <p>
-                                <img class="crayon" src ="content/img/crayon.svg"/>
-                              </p>
-                            </div>
-                        </td>
+                          <td class="perso_border texte-droite">Gravité</td>
+                          <td class="perso_border"></td>
+                          <td class="perso_border"></td>
+                          <td class="perso_border"></td>
+                          <td class="perso_border"></td>
+                          <td class="perso_border"></td>
                             
                         </tr>
                         <tr>
-                          <td>R2</td>
-                          <td>Sur le système d'information du laboratoire (P3) qui détient une partie des travaux</td>
-                          <td></td>
-                          <td>Peu vraisemblable</td>
-                          <td class="modification perso_border">
-                            <div class="col-1 centreVerticalement">
-                              <p>
-                                <img class="crayon" src ="content/img/crayon.svg"/>
-                              </p>
-                            </div>
-                        </td>
+                            <td class="perso_border texte-droite">4</td>
+                            <td class="fond-orange">R5</td>
+                            <td class="fond-orange">R4</td>
+                            <td class="fond-rouge"></td>
+                            <td class="fond-rouge"></td>
+                            <td class="perso_border"></td>
                         </tr>
                         <tr>
-                          <td>R3</td>
-                          <td>En passant par le prestataire informatique F3</td>
-                          <td></td>
-                          <td>Peu vraisemblable</td>
-                          <td class="modification perso_border">
-                            <div class="col-1 centreVerticalement">
-                              <p>
-                                <img class="crayon" src ="content/img/crayon.svg"/>
-                              </p>
-                            </div>
-                        </td>
+                            <td class="perso_border texte-droite">3</td>
+                            <td class="fond-vert"></td>
+                            <td class="fond-orange">R2</td>
+                            <td class="fond-rouge">R1</td>
+                            <td class="fond-rouge">R3</td>
+                            <td class="perso_border"></td>
                         </tr>
                         <tr>
-                          <td>R4</td>
-                          <td>Portant directement sur le système d'information de la R&D</td>
-                          <td></td>
-                          <td>Invraisemblable</td>
-                          <td class="modification perso_border">
-                            <div class="col-1 centreVerticalement">
-                              <p>
-                                <img class="crayon" src ="content/img/crayon.svg"/>
-                              </p>
-                            </div>
-                        </td>
+                            <td class="perso_border texte-droite">2</td>
+                            <td class="fond-vert"></td>
+                            <td class="fond-vert"></td>
+                            <td class="fond-orange"></td>
+                            <td class="fond-rouge"></td>
+                            <td class="perso_border"></td>
                         </tr>
                         <tr>
-                          <td>R5</td>
-                          <td>Sur le système d'information du laboratoire (P3) qui détient une partie des travaux</td>
-                          <td></td>
-                          <td>Quasi-certain</td>
-                          <td class="modification perso_border">
-                            <div class="col-1 centreVerticalement">
-                              <p>
-                                <img class="crayon" src ="content/img/crayon.svg"/>
-                              </p>
-                            </div>
-                        </td>
+                            <td class="perso_border texte-droite">1</td>
+                            <td class="fond-vert"></td>
+                            <td class="fond-vert"></td>
+                            <td class="fond-orange"></td>
+                            <td class="fond-orange"></td>
+                            <td class="perso_border"></td>
                         </tr>
                         <tr>
-                          <td>R6</td>
-                          <td>En passant par le prestataire informatique F3</td>
-                          <td></td>
-                          <td>Quasi-certain</td>
-                          <td class="modification perso_border">
-                            <div class="col-1 centreVerticalement">
-                              <p>
-                                <img class="crayon" src ="content/img/crayon.svg"/>
-                              </p>
-                            </div>
-                        </td>
+                            <td class="perso_border"></td>
+                            <td class="perso_border">1</td>
+                            <td class="perso_border">2</td>
+                            <td class="perso_border">3</td>
+                            <td class="perso_border">4</td>
+                            <td class="perso_border texte-gauche">Vraisemblance</td>
                         </tr>
                         
 
                       </tbody>
                     </table>  
                   </div>    
-                  <!-- bouton Ajouter la vraisemblance -->
-                  <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_vraisemblance">Ajouter une nouvelle ligne</button>
+                  
+                  <h6 class="m-0 font-weight-bold text-primary">Scénarios de risque</h6>
+                  <div class="card-body">
+                      R1 : Un concurrent vole des informations de R&D grâce à une canal d'exfiltration <br>
+                      R2 : Un concurrent vole des informations de R&D en exfiltrant celles détenues par le laboratoire <br>
+                      R3 : Un concurrent vole des informations de R&D grâce à un canal d'exfiltration via le prestataire informatique <br>
+                      R4 : Un hacktiviste provoque un arret de la production des vaccins en compromettant l'équipement de maintenance du fournisseur de matériel <br>
+                      R5 : Un hacktiviste perturbe la distribution de vaccins en modifiant leur étiquetage <br>
                   </div>
-
-
-
-
-
                 </div>
               </div>
             </div>
@@ -539,84 +507,8 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-<!-- -------------------------------------------------------------------------------------------------------------- 
------------------------------------------ modal ajout de ligne ----------------------------------------------------
---------------------------------------------------------------------------------------------------------------- -->
-<div class="modal fade" id="ajout_vraisemblance" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog modal-lg" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Ajout de la vraisemblance</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body perso_modal_body">
-      <form class="user" id="formvraisemblance">
-        <div class="row">
-          <div class="form-group centre-vraisemblance col-12">
-            <div>
-              <input type="radio" id="Invraisemblable"
-               name="Vraisemblance" value="Invraisemblable">
-              <label for="Invraisemblable">Invraisemblable</label>
-            </div>
-            <div class="texte-vraisemblance">La source de risque a très peu de chances d'atteindre son objectif visé en 
-              empruntant l'un des modes opératoires envisagés.<br>
-              La vraisemblance du scénario de risque est très faible
-            </div>
-            <div>
-              <input type="radio" id="Peu vraisemblable"
-               name="Vraisemblance" value="Peu Vraisemblable">
-              <label for="Peu vraisemblable">Peu vraisemblable</label>
-            </div>
-            <div class="texte-vraisemblance">La source de risque a relativement peu de chances d'atteidre son objectif en
-              empruntant l'un des modes opératoires envisagé.<br>
-              La vraisemblance du scénario de risque est faible.
-            </div>
-            <div>
-              <input type="radio" id="Vraisemblable"
-               name="Vraisemblance" value="Vrasemblable">
-              <label for="Vraisemblable">Vraisemblable</label>
-            </div>
-            <div class="texte-vraisemblance">
-              La source de rsique est susceptible d'atteidre son objectif en empruntant
-              l'un des modes opératoires envisagés. <br>
-              La vraisemblance du scénario de risque est significative.
-            </div>
-            <div>
-              <input type="radio" id="Très vraisemblable"
-               name="Vraisemblance" value="Très vraisemblable">
-              <label for="Très vraisemblable">Très vraisemblable</label>
-            </div>
-            <div class="texte-vraisemblance">
-              La source de risque va probablement atteindre son objectif en empruntant
-              l'un des modes opératoires envisagés.<br>
-              La vraisemblance du scénario de risque est élevée.
-            </div>
-            <div>
-              <input type="radio" id="Quasi certain"
-               name="Vraisemblance" value="Quasi certain">
-              <label for="Quasi certain">Quasi certain</label>
-            </div>
-            <div class="texte-vraisemblance">
-              La source de risque va très certainement atteindre son objectif en empruntant
-              l'un des modes opératoires envisagés.<br>
-              La vraisemblance du scénario de risque est très élevée
-            </div>
-            
-          </div>
-        </div>
-      </div>
-    </form>
-     
-    <!-- bouton Ajouter -->
-    <div class="modal-footer perso_middle_modal_footer">
-      <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
-    </div>
-    </div>
-</div>
-</div>
+
+
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -651,7 +543,7 @@ aria-hidden="true">
   <script src="content/vendor/datatables/dataTables.bootstrap4.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="content/js/modules/tableau/tableau-atelier3a.js"></script>
+  <script src="content/js/modules/tableau/tableau-atelier5b.js"></script>
 
   <!-- JS pour Dark Mode -->
   <script src="content/js/modules/dark_mode.js"></script>

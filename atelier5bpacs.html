@@ -7,7 +7,7 @@
   <meta name="description" content="RiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>RiskManager | Atelier 4.b</title>
+  <title>RiskManager | Atelier 3.a</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -378,8 +378,9 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <p>Le but de l'atelier 4 est de construire des scénarios techniques reprenant les modes opératoires susceptibles d'être utilisés par les sources de risque pour réaliser les scénarios stratégiues.
-                    Cet atelier adopte ue démarche similaire à celle de l'atelier précédent mais se concentre sur les biens supports critiques. Vous évaluez ensuite le niveau de vraisemblance des scénarios opérationnels obtenus.
+                  <p>Le but de cet atelier est de réaliser une synthèse des scéarios de risque identifiés et de définir une stratégie de traitement du risque. 
+                      Cette stratégie aboutit à la définition de mesures de sécurité, recensées dans un plan d'amélioration continue de la sécurité (PACS).
+                      Les risques résiduels sont ensuite identifiés ainsi que le cadre de suivi de ces risques.
                   </p>
                   <!--text-->
                 </div>
@@ -394,8 +395,13 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Évaluation de la vraisemblance</h6>
-          
+                  <h6 class="m-0 font-weight-bold text-primary">Plan d'amélioration continue de la sécurité</h6>
+                  
+
+              
+
+
+
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -404,106 +410,218 @@
                     <table class="table table-bordered perso_border" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                         <tr>
-                          <th>N° Risque</th>
-                          <th>Chemin d'attaques stratégique</th>
-                          <th>Scénario opérationnel</th>
-                          <th>Vraisemblance</th>
+                          <th>Mesure de sécurité</th>
+                          <th>Scénario des risques associés</th>
+                          <th>Responsable</th>
+                          <th>Frein et difficultés de mise en oeuvre</th>
+                          <th>Coût / Complexité</th>
+                          <th>Échéance</th>
+                          <th>Statut</th>
                           <th class="perso_border"></th>
                         </tr>
                       </thead>
                         
                       <tbody>
                         <tr>
+                          <td>Sensibilisation renforcée au hammeçonnage par un prestataire spécialisé</td>
                           <td>R1</td>
-                          <td>Portant directement sur le système d'information de la R&D</td>
-                          <td></td>
-                          <td>Vraisemblable</td>
+                          <td>RSSI</td>
+                          <td>Validation du CHST indispensable</td>
+                          <td>+</td>
+                          <td>6 mois</td>
+                          <td>En cours</td>
                           <td class="modification perso_border">
                             <div class="col-1 centreVerticalement">
                               <p>
                                 <img class="crayon" src ="content/img/crayon.svg"/>
                               </p>
                             </div>
-                        </td>
-                            
+                        </td>  
                         </tr>
                         <tr>
-                          <td>R2</td>
-                          <td>Sur le système d'information du laboratoire (P3) qui détient une partie des travaux</td>
-                          <td></td>
-                          <td>Peu vraisemblable</td>
-                          <td class="modification perso_border">
-                            <div class="col-1 centreVerticalement">
-                              <p>
-                                <img class="crayon" src ="content/img/crayon.svg"/>
-                              </p>
-                            </div>
-                        </td>
-                        </tr>
-                        <tr>
-                          <td>R3</td>
-                          <td>En passant par le prestataire informatique F3</td>
-                          <td></td>
-                          <td>Peu vraisemblable</td>
-                          <td class="modification perso_border">
-                            <div class="col-1 centreVerticalement">
-                              <p>
-                                <img class="crayon" src ="content/img/crayon.svg"/>
-                              </p>
-                            </div>
-                        </td>
-                        </tr>
-                        <tr>
-                          <td>R4</td>
-                          <td>Portant directement sur le système d'information de la R&D</td>
-                          <td></td>
-                          <td>Invraisemblable</td>
-                          <td class="modification perso_border">
-                            <div class="col-1 centreVerticalement">
-                              <p>
-                                <img class="crayon" src ="content/img/crayon.svg"/>
-                              </p>
-                            </div>
-                        </td>
-                        </tr>
-                        <tr>
-                          <td>R5</td>
-                          <td>Sur le système d'information du laboratoire (P3) qui détient une partie des travaux</td>
-                          <td></td>
-                          <td>Quasi-certain</td>
-                          <td class="modification perso_border">
-                            <div class="col-1 centreVerticalement">
-                              <p>
-                                <img class="crayon" src ="content/img/crayon.svg"/>
-                              </p>
-                            </div>
-                        </td>
-                        </tr>
-                        <tr>
-                          <td>R6</td>
-                          <td>En passant par le prestataire informatique F3</td>
-                          <td></td>
-                          <td>Quasi-certain</td>
-                          <td class="modification perso_border">
-                            <div class="col-1 centreVerticalement">
-                              <p>
-                                <img class="crayon" src ="content/img/crayon.svg"/>
-                              </p>
-                            </div>
-                        </td>
-                        </tr>
-                        
+                            <td>Sensibilisation renforcée au hammeçonnage par un prestataire spécialisé</td>
+                            <td>R1</td>
+                            <td>RSSI</td>
+                            <td>Validation du CHST indispensable</td>
+                            <td>+</td>
+                            <td>6 mois</td>
+                            <td>En cours</td>
+                            <td class="modification perso_border">
+                              <div class="col-1 centreVerticalement">
+                                <p>
+                                  <img class="crayon" src ="content/img/crayon.svg"/>
+                                </p>
+                              </div>
+                          </td>  
+                          </tr>
+                          <tr>
+                            <td>Sensibilisation renforcée au hammeçonnage par un prestataire spécialisé</td>
+                            <td>R1</td>
+                            <td>RSSI</td>
+                            <td>Validation du CHST indispensable</td>
+                            <td>+</td>
+                            <td>6 mois</td>
+                            <td>En cours</td>
+                            <td class="modification perso_border">
+                              <div class="col-1 centreVerticalement">
+                                <p>
+                                  <img class="crayon" src ="content/img/crayon.svg"/>
+                                </p>
+                              </div>
+                          </td>  
+                          </tr>
+                          <tr>
+                            <td>Sensibilisation renforcée au hammeçonnage par un prestataire spécialisé</td>
+                            <td>R1</td>
+                            <td>RSSI</td>
+                            <td>Validation du CHST indispensable</td>
+                            <td>+</td>
+                            <td>6 mois</td>
+                            <td>En cours</td>
+                            <td class="modification perso_border">
+                              <div class="col-1 centreVerticalement">
+                                <p>
+                                  <img class="crayon" src ="content/img/crayon.svg"/>
+                                </p>
+                              </div>
+                          </td>  
+                          </tr>
+                          <tr>
+                            <td>Sensibilisation renforcée au hammeçonnage par un prestataire spécialisé</td>
+                            <td>R1</td>
+                            <td>RSSI</td>
+                            <td>Validation du CHST indispensable</td>
+                            <td>+</td>
+                            <td>6 mois</td>
+                            <td>En cours</td>
+                            <td class="modification perso_border">
+                              <div class="col-1 centreVerticalement">
+                                <p>
+                                  <img class="crayon" src ="content/img/crayon.svg"/>
+                                </p>
+                              </div>
+                          </td>  
+                          </tr>
+                          <tr>
+                            <td>Sensibilisation renforcée au hammeçonnage par un prestataire spécialisé</td>
+                            <td>R1</td>
+                            <td>RSSI</td>
+                            <td>Validation du CHST indispensable</td>
+                            <td>+</td>
+                            <td>6 mois</td>
+                            <td>En cours</td>
+                            <td class="modification perso_border">
+                              <div class="col-1 centreVerticalement">
+                                <p>
+                                  <img class="crayon" src ="content/img/crayon.svg"/>
+                                </p>
+                              </div>
+                          </td>  
+                          </tr>
+                          <tr>
+                            <td>Sensibilisation renforcée au hammeçonnage par un prestataire spécialisé</td>
+                            <td>R1</td>
+                            <td>RSSI</td>
+                            <td>Validation du CHST indispensable</td>
+                            <td>+</td>
+                            <td>6 mois</td>
+                            <td>En cours</td>
+                            <td class="modification perso_border">
+                              <div class="col-1 centreVerticalement">
+                                <p>
+                                  <img class="crayon" src ="content/img/crayon.svg"/>
+                                </p>
+                              </div>
+                          </td>  
+                          </tr>
+                          <tr>
+                            <td>Sensibilisation renforcée au hammeçonnage par un prestataire spécialisé</td>
+                            <td>R1</td>
+                            <td>RSSI</td>
+                            <td>Validation du CHST indispensable</td>
+                            <td>+</td>
+                            <td>6 mois</td>
+                            <td>En cours</td>
+                            <td class="modification perso_border">
+                              <div class="col-1 centreVerticalement">
+                                <p>
+                                  <img class="crayon" src ="content/img/crayon.svg"/>
+                                </p>
+                              </div>
+                          </td>  
+                          </tr>
+                          <tr>
+                            <td>Sensibilisation renforcée au hammeçonnage par un prestataire spécialisé</td>
+                            <td>R1</td>
+                            <td>RSSI</td>
+                            <td>Validation du CHST indispensable</td>
+                            <td>+</td>
+                            <td>6 mois</td>
+                            <td>En cours</td>
+                            <td class="modification perso_border">
+                              <div class="col-1 centreVerticalement">
+                                <p>
+                                  <img class="crayon" src ="content/img/crayon.svg"/>
+                                </p>
+                              </div>
+                          </td>  
+                          </tr>
+                          <tr>
+                            <td>Sensibilisation renforcée au hammeçonnage par un prestataire spécialisé</td>
+                            <td>R1</td>
+                            <td>RSSI</td>
+                            <td>Validation du CHST indispensable</td>
+                            <td>+</td>
+                            <td>6 mois</td>
+                            <td>En cours</td>
+                            <td class="modification perso_border">
+                              <div class="col-1 centreVerticalement">
+                                <p>
+                                  <img class="crayon" src ="content/img/crayon.svg"/>
+                                </p>
+                              </div>
+                          </td>  
+                          </tr>
+                          <tr>
+                            <td>Sensibilisation renforcée au hammeçonnage par un prestataire spécialisé</td>
+                            <td>R1</td>
+                            <td>RSSI</td>
+                            <td>Validation du CHST indispensable</td>
+                            <td>+</td>
+                            <td>6 mois</td>
+                            <td>En cours</td>
+                            <td class="modification perso_border">
+                              <div class="col-1 centreVerticalement">
+                                <p>
+                                  <img class="crayon" src ="content/img/crayon.svg"/>
+                                </p>
+                              </div>
+                          </td>  
+                          </tr>
+                          <tr>
+                            <td>Sensibilisation renforcée au hammeçonnage par un prestataire spécialisé</td>
+                            <td>R1</td>
+                            <td>RSSI</td>
+                            <td>Validation du CHST indispensable</td>
+                            <td>+</td>
+                            <td>6 mois</td>
+                            <td>En cours</td>
+                            <td class="modification perso_border">
+                              <div class="col-1 centreVerticalement">
+                                <p>
+                                  <img class="crayon" src ="content/img/crayon.svg"/>
+                                </p>
+                              </div>
+                          </td>  
+                          </tr>
 
                       </tbody>
                     </table>  
                   </div>    
-                  <!-- bouton Ajouter la vraisemblance -->
+                  <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_vraisemblance">Ajouter une nouvelle ligne</button>
-                  </div>
-
-
-
+                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_partie_prenante">Ajouter une nouvelle ligne</button>
+                  </div> 
 
 
                 </div>
@@ -538,85 +656,83 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
-
 <!-- -------------------------------------------------------------------------------------------------------------- 
 ----------------------------------------- modal ajout de ligne ----------------------------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
-<div class="modal fade" id="ajout_vraisemblance" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="ajout_ligne_partie_prenante" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 aria-hidden="true">
 <div class="modal-dialog modal-lg" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Ajout de la vraisemblance</h5>
+      <h5 class="modal-title" id="exampleModalLabel">Ajout d'une partie prenante</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body perso_modal_body">
-      <form class="user" id="formvraisemblance">
+      <form class="user" id="formpacs">
         <div class="row">
-          <div class="form-group centre-vraisemblance col-12">
-            <div>
-              <input type="radio" id="Invraisemblable"
-               name="Vraisemblance" value="Invraisemblable">
-              <label for="Invraisemblable">Invraisemblable</label>
+          <div class="col-12">
+            <div class="form-group">
+                <label for="SelectPrincipe">Type</label>
+                <select class="form-control" id="SelectPrincipe">
+                <option value="" selected>...</option>
+                <option value="1">Gouvernance</option>
+                <option value="2">Protection</option>
+                <option value="3">Défense</option>
+                <option value="4">résilience</option>
+                </select>
             </div>
-            <div class="texte-vraisemblance">La source de risque a très peu de chances d'atteindre son objectif visé en 
-              empruntant l'un des modes opératoires envisagés.<br>
-              La vraisemblance du scénario de risque est très faible
+            Scénario opérationnel : Un terrorriste vole des travaux de recherche en créant un canal d'exfiltration de données portant directement sur le système d'information de la R&D<br>
+            Mesure de sécurité : Sensibilisation renforcée au hammeçonnage par un prestataire spécialisé
+            <div class="form-group">
+                <label for="Selectresponsable">Type</label>
+                <select class="form-control" id="Selectresponsable">
+                <option value="" selected>...</option>
+                <option value="1">Responsable 1</option>
+                <option value="2">Responsable 2</option>
+                <option value="3">Responsable 3</option>
+                </select>
             </div>
-            <div>
-              <input type="radio" id="Peu vraisemblable"
-               name="Vraisemblance" value="Peu Vraisemblable">
-              <label for="Peu vraisemblable">Peu vraisemblable</label>
+            <div class="form-group">
+                <label for="Frein et difficulté">Frein et difficulté</label>
+                <textarea class="form-control perso_text_area" id="Frein et et difficulté" rows="5"></textarea>
             </div>
-            <div class="texte-vraisemblance">La source de risque a relativement peu de chances d'atteidre son objectif en
-              empruntant l'un des modes opératoires envisagé.<br>
-              La vraisemblance du scénario de risque est faible.
+            <div class="form-group">
+                <label for="SelectCout">Type</label>
+                <select class="form-control" id="SelectCout">
+                <option value="" selected>...</option>
+                <option value="1">+</option>
+                <option value="2">++</option>
+                <option value="3">+++</option>
+                </select>
             </div>
-            <div>
-              <input type="radio" id="Vraisemblable"
-               name="Vraisemblance" value="Vrasemblable">
-              <label for="Vraisemblable">Vraisemblable</label>
+
+
+            <div class="form-group">
+                <label for="SelectStatut">Statut</label>
+                <select class="form-control" id="SelectStatut">
+                <option value="" selected>...</option>
+                <option value="1">A lancer</option>
+                <option value="2">En cours</option>
+                <option value="3">Terminé</option>
+                </select>
             </div>
-            <div class="texte-vraisemblance">
-              La source de rsique est susceptible d'atteidre son objectif en empruntant
-              l'un des modes opératoires envisagés. <br>
-              La vraisemblance du scénario de risque est significative.
-            </div>
-            <div>
-              <input type="radio" id="Très vraisemblable"
-               name="Vraisemblance" value="Très vraisemblable">
-              <label for="Très vraisemblable">Très vraisemblable</label>
-            </div>
-            <div class="texte-vraisemblance">
-              La source de risque va probablement atteindre son objectif en empruntant
-              l'un des modes opératoires envisagés.<br>
-              La vraisemblance du scénario de risque est élevée.
-            </div>
-            <div>
-              <input type="radio" id="Quasi certain"
-               name="Vraisemblance" value="Quasi certain">
-              <label for="Quasi certain">Quasi certain</label>
-            </div>
-            <div class="texte-vraisemblance">
-              La source de risque va très certainement atteindre son objectif en empruntant
-              l'un des modes opératoires envisagés.<br>
-              La vraisemblance du scénario de risque est très élevée
-            </div>
+            
             
           </div>
         </div>
-      </div>
     </form>
      
     <!-- bouton Ajouter -->
     <div class="modal-footer perso_middle_modal_footer">
-      <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
+      <button type="button" class="btn perso_btn_primary shadow-none">Modifier</button>
     </div>
     </div>
 </div>
 </div>
+
+
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -651,7 +767,7 @@ aria-hidden="true">
   <script src="content/vendor/datatables/dataTables.bootstrap4.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="content/js/modules/tableau/tableau-atelier3a.js"></script>
+  <script src="content/js/modules/tableau/tableau-atelier5bpacs.js"></script>
 
   <!-- JS pour Dark Mode -->
   <script src="content/js/modules/dark_mode.js"></script>

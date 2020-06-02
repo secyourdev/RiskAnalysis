@@ -740,3 +740,26 @@ h6{
     font-size: 0.8rem;
     margin-bottom: 2rem;
 }
+
+/*------------------------------------------------------------------------------ */
+/*---------------------------------- Atelier 5 --------------------------------- */
+
+.texte-droite{
+    text-align: right !important;
+}
+
+.texte-gauche{
+    text-align: left !important;
+}
+
+.fond-rouge{
+    background-color: #FF6565;
+}
+
+.fond-orange{
+    background-color: #FFCA83;
+}
+
+.fond-vert{
+    background-color: #4AD991;
+}

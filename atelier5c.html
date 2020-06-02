@@ -7,7 +7,7 @@
   <meta name="description" content="RiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>RiskManager | Atelier 4.b</title>
+  <title>RiskManager | Atelier 5.c</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -378,8 +378,8 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <p>Le but de l'atelier 4 est de construire des scénarios techniques reprenant les modes opératoires susceptibles d'être utilisés par les sources de risque pour réaliser les scénarios stratégiues.
-                    Cet atelier adopte ue démarche similaire à celle de l'atelier précédent mais se concentre sur les biens supports critiques. Vous évaluez ensuite le niveau de vraisemblance des scénarios opérationnels obtenus.
+                  <p>Le but de cet atelier est de réaliser une synthèse des scénarios de risque identifiés et de définir une stratégie de risque. Cette stratégie aboutit à la définition de mesures de 
+                      sécuriité, recensées dans un plan d'amélioration continue de la sécurité (PACS). Les risques résiduels sont ensuite identifiés ainsi que le cadre de suivi de ces risques.
                   </p>
                   <!--text-->
                 </div>
@@ -394,8 +394,13 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Évaluation de la vraisemblance</h6>
-          
+                  <h6 class="m-0 font-weight-bold text-primary">Évaluation et documentation des risques résiduels</h6>
+                  
+
+              
+
+
+
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -404,20 +409,26 @@
                     <table class="table table-bordered perso_border" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                         <tr>
-                          <th>N° Risque</th>
-                          <th>Chemin d'attaques stratégique</th>
-                          <th>Scénario opérationnel</th>
-                          <th>Vraisemblance</th>
+                          <th>Nom du risque</th>
+                          <th>Gravité initiale</th>
+                          <th>Vraisemblance initiale</th>
+                          <th>Risque initial</th>
+                          <th>Gravité résiduelle</th>
+                          <th>Vraisemblance résiduelle</th>
+                          <th>Risque résiduel</th>
                           <th class="perso_border"></th>
                         </tr>
                       </thead>
                         
                       <tbody>
                         <tr>
-                          <td>R1</td>
-                          <td>Portant directement sur le système d'information de la R&D</td>
-                          <td></td>
-                          <td>Vraisemblable</td>
+                          <td>Un concurrent vole des informations de R&D grâce à un canal d'exfiltration</td>
+                          <td>3</td>
+                          <td>3</td>
+                          <td>9</td>
+                          <td>3</td>
+                          <td>2</td>
+                          <td>6</td>
                           <td class="modification perso_border">
                             <div class="col-1 centreVerticalement">
                               <p>
@@ -428,10 +439,13 @@
                             
                         </tr>
                         <tr>
-                          <td>R2</td>
-                          <td>Sur le système d'information du laboratoire (P3) qui détient une partie des travaux</td>
-                          <td></td>
-                          <td>Peu vraisemblable</td>
+                          <td>Un concurrent vole des informations de R&D en exfiltrant celles détenues par le laboratoire</td>
+                          <td>3</td>
+                          <td>2</td>
+                          <td>6</td>
+                          <td>3</td>
+                          <td>1</td>
+                          <td>3</td>
                           <td class="modification perso_border">
                             <div class="col-1 centreVerticalement">
                               <p>
@@ -441,10 +455,13 @@
                         </td>
                         </tr>
                         <tr>
-                          <td>R3</td>
-                          <td>En passant par le prestataire informatique F3</td>
-                          <td></td>
-                          <td>Peu vraisemblable</td>
+                          <td>Un concurrent vole des informations de R&D grâce à un canal d'exfiltration via le prestataire informatique</td>
+                          <td>3</td>
+                          <td>4</td>
+                          <td>12</td>
+                          <td>3</td>
+                          <td>3</td>
+                          <td>9</td>
                           <td class="modification perso_border">
                             <div class="col-1 centreVerticalement">
                               <p>
@@ -454,10 +471,13 @@
                         </td>
                         </tr>
                         <tr>
-                          <td>R4</td>
-                          <td>Portant directement sur le système d'information de la R&D</td>
-                          <td></td>
-                          <td>Invraisemblable</td>
+                          <td>Un hacktiviste provoque un arrêt de la production des vaccins en compromettant l'équipement de maintenance des fournisseurs de matériel</td>
+                          <td>4</td>
+                          <td>2</td>
+                          <td>8</td>
+                          <td>4</td>
+                          <td>1</td>
+                          <td>4</td>
                           <td class="modification perso_border">
                             <div class="col-1 centreVerticalement">
                               <p>
@@ -467,23 +487,13 @@
                         </td>
                         </tr>
                         <tr>
-                          <td>R5</td>
-                          <td>Sur le système d'information du laboratoire (P3) qui détient une partie des travaux</td>
-                          <td></td>
-                          <td>Quasi-certain</td>
-                          <td class="modification perso_border">
-                            <div class="col-1 centreVerticalement">
-                              <p>
-                                <img class="crayon" src ="content/img/crayon.svg"/>
-                              </p>
-                            </div>
-                        </td>
-                        </tr>
-                        <tr>
-                          <td>R6</td>
-                          <td>En passant par le prestataire informatique F3</td>
-                          <td></td>
-                          <td>Quasi-certain</td>
+                          <td>Un hacktiviste provoque un arrêt de la production des vacances en compromettant l'équipement de maintenance des fournisseurs de matériel</td>
+                          <td>4</td>
+                          <td>1</td>
+                          <td>4</td>
+                          <td>4</td>
+                          <td>1</td>
+                          <td>4</td>
                           <td class="modification perso_border">
                             <div class="col-1 centreVerticalement">
                               <p>
@@ -497,13 +507,10 @@
                       </tbody>
                     </table>  
                   </div>    
-                  <!-- bouton Ajouter la vraisemblance -->
+                  <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_vraisemblance">Ajouter une nouvelle ligne</button>
-                  </div>
-
-
-
+                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_vraisemblance_résiduelle">Ajouter une nouvelle ligne</button>
+                  </div> 
 
 
                 </div>
@@ -538,16 +545,15 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
-
 <!-- -------------------------------------------------------------------------------------------------------------- 
 ----------------------------------------- modal ajout de ligne ----------------------------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
-<div class="modal fade" id="ajout_vraisemblance" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="ajout_vraisemblance_résiduelle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 aria-hidden="true">
 <div class="modal-dialog modal-lg" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Ajout de la vraisemblance</h5>
+      <h5 class="modal-title" id="exampleModalLabel">Ajout de la vraisemblance résiduelle</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -617,6 +623,8 @@ aria-hidden="true">
     </div>
 </div>
 </div>
+
+
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -651,7 +659,7 @@ aria-hidden="true">
   <script src="content/vendor/datatables/dataTables.bootstrap4.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="content/js/modules/tableau/tableau-atelier3a.js"></script>
+  <script src="content/js/modules/tableau/tableau-atelier5c.js"></script>
 
   <!-- JS pour Dark Mode -->
   <script src="content/js/modules/dark_mode.js"></script>
