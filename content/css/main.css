@@ -206,6 +206,11 @@ h6{
     background-color: var(--card-content-color);
     color: var(--font-color);
 }
+.custom-file-label::after {
+    background-color: var(--button-color);
+    color: var(--reverse-font-color);
+    content: "Parcourir";
+}
 
 
 /* -------------------------------------------------------------------------------------------------------------- */
