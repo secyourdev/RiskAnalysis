@@ -293,49 +293,6 @@
                       <textarea class="form-control perso_text_area" id="objectif_atteindre" rows="3"></textarea>
                     </div>
 
-
-                    <!-- <div class="form-group" id="niveaudegranularite">
-                      <label for="niveaudegranularite">Niveau de granularité</label></br>
-                      <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="options" id="option1" autocomplete="off"> 1
-                        </label>
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="options" id="option2" autocomplete="off"> 2
-                        </label>
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="options" id="option2" autocomplete="off"> 3
-                        </label>
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="options" id="option2" autocomplete="off"> 4
-                        </label>
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="options" id="option3" autocomplete="off"> 5
-                        </label>
-                      </div>
-                    </div> -->
-
-                    <div class="form-group" id="niveaudegranularite">
-                      <label for="niveaudegranularite">Niveau de granularité</label>
-                      <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="options" id="granularite1" autocomplete="off"> 1
-                        </label>
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="options" id="granularite2" autocomplete="off"> 2
-                        </label>
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="options" id="granularite2" autocomplete="off"> 3
-                        </label>
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="options" id="granularite2" autocomplete="off"> 4
-                        </label>
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="options" id="granularite3" autocomplete="off"> 5
-                        </label>
-                      </div>
-                  </div>
-
                     <div class="form-group">
                       <input type="search" class="perso_form shadow-none form-control form-control-user" id="cadre_temporel" placeholder="Cadre temporel" required>
                     </div>
@@ -1126,7 +1083,7 @@
             </button>
           </div>
           <div class="modal-body perso_modal_body">
-            <form class="user" id="formActeur">
+            <form class="user" id="formActeur2">
             
               <div class="form-group">
                 <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_nom_acteur"
