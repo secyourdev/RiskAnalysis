@@ -446,12 +446,12 @@
                         <option value="Safari">
                       </datalist>
                     </div>
+                    <!-- bouton ajouter -->
+                    <div>
+                      <button type="button" class="btn perso_btn shadow-none">Ajouter</button>
+                    </div>
                   </form>
 
-                  <!-- bouton ajouter -->
-                  <div>
-                    <button type="button" class="btn perso_btn shadow-none">Ajouter</button>
-                  </div>
 
                   <!--tableau-->
                   <div class="table-responsive perso_tableau">
@@ -461,6 +461,7 @@
                           <th>Nom</th>
                           <th>Prénom</th>
                           <th>Poste</th>
+                          <th class="perso_border"></th>
                         </tr>
                       </thead>
                   
@@ -469,16 +470,37 @@
                           <td>ANTON RAVEENDRAN</td>
                           <td>Joyston</td>
                           <td>DGSE</td>
+                          <td class="perso_border">
+                            <div class="modification">
+                              <img data-toggle="modal" data-target="#modif_ecart" class="crayon" src="content/img/crayon.svg" />
+                              <img class="poubelle" src="content/img/poubelle.svg" />
+                            </div>
+                          
+                          </td>
                         </tr>
                         <tr>
                           <td>LAFOURCADE</td>
                           <td>Anthony</td>
-                          <td>Al-Qaida</td>
+                          <td>XXXXXX/td>
+                          <td class="perso_border">
+                            <div class="modification">
+                              <img data-toggle="modal" data-target="#modif_ecart" class="crayon" src="content/img/crayon.svg" />
+                              <img class="poubelle" src="content/img/poubelle.svg" />
+                            </div>
+                          
+                          </td>
                         </tr>
                         <tr>
                           <td>MICHEL</td>
                           <td>Guillaume</td>
-                          <td>Al-Qaida</td>
+                          <td>XXXXXX/td>
+                          <td class="perso_border">
+                            <div class="modification">
+                              <img data-toggle="modal" data-target="#modif_ecart" class="crayon" src="content/img/crayon.svg" />
+                              <img class="poubelle" src="content/img/poubelle.svg" />
+                            </div>
+                          
+                          </td>
                         </tr>
 
                     </table>
@@ -1195,6 +1217,54 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
+
+    <!-- -------------------------------------------------------------------------------------------------------------- 
+      --------------------------------------- modal modification d'un écart ----------------------------------------------
+      --------------------------------------------------------------------------------------------------------------  -->
+    <div class="modal fade" id="modif_ecart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modification de l'acteur</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body perso_modal_body">
+            <form class="user" id="formActeur">
+            
+              <div class="form-group">
+                <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_nom_acteur"
+                  placeholder="Nom" required>
+              </div>
+              <div class="form-group">
+                <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_prénom_acteur"
+                  placeholder="Prénom" required>
+              </div>
+            
+              <div class="form-group">
+                <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="Postes" name="Poste"
+                  placeholder="Poste" required>
+                <datalist id="Postes">
+                  <option value="Internet Explorer">
+                  <option value="Firefox">
+                  <option value="Chrome">
+                  <option value="Opera">
+                  <option value="Safari">
+                </datalist>
+              </div>
+            </form>
+          </div>
+          <!-- bouton modifier -->
+          <div class="modal-footer perso_middle_modal_footer">
+            <button type="button" class="btn perso_btn_primary shadow-none">Modifier</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

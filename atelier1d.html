@@ -401,7 +401,7 @@
 
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_valeur_metier">Ajouter une nouvelle ligne</button>
+                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite">Ajouter une nouvelle ligne</button>
                   </div>
                 </div>
               </div>
@@ -434,7 +434,7 @@
                           <th>Règles</th>
                           <th>État de la règle</th>
                           <th>Justification des écarts</th>
-                          <th>Responssable</th>
+                          <th>Responsable</th>
                           <th>Date limite de la mise en application</th>
                           <th class="perso_border"></th>
                         </tr>
@@ -448,7 +448,7 @@
                           <td>20/05/2020</td>
                           <td class="perso_border">
                             <div class="modification">
-                              <img class="crayon" src="content/img/crayon.svg" />
+                              <img data-toggle="modal" data-target="#modif_ecart" class="crayon" src="content/img/crayon.svg" />
                             </div>
             
                           </td>
@@ -461,7 +461,7 @@
                           <td>20/05/2020</td>
                           <td class="perso_border">
                             <div class="modification">
-                              <img class="crayon" src="content/img/crayon.svg" />
+                              <img data-toggle="modal" data-target="#modif_ecart" class="crayon" src="content/img/crayon.svg" />
                             </div>
             
                           </td>
@@ -500,56 +500,45 @@
   </a>
 
 
+
 <!-- -------------------------------------------------------------------------------------------------------------- 
---------------------------------------- modal ajout de valeur métier ----------------------------------------------
+--------------------------------------- modal ajout socle de sécurité ----------------------------------------------
 --------------------------------------------------------------------------------------------------------------  -->
-  <div class="modal fade" id="ajout_valeur_metier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  <div class="modal fade" id="ajout_socle_de_securite" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ajout d'une valeur métier</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Ajout d'un socle de sécurité</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body perso_modal_body">
-          <form class="user" id="formValeurMetierPop">
-            <div class="form-group">
-              <input type="text" class="perso_form shadow-none form-control form-control-user" id="InputValeurMetierPop"
-                placeholder="Dénomination de la valeur métier" required>
+          <form class="user" id="formBienSupportPop">
+
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="customFile">
+              <label class="custom-file-label" for="customFile">Choose file</label>
             </div>
 
             <div class="form-group">
-              <label for="SelectNaturePop">Nature</label>
-              <select class="form-control" id="SelectNaturePop">
-                <option value="" selected>...</option>
-                <option value="1">Processus</option>
-                <option value="2">Information</option>
-              </select>
+              <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_type_ref_pop"
+                placeholder="Type de référentiel" required>
+            </div>
+            <div class="form-group">
+              <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_noom_ref_pop"
+                placeholder="Nom du référentiel" required>
+            </div>
+            <div class="form-group">
+              <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_etat_appli_pop"
+                placeholder="État d'application" required>
+            </div>
+            <div class="form-group">
+              <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_confo_pop"
+                placeholder="État de la conformité" required>
             </div>
 
-            <div class="form-group">
-              <label for="DescriptionValeurPop">Description</label>
-              <textarea class="form-control perso_text_area" id="DescriptionValeurPop" rows="3"></textarea>
-            </div>
-
-            <div class="form-group">
-              <input type="text" class="perso_form shadow-none form-control form-control-user" id="InputNomResponssableValeurPop"
-                placeholder="Nom du responssable" required>
-            </div>
-            
-            <div class="form-group">
-              <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="PostesValeurPop" name="Poste"
-                placeholder="Poste" required>
-              <datalist id="PostesValeurPop">
-                <option value="Internet Explorer">
-                <option value="Firefox">
-                <option value="Chrome">
-                <option value="Opera">
-                <option value="Safari">
-              </datalist>
-            </div>
           </form>
         </div>
         <!-- bouton Ajouter -->
@@ -560,16 +549,15 @@
     </div>
   </div>
 
-
-<!-- -------------------------------------------------------------------------------------------------------------- 
---------------------------------------- modal ajout de bien support ----------------------------------------------
---------------------------------------------------------------------------------------------------------------  -->
-  <div class="modal fade" id="ajout_bien_support" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  <!-- -------------------------------------------------------------------------------------------------------------- 
+  --------------------------------------- modal modification d'un écart ----------------------------------------------
+  --------------------------------------------------------------------------------------------------------------  -->
+  <div class="modal fade" id="modif_ecart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ajout d'un bien support</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Modification d'un écart</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -578,33 +566,27 @@
           <form class="user" id="formBienSupportPop">
             <div class="form-group">
               <input type="text" class="perso_form shadow-none form-control form-control-user" id="InputBienSupportPop"
-                placeholder="Dénomination du bien support" required>
+                placeholder="Règle non respectée" required>
             </div>
-            
+  
             <div class="form-group">
-              <label for="SelectValeurMetierPop">Valeur métier</label>
+              <label for="SelectValeurMetierPop">État de la règle</label>
               <select class="form-control" id="SelectValeurMetierPop">
                 <option value="" selected>...</option>
-                <option value="1">en bdd1</option>
-                <option value="2">en bdd2</option>
-                <option value="3">en bdd3</option>
+                <option value="1">Traitée</option>
+                <option value="2">Non traitée</option>
               </select>
             </div>
-            
+  
             <div class="form-group">
-              <label for="DescriptionBienPop">Description</label>
+              <label for="DescriptionBienPop">Justification des écarts</label>
               <textarea class="form-control perso_text_area" id="DescriptionBienPop" rows="3"></textarea>
             </div>
-
+  
             <div class="form-group">
-              <input type="text" class="perso_form shadow-none form-control form-control-user" id="InputNomResponssableBienPop"
-                placeholder="Nom du responssable" required>
-            </div>
-            
-            <div class="form-group">
-              <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="PostesBienPop" name="Poste"
-                placeholder="Poste" required>
-              <datalist id="PostesBienPop">
+              <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="responsable_pop"
+                name="Responsable" placeholder="Responsable" required>
+              <datalist id="responsable_pop">
                 <option value="Internet Explorer">
                 <option value="Firefox">
                 <option value="Chrome">
@@ -612,6 +594,12 @@
                 <option value="Safari">
               </datalist>
             </div>
+
+            <div class="form-group">
+              <label for="example-date-input">Date limite de la mise en application</label>
+              <input class="form-control" type="date" id="example-date-input">
+            </div>
+
           </form>
         </div>
         <!-- bouton Ajouter -->
@@ -658,6 +646,9 @@
   
   <!-- Page level custom scripts -->
   <script src="content/js/modules/tableau/tableau-atelier1a.js"></script>
+
+  <!-- JS pour Dark Mode -->
+  <script src="content/js/modules/browse.js"></script>
 
   <!-- JS pour Dark Mode -->
   <script src="content/js/modules/dark_mode.js"></script>
