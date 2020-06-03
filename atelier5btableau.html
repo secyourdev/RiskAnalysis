@@ -7,7 +7,7 @@
   <meta name="description" content="RiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>RiskManager | Atelier 3.a</title>
+  <title>RiskManager | Atelier 5.b</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -378,7 +378,7 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <p>Le but de cet atelier est de réaliser une synthèse des scénarios de risque identifiés et de définir une stratégie de risque. Cette stratégie aboutit à la définition de mesures de 
+                  <p>Le but de cet atelier est de réaliser une synthèse des scénarios de risque identifiés et de définir une stratégie de traitement du risque. Cette stratégie aboutit à la définition de mesures de 
                     sécuriité, recensées dans un plan d'amélioration continue de la sécurité (PACS). Les risques résiduels sont ensuite identifiés ainsi que le cadre de suivi de ces risques.
                   </p>
                   <!--text-->
@@ -394,7 +394,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Ajouter une partie prenante</h6>
+                  <h6 class="m-0 font-weight-bold text-primary"></h6>
                   
 
               
@@ -541,7 +541,7 @@
                   </div>    
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_partie_prenante">Ajouter une nouvelle ligne</button>
+                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_tableau">Ajouter une nouvelle ligne</button>
                   </div> 
 
 
@@ -580,12 +580,12 @@
 <!-- -------------------------------------------------------------------------------------------------------------- 
 ----------------------------------------- modal ajout de ligne ----------------------------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
-<div class="modal fade" id="ajout_ligne_partie_prenante" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="ajout_ligne_tableau" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 aria-hidden="true">
 <div class="modal-dialog modal-lg" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Ajout d'une partie prenante</h5>
+      <h5 class="modal-title" id="exampleModalLabel">Modification des mesures de sécurité</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -662,12 +662,11 @@ aria-hidden="true">
         </div>
         </div>
       </div>
+      <!-- bouton Valider -->
+      <div class="modal-footer perso_middle_modal_footer">
+        <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
+      </div>
     </form>
-     
-    <!-- bouton Valider -->
-    <div class="modal-footer perso_middle_modal_footer">
-      <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
-    </div>
     </div>
 </div>
 </div>
@@ -705,6 +704,7 @@ aria-hidden="true">
   <!-- Page level plugins -->
   <script src="content/vendor/datatables/jquery.dataTables.js"></script>
   <script src="content/vendor/datatables/dataTables.bootstrap4.js"></script>
+  <script src="content/vendor/datatables/dataTables.rowsGroup.js"></script>
 
   <!-- Page level custom scripts -->
   <script src="content/js/modules/tableau/tableau-atelier5btableau.js"></script>

@@ -665,7 +665,7 @@ aria-hidden="true">
         <div class="row">
           <div class="col-12">
           <div class="form-group">
-            <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="Catégorie" name="Catégorie" placeholder="Catégorie" required>
+            <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Catégorie" name="Catégorie" placeholder="Catégorie" required>
             <datalist id="Catégorie">
               <option value="Clients">
               <option value="Partenaires">
@@ -681,7 +681,7 @@ aria-hidden="true">
             </select>
           </div>
           <div class ="form-group">
-            <input type="text" class="perso_form shadow-none form-control form-control-user" id="Nom de la partie prenante"
+            <input type="search" class="perso_form shadow-none form-control form-control-user" id="Nom de la partie prenante"
               placeholder="Nom de la partie prenante" required>
           </div>
           </div>
@@ -772,12 +772,13 @@ aria-hidden="true">
           </div>
         </div>
       </div>
+      <!-- bouton Ajouter -->
+      <div class="modal-footer perso_middle_modal_footer">
+        <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
+      </div>
     </form>
      
-    <!-- bouton Ajouter -->
-    <div class="modal-footer perso_middle_modal_footer">
-      <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
-    </div>
+    
     </div>
 </div>
 </div>
@@ -815,6 +816,7 @@ aria-hidden="true">
   <!-- Page level plugins -->
   <script src="content/vendor/datatables/jquery.dataTables.js"></script>
   <script src="content/vendor/datatables/dataTables.bootstrap4.js"></script>
+  <script src="content/vendor/datatables/dataTables.rowsGroup.js"></script>
 
   <!-- Page level custom scripts -->
   <script src="content/js/modules/tableau/tableau-atelier3a.js"></script>
