@@ -34,8 +34,6 @@
           <i class="fas fa-shield-alt"></i>
         </div>
 
-
-
         <div class="sidebar-brand-text mx-2">RISK MANAGER</div>
       </a>
 
@@ -286,16 +284,17 @@
                   <form class="user">
                   
                     <div class="form-group">
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="exampleInputNom"
-                      placeholder="Nom" required>
+                      <input type="search" class="perso_form shadow-none form-control form-control-user" id="nom_etude" placeholder="Nom" required>
+                      </input>
+                      
                     </div>
                     <div class="form-group">
-                      <label for="exampleFormControlTextarea1">Objectif à atteindre</label>
-                      <textarea class="form-control perso_text_area" id="exampleFormControlTextarea1" rows="3"></textarea>
+                      <label for="objectif_atteindre">Objectif à atteindre</label>
+                      <textarea class="form-control perso_text_area" id="objectif_atteindre" rows="3"></textarea>
                     </div>
 
 
-                    <div class="form-group" id="niveaudegranularite">
+                    <!-- <div class="form-group" id="niveaudegranularite">
                       <label for="niveaudegranularite">Niveau de granularité</label></br>
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn perso_checkbox shadow-none">
@@ -314,12 +313,11 @@
                           <input type="radio" name="options" id="option3" autocomplete="off"> 5
                         </label>
                       </div>
-                    </div>
+                    </div> -->
 
 
                     <div class="form-group">
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="exampleInputCadre"
-                        placeholder="Cadre temporel" required>
+                      <input type="search" class="perso_form shadow-none form-control form-control-user" id="cadre_temporel" placeholder="Cadre temporel" required>
                     </div>
                   </form>
                   <img src="content/img/image_atelier_1a_1.svg" class="img-fluid perso_img" alt="Responsive image">
@@ -341,16 +339,16 @@
                 <!-- Card Body -->
                 <div class="card-body">
                   <form method="post" action="content/php/test.php" class="user" id="formActeur">
-                  
+                  <fieldset>
                     <div class="form-group">
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="exampleInputNom" name="nom" placeholder="Nom" required>
+                      <input type="search" class="perso_form shadow-none form-control form-control-user" id="nom_acteur" name="nom" placeholder="Nom" required>
                     </div>
                     <div class="form-group">
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="exampleInputPrénom" name="prenom" placeholder="Prénom" required>
+                      <input type="search" class="perso_form shadow-none form-control form-control-user" id="prenom_acteur" name="prenom" placeholder="Prénom" required>
                     </div>
 
                     <div class="form-group">
-                      <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="Postes" name="poste" placeholder="Poste" required>
+                      <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Postes" id="poste_acteur" name="poste" placeholder="Poste" required>
                       <datalist id="Postes">
                         <option value="Internet Explorer">
                         <option value="Firefox">
@@ -361,9 +359,10 @@
                     </div>
                     <div>
                     <input type="submit" name="valider" value="Ajouter" class="btn perso_btn shadow-none"></input>
-                  </div>
+                    </div>
+                  </fieldset>
                   </form>
-
+                  
                   <!-- bouton ajouter 
                   <div>
                     <button type="button" class="btn perso_btn shadow-none">Ajouter</button>
@@ -381,22 +380,7 @@
                       </thead>
                   
                       <tbody>
-                        <tr>
-                          <td>ANTON RAVEENDRAN</td>
-                          <td>Joyston</td>
-                          <td>DGSE</td>
-                        </tr>
-                        <tr>
-                          <td>LAFOURCADE</td>
-                          <td>Anthony</td>
-                          <td>Al-Qaida</td>
-                        </tr>
-                        <tr>
-                          <td>MICHEL</td>
-                          <td>Guillaume</td>
-                          <td>Al-Qaida</td>
-                        </tr>
-
+                      </tbody>
                     </table>
                   </div>
 
@@ -1146,7 +1130,7 @@
   <!-- JS pour Dark Mode -->
   <script src="content/js/modules/dark_mode.js"></script>
   <script src="content/js/modules/top_bar.js"></script>
-
+  <script src="content/js/modules/indexedDB.js"></script>
   
 </body>
 
