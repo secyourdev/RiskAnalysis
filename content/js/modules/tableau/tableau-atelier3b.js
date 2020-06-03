@@ -12,7 +12,7 @@ $(document).ready(function() {
     $('#dataTable3').DataTable( {
         "paging":   false,
         "info":     false,
-        "rowsGroup":    [0,1,2,3,6]
+        "rowsGroup":    [0,1,2,3,6,7]
     } );
     $('#dataTable4').DataTable( {
         "paging":   false,
