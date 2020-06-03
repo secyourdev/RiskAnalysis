@@ -206,8 +206,8 @@
           <ul class="navbar-nav ml-auto">
             <!-- Dark Mode toggle switch -->
 
-              <label class="theme-switch" for="checkbox">
-                <input class="perso_switch" type="checkbox" id="checkbox" />
+              <label class="theme-switch" for="checkbox_dark_theme">
+                <input class="perso_switch" type="checkbox" id="checkbox_dark_theme" />
                 <div class="slider round"></div>
               </label>
 
@@ -315,12 +315,32 @@
                       </div>
                     </div> -->
 
+                    <div class="form-group" id="niveaudegranularite">
+                      <label for="niveaudegranularite">Niveau de granularité</label>
+                      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="options" id="granularite1" autocomplete="off"> 1
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="options" id="granularite2" autocomplete="off"> 2
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="options" id="granularite2" autocomplete="off"> 3
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="options" id="granularite2" autocomplete="off"> 4
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="options" id="granularite3" autocomplete="off"> 5
+                        </label>
+                      </div>
+                  </div>
 
                     <div class="form-group">
                       <input type="search" class="perso_form shadow-none form-control form-control-user" id="cadre_temporel" placeholder="Cadre temporel" required>
                     </div>
                   </form>
-                  <img src="content/img/image_atelier_1a_1.svg" class="img-fluid perso_img" alt="Responsive image">
+                  <img src="content/img/task.svg" class="img-fluid perso_img" alt="Responsive image">
 
                 </div>
               </div>
@@ -362,20 +382,16 @@
                     </div>
                   </fieldset>
                   </form>
-                  
-                  <!-- bouton ajouter 
-                  <div>
-                    <button type="button" class="btn perso_btn shadow-none">Ajouter</button>
-                  </div>-->
 
                   <!--tableau-->
                   <div class="table-responsive perso_tableau">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered perso_border id="dataTable" width="100%" cellspacing="0">
                       <thead>
                         <tr>
                           <th>Nom</th>
                           <th>Prénom</th>
                           <th>Poste</th>
+                          <th class="perso_border"></th>
                         </tr>
                       </thead>
                   
@@ -399,8 +415,8 @@
                   <h6 class="m-0">Choix des ateliers à mener</h6>
                 </div>
                 <!-- Card Body -->
-                <div class="card-body perso_text_img">
-                  <div>
+                <div class="card-body row perso_card_body_row">
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input" id="customCheck1">
                       <label class="custom-control-label" for="customCheck1">Activité 1.a - Cadrer l’étude</label>
@@ -467,7 +483,10 @@
                         résiduels</label>
                     </div>
                   </div>
-                  <img src="content/img/image_atelier_1a_2.svg" class="img-fluid perso_img_full_screen_div" alt="Responsive image">
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
+                    <img src="content/img/checklist.svg" class="img-fluid perso_img_full_screen_div" alt="Responsive image">
+                  </div>
+                  
               
                 </div>
               </div>
@@ -478,12 +497,14 @@
             <div class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
-                <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">RACI</h6>
-                </div>
-                <!-- bouton ajouter -->
-                <div>
-                  <button type="button" class="btn perso_btn perso_btn_RACI shadow-none">Gérer les droits</button>
+                <div class="row perso_no_margin">
+                  <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <h6>RACI</h6>
+                  </div>
+                  <!-- bouton ajouter -->
+                  <div class="card-header perso_header_right col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <button type="button" class="btn perso_btn perso_btn_RACI shadow-none">Gérer les droits</button>
+                  </div>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -1091,6 +1112,54 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
+    <!-- -------------------------------------------------------------------------------------------------------------- 
+      --------------------------------------- modal modification d'un écart ----------------------------------------------
+      --------------------------------------------------------------------------------------------------------------  -->
+    <div class="modal fade" id="modif_ecart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modification de l'acteur</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body perso_modal_body">
+            <form class="user" id="formActeur">
+            
+              <div class="form-group">
+                <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_nom_acteur"
+                  placeholder="Nom" required>
+              </div>
+              <div class="form-group">
+                <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_prénom_acteur"
+                  placeholder="Prénom" required>
+              </div>
+            
+              <div class="form-group">
+                <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="Postes" name="Poste"
+                  placeholder="Poste" required>
+                <datalist id="Postes">
+                  <option value="Internet Explorer">
+                  <option value="Firefox">
+                  <option value="Chrome">
+                  <option value="Opera">
+                  <option value="Safari">
+                </datalist>
+              </div>
+            </form>
+          </div>
+          <!-- bouton modifier -->
+          <div class="modal-footer perso_middle_modal_footer">
+            <button type="button" class="btn perso_btn_primary shadow-none">Modifier</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -1127,7 +1196,7 @@
   <!-- Page level custom scripts -->
   <script src="content/js/modules/tableau/tableau-atelier1a.js"></script>
 
-  <!-- JS pour Dark Mode -->
+  <!-- Our JS -->
   <script src="content/js/modules/dark_mode.js"></script>
   <script src="content/js/modules/top_bar.js"></script>
   <script src="content/js/modules/indexedDB.js"></script>
