@@ -795,3 +795,68 @@ h6{
     font-weight: bold;
     text-align: center;
 }
+/*---------------------------------- Popup atelier 2--------------------------------- */
+.colonne{
+    width: 49%;
+    float: left;
+    padding : 1rem 1rem;
+}
+
+.form-colonne{
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+
+
+.btn-bougé{
+    margin: 1rem;
+}
+
+/*------------------------------------------------------------------------------ */
+/*---------------------------------- Popup atelier 3--------------------------------- */
+
+
+.choix-valeur{
+    text-align: center;
+    margin: 0rem;
+}
+
+/*------------------------------------------------------------------------------ */
+/*---------------------------------- Popup atelier 4--------------------------------- */
+
+.centre-vraisemblance{
+    text-align: center;
+}
+
+.texte-vraisemblance{
+    font-size: 0.8rem;
+    margin-bottom: 2rem;
+}
+
+/*------------------------------------------------------------------------------ */
+/*---------------------------------- Atelier 5 --------------------------------- */
+
+.texte-droite{
+    text-align: right !important;
+}
+
+.texte-gauche{
+    text-align: left !important;
+}
+
+.fond-rouge{
+    background-color: #FF6565;
+}
+
+.fond-orange{
+    background-color: #FFCA83;
+}
+
+.fond-vert{
+    background-color: #4AD991;
+}
+
+.popup-tableau{
+    padding:1rem;
+}
