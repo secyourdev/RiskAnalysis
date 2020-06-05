@@ -860,3 +860,9 @@ h6{
 .popup-tableau{
     padding:1rem;
 }
+
+
+/*Back-end*/
+.suppression_donnee{
+    text-align: center;
+}

@@ -61,7 +61,6 @@ poste_acteur.addEventListener('keyup',function(event){
 
 /*------------------------------- FONCTIONS --------------------------------*/
 function verify_input(value,regex,bool,input){
-    console.log(regex.test(value))
     if(regex.test(value)){
         input.style.borderBottom="2px solid #4AD991";
         bool = true;
@@ -73,7 +72,6 @@ function verify_input(value,regex,bool,input){
 }
 
 function verify_textarea(value,regex,bool,input){
-    console.log(regex.test(value))
     if(regex.test(value)){
         input.style.border="2px solid #4AD991";
         bool = true;

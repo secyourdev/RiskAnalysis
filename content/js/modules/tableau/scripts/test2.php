@@ -15,9 +15,10 @@ $primaryKey = 'id_personne';
 // parameter represents the DataTables column identifier. In this case object
 // parameter names
 $columns = array(
+    array( 'db' => 'id_personne', 'dt' => 'id_personne' ),
     array( 'db' => 'nom', 'dt' => 'nom' ),
     array( 'db' => 'prenom',  'dt' => 'prenom' ),
-    array( 'db' => 'poste',   'dt' => 'poste' )    
+    array( 'db' => 'poste',   'dt' => 'poste' )
 );
  
 // SQL server connection information

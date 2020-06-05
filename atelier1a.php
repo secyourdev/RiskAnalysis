@@ -335,20 +335,21 @@
                       </datalist>
                     </div>
                     <div>
-                    <input type="submit" name="valider" value="Ajouter" class="btn perso_btn shadow-none"></input>
+                      <input type="submit" name="valider" value="Ajouter" class="btn perso_btn shadow-none"></input>
                     </div>
                   </fieldset>
                   </form>
 
                   <!--tableau-->
                   <div class="table-responsive perso_tableau">
-                    <table class="table table-bordered perso_border id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered perso_border" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                         <tr>
-                          <th>Nom</th>
-                          <th>Prénom</th>
-                          <th>Poste</th>
-                          <th class="perso_border"></th>
+                          <th id="th_id">ID</th>
+                          <th id="th_nom">Nom</th>
+                          <th id="th_prenom">Prénom</th>
+                          <th id="th_poste">Poste</th>
+                          <!-- <th class="perso_border"></th> -->
                         </tr>
                       </thead>
                   
@@ -1069,33 +1070,36 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-    <!-- -------------------------------------------------------------------------------------------------------------- 
-      --------------------------------------- modal modification d'un écart ----------------------------------------------
-      --------------------------------------------------------------------------------------------------------------  -->
-    <div class="modal fade" id="modif_ecart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <!---------------------------------------------------------------------------------------------------------------- 
+      --------------------------------------- modal modification d'un acteur -----------------------------------------
+      ---------------------------------------------------------------------------------------------------------------->
+    <div class="modal fade" id="modif_acteur" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modification de l'acteur</h5>
+            <h5 class="modal-title" id="Modal1">Modification de l'acteur</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body perso_modal_body">
-            <form class="user" id="formActeur2">
-            
+            <form method="post" action="content/php/test_modification.php" class="user" id="formActeur_modification">
+             <fieldset>
               <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_nom_acteur"
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_modifie" id="input_id"
+                  placeholder="ID" readonly>
+              </div>
+              <div class="form-group">
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_modifie" id="input_nom_acteur"
                   placeholder="Nom" required>
               </div>
               <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_prénom_acteur"
-                  placeholder="Prénom" required>
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenom_modifie" id="input_prenom_acteur" placeholder="Prénom" required>
               </div>
             
               <div class="form-group">
-                <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="Postes" name="Poste"
+                <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="Postes" name="poste_modifie" id="input_poste_acteur"
                   placeholder="Poste" required>
                 <datalist id="Postes">
                   <option value="Internet Explorer">
@@ -1105,17 +1109,55 @@
                   <option value="Safari">
                 </datalist>
               </div>
+              <div class="modal-footer perso_middle_modal_footer">
+                <input type="submit" name="modifier" value="Modifier" class="btn perso_btn_primary shadow-none"></input>
+              </div>
+             </fieldset>
             </form>
-          </div>
-          <!-- bouton modifier -->
-          <div class="modal-footer perso_middle_modal_footer">
-            <button type="button" class="btn perso_btn_primary shadow-none">Modifier</button>
-          </div>
+          </div>          
         </div>
       </div>
     </div>
 
-
+    <!---------------------------------------------------------------------------------------------------------------- 
+      ---------------------------------------- modal suppression d'un acteur -----------------------------------------
+      ---------------------------------------------------------------------------------------------------------------->
+      <div class="modal fade" id="suppr_acteur" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="Modal2">Suppression de l'acteur</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body perso_modal_body">
+            <p class="suppression_donnee">Voulez-vous supprimer l'utilisateur suivant ?</p>
+            <form method="post" action="content/php/test_suppression.php" class="user" id="formActeur_suppression">
+             <fieldset>
+              <div class="form-group">
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_suppr" id="input_id_suppr"
+                  placeholder="ID" readonly>
+              </div>
+              <div class="form-group">
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_suppr" id="input_nom_suppr"
+                  placeholder="Nom" readonly>
+              </div>
+              <div class="form-group">
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenom_suppr" id="input_prenom_suppr"
+                 placeholder="Prénom" readonly>
+              </div>
+            
+              <div class="modal-footer perso_middle_modal_footer">
+                <input type="submit" name="supprimer" value="Supprimer" class="btn perso_btn_primary shadow-none"></input>
+              </div>
+             </fieldset>
+            </form>
+          </div>          
+        </div>
+      </div>
+    </div>
 
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1157,6 +1199,8 @@
   <script src="content/js/modules/dark_mode.js"></script>
   <script src="content/js/modules/top_bar.js"></script>
   <script src="content/js/modules/indexedDB.js"></script>
+  <script src="content/js/modules/tableau_modification.js"></script>
+  <script src="atelier1a.js"></script>
   
 </body>
 
