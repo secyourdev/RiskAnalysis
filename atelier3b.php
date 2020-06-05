@@ -7,7 +7,7 @@
   <meta name="description" content="RiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>RiskManager | Atelier 4.a</title>
+  <title>RiskManager | Atelier 3.b</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -190,134 +190,16 @@
             <i class="fa fa-bars"></i>
           </button>
 
+          <div id="top_bar_1" class="top_bar_name_1">Fabrication de vacccin</div>
+          <div id="top_bar_2" class="top_bar_name_2">Atelier 3</div>
+          <div id="top_bar_3" class="top_bar_name_3">Activité 3.b - Élaborer des scénarios stratégiques</div>
           
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
-
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </li>
-
-            <!-- Nav Item - Alerts -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">3+</span>
-              </a>
-              <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                <h6 class="dropdown-header">
-                  Alerts Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-primary">
-                      <i class="fas fa-file-alt text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 12, 2019</div>
-                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-success">
-                      <i class="fas fa-donate text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 7, 2019</div>
-                    $290.29 has been deposited into your account!
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-warning">
-                      <i class="fas fa-exclamation-triangle text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 2, 2019</div>
-                    Spending Alert: We've noticed unusually high spending for your account.
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-              </div>
-            </li>
-
-            <!-- Nav Item - Messages -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
-                <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter">7</span>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header">
-                  Message Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div class="font-weight-bold">
-                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                    <div class="small text-gray-500">Emily Fowler · 58m</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
-                    <div class="status-indicator"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
-                    <div class="small text-gray-500">Jae Chun · 1d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
-                    <div class="status-indicator bg-warning"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
-                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-              </div>
-            </li>
-
             <!-- Dark Mode toggle switch -->
 
-              <label class="theme-switch" for="checkbox">
-                <input class="perso_switch" type="checkbox" id="checkbox" />
+              <label class="theme-switch" for="checkbox_dark_theme">
+                <input class="perso_switch" type="checkbox" id="checkbox_dark_theme" />
                 <div class="slider round"></div>
               </label>
 
@@ -327,8 +209,8 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Guillaume</span>
+                <img class="img-profile rounded-circle" src="content/img/undraw_profile_pic.svg">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -338,16 +220,12 @@
                 </a>
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
+                  Paramètres
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
+                  Déconnexion
                 </a>
               </div>
             </li>
@@ -378,8 +256,10 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <p>Le but de l'atelier 4 est de construire des scénarios techniques reprenant les modes opératoires susceptibles d'être utilisés par les sources de risque pour réaliser les scénarios stratégiues.
-                      Cet atelier adopte ue démarche similaire à celle de l'atelier précédent mais se concentre sur les biens supports critiques. Vous évaluez ensuite le niveau de vraisemblance des scénarios opérationnels obtenus.
+                  <p>L'objectif de l'atelier 3 est de disposer d'une vision claire de l'écosystème, afin d'en identifier
+                    les parties prenantes les plus vulnérables. Il s'agit ensuite de bâtir des scénarios de haut niveau,
+                    appelés scénarios stratégiques. Ces derniers sont autant de chemins d'attaque que pourrait emprunter une
+                    source de risque pour empruter une source de risque pour atteindre son objectif.
                   </p>
                   <!--text-->
                 </div>
@@ -394,101 +274,198 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Liste des scénarios stratégiques établis lors de l'atelier 3</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Liste des évènements redoutés établis lors de l'atelier 1</h6>
 
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <!--text-->
                   <div class="table-responsive">
-                    <table class="table table-bordered perso_border" id="dataTable1" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
                       <thead>
                         <tr>
-                          <th>Nom du scénario stratégique</th>
-                          <th>Description source de risque</th>
-                          <th>Objectifs visés</th>
-                          <th>Événements redoutés</th>
-                          <th>N° Risque</th>
-                          <th>Chemin d'attaques stratégiques</th>
+                          <th>Valeur métier</th>
+                          <th>Nom</th>
+                          <th>Évenement redouté</th>
+                          <th>Impacts</th>
+                          <th>C</th>
+                          <th>I</th>
+                          <th>D</th>
+                          <th>T</th>
                           <th>Gravité</th>
                           
                         </tr>
                       </thead>
                         
-                        <tbody>
-                            <tr>
-                                <td>Vol de travaux par canal d'exfiltration de données</td>
-                                <td>Al-Qaida</td>
-                                <td>Voler des informations en espionnant les travaux de R&D en vue d'obtenir un avantage concurrentiel
-                                </td>
-                                <td>Fuite des informations d'études et recherches de l'entreprise</td>
-                                <td>R1</td>
-                                <td>Portant directement dur le système d'information de la R&D</td>
-                                <td>3 Grave</td>
-                            </tr>
-                            <tr>
-                                <td>Vol de travaux par canal d'exfiltration de données</td>
-                                <td>Al-Qaida</td>
-                                <td>Voler des informations en espionnant les travaux de R&D en vue d'obtenir un avantage concurrentiel
-                                </td>
-                                <td>Fuite des informations d'études et recherches de l'entreprise</td>
-                                <td>R2</td>
-                                <td>Sur le système d'information du laboratoire (P3) qui détient une partie des travaux</td>
-                                <td>3 Grave</td> 
-                            </tr>
-                            <tr>
-                                <td>Vol de travaux par canal d'exfiltration de données</td>
-                                <td>Al-Qaida</td>
-                                <td>Voler des informations en espionnant les travaux de R&D en vue d'obtenir un avantage concurrentiel
-                                </td>
-                                <td>Fuite des informations d'études et recherches de l'entreprise</td>
-                                <td>R3</td>
-                                <td>En passant par le prestataire informatique F3</td>
-                                <td>3 Grave</td> 
-                            </tr>
-                            <tr>
-                                <td>Sabotage de la campagne nationale de vaccination</td>
-                                <td>DGSE</td>
-                                <td>Saboter la prochaine campagne nationale de vaccination pour générer
-                                    un choc psychologique sur la population et discréditer les pouvoirs publics
-                                </td>
-                                <td>Perte ou desctruction des informations d'études et recherches conduisanr à un fort impact,
-                                    notamment sur les futures autorisations de mises sur le marché de l'entreprise
-                                </td>
-                                <td>R4</td>
-                                <td>Portant directement dur le système d'information de la R&D</td>
-                                <td>4 critique</td>
-                            </tr>
-                            <tr>
-                                <td>Sabotage de la campagne nationale de vaccination</td>
-                                <td>DGSE</td>
-                                <td>Saboter la prochaine campagne nationale de vaccination pour générer
-                                    un choc psychologique sur la population et discréditer les pouvoirs publics
-                                </td>
-                                <td>Perte ou desctruction des informations d'études et recherches conduisanr à un fort impact,
-                                    notamment sur les futures autorisations de mises sur le marché de l'entreprise
-                                </td>
-                                <td>R5</td>
-                                <td>Portant directement dur le système d'information de la R&D</td>
-                                <td>4 critique</td> 
-                            </tr>
-                            <tr>
-                                <td>Sabotage de la campagne nationale de vaccination</td>
-                                <td>DGSE</td>
-                                <td>Saboter la prochaine campagne nationale de vaccination pour générer
-                                    un choc psychologique sur la population et discréditer les pouvoirs publics
-                                </td>
-                                <td>Perte ou desctruction des informations d'études et recherches conduisanr à un fort impact,
-                                    notamment sur les futures autorisations de mises sur le marché de l'entreprise
-                                </td>
-                                <td>R6</td>
-                                <td>Portant directement dur le système d'information de la R&D</td>
-                                <td>4 critique</td> 
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-    
+                      <tbody>
+                        <tr>
+                          <td>R&D</td>
+                          <td>Nom ER</td>
+                          <td>Perte ou destruction des informations d'études et recherches conduisant à un fort impact,
+                              notamment sur les futures autorisations de mise sur le marché de l'entreprise
+                          </td>
+                          <td>
+                            Impacts sur les missions et services de l'organisme<br>
+                            Impacts sur les coûts de développement<br>
+                            Impacts sur la gouvernance de l'organisme
+                          </td>
+                          <td>1</td>
+                          <td>1</td>
+                          <td>1</td>
+                          <td>1</td>
+                          <td>3</td>
+                          
+                            
+                        </tr>
+                        <tr>
+                            <td>R&D</td>
+                            <td>Nom ER</td>
+                            <td>Altération des informations d'études et recherches aboutissant à une fomule de vaccin erronée
+                            </td>
+                            <td>
+                              Impacts sur la sécurité ou la santé des personnes<br>
+                              Impacts sur l'image et la confiance<br>
+                              Impacts juridiques
+                            </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>3</td>
+                            
+                              
+                          </tr>
+                          <tr>
+                            <td>R&D</td>
+                            <td>Nom ER</td>
+                            <td>Fuite des informations d'études et recherches de l'entreprise
+                            </td>
+                            <td>
+                              Impacts sur la gouvernance de l'organisme<br>
+                              Impacts financiers
+                            </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>3</td>
+                            
+                              
+                          </tr>
+                          <tr>
+                            <td>R&D</td>
+                            <td>Nom ER</td>
+                            <td>Interruption des phases de tests des vaccins pendant plus d'une semaine
+                            </td>
+                            <td>
+                              Impacts sur les missions et services de l'organisme<br>
+                              Impacts financiers
+                            </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>2</td>
+                            
+                              
+                          </tr>
+                          <tr>
+                            <td>Fabriquer des vaccins</td>
+                            <td>Nom ER</td>
+                            <td>Interruption de la production ou de la distribution de 
+                                vaccins pendant plus d'une semaine pendant un pic d'épidémie
+                            </td>
+                            <td>
+                              Impacts sur la sécurité ou la santé des personnes<br>
+                              Impacts sur l'image et la confiance<br>
+                              Impacts financiers
+                            </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>3</td>
+                            
+                              
+                          </tr>
+
+                      </tbody>
+                    </table>  
+                  </div> 
+
+                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Liste des couples sources de risques / objectifs visés établis lors de l'atelier 2</h6>
+  
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+                      <thead>
+                        <tr>
+                          <th>Type d'attaquant</th>
+                          <th>Profil d'attaquant</th>
+                          <th>Description source de risque</th>
+                          <th>Objectifs visés</th>
+                          <th>Description de l'objectif</th>
+                          
+                        </tr>
+                      </thead>
+                        
+                      <tbody>
+                        <tr>
+                          <td>Organisation structurée</td>
+                          <td>Étatique</td>
+                          <td>DGSE
+                          </td>
+                          <td>Saboter la campagne nationale de vaccination</td>
+                          <td>Saboter la prochaine campagne natinale de vaccination en parturbant la
+                              production ou la distribution de vaccins, pour générer un choc 
+                              psychologique sur la population et discréditer les pouvoirs publics
+                          </td>
+                          
+                            
+                        </tr>
+                        <tr>
+                            <td>Organisation structurée</td>
+                            <td>Terroriste</td>
+                            <td>Al-Qaida
+                            </td>
+                            <td>Voler des informations</td>
+                            <td>Voler des informations en espionnant les travaux de R&D e, vue d'obtenir
+                                un avantage concurrentiel
+                            </td>
+                            
+                              
+                          </tr>
+                          <tr>
+                            <td>Individu isolé</td>
+                            <td>Amateur</td>
+                            <td>Hackeur
+                            </td>
+                            <td>Divulguer des informations sur les test animaliers</td>
+                            <td>Divulguer au grand public des informations sur la façon dont les vaccins
+                                sont conçus en collectant des photos et vidéos des tests animaliers afin 
+                                de rallier l'opinion publique à sa cause.
+                            </td>                            
+                              
+                          </tr>
+                          <tr>
+                            <td>Organisation structurée</td>
+                            <td>Concurrent</td>
+                            <td>Amazon.com
+                            </td>
+                            <td>Altérer la composition de vaccins à des fins bioterroristes</td>
+                            <td>Altérer la composition de vaccins distribués lors d'une campagne nationale
+                                de vaccination à des fins de bioterrorisme
+                            </td>
+
+                            
+                              
+                          </tr>
+                          
+
+                      </tbody>
+                    </table>  
+                  </div>    
 
                 </div>   
 
@@ -500,20 +477,23 @@
                 <div class="card shadow mb-4">
                   <!-- Card Header - Dropdown -->
                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Ajouter un scénario opérationnel</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Liste des chemins d'attaques stratégiques</h6>
                     
                   </div>
                   <!-- Card Body -->
                   <div class="card-body">
                     <!--text-->
                     <div class="table-responsive">
-                        <table class="table table-bordered perso_border" id="dataTable2" width="100%" cellspacing="0">
+                        <table class="table table-bordered perso_border" id="dataTable3" width="100%" cellspacing="0">
                           <thead>
                             <tr>
+                              <th>Nom du scénario stratégique</th>
+                              <th>Description source de risque</th>
+                              <th>Objectifs visés</th>
+                              <th>Événements redoutés</th>
                               <th>N° Risque</th>
-                              <th>Chemin d'attaque stratégique</th>
-                              <th>Scénario opérationnel</th>
-                              <th>Mode opératoire</th>
+                              <th>Chemin d'attaques stratégiques</th>
+                              <th>Gravité</th>
                               <th class="perso_border"></th>
                               
                             </tr>
@@ -521,85 +501,117 @@
                             
                             <tbody>
                                 <tr>
+                                    <td>Vol de travaux par canal d'exfiltration de données</td>
+                                    <td>Al-Qaida</td>
+                                    <td>Voler des informations en espionnant les travaux de R&D en vue d'obtenir un avantage concurrentiel
+                                    </td>
+                                    <td>Fuite des informations d'études et recherches de l'entreprise</td>
                                     <td>R1</td>
-                                    <td>Portant directement sur le système d'information de la R&D</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>Portant directement dur le système d'information de la R&D</td>
+                                    <td>3 Grave</td>
                                     <td class="perso_border">
                                       <div class="modification">
-                                        <i data-toggle="modal" data-target="#ajout_ligne_scénario_opérationnel" class="crayon fas fa-pen"></i>
+                                        <i data-toggle="modal" data-target="#ajout_ligne_chemin_attaque" class="crayon fas fa-pen"></i>
                                         <i class="poubelle fas fa-trash-alt"></i>
                                       </div>
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td>Vol de travaux par canal d'exfiltration de données</td>
+                                    <td>Al-Qaida</td>
+                                    <td>Voler des informations en espionnant les travaux de R&D en vue d'obtenir un avantage concurrentiel
+                                    </td>
+                                    <td>Fuite des informations d'études et recherches de l'entreprise</td>
                                     <td>R2</td>
                                     <td>Sur le système d'information du laboratoire (P3) qui détient une partie des travaux</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>3 Grave</td>
                                     <td class="perso_border">
                                       <div class="modification">
-                                        <i data-toggle="modal" data-target="#ajout_ligne_scénario_opérationnel" class="crayon fas fa-pen"></i>
-                                        <i class="poubelle fas fa-trash-alt"></i>
-                                      </div>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td>R3</td>
-                                    <td>En passant par le prestataire informatique F3</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="perso_border">
-                                      <div class="modification">
-                                        <i data-toggle="modal" data-target="#ajout_ligne_scénario_opérationnel" class="crayon fas fa-pen"></i>
-                                        <i class="poubelle fas fa-trash-alt"></i>
-                                      </div>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td>R4</td>
-                                    <td>Portant directement sur le système d'information de la R&D</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="perso_border">
-                                      <div class="modification">
-                                        <i data-toggle="modal" data-target="#ajout_ligne_scénario_opérationnel" class="crayon fas fa-pen"></i>
-                                        <i class="poubelle fas fa-trash-alt"></i>
-                                      </div>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td>R5</td>
-                                    <td>Sur le système d'information du laboratoire (P3) qui détient une partie des travaux</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="perso_border">
-                                      <div class="modification">
-                                        <i data-toggle="modal" data-target="#ajout_ligne_scénario_opérationnel" class="crayon fas fa-pen"></i>
+                                        <i data-toggle="modal" data-target="#ajout_ligne_chemin_attaque" class="crayon fas fa-pen"></i>
                                         <i class="poubelle fas fa-trash-alt"></i>
                                       </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>R6</td>
+                                    <td>Vol de travaux par canal d'exfiltration de données</td>
+                                    <td>Al-Qaida</td>
+                                    <td>Voler des informations en espionnant les travaux de R&D en vue d'obtenir un avantage concurrentiel
+                                    </td>
+                                    <td>Fuite des informations d'études et recherches de l'entreprise</td>
+                                    <td>R3</td>
                                     <td>En passant par le prestataire informatique F3</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>3 Grave</td>
                                     <td class="perso_border">
                                       <div class="modification">
-                                        <i data-toggle="modal" data-target="#ajout_ligne_scénario_opérationnel" class="crayon fas fa-pen"></i>
+                                        <i data-toggle="modal" data-target="#ajout_ligne_chemin_attaque" class="crayon fas fa-pen"></i>
+                                        <i class="poubelle fas fa-trash-alt"></i>
+                                      </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Sabotage de la campagne nationale de vaccination</td>
+                                    <td>DGSE</td>
+                                    <td>Saboter la prochaine campagne nationale de vaccination pour générer
+                                        un choc psychologique sur la population et discréditer les pouvoirs publics
+                                    </td>
+                                    <td>Perte ou desctruction des informations d'études et recherches conduisanr à un fort impact,
+                                        notamment sur les futures autorisations de mises sur le marché de l'entreprise
+                                    </td>
+                                    <td>R4</td>
+                                    <td>Portant directement dur le système d'information de la R&D</td>
+                                    <td>4 critique</td>
+                                    <td class="perso_border">
+                                      <div class="modification">
+                                        <i data-toggle="modal" data-target="#ajout_ligne_chemin_attaque" class="crayon fas fa-pen"></i>
                                         <i class="poubelle fas fa-trash-alt"></i>
                                       </div>
                                     </td> 
                                 </tr>
-                                
+                                <tr>
+                                    <td>Sabotage de la campagne nationale de vaccination</td>
+                                    <td>DGSE</td>
+                                    <td>Saboter la prochaine campagne nationale de vaccination pour générer
+                                        un choc psychologique sur la population et discréditer les pouvoirs publics
+                                    </td>
+                                    <td>Perte ou desctruction des informations d'études et recherches conduisanr à un fort impact,
+                                        notamment sur les futures autorisations de mises sur le marché de l'entreprise
+                                    </td>
+                                    <td>R5</td>
+                                    <td>Portant directement dur le système d'information de la R&D</td>
+                                    <td>4 critique</td>
+                                    <td class="perso_border">
+                                      <div class="modification">
+                                        <i data-toggle="modal" data-target="#ajout_ligne_chemin_attaque" class="crayon fas fa-pen"></i>
+                                        <i class="poubelle fas fa-trash-alt"></i>
+                                      </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Sabotage de la campagne nationale de vaccination</td>
+                                    <td>DGSE</td>
+                                    <td>Saboter la prochaine campagne nationale de vaccination pour générer
+                                        un choc psychologique sur la population et discréditer les pouvoirs publics
+                                    </td>
+                                    <td>Perte ou desctruction des informations d'études et recherches conduisanr à un fort impact,
+                                        notamment sur les futures autorisations de mises sur le marché de l'entreprise
+                                    </td>
+                                    <td>R6</td>
+                                    <td>Portant directement dur le système d'information de la R&D</td>
+                                    <td>4 critique</td>
+                                    <td class="perso_border">
+                                      <div class="modification">
+                                        <i data-toggle="modal" data-target="#ajout_ligne_chemin_attaque" class="crayon fas fa-pen"></i>
+                                        <i class="poubelle fas fa-trash-alt"></i>
+                                      </div>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                     <!-- bouton Ajouter une nouvelle ligne -->
                     <div class="text-center">
-                      <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_scénario_opérationnel">Ajouter une nouvelle ligne</button>
-                    </div> 
+                      <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_chemin_attaque">Ajouter une nouvelle ligne</button>
+                    </div>     
                   </div>
                 </div>
               </div>
@@ -633,46 +645,51 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
-
 <!-- -------------------------------------------------------------------------------------------------------------- 
 ----------------------------------------- modal ajout de ligne ----------------------------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
-<div class="modal fade" id="ajout_ligne_scénario_opérationnel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="ajout_ligne_chemin_attaque" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 aria-hidden="true">
 <div class="modal-dialog modal-lg" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Ajout d'un scénario opérationnel</h5>
+      <h5 class="modal-title" id="exampleModalLabel">Ajout d'un chemin d'attaque stratégique</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body perso_modal_body">
-      <form class="user" id="formopérationnel">
+      <form class="user" id="formchemin">
         <div class="row">
-          <div class="form-group col-12">
-            <div class="form-group">
-              <label for="SelectChemin">Chemin d'attaque stratégique</label>
-              <select class="form-control" id="SelectTypeComptePop">
-                <option value="" selected>...</option>
-                <option value="1">Arrêt de production de l'équipement</option>
-                <option value="2">Vol d'information en passant par le prestataire informatique</option>
-                <option value="3">Vol d'informations sur le système d'information du laboratoire</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <input type="search" class="perso_form shadow-none form-control form-control-user" id="Scénario opérationnel"
-                placeholder="Scénario opérationnel" required>
-            </div>
-            <div class="form-group">
-              <input type="search" class="perso_form shadow-none form-control form-control-user" id="Mode opératoire"
-              placeholder="Mode opératoire" required>
-            </div>
+          <div class=" form-group col-12">
+            <input type="search" class="perso_form shadow-none form-control form-control-user" id="Nom du scénario stratégique"
+              placeholder="Nom du scénario stratégique" required>
           </div>
-          
-          <!-- bouton Ajouter un mode opératoire -->
+          <div class="form-group col-6">
+            <label for="SelectSR">Source de risque</label>
+            <select class="form-control" id="SelectSR">
+              <option value="" selected>...</option>
+              <option value="1">SR1</option>
+              <option value="2">SR2</option>
+              <option value="3">SR3</option>
+            </select>
+          </div>
+          <div class="form-group col-6">
+            <label for="SelectER">Événement redouté</label>
+            <select class="form-control" id="SelectER">
+              <option value="" selected>...</option>
+              <option value="1">ER1</option>
+              <option value="2">ER2</option>
+              <option value="3">ER3</option>
+            </select>
+          </div>
+          <div class="form-group col-12">
+            <label for="Chemin d'attaque stratégique">Chemin d'attaque stratégique</label>
+            <textarea class="form-control perso_text_area" id="Chemin d'attaque stratégique" rows="5"></textarea>
+          </div>
+          <!-- bouton Ajouter un chemin stratégique -->
           <div class="modal-footer perso_middle_modal_footer col-12">
-            <button type="button" class="btn perso_btn_primary shadow-none">Ajouter un mode opératoire</button>
+            <button type="button" class="btn perso_btn_primary shadow-none">Ajouter un chemin stratégique</button>
           </div>
           <div class="table-responsive col-12">
             <table class="table table-bordered perso_border" id="dataTable4" width="100%" cellspacing="0">
@@ -722,11 +739,11 @@ aria-hidden="true">
         <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
       </div>
     </form>
-
+     
+    
     </div>
 </div>
 </div>
-
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -762,10 +779,11 @@ aria-hidden="true">
   <script src="content/vendor/datatables/dataTables.rowsGroup.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="content/js/modules/tableau/tableau-atelier4a.js"></script>
+  <script src="content/js/modules/tableau/tableau-atelier3b.js"></script>
 
-  <!-- JS pour Dark Mode -->
-  <script src="content/js/modules/dark_mode.js"></script>
+<!-- Our JS -->
+<script src="content/js/modules/dark_mode.js"></script>
+  <script src="content/js/modules/top_bar.js"></script>
 </body>
 
 </html>

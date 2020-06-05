@@ -79,7 +79,6 @@ function click_bin(){
     var table_length=table.rows.length;
     for(let i=1;i<table_length;i++){
         document.getElementById('bin'+i).addEventListener('click',function(event){
-            console.log("coucou")
             var value=modify_with_pencil('bin'+i);
             for(let j=0;j<table_acteur_suppr.length;j++){
                 table_acteur_suppr[j].value = value[j]

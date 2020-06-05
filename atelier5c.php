@@ -7,7 +7,7 @@
   <meta name="description" content="RiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>RiskManager | Atelier 4.b</title>
+  <title>RiskManager | Atelier 5.c</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -190,134 +190,16 @@
             <i class="fa fa-bars"></i>
           </button>
 
+          <div id="top_bar_1" class="top_bar_name_1">Fabrication de vacccin</div>
+          <div id="top_bar_2" class="top_bar_name_2">Atelier 5</div>
+          <div id="top_bar_3" class="top_bar_name_3">Activité 5.c -  Évaluer et documenter les risques résiduels</div>
           
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
-
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </li>
-
-            <!-- Nav Item - Alerts -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">3+</span>
-              </a>
-              <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                <h6 class="dropdown-header">
-                  Alerts Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-primary">
-                      <i class="fas fa-file-alt text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 12, 2019</div>
-                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-success">
-                      <i class="fas fa-donate text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 7, 2019</div>
-                    $290.29 has been deposited into your account!
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-warning">
-                      <i class="fas fa-exclamation-triangle text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 2, 2019</div>
-                    Spending Alert: We've noticed unusually high spending for your account.
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-              </div>
-            </li>
-
-            <!-- Nav Item - Messages -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
-                <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter">7</span>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header">
-                  Message Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div class="font-weight-bold">
-                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                    <div class="small text-gray-500">Emily Fowler · 58m</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
-                    <div class="status-indicator"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
-                    <div class="small text-gray-500">Jae Chun · 1d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
-                    <div class="status-indicator bg-warning"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
-                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-              </div>
-            </li>
-
             <!-- Dark Mode toggle switch -->
 
-              <label class="theme-switch" for="checkbox">
-                <input class="perso_switch" type="checkbox" id="checkbox" />
+              <label class="theme-switch" for="checkbox_dark_theme">
+                <input class="perso_switch" type="checkbox" id="checkbox_dark_theme" />
                 <div class="slider round"></div>
               </label>
 
@@ -327,8 +209,8 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Guillaume</span>
+                <img class="img-profile rounded-circle" src="content/img/undraw_profile_pic.svg">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -338,16 +220,12 @@
                 </a>
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
+                  Paramètres
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
+                  Déconnexion
                 </a>
               </div>
             </li>
@@ -378,8 +256,8 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <p>Le but de l'atelier 4 est de construire des scénarios techniques reprenant les modes opératoires susceptibles d'être utilisés par les sources de risque pour réaliser les scénarios stratégiues.
-                    Cet atelier adopte ue démarche similaire à celle de l'atelier précédent mais se concentre sur les biens supports critiques. Vous évaluez ensuite le niveau de vraisemblance des scénarios opérationnels obtenus.
+                  <p>Le but de cet atelier est de réaliser une synthèse des scénarios de risque identifiés et de définir une stratégie de traitement du risque. Cette stratégie aboutit à la définition de mesures de 
+                      sécuriité, recensées dans un plan d'amélioration continue de la sécurité (PACS). Les risques résiduels sont ensuite identifiés ainsi que le cadre de suivi de ces risques.
                   </p>
                   <!--text-->
                 </div>
@@ -394,8 +272,13 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Évaluation de la vraisemblance</h6>
-          
+                  <h6 class="m-0 font-weight-bold text-primary">Évaluation et documentation des risques résiduels</h6>
+                  
+
+              
+
+
+
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -404,94 +287,108 @@
                     <table class="table table-bordered perso_border" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                         <tr>
-                          <th>N° Risque</th>
-                          <th>Chemin d'attaques stratégique</th>
-                          <th>Scénario opérationnel</th>
-                          <th>Vraisemblance</th>
+                          <th>Nom du risque</th>
+                          <th>Gravité initiale</th>
+                          <th>Vraisemblance initiale</th>
+                          <th>Risque initial</th>
+                          <th>Gravité résiduelle</th>
+                          <th>Vraisemblance résiduelle</th>
+                          <th>Risque résiduel</th>
                           <th class="perso_border"></th>
                         </tr>
                       </thead>
                         
                       <tbody>
                         <tr>
-                          <td>R1</td>
-                          <td>Portant directement sur le système d'information de la R&D</td>
-                          <td></td>
-                          <td>Vraisemblable</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_vraisemblance" class="crayon fas fa-pen"></i>
+                          <td>Un concurrent vole des informations de R&D grâce à un canal d'exfiltration</td>
+                          <td>3</td>
+                          <td>3</td>
+                          <td>9</td>
+                          <td>3</td>
+                          <td>2</td>
+                          <td>6</td>
+                          <td class="modification perso_border">
+                            <div class="col-1 centreVerticalement">
+                              <p>
+                                <img class="crayon" src ="content/img/crayon.svg"/>
+                              </p>
                             </div>
-                          </td>
+                        </td>
                             
                         </tr>
                         <tr>
-                          <td>R2</td>
-                          <td>Sur le système d'information du laboratoire (P3) qui détient une partie des travaux</td>
-                          <td></td>
-                          <td>Peu vraisemblable</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_vraisemblance" class="crayon fas fa-pen"></i>
+                          <td>Un concurrent vole des informations de R&D en exfiltrant celles détenues par le laboratoire</td>
+                          <td>3</td>
+                          <td>2</td>
+                          <td>6</td>
+                          <td>3</td>
+                          <td>1</td>
+                          <td>3</td>
+                          <td class="modification perso_border">
+                            <div class="col-1 centreVerticalement">
+                              <p>
+                                <img class="crayon" src ="content/img/crayon.svg"/>
+                              </p>
                             </div>
-                          </td>
+                        </td>
                         </tr>
                         <tr>
-                          <td>R3</td>
-                          <td>En passant par le prestataire informatique F3</td>
-                          <td></td>
-                          <td>Peu vraisemblable</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_vraisemblance" class="crayon fas fa-pen"></i>
+                          <td>Un concurrent vole des informations de R&D grâce à un canal d'exfiltration via le prestataire informatique</td>
+                          <td>3</td>
+                          <td>4</td>
+                          <td>12</td>
+                          <td>3</td>
+                          <td>3</td>
+                          <td>9</td>
+                          <td class="modification perso_border">
+                            <div class="col-1 centreVerticalement">
+                              <p>
+                                <img class="crayon" src ="content/img/crayon.svg"/>
+                              </p>
                             </div>
-                          </td>
+                        </td>
                         </tr>
                         <tr>
-                          <td>R4</td>
-                          <td>Portant directement sur le système d'information de la R&D</td>
-                          <td></td>
-                          <td>Invraisemblable</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_vraisemblance" class="crayon fas fa-pen"></i>
+                          <td>Un hacktiviste provoque un arrêt de la production des vaccins en compromettant l'équipement de maintenance des fournisseurs de matériel</td>
+                          <td>4</td>
+                          <td>2</td>
+                          <td>8</td>
+                          <td>4</td>
+                          <td>1</td>
+                          <td>4</td>
+                          <td class="modification perso_border">
+                            <div class="col-1 centreVerticalement">
+                              <p>
+                                <img class="crayon" src ="content/img/crayon.svg"/>
+                              </p>
                             </div>
-                          </td>
+                        </td>
                         </tr>
                         <tr>
-                          <td>R5</td>
-                          <td>Sur le système d'information du laboratoire (P3) qui détient une partie des travaux</td>
-                          <td></td>
-                          <td>Quasi-certain</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_vraisemblance" class="crayon fas fa-pen"></i>
+                          <td>Un hacktiviste provoque un arrêt de la production des vacances en compromettant l'équipement de maintenance des fournisseurs de matériel</td>
+                          <td>4</td>
+                          <td>1</td>
+                          <td>4</td>
+                          <td>4</td>
+                          <td>1</td>
+                          <td>4</td>
+                          <td class="modification perso_border">
+                            <div class="col-1 centreVerticalement">
+                              <p>
+                                <img class="crayon" src ="content/img/crayon.svg"/>
+                              </p>
                             </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>R6</td>
-                          <td>En passant par le prestataire informatique F3</td>
-                          <td></td>
-                          <td>Quasi-certain</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_vraisemblance" class="crayon fas fa-pen"></i>
-                            </div>
-                          </td>
+                        </td>
                         </tr>
                         
 
                       </tbody>
                     </table>  
                   </div>    
-                  <!-- bouton Ajouter la vraisemblance -->
+                  <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_vraisemblance">Ajouter une nouvelle ligne</button>
-                  </div>
-
-
-
+                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_vraisemblance_résiduelle">Ajouter une nouvelle ligne</button>
+                  </div> 
 
 
                 </div>
@@ -526,16 +423,15 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
-
 <!-- -------------------------------------------------------------------------------------------------------------- 
 ----------------------------------------- modal ajout de ligne ----------------------------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
-<div class="modal fade" id="ajout_vraisemblance" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="ajout_vraisemblance_résiduelle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 aria-hidden="true">
 <div class="modal-dialog modal-lg" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Ajout de la vraisemblance</h5>
+      <h5 class="modal-title" id="exampleModalLabel">Ajout de la vraisemblance résiduelle</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -602,9 +498,12 @@ aria-hidden="true">
       </div>
     </form>
      
+    
     </div>
 </div>
 </div>
+
+
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -639,10 +538,11 @@ aria-hidden="true">
   <script src="content/vendor/datatables/dataTables.bootstrap4.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="content/js/modules/tableau/tableau-atelier3a.js"></script>
+  <script src="content/js/modules/tableau/tableau-atelier5c.js"></script>
 
-  <!-- JS pour Dark Mode -->
+  <!-- Our JS -->
   <script src="content/js/modules/dark_mode.js"></script>
+  <script src="content/js/modules/top_bar.js"></script>
 </body>
 
 </html>

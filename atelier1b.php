@@ -7,7 +7,7 @@
   <meta name="description" content="RiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>RiskManager | Atelier 1.d</title>
+  <title>RiskManager | Atelier 1.b</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -157,177 +157,55 @@
       <!-- Main Content -->
       <div id="content">
 
-        <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+       <!-- Topbar -->
+       <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
+        <!-- Sidebar Toggle (Topbar) -->
+        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+          <i class="fa fa-bars"></i>
+        </button>
 
-          
-          <!-- Topbar Navbar -->
-          <ul class="navbar-nav ml-auto">
+        <div id="top_bar_1" class="top_bar_name_1">Fabrication de vacccin</div>
+        <div id="top_bar_2" class="top_bar_name_2">Atelier 1</div>
+        <div id="top_bar_3" class="top_bar_name_3">Activité 1.b - Biens primordiaux/support</div>
 
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </li>
+        <!-- Topbar Navbar -->
+        <ul class="navbar-nav ml-auto">
+          <!-- Dark Mode toggle switch -->
 
-            <!-- Nav Item - Alerts -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">3+</span>
+            <label class="theme-switch" for="checkbox_dark_theme">
+              <input class="perso_switch" type="checkbox" id="checkbox_dark_theme" />
+              <div class="slider round"></div>
+            </label>
+
+
+          <div class="topbar-divider d-none d-sm-block"></div>
+
+          <!-- Nav Item - User Information -->
+          <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="mr-2 d-none d-lg-inline text-gray-600 small">Guillaume</span>
+              <img class="img-profile rounded-circle" src="content/img/undraw_profile_pic.svg">
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                Profile
               </a>
-              <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                <h6 class="dropdown-header">
-                  Alerts Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-primary">
-                      <i class="fas fa-file-alt text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 12, 2019</div>
-                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-success">
-                      <i class="fas fa-donate text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 7, 2019</div>
-                    $290.29 has been deposited into your account!
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-warning">
-                      <i class="fas fa-exclamation-triangle text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 2, 2019</div>
-                    Spending Alert: We've noticed unusually high spending for your account.
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-              </div>
-            </li>
-
-            <!-- Nav Item - Messages -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
-                <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter">7</span>
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                Paramètres
               </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header">
-                  Message Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div class="font-weight-bold">
-                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                    <div class="small text-gray-500">Emily Fowler · 58m</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
-                    <div class="status-indicator"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
-                    <div class="small text-gray-500">Jae Chun · 1d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
-                    <div class="status-indicator bg-warning"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
-                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-              </div>
-            </li>
-
-            <!-- Dark Mode toggle switch -->
-
-              <label class="theme-switch" for="checkbox">
-                <input class="perso_switch" type="checkbox" id="checkbox" />
-                <div class="slider round"></div>
-              </label>
-
-
-            <div class="topbar-divider d-none d-sm-block"></div>
-
-            <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                Déconnexion
               </a>
-              <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
-                </a>
-              </div>
-            </li>
+            </div>
+          </li>
 
-          </ul>
+        </ul>
 
         </nav>
         <!-- End of Topbar -->
@@ -360,13 +238,58 @@
             </div>
 
 
+            <div class="col-xl-12 col-lg-12">
+              <!-- Area Card -->
+              <!-- Mission -->
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0">Mission</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body row perso_card_body_row">
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <form class="user" id="formActeur">
+                    
+                      <div class="form-group">
+                        <input type="text" class="perso_form shadow-none form-control form-control-user" id="InputNomMission"
+                          placeholder="Mission" required>
+                      </div>
+                      <div class="form-group">
+                        <input type="text" class="perso_form shadow-none form-control form-control-user" id="InputNomResponsable"
+                          placeholder="Nom du responsable" required>
+                      </div>
+                    
+                      <div class="form-group">
+                        <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="Postes" name="Poste"
+                          placeholder="Poste" required>
+                        <datalist id="Postes">
+                          <option value="Internet Explorer">
+                          <option value="Firefox">
+                          <option value="Chrome">
+                          <option value="Opera">
+                          <option value="Safari">
+                        </datalist>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
+                    <img src="content/img/files.svg" class="img-fluid perso_img_full_screen_div2" alt="Responsive image">
+                  </div>
+
+              
+                </div>
+              </div>
+            </div>
+
+
+
             <!-- Area Card -->
-            <!-- Socle de sécurité -->
             <div class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Socle de sécurité</h6>
+                  <h6 class="m-0">Valeur métiers</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -374,24 +297,63 @@
                     <table class="table table-bordered perso_border" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                         <tr>
-                          <th>Type de référentiel</th>
-                          <th>Nom du référentiel</th>
-                          <th>État d'application</th>
-                          <th>État de la conformité</th>
+                          <th>Valeur métier</th>
+                          <th>Nature</th>
+                          <th>Description</th>
+                          <th>Responsable</th>
                           <th class="perso_border"></th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
+                          <td>#110</td>
                           <td>XXXX</td>
                           <td>XXXX</td>
-                          <td>XXXX</td>
-                          <td>XXXX</td>
+                          <td>Ingénieur ...</td>
                             <td class="perso_border">
                               <div class="modification">
                                 <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
                                 <i class="poubelle fas fa-trash-alt"></i>
-                              </div>
+                            </div>
+                      
+                            </td>  
+                        </tr>
+                        <tr>
+                          <td>Organisation idéologique</td>
+                          <td>Terroriste</td>
+                          <td>Al-Qaida</td>
+                          <td>Voler des informations</td>
+                            <td class="perso_border">
+                              <div class="modification">
+                                <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
+                                <i class="poubelle fas fa-trash-alt"></i>
+                            </div>
+                      
+                            </td>  
+                        </tr>
+                        <tr>
+                          <td>Individu isolé</td>
+                          <td>Amateur</td>
+                          <td>Hackeur</td>
+                          <td>Divulguer des informations sur les tests animaliers</td>
+                            <td class="perso_border">
+                              <div class="modification">
+                                <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
+                                <i class="poubelle fas fa-trash-alt"></i>
+                            </div>
+                      
+                            </td>  
+                        </tr>
+                        <tr>
+                          <td>Organisation structurée</td>
+                          <td>Concurrent</td>
+                          <td>Amazon.com</td>
+                          <td>Altérer la compositionde vaccins à des fins bioterroristes</td>
+                            <td class="perso_border">
+                              <div class="modification">
+                                <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
+                                <i class="poubelle fas fa-trash-alt"></i>
+                            </div>
                       
                             </td>  
                         </tr>
@@ -401,67 +363,81 @@
 
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite">Ajouter une nouvelle ligne</button>
+                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_valeur_metier">Ajouter une nouvelle ligne</button>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Area Card -->
-            <!-- Écarts -->
             <div class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Écarts</h6>
+                  <h6 class="m-0">Bien support</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-
-                  <div>
-                    <label for="SelectNaturePop">Nom du référentiel</label>
-                    <select class="form-control" id="SelectNaturePop">
-                      <option value="" selected>...</option>
-                      <option value="1">Guide d'hygiène informatique de l'ANSSI</option>
-                      <option value="2">Guide de bonne conduite de projet de l'ANSSI</option>
-                    </select>
-                  </div>
-
                   <div class="table-responsive">
                     <table class="table table-bordered perso_border" id="dataTable2" width="100%" cellspacing="0">
                       <thead>
                         <tr>
-                          <th>Règles</th>
-                          <th>État de la règle</th>
-                          <th>Justification des écarts</th>
+                          <th>Bien support</th>
+                          <th>Valeur métier</th>
+                          <th>Description</th>
                           <th>Responsable</th>
-                          <th>Date limite de la mise en application</th>
                           <th class="perso_border"></th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
+                          <td>#110</td>
                           <td>XXXX</td>
                           <td>XXXX</td>
-                          <td>XXXX</td>
-                          <td>XXXX</td>
-                          <td>20/05/2020</td>
+                          <td>Ingénieur ...</td>
                           <td class="perso_border">
                             <div class="modification">
                               <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
+                              <i class="poubelle fas fa-trash-alt"></i>
                             </div>
             
                           </td>
                         </tr>
                         <tr>
-                          <td>XXXX</td>
-                          <td>XXXX</td>
-                          <td>XXXX</td>
-                          <td>XXXX</td>
-                          <td>20/05/2020</td>
+                          <td>Organisation idéologique</td>
+                          <td>Terroriste</td>
+                          <td>Al-Qaida</td>
+                          <td>Voler des informations</td>
                           <td class="perso_border">
                             <div class="modification">
                               <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
+                              <i class="poubelle fas fa-trash-alt"></i>
+                            </div>
+            
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Individu isolé</td>
+                          <td>Amateur</td>
+                          <td>Hackeur</td>
+                          <td>Divulguer des informations sur les tests animaliers</td>
+                          <td class="perso_border">
+                            <div class="modification">
+                              <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
+                              <i class="poubelle fas fa-trash-alt"></i>
+                            </div>
+            
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Organisation structurée</td>
+                          <td>Concurrent</td>
+                          <td>Amazon.com</td>
+                          <td>Altérer la compositionde vaccins à des fins bioterroristes</td>
+                          <td class="perso_border">
+                            <div class="modification">
+                              <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
+                              <i class="poubelle fas fa-trash-alt"></i>
                             </div>
             
                           </td>
@@ -470,6 +446,10 @@
                     </table>
                   </div>
             
+                  <!-- bouton Ajouter une nouvelle ligne -->
+                  <div class="text-center">
+                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_bien_support">Ajouter une nouvelle ligne</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -500,45 +480,56 @@
   </a>
 
 
-
 <!-- -------------------------------------------------------------------------------------------------------------- 
---------------------------------------- modal ajout socle de sécurité ----------------------------------------------
+--------------------------------------- modal ajout de valeur métier ----------------------------------------------
 --------------------------------------------------------------------------------------------------------------  -->
-  <div class="modal fade" id="ajout_socle_de_securite" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  <div class="modal fade" id="ajout_valeur_metier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ajout d'un socle de sécurité</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Ajout d'une valeur métier</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body perso_modal_body">
-          <form class="user" id="formBienSupportPop">
-
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" id="customFile">
-              <label class="custom-file-label" for="customFile">Choose file</label>
-            </div>
-
+          <form class="user" id="formValeurMetierPop">
             <div class="form-group">
-              <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_type_ref_pop"
-                placeholder="Type de référentiel" required>
-            </div>
-            <div class="form-group">
-              <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_noom_ref_pop"
-                placeholder="Nom du référentiel" required>
-            </div>
-            <div class="form-group">
-              <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_etat_appli_pop"
-                placeholder="État d'application" required>
-            </div>
-            <div class="form-group">
-              <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_confo_pop"
-                placeholder="État de la conformité" required>
+              <input type="text" class="perso_form shadow-none form-control form-control-user" id="InputValeurMetierPop"
+                placeholder="Dénomination de la valeur métier" required>
             </div>
 
+            <div class="form-group">
+              <label for="SelectNaturePop">Nature</label>
+              <select class="form-control" id="SelectNaturePop">
+                <option value="" selected>...</option>
+                <option value="1">Processus</option>
+                <option value="2">Information</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="DescriptionValeurPop">Description</label>
+              <textarea class="form-control perso_text_area" id="DescriptionValeurPop" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="perso_form shadow-none form-control form-control-user" id="InputNomResponsableValeurPop"
+                placeholder="Nom du responsable" required>
+            </div>
+            
+            <div class="form-group">
+              <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="PostesValeurPop" name="Poste"
+                placeholder="Poste" required>
+              <datalist id="PostesValeurPop">
+                <option value="Internet Explorer">
+                <option value="Firefox">
+                <option value="Chrome">
+                <option value="Opera">
+                <option value="Safari">
+              </datalist>
+            </div>
           </form>
         </div>
         <!-- bouton Ajouter -->
@@ -549,15 +540,16 @@
     </div>
   </div>
 
-  <!-- -------------------------------------------------------------------------------------------------------------- 
-  --------------------------------------- modal modification d'un écart ----------------------------------------------
-  --------------------------------------------------------------------------------------------------------------  -->
-  <div class="modal fade" id="modif_ecart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+
+<!-- -------------------------------------------------------------------------------------------------------------- 
+--------------------------------------- modal ajout de bien support ----------------------------------------------
+--------------------------------------------------------------------------------------------------------------  -->
+  <div class="modal fade" id="ajout_bien_support" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modification d'un écart</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Ajout d'un bien support</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -566,27 +558,33 @@
           <form class="user" id="formBienSupportPop">
             <div class="form-group">
               <input type="text" class="perso_form shadow-none form-control form-control-user" id="InputBienSupportPop"
-                placeholder="Règle non respectée" required>
+                placeholder="Dénomination du bien support" required>
             </div>
-  
+            
             <div class="form-group">
-              <label for="SelectValeurMetierPop">État de la règle</label>
+              <label for="SelectValeurMetierPop">Valeur métier</label>
               <select class="form-control" id="SelectValeurMetierPop">
                 <option value="" selected>...</option>
-                <option value="1">Traitée</option>
-                <option value="2">Non traitée</option>
+                <option value="1">en bdd1</option>
+                <option value="2">en bdd2</option>
+                <option value="3">en bdd3</option>
               </select>
             </div>
-  
+            
             <div class="form-group">
-              <label for="DescriptionBienPop">Justification des écarts</label>
+              <label for="DescriptionBienPop">Description</label>
               <textarea class="form-control perso_text_area" id="DescriptionBienPop" rows="3"></textarea>
             </div>
-  
+
             <div class="form-group">
-              <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="responsable_pop"
-                name="Responsable" placeholder="Responsable" required>
-              <datalist id="responsable_pop">
+              <input type="text" class="perso_form shadow-none form-control form-control-user" id="InputNomResponsableBienPop"
+                placeholder="Nom du responsable" required>
+            </div>
+            
+            <div class="form-group">
+              <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="PostesBienPop" name="Poste"
+                placeholder="Poste" required>
+              <datalist id="PostesBienPop">
                 <option value="Internet Explorer">
                 <option value="Firefox">
                 <option value="Chrome">
@@ -594,12 +592,6 @@
                 <option value="Safari">
               </datalist>
             </div>
-
-            <div class="form-group">
-              <label for="example-date-input">Date limite de la mise en application</label>
-              <input class="form-control" type="date" id="example-date-input">
-            </div>
-
           </form>
         </div>
         <!-- bouton Ajouter -->
@@ -647,11 +639,9 @@
   <!-- Page level custom scripts -->
   <script src="content/js/modules/tableau/tableau-atelier1a.js"></script>
 
-  <!-- JS pour Dark Mode -->
-  <script src="content/js/modules/browse.js"></script>
-
-  <!-- JS pour Dark Mode -->
+  <!-- Our JS -->
   <script src="content/js/modules/dark_mode.js"></script>
+  <script src="content/js/modules/top_bar.js"></script>
 </body>
 
 </html>

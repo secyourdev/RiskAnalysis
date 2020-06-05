@@ -866,3 +866,8 @@ h6{
 .suppression_donnee{
     text-align: center;
 }
+
+.form-control:disabled, .form-control[readonly] {
+    background-color: var(--card-divider) ;
+    color: var(--top-bar-color);
+}

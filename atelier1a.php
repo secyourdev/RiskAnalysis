@@ -284,7 +284,7 @@
                   <form class="user">
                   
                     <div class="form-group">
-                      <input type="search" class="perso_form shadow-none form-control form-control-user" id="nom_etude" placeholder="Nom" required>
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="nom_etude" placeholder="Nom" required>
                       </input>
                       
                     </div>
@@ -294,7 +294,7 @@
                     </div>
 
                     <div class="form-group">
-                      <input type="search" class="perso_form shadow-none form-control form-control-user" id="cadre_temporel" placeholder="Cadre temporel" required>
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="cadre_temporel" placeholder="Cadre temporel" required>
                     </div>
                   </form>
                   <img src="content/img/task.svg" class="img-fluid perso_img" alt="Responsive image">
@@ -318,14 +318,14 @@
                   <form method="post" action="content/php/test.php" class="user" id="formActeur">
                   <fieldset>
                     <div class="form-group">
-                      <input type="search" class="perso_form shadow-none form-control form-control-user" id="nom_acteur" name="nom" placeholder="Nom" required>
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="nom_acteur" name="nom" placeholder="Nom" required>
                     </div>
                     <div class="form-group">
-                      <input type="search" class="perso_form shadow-none form-control form-control-user" id="prenom_acteur" name="prenom" placeholder="Prénom" required>
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="prenom_acteur" name="prenom" placeholder="Prénom" required>
                     </div>
 
                     <div class="form-group">
-                      <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Postes" id="poste_acteur" name="poste" placeholder="Poste" required>
+                      <input type="text" class="perso_arrow perso_form shadow-none form-control" list="Postes" id="poste_acteur" name="poste" placeholder="Poste" required>
                       <datalist id="Postes">
                         <option value="Internet Explorer">
                         <option value="Firefox">
