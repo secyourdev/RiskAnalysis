@@ -1,7 +1,7 @@
 <?php
-header('Location: ../../atelier-1a#acteurs');
+header('Location: ../../../atelier-1a#acteurs');
 
-if (isset($_POST['modifier'])){
+if (isset($_POST['valider'])){
   //Connexion à la base de donnee
   try{
     $bdd=new PDO('mysql:host=localhost;dbname=ebios_rm_v5;charset=utf8','root','',
@@ -15,40 +15,39 @@ if (isset($_POST['modifier'])){
   $results["error"] = false;
   $results["message"] = [];
 
-  $id_modifie=$_POST['id_modifie'];
-  $nom_modifie=$_POST['nom_modifie'];
-  $prenom_modifie=$_POST['prenom_modifie'];
-  $poste_modifie=$_POST['poste_modifie'];
+  $nom=$_POST['nom'];
+  $prenom=$_POST['prenom'];
+  $poste=$_POST['poste'];
 
   // Verification du nom
-    if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_modifie)){
+    if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom)){
       $results["error"] = true;
-      $results["message"]["nom_modifie"] = "Nom invalide";
+      $results["message"]["nom"] = "Nom invalide";
       ?>
       <strong style="color:#FF6565;">Nom invalide </br></strong>
       <?php
     }
 
   // Verification du prenom
-    if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $prenom_modifie)){
+    if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $prenom)){
       $results["error"] = true;
-      $results["message"]["prenom_modifie"] = "Prenom invalide";
+      $results["message"]["prenom"] = "Prenom invalide";
       ?>
       <strong style="color:#FF6565;">Prénom invalide </br></strong>
       <?php
     }
 
   // Verification du poste
-    if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $poste_modifie)){
+    if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $poste)){
       $results["error"] = true;
-      $results["message"]["poste_modifie"] = "Poste invalide";
+      $results["message"]["poste"] = "Poste invalide";
       ?>
       <strong style="color:#FF6565;">Poste invalide </br></strong>
       <?php
     }
 
-    if ($results["error"] === false){       
-        $bdd->exec('UPDATE PERSONNE SET nom="'.$nom_modifie.'",prenom="'.$prenom_modifie.'",poste="'.$poste_modifie.'" WHERE id_personne="'.$id_modifie.'"');
+    if ($results["error"] === false){
+        $bdd->exec('INSERT INTO `personne`(`id_personne`, `nom`, `prenom`, `poste`, `adresse_mail`) VALUES (id_personne,"'.$nom.'","'.$prenom.'","'.$poste.'", null)');
         ?>
         <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
         <?php

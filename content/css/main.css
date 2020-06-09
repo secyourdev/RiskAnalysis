@@ -890,3 +890,20 @@ h6{
     background-color: var(--card-divider) ;
     color: var(--top-bar-color);
 }
+
+/*Table*/
+.perso_toolbar{
+    display:contents;
+}
+
+#rechercher_input{
+    margin-bottom: 5px;
+    border-radius: 5px;
+    outline: none;
+    box-shadow: none;
+    border: solid 1px var(--placeholder-focus);
+    background-color: var(--card-header-color);
+    color: var(--button-color);
+    font-size: 0.9em;
+    padding: 0.15rem 0.475rem!important;
+}

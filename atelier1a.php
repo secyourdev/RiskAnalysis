@@ -1,3 +1,4 @@
+<?php include("content/php/atelier1a/selection.php");?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -13,9 +14,14 @@
   <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template-->
+  <!-- CSS -->
   <link href="content/css/bootstrap.css" rel="stylesheet">
   <link href="content/css/main.css" rel="stylesheet">
+
+  <!-- JS -->
+  <script src="content/vendor/jquery/jquery.js"></script>
+  <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -409,11 +415,7 @@
                   <img src="content/img/task.svg" class="img-fluid perso_img" alt="Responsive image">
 
                 </div>
-              </div>
-
-
-              
-
+              </div>      
 
               <!-- Area Card -->
               <!-- Acteurs -->
@@ -424,7 +426,7 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <form method="post" action="content/php/test.php" class="user" id="formActeur">
+                  <form method="post" action="content/php/atelier1a/ajout.php" class="user" id="formActeur">
                   <fieldset>
                     <div class="form-group">
                       <input type="text" class="perso_form shadow-none form-control form-control-user" id="nom_acteur" name="nom" placeholder="Nom" required>
@@ -448,21 +450,33 @@
                     </div>
                   </fieldset>
                   </form>
-
+                  </br>
                   <!--tableau-->
-                  <div class="table-responsive perso_tableau">
-                    <table class="table table-bordered perso_border" id="dataTable" width="100%" cellspacing="0">
+                  <div class="table-responsive">
+                    <input type="text" id="rechercher_input" placeholder="Rechercher">
+                    <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th id="th_id">ID</th>
-                          <th id="th_nom">Nom</th>
-                          <th id="th_prenom">Prénom</th>
-                          <th id="th_poste">Poste</th>
-                          <!-- <th class="perso_border"></th> -->
+                          <th id="id">ID</th>
+                          <th id="nom">Nom</th>
+                          <th id="prenom">Prénom</th>
+                          <th id="poste">Poste</th>
                         </tr>
                       </thead>
-                  
                       <tbody>
+                      <?php
+                      while($row = mysqli_fetch_array($result))
+                      {
+                        echo '
+                        <tr>
+                        <td>'.$row["id_personne"].'</td>
+                        <td>'.$row["nom"].'</td>
+                        <td>'.$row["prenom"].'</td>
+                        <td>'.$row["poste"].'</td>
+                        </tr>
+                        ';
+                      }
+                      ?>
                       </tbody>
                     </table>
                   </div>
@@ -1266,7 +1280,7 @@
           </div>          
         </div>
       </div>
-    </div>
+      </div>
 
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1288,7 +1302,6 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="content/vendor/jquery/jquery.js"></script>
   <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
   <!-- Core plugin JavaScript-->
@@ -1297,20 +1310,13 @@
   <!-- Custom scripts for all pages-->
   <script src="content/js/bootstrap.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="content/vendor/datatables/jquery.dataTables.js"></script>
-  <script src="content/vendor/datatables/dataTables.bootstrap4.js"></script>
-  
-  <!-- Page level custom scripts -->
-  <script src="content/js/modules/tableau/tableau-atelier1a.js"></script>
-
   <!-- Our JS -->
   <script src="content/js/modules/dark_mode.js"></script>
   <script src="content/js/modules/top_bar.js"></script>
   <script src="content/js/modules/side_bar.js"></script>
-  <script src="content/js/modules/indexedDB.js"></script>
-  <script src="content/js/modules/tableau_modification.js"></script>
-  <script src="atelier1a.js"></script>
+  <script src="content/js/modules/realtime.js"></script>
+  <script src="content/js/atelier/atelier1a.js"></script>
+  <script src="content/js/modules/tableau.js"></script>
   
 </body>
 
