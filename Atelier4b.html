@@ -7,7 +7,7 @@
   <meta name="description" content="RiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>RiskManager | Gestion des comptes</title>
+  <title>RiskManager | Atelier 4.b</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -335,125 +335,170 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
+          <!-- Page Heading
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+          </div> -->
 
           <!-- Content Row -->
-
           <div class="row">
 
             <!-- Area Card -->
-            <!-- Objectif -->
-            <div class="col-xl-12 col-lg-12">
+            <div class="col-xl col-lg">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
-                <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0">Objectif</h6>
+                  
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <p> Le but de ce premier atelier est de définir le cadre de l’étude, son périmètre métier et technique, les
-                    événements
-                    redoutés associés et le socle de sécurité. Cet atelier est un prérequis à la réalisation d’une appréciation des
-                    risques.
-                    La période à considérer pour cet atelier est celle du cycle stratégique.</p>
+                  <p>Le but de l'atelier 4 est de construire des scénarios techniques reprenant les modes opératoires susceptibles d'être utilisés par les sources de risque pour réaliser les scénarios stratégiues.
+                    Cet atelier adopte ue démarche similaire à celle de l'atelier précédent mais se concentre sur les biens supports critiques. Vous évaluez ensuite le niveau de vraisemblance des scénarios opérationnels obtenus.
+                  </p>
                   <!--text-->
                 </div>
               </div>
             </div>
+          </div>
 
+          <div class="row">
 
             <!-- Area Card -->
+            <div class="col-xl col-lg">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0">Évaluation de la vraisemblance</h6>
+          
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <!--text-->
+                  <div class="table-responsive">
+                    <table class="table table-bordered perso_border" id="dataTable" width="100%" cellspacing="0">
+                      <thead>
+                        <tr>
+                          <th>N° Risque</th>
+                          <th>Chemin d'attaques stratégique</th>
+                          <th>Scénario opérationnel</th>
+                          <th>Vraisemblance</th>
+                          <th class="perso_border"></th>
+                        </tr>
+                      </thead>
+                        
+                      <tbody>
+                        <tr>
+                          <td>R1</td>
+                          <td>Portant directement sur le système d'information de la R&D</td>
+                          <td></td>
+                          <td>Vraisemblable</td>
+                          <td class="perso_border">
+                            <div class="modification">
+                              <i data-toggle="modal" data-target="#ajout_vraisemblance" class="crayon fas fa-pen"></i>
+                            </div>
+                          </td>
+                            
+                        </tr>
+                        <tr>
+                          <td>R2</td>
+                          <td>Sur le système d'information du laboratoire (P3) qui détient une partie des travaux</td>
+                          <td></td>
+                          <td>Peu vraisemblable</td>
+                          <td class="perso_border">
+                            <div class="modification">
+                              <i data-toggle="modal" data-target="#ajout_vraisemblance" class="crayon fas fa-pen"></i>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>R3</td>
+                          <td>En passant par le prestataire informatique F3</td>
+                          <td></td>
+                          <td>Peu vraisemblable</td>
+                          <td class="perso_border">
+                            <div class="modification">
+                              <i data-toggle="modal" data-target="#ajout_vraisemblance" class="crayon fas fa-pen"></i>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>R4</td>
+                          <td>Portant directement sur le système d'information de la R&D</td>
+                          <td></td>
+                          <td>Invraisemblable</td>
+                          <td class="perso_border">
+                            <div class="modification">
+                              <i data-toggle="modal" data-target="#ajout_vraisemblance" class="crayon fas fa-pen"></i>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>R5</td>
+                          <td>Sur le système d'information du laboratoire (P3) qui détient une partie des travaux</td>
+                          <td></td>
+                          <td>Quasi-certain</td>
+                          <td class="perso_border">
+                            <div class="modification">
+                              <i data-toggle="modal" data-target="#ajout_vraisemblance" class="crayon fas fa-pen"></i>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>R6</td>
+                          <td>En passant par le prestataire informatique F3</td>
+                          <td></td>
+                          <td>Quasi-certain</td>
+                          <td class="perso_border">
+                            <div class="modification">
+                              <i data-toggle="modal" data-target="#ajout_vraisemblance" class="crayon fas fa-pen"></i>
+                            </div>
+                          </td>
+                        </tr>
+                        
+
+                      </tbody>
+                    </table>  
+                  </div>    
+                  <!-- bouton Ajouter la vraisemblance -->
+                  <div class="text-center">
+                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_vraisemblance">Ajouter une nouvelle ligne</button>
+                  </div>
+
+
+
+
+
+                </div>
+              </div>
+            </div>
             <div class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Compte utilisateur</h6>
+                  <h6 class="m-0">Schéma des scénarios opérationnels</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table table-bordered perso_border" id="dataTable2" width="100%" cellspacing="0">
-                      <thead>
-                        <tr>
-                          <th>ID</th>
-                          <th>Nom</th>
-                          <th>Prénom</th>
-                          <th>Poste</th>
-                          <th>E-mail</th>
-                          <th>Type de ccompte</th>
-                          <th class="perso_border"></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>#110</td>
-                          <td>XXXX</td>
-                          <td>XXXX</td>
-                          <td>Ingénieur ...</td>
-                          <td>xxx@xxx.com</td>
-                          <td>Administrateur logiciel</td>
-                          <td class="perso_border">
-                            <!-- bouton Gérer les comptes -->
-                            <div>
-                              <button type="button" class="btn perso_btn shadow-none">Gérer les comptes</button>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Organisation idéologique</td>
-                          <td>Terroriste</td>
-                          <td>Al-Qaida</td>
-                          <td>Voler des informations</td>
-                          <td>2</td>
-                          <td>3</td>
-                          <td class="perso_border">
-                            <!-- bouton Gérer les comptes -->
-                            <div>
-                              <button type="button" class="btn perso_btn shadow-none">Gérer les comptes</button>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Individu isolé</td>
-                          <td>Amateur</td>
-                          <td>Hackeur</td>
-                          <td>Divulguer des informations sur les tests animaliers</td>
-                          <td>2</td>
-                          <td>2</td>
-                          <td class="perso_border">
-                            <!-- bouton Gérer les comptes -->
-                            <div>
-                              <button type="button" class="btn perso_btn shadow-none">Gérer les comptes</button>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Organisation structurée</td>
-                          <td>Concurrent</td>
-                          <td>Amazon.com</td>
-                          <td>Altérer la compositionde vaccins à des fins bioterroristes</td>
-                          <td>1</td>
-                          <td>2</td>
-                          <td class="perso_border">
-                            <!-- bouton Gérer les comptes -->
-                            <div>
-                              <button type="button" class="btn perso_btn shadow-none">Gérer les comptes</button>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inpFile" accept="image/gif, image/jpeg, image/png">
+                    <label class="custom-file-label" for="image_scenario">Choisir une image</label>
                   </div>
 
-                  <!-- bouton Ajouter un nouvel utilisateur -->
-                  <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_compte">Ajouter un nouvel utilisateur</button>
+                  <div class="image-preview" id="imagePreview">
+                    <img src="" alt="Image Preview" class="image-preview__image">
+                    <span class="image-preview__default-text">Image Preview</span>
                   </div>
+
                 </div>
               </div>
             </div>
 
-
+           
           </div>
+
+
+
       </div>
       <!-- End of Main Content -->
 
@@ -479,201 +524,83 @@
   </a>
 
 <!-- -------------------------------------------------------------------------------------------------------------- 
------------------------------------------ modal ajout de compte ---------------------------------------------------
---------------------------------------------------------------------------------------------------------------  -->
-<div class="modal fade" id="ajout_compte" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ajout de compte utilisateur</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body perso_modal_body">
-        <form class="user" id="formActeur">
-          <div class="form-group">
-            <input type="text" class="perso_form shadow-none form-control form-control-user" id="exampleInputNom"
-              placeholder="Nom" required>
+----------------------------------------- modal ajout de ligne ----------------------------------------------------
+--------------------------------------------------------------------------------------------------------------- -->
+<div class="modal fade" id="ajout_vraisemblance" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Ajout de la vraisemblance</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body perso_modal_body">
+      <form class="user" id="formvraisemblance">
+        <div class="row">
+          <div class="form-group centre-vraisemblance col-12">
+            <div>
+              <input type="radio" id="Invraisemblable"
+               name="Vraisemblance" value="Invraisemblable">
+              <label for="Invraisemblable">Invraisemblable</label>
+            </div>
+            <div class="texte-vraisemblance">La source de risque a très peu de chances d'atteindre son objectif visé en 
+              empruntant l'un des modes opératoires envisagés.<br>
+              La vraisemblance du scénario de risque est très faible
+            </div>
+            <div>
+              <input type="radio" id="Peu vraisemblable"
+               name="Vraisemblance" value="Peu Vraisemblable">
+              <label for="Peu vraisemblable">Peu vraisemblable</label>
+            </div>
+            <div class="texte-vraisemblance">La source de risque a relativement peu de chances d'atteidre son objectif en
+              empruntant l'un des modes opératoires envisagé.<br>
+              La vraisemblance du scénario de risque est faible.
+            </div>
+            <div>
+              <input type="radio" id="Vraisemblable"
+               name="Vraisemblance" value="Vrasemblable">
+              <label for="Vraisemblable">Vraisemblable</label>
+            </div>
+            <div class="texte-vraisemblance">
+              La source de rsique est susceptible d'atteidre son objectif en empruntant
+              l'un des modes opératoires envisagés. <br>
+              La vraisemblance du scénario de risque est significative.
+            </div>
+            <div>
+              <input type="radio" id="Très vraisemblable"
+               name="Vraisemblance" value="Très vraisemblable">
+              <label for="Très vraisemblable">Très vraisemblable</label>
+            </div>
+            <div class="texte-vraisemblance">
+              La source de risque va probablement atteindre son objectif en empruntant
+              l'un des modes opératoires envisagés.<br>
+              La vraisemblance du scénario de risque est élevée.
+            </div>
+            <div>
+              <input type="radio" id="Quasi certain"
+               name="Vraisemblance" value="Quasi certain">
+              <label for="Quasi certain">Quasi certain</label>
+            </div>
+            <div class="texte-vraisemblance">
+              La source de risque va très certainement atteindre son objectif en empruntant
+              l'un des modes opératoires envisagés.<br>
+              La vraisemblance du scénario de risque est très élevée
+            </div>
+            
           </div>
-          <div class="form-group">
-            <input type="text" class="perso_form shadow-none form-control form-control-user" id="exampleInputPrénom"
-              placeholder="Prénom" required>
-          </div>
-
-          <div class="form-group">
-            <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="Postes" name="Poste" placeholder="Poste" required>
-            <datalist id="Postes">
-              <option value="Internet Explorer">
-              <option value="Firefox">
-              <option value="Chrome">
-              <option value="Opera">
-              <option value="Safari">
-            </datalist>
-          </div>
-          <div class="form-group">
-            <input type="email" class="perso_form shadow-none form-control form-control-user" id="exampleInputEmail"
-              placeholder="E-mail" required>
-          </div>
-          <div class="form-group">
-            <label for="select_type_compte_pop">Type de compte</label>
-            <select class="form-control" id="select_type_compte_pop">
-              <option value="" selected>...</option>
-              <option value="1">Admin Logiciel</option>
-              <option value="2">Admin Projet</option>
-              <option value="3">Utilisateur</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="select_responsabilite_pop">Responsabilité</label>
-            <select class="form-control" id="select_responsabilite_pop">
-              <option value="" selected>...</option>
-              <option value="1">Administrateur de l'atelier</option>
-              <option value="2">Contributeur</option>
-              <option value="3">Décideur</option>
-            </select>
-          </div>
-        </form>
-        <div class="table-responsive">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th class="perso_border" scope="col"></th>
-                <th class="text-center" scope="col">Écriture</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Activité 1.a</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck1">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck1">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 1.b</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck2">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck2">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 1.c</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck3">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck3">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 1.d</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck4">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck4">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 2.a</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck5">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck5">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 2.b</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck6">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck6">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 3.a</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck7">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck7">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 3.b</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck8">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck8">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 3.c</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck9">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck9">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 4.a</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck10">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck10">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 4.b</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck11">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck11">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 5.b</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck12">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck12">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 5.c</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck13">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck13">.</label>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
       <!-- bouton Ajouter -->
       <div class="modal-footer perso_middle_modal_footer">
         <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
       </div>
+    </form>
+     
     </div>
-  </div>
 </div>
-
-
+</div>
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -706,15 +633,14 @@
   <!-- Page level plugins -->
   <script src="content/vendor/datatables/jquery.dataTables.js"></script>
   <script src="content/vendor/datatables/dataTables.bootstrap4.js"></script>
-  
-  <!-- Page level custom scripts -->
-  <script src="content/js/modules/tableau/tableau-atelier1a.js"></script>
 
-  <!-- Popup js -->
-  <script src="content/js/modules/popup/popup.js"></script>
+  <!-- Page level custom scripts -->
+  <script src="content/js/modules/tableau/tableau-atelier3a.js"></script>
 
   <!-- JS pour Dark Mode -->
   <script src="content/js/modules/dark_mode.js"></script>
+  <!-- js pour browse -->
+  <script src="content/js/modules/browse_img.js"></script>
 </body>
 
 </html>

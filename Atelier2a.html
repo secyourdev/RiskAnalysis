@@ -10,7 +10,7 @@
   <title>RiskManager | Atelier 2.a</title>
 
   <!-- Fonts-->
-  <link href="content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
@@ -371,7 +371,27 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Sources de risque</h6>
+                  <h6 class="m-0">Objectif</h6>
+                  
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <p> Le but de l'atelier 2 est d'identifier les sources de risques (SR) et leurs objectifs visés (OV), en lien avec le contexte particulier de l'étude. 
+                    L'atelier vise à répondre à la question suivante : qui ou quoi pourrait porter atteint aux missions et valeurs métier identifiées dans l'atelier 1, et dans quels buts ?</p>
+                  <!--text-->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <!-- Area Card -->
+            <div class="col-xl col-lg">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0">Sources de risque</h6>
                   
 
                   <!-- pour avoir le menu 3-points -->
@@ -403,7 +423,7 @@
                           <th>Description source de risque</th>
                           <th>Objectifs visés</th>
                           <th>Description de l'objectif</th>
-                          <th class='perso_border'></th>
+                          <th class="perso_border"></th>
                         </tr>
                       </thead>
                       
@@ -416,16 +436,12 @@
                           <td>Saboter la prochaine campagne nationale de vaccination en perturbant la
                             production ou la distribution des vaccins, pour générer un choc
                             psychologique sur la population et discréditer les pouvoirs publics</td>
-                            <td class="modification perso_border">
-                                <div class="col-1 centreVerticalement">
-                                  <p>
-                                    <img class="crayon" src ="content/img/crayon.svg"/>
-                                  </p>
-                                </div>
-                                <div class="col-1 centreVerticalement">
-                                  <p><img class="poubelle" src ="content/img/poubelle.svg"/></p>
-                                </div>
-                            </td>  
+                          <td class="perso_border">
+                            <div class="modification">
+                              <i data-toggle="modal" data-target="#ajout_ligne_sr" class="crayon fas fa-pen"></i>
+                              <i class="poubelle fas fa-trash-alt"></i>
+                            </div>
+                          </td>  
                         </tr>
 
                         <tr>
@@ -435,15 +451,12 @@
                           <td>Voler des informations</td>
                           <td>Voler des informations en espionnant les travaux de R&D en vue d'obtenir 
                             un avantage concurrentiel</td>
-                          <td class="modification perso_border">
-                            <div class="col-1 centreVerticalement">
-                              <p>
-                                <img class="crayon" src ="content/img/crayon.svg"/>
-                              </p>
+                          <td class="perso_border">
+                            <div class="modification">
+                              <i data-toggle="modal" data-target="#ajout_ligne_sr" class="crayon fas fa-pen"></i>
+                              <i class="poubelle fas fa-trash-alt"></i>
                             </div>
-                            <div class="col-1 centreVerticalement">
-                              <p><img class="poubelle" src ="content/img/poubelle.svg"/></p>
-                            </div>
+                          </td> 
                           </td>  
                         </tr>
 
@@ -455,15 +468,11 @@
                           <td>Divulguer au grand public des informations sur la façon dont les vaccins 
                             sont conçus en  collectant des photos et vidéos des tests animaliers afin 
                             de rallier l'opinion publique à sa cause</td>
-                          <td class="modification perso_border">
-                                <div class="col-1 centreVerticalement">
-                                  <p>
-                                    <img class="crayon" src ="content/img/crayon.svg"/>
-                                  </p>
-                                </div>
-                                <div class="col-1 centreVerticalement">
-                                  <p><img class="poubelle" src ="content/img/poubelle.svg"/></p>
-                                </div>
+                          <td class="perso_border">
+                            <div class="modification">
+                              <i data-toggle="modal" data-target="#ajout_ligne_sr" class="crayon fas fa-pen"></i>
+                              <i class="poubelle fas fa-trash-alt"></i>
+                            </div>
                           </td>  
                         </tr>
                         <tr>
@@ -473,19 +482,20 @@
                           <td>Altérer la compositionde vaccins à des fins bioterroristes</td>
                           <td>Altérer la composition de vaccins distribués lors d'un campagne nationale 
                             de vaccination à des fins de bioterrorisme</td>
-                          <td class="modification perso_border">
-                              <div class="col-1 centreVerticalement">
-                                <p>
-                                  <img class="crayon" src ="content/img/crayon.svg"/>
-                                </p>
-                              </div>
-                              <div class="col-1 centreVerticalement">
-                                <p><img class="poubelle" src ="content/img/poubelle.svg"/></p>
-                              </div>
-                          </td>  
+                          <td class="perso_border">
+                            <div class="modification">
+                              <i data-toggle="modal" data-target="#ajout_ligne_sr" class="crayon fas fa-pen"></i>
+                              <i class="poubelle fas fa-trash-alt"></i>
+                            </div>
+                          </td>   
                         </tr>
+                      </tbody>    
                     </table>  
-                  </div>    
+                  </div> 
+                  <!-- bouton Ajouter une nouvelle ligne -->
+                  <div class="text-center">
+                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_sr">Ajouter une nouvelle ligne</button>
+                  </div>   
                 </div>
               </div>
             </div>          
@@ -512,6 +522,77 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
+
+<!-- -------------------------------------------------------------------------------------------------------------- 
+----------------------------------------- modal ajout de ligne ----------------------------------------------------
+--------------------------------------------------------------------------------------------------------------- -->
+<div class="modal fade" id="ajout_ligne_sr" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Ajout d'une source de risque</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body perso_modal_body">
+      <form class="user" id="formsr">
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group form-colonne">
+              <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Type d'attaquant" name="Type d'attaquant" placeholder="Type d'attaquant" required>
+              <datalist id="Type d'attaquant">
+                <option value="Organisation structurée">
+                <option value="Organisation idéologique">
+                <option value="Individu isolé">
+              </datalist>
+            </div>
+          
+            <div class="form-group form-colonne">
+              <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Profil d'attaquant" name="Profil d'attaquant" placeholder="Profil d'attaquant" required>
+              <datalist id="Profil d'attaquant">
+                <option value="Étatique">
+                <option value="Terroriste">
+                <option value="Amateur">
+              </datalist>
+            </div>
+          </div>
+
+          <div class="form-group col-6">
+            <label for="Description de l'attaquant">Description de l'attaquant</label>
+            <textarea class="form-control perso_text_area" id="Description de l'attaquant" rows="5"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-12">
+            <input type="search" class="perso_form shadow-none form-control form-control-user" id="exampleInputPrénom"
+              placeholder="Objectif visé" required>
+          </div>
+
+          <div class="form-group col-12">
+            <label for="Description de l'objectif visé">Description de l'objectif visé</label>
+            <textarea class="form-control perso_text_area" id="Description de l'objectif visé" rows="3"></textarea>
+          </div>
+        </div>
+        <!-- bouton Ajouter -->
+        <div class="modal-footer perso_middle_modal_footer">
+          <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
+        </div>
+      </form>
+    </div>  
+    
+  
+</div>
+</div>
+
+
+
+
+
+
+
+
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -532,11 +613,11 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="content/vendor/jquery/jquery.min.js"></script>
-  <script src="content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="content/vendor/jquery/jquery.js"></script>
+  <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="content/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="content/vendor/jquery-easing/jquery.easing.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="content/js/bootstrap.js"></script>

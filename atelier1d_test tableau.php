@@ -1,16 +1,24 @@
-<!DOCTYPE html>
-<html lang="fr">
+<?php
+$connect = mysqli_connect("localhost", "root", "", "testing");
+$query = "SELECT * FROM tbl_user ORDER BY id DESC";
+$result = mysqli_query($connect, $query);
+?>
+<html>  
+ <head>  
+    <title>tableau</title>
+    <!-- Bootstrap core JavaScript-->
+    <script src="content/vendor/jquery/jquery.js"></script>
+    <script src="content\js\modules\jquery-tabledit\jquery.tabledit.js"></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="RiskManager">
+    <meta name="author" content="SecYourDev">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="RiskManager">
-  <meta name="author" content="SecYourDev">
-
-  <title>RiskManager | Gestion des comptes</title>
+  <title>RiskManager | Atelier 1.d</title>
 
   <!-- Fonts-->
-  <link href="content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
@@ -339,7 +347,6 @@
           <!-- Content Row -->
 
           <div class="row">
-
             <!-- Area Card -->
             <!-- Objectif -->
             <div class="col-xl-12 col-lg-12">
@@ -362,97 +369,71 @@
 
 
             <!-- Area Card -->
+            <!-- Socle de sécurité -->
             <div class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Compte utilisateur</h6>
+                  <h6 class="m-0">Socle de sécurité</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="table-responsive">
-                    <table class="table table-bordered perso_border" id="dataTable2" width="100%" cellspacing="0">
-                      <thead>
-                        <tr>
-                          <th>ID</th>
-                          <th>Nom</th>
-                          <th>Prénom</th>
-                          <th>Poste</th>
-                          <th>E-mail</th>
-                          <th>Type de ccompte</th>
-                          <th class="perso_border"></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>#110</td>
-                          <td>XXXX</td>
-                          <td>XXXX</td>
-                          <td>Ingénieur ...</td>
-                          <td>xxx@xxx.com</td>
-                          <td>Administrateur logiciel</td>
-                          <td class="perso_border">
-                            <!-- bouton Gérer les comptes -->
-                            <div>
-                              <button type="button" class="btn perso_btn shadow-none">Gérer les comptes</button>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Organisation idéologique</td>
-                          <td>Terroriste</td>
-                          <td>Al-Qaida</td>
-                          <td>Voler des informations</td>
-                          <td>2</td>
-                          <td>3</td>
-                          <td class="perso_border">
-                            <!-- bouton Gérer les comptes -->
-                            <div>
-                              <button type="button" class="btn perso_btn shadow-none">Gérer les comptes</button>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Individu isolé</td>
-                          <td>Amateur</td>
-                          <td>Hackeur</td>
-                          <td>Divulguer des informations sur les tests animaliers</td>
-                          <td>2</td>
-                          <td>2</td>
-                          <td class="perso_border">
-                            <!-- bouton Gérer les comptes -->
-                            <div>
-                              <button type="button" class="btn perso_btn shadow-none">Gérer les comptes</button>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Organisation structurée</td>
-                          <td>Concurrent</td>
-                          <td>Amazon.com</td>
-                          <td>Altérer la compositionde vaccins à des fins bioterroristes</td>
-                          <td>1</td>
-                          <td>2</td>
-                          <td class="perso_border">
-                            <!-- bouton Gérer les comptes -->
-                            <div>
-                              <button type="button" class="btn perso_btn shadow-none">Gérer les comptes</button>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                    
+                  <input type="text" id="myInput" placeholder="Search for names..">
 
-                  <!-- bouton Ajouter un nouvel utilisateur -->
-                  <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_compte">Ajouter un nouvel utilisateur</button>
-                  </div>
+                  <table id="editable_table" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th style="max-width" id="id">ID</th>
+                        <th id="firtname">First Name</th>
+                        <th id="lastname">Last Name</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      while($row = mysqli_fetch_array($result))
+                      {
+                            echo '
+                            <tr>
+                            <td>'.$row["id"].'</td>
+                            <td>'.$row["first_name"].'</td>
+                            <td>'.$row["last_name"].'</td>
+                            </tr>
+                            ';
+                        }
+                        ?>
+                    </tbody>
+                  </table>
+                  <!-- JS pour table -->
+                  <script src="table.js"></script>
+                  <script>  
+                    $(document).ready(function(){  
+                      $('#editable_table').Tabledit({
+                        url:'action.php',
+                        columns:{
+                          identifier:[0, "id"],
+                          editable:[[1, 'first_name'], [2, 'last_name']]
+                        },
+                        restoreButton:false,
+                        onSuccess:function(data, textStatus, jqXHR)
+                        {
+                          if(data.action == 'delete')
+                          {
+                            $('#'+data.id).remove();
+                          }
+                        }
+                      });
+                      
+                    });  
+                  </script>
+
                 </div>
               </div>
+
             </div>
 
-
+                  </div>
           </div>
       </div>
       <!-- End of Main Content -->
@@ -478,200 +459,8 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-<!-- -------------------------------------------------------------------------------------------------------------- 
------------------------------------------ modal ajout de compte ---------------------------------------------------
---------------------------------------------------------------------------------------------------------------  -->
-<div class="modal fade" id="ajout_compte" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ajout de compte utilisateur</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body perso_modal_body">
-        <form class="user" id="formActeur">
-          <div class="form-group">
-            <input type="text" class="perso_form shadow-none form-control form-control-user" id="exampleInputNom"
-              placeholder="Nom" required>
-          </div>
-          <div class="form-group">
-            <input type="text" class="perso_form shadow-none form-control form-control-user" id="exampleInputPrénom"
-              placeholder="Prénom" required>
-          </div>
 
-          <div class="form-group">
-            <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="Postes" name="Poste" placeholder="Poste" required>
-            <datalist id="Postes">
-              <option value="Internet Explorer">
-              <option value="Firefox">
-              <option value="Chrome">
-              <option value="Opera">
-              <option value="Safari">
-            </datalist>
-          </div>
-          <div class="form-group">
-            <input type="email" class="perso_form shadow-none form-control form-control-user" id="exampleInputEmail"
-              placeholder="E-mail" required>
-          </div>
-          <div class="form-group">
-            <label for="select_type_compte_pop">Type de compte</label>
-            <select class="form-control" id="select_type_compte_pop">
-              <option value="" selected>...</option>
-              <option value="1">Admin Logiciel</option>
-              <option value="2">Admin Projet</option>
-              <option value="3">Utilisateur</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="select_responsabilite_pop">Responsabilité</label>
-            <select class="form-control" id="select_responsabilite_pop">
-              <option value="" selected>...</option>
-              <option value="1">Administrateur de l'atelier</option>
-              <option value="2">Contributeur</option>
-              <option value="3">Décideur</option>
-            </select>
-          </div>
-        </form>
-        <div class="table-responsive">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th class="perso_border" scope="col"></th>
-                <th class="text-center" scope="col">Écriture</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Activité 1.a</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck1">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck1">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 1.b</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck2">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck2">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 1.c</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck3">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck3">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 1.d</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck4">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck4">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 2.a</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck5">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck5">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 2.b</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck6">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck6">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 3.a</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck7">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck7">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 3.b</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck8">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck8">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 3.c</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck9">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck9">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 4.a</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck10">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck10">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 4.b</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck11">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck11">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 5.b</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck12">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck12">.</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Activité 5.c</th>
-                <td>
-                  <div class="custom-control custom-checkbox perso_RACI">
-                    <input type="checkbox" class="custom-control-input" id="DroitsCheck13">
-                    <label class="custom-control-label perso_RACI_control_label" for="DroitsCheck13">.</label>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <!-- bouton Ajouter -->
-      <div class="modal-footer perso_middle_modal_footer">
-        <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 
   <!-- Logout Modal-->
@@ -693,28 +482,22 @@
     </div>
   </div>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="content/vendor/jquery/jquery.min.js"></script>
-  <script src="content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- JS pour bootstrap -->
+  <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="content/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="content/vendor/jquery-easing/jquery.easing.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="content/js/bootstrap.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="content/vendor/datatables/jquery.dataTables.js"></script>
-  <script src="content/vendor/datatables/dataTables.bootstrap4.js"></script>
-  
-  <!-- Page level custom scripts -->
-  <script src="content/js/modules/tableau/tableau-atelier1a.js"></script>
-
-  <!-- Popup js -->
-  <script src="content/js/modules/popup/popup.js"></script>
+  <!-- JS pour browse -->
+<!--   <script src="content/js/modules/browse.js"></script> -->
 
   <!-- JS pour Dark Mode -->
   <script src="content/js/modules/dark_mode.js"></script>
+  
 </body>
 
 </html>
