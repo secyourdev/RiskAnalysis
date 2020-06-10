@@ -5,6 +5,9 @@ var cadre_temporel = document.getElementById('cadre_temporel');
 var nom_acteur = document.getElementById('nom_acteur');
 var prenom_acteur = document.getElementById('prenom_acteur');
 var poste_acteur = document.getElementById('poste_acteur');
+var modify_nom_acteur = document.getElementById('input_nom_acteur');
+var modify_prenom_acteur = document.getElementById('input_prenom_acteur');
+var modify_poste_acteur = document.getElementById('input_poste_acteur');
 
 var bool_nom_etude = false
 var bool_objectif_atteindre = false
@@ -12,6 +15,7 @@ var bool_cadre_temporel = false
 var bool_nom_acteur = false
 var bool_prenom_acteur = false
 var bool_poste_acteur = false
+
 
 var regex_nom_etude = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
 var regex_objectif_atteindre = /^[a-zA-Z0-9éèàêâùïüëç\s-.]{1,1000}$/
@@ -48,6 +52,7 @@ cadre_temporel.addEventListener('keyup',function(event){
 
 nom_acteur.addEventListener('keyup',function(event){
     verify_input(nom_acteur.value,regex_nom_acteur,bool_nom_acteur,nom_acteur)
+    console.log(nom_acteur.value)
 })
 
 prenom_acteur.addEventListener('keyup',function(event){
@@ -58,13 +63,28 @@ poste_acteur.addEventListener('keyup',function(event){
     verify_input(poste_acteur.value,regex_poste_acteur,bool_poste_acteur,poste_acteur)
 })
 
+modify_nom_acteur.addEventListener('keyup',function(event){
+    verify_input(modify_nom_acteur.value,regex_nom_acteur,bool_nom_acteur,modify_nom_acteur)
+})
+
+modify_prenom_acteur.addEventListener('keyup',function(event){
+    verify_input(modify_prenom_acteur.value,regex_prenom_acteur,bool_prenom_acteur,modify_prenom_acteur)
+})
+
+modify_poste_acteur.addEventListener('keyup',function(event){
+    verify_input(modify_poste_acteur.value,regex_poste_acteur,bool_poste_acteur,modify_poste_acteur)
+})
+
 
 /*------------------------------- FONCTIONS --------------------------------*/
 function verify_input(value,regex,bool,input){
-    console.log(regex.test(value))
     if(regex.test(value)){
         input.style.borderBottom="2px solid #4AD991";
         bool = true;
+    }
+    else if(value.length==0){
+        input.style.borderBottom="1px solid #64789A";
+        bool = false;
     }
     else{
         input.style.borderBottom="2px solid #FF6565";
@@ -73,10 +93,13 @@ function verify_input(value,regex,bool,input){
 }
 
 function verify_textarea(value,regex,bool,input){
-    console.log(regex.test(value))
     if(regex.test(value)){
         input.style.border="2px solid #4AD991";
         bool = true;
+    }
+    else if(value.length==0){
+        input.style.border="1px solid #64789A";
+        bool = false;
     }
     else{
         input.style.border="2px solid #FF6565";

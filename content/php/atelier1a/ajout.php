@@ -1,5 +1,5 @@
 <?php
-header('Location: ../../atelier-1a#acteurs');
+header('Location: ../../../atelier-1a#acteurs');
 
 if (isset($_POST['valider'])){
   //Connexion à la base de donnee

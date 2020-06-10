@@ -53,10 +53,6 @@ html, body {
     --reverse-font-color-fainted-3:#eaf1eb4d;
 }
 
-
-
-
-
 body {
     background-color: var(--bg-color)!important;
     color: var(--font-color);
@@ -184,6 +180,15 @@ h6{
 .sidebar .nav-item .collapse .collapse-inner .collapse-item{
     color: var(--font-color)!important;
 }
+
+.collapse-item{
+    margin: 0 0rem !important;
+}
+
+.collapse-item:hover{
+    background-color: var(--card-divider) !important;
+}
+
 .sidebar .nav-item .collapse .collapse-inner {
     box-shadow: 1px 1px 3px 1px var(--shadow-color)!important;
 }
@@ -726,11 +731,25 @@ h6{
     font-style: normal!important;
 }
 
+.number_sub_activity{
+    fill:var(--button-color);
+}
+
+.number_sub_activity_text{
+    font-style: normal!important;
+    color : #fff
+}
+
 @media (min-width: 768px){
     .nom_atelier{
         font-size: 0.7em!important;
     }
 }
+
+.nom_atelier2{
+    font-size: 0.8em!important;
+}
+
 
 /*------------------------------------------------------------------------------ */
 /*----------------------------------- Top Bar ---------------------------------- */
@@ -859,4 +878,32 @@ h6{
 
 .popup-tableau{
     padding:1rem;
+}
+
+
+/*Back-end*/
+.suppression_donnee{
+    text-align: center;
+}
+
+.form-control:disabled, .form-control[readonly] {
+    background-color: var(--card-divider) ;
+    color: var(--top-bar-color);
+}
+
+/*Table*/
+.perso_toolbar{
+    display:contents;
+}
+
+#rechercher_input{
+    margin-bottom: 5px;
+    border-radius: 5px;
+    outline: none;
+    box-shadow: none;
+    border: solid 1px var(--placeholder-focus);
+    background-color: var(--card-header-color);
+    color: var(--button-color);
+    font-size: 0.9em;
+    padding: 0.15rem 0.475rem!important;
 }
