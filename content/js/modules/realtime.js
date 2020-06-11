@@ -8,6 +8,8 @@ var poste_acteur = document.getElementById('poste_acteur');
 var modify_nom_acteur = document.getElementById('input_nom_acteur');
 var modify_prenom_acteur = document.getElementById('input_prenom_acteur');
 var modify_poste_acteur = document.getElementById('input_poste_acteur');
+var table = document.getElementById('editable_table')
+var button = document.getElementsByClassName('tabledit-edit-button')
 
 var bool_nom_etude = false
 var bool_objectif_atteindre = false
@@ -20,9 +22,18 @@ var bool_poste_acteur = false
 var regex_nom_etude = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
 var regex_objectif_atteindre = /^[a-zA-Z0-9éèàêâùïüëç\s-.]{1,1000}$/
 var regex_cadre_temporel = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
-var regex_nom_acteur = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
-var regex_prenom_acteur = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
+var regex_nom_acteur = /^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/
+var regex_prenom_acteur = /^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/
 var regex_poste_acteur = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
+
+var table_cells_length = table.rows[0].cells.length; 
+/*------------------ AJOUT DE LA VERIFICATION DES TABLEAUX ------------------*/
+sleep(100).then(() => {
+    for(let i=0;i<button.length;i++){
+        j=i+1;
+        button[i].setAttribute('onclick','tableau_verification('+j+')')
+    }
+});
 
 /*------------------------- CHARGEMENT DES COOKIES ---------------------------*/
 
@@ -105,4 +116,28 @@ function verify_textarea(value,regex,bool,input){
         input.style.border="2px solid #FF6565";
         bool = false;
     }
+    return bool
+}
+
+function tableau_verification(value_test){
+    var table = document.getElementById('editable_table')
+    var table_cells_length = table.rows[0].cells.length; 
+    var bool =new Array()
+    var bool_final=true;
+    var regex = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
+        for(let j=1;j<table_cells_length-1;j++){
+            bool[j] = verify_textarea(table.rows[value_test].cells[j].children[1].value,regex,bool,table.rows[value_test].cells[j].children[1])
+            table.rows[value_test].cells[j].children[1].addEventListener('keyup',function(event){
+                bool[j]= verify_textarea(table.rows[value_test].cells[j].children[1].value,regex,bool,table.rows[value_test].cells[j].children[1])
+            })
+        }
+        for(let i=1;i<table_cells_length-1;i++){
+            bool_final = bool_final&&bool[i]
+
+        }
+    return bool_final
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }

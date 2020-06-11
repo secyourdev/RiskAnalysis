@@ -35,31 +35,30 @@
           <div class="text-center">
             <h1 class="h4 text-gray-900 mb-5 perso_risk_manager">RISK MANAGER</h1>
           </div>
-          <form class="user">
-
+          <form method="post" action="content/php/connexion/logs.php" class="user" id="formConnexion">
+           <fieldset>
             <div class="form-group">
-              <input type="email" class="perso_form shadow-none form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp"
+              <input type="email" class="perso_form shadow-none form-control form-control-user" id="exampleInputEmail" name="email" aria-describedby="emailHelp"
                 placeholder="Entrer une adresse email" required>
             </div>
             <div class="form-group">
-              <input type="password" class="perso_form shadow-none form-control form-control-user" id="exampleInputPassword" placeholder="Mot de passe" required>
+              <input type="password" class="perso_form shadow-none form-control form-control-user" id="exampleInputPassword" name="mot_de_passe" placeholder="Mot de passe" required>
             </div>
             <div class="form-group">
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="customCheck">
                 <label class="custom-control-label" for="customCheck">Se rappeler de moi</label>
               </div>
+            </div> 
+            <div class="perso_motdepass_center">
+              <a class="perso_color_dark_blue" href="forgot-password.html">Mot de passe oublié?</a>
             </div>
 
+            <div class="text-center">
+              <input type="submit" name="connexion" value="Connexion" class="btn btn-primary perso_btn_primary"></input>
+            </div>
+           <fieldset>
           </form>
-
-          <div class="perso_motdepass_center">
-            <a class="perso_color_dark_blue" href="forgot-password.html">Mot de passe oublié?</a>
-          </div>
-
-          <div class="text-center">
-            <button type="button" class="btn btn-primary perso_btn_primary">Connexion</button>
-          </div>
 
           <div class="perso_condition_center">
             <a class="perso_color_dark_blue" href="">Condition d'utilisation | Politique de confidentialité</a>

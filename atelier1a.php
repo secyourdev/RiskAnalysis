@@ -457,10 +457,10 @@
                     <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th id="id">ID</th>
-                          <th id="nom">Nom</th>
-                          <th id="prenom">Prénom</th>
-                          <th id="poste">Poste</th>
+                          <th>ID</th>
+                          <th>Nom</th>
+                          <th>Prénom</th>
+                          <th>Poste</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -1294,8 +1294,12 @@
         </div>
         <div class="modal-body">Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à terminer votre session en cours.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
-          <a class="btn btn-primary" href="connexion.html">Déconnexion</a>
+          <form method="post" action="content/php/deconnexion/logs.php">
+            <fieldset>
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+              <input type="submit" name="deconnexion" value="Déconnexion" class="btn btn-primary"></input>
+            <fieldset>
+          </form>
         </div>
       </div>
     </div>
@@ -1314,9 +1318,9 @@
   <script src="content/js/modules/dark_mode.js"></script>
   <script src="content/js/modules/top_bar.js"></script>
   <script src="content/js/modules/side_bar.js"></script>
-  <script src="content/js/modules/realtime.js"></script>
   <script src="content/js/atelier/atelier1a.js"></script>
   <script src="content/js/modules/tableau.js"></script>
+  <script src="content/js/modules/realtime.js"></script>
   
 </body>
 

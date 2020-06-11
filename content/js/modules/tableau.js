@@ -1,13 +1,20 @@
 
 /*----------------------------- VARIABLES ---------------------------------*/
 var table = document.getElementById('editable_table')
-var table_first_row_length = table.rows[0].cells.length; 
+var table_cells_length = table.rows[0].cells.length; 
+var table_rows_length = table.rows.length; 
 
+var bool_nom_etude = false
+var regex_nom_etude = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
 /*----------------------------- TRAITEMENT --------------------------------*/
-for(let i=0;i<table_first_row_length;i++){
+for(let i=0;i<table_cells_length;i++){
     table.rows[0].cells[i].setAttribute("onclick", "sortTable("+i+")");
 }
-
+// for(let i=1;i<table_rows_length;i++){
+//     for(let j=1;j<table_cells_length-1;j++){
+//         verify_textarea(table.rows[j].cells[i].children[1].value,regex_nom_etude,bool_nom_etude,table.rows[j].cells[i].children[1])
+//     }
+// }
 /*----------------------------- FONCTIONS ---------------------------------*/
 /* Sort table */
 function sortTable(n) {
@@ -73,3 +80,19 @@ $(document).ready(function () {
         });
     });
 });
+
+
+function verify_textarea(value,regex,bool,input){
+    if(regex.test(value)){
+        input.style.border="2px solid #4AD991";
+        bool = true;
+    }
+    else if(value.length==0){
+        input.style.border="1px solid #64789A";
+        bool = false;
+    }
+    else{
+        input.style.border="2px solid #FF6565";
+        bool = false;
+    }
+}
