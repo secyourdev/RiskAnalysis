@@ -1,10 +1,10 @@
 $(document).ready(function(){  
-    $('#tableau_mission').Tabledit({
+    $('#editable_table').Tabledit({
      url:'content/php/atelier1b/modificationmission.php',
      sortable: true,
      columns:{
-      identifier:[],
-      editable:[0, "nom de la mission"]
+      identifier:[0, "nom_mission"],
+      editable:[[0, 'nom_mission']]
      },
      restoreButton:false,
      onSuccess:function(data, textStatus, jqXHR)
@@ -15,7 +15,7 @@ $(document).ready(function(){
       }
      }
     });
-    $('#taleau_vm').Tabledit({
+    $('#tableau_vm').Tabledit({
      url:'content/php/atelier1b/modificationvm.php',
      sortable: true,
      columns:{

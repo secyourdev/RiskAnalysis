@@ -402,10 +402,10 @@
                   <!--tableau-->
                   <div class="table-responsive">
                     <input type="text" id="rechercher_input" placeholder="Rechercher">
-                    <table id="tableau_mission" class="table table-bordered table-striped">
+                    <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th id="mission">Nom de la mission</th>
+                          <th id="nom_mission">Nom de la mission</th>
                           <th id="nom">Responsable</th>
                           <th id="poste">Poste</th>
                         </tr>
@@ -474,36 +474,8 @@
                       ?>
                       </tbody>
                     </table>
-                  </div> -->
-                  <!--tableau-->
-                  <div class="table-responsive">
-                    <input type="text" id="rechercher_input" placeholder="Rechercher">
-                    <table id="editable_table" class="table table-bordered table-striped">
-                      <thead>
-                        <tr>
-                          <th id="id">ID</th>
-                          <th id="nom">Nom</th>
-                          <th id="prenom">Prénom</th>
-                          <th id="poste">Poste</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      <?php
-                      while($row = mysqli_fetch_array($result))
-                      {
-                        echo '
-                        <tr>
-                        <td>'.$row["id_personne"].'</td>
-                        <td>'.$row["nom"].'</td>
-                        <td>'.$row["prenom"].'</td>
-                        <td>'.$row["poste"].'</td>
-                        </tr>
-                        ';
-                      }
-                      ?>
-                      </tbody>
-                    </table>
-                  </div>
+                  </div> 
+                  
 
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
@@ -701,12 +673,12 @@
               </div>
 
               <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomresponsablevm" id="InputNomResponsableValeurPop"
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomresponsablevm" id="InputNomResponsablevm"
                   placeholder="Nom du responsable" required>
               </div>
 
               <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsablevm" id="InputNomResponsableValeurPop"
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsablevm" id="InputPrenomResponsablevm"
                   placeholder="Prénomom du responsable" required>
               </div>
               
@@ -776,12 +748,12 @@
               </div>
 
               <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomresponsablebs" id="InputNomResponsableBienPop"
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomresponsablebs" id="InputNomResponsablebs"
                   placeholder="Nom du responsable" required>
               </div>
 
               <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsablebs" id="InputNomResponsableBienPop"
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsablebs" id="InputPrenomResponsablebs"
                   placeholder="Prénom du responsable" required>
               </div>
               
