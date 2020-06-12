@@ -534,7 +534,7 @@
             </button>
           </div>
           <div class="modal-body perso_modal_body">
-            <form methode="post" action="content/php/atelier1c/ajout.php" class="user" id="formValeurMetierPop">
+            <form method="post" action="content/php/atelier1c/ajout.php" class="user" id="formValeurMetierPop">
               <fieldset>
                 <div class="row">
                   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">

@@ -3,13 +3,10 @@
 
 
 //Connexion à la base de donnee
-try {
-  $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v5;charset=utf8',
-    'ebios-rm',
-    'hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-  );
+try{
+  $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v5;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+  array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+}
 } catch (PDOException $e) {
   die('Erreur :' . $e->getMessage());
 }
@@ -17,9 +14,9 @@ try {
 $results["error"] = false;
 $results["message"] = [];
 
+$nom_evenement_redoutes = $_POST['nom_evenement_redoutes'];
 $nom_valeur_metier = $_POST['nom_valeur_metier'];
 echo $nom_valeur_metier;
-$nom_evenement_redoutes = $_POST['nom_evenement_redoutes'];
 $description_evenement_redoute = $_POST['description_evenement_redoute'];
 $impact = $_POST['impact'];
 $confidentialite = 1;
