@@ -1,3 +1,4 @@
+<?php include("content/php/atelier1b/selection.php");?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -13,9 +14,13 @@
   <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template-->
+  <!-- CSS -->
   <link href="content/css/bootstrap.css" rel="stylesheet">
   <link href="content/css/main.css" rel="stylesheet">
+
+  <!-- JS -->
+  <script src="content/vendor/jquery/jquery.js"></script>
+  <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
 </head>
 
 <body id="page-top">
@@ -435,7 +440,7 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <div class="table-responsive">
+                  <!-- <div class="table-responsive">
                     <table class="table table-bordered perso_border" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                         <tr>
@@ -501,6 +506,35 @@
                         </tr>
                       </tbody>
                     </table>
+                  </div> -->
+                  <!--tableau-->
+                  <div class="table-responsive">
+                    <input type="text" id="rechercher_input" placeholder="Rechercher">
+                    <table id="editable_table" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th id="id">ID</th>
+                          <th id="nom">Nom</th>
+                          <th id="prenom">Prénom</th>
+                          <th id="poste">Poste</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <?php
+                      while($row = mysqli_fetch_array($result))
+                      {
+                        echo '
+                        <tr>
+                        <td>'.$row["id_personne"].'</td>
+                        <td>'.$row["nom"].'</td>
+                        <td>'.$row["prenom"].'</td>
+                        <td>'.$row["poste"].'</td>
+                        </tr>
+                        ';
+                      }
+                      ?>
+                      </tbody>
+                    </table>
                   </div>
 
                   <!-- bouton Ajouter une nouvelle ligne -->
@@ -521,69 +555,30 @@
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="table-responsive">
-                    <table class="table table-bordered perso_border" id="dataTable2" width="100%" cellspacing="0">
+                    <input type="text" id="rechercher_input" placeholder="Rechercher">
+                    <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th>Bien support</th>
-                          <th>Valeur métier</th>
-                          <th>Description</th>
-                          <th>Responsable</th>
-                          <th class="perso_border"></th>
+                          <th id="id">ID</th>
+                          <th id="nom">Nom</th>
+                          <th id="prenom">Prénom</th>
+                          <th id="poste">Poste</th>
                         </tr>
                       </thead>
                       <tbody>
+                      <?php
+                      while($row = mysqli_fetch_array($result))
+                      {
+                        echo '
                         <tr>
-                          <td>#110</td>
-                          <td>XXXX</td>
-                          <td>XXXX</td>
-                          <td>Ingénieur ...</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-            
-                          </td>
+                        <td>'.$row["id_personne"].'</td>
+                        <td>'.$row["nom"].'</td>
+                        <td>'.$row["prenom"].'</td>
+                        <td>'.$row["poste"].'</td>
                         </tr>
-                        <tr>
-                          <td>Organisation idéologique</td>
-                          <td>Terroriste</td>
-                          <td>Al-Qaida</td>
-                          <td>Voler des informations</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-            
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Individu isolé</td>
-                          <td>Amateur</td>
-                          <td>Hackeur</td>
-                          <td>Divulguer des informations sur les tests animaliers</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-            
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Organisation structurée</td>
-                          <td>Concurrent</td>
-                          <td>Amazon.com</td>
-                          <td>Altérer la compositionde vaccins à des fins bioterroristes</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-            
-                          </td>
-                        </tr>
+                        ';
+                      }
+                      ?>
                       </tbody>
                     </table>
                   </div>
@@ -765,7 +760,6 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="content/vendor/jquery/jquery.js"></script>
   <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
   <!-- Core plugin JavaScript-->
@@ -774,17 +768,13 @@
   <!-- Custom scripts for all pages-->
   <script src="content/js/bootstrap.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="content/vendor/datatables/jquery.dataTables.js"></script>
-  <script src="content/vendor/datatables/dataTables.bootstrap4.js"></script>
-  
-  <!-- Page level custom scripts -->
-  <script src="content/js/modules/tableau/tableau-atelier1a.js"></script>
-
   <!-- Our JS -->
   <script src="content/js/modules/dark_mode.js"></script>
   <script src="content/js/modules/top_bar.js"></script>
   <script src="content/js/modules/side_bar.js"></script>
+  <script src="content/js/modules/realtime.js"></script>
+  <script src="content/js/atelier/atelier1b.js"></script>
+  <script src="content/js/modules/tableau.js"></script>
 </body>
 
 </html>

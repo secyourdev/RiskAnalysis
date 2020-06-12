@@ -1,3 +1,4 @@
+<?php include("content/php/atelier1c/selection.php");?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -13,9 +14,13 @@
   <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template-->
+  <!-- CSS -->
   <link href="content/css/bootstrap.css" rel="stylesheet">
   <link href="content/css/main.css" rel="stylesheet">
+
+  <!-- JS -->
+  <script src="content/vendor/jquery/jquery.js"></script>
+  <script src="content/vendor/jquery-tabledit/jquery.tabledit1.c.js"></script>
 </head>
 
 <body id="page-top">
@@ -409,175 +414,44 @@
               </div>
                 <!-- Card Body -->
                 <div class="card-body">
+                  <!--tableau-->
                   <div class="table-responsive">
-                    <table class="table table-bordered perso_border" id="dataTable2" width="100%" cellspacing="0">
+                    <input type="text" id="rechercher_input" placeholder="Rechercher">
+                    <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th>Valeur métier</th>
-                          <th>Nom</th>
-                          <th>Événements redoutés</th>
-                          <th>Impacts</th>
-                          <th>C</th>
-                          <th>I</th>
-                          <th>D</th>
-                          <th>T</th>
-                          <th>Gravité</th>
-                          <th class="perso_border"></th>
+                          <th id="id">ID</th>
+                          <th id="nom">Valeur métier</th>
+                          <th id="nom">Nom</th>
+                          <th id="nom">événement redouté</th>
+                          <th id="prenom">Impacts</th>
+                          <th id="poste">C</th>
+                          <th id="poste">I</th>
+                          <th id="poste">D</th>
+                          <th id="poste">T</th>
+                          <th id="poste">Gravité</th>
                         </tr>
                       </thead>
                       <tbody>
+                      <?php
+                      while($row = mysqli_fetch_array($result))
+                      {
+                        echo '
                         <tr>
-                          <td>#110</td>
-                          <td>XXXX</td>
-                          <td>XXXX</td>
-                          <td>#110</td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check1">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check1">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check2">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check2">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check3">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check3">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check4">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check4">.</label>
-                            </div>
-                          </td>
-                          <td>XXXX</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-            
-                          </td>
+                        <td>'.$row["id_evenement_redoutes"].'</td>
+                        <td>'.$row["nom_valeur_metier"].'</td>
+                        <td>'.$row["nom_evenement_redoutes"].'</td>
+                        <td>'.$row["description_evenement_redoutes"].'</td>
+                        <td>'.$row["impact"].'</td>
+                        <td>'.$row["confidentialite"].'</td>
+                        <td>'.$row["integrite"].'</td>
+                        <td>'.$row["disponibilite"].'</td>
+                        <td>'.$row["tracabilite"].'</td>
+                        <td>'.$row["niveau_de_gravite"].'</td>
                         </tr>
-                        <tr>
-                          <td>#110</td>
-                          <td>XXXX</td>
-                          <td>XXXX</td>
-                          <td>#110</td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check1">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check1">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check2">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check2">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check3">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check3">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check4">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check4">.</label>
-                            </div>
-                          </td>
-                          <td>XXXX</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-            
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#110</td>
-                          <td>XXXX</td>
-                          <td>XXXX</td>
-                          <td>#110</td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check1">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check1">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check2">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check2">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check3">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check3">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check4">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check4">.</label>
-                            </div>
-                          </td>
-                          <td>XXXX</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-            
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#110</td>
-                          <td>XXXX</td>
-                          <td>XXXX</td>
-                          <td>#110</td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check1">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check1">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check2">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check2">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check3">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check3">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check4">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check4">.</label>
-                            </div>
-                          </td>
-                          <td>XXXX</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-            
-                          </td>
-                        </tr>
+                        ';
+                      }
+                      ?>
                       </tbody>
                     </table>
                   </div>
@@ -634,7 +508,7 @@
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                   <div class="form-group">
-                    <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_evenmt_redoute_pop"
+                    <input type="text" class="perso_form shadow-none form-control form-control-user" name="input_evenmt_redoute_pop" id="input_evenmt_redoute_pop"
                       placeholder="Dénomination de l'événement redouté" required>
                   </div>
                   
@@ -671,8 +545,8 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="Description_event_pop">Impacts</label>
-                    <textarea class="form-control perso_text_area" id="Description_event_pop" rows="3"></textarea>
+                    <label for="Description_impact_pop">Impacts</label>
+                    <textarea class="form-control perso_text_area" id="Description_impact_pop" rows="3"></textarea>
                   </div>
 
                   <div class="form-group" id="niveaudegravité">
@@ -685,13 +559,13 @@
                         <input type="radio" name="options" id="gravite2" autocomplete="off"> 2
                       </label>
                       <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" id="gravite2" autocomplete="off"> 3
+                        <input type="radio" name="options" id="gravite3" autocomplete="off"> 3
                       </label>
                       <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" id="gravite2" autocomplete="off"> 4
+                        <input type="radio" name="options" id="gravite4" autocomplete="off"> 4
                       </label>
                       <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" id="gravite3" autocomplete="off"> 5
+                        <input type="radio" name="options" id="gravite5" autocomplete="off"> 5
                       </label>
                     </div>
                   </div>
@@ -729,7 +603,6 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="content/vendor/jquery/jquery.js"></script>
   <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
   <!-- Core plugin JavaScript-->
@@ -738,21 +611,14 @@
   <!-- Custom scripts for all pages-->
   <script src="content/js/bootstrap.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="content/vendor/datatables/jquery.dataTables.js"></script>
-  <script src="content/vendor/datatables/dataTables.bootstrap4.js"></script>
-  <script src="content/vendor/datatables/dataTables.rowsGroup.js"></script>
-  
-  <!-- Page level custom scripts -->
-  <script src="content/js/modules/tableau/tableau-atelier1c.js"></script>
-
-  <!-- JS pour Dark Mode -->
-  <script src="content/js/modules/dark_mode.js"></script>
-
   <!-- Our JS -->
-  <script src="content/js/modules/help_button.js"></script>
+  <script src="content/js/modules/dark_mode.js"></script>
   <script src="content/js/modules/top_bar.js"></script>
   <script src="content/js/modules/side_bar.js"></script>
+<!--   <script src="content/js/modules/realtime.js"></script> -->
+  <script src="content/js/atelier/atelier1a.js"></script>
+  <script src="content/js/modules/tableau.js"></script>
+
 </body>
 
 </html>

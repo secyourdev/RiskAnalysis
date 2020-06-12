@@ -1,18 +1,33 @@
 
 /*----------------------------- VARIABLES ---------------------------------*/
 var table = document.getElementById('editable_table')
-var table_first_row_length = table.rows[0].cells.length; 
+var table_first_row_length = table.rows[0].cells.length;
 
 /*----------------------------- TRAITEMENT --------------------------------*/
-for(let i=0;i<table_first_row_length;i++){
-    table.rows[0].cells[i].setAttribute("onclick", "sortTable("+i+")");
+for (let i = 0; i < table_first_row_length; i++) {
+    table.rows[0].cells[i].setAttribute("onclick", "sortTable(" + i + ")");
 }
-
 /*----------------------------- FONCTIONS ---------------------------------*/
-/* Sort table */
+
+/* sort table */
 function sortTable(n) {
-    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-    table = document.getElementById("editable_table");
+    var element = table.rows[0].cells[n];
+    /* clearfix */
+    for (i = 0; i < table_first_row_length; i++) {
+        if (table.rows[0].cells[i] != element) {
+            table.rows[0].cells[i].className = "";
+        }
+    }
+    element.classList.toggle("az");
+    if (element.className == "") {
+        element.className = ("za");
+    }
+    else {
+        element.classList.remove("za");
+    }
+
+    var rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+
     switching = true;
     // Set the sorting direction to ascending:
     dir = "asc";
@@ -33,7 +48,22 @@ function sortTable(n) {
             y = rows[i + 1].getElementsByTagName("TD")[n];
             /* Check if the two rows should switch place,
             based on the direction, asc or desc: */
-            if (dir == "asc") {
+            if (n == 0) {
+                if (dir == "asc") {
+                    if (Number(x.firstChild.innerHTML) > Number(y.firstChild.innerHTML)) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+                else if (dir == "desc") {
+                    if (Number(x.firstChild.innerHTML) < Number(y.firstChild.innerHTML)) {
+                        // If so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            } else if (dir == "asc") {
                 if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
                     // If so, mark as a switch and break the loop:
                     shouldSwitch = true;
@@ -64,7 +94,7 @@ function sortTable(n) {
         }
     }
 }
-/* Filter */
+/* filter */
 $(document).ready(function () {
     $("#rechercher_input").on("keyup", function () {
         var value = $(this).val().toLowerCase();
