@@ -177,7 +177,7 @@ if (typeof jQuery === 'undefined') {
   
                           // Create save button.
                           if (settings.editButton && settings.saveButton) {
-                              saveButton = '<button type="button" class="tabledit-save-button ' + settings.buttons.save.class + '" style="display: none; float: none;">' + settings.buttons.save.html + '</button>';
+                              saveButton = '<button type="button" class="tabledit-save-button ' + settings.buttons.save.class + '" style="display: none; float: none; disabled">' + settings.buttons.save.html + '</button>';
                           }
   
                           // Create restore button.
@@ -519,10 +519,10 @@ if (typeof jQuery === 'undefined') {
               $table.on('click', 'button.tabledit-save-button', function(event) {
                   if (event.handled !== true) {
                       event.preventDefault();
-  
                       // Submit and update all columns.
                       if(tableau_verification($(this).parents('tr')[0].rowIndex))
                         Edit.submit($(this).parents('tr').find('td.tabledit-edit-mode'));
+                    
                       event.handled = true;
                   }
               });

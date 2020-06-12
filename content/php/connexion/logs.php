@@ -24,6 +24,9 @@ if (isset($_POST['connexion'])){
       if(password_verify($mot_de_passe, $row["mot_de_passe"])){
         $results["error"] = false;
         $results["message"] = "Connexion accepte";
+        ini_set('session.cookie_lifetime', 1*60);
+        ini_get("session.gc_maxlifetime",60);
+        ini_set("session.use_only_cookies", true);
         session_start();
         header('Location: ../../../atelier-1a');
       }

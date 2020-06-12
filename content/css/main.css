@@ -363,6 +363,13 @@ h6{
     background-color: var(--button-color);
     border-color: var(--button-color);
 }
+.perso_btn:disabled{
+    width: 8rem;
+    color: var(--reverse-font-color);
+    background-color: var(--button-color);
+    border-color: var(--button-color);
+}
+
 .perso_tableau{
     margin-top: 3rem;
 }
@@ -453,6 +460,19 @@ h6{
 }
 .popover-body {
     color: var(--font-color);
+}
+
+.titre_input,.titre_textarea{
+    font-size: 0.9em;
+    padding-left: 5px;
+}
+
+.titre_input{
+    margin-bottom : 0px;
+}
+
+.titre_textarea{
+    margin-bottom : 5px;
 }
 /* -------------------------------------------------------------------------------------------------------------- */
 /* --------------------------------------Gestion aspect responsif------------------------------------------------ */

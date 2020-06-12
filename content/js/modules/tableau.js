@@ -10,11 +10,6 @@ var regex_nom_etude = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
 for(let i=0;i<table_cells_length;i++){
     table.rows[0].cells[i].setAttribute("onclick", "sortTable("+i+")");
 }
-// for(let i=1;i<table_rows_length;i++){
-//     for(let j=1;j<table_cells_length-1;j++){
-//         verify_textarea(table.rows[j].cells[i].children[1].value,regex_nom_etude,bool_nom_etude,table.rows[j].cells[i].children[1])
-//     }
-// }
 /*----------------------------- FONCTIONS ---------------------------------*/
 /* Sort table */
 function sortTable(n) {

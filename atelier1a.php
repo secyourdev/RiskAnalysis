@@ -399,16 +399,17 @@
                 <div class="card-body">
                   <form class="user">
                     <div class="form-group">
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="nom_etude" placeholder="Nom" required>
-                      </input>
-                      
+                      <label class="titre_input" for="nom_etude">Nom</label>
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="nom_etude" placeholder="Nom" required></input>
                     </div>
+
                     <div class="form-group">
-                      <label for="objectif_atteindre">Objectif à atteindre</label>
+                      <label class="titre_textarea" for="objectif_atteindre">Objectif à atteindre</label>
                       <textarea class="form-control perso_text_area" id="objectif_atteindre" rows="3"></textarea>
                     </div>
 
                     <div class="form-group">
+                      <label class="titre_input" for="cadre_temporel">Cadre Temporel</label>
                       <input type="text" class="perso_form shadow-none form-control form-control-user" id="cadre_temporel" placeholder="Cadre temporel" required>
                     </div>
                   </form>
@@ -429,13 +430,16 @@
                   <form method="post" action="content/php/atelier1a/ajout.php" class="user" id="formActeur">
                   <fieldset>
                     <div class="form-group">
+                      <label class="titre_input" for="nom_acteur">Nom</label>
                       <input type="text" class="perso_form shadow-none form-control form-control-user" id="nom_acteur" name="nom" placeholder="Nom" required>
                     </div>
                     <div class="form-group">
+                      <label class="titre_input" for="prenom_acteur">Prénom</label>
                       <input type="text" class="perso_form shadow-none form-control form-control-user" id="prenom_acteur" name="prenom" placeholder="Prénom" required>
                     </div>
 
                     <div class="form-group">
+                      <label class="titre_input" for="poste_acteur">Poste</label>
                       <input type="text" class="perso_arrow perso_form shadow-none form-control" list="Postes" id="poste_acteur" name="poste" placeholder="Poste" required>
                       <datalist id="Postes">
                         <option value="Internet Explorer">
