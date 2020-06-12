@@ -368,7 +368,8 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Objectif</h6>
+                  <h6 class="m-0">Objectif</h6>
+                  
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -389,7 +390,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Cartographie du risque initial</h6>
+                  <h6 class="m-0">Cartographie du risque initial</h6>
                   
 
               
@@ -459,7 +460,7 @@
                     </table>  
                   </div>    
                   
-                  <h6 class="m-0 font-weight-bold text-primary">Scénarios de risque</h6>
+                  <h6 class="m-0">Scénarios de risque</h6>
                   <div class="card-body">
                       R1 : Un concurrent vole des informations de R&D grâce à une canal d'exfiltration <br>
                       R2 : Un concurrent vole des informations de R&D en exfiltrant celles détenues par le laboratoire <br>

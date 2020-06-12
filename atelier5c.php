@@ -367,7 +367,8 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Objectif</h6>
+                  <h6 class="m-0">Objectif</h6>
+                  
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -386,7 +387,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Évaluation et documentation des risques résiduels</h6>
+                  <h6 class="m-0">Évaluation et documentation des risques résiduels</h6>
                   
 
               
@@ -421,13 +422,11 @@
                           <td>3</td>
                           <td>2</td>
                           <td>6</td>
-                          <td class="modification perso_border">
-                            <div class="col-1 centreVerticalement">
-                              <p>
-                                <img class="crayon" src ="content/img/crayon.svg"/>
-                              </p>
+                          <td class="perso_border">
+                            <div class="modification">
+                              <i data-toggle="modal" data-target="#ajout_vraisemblance_résiduelle" class="crayon fas fa-pen"></i>
                             </div>
-                        </td>
+                          </td>
                             
                         </tr>
                         <tr>
@@ -438,13 +437,11 @@
                           <td>3</td>
                           <td>1</td>
                           <td>3</td>
-                          <td class="modification perso_border">
-                            <div class="col-1 centreVerticalement">
-                              <p>
-                                <img class="crayon" src ="content/img/crayon.svg"/>
-                              </p>
+                          <td class="perso_border">
+                            <div class="modification">
+                              <i data-toggle="modal" data-target="#ajout_vraisemblance_résiduelle" class="crayon fas fa-pen"></i>
                             </div>
-                        </td>
+                          </td>
                         </tr>
                         <tr>
                           <td>Un concurrent vole des informations de R&D grâce à un canal d'exfiltration via le prestataire informatique</td>
@@ -454,13 +451,11 @@
                           <td>3</td>
                           <td>3</td>
                           <td>9</td>
-                          <td class="modification perso_border">
-                            <div class="col-1 centreVerticalement">
-                              <p>
-                                <img class="crayon" src ="content/img/crayon.svg"/>
-                              </p>
+                          <td class="perso_border">
+                            <div class="modification">
+                              <i data-toggle="modal" data-target="#ajout_vraisemblance_résiduelle" class="crayon fas fa-pen"></i>
                             </div>
-                        </td>
+                          </td>
                         </tr>
                         <tr>
                           <td>Un hacktiviste provoque un arrêt de la production des vaccins en compromettant l'équipement de maintenance des fournisseurs de matériel</td>
@@ -470,13 +465,11 @@
                           <td>4</td>
                           <td>1</td>
                           <td>4</td>
-                          <td class="modification perso_border">
-                            <div class="col-1 centreVerticalement">
-                              <p>
-                                <img class="crayon" src ="content/img/crayon.svg"/>
-                              </p>
+                          <td class="perso_border">
+                            <div class="modification">
+                              <i data-toggle="modal" data-target="#ajout_vraisemblance_résiduelle" class="crayon fas fa-pen"></i>
                             </div>
-                        </td>
+                          </td>
                         </tr>
                         <tr>
                           <td>Un hacktiviste provoque un arrêt de la production des vacances en compromettant l'équipement de maintenance des fournisseurs de matériel</td>
@@ -486,13 +479,11 @@
                           <td>4</td>
                           <td>1</td>
                           <td>4</td>
-                          <td class="modification perso_border">
-                            <div class="col-1 centreVerticalement">
-                              <p>
-                                <img class="crayon" src ="content/img/crayon.svg"/>
-                              </p>
+                          <td class="perso_border">
+                            <div class="modification">
+                              <i data-toggle="modal" data-target="#ajout_vraisemblance_résiduelle" class="crayon fas fa-pen"></i>
                             </div>
-                        </td>
+                          </td>
                         </tr>
                         
 

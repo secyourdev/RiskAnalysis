@@ -367,7 +367,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Objectif</h6>
+                  <h6 class="m-0">Objectif</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -389,7 +389,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Liste des évènements redoutés établis lors de l'atelier 1</h6>
+                  <h6 class="m-0">Liste des évènements redoutés établis lors de l'atelier 1</h6>
 
                 </div>
                 <!-- Card Body -->
@@ -509,7 +509,7 @@
                   </div> 
 
                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Liste des couples sources de risques / objectifs visés établis lors de l'atelier 2</h6>
+                    <h6 class="m-0">Liste des couples sources de risques / objectifs visés établis lors de l'atelier 2</h6>
   
                   </div>
                   <div class="table-responsive">
@@ -592,7 +592,7 @@
                 <div class="card shadow mb-4">
                   <!-- Card Header - Dropdown -->
                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Liste des chemins d'attaques stratégiques</h6>
+                    <h6 class="m-0">Liste des chemins d'attaques stratégiques</h6>
                     
                   </div>
                   <!-- Card Body -->

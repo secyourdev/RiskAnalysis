@@ -399,30 +399,36 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body row perso_card_body_row">
-                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <form class="user" id="formActeur">
-                    
-                      <div class="form-group">
-                        <input type="text" class="perso_form shadow-none form-control form-control-user" id="InputNomMission"
-                          placeholder="Mission" required>
-                      </div>
-                      <div class="form-group">
-                        <input type="text" class="perso_form shadow-none form-control form-control-user" id="InputNomResponsable"
-                          placeholder="Nom du responsable" required>
-                      </div>
-                    
-                      <div class="form-group">
-                        <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="Postes" name="Poste"
-                          placeholder="Poste" required>
-                        <datalist id="Postes">
-                          <option value="Internet Explorer">
-                          <option value="Firefox">
-                          <option value="Chrome">
-                          <option value="Opera">
-                          <option value="Safari">
-                        </datalist>
-                      </div>
-                    </form>
+                  <!--tableau-->
+                  <div class="table-responsive">
+                    <input type="text" id="rechercher_input" placeholder="Rechercher">
+                    <table id="tableau_mission" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th id="mission">Nom de la mission</th>
+                          <th id="nom">Responsable</th>
+                          <th id="poste">Poste</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <?php
+                      while($row = mysqli_fetch_array($result1))
+                      {
+                        echo '
+                        <tr>
+                        <td>'.$row["nom_mission"].'</td>
+                        <td>'.$row["nom"].'</td>
+                        <td>'.$row["poste"].'</td>
+                        </tr>
+                        ';
+                      }
+                      ?>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- bouton Ajouter une nouvelle ligne -->
+                  <div class="text-center">
+                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_mission">Ajouter une nouvelle ligne</button>
                   </div>
                   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
                     <img src="content/img/files.svg" class="img-fluid perso_img_full_screen_div2" alt="Responsive image">
@@ -440,70 +446,32 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <!-- <div class="table-responsive">
-                    <table class="table table-bordered perso_border" id="dataTable" width="100%" cellspacing="0">
+                  <!--tableau-->
+                  <div class="table-responsive">
+                    <input type="text" id="rechercher_input" placeholder="Rechercher">
+                    <table id="tableau_vm" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th>Valeur métier</th>
-                          <th>Nature</th>
-                          <th>Description</th>
-                          <th>Responsable</th>
-                          <th class="perso_border"></th>
+                          <th id="valeurmetier">Valeur métier</th>
+                          <th id="nature">Nature</th>
+                          <th id="description">Description</th>
+                          <th id="responsable">Responsable</th>
                         </tr>
                       </thead>
                       <tbody>
+                      <?php
+                      while($row = mysqli_fetch_array($result2))
+                      {
+                        echo '
                         <tr>
-                          <td>#110</td>
-                          <td>XXXX</td>
-                          <td>XXXX</td>
-                          <td>Ingénieur ...</td>
-                            <td class="perso_border">
-                              <div class="modification">
-                                <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
-                                <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-                      
-                            </td>  
+                        <td>'.$row["nom_valeur_metier"].'</td>
+                        <td>'.$row["nature_valeur_metier"].'</td>
+                        <td>'.$row["description_valeur_metier"].'</td>
+                        <td>'.$row["nom"].'</td>
                         </tr>
-                        <tr>
-                          <td>Organisation idéologique</td>
-                          <td>Terroriste</td>
-                          <td>Al-Qaida</td>
-                          <td>Voler des informations</td>
-                            <td class="perso_border">
-                              <div class="modification">
-                                <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
-                                <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-                      
-                            </td>  
-                        </tr>
-                        <tr>
-                          <td>Individu isolé</td>
-                          <td>Amateur</td>
-                          <td>Hackeur</td>
-                          <td>Divulguer des informations sur les tests animaliers</td>
-                            <td class="perso_border">
-                              <div class="modification">
-                                <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
-                                <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-                      
-                            </td>  
-                        </tr>
-                        <tr>
-                          <td>Organisation structurée</td>
-                          <td>Concurrent</td>
-                          <td>Amazon.com</td>
-                          <td>Altérer la compositionde vaccins à des fins bioterroristes</td>
-                            <td class="perso_border">
-                              <div class="modification">
-                                <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
-                                <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-                      
-                            </td>  
-                        </tr>
+                        ';
+                      }
+                      ?>
                       </tbody>
                     </table>
                   </div> -->
@@ -554,27 +522,28 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
+                  <!--tableau-->
                   <div class="table-responsive">
                     <input type="text" id="rechercher_input" placeholder="Rechercher">
-                    <table id="editable_table" class="table table-bordered table-striped">
+                    <table id="tableau_bs" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th id="id">ID</th>
-                          <th id="nom">Nom</th>
-                          <th id="prenom">Prénom</th>
-                          <th id="poste">Poste</th>
+                          <th id="biensupport">Bien support</th>
+                          <th id="valeurmetier">Valeur métier</th>
+                          <th id="description">Description</th>
+                          <th id="responsable">Responsable</th>
                         </tr>
                       </thead>
                       <tbody>
                       <?php
-                      while($row = mysqli_fetch_array($result))
+                      while($row = mysqli_fetch_array($result3))
                       {
                         echo '
                         <tr>
-                        <td>'.$row["id_personne"].'</td>
+                        <td>'.$row["nom_bien_support"].'</td>
+                        <td>'.$row["id_valeur_metier"].'</td>
+                        <td>'.$row["description_bien_support"].'</td>
                         <td>'.$row["nom"].'</td>
-                        <td>'.$row["prenom"].'</td>
-                        <td>'.$row["poste"].'</td>
                         </tr>
                         ';
                       }
@@ -618,6 +587,85 @@
 
 
 <!-- -------------------------------------------------------------------------------------------------------------- 
+--------------------------------------- modal ajout de mission ----------------------------------------------
+--------------------------------------------------------------------------------------------------------------  -->
+<div class="modal fade" id="ajout_mission" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ajout d'une mission</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body perso_modal_body">
+          <form method="post" action="content/php/atelier1b/ajoutmission.php" class="user" id="formMission">
+            <fieldset>
+              <div class="form-group">
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name ="mission" id="InputNomMission"
+                  placeholder="Mission" required>
+              </div>
+
+              <div class="form-group">
+                <label for="SelectNaturePop">Nom du responsable</label>
+                <select class="form-control" name="nomresponsable" id="SelectNom">
+                  <option value="" selected>...</option>
+                  <?php
+                      while($row = mysqli_fetch_array($resultnomresponsablemission))
+                      {
+                        echo '
+                        <option value='.$row["nom"].'>'.$row["nom"].'</option>
+                        ';
+                      }
+                  ?>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="SelectNaturePop">Poste</label>
+                <select class="form-control" name="prenomresponsable" id="SelectPrenom">
+                  <option value="" selected>...</option>
+                  <?php
+                      while($row = mysqli_fetch_array($resultprenomresponsablemission))
+                      {
+                        echo '
+                        <option value='.$row["prenom"].'>'.$row["prenom"].'</option>
+                        ';
+                      }
+                  ?>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="SelectNaturePop">Poste</label>
+                <select class="form-control" name="poste" id="SelectPoste">
+                  <option value="" selected>...</option>
+                  <?php
+                      while($row = mysqli_fetch_array($resultposteresponsablemission))
+                      {
+                        echo '
+                        <option value='.$row["poste"].'>'.$row["poste"].'</option>
+                        ';
+                      }
+                  ?>
+                </select>
+              </div>
+              <div class="modal-footer perso_middle_modal_footer">
+                <input type="submit" name="validermission" value="Ajouter" class="btn perso_btn shadow-none"></input>
+              </div>
+            </fieldset>
+            
+          
+          </form>
+        </div>
+        <!-- bouton Ajouter -->
+        
+      </div>
+    </div>
+  </div>
+
+<!-- -------------------------------------------------------------------------------------------------------------- 
 --------------------------------------- modal ajout de valeur métier ----------------------------------------------
 --------------------------------------------------------------------------------------------------------------  -->
   <div class="modal fade" id="ajout_valeur_metier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -631,48 +679,56 @@
           </button>
         </div>
         <div class="modal-body perso_modal_body">
-          <form class="user" id="formValeurMetierPop">
-            <div class="form-group">
-              <input type="text" class="perso_form shadow-none form-control form-control-user" id="InputValeurMetierPop"
-                placeholder="Dénomination de la valeur métier" required>
-            </div>
+          <form method="post" action="content/php/atelier1b/ajoutvm.php" class="user" id="formValeurMetierPop">
+            <fieldset>
+              <div class="form-group">
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomvm" id="InputValeurMetierPop"
+                  placeholder="Dénomination de la valeur métier" required>
+              </div>
 
-            <div class="form-group">
-              <label for="SelectNaturePop">Nature</label>
-              <select class="form-control" id="SelectNaturePop">
-                <option value="" selected>...</option>
-                <option value="1">Processus</option>
-                <option value="2">Information</option>
-              </select>
-            </div>
+              <div class="form-group">
+                <label for="SelectNaturePop">Nature</label>
+                <select class="form-control" name="nature" id="SelectNaturePop">
+                  <option value="" selected>...</option>
+                  <option value="1">Processus</option>
+                  <option value="2">Information</option>
+                </select>
+              </div>
 
-            <div class="form-group">
-              <label for="DescriptionValeurPop">Description</label>
-              <textarea class="form-control perso_text_area" id="DescriptionValeurPop" rows="3"></textarea>
-            </div>
+              <div class="form-group">
+                <label for="DescriptionValeurPop">Description</label>
+                <textarea class="form-control perso_text_area" name="descriptionvm" id="DescriptionValeurPop" rows="3"></textarea>
+              </div>
 
-            <div class="form-group">
-              <input type="text" class="perso_form shadow-none form-control form-control-user" id="InputNomResponsableValeurPop"
-                placeholder="Nom du responsable" required>
-            </div>
-            
-            <div class="form-group">
-              <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="PostesValeurPop" name="Poste"
-                placeholder="Poste" required>
-              <datalist id="PostesValeurPop">
-                <option value="Internet Explorer">
-                <option value="Firefox">
-                <option value="Chrome">
-                <option value="Opera">
-                <option value="Safari">
-              </datalist>
-            </div>
+              <div class="form-group">
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomresponsablevm" id="InputNomResponsableValeurPop"
+                  placeholder="Nom du responsable" required>
+              </div>
+
+              <div class="form-group">
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsablevm" id="InputNomResponsableValeurPop"
+                  placeholder="Prénomom du responsable" required>
+              </div>
+              
+              <div class="form-group">
+                <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="posteresponsablevm" name="posteresponsablevm"
+                  placeholder="Poste" required>
+                <datalist id="PostesValeurPop">
+                  <option value="Internet Explorer">
+                  <option value="Firefox">
+                  <option value="Chrome">
+                  <option value="Opera">
+                  <option value="Safari">
+                </datalist>
+              </div>
+              <!-- bouton Ajouter -->
+              <div class="modal-footer perso_middle_modal_footer">
+                <input type="submit" name="validervm" value="Ajouter" class="btn perso_btn shadow-none"></input>
+              </div>
+            </fieldset>
           </form>
         </div>
-        <!-- bouton Ajouter -->
-        <div class="modal-footer perso_middle_modal_footer">
-          <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
-        </div>
+        
       </div>
     </div>
   </div>
@@ -692,49 +748,62 @@
           </button>
         </div>
         <div class="modal-body perso_modal_body">
-          <form class="user" id="formBienSupportPop">
-            <div class="form-group">
-              <input type="text" class="perso_form shadow-none form-control form-control-user" id="InputBienSupportPop"
-                placeholder="Dénomination du bien support" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="SelectValeurMetierPop">Valeur métier</label>
-              <select class="form-control" id="SelectValeurMetierPop">
-                <option value="" selected>...</option>
-                <option value="1">en bdd1</option>
-                <option value="2">en bdd2</option>
-                <option value="3">en bdd3</option>
-              </select>
-            </div>
-            
-            <div class="form-group">
-              <label for="DescriptionBienPop">Description</label>
-              <textarea class="form-control perso_text_area" id="DescriptionBienPop" rows="3"></textarea>
-            </div>
+          <form method="post" action="content/php/atelier1b/ajoutbs.php" class="user" id="formBienSupportPop">
+            <fieldset>
+              <div class="form-group">
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="biensupport" id="InputBienSupportPop"
+                  placeholder="Dénomination du bien support" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="SelectValeurMetierPop">Valeur métier</label>
+                <select class="form-control" name="vm" id="SelectValeurMetierPop">
+                  <option value="" selected>...</option>
+                  <?php
+                      while($row = mysqli_fetch_array($resultvm))
+                      {
+                        echo '
+                        <option value='.$row["nom_valeur_metier"].'>'.$row["nom_valeur_metier"].'</option>
+                        ';
+                      }
+                  ?>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="DescriptionBienPop">Description</label>
+                <textarea class="form-control perso_text_area" name="descriptionbs" id="DescriptionBienPop" rows="3"></textarea>
+              </div>
 
-            <div class="form-group">
-              <input type="text" class="perso_form shadow-none form-control form-control-user" id="InputNomResponsableBienPop"
-                placeholder="Nom du responsable" required>
-            </div>
-            
-            <div class="form-group">
-              <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="PostesBienPop" name="Poste"
-                placeholder="Poste" required>
-              <datalist id="PostesBienPop">
-                <option value="Internet Explorer">
-                <option value="Firefox">
-                <option value="Chrome">
-                <option value="Opera">
-                <option value="Safari">
-              </datalist>
-            </div>
+              <div class="form-group">
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomresponsablebs" id="InputNomResponsableBienPop"
+                  placeholder="Nom du responsable" required>
+              </div>
+
+              <div class="form-group">
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsablebs" id="InputNomResponsableBienPop"
+                  placeholder="Prénom du responsable" required>
+              </div>
+              
+              <div class="form-group">
+                <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="PostesBienPop" name="posteresponsablebs"
+                  placeholder="Poste" required>
+                <datalist id="PostesBienPop">
+                  <option value="Internet Explorer">
+                  <option value="Firefox">
+                  <option value="Chrome">
+                  <option value="Opera">
+                  <option value="Safari">
+                </datalist>
+              </div>
+              <!-- bouton Ajouter -->
+              <div class="modal-footer perso_middle_modal_footer">
+                <input type="submit" name="validerbs" value="Ajouter" class="btn perso_btn shadow-none"></input>
+              </div>
+            </fieldset>
           </form>
         </div>
-        <!-- bouton Ajouter -->
-        <div class="modal-footer perso_middle_modal_footer">
-          <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
-        </div>
+        
       </div>
     </div>
   </div>
@@ -767,6 +836,11 @@
 
   <!-- Custom scripts for all pages-->
   <script src="content/js/bootstrap.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="content/vendor/datatables/jquery.dataTables.js"></script>
+  <script src="content/vendor/datatables/dataTables.bootstrap4.js"></script>
+  
 
   <!-- Our JS -->
   <script src="content/js/modules/dark_mode.js"></script>
