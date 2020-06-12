@@ -4,37 +4,37 @@ $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bs
 
 $input = filter_input_array(INPUT_POST);
 
-$nom = mysqli_real_escape_string($connect, $input["nom"]);
-$prenom = mysqli_real_escape_string($connect, $input["prenom"]);
-$poste = mysqli_real_escape_string($connect, $input["poste"]);
+$nom = mysqli_real_escape_string($connect, $input["nom_evenement_redoutes"]);
+$prenom = mysqli_real_escape_string($connect, $input["description_evenement_redoutes"]);
+$poste = mysqli_real_escape_string($connect, $input["impact"]);
 
 $results["error"] = false;
 $results["message"] = [];
 
-// Verification du nom
+// Verification du nom er
 if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom)){
     $results["error"] = true;
     $results["message"]["nom"] = "Nom invalide";
     ?>
-    <strong style="color:#FF6565;">Nom invalide </br></strong>
+    <strong style="color:#FF6565;">Nom de l'événement redouté invalide </br></strong>
     <?php
 }
 
-// Verification du prenom
+// Verification de la description er
 if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $prenom)){
     $results["error"] = true;
-    $results["message"]["prenom"] = "Prenom invalide";
+    $results["message"]["prenom"] = "Description invalide";
     ?>
-    <strong style="color:#FF6565;">Prénom invalide </br></strong>
+    <strong style="color:#FF6565;">Description de l'événement redouté invalide </br></strong>
     <?php
 }
 
-// Verification du poste
+// Verification de l'impact
 if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $poste)){
     $results["error"] = true;
-    $results["message"]["poste"] = "Poste invalide";
+    $results["message"]["poste"] = "Impact invalide";
     ?>
-    <strong style="color:#FF6565;">Poste invalide </br></strong>
+    <strong style="color:#FF6565;">Impact invalide </br></strong>
     <?php
 }
 

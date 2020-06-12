@@ -4,9 +4,12 @@ $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bs
 
 $input = filter_input_array(INPUT_POST);
 
-$nom = mysqli_real_escape_string($connect, $input["nom"]);
-$prenom = mysqli_real_escape_string($connect, $input["prenom"]);
+// $mission = mysqli_real_escape_string($connect, $input["mission"]);
+// $nomresponsable = mysqli_real_escape_string($connect, $input["nomresponsable"]);
+// $prenomresponsable = mysqli_real_escape_string($connect, $input["prenomresponsable"]);
 $poste = mysqli_real_escape_string($connect, $input["poste"]);
+$nom = mysqli_real_escape_string($connect, $input["nom"]);
+$mission = mysqli_real_escape_string($connect, $input["mission"]);
 
 $results["error"] = false;
 $results["message"] = [];
@@ -20,12 +23,12 @@ if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom)){
     <?php
 }
 
-// Verification du prenom
-if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $prenom)){
+// Verification de la mission
+if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $mission)){
     $results["error"] = true;
-    $results["message"]["prenom"] = "Prenom invalide";
+    $results["message"]["prenom"] = "Mission invalide";
     ?>
-    <strong style="color:#FF6565;">Prénom invalide </br></strong>
+    <strong style="color:#FF6565;">Mission invalide </br></strong>
     <?php
 }
 

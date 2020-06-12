@@ -1,3 +1,4 @@
+<?php include("content/php/atelier1c/selection.php");?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -410,7 +411,8 @@
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="table-responsive">
-                    <table class="table table-bordered perso_border" id="dataTable2" width="100%" cellspacing="0">
+                  <input type="text" id="rechercher_input" placeholder="Rechercher">
+                    <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
                           <th>Valeur métier</th>
@@ -426,158 +428,19 @@
                         </tr>
                       </thead>
                       <tbody>
+                      <?php
+                      while($row = mysqli_fetch_array($result))
+                      {
+                        echo '
                         <tr>
-                          <td>#110</td>
-                          <td>XXXX</td>
-                          <td>XXXX</td>
-                          <td>#110</td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check1">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check1">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check2">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check2">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check3">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check3">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check4">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check4">.</label>
-                            </div>
-                          </td>
-                          <td>XXXX</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-            
-                          </td>
+                        <td>'.$row["id_personne"].'</td>
+                        <td>'.$row["nom"].'</td>
+                        <td>'.$row["prenom"].'</td>
+                        <td>'.$row["poste"].'</td>
                         </tr>
-                        <tr>
-                          <td>#110</td>
-                          <td>XXXX</td>
-                          <td>XXXX</td>
-                          <td>#110</td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check1">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check1">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check2">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check2">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check3">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check3">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check4">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check4">.</label>
-                            </div>
-                          </td>
-                          <td>XXXX</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-            
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#110</td>
-                          <td>XXXX</td>
-                          <td>XXXX</td>
-                          <td>#110</td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check1">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check1">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check2">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check2">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check3">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check3">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check4">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check4">.</label>
-                            </div>
-                          </td>
-                          <td>XXXX</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-            
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#110</td>
-                          <td>XXXX</td>
-                          <td>XXXX</td>
-                          <td>#110</td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check1">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check1">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check2">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check2">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check3">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check3">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check4">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check4">.</label>
-                            </div>
-                          </td>
-                          <td>XXXX</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-            
-                          </td>
-                        </tr>
+                        ';
+                      }
+                      ?>
                       </tbody>
                     </table>
                   </div>
