@@ -97,9 +97,9 @@ if (typeof jQuery === 'undefined') {
                       $td.each(function() {
                           // Create hidden input with row identifier.
                           var span = '<span class="tabledit-span tabledit-identifier">' + $(this).text() + '</span>';
-                          /* var input = '<input class="tabledit-input tabledit-identifier" type="hidden" name="' + settings.columns.identifier[1] + '" value="' + $(this).text() + '" disabled>'; */
-                          var input = '<textarea class="tabledit-input tabledit-identifier perso_textarea" type="hidden" name="' + settings.columns.identifier[1] + '" disabled>' + $(this).text() + '</textarea>';
-  
+                          var input = '<input class="tabledit-input tabledit-identifier" type="hidden" name="' + settings.columns.identifier[1] + '" value="' + $(this).text() + '" disabled>';
+                          //var input = '<textarea class="tabledit-input tabledit-identifier perso_textarea" type="hidden" name="' + settings.columns.identifier[1] + '" disabled>' + $(this).text() + '</textarea>';
+                          // TEXTAREA A REVOIR !
                           // Add elements to table cell.
                           $(this).html(span + input);
   
@@ -141,8 +141,8 @@ if (typeof jQuery === 'undefined') {
                                   input += '</select>';
                               } else {
                                   // Create text input element.
-                                  /* var input = '<input class="tabledit-input ' + settings.inputClass + '" type="text" name="' + settings.columns.editable[i][1] + '" value="' + $(this).text() + '" style="display: none;" disabled>'; */
-                                  var input = '<textarea class="tabledit-input ' + settings.inputClass + '" rows="1" type="text" name="' + settings.columns.editable[i][1] + '" style="display: none;" disabled>' +  $(this).text() + '</textarea>';
+                                  var input = '<input class="tabledit-input ' + settings.inputClass + '" type="text" name="' + settings.columns.editable[i][1] + '" value="' + $(this).text() + '" style="display: none;" disabled>';
+                                  //var input = '<textarea class="tabledit-input ' + settings.inputClass + '" rows="1" type="text" name="' + settings.columns.editable[i][1] + '" style="display: none;" disabled>' +  $(this).text() + '</textarea>';
                               }
   
                               // Add elements and class "view" to table cell.
@@ -233,12 +233,12 @@ if (typeof jQuery === 'undefined') {
                   //var rows_length = $tr[0]; console.log(rows_length)
                   // Enable identifier.
                   $tr.find('.tabledit-input.tabledit-identifier').prop('disabled', false);
+                  // Hide span element.
+                  $(td).find('.tabledit-span').hide();
                   // Get input element.
                   var $input = $(td).find('.tabledit-input');
                   // Enable and show input element.
                   $input.prop('disabled', false).show();
-                  // Hide span element.
-                  $(td).find('.tabledit-span').hide();
                   // Focus on input element.
                   if (settings.autoFocus) {
                       $input.focus();

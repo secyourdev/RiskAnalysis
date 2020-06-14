@@ -16,7 +16,7 @@ for(let i=0;i<table_cells_length;i++){
 function sortTable(n) {
     var element = table.rows[0].cells[n];
     /* clearfix */
-    for (i = 0; i < table_first_row_length; i++) {
+    for (i = 0; i < table_cells_length; i++) {
         if (table.rows[0].cells[i] != element) {
             table.rows[0].cells[i].className = "";
         }

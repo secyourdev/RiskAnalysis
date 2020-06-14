@@ -809,16 +809,10 @@
   <!-- Custom scripts for all pages-->
   <script src="content/js/bootstrap.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="content/vendor/datatables/jquery.dataTables.js"></script>
-  <script src="content/vendor/datatables/dataTables.bootstrap4.js"></script>
-  
-
   <!-- Our JS -->
   <script src="content/js/modules/dark_mode.js"></script>
   <script src="content/js/modules/top_bar.js"></script>
   <script src="content/js/modules/side_bar.js"></script>
-  <script src="content/js/modules/realtime.js"></script>
   <script src="content/js/atelier/atelier1b.js"></script>
   <script src="content/js/modules/tableau.js"></script>
 </body>

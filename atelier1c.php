@@ -652,6 +652,7 @@
     <script src="content/js/modules/dark_mode.js"></script>
     <script src="content/js/modules/top_bar.js"></script>
     <script src="content/js/modules/side_bar.js"></script>
+    <script src="content/js/modules/help_button.js"></script>
     <!--   <script src="content/js/modules/realtime.js"></script> -->
     <script src="content/js/atelier/atelier1a.js"></script>
     <script src="content/js/modules/tableau.js"></script>
