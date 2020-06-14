@@ -1,3 +1,4 @@
+<?php include("content/php/atelier1c/selection.php"); ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -13,9 +14,13 @@
   <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template-->
+  <!-- CSS -->
   <link href="content/css/bootstrap.css" rel="stylesheet">
   <link href="content/css/main.css" rel="stylesheet">
+
+  <!-- JS -->
+  <script src="content/vendor/jquery/jquery.js"></script>
+  <script src="content/vendor/jquery-tabledit/jquery.tabledit1.c.js"></script>
 </head>
 
 <body id="page-top">
@@ -26,7 +31,7 @@
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">      
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <!-- Logo -->
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-shield-alt"></i>
@@ -49,16 +54,17 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">Ateliers</div>
-      
+
       <!-- Nav Item - Charts -->
       <li class="nav-item active">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier1" aria-expanded="true"
-          aria-controls="Atelier1">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier1" aria-expanded="true" aria-controls="Atelier1">
           <i>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
               <g transform="translate(-1230 -689)">
-                <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
-                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-3.432" y="0">1</tspan></text>
+                <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                  <tspan x="-3.432" y="0">1</tspan>
+                </text>
               </g>
             </svg>
           </i>
@@ -68,45 +74,53 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="atelier-1a">
               <i>
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
-                <g transform="translate(-124 -292)">
-                  <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                  <text class="number_sub_activity_text" data-name="1.a" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">1.a</tspan></text>
-                </g>
-              </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                  <g transform="translate(-124 -292)">
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="1.a" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">1.a</tspan>
+                    </text>
+                  </g>
+                </svg>
               </i>
               <span id="nom_sous_atelier_1" title="Cadrer l’étude">Cadrer l’étude</span>
             </a>
             <a class="collapse-item" href="atelier-1b">
               <i>
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
-                <g transform="translate(-124 -292)">
-                  <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                  <text class="number_sub_activity_text" data-name="1.b" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">1.b</tspan></text>
-                </g>
-              </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                  <g transform="translate(-124 -292)">
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="1.b" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">1.b</tspan>
+                    </text>
+                  </g>
+                </svg>
               </i>
               <span id="nom_sous_atelier_2" title="Biens primordiaux/support">Biens primordiaux/support</span>
             </a>
             <a class="collapse-item" href="atelier-1c">
               <i>
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
-                <g transform="translate(-124 -292)">
-                  <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                  <text class="number_sub_activity_text" data-name="1.c" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">1.c</tspan></text>
-                </g>
-              </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                  <g transform="translate(-124 -292)">
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="1.c" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">1.c</tspan>
+                    </text>
+                  </g>
+                </svg>
               </i>
               <span id="nom_sous_atelier_3" title="Événements redoutés">Événements redoutés</span>
             </a>
             <a class="collapse-item" href="atelier-1d">
               <i>
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
-                <g transform="translate(-124 -292)">
-                  <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                  <text class="number_sub_activity_text" data-name="1.d" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">1.d</tspan></text>
-                </g>
-              </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                  <g transform="translate(-124 -292)">
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="1.d" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">1.d</tspan>
+                    </text>
+                  </g>
+                </svg>
               </i>
               <span id="nom_sous_atelier_4" title="Le socle de sécurité">Le socle de sécurité</span>
             </a>
@@ -114,13 +128,14 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier2" aria-expanded="true"
-          aria-controls="Atelier2">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier2" aria-expanded="true" aria-controls="Atelier2">
           <i>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
               <g transform="translate(-1230 -689)">
-                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
-                <text class="number_activity_text" data-name="2" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-3.432" y="0">2</tspan></text>
+                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                <text class="number_activity_text" data-name="2" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                  <tspan x="-3.432" y="0">2</tspan>
+                </text>
               </g>
             </svg>
           </i>
@@ -130,23 +145,27 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="atelier-2a">
               <i>
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
-                <g transform="translate(-124 -292)">
-                  <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                  <text class="number_sub_activity_text" data-name="2.a" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">2.a</tspan></text>
-                </g>
-              </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                  <g transform="translate(-124 -292)">
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="2.a" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">2.a</tspan>
+                    </text>
+                  </g>
+                </svg>
               </i>
               <span id="nom_sous_atelier_5" title="Identifier les sources de risques et les objectifs">Identifier les sources de risques et les objectifs</span>
             </a>
             <a class="collapse-item" href="atelier-2b">
               <i>
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
-                <g transform="translate(-124 -292)">
-                  <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                  <text class="number_sub_activity_text" data-name="2.b" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">2.b</tspan></text>
-                </g>
-              </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                  <g transform="translate(-124 -292)">
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="2.b" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">2.b</tspan>
+                    </text>
+                  </g>
+                </svg>
               </i>
               <span id="nom_sous_atelier_6" title="Évaluer les couples sources de risque/objectifs visés">Évaluer les couples sources de risque/objectifs visés</span>
             </a>
@@ -154,13 +173,14 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier3" aria-expanded="true"
-          aria-controls="Atelier3">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier3" aria-expanded="true" aria-controls="Atelier3">
           <i>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
               <g transform="translate(-1230 -689)">
-                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
-                <text class="number_activity_text" data-name="3" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-3.432" y="0">3</tspan></text>
+                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                <text class="number_activity_text" data-name="3" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                  <tspan x="-3.432" y="0">3</tspan>
+                </text>
               </g>
             </svg>
           </i>
@@ -168,50 +188,57 @@
         </a>
         <div id="Atelier3" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="atelier-3a">
-                <i>
+            <a class="collapse-item" href="atelier-3a">
+              <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
-                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                    <text class="number_sub_activity_text" data-name="3.a" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">3.a</tspan></text>
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="3.a" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">3.a</tspan>
+                    </text>
                   </g>
                 </svg>
-                </i>
-                <span id="nom_sous_atelier_7" title="Construire la cartographie des menaces numériques de l'écosystème et sélectionner les parties prenantes critiques">Construire la cartographie des menaces numériques de l'écosystème et sélectionner les parties prenantes critiques</span>
-              </a>
-              <a class="collapse-item" href="atelier-3b">
-                <i>
+              </i>
+              <span id="nom_sous_atelier_7" title="Construire la cartographie des menaces numériques de l'écosystème et sélectionner les parties prenantes critiques">Construire la cartographie des menaces numériques de l'écosystème et sélectionner les parties prenantes critiques</span>
+            </a>
+            <a class="collapse-item" href="atelier-3b">
+              <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
-                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                    <text class="number_sub_activity_text" data-name="3.b" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">3.b</tspan></text>
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="3.b" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">3.b</tspan>
+                    </text>
                   </g>
                 </svg>
-                </i>
-                <span id="nom_sous_atelier_8" title="Élaborer des scénarios stratégiques">Élaborer des scénarios stratégiques</span>
-              </a>
-              <a class="collapse-item" href="atelier-3c">
-                <i>
+              </i>
+              <span id="nom_sous_atelier_8" title="Élaborer des scénarios stratégiques">Élaborer des scénarios stratégiques</span>
+            </a>
+            <a class="collapse-item" href="atelier-3c">
+              <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
-                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                    <text class="number_sub_activity_text" data-name="3.c" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">3.c</tspan></text>
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="3.c" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">3.c</tspan>
+                    </text>
                   </g>
                 </svg>
-                </i>
-                <span id="nom_sous_atelier_9" title="Définir des mesures de sécurité sur l’écosystème">Définir des mesures de sécurité sur l’écosystème</span>
-              </a>
+              </i>
+              <span id="nom_sous_atelier_9" title="Définir des mesures de sécurité sur l’écosystème">Définir des mesures de sécurité sur l’écosystème</span>
+            </a>
           </div>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier4" aria-expanded="true"
-          aria-controls="Atelier4">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier4" aria-expanded="true" aria-controls="Atelier4">
           <i>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
               <g transform="translate(-1230 -689)">
-                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
-                <text class="number_activity_text" data-name="4" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-3.432" y="0">4</tspan></text>
+                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                <text class="number_activity_text" data-name="4" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                  <tspan x="-3.432" y="0">4</tspan>
+                </text>
               </g>
             </svg>
           </i>
@@ -219,39 +246,44 @@
         </a>
         <div id="Atelier4" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="atelier-4a">
-                <i>
+            <a class="collapse-item" href="atelier-4a">
+              <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
-                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                    <text class="number_sub_activity_text" data-name="4.a" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">4.a</tspan></text>
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="4.a" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">4.a</tspan>
+                    </text>
                   </g>
                 </svg>
-                </i>
-                <span id="nom_sous_atelier_10" title="Élaborer les scénarios opérationnels">Élaborer les scénarios opérationnels</span>
-              </a>
-              <a class="collapse-item" href="atelier-4b">
-                <i>
+              </i>
+              <span id="nom_sous_atelier_10" title="Élaborer les scénarios opérationnels">Élaborer les scénarios opérationnels</span>
+            </a>
+            <a class="collapse-item" href="atelier-4b">
+              <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
-                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                    <text class="number_sub_activity_text" data-name="4.b" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">4.b</tspan></text>
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="4.b" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">4.b</tspan>
+                    </text>
                   </g>
                 </svg>
-                </i>
-                <span id="nom_sous_atelier_11" title="Évaluer la vraisemblance des scénarios opérationnels">Évaluer la vraisemblance des scénarios opérationnels</span>
-              </a>
+              </i>
+              <span id="nom_sous_atelier_11" title="Évaluer la vraisemblance des scénarios opérationnels">Évaluer la vraisemblance des scénarios opérationnels</span>
+            </a>
           </div>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier5" aria-expanded="true"
-          aria-controls="Atelier5">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier5" aria-expanded="true" aria-controls="Atelier5">
           <i>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
               <g transform="translate(-1230 -689)">
-                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
-                <text class="number_activity_text" data-name="5" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-3.432" y="0">5</tspan></text>
+                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                <text class="number_activity_text" data-name="5" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                  <tspan x="-3.432" y="0">5</tspan>
+                </text>
               </g>
             </svg>
           </i>
@@ -259,39 +291,45 @@
         </a>
         <div id="Atelier5" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="atelier-5a">
-                <i>
+            <a class="collapse-item" href="atelier-5a">
+              <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
-                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                    <text class="number_sub_activity_text" data-name="5.a" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">5.a</tspan></text>
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="5.a" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">5.a</tspan>
+                    </text>
                   </g>
                 </svg>
-                </i>
-                <span id="nom_sous_atelier_12" title="Réaliser une synthèse des scénarios de risque">Réaliser une synthèse des scénarios de risque</span>
-              </a>
-              <a class="collapse-item" href="atelier-5b">
-                <i>
+              </i>
+              <span id="nom_sous_atelier_12" title="Réaliser une synthèse des scénarios de risque">Réaliser une synthèse des scénarios de risque</span>
+            </a>
+            <a class="collapse-item" href="atelier-5b">
+              <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
-                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                    <text class="number_sub_activity_text" data-name="5.b" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">5.b</tspan></text>
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="5.b" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">5.b</tspan>
+                    </text>
                   </g>
                 </svg>
-                </i>
-                <span id="nom_sous_atelier_13" title="Décider de la stratégie de traitement du risque et définir les mesures de sécurité">Décider de la stratégie de traitement du risque et définir les mesures de sécurité</span>
-              </a>
-              <a class="collapse-item" href="atelier-5c">
-                <i>
+              </i>
+              <span id="nom_sous_atelier_13" title="Décider de la stratégie de traitement du risque et définir les mesures de sécurité">Décider de la stratégie de traitement du risque et définir les mesures de sécurité</span>
+            </a>
+            <a class="collapse-item" href="atelier-5c">
+              <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
-                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                    <text class="number_sub_activity_text" data-name="5.c" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">5.c</tspan></text>
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="5.c" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">5.c</tspan>
+                    </text>
                   </g>
                 </svg>
-                </i>
-                <span id="nom_sous_atelier_14" title="Évaluer et documenter les risques résiduels">Évaluer et documenter les risques résiduels</span>
-              </a>
+              </i>
+              <span id="nom_sous_atelier_14" title="Évaluer et documenter les risques résiduels">Évaluer et documenter les risques résiduels</span>
+            </a>
           </div>
         </div>
       </li>
@@ -319,15 +357,15 @@
           <div id="top_bar_1" class="top_bar_name_1">Fabrication de vacccin</div>
           <div id="top_bar_2" class="top_bar_name_2">Atelier 1</div>
           <div id="top_bar_3" class="top_bar_name_3">Activité 1.c - Événements redoutés</div>
-          
+
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
             <!-- Dark Mode toggle switch -->
 
-              <label class="theme-switch" for="checkbox_dark_theme">
-                <input class="perso_switch" type="checkbox" id="checkbox_dark_theme" />
-                <div class="slider round"></div>
-              </label>
+            <label class="theme-switch" for="checkbox_dark_theme">
+              <input class="perso_switch" type="checkbox" id="checkbox_dark_theme" />
+              <div class="slider round"></div>
+            </label>
 
             <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -385,203 +423,70 @@
             <!-- Area Card -->
             <div class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
-              <!-- Card Header - Dropdown -->
-              <div class="row perso_no_margin">
-                <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                  <h6>Événements redoutés</h6>
-                </div>
-                <!-- bouton icon helper -->
-                <div class="card-header perso_header_right float-right col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                  <button class="perso_icon_btn custom-control-inline" data-container="body" data-trigger="hover focus" data-toggle="popover" data-placement="bottom"
-                    data-content="Ce choix engendre automatiquement le même barème sur vraisemblance ! ">
-                    <i class="fas fa-info-circle"></i>
-                </button>
+                <!-- Card Header - Dropdown -->
+                <div class="row perso_no_margin">
+                  <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <h6>Événements redoutés</h6>
+                  </div>
+                  <!-- bouton icon helper -->
+                  <div class="card-header perso_header_right float-right col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <button class="perso_icon_btn custom-control-inline" data-container="body" data-trigger="hover focus" data-toggle="popover" data-placement="bottom" data-content="Ce choix engendre automatiquement le même barème sur vraisemblance ! ">
+                      <i class="fas fa-info-circle"></i>
+                    </button>
 
-                  <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="radio_gravite2" name="radio_gravite1" class="custom-control-input">
-                    <label class="custom-control-label" for="radio_gravite2">Gravité sur 5</label>
-                  </div>
-                  <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="radio_gravite1" name="radio_gravite1" class="custom-control-input">
-                    <label class="custom-control-label" for="radio_gravite1">Gravité sur 4</label>
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" id="radio_gravite2" name="radio_gravite1" class="custom-control-input">
+                      <label class="custom-control-label" for="radio_gravite2">Gravité sur 5</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" id="radio_gravite1" name="radio_gravite1" class="custom-control-input">
+                      <label class="custom-control-label" for="radio_gravite1">Gravité sur 4</label>
+                    </div>
                   </div>
                 </div>
-              </div>
                 <!-- Card Body -->
                 <div class="card-body">
+                  <!--tableau-->
                   <div class="table-responsive">
-                    <table class="table table-bordered perso_border" id="dataTable2" width="100%" cellspacing="0">
+                    <input type="text" id="rechercher_input" placeholder="Rechercher">
+                    <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th>Valeur métier</th>
-                          <th>Nom</th>
-                          <th>Événements redoutés</th>
-                          <th>Impacts</th>
-                          <th>C</th>
-                          <th>I</th>
-                          <th>D</th>
-                          <th>T</th>
-                          <th>Gravité</th>
-                          <th class="perso_border"></th>
+                          <th id="id">ID</th>
+                          <th id="nom_valeur_metier">Valeur métier</th>
+                          <th id="nom_evenement_redoutes">Nom de l'événement redouté</th>
+                          <th id="description_evenement_redoutes">événement redouté</th>
+                          <th id="impact">Impacts</th>
+                          <th id="confidentialite">C</th>
+                          <th id="integrite">I</th>
+                          <th id="disponibilite">D</th>
+                          <th id="tracabilite">T</th>
+                          <th id="niveau_de_gravite">Gravité</th>
                         </tr>
                       </thead>
                       <tbody>
+                        <?php
+                        while ($row = mysqli_fetch_array($result)) {
+                          echo '
                         <tr>
-                          <td>#110</td>
-                          <td>XXXX</td>
-                          <td>XXXX</td>
-                          <td>#110</td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check1">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check1">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check2">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check2">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check3">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check3">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check4">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check4">.</label>
-                            </div>
-                          </td>
-                          <td>XXXX</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-            
-                          </td>
+                        <td>' . $row["id_evenement_redoutes"] . '</td>
+                        <td>' . $row["nom_valeur_metier"] . '</td>
+                        <td>' . $row["nom_evenement_redoutes"] . '</td>
+                        <td>' . $row["description_evenement_redoutes"] . '</td>
+                        <td>' . $row["impact"] . '</td>
+                        <td>' . $row["confidentialite"] . '</td>
+                        <td>' . $row["integrite"] . '</td>
+                        <td>' . $row["disponibilite"] . '</td>
+                        <td>' . $row["tracabilite"] . '</td>
+                        <td>' . $row["niveau_de_gravite"] . '</td>
                         </tr>
-                        <tr>
-                          <td>#110</td>
-                          <td>XXXX</td>
-                          <td>XXXX</td>
-                          <td>#110</td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check1">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check1">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check2">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check2">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check3">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check3">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check4">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check4">.</label>
-                            </div>
-                          </td>
-                          <td>XXXX</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-            
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#110</td>
-                          <td>XXXX</td>
-                          <td>XXXX</td>
-                          <td>#110</td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check1">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check1">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check2">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check2">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check3">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check3">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check4">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check4">.</label>
-                            </div>
-                          </td>
-                          <td>XXXX</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-            
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#110</td>
-                          <td>XXXX</td>
-                          <td>XXXX</td>
-                          <td>#110</td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check1">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check1">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check2">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check2">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check3">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check3">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="Check4">
-                              <label class="custom-control-label perso_RACI_control_label" for="Check4">.</label>
-                            </div>
-                          </td>
-                          <td>XXXX</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#modif_ecart" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-            
-                          </td>
-                        </tr>
+                        ';
+                        }
+                        ?>
                       </tbody>
                     </table>
                   </div>
-            
+
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
                     <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_evenement_redoute">Ajouter une nouvelle ligne</button>
@@ -591,168 +496,166 @@
             </div>
 
           </div>
-      </div>
-      <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; RISK MANAGER 2020</span>
-          </div>
         </div>
-      </footer>
-      <!-- End of Footer -->
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Copyright &copy; RISK MANAGER 2020</span>
+            </div>
+          </div>
+        </footer>
+        <!-- End of Footer -->
+
+      </div>
+      <!-- End of Content Wrapper -->
 
     </div>
-    <!-- End of Content Wrapper -->
+    <!-- End of Page Wrapper -->
 
-  </div>
-  <!-- End of Page Wrapper -->
-
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
 
 
-<!-- -------------------------------------------------------------------------------------------------------------- 
---------------------------------------- modal ajout de valeur métier ----------------------------------------------
+    <!-- -------------------------------------------------------------------------------------------------------------- 
+--------------------------------------- modal ajout Événement redouté ----------------------------------------------
 --------------------------------------------------------------------------------------------------------------  -->
-  <div class="modal fade" id="ajout_evenement_redoute" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ajout d'un événement redouté</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body perso_modal_body">
-          <form class="user" id="formValeurMetierPop">
-            <div class="row">
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                  <div class="form-group">
-                    <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_evenmt_redoute_pop"
-                      placeholder="Dénomination de l'événement redouté" required>
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="Select_val_metier_pop">Valeur métier</label>
-                    <select class="form-control" id="Select_val_metier_pop">
-                      <option value="" selected>...</option>
-                      <option value="1">dans bdd</option>
-                      <option value="2">dans bdd2</option>
-                    </select>
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="Description_event_pop">Événement redouté</label>
-                    <textarea class="form-control perso_text_area" id="Description_event_pop" rows="3"></textarea>
-                  </div>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                    <label class="custom-control-label" for="customCheck1">Confidentialité</label>
-                  </div>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck2">
-                    <label class="custom-control-label" for="customCheck2">Intégrité</label>
-                  </div>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck3">
-                    <label class="custom-control-label" for="customCheck3">Disponibilité</label>
-                  </div>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck4">
-                    <label class="custom-control-label" for="customCheck4">Traçabilité</label>
-                  </div>
+    <div class="modal fade" id="ajout_evenement_redoute" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ajout d'un événement redouté</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body perso_modal_body">
+            <form method="post" action="content/php/atelier1c/ajout.php" class="user" id="formValeurMetierPop">
+              <fieldset>
+                <div class="row">
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <div class="form-group">
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_evenement_redoutes" id="InputEvenementRedoute" placeholder="Dénomination de l'événement redouté" required>
+                    </div>
 
-                  <div class="form-group">
-                    <label for="Description_event_pop">Impacts</label>
-                    <textarea class="form-control perso_text_area" id="Description_event_pop" rows="3"></textarea>
-                  </div>
+                    <div class="form-group">
+                      <label for="Select_val_metier_pop">Valeur métier</label>
+                      <select class="form-control" name="nom_valeur_metier" id="Select_valeur_metier">
+                        <option value="" selected>...</option>
+                        <?php
+                        while ($row = mysqli_fetch_array($resultvm)) //selection.php
+                        {
+                          echo '
+                        <option value=' . $row["nom_valeur_metier"] . '>' . $row["nom_valeur_metier"] . '</option>
+                        ';
+                        }
+                        ?>
+                      </select>
+                    </div>
 
-                  <div class="form-group" id="niveaudegravité">
-                    <label for="niveaudegravité">Niveau de gravité</label>
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" id="gravite1" autocomplete="off"> 1
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" id="gravite2" autocomplete="off"> 2
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" id="gravite2" autocomplete="off"> 3
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" id="gravite2" autocomplete="off"> 4
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" id="gravite3" autocomplete="off"> 5
-                      </label>
+                    <div class="form-group">
+                      <label for="Description_event_pop">Événement redouté</label>
+                      <textarea class="form-control perso_text_area" name="description_evenement_redoute" id="Description_event_pop" rows="3"></textarea>
                     </div>
                   </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="customCheck1">
+                      <label class="custom-control-label" for="customCheck1">Confidentialité</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="customCheck2">
+                      <label class="custom-control-label" for="customCheck2">Intégrité</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="customCheck3">
+                      <label class="custom-control-label" for="customCheck3">Disponibilité</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="customCheck4">
+                      <label class="custom-control-label" for="customCheck4">Traçabilité</label>
+                    </div>
 
+                    <div class="form-group">
+                      <label for="Description_impact_pop">Impacts</label>
+                      <textarea class="form-control perso_text_area" name="impact" id="Description_impact_pop" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group" id="niveaudegravité">
+                      <label for="niveaudegravité">Niveau de gravité</label>
+                      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="options" id="gravite1" autocomplete="off"> 1
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="options" id="gravite2" autocomplete="off"> 2
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="options" id="gravite3" autocomplete="off"> 3
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="options" id="gravite4" autocomplete="off"> 4
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="options" id="gravite5" autocomplete="off"> 5
+                        </label>
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
-            </div>
-          </form>
-        </div>
-        <!-- bouton Ajouter -->
-        <div class="modal-footer perso_middle_modal_footer">
-          <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+                <!-- bouton Ajouter -->
+                <div class="modal-footer perso_middle_modal_footer">
+                  <input type="submit" name="validerevenementredoute" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
+                </div>
+              </fieldset>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="content/vendor/jquery/jquery.js"></script>
-  <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="content/vendor/jquery-easing/jquery.easing.js"></script>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <!-- Custom scripts for all pages-->
-  <script src="content/js/bootstrap.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="content/vendor/datatables/jquery.dataTables.js"></script>
-  <script src="content/vendor/datatables/dataTables.bootstrap4.js"></script>
-  <script src="content/vendor/datatables/dataTables.rowsGroup.js"></script>
-  
-  <!-- Page level custom scripts -->
-  <script src="content/js/modules/tableau/tableau-atelier1c.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="content/vendor/jquery-easing/jquery.easing.js"></script>
 
-  <!-- JS pour Dark Mode -->
-  <script src="content/js/modules/dark_mode.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="content/js/bootstrap.js"></script>
 
-  <!-- Our JS -->
-  <script src="content/js/modules/help_button.js"></script>
-  <script src="content/js/modules/top_bar.js"></script>
-  <script src="content/js/modules/side_bar.js"></script>
+    <!-- Our JS -->
+    <script src="content/js/modules/dark_mode.js"></script>
+    <script src="content/js/modules/top_bar.js"></script>
+    <script src="content/js/modules/side_bar.js"></script>
+    <!--   <script src="content/js/modules/realtime.js"></script> -->
+    <script src="content/js/atelier/atelier1a.js"></script>
+    <script src="content/js/modules/tableau.js"></script>
+
 </body>
 
 </html>

@@ -455,6 +455,7 @@
                         <tr>
                           <th>Règles</th>
                           <th>État de la règle</th>
+                          <th>Déscription des écarts</th>
                           <th>Justification des écarts</th>
                           <th>Responsable</th>
                           <th>Date limite de la mise en application</th>
@@ -463,6 +464,7 @@
                       </thead>
                       <tbody>
                         <tr>
+                          <td>XXXX</td>
                           <td>XXXX</td>
                           <td>XXXX</td>
                           <td>XXXX</td>
@@ -476,6 +478,7 @@
                           </td>
                         </tr>
                         <tr>
+                          <td>XXXX</td>
                           <td>XXXX</td>
                           <td>XXXX</td>
                           <td>XXXX</td>
@@ -541,7 +544,7 @@
 
             <div class="custom-file">
               <input type="file" class="custom-file-input" id="customFile">
-              <label class="custom-file-label" for="customFile">Choose file</label>
+              <label class="custom-file-label" for="customFile">Choisir un fichier</label>
             </div>
 
             <div class="form-group">
@@ -599,10 +602,15 @@
                 <option value="2">Non traitée</option>
               </select>
             </div>
-  
+            
             <div class="form-group">
-              <label for="DescriptionBienPop">Justification des écarts</label>
-              <textarea class="form-control perso_text_area" id="DescriptionBienPop" rows="3"></textarea>
+              <label for="description_ecarts_pop">Description des écarts</label>
+              <textarea class="form-control perso_text_area" id="description_ecarts_pop" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="justification_ecarts_pop">Justification des écarts</label>
+              <textarea class="form-control perso_text_area" id="justification_ecarts_pop" rows="3"></textarea>
             </div>
   
             <div class="form-group">

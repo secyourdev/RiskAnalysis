@@ -278,7 +278,10 @@ h6{
 .perso_color_dark_blue{
     color: var(--button-color)!important;
 }
-
+.perso_textarea{
+    margin: 0!important;
+    resize: both;
+}
 
 /* -------------------------------------------------------------------------------------------------------------- */
 /*---------------------------------------------- CSS Perso -------------------------------------------------------*/
@@ -473,6 +476,24 @@ h6{
 
 .titre_textarea{
     margin-bottom : 5px;
+}
+.image-preview {
+    width: 100%;
+    min-height: 100px;
+    border: 2px solid var(--card-divider);
+    margin-top: 15px;
+
+    /* default text */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--card-divider);
+}
+.image-preview__image {
+    display: none;
+    width: 100%;
 }
 /* -------------------------------------------------------------------------------------------------------------- */
 /* --------------------------------------Gestion aspect responsif------------------------------------------------ */
@@ -913,9 +934,20 @@ h6{
 
 /*Table*/
 .perso_toolbar{
-    display:contents;
+    justify-content: center;
 }
-
+.az{
+    background-image: url(../img/sort-down-solid.svg);
+    background-position: 90%;
+    background-repeat: no-repeat;
+    background-size: 0.7rem;
+}
+.za{
+    background-image: url(../img/sort-up-solid.svg);
+    background-position: 90%;
+    background-repeat: no-repeat;
+    background-size: 0.7rem;
+}
 #rechercher_input{
     margin-bottom: 5px;
     border-radius: 5px;

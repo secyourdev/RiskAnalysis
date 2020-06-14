@@ -485,6 +485,17 @@
                     </table>
                   </div>
 
+                  <div class="form-group">
+                    <label for="Select_respo_acceptation_risque_Pop">Personne responsable d'accepter les risques résiduels au terme de l'étude</label>
+                    <select class="form-control" id="Select_respo_acceptation_risque_Pop">
+                      <option value="" selected>...</option>
+                      <option value="1">Directeur</option>
+                      <option value="2">RSSI</option>
+                      <option value="3">Responsable Informatique</option>
+                    </select>
+                  </div>
+
+
                 </div>
               </div>
 
@@ -1249,7 +1260,7 @@
     <!---------------------------------------------------------------------------------------------------------------- 
       ---------------------------------------- modal suppression d'un acteur -----------------------------------------
       ---------------------------------------------------------------------------------------------------------------->
-      <div class="modal fade" id="suppr_acteur" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      <!-- <div class="modal fade" id="suppr_acteur" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -1284,7 +1295,7 @@
           </div>          
         </div>
       </div>
-      </div>
+      </div> -->
 
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
