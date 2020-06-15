@@ -454,6 +454,7 @@
                     <table id="tableau_vm" class="table table-bordered table-striped">
                       <thead>
                         <tr>
+                          <th id="id_valeur_metier">ID valeur métier</th>
                           <th id="valeurmetier">Valeur métier</th>
                           <th id="nature">Nature</th>
                           <th id="description">Description</th>
@@ -466,6 +467,7 @@
                       {
                         echo '
                         <tr>
+                        <td>'.$row["id_valeur_metier"].'</td>
                         <td>'.$row["nom_valeur_metier"].'</td>
                         <td>'.$row["nature_valeur_metier"].'</td>
                         <td>'.$row["description_valeur_metier"].'</td>
@@ -502,6 +504,7 @@
                     <table id="tableau_bs" class="table table-bordered table-striped">
                       <thead>
                         <tr>
+                          <th id="id_biensupport">ID Bien support</th>
                           <th id="biensupport">Bien support</th>
                           <th id="valeurmetier">Valeur métier</th>
                           <th id="description">Description</th>
@@ -514,6 +517,7 @@
                       {
                         echo '
                         <tr>
+                        <td>'.$row["id_bien_support"].'</td>
                         <td>'.$row["nom_bien_support"].'</td>
                         <td>'.$row["id_valeur_metier"].'</td>
                         <td>'.$row["description_bien_support"].'</td>
