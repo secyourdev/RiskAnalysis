@@ -405,6 +405,7 @@
                     <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
+                          <th id="id_mission">ID_mission</th>
                           <th id="nom_mission">Nom de la mission</th>
                           <th id="nom">Responsable</th>
                           <th id="poste">Poste</th>
@@ -416,6 +417,7 @@
                       {
                         echo '
                         <tr>
+                        <td>'.$row["id_mission"].'</td>
                         <td>'.$row["nom_mission"].'</td>
                         <td>'.$row["nom"].'</td>
                         <td>'.$row["poste"].'</td>
@@ -452,6 +454,7 @@
                     <table id="tableau_vm" class="table table-bordered table-striped">
                       <thead>
                         <tr>
+                          <th id="id_valeur_metier">ID valeur métier</th>
                           <th id="valeurmetier">Valeur métier</th>
                           <th id="nature">Nature</th>
                           <th id="description">Description</th>
@@ -464,6 +467,7 @@
                       {
                         echo '
                         <tr>
+                        <td>'.$row["id_valeur_metier"].'</td>
                         <td>'.$row["nom_valeur_metier"].'</td>
                         <td>'.$row["nature_valeur_metier"].'</td>
                         <td>'.$row["description_valeur_metier"].'</td>
@@ -500,6 +504,7 @@
                     <table id="tableau_bs" class="table table-bordered table-striped">
                       <thead>
                         <tr>
+                          <th id="id_biensupport">ID Bien support</th>
                           <th id="biensupport">Bien support</th>
                           <th id="valeurmetier">Valeur métier</th>
                           <th id="description">Description</th>
@@ -512,6 +517,7 @@
                       {
                         echo '
                         <tr>
+                        <td>'.$row["id_bien_support"].'</td>
                         <td>'.$row["nom_bien_support"].'</td>
                         <td>'.$row["id_valeur_metier"].'</td>
                         <td>'.$row["description_bien_support"].'</td>
@@ -587,7 +593,7 @@
                       while($row = mysqli_fetch_array($resultnomresponsablemission))
                       {
                         echo '
-                        <option value='.$row["nom"].'>'.$row["nom"].'</option>
+                        <option value="'.$row["nom"].'">'.$row["nom"].'</option>
                         ';
                       }
                   ?>
@@ -602,7 +608,7 @@
                       while($row = mysqli_fetch_array($resultprenomresponsablemission))
                       {
                         echo '
-                        <option value='.$row["prenom"].'>'.$row["prenom"].'</option>
+                        <option value="'.$row["prenom"].'">'.$row["prenom"].'</option>
                         ';
                       }
                   ?>
@@ -617,7 +623,7 @@
                       while($row = mysqli_fetch_array($resultposteresponsablemission))
                       {
                         echo '
-                        <option value='.$row["poste"].'>'.$row["poste"].'</option>
+                        <option value="'.$row["poste"].'">'.$row["poste"].'</option>
                         ';
                       }
                   ?>
@@ -735,7 +741,7 @@
                       while($row = mysqli_fetch_array($resultvm))
                       {
                         echo '
-                        <option value='.$row["nom_valeur_metier"].'>'.$row["nom_valeur_metier"].'</option>
+                        <option value="'.$row["nom_valeur_metier"].'">'.$row["nom_valeur_metier"].'</option>
                         ';
                       }
                   ?>
@@ -817,6 +823,7 @@
   <script src="content/js/modules/set_filter_sort_table.js"></script>
   <script src="content/js/atelier/atelier1b.js"></script>
   <script src="content/js/modules/sort_table.js"></script>
+  
 </body>
 
 </html>
