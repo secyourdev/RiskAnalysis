@@ -24,15 +24,15 @@ $(document).ready(function(){
     $('#tableau_vm').Tabledit({
      url:'content/php/atelier1b/modificationvm.php',
      columns:{
-      identifier:[0, "id_personne"],
-      editable:[[1, 'nom'], [2, 'prenom'], [3, 'poste']]
+      identifier:[0, "id_valeur_metier"],
+      editable:[[1, 'nom_valeur_metier'], [2, 'nature_valeur_metier'], [3, 'description_valeur_metier'], [4, 'nom']]
      },
      restoreButton:false,
      onSuccess:function(data, textStatus, jqXHR)
      {
       if(data.action == 'delete')
       {
-       $('#'+data.id_personne).remove();
+       $('#'+data.id_valeur_metier).remove();
       }
      }
     });
