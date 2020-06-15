@@ -3,15 +3,15 @@ $(document).ready(function(){
      url:'content/php/atelier1b/modificationmission.php',
      sortable: true,
      columns:{
-      identifier:[0, "nom_mission"],
-      editable:[[0, 'nom_mission']]
+      identifier:[0, 'id_mission'],
+      editable:[[1, 'nom_mission']]
      },
      restoreButton:false,
      onSuccess:function(data, textStatus, jqXHR)
      {
       if(data.action == 'delete')
       {
-       $('#'+data.id_personne).remove();
+       $('#'+data.id_mission).remove();
       }
      }
     });

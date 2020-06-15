@@ -405,6 +405,7 @@
                     <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
+                          <th id="id_mission">ID_mission</th>
                           <th id="nom_mission">Nom de la mission</th>
                           <th id="nom">Responsable</th>
                           <th id="poste">Poste</th>
@@ -416,6 +417,7 @@
                       {
                         echo '
                         <tr>
+                        <td>'.$row["id_mission"].'</td>
                         <td>'.$row["nom_mission"].'</td>
                         <td>'.$row["nom"].'</td>
                         <td>'.$row["poste"].'</td>
@@ -587,7 +589,7 @@
                       while($row = mysqli_fetch_array($resultnomresponsablemission))
                       {
                         echo '
-                        <option value='.$row["nom"].'>'.$row["nom"].'</option>
+                        <option value="'.$row["nom"].'">'.$row["nom"].'</option>
                         ';
                       }
                   ?>
@@ -602,7 +604,7 @@
                       while($row = mysqli_fetch_array($resultprenomresponsablemission))
                       {
                         echo '
-                        <option value='.$row["prenom"].'>'.$row["prenom"].'</option>
+                        <option value="'.$row["prenom"].'">'.$row["prenom"].'</option>
                         ';
                       }
                   ?>
@@ -617,7 +619,7 @@
                       while($row = mysqli_fetch_array($resultposteresponsablemission))
                       {
                         echo '
-                        <option value='.$row["poste"].'>'.$row["poste"].'</option>
+                        <option value="'.$row["poste"].'">'.$row["poste"].'</option>
                         ';
                       }
                   ?>
@@ -735,7 +737,7 @@
                       while($row = mysqli_fetch_array($resultvm))
                       {
                         echo '
-                        <option value='.$row["nom_valeur_metier"].'>'.$row["nom_valeur_metier"].'</option>
+                        <option value="'.$row["nom_valeur_metier"].'">'.$row["nom_valeur_metier"].'</option>
                         ';
                       }
                   ?>
@@ -815,6 +817,7 @@
   <script src="content/js/modules/side_bar.js"></script>
   <script src="content/js/atelier/atelier1b.js"></script>
   <script src="content/js/modules/tableau.js"></script>
+  <script src="content/js/modules/realtime.js"></script>
 </body>
 
 </html>
