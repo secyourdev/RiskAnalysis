@@ -550,7 +550,7 @@
                         while ($row = mysqli_fetch_array($resultvm)) //selection.php
                         {
                           echo '
-                        <option value=' . $row["nom_valeur_metier"] . '>' . $row["nom_valeur_metier"] . '</option>
+                        <option value="' . $row['nom_valeur_metier'] . '">' . $row['nom_valeur_metier'] . '</option>
                         ';
                         }
                         ?>
@@ -559,24 +559,24 @@
 
                     <div class="form-group">
                       <label for="Description_event_pop">Événement redouté</label>
-                      <textarea class="form-control perso_text_area" name="description_evenement_redoute" id="Description_event_pop" rows="3"></textarea>
+                      <textarea class="form-control perso_text_area" name="description_evenement_redoutes" id="Description_event_pop" rows="3"></textarea>
                     </div>
                   </div>
                   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck1">
+                      <input type="checkbox" class="custom-control-input" id="customCheck1" name="formcheck[]" value="1">
                       <label class="custom-control-label" for="customCheck1">Confidentialité</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck2">
+                      <input type="checkbox" class="custom-control-input" id="customCheck2" name="formcheck[]" value="2">
                       <label class="custom-control-label" for="customCheck2">Intégrité</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck3">
+                      <input type="checkbox" class="custom-control-input" id="customCheck3" name="formcheck[]" value="3">
                       <label class="custom-control-label" for="customCheck3">Disponibilité</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck4">
+                      <input type="checkbox" class="custom-control-input" id="customCheck4" name="formcheck[]" value="4">
                       <label class="custom-control-label" for="customCheck4">Traçabilité</label>
                     </div>
 
@@ -654,7 +654,7 @@
     <script src="content/js/modules/side_bar.js"></script>
     <script src="content/js/modules/help_button.js"></script>
     <!--   <script src="content/js/modules/realtime.js"></script> -->
-    <script src="content/js/atelier/atelier1a.js"></script>
+    <script src="content/js/atelier/atelier1c.js"></script>
     <script src="content/js/modules/tableau.js"></script>
 
 </body>

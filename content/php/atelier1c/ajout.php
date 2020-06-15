@@ -17,30 +17,92 @@ $results["message"] = [];
 
 $nom_evenement_redoutes = $_POST['nom_evenement_redoutes'];
 $nom_valeur_metier = $_POST['nom_valeur_metier'];
-echo $nom_valeur_metier;
-$description_evenement_redoute = $_POST['description_evenement_redoute'];
+$nom_evenement_redoutes = $_POST['nom_evenement_redoutes'];
+$description_evenement_redoutes = $_POST['description_evenement_redoutes'];
 $impact = $_POST['impact'];
-$confidentialite = 1;
+$confidentialite = 0;
 $integrite = 0;
-$disponibilite = 1;
+$disponibilite = 0;
 $tracabilite = 0;
-$niveau_de_gravite = 5;
+$niveau_de_gravite = 0;
 $id_atelier = '1.c';
 
+$formcheck = $_POST['formcheck'];
+print_r($_POST['formcheck']);
+
+/* $check_results= array();
+
+if (empty($formcheck)) {
+  echo ("You didn't select any buildings.");
+} else {
+  $N = count($formcheck);
+
+  echo ("You selected $N door(s): ");
+  for ($i = 0; $i < 4; $i++) {
+    if ($formcheck[$i]){
+      array_push($check_results, $formcheck[$i]);
+    }
+    else{
+      array_push($check_results, 0);
+    }
+    list($integrite, $disponibilite, $tracabilite, $niveau_de_gravite) = $check_results;
+    echo ($formcheck[$i] . " ");
+  }
+}
+print 'resultat ';
+print_r($check_results);
+ */
+
+function IsChecked($chkname, $value)
+{
+  if (!empty($_POST[$chkname])) {
+    foreach ($_POST[$chkname] as $chkval) {
+      if ($chkval == $value) {
+        return true;
+      }
+    }
+  }
+  return false;
+};
+if (IsChecked('formcheck', '1')) {
+  //do somthing ...
+  $confidentialite = 1;
+};
+if (IsChecked('formcheck', '2')) {
+  //do somthing ...
+  $integrite = 1;
+};
+if (IsChecked('formcheck', '3')) {
+  //do somthing ...
+  $disponibilite = 1;
+};
+if (IsChecked('formcheck', '4')) {
+  //do somthing ...
+  $tracabilite = 1;
+};
+print 'conf ';
+print $confidentialite;
+print ' int ';
+print $integrite;
+print ' dispo ';
+print $disponibilite;
+print ' traca ';
+print $tracabilite;
 
 
-$recupere = $bdd->prepare('SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = ?');
-$insere = $bdd->prepare('INSERT INTO `evenement_redoutes`(`id_evenement_redoutes`, `nom_evenement_redoutes`, `description_evenement_redoute`, `confidentialite`, `integrite`, `disponibilite`, `tracabilite`, `impact`, `niveau_de_gravite`, `id_valeur_metier`, `id_atelier`) VALUES (?,?,?,?,?,?,?,?,?,?,?)');
+
+$recupere = $bdd->prepare("SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = ?");
+$insere = $bdd->prepare('INSERT INTO `evenement_redoutes`(`id_evenement_redoutes`, `nom_evenement_redoutes`, `description_evenement_redoutes`, `confidentialite`, `integrite`, `disponibilite`, `tracabilite`, `impact`, `niveau_de_gravite`, `id_valeur_metier`, `id_atelier`) VALUES (?,?,?,?,?,?,?,?,?,?,?)');
 
 
-// Verification du nom_valeur_metier
+/* // Verification du nom_valeur_metier
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_valeur_metier)) {
   $results["error"] = true;
   $results["message"]["nom_valeur_metier"] = "nom_valeur_metier invalide";
 ?>
   <strong style="color:#FF6565;">nom_valeur_metier invalide </br></strong>
 <?php
-}
+} */
 
 // Verification du nom_evenement_redoutes
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_evenement_redoutes)) {
@@ -51,12 +113,12 @@ if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_evenement_red
 <?php
 }
 
-// Verification du description_evenement_redoute
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_evenement_redoute)) {
+// Verification du description_evenement_redoutes
+if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_evenement_redoutes)) {
   $results["error"] = true;
-  $results["message"]["description_evenement_redoute"] = "description_evenement_redoute invalide";
+  $results["message"]["description_evenement_redoutes"] = "description_evenement_redoutes invalide";
 ?>
-  <strong style="color:#FF6565;">description_evenement_redoute invalide </br></strong>
+  <strong style="color:#FF6565;">description_evenement_redoutes invalide </br></strong>
 <?php
 }
 
@@ -69,7 +131,7 @@ if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $impact)) {
 <?php
 }
 
-// Verification du confidentialite
+/* // Verification du confidentialite
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $confidentialite)) {
   $results["error"] = true;
   $results["message"]["confidentialite"] = "confidentialite invalide";
@@ -110,7 +172,7 @@ if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $niveau_de_gravite
 ?>
   <strong style="color:#FF6565;">niveau_de_gravite invalide </br></strong>
 <?php
-}
+} */
 
 if ($results["error"] === false && isset($_POST['validerevenementredoute'])) {
   $recupere->bindParam(1, $nom_valeur_metier);
@@ -118,7 +180,7 @@ if ($results["error"] === false && isset($_POST['validerevenementredoute'])) {
   $id_valeur_metier = $recupere->fetch();
   $insere->bindParam(1, $id_evenement_redoutes);
   $insere->bindParam(2, $nom_evenement_redoutes);
-  $insere->bindParam(3, $description_evenement_redoute);
+  $insere->bindParam(3, $description_evenement_redoutes);
   $insere->bindParam(4, $confidentialite);
   $insere->bindParam(5, $integrite);
   $insere->bindParam(6, $disponibilite);
