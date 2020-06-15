@@ -5,7 +5,7 @@ var cadre_temporel = document.getElementById('cadre_temporel');
 var nom_acteur = document.getElementById('nom_acteur');
 var prenom_acteur = document.getElementById('prenom_acteur');
 var poste_acteur = document.getElementById('poste_acteur');
-var table = document.getElementById('editable_table')
+var table_1a = document.getElementById('editable_table')
 var button = document.getElementsByClassName('tabledit-edit-button')
 var save_button = document.getElementsByClassName('tabledit-save-button')
 var valider_acteur = document.getElementsByName('valider')[0]
@@ -30,7 +30,7 @@ var regex_nom_acteur = /^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/
 var regex_prenom_acteur = /^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/
 var regex_poste_acteur = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
 
-var table_cells_length = table.rows[0].cells.length; 
+var table_1a_cells_length = table_1a.rows[0].cells.length; 
 /*------------------------------ LABELS CACHES ------------------------------*/
 label_nom_etude.style.display="none"
 label_cadre_temporel.style.display="none"
@@ -134,18 +134,18 @@ function activate_label(value,label){
 }
 
 function tableau_verification(value_test){
-    var table = document.getElementById('editable_table')
-    var table_cells_length = table.rows[0].cells.length; 
+    var table_1a = document.getElementById('editable_table')
+    var table_1a_cells_length = table_1a.rows[0].cells.length; 
     var bool =new Array()
     var bool_final=true;
     var regex = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
-        for(let j=1;j<table_cells_length-1;j++){
-            bool[j] = verify_textarea_2(table.rows[value_test].cells[j].children[1].value,regex,bool,table.rows[value_test].cells[j].children[1],save_button[value_test-1])
-            table.rows[value_test].cells[j].children[1].addEventListener('keyup',function(event){
-                bool[j]= verify_textarea_2(table.rows[value_test].cells[j].children[1].value,regex,bool,table.rows[value_test].cells[j].children[1],save_button[value_test-1])
+        for(let j=1;j<table_1a_cells_length-1;j++){
+            bool[j] = verify_textarea_2(table_1a.rows[value_test].cells[j].children[1].value,regex,bool,table_1a.rows[value_test].cells[j].children[1],save_button[value_test-1])
+            table_1a.rows[value_test].cells[j].children[1].addEventListener('keyup',function(event){
+                bool[j]= verify_textarea_2(table_1a.rows[value_test].cells[j].children[1].value,regex,bool,table_1a.rows[value_test].cells[j].children[1],save_button[value_test-1])
             })
         }
-        for(let i=1;i<table_cells_length-1;i++){
+        for(let i=1;i<table_1a_cells_length-1;i++){
             bool_final = bool_final&&bool[i]
 
         }

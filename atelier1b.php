@@ -401,7 +401,7 @@
                 <div class="card-body row perso_card_body_row">
                   <!--tableau-->
                   <div class="table-responsive">
-                    <input type="text" id="rechercher_input" placeholder="Rechercher">
+                    <input type="text" class="rechercher_input" id="rechercher_mission" placeholder="Rechercher">
                     <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
@@ -448,7 +448,7 @@
                 <div class="card-body">
                   <!--tableau-->
                   <div class="table-responsive">
-                    <input type="text" id="rechercher_input" placeholder="Rechercher">
+                    <input type="text" class="rechercher_input" id="rechercher_valeur_metier" placeholder="Rechercher">
                     <table id="tableau_vm" class="table table-bordered table-striped">
                       <thead>
                         <tr>
@@ -496,7 +496,7 @@
                 <div class="card-body">
                   <!--tableau-->
                   <div class="table-responsive">
-                    <input type="text" id="rechercher_input" placeholder="Rechercher">
+                    <input type="text" class="rechercher_input" id="rechercher_bien_support" placeholder="Rechercher">
                     <table id="tableau_bs" class="table table-bordered table-striped">
                       <thead>
                         <tr>
@@ -813,8 +813,9 @@
   <script src="content/js/modules/dark_mode.js"></script>
   <script src="content/js/modules/top_bar.js"></script>
   <script src="content/js/modules/side_bar.js"></script>
+  <script src="content/js/modules/set_filter_sort_table.js"></script>
   <script src="content/js/atelier/atelier1b.js"></script>
-  <script src="content/js/modules/tableau.js"></script>
+  <script src="content/js/modules/sort_table.js"></script>
 </body>
 
 </html>

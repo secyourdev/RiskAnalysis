@@ -337,7 +337,7 @@ if (typeof jQuery === 'undefined') {
                   $(td).find('.tabledit-restore-button').show();
                   // Set last deleted row.
                   $lastDeletedRow = $(td).parent('tr');
-                  location.reload();
+                  //location.reload();
               },
               confirm: function(td) {
                   // Reset all cells in edit mode.

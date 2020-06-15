@@ -457,7 +457,7 @@
                   </br>
                   <!--tableau-->
                   <div class="table-responsive">
-                    <input type="text" id="rechercher_input" placeholder="Rechercher">
+                    <input type="text" class="rechercher_input" id="rechercher_acteur" placeholder="Rechercher">
                     <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
@@ -1333,8 +1333,9 @@
   <script src="content/js/modules/dark_mode.js"></script>
   <script src="content/js/modules/top_bar.js"></script>
   <script src="content/js/modules/side_bar.js"></script>
+  <script src="content/js/modules/set_filter_sort_table.js"></script>
   <script src="content/js/atelier/atelier1a.js"></script>
-  <script src="content/js/modules/tableau.js"></script>
+  <script src="content/js/modules/sort_table.js"></script>
   <script src="content/js/modules/realtime.js"></script>
   
 </body>

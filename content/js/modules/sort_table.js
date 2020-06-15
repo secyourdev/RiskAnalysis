@@ -1,19 +1,7 @@
-
-/*----------------------------- VARIABLES ---------------------------------*/
-var table = document.getElementById('editable_table')
-var table_cells_length = table.rows[0].cells.length; 
-var table_rows_length = table.rows.length; 
-
-var bool_nom_etude = false
-var regex_nom_etude = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
-/*----------------------------- TRAITEMENT --------------------------------*/
-for(let i=0;i<table_cells_length;i++){
-    table.rows[0].cells[i].setAttribute("onclick", "sortTable("+i+")");
-}
 /*----------------------------- FONCTIONS ---------------------------------*/
-
-/* sort table */
-function sortTable(n) {
+function sortTable(n,table_name) {
+    var table = table_name;
+    var table_cells_length = table.rows[0].cells.length; 
     var element = table.rows[0].cells[n];
     /* clearfix */
     for (i = 0; i < table_cells_length; i++) {
@@ -97,12 +85,3 @@ function sortTable(n) {
         }
     }
 }
-/* filter */
-$(document).ready(function () {
-    $("#rechercher_input").on("keyup", function () {
-        var value = $(this).val().toLowerCase();
-        $("#editable_table tbody tr").filter(function () {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-    });
-});

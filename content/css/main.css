@@ -948,7 +948,7 @@ h6{
     background-repeat: no-repeat;
     background-size: 0.7rem;
 }
-#rechercher_input{
+.rechercher_input{
     margin-bottom: 5px;
     border-radius: 5px;
     outline: none;

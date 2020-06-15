@@ -48,3 +48,11 @@ $(document).ready(function(){
      }
     });
 });
+
+
+setSortTable('editable_table');
+OURJQUERYFN.setFilterTable("#editable_table","#tableau_mission tbody tr")
+setSortTable('tableau_vm');
+OURJQUERYFN.setFilterTable("#rechercher_valeur_metier","#tableau_vm tbody tr")
+setSortTable('tableau_bs');
+OURJQUERYFN.setFilterTable("#rechercher_bien_support","#tableau_bs tbody tr")
