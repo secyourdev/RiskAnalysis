@@ -97,8 +97,8 @@ if (typeof jQuery === 'undefined') {
                       $td.each(function() {
                           // Create hidden input with row identifier.
                           var span = '<span class="tabledit-span tabledit-identifier">' + $(this).text() + '</span>';
-                          var input = '<input class="tabledit-input tabledit-identifier" type="hidden" name="' + settings.columns.identifier[1] + '" value="' + $(this).text() + '" disabled>';
-                          //var input = '<textarea class="tabledit-input tabledit-identifier perso_textarea" type="hidden" name="' + settings.columns.identifier[1] + '" disabled>' + $(this).text() + '</textarea>';
+                          //var input = '<input class="tabledit-input tabledit-identifier" type="hidden" name="' + settings.columns.identifier[1] + '" value="' + $(this).text() + '" disabled>';
+                          var input = '<textarea class="tabledit-input tabledit-identifier perso_textarea" type="hidden" name="' + settings.columns.identifier[1] + '" disabled>' + $(this).text() + '</textarea>';
                           // TEXTAREA A REVOIR !
                           // Add elements to table cell.
                           $(this).html(span + input);
@@ -141,8 +141,8 @@ if (typeof jQuery === 'undefined') {
                                   input += '</select>';
                               } else {
                                   // Create text input element.
-                                  var input = '<input class="tabledit-input ' + settings.inputClass + '" type="text" name="' + settings.columns.editable[i][1] + '" value="' + $(this).text() + '" style="display: none;" disabled>';
-                                  //var input = '<textarea class="tabledit-input ' + settings.inputClass + '" rows="1" type="text" name="' + settings.columns.editable[i][1] + '" style="display: none;" disabled>' +  $(this).text() + '</textarea>';
+                                  //var input = '<input class="tabledit-input ' + settings.inputClass + '" type="text" name="' + settings.columns.editable[i][1] + '" value="' + $(this).text() + '" style="display: none;" disabled>';
+                                  var input = '<textarea class="tabledit-input ' + settings.inputClass + '" rows="1" type="text" name="' + settings.columns.editable[i][1] + '" style="display: none;" disabled>' +  $(this).text() + '</textarea>';
                               }
   
                               // Add elements and class "view" to table cell.
@@ -319,11 +319,11 @@ if (typeof jQuery === 'undefined') {
               submit: function(td) {
                   Delete.reset(td);
                   // Enable identifier hidden input.
-                  $(td).parent('tr').find('input.tabledit-identifier').attr('disabled', false);
+                  $(td).parent('tr').find('textarea.tabledit-identifier').attr('disabled', false);
                   // Send AJAX request to server.
                   var ajaxResult = ajax(settings.buttons.delete.action);
                   // Disable identifier hidden input.
-                  $(td).parents('tr').find('input.tabledit-identifier').attr('disabled', true);
+                  $(td).parents('tr').find('textarea.tabledit-identifier').attr('disabled', true);
   
                   if (ajaxResult === false) {
                       return;
@@ -337,7 +337,7 @@ if (typeof jQuery === 'undefined') {
                   $(td).find('.tabledit-restore-button').show();
                   // Set last deleted row.
                   $lastDeletedRow = $(td).parent('tr');
-                  //location.reload();
+                  location.reload();
               },
               confirm: function(td) {
                   // Reset all cells in edit mode.
@@ -351,11 +351,11 @@ if (typeof jQuery === 'undefined') {
               },
               restore: function(td) {
                   // Enable identifier hidden input.
-                  $(td).parent('tr').find('input.tabledit-identifier').attr('disabled', false);
+                  $(td).parent('tr').find('textarea.tabledit-identifier').attr('disabled', false);
                   // Send AJAX request to server.
                   var ajaxResult = ajax(settings.buttons.restore.action);
                   // Disable identifier hidden input.
-                  $(td).parents('tr').find('input.tabledit-identifier').attr('disabled', true);
+                  $(td).parents('tr').find('textarea.tabledit-identifier').attr('disabled', true);
   
                   if (ajaxResult === false) {
                       return;
