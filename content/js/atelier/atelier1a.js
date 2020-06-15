@@ -15,3 +15,6 @@ $(document).ready(function(){
      }
     });
 });
+
+setSortTable('editable_table');
+OURJQUERYFN.setFilterTable("#rechercher_acteur","#editable_table tbody tr")
