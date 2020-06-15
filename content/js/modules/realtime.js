@@ -36,18 +36,18 @@ function activate_label(value,label){
 }
 
 function tableau_verification(value_test){
-    var table_1a = document.getElementById('editable_table')
-    var table_1a_cells_length = table_1a.rows[0].cells.length; 
+    var table = document.getElementById('editable_table')
+    var table_cells_length = table.rows[0].cells.length; 
     var bool =new Array()
     var bool_final=true;
     var regex = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
-        for(let j=1;j<table_1a_cells_length-1;j++){
-            bool[j] = verify_textarea_2(table_1a.rows[value_test].cells[j].children[1].value,regex,bool,table_1a.rows[value_test].cells[j].children[1],save_button[value_test-1])
-            table_1a.rows[value_test].cells[j].children[1].addEventListener('keyup',function(event){
-                bool[j]= verify_textarea_2(table_1a.rows[value_test].cells[j].children[1].value,regex,bool,table_1a.rows[value_test].cells[j].children[1],save_button[value_test-1])
+        for(let j=1;j<table_cells_length-1;j++){
+            bool[j] = verify_textarea_2(table.rows[value_test].cells[j].children[1].value,regex,bool,table.rows[value_test].cells[j].children[1],save_button[value_test-1])
+            table.rows[value_test].cells[j].children[1].addEventListener('keyup',function(event){
+                bool[j]= verify_textarea_2(table.rows[value_test].cells[j].children[1].value,regex,bool,table.rows[value_test].cells[j].children[1],save_button[value_test-1])
             })
         }
-        for(let i=1;i<table_1a_cells_length-1;i++){
+        for(let i=1;i<table_cells_length-1;i++){
             bool_final = bool_final&&bool[i]
 
         }
