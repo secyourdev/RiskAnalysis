@@ -9,13 +9,13 @@ $(document).ready(function () {
                 [3, 'description_evenement_redoutes'],
                 [4, 'impact'], 
                 [9, 'niveau_de_gravite']
-            ]
-            /* checkboxeditable: [
+            ],
+            checkboxeditable: [
                [5, 'confidentialite'],
                [6, 'integrite'],
                [7, 'disponibilite'],
-               [8, 'tracabilite'],
-           ] */
+               [8, 'tracabilite']
+           ]
         },
         restoreButton: false,
         onSuccess: function (data, textStatus, jqXHR) {

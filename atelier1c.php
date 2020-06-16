@@ -589,19 +589,19 @@
                       <label for="niveaudegravité">Niveau de gravité</label>
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="options" id="gravite1" autocomplete="off"> 1
+                          <input type="radio" id="gravite1" autocomplete="off" name="niveau_de_gravite" value="1"> 1
                         </label>
                         <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="options" id="gravite2" autocomplete="off"> 2
+                          <input type="radio" id="gravite2" autocomplete="off" name="niveau_de_gravite" value="2"> 2
                         </label>
                         <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="options" id="gravite3" autocomplete="off"> 3
+                          <input type="radio" id="gravite3" autocomplete="off" name="niveau_de_gravite" value="3"> 3
                         </label>
                         <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="options" id="gravite4" autocomplete="off"> 4
+                          <input type="radio" id="gravite4" autocomplete="off" name="niveau_de_gravite" value="4"> 4
                         </label>
                         <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="options" id="gravite5" autocomplete="off"> 5
+                          <input type="radio" id="gravite5" autocomplete="off" name="niveau_de_gravite" value="5"> 5
                         </label>
                       </div>
                     </div>

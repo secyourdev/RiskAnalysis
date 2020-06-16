@@ -25,7 +25,7 @@ $confidentialite = 0;
 $integrite = 0;
 $disponibilite = 0;
 $tracabilite = 0;
-$niveau_de_gravite = 0;
+$niveau_de_gravite = $_POST['niveau_de_gravite'];
 $id_atelier = '1.c';
 
 $formcheck = $_POST['formcheck'];
@@ -81,14 +81,6 @@ if (IsChecked('formcheck', '4')) {
   //do somthing ...
   $tracabilite = 1;
 };
-print 'conf ';
-print $confidentialite;
-print ' int ';
-print $integrite;
-print ' dispo ';
-print $disponibilite;
-print ' traca ';
-print $tracabilite;
 
 
 
