@@ -20,7 +20,7 @@ $(document).ready(function () {
         restoreButton: false,
         onSuccess: function (data, textStatus, jqXHR) {
             if (data.action == 'delete') {
-                $('#' + data.id_personne).remove();
+                $('#' + data.id_evenement_redoutes).remove();
             }
         }
     });

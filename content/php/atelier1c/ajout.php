@@ -1,5 +1,5 @@
 <?php
-/* header('Location: ../../../atelier-1c'); */
+header('Location: ../../../atelier-1c');
 
 
 //Connexion à la base de donnee

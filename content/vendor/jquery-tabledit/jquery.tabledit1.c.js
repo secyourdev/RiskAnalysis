@@ -96,8 +96,7 @@ if (typeof jQuery === 'undefined') {
           $td.each(function () {//crée la colonne
             // Create hidden input with row identifier.
             var span = '<span class="tabledit-span tabledit-identifier">' + $(this).text() + '</span>';
-            /* var input = '<input class="tabledit-input tabledit-identifier" type="hidden" name="' + settings.columns.identifier[1] + '" value="' + $(this).text() + '" disabled>'; */
-            var input = '<textarea class="tabledit-input tabledit-identifier perso_textarea" type="hidden" name="' + settings.columns.identifier[1] + '" disabled>' + $(this).text() + '</textarea>';
+            var input = '<input class="tabledit-input tabledit-identifier" type="hidden" name="' + settings.columns.identifier[1] + '" value="' + $(this).text() + '" disabled>';
 
             // Add elements to table cell.
             $(this).html(span + input);
@@ -158,7 +157,6 @@ if (typeof jQuery === 'undefined') {
             $td.each(function () {
 
               var text = $(this).text();
-              console.log(typeof parseInt(text))
               if (!settings.editButton) {
                 $(this).css('cursor', 'pointer');
               }
@@ -197,14 +195,6 @@ if (typeof jQuery === 'undefined') {
               //var $checkbox = $(string_ident)
 
               // si la value de la base de donnée est 1 alors coche la checkbox
-
-              $("input").change(function () {
-                var $input = $(this);
-                $("p").html(
-                  ".attr( \"checked\" ): <b>" + $input.attr("checked") + "</b><br>" +
-                  ".prop( \"checked\" ): <b>" + $input.prop("checked") + "</b><br>" +
-                  ".is( \":checked\" ): <b>" + $input.is(":checked") + "</b>");
-              }).change();
 
               if (parseInt(text) == 1) {
                 checkbox.checked = true
@@ -402,7 +392,7 @@ if (typeof jQuery === 'undefined') {
         $(td).find('.tabledit-restore-button').show();
         // Set last deleted row.
         $lastDeletedRow = $(td).parent('tr');
-        location.reload();
+        /* location.reload(); */
       },
       confirm: function (td) {
         // Reset all cells in edit mode.
