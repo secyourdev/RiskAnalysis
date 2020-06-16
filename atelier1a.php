@@ -473,7 +473,7 @@
                       {
                         echo '
                         <tr>
-                        <td>'.$row["id_personne"].'</td>
+                        <td>'.$row["id_utilisateur"].'</td>
                         <td>'.$row["nom"].'</td>
                         <td>'.$row["prenom"].'</td>
                         <td>'.$row["poste"].'</td>

@@ -11,7 +11,9 @@ function verify_textarea(value,regex,input){
     else input.style.border="2px solid #FF6565";
 }
 
-function verify_textarea_2(value,regex,bool,input,save){
+function verify_textarea_2(value,regex,input,save){
+    var bool = true;
+
     if(regex.test(value)){
         input.style.border="2px solid #4AD991";
         bool = true;
@@ -35,24 +37,49 @@ function activate_label(value,label){
     else label.style.display='none'
 }
 
-function tableau_verification(value_test){
-    var table = document.getElementById('editable_table')
-    var table_cells_length = table.rows[0].cells.length; 
+function tableau_verification(value_test,name_table,table_cells_length){
+    var table = name_table
+    //var bool_initial = new Array()
     var bool =new Array()
+    //var final;
     var bool_final=true;
+    //console.log(value_test)
+    //console.log(name_table)
+    //console.log(table_cells_length)
     var regex = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
-        for(let j=1;j<table_cells_length-1;j++){
-            bool[j] = verify_textarea_2(table.rows[value_test].cells[j].children[1].value,regex,bool,table.rows[value_test].cells[j].children[1],save_button[value_test-1])
-            table.rows[value_test].cells[j].children[1].addEventListener('keyup',function(event){
-                bool[j]= verify_textarea_2(table.rows[value_test].cells[j].children[1].value,regex,bool,table.rows[value_test].cells[j].children[1],save_button[value_test-1])
+        for(let j=1;j<table_cells_length;j++){
+            bool[j] = verify_textarea_2(table.rows[value_test].cells[j].children[1].value,regex,table.rows[value_test].cells[j].children[1],save_button[value_test-1])
+            //console.log('bool['+j+'] :'+bool[j])
+            //bool_final = bool[j]&&bool[j+1]
+            table.rows[value_test].cells[j].children[1].addEventListener('keyup',function(){
+                bool[j] = verify_textarea_2(table.rows[value_test].cells[j].children[1].value,regex,table.rows[value_test].cells[j].children[1],save_button[value_test-1])    
+                // for(let i=1;i<table_cells_length;i++){
+                    
+                //     console.log('bool['+i+'] :'+bool[i])
+                //     bool_final = bool_final&&bool[i]
+                //     console.log(bool_final)
+                //     //return bool_final
+                // }
+                // final=bool_final
+                //console.log(bool2)
+                //return bool
+                //console.log(bool)
             })
+            
         }
-        for(let i=1;i<table_cells_length-1;i++){
-            bool_final = bool_final&&bool[i]
+    //bool=bool2;
+    //     if (event.keyCode === 13) {
+        // for(let i=1;i<table_cells_length;i++){
+        //     bool_final = bool_final&&bool[i]
+        //     console.log(bool_final)
+        // }
+    //     }
+    //     else console.log('bobo')
 
-        }
-    return bool_final
+    //console.log(bool)
+    return bool
 }
+
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));

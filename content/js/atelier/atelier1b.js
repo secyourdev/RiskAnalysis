@@ -1,10 +1,8 @@
 var button = document.getElementsByClassName('tabledit-edit-button')
 var save_button = document.getElementsByClassName('tabledit-save-button')
-
-
-
+var j=0;
+var k=0;
 /*--------------------------------- TABLES JS -------------------------------*/
-
 $(document).ready(function(){  
     $('#editable_table').Tabledit({
      url:'content/php/atelier1b/modificationmission.php',
@@ -24,8 +22,8 @@ $(document).ready(function(){
     $('#tableau_vm').Tabledit({
      url:'content/php/atelier1b/modificationvm.php',
      columns:{
-      identifier:[0, "id_personne"],
-      editable:[[1, 'nom'], [2, 'prenom'], [3, 'poste']]
+      identifier:[0, "id_valeur_metier"],
+      editable:[[1, "nom_valeur_metier"],[2, 'nature_valeur_metier'], [3, 'description_valeur_metier'], [4, 'id_personne']]
      },
      restoreButton:false,
      onSuccess:function(data, textStatus, jqXHR)
@@ -54,7 +52,6 @@ $(document).ready(function(){
 });
 
 /*--------------------------- SORT & FILTER TABLES --------------------------*/
-
 setSortTable('editable_table');
 OURJQUERYFN.setFilterTable("#editable_table","#tableau_mission tbody tr")
 setSortTable('tableau_vm');
@@ -64,8 +61,15 @@ OURJQUERYFN.setFilterTable("#rechercher_bien_support","#tableau_bs tbody tr")
 
 /*------------------ AJOUT DE LA VERIFICATION DES TABLEAUX ------------------*/
 sleep(100).then(() => {
-    for(let i=0;i<button.length;i++){
+    for(let i=0;i<editable_table.rows.length-1;i++){
         j=i+1;
-        button[i].setAttribute('onclick','tableau_verification('+j+')')
+        button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table'+','+'4'+')')
+    }
+});
+
+sleep(100).then(() => {
+    for(let i=editable_table.rows.length-1;i<editable_table.rows.length+tableau_vm.rows.length-1;i++){
+        k++;
+        button[i].setAttribute('onclick','tableau_verification('+k+','+'tableau_vm'+','+'5'+')')
     }
 });

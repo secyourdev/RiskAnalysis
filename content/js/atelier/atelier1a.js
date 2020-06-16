@@ -34,7 +34,7 @@ $(document).ready(function(){
     $('#editable_table').Tabledit({
      url:'content/php/atelier1a/modification.php',
      columns:{
-      identifier:[0, "id_personne"],
+      identifier:[0, "id_utilisateur"],
       editable:[[1, 'nom'], [2, 'prenom'], [3, 'poste']]
      },
      restoreButton:false,
@@ -42,7 +42,7 @@ $(document).ready(function(){
      {
       if(data.action == 'delete')
       {
-       $('#'+data.id_personne).remove();
+       $('#'+data.id_utilisateur).remove();
       }
      }
     });
@@ -58,9 +58,9 @@ label_prenom_acteur.style.display="none"
 label_poste_acteur.style.display="none"
 /*------------------ AJOUT DE LA VERIFICATION DES TABLEAUX ------------------*/
 sleep(100).then(() => {
-    for(let i=0;i<button.length;i++){
+    for(let i=0;i<editable_table.rows.length-1;i++){
         j=i+1;
-        button[i].setAttribute('onclick','tableau_verification('+j+')')
+        button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table'+','+'4'+')')
     }
 });
 /*------------------------- CHARGEMENT DES COOKIES ---------------------------*/

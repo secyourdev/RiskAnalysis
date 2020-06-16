@@ -219,7 +219,7 @@ if (typeof jQuery === 'undefined') {
                   $(td).find('.tabledit-span').show();
                   // Add "view" class and remove "edit" class in td element.
                   $(td).addClass('tabledit-view-mode').removeClass('tabledit-edit-mode');
-                  $tr.find('button.tabledit-edit-button').attr('onclick','tableau_verification('+$tr[0].rowIndex+')');
+                  //$tr.find('button.tabledit-edit-button').attr('onclick','tableau_verification('+$tr[0].rowIndex+')');
                   // Update toolbar buttons.
                   if (settings.editButton) {
                       $tr.find('button.tabledit-save-button').hide();
@@ -245,7 +245,7 @@ if (typeof jQuery === 'undefined') {
                   }
                   // Add "edit" class and remove "view" class in td element.
                   $(td).addClass('tabledit-edit-mode').removeClass('tabledit-view-mode');
-                  $tr.find('button.tabledit-edit-button').attr('onclick','tableau_verification('+$tr[0].rowIndex+')');
+                  //$tr.find('button.tabledit-edit-button').attr('onclick','tableau_verification('+$tr[0].rowIndex+')');
                   // Update toolbar buttons.
                   if (settings.editButton) {
                       $tr.find('button.tabledit-edit-button').addClass('active');
@@ -522,9 +522,26 @@ if (typeof jQuery === 'undefined') {
                   if (event.handled !== true) {
                       event.preventDefault();
                       // Submit and update all columns.
-                      if(tableau_verification($(this).parents('tr')[0].rowIndex))
+                    var length_table = $(this).parents('tr').parent('tbody')[0].rows[0].children.length
+                    var length_input=0
+
+                    for(let i=1;i<length_table-1;i++){
+                        if($(this).parents('tr').parent('tbody')[0].rows[0].children[i].children[1].classList[0]=="tabledit-input"){
+                            length_input++
+                        }
+                    }
+
+                    var bool_final=true;
+                    var bool = tableau_verification($(this).parents('tr')[0].rowIndex,$(this).parents('tr').parent('tbody').parent()[0],length_input+1) 
+                    for(let j=1;j<length_table-1;j++){
+                        bool_final = bool_final&&bool[j]
+                        
+                    }
+
+                    if(bool_final){
                         Edit.submit($(this).parents('tr').find('td.tabledit-edit-mode'));
-                    
+                    }
+        
                       event.handled = true;
                   }
               });
@@ -595,20 +612,35 @@ if (typeof jQuery === 'undefined') {
               // Key?
               switch (event.keyCode) {
                   case 9:  // Tab.
-                      if (!settings.editButton) {
-                          Edit.submit($td);
-                          Mode.edit($td.closest('td').next());
-                      }
-                      break;
-                  case 13: // Enter..
-                      if(tableau_verification($td.parent('tr')[0].rowIndex)){
+                    if (!settings.editButton) {
                         Edit.submit($td);
-                        break;
-                      }
+                        Mode.edit($td.closest('td').next());
+                    }
+                    break;
+                  /*case 13: // Enter..
+                     var length_table = $td.parent('tr').parent('tbody')[0].rows[0].children.length
+                    var length_input=0
+            
+                    for(let i=1;i<length_table-1;i++){
+                        if($td.parent('tr').parent('tbody')[0].rows[0].children[i].children[1].classList[0]=="tabledit-input"){
+                            length_input++
+                        }
+                    }
+
+                    var bool_final=true;
+                    var bool = tableau_verification($td.parent('tr')[0].rowIndex,$td.parent('tr').parent('tbody').parent()[0],length_input+1) 
+                    for(let j=1;j<length_table-1;j++){
+                        bool_final = bool_final&&bool[j]
+                        
+                    }
+                    if(bool_final){
+                        Edit.submit($td);
+                        break; 
+                    }*/
                   case 27: // Escape.
-                      Edit.reset($td);
-                      Delete.reset($td);
-                      break;
+                    Edit.reset($td);
+                    Delete.reset($td);
+                    break;
               }
           });
   
