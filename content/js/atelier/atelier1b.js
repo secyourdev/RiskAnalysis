@@ -40,7 +40,7 @@ $(document).ready(function(){
      url:'content/php/atelier1b/modificationbs.php',
      columns:{
       identifier:[0, "id_bien_support"],
-      editable:[[1, 'nom_bien_support'], [2, 'nom_valeur_metier'], [3, 'description_valeur_metier'], [4, 'nom_responsable'], [5, 'prénom_responsable'], [6, 'poste_responsable']]
+      editable:[[1, 'nom_bien_support'], [2, 'nom_valeur_metier'], [3, 'description_bien_support'], [4, 'nom_responsable'], [5, 'prenom_responsable'], [6, 'poste_responsable']]
      },
      restoreButton:false,
      onSuccess:function(data, textStatus, jqXHR)

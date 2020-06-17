@@ -64,26 +64,27 @@ if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $poste_responsable)
 if($input["action"] === 'edit' && $results["error"] === false){
     $queryp = "
     UPDATE personne
-    SET nom = '".$nom."'
-    WHERE id_personne = (SELECT id_personne FROM bien_support WHERE id_bien_support = '".$input["bien_support"]."')
+    SET nom = '".$nom_responsable."'
+    prenom = '".$prenom_responsable."',
+    poste = '".$poste_responsable."'
+    WHERE id_personne = (SELECT id_personne FROM bien_support WHERE id_bien_support = '".$input["id_bien_support"]."')
     ";
     
     $querybs = "
     UPDATE bien_support 
     SET nom_bien_suport = '".$nom_bien_support."', 
     description_bien_support = '".$description_bien_support."',
-    id_valeur_metier = SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = '".$nom_valeur_metier."',
-    
+    id_valeur_metier = (SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = '".$nom_valeur_metier."'),
     WHERE id_bien_support = '".$input["id_bien_support"]."'
     ";
     mysqli_query($connect, $queryp);
-    mysqli_query($connect, $queryvm);
+    mysqli_query($connect, $querybs);
 }
 
 if($input["action"] === 'delete'){
     $query = "
     DELETE FROM bien_support 
-    WHERE id_personne = '".$input["id_bien_support"]."'
+    WHERE id_bien_support = '".$input["id_bien_support"]."'
     ";
     mysqli_query($connect, $query);
 }
