@@ -17,6 +17,7 @@ try {
 $results["error"] = false;
 $results["message"] = [];
 
+$nom_evenement_redoutes = $_POST['nom_evenement_redoutes'];
 $nom_valeur_metier = $_POST['nom_valeur_metier'];
 $nom_evenement_redoutes = $_POST['nom_evenement_redoutes'];
 $description_evenement_redoutes = $_POST['description_evenement_redoutes'];

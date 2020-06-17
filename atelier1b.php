@@ -401,13 +401,15 @@
                 <div class="card-body row perso_card_body_row">
                   <!--tableau-->
                   <div class="table-responsive">
-                    <input type="text" id="rechercher_input" placeholder="Rechercher">
-                    <table id="tableau_mission" class="table table-bordered table-striped">
+                    <input type="text" class="rechercher_input" id="rechercher_mission" placeholder="Rechercher">
+                    <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th id="mission">Nom de la mission</th>
-                          <th id="nom">Responsable</th>
-                          <th id="poste">Poste</th>
+                          <th id="id_mission">ID_mission</th>
+                          <th id="nom_mission">Nom de la mission</th>
+                          <th id="nom">Nom responsable</th>
+                          <th id="prenom">Prénom responsable</th>
+                          <th id="poste">Poste responsable</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -416,8 +418,10 @@
                       {
                         echo '
                         <tr>
+                        <td>'.$row["id_mission"].'</td>
                         <td>'.$row["nom_mission"].'</td>
                         <td>'.$row["nom"].'</td>
+                        <td>'.$row["prenom"].'</td>
                         <td>'.$row["poste"].'</td>
                         </tr>
                         ';
@@ -448,14 +452,18 @@
                 <div class="card-body">
                   <!--tableau-->
                   <div class="table-responsive">
-                    <input type="text" id="rechercher_input" placeholder="Rechercher">
+                    <input type="text" class="rechercher_input" id="rechercher_valeur_metier" placeholder="Rechercher">
                     <table id="tableau_vm" class="table table-bordered table-striped">
                       <thead>
                         <tr>
+                          <th id="id_valeur_metier">ID valeur métier</th>
                           <th id="valeurmetier">Valeur métier</th>
+                          <th id="mission">Mission</th>
                           <th id="nature">Nature</th>
                           <th id="description">Description</th>
-                          <th id="responsable">Responsable</th>
+                          <th id="nomresponsablevm">Nom responsable</th>
+                          <th id="prenomresponsablevm">Prénom responsable</th>
+                          <th id="posteresponsablevm">Poste responsable</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -464,36 +472,11 @@
                       {
                         echo '
                         <tr>
+                        <td>'.$row["id_valeur_metier"].'</td>
                         <td>'.$row["nom_valeur_metier"].'</td>
+                        <td>'.$row["nom_mission"].'</td>
                         <td>'.$row["nature_valeur_metier"].'</td>
                         <td>'.$row["description_valeur_metier"].'</td>
-                        <td>'.$row["nom"].'</td>
-                        </tr>
-                        ';
-                      }
-                      ?>
-                      </tbody>
-                    </table>
-                  </div> -->
-                  <!--tableau-->
-                  <div class="table-responsive">
-                    <input type="text" id="rechercher_input" placeholder="Rechercher">
-                    <table id="editable_table" class="table table-bordered table-striped">
-                      <thead>
-                        <tr>
-                          <th id="id">ID</th>
-                          <th id="nom">Nom</th>
-                          <th id="prenom">Prénom</th>
-                          <th id="poste">Poste</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      <?php
-                      while($row = mysqli_fetch_array($result))
-                      {
-                        echo '
-                        <tr>
-                        <td>'.$row["id_personne"].'</td>
                         <td>'.$row["nom"].'</td>
                         <td>'.$row["prenom"].'</td>
                         <td>'.$row["poste"].'</td>
@@ -503,7 +486,8 @@
                       ?>
                       </tbody>
                     </table>
-                  </div>
+                  </div> 
+                  
 
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
@@ -524,14 +508,17 @@
                 <div class="card-body">
                   <!--tableau-->
                   <div class="table-responsive">
-                    <input type="text" id="rechercher_input" placeholder="Rechercher">
+                    <input type="text" class="rechercher_input" id="rechercher_bien_support" placeholder="Rechercher">
                     <table id="tableau_bs" class="table table-bordered table-striped">
                       <thead>
                         <tr>
+                          <th id="id_biensupport">ID Bien support</th>
                           <th id="biensupport">Bien support</th>
                           <th id="valeurmetier">Valeur métier</th>
                           <th id="description">Description</th>
-                          <th id="responsable">Responsable</th>
+                          <th id="nomresponsablevm">Nom responsable</th>
+                          <th id="prenomresponsablevm">Prénom responsable</th>
+                          <th id="posteresponsablevm">Poste responsable</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -540,10 +527,13 @@
                       {
                         echo '
                         <tr>
+                        <td>'.$row["id_bien_support"].'</td>
                         <td>'.$row["nom_bien_support"].'</td>
-                        <td>'.$row["id_valeur_metier"].'</td>
+                        <td>'.$row["nom_valeur_metier"].'</td>
                         <td>'.$row["description_bien_support"].'</td>
                         <td>'.$row["nom"].'</td>
+                        <td>'.$row["prenom"].'</td>
+                        <td>'.$row["poste"].'</td>
                         </tr>
                         ';
                       }
@@ -556,6 +546,7 @@
                   <div class="text-center">
                     <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_bien_support">Ajouter une nouvelle ligne</button>
                   </div>
+                  
                 </div>
               </div>
             </div>
@@ -563,7 +554,7 @@
           </div>
       </div>
       <!-- End of Main Content -->
-
+      
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -573,7 +564,6 @@
         </div>
       </footer>
       <!-- End of Footer -->
-
     </div>
     <!-- End of Content Wrapper -->
 
@@ -615,7 +605,7 @@
                       while($row = mysqli_fetch_array($resultnomresponsablemission))
                       {
                         echo '
-                        <option value='.$row["nom"].'>'.$row["nom"].'</option>
+                        <option value="'.$row["nom"].'">'.$row["nom"].'</option>
                         ';
                       }
                   ?>
@@ -630,7 +620,7 @@
                       while($row = mysqli_fetch_array($resultprenomresponsablemission))
                       {
                         echo '
-                        <option value='.$row["prenom"].'>'.$row["prenom"].'</option>
+                        <option value="'.$row["prenom"].'">'.$row["prenom"].'</option>
                         ';
                       }
                   ?>
@@ -645,12 +635,13 @@
                       while($row = mysqli_fetch_array($resultposteresponsablemission))
                       {
                         echo '
-                        <option value='.$row["poste"].'>'.$row["poste"].'</option>
+                        <option value="'.$row["poste"].'">'.$row["poste"].'</option>
                         ';
                       }
                   ?>
                 </select>
               </div>
+              <!-- bouton Ajouter -->
               <div class="modal-footer perso_middle_modal_footer">
                 <input type="submit" name="validermission" value="Ajouter" class="btn perso_btn shadow-none"></input>
               </div>
@@ -659,7 +650,7 @@
           
           </form>
         </div>
-        <!-- bouton Ajouter -->
+        
         
       </div>
     </div>
@@ -681,6 +672,21 @@
         <div class="modal-body perso_modal_body">
           <form method="post" action="content/php/atelier1b/ajoutvm.php" class="user" id="formValeurMetierPop">
             <fieldset>
+
+            <div class="form-group">
+                <label for="SelectNaturePop">Nature</label>
+                <select class="form-control" name="nommission" id="SelectMission">
+                  <option value="" selected>...</option>
+                  <?php
+                      while($row = mysqli_fetch_array($resultmission))
+                      {
+                        echo '
+                        <option value="'.$row["nom_mission"].'">'.$row["nom_mission"].'</option>
+                        ';
+                      }
+                  ?>
+                </select>
+              </div>
               <div class="form-group">
                 <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomvm" id="InputValeurMetierPop"
                   placeholder="Dénomination de la valeur métier" required>
@@ -690,8 +696,8 @@
                 <label for="SelectNaturePop">Nature</label>
                 <select class="form-control" name="nature" id="SelectNaturePop">
                   <option value="" selected>...</option>
-                  <option value="1">Processus</option>
-                  <option value="2">Information</option>
+                  <option value="Processus">Processus</option>
+                  <option value="Information">Information</option>
                 </select>
               </div>
 
@@ -701,12 +707,12 @@
               </div>
 
               <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomresponsablevm" id="InputNomResponsableValeurPop"
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomresponsablevm" id="InputNomResponsablevm"
                   placeholder="Nom du responsable" required>
               </div>
 
               <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsablevm" id="InputNomResponsableValeurPop"
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsablevm" id="InputPrenomResponsablevm"
                   placeholder="Prénomom du responsable" required>
               </div>
               
@@ -763,7 +769,7 @@
                       while($row = mysqli_fetch_array($resultvm))
                       {
                         echo '
-                        <option value='.$row["nom_valeur_metier"].'>'.$row["nom_valeur_metier"].'</option>
+                        <option value="'.$row["nom_valeur_metier"].'">'.$row["nom_valeur_metier"].'</option>
                         ';
                       }
                   ?>
@@ -776,12 +782,12 @@
               </div>
 
               <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomresponsablebs" id="InputNomResponsableBienPop"
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomresponsablebs" id="InputNomResponsablebs"
                   placeholder="Nom du responsable" required>
               </div>
 
               <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsablebs" id="InputNomResponsableBienPop"
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsablebs" id="InputPrenomResponsablebs"
                   placeholder="Prénom du responsable" required>
               </div>
               
@@ -837,18 +843,15 @@
   <!-- Custom scripts for all pages-->
   <script src="content/js/bootstrap.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="content/vendor/datatables/jquery.dataTables.js"></script>
-  <script src="content/vendor/datatables/dataTables.bootstrap4.js"></script>
-  
-
   <!-- Our JS -->
   <script src="content/js/modules/dark_mode.js"></script>
   <script src="content/js/modules/top_bar.js"></script>
   <script src="content/js/modules/side_bar.js"></script>
   <script src="content/js/modules/realtime.js"></script>
+  <script src="content/js/modules/set_filter_sort_table.js"></script>
   <script src="content/js/atelier/atelier1b.js"></script>
-  <script src="content/js/modules/tableau.js"></script>
+  <script src="content/js/modules/sort_table.js"></script>
+  
 </body>
 
 </html>

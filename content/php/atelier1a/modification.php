@@ -1,6 +1,6 @@
 <?php  
 //action.php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v5");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v6");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -40,11 +40,11 @@ if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $poste)){
 
 if($input["action"] === 'edit' && $results["error"] === false){
     $query = "
-    UPDATE personne 
+    UPDATE utilisateur 
     SET nom = '".$nom."', 
     prenom = '".$prenom."',
     poste = '".$poste."'
-    WHERE id_personne = '".$input["id_personne"]."'
+    WHERE id_utilisateur = '".$input["id_utilisateur"]."'
     ";
 
     mysqli_query($connect, $query);
@@ -52,8 +52,8 @@ if($input["action"] === 'edit' && $results["error"] === false){
 
 if($input["action"] === 'delete'){
     $query = "
-    DELETE FROM personne 
-    WHERE id_personne = '".$input["id_personne"]."'
+    DELETE FROM utilisateur 
+    WHERE id_utilisateur = '".$input["id_utilisateur"]."'
     ";
     mysqli_query($connect, $query);
 }

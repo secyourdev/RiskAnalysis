@@ -432,8 +432,14 @@ h6 {
     background-color: var(--button-color);
     border-color    : var(--button-color);
 }
+.perso_btn:disabled{
+    width: 8rem;
+    color: var(--reverse-font-color);
+    background-color: var(--button-color);
+    border-color: var(--button-color);
+}
 
-.perso_tableau {
+.perso_tableau{
     margin-top: 3rem;
 }
 
@@ -548,6 +554,18 @@ h6 {
     color: var(--font-color);
 }
 
+.titre_input,.titre_textarea{
+    font-size: 0.9em;
+    padding-left: 5px;
+}
+
+.titre_input{
+    margin-bottom : 0px;
+}
+
+.titre_textarea{
+    margin-bottom : 5px;
+}
 .image-preview {
     width     : 100%;
     min-height: 100px;
@@ -1065,15 +1083,23 @@ h6 {
     background-repeat  : no-repeat;
     background-size    : 0.7rem;
 }
-
-#rechercher_input {
-    margin-bottom   : 5px;
-    border-radius   : 5px;
-    outline         : none;
-    box-shadow      : none;
-    border          : solid 1px var(--placeholder-focus);
+.rechercher_input{
+    margin-bottom: 5px;
+    border-radius: 5px;
+    outline: none;
+    box-shadow: none;
+    border: solid 1px var(--placeholder-focus);
     background-color: var(--card-header-color);
-    color           : var(--button-color);
-    font-size       : 0.9em;
-    padding         : 0.15rem 0.475rem !important;
+    color: var(--button-color);
+    font-size: 0.9em;
+    padding: 0.15rem 0.475rem!important;
+}
+
+.raci_th th {
+    width: 20%;
+    text-align: initial ;
+}
+
+.width_RACI{
+    width: auto;
 }

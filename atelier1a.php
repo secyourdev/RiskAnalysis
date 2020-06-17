@@ -399,17 +399,18 @@
                 <div class="card-body">
                   <form class="user">
                     <div class="form-group">
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="nom_etude" placeholder="Nom" required>
-                      </input>
-                      
+                      <label class="titre_input" for="nom_etude">Nom</label>
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="nom_etude" placeholder="Nom" required></input>
                     </div>
+
                     <div class="form-group">
-                      <label for="objectif_atteindre">Objectif à atteindre</label>
+                      <label class="titre_textarea" for="objectif_atteindre">Objectif à atteindre</label>
                       <textarea class="form-control perso_text_area" id="objectif_atteindre" rows="3"></textarea>
                     </div>
 
                     <div class="form-group">
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="cadre_temporel" placeholder="Cadre temporel" required>
+                      <label class="titre_input" for="cadre_temporel">Cadre Temporel</label>
+                      <input type="date" class="perso_form shadow-none form-control form-control-user" id="cadre_temporel" placeholder="Cadre temporel" required>
                     </div>
                   </form>
                   <img src="content/img/task.svg" class="img-fluid perso_img" alt="Responsive image">
@@ -429,13 +430,16 @@
                   <form method="post" action="content/php/atelier1a/ajout.php" class="user" id="formActeur">
                   <fieldset>
                     <div class="form-group">
+                      <label class="titre_input" for="nom_acteur">Nom</label>
                       <input type="text" class="perso_form shadow-none form-control form-control-user" id="nom_acteur" name="nom" placeholder="Nom" required>
                     </div>
                     <div class="form-group">
+                      <label class="titre_input" for="prenom_acteur">Prénom</label>
                       <input type="text" class="perso_form shadow-none form-control form-control-user" id="prenom_acteur" name="prenom" placeholder="Prénom" required>
                     </div>
 
                     <div class="form-group">
+                      <label class="titre_input" for="poste_acteur">Poste</label>
                       <input type="text" class="perso_arrow perso_form shadow-none form-control" list="Postes" id="poste_acteur" name="poste" placeholder="Poste" required>
                       <datalist id="Postes">
                         <option value="Internet Explorer">
@@ -453,14 +457,14 @@
                   </br>
                   <!--tableau-->
                   <div class="table-responsive">
-                    <input type="text" id="rechercher_input" placeholder="Rechercher">
+                    <input type="text" class="rechercher_input" id="rechercher_acteur" placeholder="Rechercher">
                     <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th id="id">ID</th>
-                          <th id="nom">Nom</th>
-                          <th id="prenom">Prénom</th>
-                          <th id="poste">Poste</th>
+                          <th>ID</th>
+                          <th>Nom</th>
+                          <th>Prénom</th>
+                          <th>Poste</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -469,7 +473,7 @@
                       {
                         echo '
                         <tr>
-                        <td>'.$row["id_personne"].'</td>
+                        <td>'.$row["id_utilisateur"].'</td>
                         <td>'.$row["nom"].'</td>
                         <td>'.$row["prenom"].'</td>
                         <td>'.$row["poste"].'</td>
@@ -498,92 +502,6 @@
             </div>
 
 
-            <div class="col-xl-12 col-lg-12">
-              <!-- Area Card -->
-              <!-- Choix des ateliers à mener -->
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Choix des ateliers à mener</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body row perso_card_body_row">
-                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck1">
-                      <label class="custom-control-label" for="customCheck1">Activité 1.a - Cadrer l’étude</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck2">
-                      <label class="custom-control-label" for="customCheck2">Activité 1.b - Biens primordiaux/support</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck3">
-                      <label class="custom-control-label" for="customCheck3">Activité 1.c - Événement redoutés</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck4">
-                      <label class="custom-control-label" for="customCheck4">Activité 1.d - Les socles de sécurité</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck5">
-                      <label class="custom-control-label" for="customCheck5">Activité 2.a - Identifier les sources de risques et les
-                        objectifs</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck6">
-                      <label class="custom-control-label" for="customCheck6">Activité 2.b - Évaluer les couples sources de
-                        risque/objectifs visés</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck7">
-                      <label class="custom-control-label" for="customCheck7">Activité 3.a - Construire la cartographie des menaces
-                        numériques de l'écosystème et sélectionner les parties prenantes critiques</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck8">
-                      <label class="custom-control-label" for="customCheck8">Activité 3.b - Élaborer des scénarios stratégiques</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck9">
-                      <label class="custom-control-label" for="customCheck9">Activité 3.c - Définir des mesures de sécurité sur
-                        l'écosystème</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck10">
-                      <label class="custom-control-label" for="customCheck10">Activité 4.a - Élaborer les scénarios
-                        opérationnels</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck11">
-                      <label class="custom-control-label" for="customCheck11">Activité 4.b - Évaluer la vraisemblance des scénarios
-                        opérationnels</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck12">
-                      <label class="custom-control-label" for="customCheck12">Activité 5.a - Réaliser une synthèse des scénarios de
-                        risque</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck13">
-                      <label class="custom-control-label" for="customCheck13">Activité 5.b - Décider de la stratégie de traitement du
-                        risque et définir les mesures de sécurité</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck14">
-                      <label class="custom-control-label" for="customCheck14">Activité 5.c - Évaluer et documenter les risques
-                        résiduels</label>
-                    </div>
-                  </div>
-                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
-                    <img src="content/img/checklist.svg" class="img-fluid perso_img_full_screen_div" alt="Responsive image">
-                  </div>
-                  
-              
-                </div>
-              </div>
-            </div>
-
             <!-- Area Card -->
             <!-- RACI -->
             <div class="col-xl-12 col-lg-12">
@@ -602,576 +520,72 @@
                 <div class="card-body">
               
                   <div class="table-responsive">
-                    <table class="table table-bordered">
+                    <table id="raci" class="table table-bordered">
                       <thead>
                         <tr>
                           <th scope="col">#</th>
-                          <th scope="col">
-                            <div class="perso_vertical">Directeur</div>
-                          </th>
-                          <th scope="col">
-                            <div class="perso_vertical">RSSI</div>
-                          </th>
-                          <th scope="col">
-                            <div class="perso_vertical">Responsable info.</div>
-                          </th>
-                          <th scope="col">
-                            <div class="perso_vertical">Ingénieur cyb.</div>
-                          </th>
-                          <th scope="col">
-                            <div class="perso_vertical">Consultant</div>
-                          </th>
-                          <th scope="col">
-                            <div class="perso_vertical">Auditeur ext.</div>
-                          </th>
+                        <?php
+                        while($row = mysqli_fetch_array($result2))
+                        {
+                          echo '
+                            <th scope="col">
+                              <div class="perso_vertical">'.$row["nom"].' <br> '.$row["prenom"].'</div>
+                            </th>
+                          ';
+                        }
+                        ?>
                         </tr>
                       </thead>
-                      <tbody>
+
+                      <tbody class="raci_th">
                         <tr>
-                          <th scope="row">Activité 1.a</th>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck1">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck1">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck2">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck2">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck3">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck3">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck4">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck4">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck5">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck5">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck6">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck6">.</label>
-                            </div>
-                          </td>
+                          <th scope="row">Activité 1.a - Cadrer l’étude</th>
+                        </tr> 
+                        <tr> 
+                          <th scope="row">Activité 1.b - Biens primordiaux/support</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 1.b</th>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck7">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck7">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck8">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck8">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck9">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck9">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck10">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck10">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck11">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck11">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck12">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck12">.</label>
-                            </div>
-                          </td>
+                          <th scope="row">Activité 1.c - Événement redoutés</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 1.c</th>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck13">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck13">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck14">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck14">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck15">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck15">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck16">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck16">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck17">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck17">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck18">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck18">.</label>
-                            </div>
-                          </td>
+                          <th scope="row">Activité 1.d - Les socles de sécurité</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 1.d</th>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck19">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck19">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck20">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck20">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck21">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck21">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck22">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck22">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck23">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck23">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck24">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck24">.</label>
-                            </div>
-                          </td>
+                          <th scope="row">Activité 2.a - Identifier les sources de risques et les objectifs</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 2.a</th>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck25">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck25">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck26">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck26">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck27">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck27">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck28">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck28">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck29">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck29">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck30">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck30">.</label>
-                            </div>
-                          </td>
+                          <th scope="row">Activité 2.b - Évaluer les couples sources de risque/objectifs visés</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 2.b</th>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck13">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck13">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck14">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck14">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck15">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck15">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck16">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck16">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck17">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck17">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck18">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck18">.</label>
-                            </div>
-                          </td>
+                          <th scope="row">Activité 3.a - Construire la cartographie des menaces
+                        numériques de l'écosystème et sélectionner les parties prenantes critiques</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 3.a</th>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck13">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck13">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck14">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck14">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck15">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck15">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck16">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck16">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck17">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck17">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck18">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck18">.</label>
-                            </div>
-                          </td>
+                          <th scope="row">Activité 3.b - Élaborer des scénarios stratégiques</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 3.b</th>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck13">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck13">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck14">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck14">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck15">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck15">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck16">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck16">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck17">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck17">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck18">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck18">.</label>
-                            </div>
-                          </td>
+                          <th scope="row">Activité 3.c - Définir des mesures de sécurité sur
+                        l'écosystème</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 3.c</th>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck13">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck13">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck14">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck14">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck15">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck15">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck16">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck16">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck17">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck17">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck18">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck18">.</label>
-                            </div>
-                          </td>
+                          <th scope="row">Activité 4.a - Élaborer les scénarios
+                        opérationnels</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 4.a</th>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck13">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck13">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck14">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck14">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck15">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck15">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck16">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck16">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck17">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck17">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck18">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck18">.</label>
-                            </div>
-                          </td>
+                          <th scope="row">Activité 4.b - Évaluer la vraisemblance des scénarios
+                        opérationnels</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 4.b</th>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck13">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck13">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck14">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck14">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck15">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck15">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck16">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck16">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck17">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck17">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck18">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck18">.</label>
-                            </div>
-                          </td>
+                          <th scope="row">Activité 5.a - Réaliser une synthèse des scénarios de
+                        risque</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 5.a</th>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck13">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck13">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck14">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck14">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck15">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck15">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck16">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck16">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck17">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck17">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck18">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck18">.</label>
-                            </div>
-                          </td>
+                          <th scope="row">Activité 5.b - Décider de la stratégie de traitement du
+                        risque et définir les mesures de sécurité</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 5.b</th>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck13">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck13">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck14">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck14">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck15">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck15">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck16">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck16">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck17">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck17">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck18">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck18">.</label>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Activité 5.c</th>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck13">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck13">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck14">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck14">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck15">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck15">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck16">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck16">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck17">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck17">.</label>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="custom-control custom-checkbox perso_RACI">
-                              <input type="checkbox" class="custom-control-input" id="RACICheck18">
-                              <label class="custom-control-label perso_RACI_control_label" for="RACICheck18">.</label>
-                            </div>
-                          </td>
+                          <th scope="row">Activité 5.c - Évaluer et documenter les risques
+                        résiduels</th>
                         </tr>
                       </tbody>
                     </table>
@@ -1305,8 +719,12 @@
         </div>
         <div class="modal-body">Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à terminer votre session en cours.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
-          <a class="btn btn-primary" href="connexion.html">Déconnexion</a>
+          <form method="post" action="content/php/deconnexion/logs.php">
+            <fieldset>
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+              <input type="submit" name="deconnexion" value="Déconnexion" class="btn btn-primary"></input>
+            <fieldset>
+          </form>
         </div>
       </div>
     </div>
@@ -1326,9 +744,9 @@
   <script src="content/js/modules/top_bar.js"></script>
   <script src="content/js/modules/side_bar.js"></script>
   <script src="content/js/modules/realtime.js"></script>
+  <script src="content/js/modules/set_filter_sort_table.js"></script>
   <script src="content/js/atelier/atelier1a.js"></script>
-  <script src="content/js/modules/tableau.js"></script>
-  
+  <script src="content/js/modules/sort_table.js"></script>  
 </body>
 
 </html>

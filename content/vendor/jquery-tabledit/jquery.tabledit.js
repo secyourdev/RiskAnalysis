@@ -17,6 +17,7 @@ if (typeof jQuery === 'undefined') {
   (function($) {
       'use strict';
   
+      let j=1
       $.fn.Tabledit = function(options) {
           if (!this.is('table')) {
               throw new Error('Tabledit only works when applied to a table.');
@@ -92,13 +93,13 @@ if (typeof jQuery === 'undefined') {
                       }
   
                       var $td = $table.find('tbody td:nth-child(' + (parseInt(settings.columns.identifier[0]) + 1) + ')');
-  
+                      
                       $td.each(function() {
                           // Create hidden input with row identifier.
                           var span = '<span class="tabledit-span tabledit-identifier">' + $(this).text() + '</span>';
-                          /* var input = '<input class="tabledit-input tabledit-identifier" type="hidden" name="' + settings.columns.identifier[1] + '" value="' + $(this).text() + '" disabled>'; */
-                          var input = '<textarea class="tabledit-input tabledit-identifier perso_textarea" type="hidden" name="' + settings.columns.identifier[1] + '" disabled>' + $(this).text() + '</textarea>';
-  
+                          var input = '<input class="tabledit-input tabledit-identifier" type="hidden" name="' + settings.columns.identifier[1] + '" value="' + $(this).text() + '" disabled>';
+                          //var input = '<textarea class="tabledit-input tabledit-identifier perso_textarea" type="hidden" name="' + settings.columns.identifier[1] + '" disabled>' + $(this).text() + '</textarea>';
+                          // TEXTAREA A REVOIR !
                           // Add elements to table cell.
                           $(this).html(span + input);
   
@@ -109,24 +110,24 @@ if (typeof jQuery === 'undefined') {
                   editable: function() {
                       for (var i = 0; i < settings.columns.editable.length; i++) {
                           var $td = $table.find('tbody td:nth-child(' + (parseInt(settings.columns.editable[i][0]) + 1) + ')');
-  
+
                           $td.each(function() {
                               // Get text of this cell.
                               var text = $(this).text();
-  
                               // Add pointer as cursor.
                               if (!settings.editButton) {
                                   $(this).css('cursor', 'pointer');
                               }
-  
+                              
                               // Create span element.
                               var span = '<span class="tabledit-span">' + text + '</span>';
-  
+                             
                               // Check if exists the third parameter of editable array.
                               if (typeof settings.columns.editable[i][2] !== 'undefined') {
                                   // Create select element.
                                   var input = '<select class="tabledit-input ' + settings.inputClass + '" name="' + settings.columns.editable[i][1] + '" style="display: none;" disabled>';
   
+                                  
                                   // Create options for select element.
                                   $.each(jQuery.parseJSON(settings.columns.editable[i][2]), function(index, value) {
                                       if (text === value) {
@@ -140,13 +141,15 @@ if (typeof jQuery === 'undefined') {
                                   input += '</select>';
                               } else {
                                   // Create text input element.
-                                  /* var input = '<input class="tabledit-input ' + settings.inputClass + '" type="text" name="' + settings.columns.editable[i][1] + '" value="' + $(this).text() + '" style="display: none;" disabled>'; */
-                                  var input = '<textarea class="tabledit-input ' + settings.inputClass + '" type="text" name="' + settings.columns.editable[i][1] + '" style="display: none;" disabled>' +  $(this).text() + '</textarea>';
+                                  //var input = '<input class="tabledit-input ' + settings.inputClass + '" type="text" name="' + settings.columns.editable[i][1] + '" value="' + $(this).text() + '" style="display: none;" disabled>';
+                                  var input = '<textarea class="tabledit-input ' + settings.inputClass + '" rows="1" type="text" name="' + settings.columns.editable[i][1] + '" style="display: none;" disabled>' +  $(this).text() + '</textarea>';
                               }
   
                               // Add elements and class "view" to table cell.
                               $(this).html(span + input);
                               $(this).addClass('tabledit-view-mode');
+
+                              
                          });
                       }
                   },
@@ -157,7 +160,7 @@ if (typeof jQuery === 'undefined') {
                           var saveButton = '';
                           var restoreButton = '';
                           var confirmButton = '';
-  
+                          
                           // Add toolbar column header if not exists.
                           if ($table.find('th.tabledit-toolbar-column').length === 0) {
                               $table.find('tr:first').append('<th class="tabledit-toolbar-column"></th>');
@@ -165,7 +168,7 @@ if (typeof jQuery === 'undefined') {
   
                           // Create edit button.
                           if (settings.editButton) {
-                              editButton = '<button type="button" class="tabledit-edit-button ' + settings.buttons.edit.class + '" style="float: none;">' + settings.buttons.edit.html + '</button>';
+                                editButton = '<button type="button" class="tabledit-edit-button ' + settings.buttons.edit.class + '" style="float: none;">' + settings.buttons.edit.html + '</button>';
                           }
   
                           // Create delete button.
@@ -176,7 +179,7 @@ if (typeof jQuery === 'undefined') {
   
                           // Create save button.
                           if (settings.editButton && settings.saveButton) {
-                              saveButton = '<button type="button" class="tabledit-save-button ' + settings.buttons.save.class + '" style="display: none; float: none;">' + settings.buttons.save.html + '</button>';
+                              saveButton = '<button type="button" class="tabledit-save-button ' + settings.buttons.save.class + '" style="display: none; float: none; disabled">' + settings.buttons.save.html + '</button>';
                           }
   
                           // Create restore button.
@@ -193,6 +196,7 @@ if (typeof jQuery === 'undefined') {
   
                           // Add toolbar column cells.
                           $table.find('tr:gt(0)').append('<td style="white-space: nowrap; width: 1%;">' + toolbar + '</td>');
+                          //console.log($table[0].rows)
                       }
                   }
               }
@@ -215,6 +219,7 @@ if (typeof jQuery === 'undefined') {
                   $(td).find('.tabledit-span').show();
                   // Add "view" class and remove "edit" class in td element.
                   $(td).addClass('tabledit-view-mode').removeClass('tabledit-edit-mode');
+                  //$tr.find('button.tabledit-edit-button').attr('onclick','tableau_verification('+$tr[0].rowIndex+')');
                   // Update toolbar buttons.
                   if (settings.editButton) {
                       $tr.find('button.tabledit-save-button').hide();
@@ -225,20 +230,22 @@ if (typeof jQuery === 'undefined') {
                   Delete.reset(td);
                   // Get table row.
                   var $tr = $(td).parent('tr');
+                  //var rows_length = $tr[0]; console.log(rows_length)
                   // Enable identifier.
                   $tr.find('.tabledit-input.tabledit-identifier').prop('disabled', false);
+                  // Hide span element.
+                  $(td).find('.tabledit-span').hide();
                   // Get input element.
                   var $input = $(td).find('.tabledit-input');
                   // Enable and show input element.
                   $input.prop('disabled', false).show();
-                  // Hide span element.
-                  $(td).find('.tabledit-span').hide();
                   // Focus on input element.
                   if (settings.autoFocus) {
                       $input.focus();
                   }
                   // Add "edit" class and remove "view" class in td element.
                   $(td).addClass('tabledit-edit-mode').removeClass('tabledit-view-mode');
+                  //$tr.find('button.tabledit-edit-button').attr('onclick','tableau_verification('+$tr[0].rowIndex+')');
                   // Update toolbar buttons.
                   if (settings.editButton) {
                       $tr.find('button.tabledit-edit-button').addClass('active');
@@ -294,6 +301,8 @@ if (typeof jQuery === 'undefined') {
   
                   // Set last edited column and row.
                   $lastEditedRow = $(td).parent('tr');
+
+                  location.reload();
               }
           };
   
@@ -514,11 +523,28 @@ if (typeof jQuery === 'undefined') {
               $table.on('click', 'button.tabledit-save-button', function(event) {
                   if (event.handled !== true) {
                       event.preventDefault();
-  
                       // Submit and update all columns.
-                      Edit.submit($(this).parents('tr').find('td.tabledit-edit-mode'));
-  
-                      event.handled = true;
+                    var length_table = $(this).parents('tr').parent('tbody')[0].rows[0].children.length
+                    var length_input=0
+
+                    for(let i=1;i<length_table-1;i++){
+                        if($(this).parents('tr').parent('tbody')[0].rows[0].children[i].children[1].classList[0]=="tabledit-input"){
+                            length_input++
+                        }
+                    }
+
+                    var bool_final=true;
+                    var bool = tableau_verification($(this).parents('tr')[0].rowIndex,$(this).parents('tr').parent('tbody').parent()[0],length_input+1) 
+                    for(let j=1;j<length_table-1;j++){
+                        bool_final = bool_final&&bool[j]
+                        
+                    }
+
+                    if(bool_final){
+                        Edit.submit($(this).parents('tr').find('td.tabledit-edit-mode'));
+                    }
+                                       
+                    event.handled = true;
                   }
               });
           } else {
@@ -588,18 +614,35 @@ if (typeof jQuery === 'undefined') {
               // Key?
               switch (event.keyCode) {
                   case 9:  // Tab.
-                      if (!settings.editButton) {
-                          Edit.submit($td);
-                          Mode.edit($td.closest('td').next());
-                      }
-                      break;
-                  case 13: // Enter.
-                      Edit.submit($td);
-                      break;
+                    if (!settings.editButton) {
+                        Edit.submit($td);
+                        Mode.edit($td.closest('td').next());
+                    }
+                    break;
+                  /*case 13: // Enter..
+                     var length_table = $td.parent('tr').parent('tbody')[0].rows[0].children.length
+                    var length_input=0
+            
+                    for(let i=1;i<length_table-1;i++){
+                        if($td.parent('tr').parent('tbody')[0].rows[0].children[i].children[1].classList[0]=="tabledit-input"){
+                            length_input++
+                        }
+                    }
+
+                    var bool_final=true;
+                    var bool = tableau_verification($td.parent('tr')[0].rowIndex,$td.parent('tr').parent('tbody').parent()[0],length_input+1) 
+                    for(let j=1;j<length_table-1;j++){
+                        bool_final = bool_final&&bool[j]
+                        
+                    }
+                    if(bool_final){
+                        Edit.submit($td);
+                        break; 
+                    }*/
                   case 27: // Escape.
-                      Edit.reset($td);
-                      Delete.reset($td);
-                      break;
+                    Edit.reset($td);
+                    Delete.reset($td);
+                    break;
               }
           });
   

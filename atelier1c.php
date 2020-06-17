@@ -447,7 +447,7 @@
                 <div class="card-body">
                   <!--tableau-->
                   <div class="table-responsive">
-                    <input type="text" id="rechercher_input" placeholder="Rechercher">
+                  <input type="text" class="rechercher_input" id="rechercher_evenement_redoute" placeholder="Rechercher">
                     <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
@@ -556,10 +556,10 @@
                       </select>
                     </div>
 
-                    <div class="form-group">
-                      <label for="Description_event_pop">Événement redouté</label>
-                      <textarea class="form-control perso_text_area" name="description_evenement_redoutes" id="Description_event_pop" rows="3"></textarea>
-                    </div>
+                  <div class="form-group">
+                    <label for="Description_event_pop">Événement redouté</label>
+                    <textarea class="form-control perso_text_area" name="description_evenement_redoutes" id="Description_event_pop" rows="3"></textarea>
+                  </div>
                   </div>
                   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="custom-control custom-checkbox">
@@ -663,9 +663,11 @@
     <script src="content/js/modules/side_bar.js"></script>
     <script src="content/js/modules/help_button.js"></script>
     <script src="content/js/modules/gravite.js"></script>
-    <!--   <script src="content/js/modules/realtime.js"></script> -->
+    <script src="content/js/modules/realtime.js"></script>
+    <script src="content/js/modules/set_filter_sort_table.js"></script>
     <script src="content/js/atelier/atelier1c.js"></script>
-    <script src="content/js/modules/tableau.js"></script>
+    <script src="content/js/modules/sort_table.js"></script>
+  
 
 </body>
 

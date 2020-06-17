@@ -108,7 +108,7 @@ if (typeof jQuery === 'undefined') {
         editable: function () {
           for (var i = 0; i < settings.columns.editable.length; i++) {//pour toute les cases éditable d'une ligne
             var $td = $table.find('tbody td:nth-child(' + (parseInt(settings.columns.editable[i][0]) + 1) + ')');
-
+            //console.log(settings.columns.editable)
             $td.each(function () {
               // Get text of this cell.
               var text = $(this).text();

@@ -4,7 +4,7 @@ header('Location: ../../../atelier-1b');
 
   //Connexion à la base de donnee
   try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v5;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v6;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
   }
 
@@ -27,7 +27,7 @@ header('Location: ../../../atelier-1b');
 
   $recuperepersonne = $bdd->prepare('SELECT id_personne FROM personne WHERE nom = ? AND prenom = ? AND poste = ?');
   $recuperevm = $bdd->prepare('SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = ?');
-  $inserepersonne = $bdd->prepare('INSERT INTO `personne`(`id_personne`, `nom`, `prenom`, `poste`, `adresse_mail`) VALUES (?,?,?,?,?)');
+  $inserepersonne = $bdd->prepare('INSERT INTO `personne`(`id_personne`, `nom`, `prenom`, `poste`) VALUES (?,?,?,?)');
   $inserebs = $bdd->prepare('INSERT INTO `bien_support`(`id_bien_support`, `nom_bien_support`, `description_bien_support`, `id_atelier`, `id_valeur_metier`, `id_personne`) VALUES (?,?,?,?,?,?)');
 
 
@@ -83,7 +83,6 @@ header('Location: ../../../atelier-1b');
       $inserepersonne->bindParam(2, $nomresponsablebs);
       $inserepersonne->bindParam(3, $prenomresponsablebs);
       $inserepersonne->bindParam(4, $posteresponsablebs);
-      $inserepersonne->bindParam(5, $adresse_mail);
       $inserepersonne->execute();
       $recuperepersonne->bindParam(1, $nomresponsablebs);
       $recuperepersonne->bindParam(2, $prenomresponsablebs);
