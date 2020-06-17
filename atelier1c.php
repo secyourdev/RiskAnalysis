@@ -433,14 +433,13 @@
                     <button class="perso_icon_btn custom-control-inline" data-container="body" data-trigger="hover focus" data-toggle="popover" data-placement="bottom" data-content="Ce choix engendre automatiquement le même barème sur vraisemblance ! ">
                       <i class="fas fa-info-circle"></i>
                     </button>
-
                     <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="radio_gravite2" name="radio_gravite1" class="custom-control-input">
-                      <label class="custom-control-label" for="radio_gravite2">Gravité sur 5</label>
+                      <input type="radio" id="radio_gravite4" class="custom-control-input" value="4">
+                      <label class="custom-control-label" for="radio_gravite4">Gravité sur 4</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="radio_gravite1" name="radio_gravite1" class="custom-control-input">
-                      <label class="custom-control-label" for="radio_gravite1">Gravité sur 4</label>
+                      <input type="radio" id="radio_gravite5" class="custom-control-input" value="5">
+                      <label class="custom-control-label" for="radio_gravite5">Gravité sur 5</label>
                     </div>
                   </div>
                 </div>
@@ -452,7 +451,7 @@
                     <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th id="id">ID</th>
+                          <th id="id_evenement_redoutes">ID</th>
                           <th id="nom_valeur_metier">Valeur métier</th>
                           <th id="nom_evenement_redoutes">Nom de l'événement redouté</th>
                           <th id="description_evenement_redoutes">événement redouté</th>
@@ -588,21 +587,31 @@
                     <div class="form-group" id="niveaudegravité">
                       <label for="niveaudegravité">Niveau de gravité</label>
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <?php
+                        include("content/php/atelier1c/selectionmaxgravite.php");
+                        for ($i = 1; $i <= $nbniveaugravite[0]; $i++) //selection.php
+                        {
+                          echo '
                         <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="options" id="gravite1" autocomplete="off"> 1
+                          <input type="radio" id="gravite' . $i . '" autocomplete="off" name="niveau_de_gravite" value="' . $i . '"> ' . $i . '
+                        </label>';
+                        }
+                        ?>
+                        <!-- <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" id="gravite1" autocomplete="off" name="niveau_de_gravite" value="1"> 1
                         </label>
                         <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="options" id="gravite2" autocomplete="off"> 2
+                          <input type="radio" id="gravite2" autocomplete="off" name="niveau_de_gravite" value="2"> 2
                         </label>
                         <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="options" id="gravite3" autocomplete="off"> 3
+                          <input type="radio" id="gravite3" autocomplete="off" name="niveau_de_gravite" value="3"> 3
                         </label>
                         <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="options" id="gravite4" autocomplete="off"> 4
+                          <input type="radio" id="gravite4" autocomplete="off" name="niveau_de_gravite" value="4"> 4
                         </label>
                         <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="options" id="gravite5" autocomplete="off"> 5
-                        </label>
+                          <input type="radio" id="gravite5" autocomplete="off" name="niveau_de_gravite" value="5"> 5
+                        </label> -->
                       </div>
                     </div>
 
@@ -653,9 +662,12 @@
     <script src="content/js/modules/top_bar.js"></script>
     <script src="content/js/modules/side_bar.js"></script>
     <script src="content/js/modules/help_button.js"></script>
-    <!--   <script src="content/js/modules/realtime.js"></script> -->
+    <script src="content/js/modules/gravite.js"></script>
+    <script src="content/js/modules/realtime.js"></script>
+    <script src="content/js/modules/set_filter_sort_table.js"></script>
     <script src="content/js/atelier/atelier1c.js"></script>
-    <script src="content/js/modules/tableau.js"></script>
+    <script src="content/js/modules/sort_table.js"></script>
+  
 
 </body>
 

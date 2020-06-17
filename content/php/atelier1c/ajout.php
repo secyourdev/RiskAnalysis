@@ -1,14 +1,16 @@
 <?php
-/* header('Location: ../../../atelier-1c'); */
+header('Location: ../../../atelier-1c');
 
 
 //Connexion à la base de donnee
-try{
-  $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v5;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
-  array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-}
-
-catch (PDOException $e) {
+try {
+  $bdd = new PDO(
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v6;charset=utf8',
+    'ebios-rm',
+    'hLLFL\bsF|&[8=m8q-$j',
+    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
+  );
+} catch (PDOException $e) {
   die('Erreur :' . $e->getMessage());
 }
 
@@ -24,7 +26,7 @@ $confidentialite = 0;
 $integrite = 0;
 $disponibilite = 0;
 $tracabilite = 0;
-$niveau_de_gravite = 0;
+$niveau_de_gravite = $_POST['niveau_de_gravite'];
 $id_atelier = '1.c';
 
 $formcheck = $_POST['formcheck'];
@@ -80,15 +82,6 @@ if (IsChecked('formcheck', '4')) {
   //do somthing ...
   $tracabilite = 1;
 };
-print 'conf ';
-print $confidentialite;
-print ' int ';
-print $integrite;
-print ' dispo ';
-print $disponibilite;
-print ' traca ';
-print $tracabilite;
-
 
 
 $recupere = $bdd->prepare("SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = ?");
