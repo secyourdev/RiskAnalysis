@@ -55,7 +55,7 @@ $(document).ready(function(){
 
 /*--------------------------- SORT & FILTER TABLES --------------------------*/
 setSortTable('editable_table');
-OURJQUERYFN.setFilterTable("#editable_table","#tableau_mission tbody tr")
+OURJQUERYFN.setFilterTable("#rechercher_mission","#editable_table tbody tr")
 setSortTable('tableau_vm');
 OURJQUERYFN.setFilterTable("#rechercher_valeur_metier","#tableau_vm tbody tr")
 setSortTable('tableau_bs');
@@ -80,12 +80,5 @@ sleep(100).then(() => {
     for(let i=editable_table.rows.length+tableau_vm.rows.length-2;i<editable_table.rows.length+tableau_vm.rows.length+tableau_bs.rows.length-3;i++){
         l++;
         button[i].setAttribute('onclick','tableau_verification('+l+','+'tableau_bs'+','+'7'+')')
-    }
-});
-
-sleep(100).then(() => {
-    for(let i=editable_table.rows.length+tableau_vm.rows.length-2;i<editable_table.rows.length+tableau_vm.rows.length+tableau_bs.rows.length-3;i++){
-        l++;
-        button[i].setAttribute('onclick','tableau_verification('+l+','+'tableau_bs'+','+'4'+')')
     }
 });
