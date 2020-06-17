@@ -410,7 +410,7 @@
 
                     <div class="form-group">
                       <label class="titre_input" for="cadre_temporel">Cadre Temporel</label>
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="cadre_temporel" placeholder="Cadre temporel" required>
+                      <input type="date" class="perso_form shadow-none form-control form-control-user" id="cadre_temporel" placeholder="Cadre temporel" required>
                     </div>
                   </form>
                   <img src="content/img/task.svg" class="img-fluid perso_img" alt="Responsive image">
@@ -501,92 +501,6 @@
 
             </div>
 
-
-            <div class="col-xl-12 col-lg-12">
-              <!-- Area Card -->
-              <!-- Choix des ateliers à mener -->
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Choix des ateliers à mener</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body row perso_card_body_row">
-                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck1">
-                      <label class="custom-control-label" for="customCheck1">Activité 1.a - Cadrer l’étude</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck2">
-                      <label class="custom-control-label" for="customCheck2">Activité 1.b - Biens primordiaux/support</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck3">
-                      <label class="custom-control-label" for="customCheck3">Activité 1.c - Événement redoutés</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck4">
-                      <label class="custom-control-label" for="customCheck4">Activité 1.d - Les socles de sécurité</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck5">
-                      <label class="custom-control-label" for="customCheck5">Activité 2.a - Identifier les sources de risques et les
-                        objectifs</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck6">
-                      <label class="custom-control-label" for="customCheck6">Activité 2.b - Évaluer les couples sources de
-                        risque/objectifs visés</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck7">
-                      <label class="custom-control-label" for="customCheck7">Activité 3.a - Construire la cartographie des menaces
-                        numériques de l'écosystème et sélectionner les parties prenantes critiques</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck8">
-                      <label class="custom-control-label" for="customCheck8">Activité 3.b - Élaborer des scénarios stratégiques</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck9">
-                      <label class="custom-control-label" for="customCheck9">Activité 3.c - Définir des mesures de sécurité sur
-                        l'écosystème</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck10">
-                      <label class="custom-control-label" for="customCheck10">Activité 4.a - Élaborer les scénarios
-                        opérationnels</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck11">
-                      <label class="custom-control-label" for="customCheck11">Activité 4.b - Évaluer la vraisemblance des scénarios
-                        opérationnels</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck12">
-                      <label class="custom-control-label" for="customCheck12">Activité 5.a - Réaliser une synthèse des scénarios de
-                        risque</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck13">
-                      <label class="custom-control-label" for="customCheck13">Activité 5.b - Décider de la stratégie de traitement du
-                        risque et définir les mesures de sécurité</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck14">
-                      <label class="custom-control-label" for="customCheck14">Activité 5.c - Évaluer et documenter les risques
-                        résiduels</label>
-                    </div>
-                  </div>
-                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
-                    <img src="content/img/checklist.svg" class="img-fluid perso_img_full_screen_div" alt="Responsive image">
-                  </div>
-                  
-              
-                </div>
-              </div>
-            </div>
 
             <!-- Area Card -->
             <!-- RACI -->

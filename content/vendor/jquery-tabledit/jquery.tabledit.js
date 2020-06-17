@@ -141,8 +141,8 @@ if (typeof jQuery === 'undefined') {
                                   input += '</select>';
                               } else {
                                   // Create text input element.
-                                  var input = '<input class="tabledit-input ' + settings.inputClass + '" type="text" name="' + settings.columns.editable[i][1] + '" value="' + $(this).text() + '" style="display: none;" disabled>';
-                                  //var input = '<textarea class="tabledit-input ' + settings.inputClass + '" rows="1" type="text" name="' + settings.columns.editable[i][1] + '" style="display: none;" disabled>' +  $(this).text() + '</textarea>';
+                                  //var input = '<input class="tabledit-input ' + settings.inputClass + '" type="text" name="' + settings.columns.editable[i][1] + '" value="' + $(this).text() + '" style="display: none;" disabled>';
+                                  var input = '<textarea class="tabledit-input ' + settings.inputClass + '" rows="1" type="text" name="' + settings.columns.editable[i][1] + '" style="display: none;" disabled>' +  $(this).text() + '</textarea>';
                               }
   
                               // Add elements and class "view" to table cell.
@@ -541,8 +541,8 @@ if (typeof jQuery === 'undefined') {
                     if(bool_final){
                         Edit.submit($(this).parents('tr').find('td.tabledit-edit-mode'));
                     }
-        
-                      event.handled = true;
+                                       
+                    event.handled = true;
                   }
               });
           } else {
