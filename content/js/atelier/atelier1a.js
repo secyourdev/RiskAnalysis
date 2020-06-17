@@ -5,7 +5,6 @@ var cadre_temporel = document.getElementById('cadre_temporel');
 var nom_acteur = document.getElementById('nom_acteur');
 var prenom_acteur = document.getElementById('prenom_acteur');
 var poste_acteur = document.getElementById('poste_acteur');
-var table_1a = document.getElementById('editable_table')
 var button = document.getElementsByClassName('tabledit-edit-button')
 var save_button = document.getElementsByClassName('tabledit-save-button')
 var valider_acteur = document.getElementsByName('valider')[0]
@@ -14,6 +13,7 @@ var label_cadre_temporel = document.getElementById('cadre_temporel').previousSib
 var label_nom_acteur = document.getElementById('nom_acteur').previousSibling.previousSibling
 var label_prenom_acteur = document.getElementById('prenom_acteur').previousSibling.previousSibling
 var label_poste_acteur = document.getElementById('poste_acteur').previousSibling.previousSibling
+var raci = document.getElementById('raci')
 
 var bool_nom_etude = false
 var bool_objectif_atteindre = false
@@ -30,13 +30,12 @@ var regex_nom_acteur = /^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/
 var regex_prenom_acteur = /^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/
 var regex_poste_acteur = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
 
-var table_1a_cells_length = table_1a.rows[0].cells.length; 
 /*--------------------------------- TABLES JS -------------------------------*/
 $(document).ready(function(){  
     $('#editable_table').Tabledit({
      url:'content/php/atelier1a/modification.php',
      columns:{
-      identifier:[0, "id_personne"],
+      identifier:[0, "id_utilisateur"],
       editable:[[1, 'nom'], [2, 'prenom'], [3, 'poste']]
      },
      restoreButton:false,
@@ -44,7 +43,7 @@ $(document).ready(function(){
      {
       if(data.action == 'delete')
       {
-       $('#'+data.id_personne).remove();
+       $('#'+data.id_utilisateur).remove();
       }
      }
     });
@@ -60,11 +59,26 @@ label_prenom_acteur.style.display="none"
 label_poste_acteur.style.display="none"
 /*------------------ AJOUT DE LA VERIFICATION DES TABLEAUX ------------------*/
 sleep(100).then(() => {
-    for(let i=0;i<button.length;i++){
+    for(let i=0;i<editable_table.rows.length-1;i++){
         j=i+1;
-        button[i].setAttribute('onclick','tableau_verification('+j+')')
+        button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table'+','+'4'+')')
     }
 });
+/*-------------------------------- RACI ------------------------------------ */
+//var nombre_acteur = raci.rows[0].children.length-1
+var nombre_atelier = raci.rows.length
+for(let i=1;i<nombre_atelier;i++){
+    var nombre_acteur = raci.rows[0].children.length-1
+    //for(let j=1;nombre_acteur;j++){
+    while(nombre_acteur!=0){
+        var choix_raci = document.createElement("td")
+        choix_raci.innerHTML = "toto"
+        raci.rows[i].appendChild(choix_raci)
+        nombre_acteur--
+    }
+    //}
+}
+
 /*------------------------- CHARGEMENT DES COOKIES ---------------------------*/
 
 nom_etude.value = sessionStorage.getItem('nom_etude');

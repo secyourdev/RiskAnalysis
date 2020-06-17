@@ -2,7 +2,7 @@
 
   //Connexion à la base de donnee
   try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v5;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v6;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
   }
 
@@ -20,7 +20,7 @@ if (isset($_POST['connexion'])){
   $type_compte = 'admin';
 
   if ($results["error"] === false){
-    $bdd->exec('INSERT INTO `utilisateur`(`id_utilisateur`, `email`, `mot_de_passe`, `type_compte`, `id_personne`) VALUES (id_utilisateur,"'.$email.'","'.$mot_de_passe.'","'.$type_compte.'", 1)');
+    $bdd->exec('INSERT INTO `utilisateur`(`id_utilisateur`, `email`, `mot_de_passe`, `type_compte`) VALUES (id_utilisateur,"'.$email.'","'.$mot_de_passe.'","'.$type_compte.'")');
     ?>
     <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
     <?php
