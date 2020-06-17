@@ -2,6 +2,7 @@ var button = document.getElementsByClassName('tabledit-edit-button')
 var save_button = document.getElementsByClassName('tabledit-save-button')
 var j=0;
 var k=0;
+var l=0;
 /*--------------------------------- TABLES JS -------------------------------*/
 $(document).ready(function(){  
     $('#editable_table').Tabledit({
@@ -68,8 +69,15 @@ sleep(100).then(() => {
 });
 
 sleep(100).then(() => {
-    for(let i=editable_table.rows.length-1;i<editable_table.rows.length+tableau_vm.rows.length-1;i++){
+    for(let i=editable_table.rows.length-1;i<editable_table.rows.length+tableau_vm.rows.length-2;i++){
         k++;
         button[i].setAttribute('onclick','tableau_verification('+k+','+'tableau_vm'+','+'5'+')')
+    }
+});
+
+sleep(100).then(() => {
+    for(let i=editable_table.rows.length+tableau_vm.rows.length-2;i<editable_table.rows.length+tableau_vm.rows.length+tableau_bs.rows.length-3;i++){
+        l++;
+        button[i].setAttribute('onclick','tableau_verification('+l+','+'tableau_bs'+','+'4'+')')
     }
 });
