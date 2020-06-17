@@ -675,7 +675,7 @@
 
             <div class="form-group">
                 <label for="SelectNaturePop">Nature</label>
-                <select class="form-control" name="nommission" id="SelectNaturePop">
+                <select class="form-control" name="nommission" id="SelectMission">
                   <option value="" selected>...</option>
                   <?php
                       while($row = mysqli_fetch_array($resultmission))
