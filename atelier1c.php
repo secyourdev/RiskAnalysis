@@ -434,12 +434,12 @@
                       <i class="fas fa-info-circle"></i>
                     </button>
                     <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="radio_gravite2" name="radio_gravite1" class="custom-control-input">
-                      <label class="custom-control-label" for="radio_gravite2">Gravité sur 5</label>
+                      <input type="radio" id="radio_gravite4" class="custom-control-input" value="4">
+                      <label class="custom-control-label" for="radio_gravite4">Gravité sur 4</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="radio_gravite1" name="radio_gravite1" class="custom-control-input">
-                      <label class="custom-control-label" for="radio_gravite1">Gravité sur 4</label>
+                      <input type="radio" id="radio_gravite5" class="custom-control-input" value="5">
+                      <label class="custom-control-label" for="radio_gravite5">Gravité sur 5</label>
                     </div>
                   </div>
                 </div>
@@ -468,16 +468,16 @@
                         while ($row = mysqli_fetch_array($result)) {
                           echo '
                         <tr>
-                        <td>'.$row["id_evenement_redoutes"].'</td>
-                        <td>'.$row["nom_valeur_metier"].'</td>
-                        <td>'.$row["nom_evenement_redoutes"].'</td>
-                        <td>'.$row["description_evenement_redoutes"] . '</td>
-                        <td>'.$row["impact"].'</td>
-                        <td>'.$row["confidentialite"].'</td>
-                        <td>'.$row["integrite"].'</td>
-                        <td>'.$row["disponibilite"].'</td>
-                        <td>'.$row["tracabilite"].'</td>
-                        <td>'.$row["niveau_de_gravite"].'</td>
+                        <td>' . $row["id_evenement_redoutes"] . '</td>
+                        <td>' . $row["nom_valeur_metier"] . '</td>
+                        <td>' . $row["nom_evenement_redoutes"] . '</td>
+                        <td>' . $row["description_evenement_redoutes"] . '</td>
+                        <td>' . $row["impact"] . '</td>
+                        <td>' . $row["confidentialite"] . '</td>
+                        <td>' . $row["integrite"] . '</td>
+                        <td>' . $row["disponibilite"] . '</td>
+                        <td>' . $row["tracabilite"] . '</td>
+                        <td>' . $row["niveau_de_gravite"] . '</td>
                         </tr>
                         ';
                         }
@@ -662,6 +662,7 @@
     <script src="content/js/modules/top_bar.js"></script>
     <script src="content/js/modules/side_bar.js"></script>
     <script src="content/js/modules/help_button.js"></script>
+    <script src="content/js/modules/gravite.js"></script>
     <!--   <script src="content/js/modules/realtime.js"></script> -->
     <script src="content/js/atelier/atelier1c.js"></script>
     <script src="content/js/modules/tableau.js"></script>

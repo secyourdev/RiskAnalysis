@@ -83,7 +83,6 @@ if (IsChecked('formcheck', '4')) {
 };
 
 
-
 $recupere = $bdd->prepare("SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = ?");
 $insere = $bdd->prepare('INSERT INTO `evenement_redoutes`(`id_evenement_redoutes`, `nom_evenement_redoutes`, `description_evenement_redoutes`, `confidentialite`, `integrite`, `disponibilite`, `tracabilite`, `impact`, `niveau_de_gravite`, `id_valeur_metier`, `id_atelier`) VALUES (?,?,?,?,?,?,?,?,?,?,?)');
 
