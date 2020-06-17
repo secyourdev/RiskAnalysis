@@ -96,8 +96,7 @@ if (typeof jQuery === 'undefined') {
           $td.each(function () {//crée la colonne
             // Create hidden input with row identifier.
             var span = '<span class="tabledit-span tabledit-identifier">' + $(this).text() + '</span>';
-            /* var input = '<input class="tabledit-input tabledit-identifier" type="hidden" name="' + settings.columns.identifier[1] + '" value="' + $(this).text() + '" disabled>'; */
-            var input = '<textarea class="tabledit-input tabledit-identifier perso_textarea" type="hidden" name="' + settings.columns.identifier[1] + '" disabled>' + $(this).text() + '</textarea>';
+            var input = '<input class="tabledit-input tabledit-identifier" type="hidden" name="' + settings.columns.identifier[1] + '" value="' + $(this).text() + '" disabled>';
 
             // Add elements to table cell.
             $(this).html(span + input);
@@ -141,7 +140,7 @@ if (typeof jQuery === 'undefined') {
               } else {
                 // Create text input element.
                 /* var input = '<input class="tabledit-input ' + settings.inputClass + '" type="text" name="' + settings.columns.editable[i][1] + '" value="' + $(this).text() + '" style="display: none;" disabled>'; */
-                var input = '<textarea class="tabledit-input ' + settings.inputClass + '" type="text" name="' + settings.columns.editable[i][1] + '" style="display: none;" disabled>' +  $(this).text() + '</textarea>';
+                var input = '<textarea class="tabledit-input ' + settings.inputClass + '" type="text" name="' + settings.columns.editable[i][1] + '" style="display: none;" disabled>' + $(this).text() + '</textarea>';
               }
 
               // Add elements and class "view" to table cell.
@@ -150,24 +149,14 @@ if (typeof jQuery === 'undefined') {
             });
           }
         },
-        /* checkboxeditable: function () {
-          //console.log(settings.columns.checkboxeditable[0]);
-
-          //console.log($table.find('tbody td:nth-child(' + (parseInt(settings.columns.checkboxeditable[0][0]) + 1) + ')').text())
-          //CIDT
+        checkboxeditable: function () {
           for (var i = 0; i < settings.columns.checkboxeditable.length; i++) {//pour toute les cases éditable d'une ligne
-            //console.log(parseInt(settings.columns.checkboxeditable[i][0]) + 1)
-            var $td = $table.find('tbody td:nth-child(' + (parseInt(settings.columns.checkboxeditable[i][0]) + 1) + ')');
-            //$table.find('tbody td:nth-child('+3+')') = case bonjour (troisième case en comptant id-evenement qui est caché)
 
+            var $td = $table.find('tbody td:nth-child(' + (parseInt(settings.columns.checkboxeditable[i][0]) + 1) + ')');
 
             $td.each(function () {
-              // Get text of this cell.
-              //console.log($td)
-              //console.log($(this).val())
 
               var text = $(this).text();
-              //console.log(text)
               if (!settings.editButton) {
                 $(this).css('cursor', 'pointer');
               }
@@ -182,10 +171,8 @@ if (typeof jQuery === 'undefined') {
                 // Create options for select element.
                 $.each(jQuery.parseJSON(settings.columns.editable[i][2]), function (index, value) {
                   if (text === value) {
-                    1
                     input += '<option value="' + index + '" selected>' + value + '</option>';
                   } else {
-
                     input += '<option value="' + index + '">' + value + '</option>';
                   }
                 });
@@ -193,32 +180,23 @@ if (typeof jQuery === 'undefined') {
                 // Create last piece of select element.
                 input += '</select>';
               } else {
-              // get id of row
-              var trid = $(this).closest('tr').attr('id')
-              var identifiant = settings.columns.checkboxeditable[i][1] + trid
-              // create checkbox
-              var input = '<div class="custom-control custom-checkbox perso_RACI"> <input type="checkbox" class="tabledit-input custom-control-input" name="' + settings.columns.checkboxeditable[i][1] + '" id="' + identifiant + '" disabled> <label class="custom-control-label perso_RACI_control_label" for="' + identifiant + '"></label></div>';
+                // get id of row
+                var trid = $(this).closest('tr').attr('id')
+                var identifiant = settings.columns.checkboxeditable[i][1] + trid
+                // create checkbox
+                var input = '<div class="custom-control custom-checkbox perso_RACI"> <input type="checkbox" class="tabledit-input custom-control-input" name="cidt[]" id="' + identifiant + '" value=' + 'a'+i +' disabled> <label class="custom-control-label perso_RACI_control_label" for="' + identifiant + '"></label></div>';
               }
-              // donne un nom à la checkbox
-              var checkbox = document.getElementById(identifiant)
-              //var $checkbox = $(string_ident)
-              //console.log($('"#'+identifiant + '"'))
-              
-              // si la value de la base de donnée est 1 alors coche la checkbox
-              
-               $("input").change(function () {
-                var $input = $(this);
-                $("p").html(
-                  ".attr( \"checked\" ): <b>" + $input.attr("checked") + "</b><br>" +
-                  ".prop( \"checked\" ): <b>" + $input.prop("checked") + "</b><br>" +
-                  ".is( \":checked\" ): <b>" + $input.is(":checked") + "</b>");
-              }).change();
-              
-              
               $(this).html(input);
+              
+              
+              
+              // donne un nom à la checkbox
+              var checkbox = document.getElementById(identifiant);
+              //var $checkbox = $(string_ident)
 
+              // si la value de la base de donnée est 1 alors coche la checkbox
 
-              /* if (parseInt(text) == 1) {
+              if (parseInt(text) == 1) {
                 checkbox.checked = true
                 // $checkbox.prop("checked", true)
                 //console.log($checkbox.prop("checked"))
@@ -228,36 +206,11 @@ if (typeof jQuery === 'undefined') {
                 checkbox.checked = false
                 // $checkbox.prop("checked", false)
                 //console.log($checkbox.prop("checked"))
-              } */
-              
-              /* //fonction permettant de changer le statu de la checkbox et d'update la valeur en bdd
-              checkbox.addEventListener("change", function () {
-                
-                
-                if (checkbox.checked == true) {
-                  //console.log('passe a true')
-                  
-                  //console.log(string_ident)
-                  
-                  $(string_ident).val()
-                  //console.log($(string_ident).val())
-                }
-                else {
-                  //console.log('passe a false')
-                  
-                  //console.log(string_ident)
-                  
-                  $(string_ident).val()
-                  //console.log($(string_ident).val())
-                }
-              });
-              
-              
-              
+              }
               $(this).addClass('tabledit-view-mode');
             });
           }
-        }, */
+        },
 
         toolbar: function () {
           if (settings.editButton || settings.deleteButton) {
@@ -479,8 +432,7 @@ if (typeof jQuery === 'undefined') {
      *
      * @param {string} action
      */
-    function ajax(action) 
-    {
+    function ajax(action) {
       var serialize = $table.find('.tabledit-input').serialize() + '&action=' + action;
 
       var result = settings.onAjax(action, serialize);
@@ -522,7 +474,7 @@ if (typeof jQuery === 'undefined') {
 
     Draw.columns.identifier();
     Draw.columns.editable();
-    /* Draw.columns.checkboxeditable(); */
+    Draw.columns.checkboxeditable();
     Draw.columns.toolbar();
 
     settings.onDraw();

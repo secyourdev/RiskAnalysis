@@ -4,7 +4,7 @@ header('Location: ../../../atelier-1b');
 
   //Connexion à la base de donnee
   try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v5;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v6;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
   }
 
@@ -26,11 +26,12 @@ header('Location: ../../../atelier-1b');
   $adresse_mail=NULL;
   $id_valeur_metier="valeur_metier";
   $id_atelier="1.b";
+  $nommission=$_POST['nommission'];
 
-
-  $recupere = $bdd->prepare('SELECT id_personne FROM personne WHERE nom = ? AND prenom = ? AND poste = ?');
-  $inserepersonne = $bdd->prepare('INSERT INTO `personne`(`id_personne`, `nom`, `prenom`, `poste`, `adresse_mail`) VALUES (?,?,?,?,?)');
-  $inserevm = $bdd->prepare('INSERT INTO `valeur_metier`(`id_valeur_metier`, `nom_valeur_metier`, `nature_valeur_metier`, `description_valeur_metier`, `id_atelier`, `id_personne`) VALUES (?,?,?,?,?,?)');
+  $recuperepersonne = $bdd->prepare('SELECT id_personne FROM personne WHERE nom = ? AND prenom = ? AND poste = ?');
+  $recuperemission = $bdd->prepare('SELECT id_mission FROM mission WHERE nom_mission = ?');
+  $inserepersonne = $bdd->prepare('INSERT INTO `personne`(`id_personne`, `nom`, `prenom`, `poste`) VALUES (?,?,?,?)');
+  $inserevm = $bdd->prepare('INSERT INTO `valeur_metier`(`id_valeur_metier`, `nom_valeur_metier`, `nature_valeur_metier`, `description_valeur_metier`, `id_atelier`, `id_personne`, `id_mission`) VALUES (?,?,?,?,?,?,?)');
 
 
 
@@ -78,19 +79,23 @@ header('Location: ../../../atelier-1b');
       $inserepersonne->bindParam(2, $nomresponsablevm);
       $inserepersonne->bindParam(3, $prenomresponsablevm);
       $inserepersonne->bindParam(4, $posteresponsablevm);
-      $inserepersonne->bindParam(5, $adresse_mail);
       $inserepersonne->execute();
-      $recupere->bindParam(1, $nomresponsablevm);
-      $recupere->bindParam(2, $prenomresponsablevm);
-      $recupere->bindParam(3, $posteresponsablevm);
-      $recupere->execute();
-      $id_personne = $recupere->fetch();
+      $recuperepersonne->bindParam(1, $nomresponsablevm);
+      $recuperepersonne->bindParam(2, $prenomresponsablevm);
+      $recuperepersonne->bindParam(3, $posteresponsablevm);
+      $recuperepersonne->execute();
+      $id_personne = $recuperepersonne->fetch();
+      $recuperemission->bindParam(1, $nommission);
+      $recuperemission->execute();
+      $id_mission = $recuperemission->fetch();
       $inserevm->bindParam(1, $id_valeur_metier);
       $inserevm->bindParam(2, $nomvm);
       $inserevm->bindParam(3, $nature);
       $inserevm->bindParam(4, $descriptionvm);
       $inserevm->bindParam(5, $id_atelier);
       $inserevm->bindParam(6, $id_personne[0]);
+      $inserevm->bindParam(7, $id_mission[0]);
+
       $inserevm->execute();
     ?>
       <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
