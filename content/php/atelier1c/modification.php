@@ -1,6 +1,6 @@
 <?php
 //action.php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v5");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v6");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -20,7 +20,7 @@ $results["message"] = [];
 
 
 
-/* $cleanArray = [];
+$cleanArray = [];
 foreach ($_POST['cidt'] as $val)
     $cleanArray[] = mysqli_real_escape_string($connect, $val);
 
@@ -39,7 +39,7 @@ if (in_array('a2', $cleanArray)) {
 if (in_array('a3', $cleanArray)) {
     //do somthing ...
     $tracabilite = 1;
-}; */
+};
 
 
 
