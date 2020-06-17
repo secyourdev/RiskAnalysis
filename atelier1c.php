@@ -434,12 +434,12 @@
                       <i class="fas fa-info-circle"></i>
                     </button>
                     <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="radio_gravite4" class="custom-control-input" value="4">
-                      <label class="custom-control-label" for="radio_gravite4">Gravité sur 4</label>
+                      <input type="radio" id="radio_gravite5" name="radio_gravite" class="custom-control-input" value="5">
+                      <label class="custom-control-label" for="radio_gravite5">Gravité sur 5</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="radio_gravite5" class="custom-control-input" value="5">
-                      <label class="custom-control-label" for="radio_gravite5">Gravité sur 5</label>
+                      <input type="radio" id="radio_gravite4" name="radio_gravite" class="custom-control-input" value="4">
+                      <label class="custom-control-label" for="radio_gravite4">Gravité sur 4</label>
                     </div>
                   </div>
                 </div>
