@@ -14,6 +14,7 @@ var label_nom_acteur = document.getElementById('nom_acteur').previousSibling.pre
 var label_prenom_acteur = document.getElementById('prenom_acteur').previousSibling.previousSibling
 var label_poste_acteur = document.getElementById('poste_acteur').previousSibling.previousSibling
 var raci = document.getElementById('raci')
+var nombre_atelier = raci.rows.length
 
 var bool_nom_etude = false
 var bool_objectif_atteindre = false
@@ -65,7 +66,6 @@ sleep(100).then(() => {
     }
 });
 /*-------------------------- INITIALISATION RACI --------------------------- */
-var nombre_atelier = raci.rows.length
 for(let i=1;i<nombre_atelier;i++){
     var nombre_acteur = raci.rows[0].children.length-1
     while(nombre_acteur!=0){
@@ -93,7 +93,17 @@ for(let i=1;i<nombre_atelier;i++){
     }
 }
 /*----------------------- RECUPERATION VALEURS RACI ------------------------- */
-
+var table_case_RACI = new Array()
+var nombre_acteur_2 = raci.rows[0].children.length
+//for(let j=1;j<nombre_acteur_2;j++){
+    for(let i=0;i<nombre_atelier-1;i++){
+        table_case_RACI[i]= raci.tBodies[0].children[i].children[1].children[0].options[raci.tBodies[0].children[i].children[1].children[0].selectedIndex].value
+        raci.tBodies[0].children[i].children[1].children[0].addEventListener('change',function(){
+            table_case_RACI[i]= raci.tBodies[0].children[i].children[1].children[0].options[raci.tBodies[0].children[i].children[1].children[0].selectedIndex].value
+            console.log(table_case_RACI)
+        })
+    }
+//}
 
 /*------------------------- CHARGEMENT DES COOKIES ---------------------------*/
 

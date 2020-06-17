@@ -454,7 +454,7 @@
                           <th id="id_evenement_redoutes">ID</th>
                           <th id="nom_valeur_metier">Valeur métier</th>
                           <th id="nom_evenement_redoutes">Nom de l'événement redouté</th>
-                          <th id="description_evenement_redoutes">événement redouté</th>
+                          <th id="description_evenement_redoutes">Événement redouté</th>
                           <th id="impact">Impacts</th>
                           <th id="confidentialite">C</th>
                           <th id="integrite">I</th>

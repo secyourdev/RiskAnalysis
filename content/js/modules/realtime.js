@@ -46,7 +46,6 @@ function tableau_verification(value_test,name_table,table_cells_length){
             table.rows[value_test].cells[j].children[1].addEventListener('keyup',function(){
                 bool[j] = verify_textarea_2(table.rows[value_test].cells[j].children[1].value,regex,table.rows[value_test].cells[j].children[1],save_button[value_test-1])    
             })
-            
         }
     return bool
 }
