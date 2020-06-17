@@ -301,6 +301,8 @@ if (typeof jQuery === 'undefined') {
   
                   // Set last edited column and row.
                   $lastEditedRow = $(td).parent('tr');
+
+                  location.reload();
               }
           };
   

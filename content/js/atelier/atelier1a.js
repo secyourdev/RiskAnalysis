@@ -13,6 +13,7 @@ var label_cadre_temporel = document.getElementById('cadre_temporel').previousSib
 var label_nom_acteur = document.getElementById('nom_acteur').previousSibling.previousSibling
 var label_prenom_acteur = document.getElementById('prenom_acteur').previousSibling.previousSibling
 var label_poste_acteur = document.getElementById('poste_acteur').previousSibling.previousSibling
+var raci = document.getElementById('raci')
 
 var bool_nom_etude = false
 var bool_objectif_atteindre = false
@@ -63,6 +64,21 @@ sleep(100).then(() => {
         button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table'+','+'4'+')')
     }
 });
+/*-------------------------------- RACI ------------------------------------ */
+//var nombre_acteur = raci.rows[0].children.length-1
+var nombre_atelier = raci.rows.length
+for(let i=1;i<nombre_atelier;i++){
+    var nombre_acteur = raci.rows[0].children.length-1
+    //for(let j=1;nombre_acteur;j++){
+    while(nombre_acteur!=0){
+        var choix_raci = document.createElement("td")
+        choix_raci.innerHTML = "toto"
+        raci.rows[i].appendChild(choix_raci)
+        nombre_acteur--
+    }
+    //}
+}
+
 /*------------------------- CHARGEMENT DES COOKIES ---------------------------*/
 
 nom_etude.value = sessionStorage.getItem('nom_etude');
