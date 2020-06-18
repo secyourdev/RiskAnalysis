@@ -14,6 +14,12 @@ var label_nom_acteur = document.getElementById('nom_acteur').previousSibling.pre
 var label_prenom_acteur = document.getElementById('prenom_acteur').previousSibling.previousSibling
 var label_poste_acteur = document.getElementById('poste_acteur').previousSibling.previousSibling
 var raci = document.getElementById('raci')
+var acteur_id_raci = document.getElementById('acteur_id_raci')
+var find_acteur_id;
+var find_atelier_num;
+var find_raci_value;
+
+
 var nombre_atelier = raci.rows.length
 
 var bool_nom_etude = false
@@ -66,7 +72,7 @@ sleep(100).then(() => {
     }
 });
 /*-------------------------- INITIALISATION RACI --------------------------- */
-for(let i=1;i<nombre_atelier;i++){
+for(let i=2;i<nombre_atelier;i++){
     var nombre_acteur = raci.rows[0].children.length-1
     while(nombre_acteur!=0){
         var choix_raci = document.createElement("td")
@@ -93,17 +99,9 @@ for(let i=1;i<nombre_atelier;i++){
     }
 }
 /*----------------------- RECUPERATION VALEURS RACI ------------------------- */
-var table_case_RACI = new Array()
-var nombre_acteur_2 = raci.rows[0].children.length
-//for(let j=1;j<nombre_acteur_2;j++){
-    for(let i=0;i<nombre_atelier-1;i++){
-        table_case_RACI[i]= raci.tBodies[0].children[i].children[1].children[0].options[raci.tBodies[0].children[i].children[1].children[0].selectedIndex].value
-        raci.tBodies[0].children[i].children[1].children[0].addEventListener('change',function(){
-            table_case_RACI[i]= raci.tBodies[0].children[i].children[1].children[0].options[raci.tBodies[0].children[i].children[1].children[0].selectedIndex].value
-            console.log(table_case_RACI)
-        })
-    }
-//}
+acteur_id_raci.style.display ='none'
+
+recuperation_raci_info()
 
 /*------------------------- CHARGEMENT DES COOKIES ---------------------------*/
 
@@ -156,3 +154,31 @@ poste_acteur.addEventListener('keyup',function(event){
     acteur_verification()
     activate_label(poste_acteur.value,label_poste_acteur)
 })
+
+/*-------------------------------- FONCTIONS --------------------------------*/
+
+function recuperation_raci_info(){
+    var nombre_acteur = raci.rows[0].children.length
+    for(let j=1;j<nombre_acteur;j++){
+        for(let i=0;i<nombre_atelier-2;i++){
+            raci.tBodies[0].children[i].children[j].addEventListener('change',function(){
+                find_atelier_num = raci.tBodies[0].children[i].children[0].attributes[0].value
+                console.log(find_atelier_num)
+                find_raci_value = raci.tBodies[0].children[i].children[j].children[0].options[raci.tBodies[0].children[i].children[j].children[0].selectedIndex].value
+                console.log(find_raci_value)
+                find_acteur_id = raci.tHead.children[0].children[j].children[0].innerText
+                console.log(find_acteur_id)
+                $.ajax({
+                    url: 'content/php/atelier1a/raci.php',
+                    type: 'POST',
+                    data: {
+                        acteur_id: find_acteur_id,
+                        atelier_num: find_atelier_num,
+                        raci_value: find_raci_value
+                    },
+                });
+            })
+        }
+    }
+}
+

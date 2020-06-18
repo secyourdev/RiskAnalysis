@@ -522,10 +522,24 @@
                   <div class="table-responsive">
                     <table id="raci" class="table table-bordered">
                       <thead>
-                        <tr>
+                        <tr id='acteur_id_raci'>
                           <th scope="col">#</th>
-                        <?php
+                         
+                          <?php
                         while($row = mysqli_fetch_array($result2))
+                        {
+                          echo '
+                            <th scope="col">
+                              <div class="perso_vertical">'.$row["id_utilisateur"].'</div>
+                            </th>
+                          ';
+                        }
+                        ?>
+                        </tr>
+                        <tr>
+                          <th scope="col">#</th>                       
+                        <?php
+                        while($row = mysqli_fetch_array($result3))
                         {
                           echo '
                             <th scope="col">
@@ -539,52 +553,52 @@
 
                       <tbody class="raci_th">
                         <tr>
-                          <th scope="row">Activité 1.a - Cadrer l’étude</th>
+                          <th name="1.a" scope="row">Activité 1.a - Cadrer l’étude</th>
                         </tr> 
                         <tr> 
-                          <th scope="row">Activité 1.b - Biens primordiaux/support</th>
+                          <th name="1.b" scope="row">Activité 1.b - Biens primordiaux/support</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 1.c - Événement redoutés</th>
+                          <th name="1.c" scope="row">Activité 1.c - Événement redoutés</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 1.d - Les socles de sécurité</th>
+                          <th name="1.d" scope="row">Activité 1.d - Les socles de sécurité</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 2.a - Identifier les sources de risques et les objectifs</th>
+                          <th name="2.a" scope="row">Activité 2.a - Identifier les sources de risques et les objectifs</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 2.b - Évaluer les couples sources de risque/objectifs visés</th>
+                          <th name="2.b" scope="row">Activité 2.b - Évaluer les couples sources de risque/objectifs visés</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 3.a - Construire la cartographie des menaces
+                          <th name="3.a" scope="row">Activité 3.a - Construire la cartographie des menaces
                         numériques de l'écosystème et sélectionner les parties prenantes critiques</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 3.b - Élaborer des scénarios stratégiques</th>
+                          <th name="3.b" scope="row">Activité 3.b - Élaborer des scénarios stratégiques</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 3.c - Définir des mesures de sécurité sur
+                          <th name="3.c" scope="row">Activité 3.c - Définir des mesures de sécurité sur
                         l'écosystème</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 4.a - Élaborer les scénarios
+                          <th name="4.a" scope="row">Activité 4.a - Élaborer les scénarios
                         opérationnels</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 4.b - Évaluer la vraisemblance des scénarios
+                          <th name="4.b" scope="row">Activité 4.b - Évaluer la vraisemblance des scénarios
                         opérationnels</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 5.a - Réaliser une synthèse des scénarios de
+                          <th name="5.a" scope="row">Activité 5.a - Réaliser une synthèse des scénarios de
                         risque</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 5.b - Décider de la stratégie de traitement du
+                          <th name="5.b" scope="row">Activité 5.b - Décider de la stratégie de traitement du
                         risque et définir les mesures de sécurité</th>
                         </tr>
                         <tr>
-                          <th scope="row">Activité 5.c - Évaluer et documenter les risques
+                          <th name="5.c" scope="row">Activité 5.c - Évaluer et documenter les risques
                         résiduels</th>
                         </tr>
                       </tbody>
