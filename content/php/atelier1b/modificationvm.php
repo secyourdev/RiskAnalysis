@@ -61,6 +61,7 @@ if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $poste_responsable)
     <?php
 }
 echo($results["error"]);
+echo($input["action"]);
 if($input["action"] === 'edit' && $results["error"] === false){
     $queryp = "
     UPDATE personne
