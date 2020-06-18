@@ -19,5 +19,4 @@ $update_gravite = $bdd->prepare("UPDATE projet SET valeur_max_gravite = ?");
 $update_gravite->bindParam(1, $radio_gravite);
 $update_gravite->execute();
 
-
 ?>

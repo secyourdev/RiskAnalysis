@@ -400,9 +400,18 @@
                   <form class="user">
                     <div class="form-group">
                       <label class="titre_input" for="nom_etude">Nom</label>
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="nom_etude" placeholder="Nom" required></input>
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="nom_etude" placeholder="Nom" value="
+                      <?php
+                        while($row = mysqli_fetch_array($projet_nom))
+                        {
+                          echo 
+                          $row["nom_projet"]
+                          ;
+                        }
+                      ?>
+                      "required></input>
                     </div>
-
+                    
                     <div class="form-group">
                       <label class="titre_textarea" for="objectif_atteindre">Objectif à atteindre</label>
                       <textarea class="form-control perso_text_area" id="objectif_atteindre" rows="3"></textarea>

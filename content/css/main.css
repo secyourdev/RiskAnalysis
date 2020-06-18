@@ -1101,5 +1101,5 @@ h6 {
 }
 
 .width_RACI{
-    width: auto;
+    width: -webkit-fill-available;
 }

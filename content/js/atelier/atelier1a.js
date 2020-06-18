@@ -18,7 +18,7 @@ var acteur_id_raci = document.getElementById('acteur_id_raci')
 var find_acteur_id;
 var find_atelier_num;
 var find_raci_value;
-
+var raci_final_value;
 
 var nombre_atelier = raci.rows.length
 
@@ -59,13 +59,13 @@ $(document).ready(function(){
 setSortTable('editable_table');
 OURJQUERYFN.setFilterTable("#rechercher_acteur","#editable_table tbody tr")
 /*------------------------------ LABELS CACHES ------------------------------*/
-label_nom_etude.style.display="none"
+//label_nom_etude.style.display="none"
 label_cadre_temporel.style.display="none"
 label_nom_acteur.style.display="none"
 label_prenom_acteur.style.display="none"
 label_poste_acteur.style.display="none"
 /*------------------ AJOUT DE LA VERIFICATION DES TABLEAUX ------------------*/
-sleep(100).then(() => {
+sleep(150).then(() => {
     for(let i=0;i<editable_table.rows.length-1;i++){
         j=i+1;
         button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table'+','+'4'+')')
@@ -87,7 +87,6 @@ for(let i=2;i<nombre_atelier;i++){
         option_A.innerHTML = "Approbation"; option_A.setAttribute("valeur","Approbation");
         option_C.innerHTML = "Consultation"; option_C.setAttribute("valeur","Consultation");
         option_I.innerHTML = "Information"; option_I.setAttribute("valeur","Information"); option_I.setAttribute("selected","");
-
 
         select.appendChild(option_R)
         select.appendChild(option_A)
@@ -113,15 +112,15 @@ acteur_verification()
 verify_input(nom_etude.value,regex_nom_etude,nom_etude)
 verify_textarea(objectif_atteindre.value,regex_objectif_atteindre,objectif_atteindre)
 verify_input(cadre_temporel.value,regex_cadre_temporel,cadre_temporel)
-activate_label(nom_etude.value,label_nom_etude)
+//activate_label(nom_etude.value,label_nom_etude)
 activate_label(cadre_temporel.value,label_cadre_temporel)
 
 /*----------------------- ENREGISTREMENT DES COOKIES ------------------------*/
-nom_etude.addEventListener('keyup',function(event){
+/* nom_etude.addEventListener('keyup',function(event){
     sessionStorage.setItem('nom_etude',nom_etude.value);
     verify_input(nom_etude.value,regex_nom_etude,nom_etude)
     activate_label(nom_etude.value,label_nom_etude)
-})
+}) */
 
 objectif_atteindre.addEventListener('keyup',function(event){
     sessionStorage.setItem('objectif_atteindre',objectif_atteindre.value);
@@ -165,7 +164,11 @@ function recuperation_raci_info(){
                 find_atelier_num = raci.tBodies[0].children[i].children[0].attributes[0].value
                 console.log(find_atelier_num)
                 find_raci_value = raci.tBodies[0].children[i].children[j].children[0].options[raci.tBodies[0].children[i].children[j].children[0].selectedIndex].value
-                console.log(find_raci_value)
+                if(find_raci_value=="Approbation" || find_raci_value=="Consultation" || find_raci_value=="Information")
+                    raci_final_value=0;
+                else 
+                    raci_final_value=1;
+                console.log(raci_final_value)
                 find_acteur_id = raci.tHead.children[0].children[j].children[0].innerText
                 console.log(find_acteur_id)
                 $.ajax({
@@ -174,7 +177,7 @@ function recuperation_raci_info(){
                     data: {
                         acteur_id: find_acteur_id,
                         atelier_num: find_atelier_num,
-                        raci_value: find_raci_value
+                        raci_value: raci_final_value
                     },
                 });
             })
