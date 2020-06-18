@@ -1099,3 +1099,7 @@ h6 {
     width: 20%;
     text-align: initial ;
 }
+
+.width_RACI{
+    width: auto;
+}

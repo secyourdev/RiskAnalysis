@@ -434,12 +434,12 @@
                       <i class="fas fa-info-circle"></i>
                     </button>
                     <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="radio_gravite4" class="custom-control-input" value="4">
-                      <label class="custom-control-label" for="radio_gravite4">Gravité sur 4</label>
+                      <input type="radio" id="radio_gravite5" name="radio_gravite" class="custom-control-input" value="5">
+                      <label class="custom-control-label" for="radio_gravite5">Gravité sur 5</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="radio_gravite5" class="custom-control-input" value="5">
-                      <label class="custom-control-label" for="radio_gravite5">Gravité sur 5</label>
+                      <input type="radio" id="radio_gravite4" name="radio_gravite" class="custom-control-input" value="4">
+                      <label class="custom-control-label" for="radio_gravite4">Gravité sur 4</label>
                     </div>
                   </div>
                 </div>
@@ -447,7 +447,7 @@
                 <div class="card-body">
                   <!--tableau-->
                   <div class="table-responsive">
-                    <input type="text" id="rechercher_input" placeholder="Rechercher">
+                  <input type="text" class="rechercher_input" id="rechercher_evenement_redoute" placeholder="Rechercher">
                     <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
@@ -556,10 +556,10 @@
                       </select>
                     </div>
 
-                    <div class="form-group">
-                      <label for="Description_event_pop">Événement redouté</label>
-                      <textarea class="form-control perso_text_area" name="description_evenement_redoutes" id="Description_event_pop" rows="3"></textarea>
-                    </div>
+                  <div class="form-group">
+                    <label for="Description_event_pop">Événement redouté</label>
+                    <textarea class="form-control perso_text_area" name="description_evenement_redoutes" id="Description_event_pop" rows="3"></textarea>
+                  </div>
                   </div>
                   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="custom-control custom-checkbox">

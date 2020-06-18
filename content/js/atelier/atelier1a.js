@@ -64,20 +64,36 @@ sleep(100).then(() => {
         button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table'+','+'4'+')')
     }
 });
-/*-------------------------------- RACI ------------------------------------ */
-//var nombre_acteur = raci.rows[0].children.length-1
+/*-------------------------- INITIALISATION RACI --------------------------- */
 var nombre_atelier = raci.rows.length
 for(let i=1;i<nombre_atelier;i++){
     var nombre_acteur = raci.rows[0].children.length-1
-    //for(let j=1;nombre_acteur;j++){
     while(nombre_acteur!=0){
         var choix_raci = document.createElement("td")
-        choix_raci.innerHTML = "toto"
+        var select = document.createElement("select")
+        var option_R = document.createElement("option")
+        var option_A = document.createElement("option")
+        var option_C = document.createElement("option")
+        var option_I = document.createElement("option")
+
+        select.setAttribute("class","form-control width_RACI")
+        option_R.innerHTML = "Réalisation"; option_R.setAttribute("valeur","Réalisation");
+        option_A.innerHTML = "Approbation"; option_A.setAttribute("valeur","Approbation");
+        option_C.innerHTML = "Consultation"; option_C.setAttribute("valeur","Consultation");
+        option_I.innerHTML = "Information"; option_I.setAttribute("valeur","Information"); option_I.setAttribute("selected","");
+
+
+        select.appendChild(option_R)
+        select.appendChild(option_A)
+        select.appendChild(option_C)
+        select.appendChild(option_I)
+        choix_raci.appendChild(select)
         raci.rows[i].appendChild(choix_raci)
         nombre_acteur--
     }
-    //}
 }
+/*----------------------- RECUPERATION VALEURS RACI ------------------------- */
+
 
 /*------------------------- CHARGEMENT DES COOKIES ---------------------------*/
 

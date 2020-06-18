@@ -55,7 +55,7 @@ $(document).ready(function(){
 
 /*--------------------------- SORT & FILTER TABLES --------------------------*/
 setSortTable('editable_table');
-OURJQUERYFN.setFilterTable("#editable_table","#tableau_mission tbody tr")
+OURJQUERYFN.setFilterTable("#rechercher_mission","#editable_table tbody tr")
 setSortTable('tableau_vm');
 OURJQUERYFN.setFilterTable("#rechercher_valeur_metier","#tableau_vm tbody tr")
 setSortTable('tableau_bs');
