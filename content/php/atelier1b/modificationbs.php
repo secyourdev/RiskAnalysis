@@ -72,7 +72,7 @@ if($input["action"] === 'edit' && $results["error"] === false){
     
     $querybs = "
     UPDATE bien_support 
-    SET nom_bien_suport = '".$nom_bien_support."', 
+    SET nom_bien_support = '".$nom_bien_support."', 
     description_bien_support = '".$description_bien_support."',
     id_valeur_metier = (SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = '".$nom_valeur_metier."')
     WHERE id_bien_support = '".$input["id_bien_support"]."'

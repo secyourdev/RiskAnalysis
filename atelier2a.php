@@ -1,3 +1,4 @@
+<?php include("content/php/atelier2a/selection.php");?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -13,11 +14,14 @@
   <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template-->
+  <!-- CSS -->
   <link href="content/css/bootstrap.css" rel="stylesheet">
   <link href="content/css/main.css" rel="stylesheet">
-</head>
 
+  <!-- JS -->
+  <script src="content/vendor/jquery/jquery.js"></script>
+  <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
+</head>
 <body id="page-top">
 
   <!-- Page Wrapper -->
@@ -389,102 +393,41 @@
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0">Sources de risque</h6>
-                  
-                  <!-- pour avoir le menu 3-points -->
-                  <!-- <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div> -->
-
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <!--text-->
                   <div class="table-responsive">
-                    <table class="table table-bordered perso_border" id="dataTable" width="100%" cellspacing="0">
+                    <input type="text" class="rechercher_input" id="rechercher_srov" placeholder="Rechercher">
+                    <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th>Type d'attaquant</th>
-                          <th>Profil d'attaquant</th>
-                          <th>Description source de risque</th>
-                          <th>Objectifs visés</th>
-                          <th>Description de l'objectif</th>
-                          <th class="perso_border"></th>
+                          <th id=id_srov>ID SROV</th>
+                          <th id="type_attaquant">Type d'attaquant</th>
+                          <th id="profil_attaquant">Profil d'attaquant</th>
+                          <th id="description_source_risque">Description source de risque</th>
+                          <th id="objectif vise">Objectif visé</th>
+                          <th id="description_objectif">Description de l'objectif</th>
                         </tr>
                       </thead>
-                      
                       <tbody>
+                      <?php
+                      while($row = mysqli_fetch_array($result))
+                      {
+                        echo '
                         <tr>
-                          <td>Organisation structurée</td>
-                          <td>Etatique</td>
-                          <td>DGSE</td>
-                          <td>Saboter la campagne nationale de vaccination</td>
-                          <td>Saboter la prochaine campagne nationale de vaccination en perturbant la
-                            production ou la distribution des vaccins, pour générer un choc
-                            psychologique sur la population et discréditer les pouvoirs publics</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_ligne_sr" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-                          </td>  
+                        <td>'.$row["id_source_de_risque"].'</td>
+                        <td>'.$row["type_d_attaquant_source_de_risque"].'</td>
+                        <td>'.$row["profil_de_l_attaquant_source_de_risque"].'</td>
+                        <td>'.$row["description_source_de_risque"].'</td>
+                        <td>'.$row["objectif_vise"].'</td>
+                        <td>'.$row["description_objectif_vise"].'</td>
                         </tr>
-
-                        <tr>
-                          <td>Organisation idéologique</td>
-                          <td>Terroriste</td>
-                          <td>Al-Qaida</td>
-                          <td>Voler des informations</td>
-                          <td>Voler des informations en espionnant les travaux de R&D en vue d'obtenir 
-                            un avantage concurrentiel</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_ligne_sr" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-                          </td> 
-                          </td>  
-                        </tr>
-
-                        <tr>
-                          <td>Individu isolé</td>
-                          <td>Amateur</td>
-                          <td>Hackeur</td>
-                          <td>Divulguer des informations sur les tests animaliers</td>
-                          <td>Divulguer au grand public des informations sur la façon dont les vaccins 
-                            sont conçus en  collectant des photos et vidéos des tests animaliers afin 
-                            de rallier l'opinion publique à sa cause</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_ligne_sr" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-                          </td>  
-                        </tr>
-                        <tr>
-                          <td>Organisation structurée</td>
-                          <td>Concurrent</td>
-                          <td>Amazon.com</td>
-                          <td>Altérer la compositionde vaccins à des fins bioterroristes</td>
-                          <td>Altérer la composition de vaccins distribués lors d'un campagne nationale 
-                            de vaccination à des fins de bioterrorisme</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_ligne_sr" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-                          </td>   
-                        </tr>
-                      </tbody>    
-                    </table>  
+                        ';
+                      }
+                      ?>
+                      </tbody>
+                    </table>
                   </div> 
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
@@ -531,48 +474,50 @@ aria-hidden="true">
       </button>
     </div>
     <div class="modal-body perso_modal_body">
-      <form class="user" id="formsr">
-        <div class="row">
-          <div class="col-6">
-            <div class="form-group form-colonne">
-              <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Type d'attaquant" name="Type d'attaquant" placeholder="Type d'attaquant" required>
-              <datalist id="Type d'attaquant">
-                <option value="Organisation structurée">
-                <option value="Organisation idéologique">
-                <option value="Individu isolé">
-              </datalist>
+      <form method="post" action="content/php/atelier2a/ajout.php" class="user" id="formsrov">
+        <fieldset>
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group form-colonne">
+                <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Type d'attaquant" name="type_attaquant" placeholder="Type d'attaquant" required>
+                <datalist id="Type d'attaquant">
+                  <option value="Organisation structurée">
+                  <option value="Organisation idéologique">
+                  <option value="Individu isolé">
+                </datalist>
+              </div>
+            
+              <div class="form-group form-colonne">
+                <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Profil d'attaquant" name="profil_attaquant" placeholder="Profil d'attaquant" required>
+                <datalist id="Profil d'attaquant">
+                  <option value="Etatique">
+                  <option value="Terroriste">
+                  <option value="Amateur">
+                </datalist>
+              </div>
             </div>
-          
-            <div class="form-group form-colonne">
-              <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Profil d'attaquant" name="Profil d'attaquant" placeholder="Profil d'attaquant" required>
-              <datalist id="Profil d'attaquant">
-                <option value="Étatique">
-                <option value="Terroriste">
-                <option value="Amateur">
-              </datalist>
+
+            <div class="form-group col-6">
+              <label for="Description de la source de risque">Description de la source de risque</label>
+              <textarea class="form-control perso_text_area" id="Description de la source de risque" name="description_sr"rows="5"></textarea>
             </div>
           </div>
+          <div class="row">
+            <div class="form-group col-12">
+              <input type="search" class="perso_form shadow-none form-control form-control-user" id="objectif_vise" name="objectif_vise"
+                placeholder="Objectif visé" required>
+            </div>
 
-          <div class="form-group col-6">
-            <label for="Description de l'attaquant">Description de l'attaquant</label>
-            <textarea class="form-control perso_text_area" id="Description de l'attaquant" rows="5"></textarea>
+            <div class="form-group col-12">
+              <label for="Description de l'objectif visé">Description de l'objectif visé</label>
+              <textarea class="form-control perso_text_area" id="Description de l'objectif visé" name="description_objectif_vise" rows="3"></textarea>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-12">
-            <input type="search" class="perso_form shadow-none form-control form-control-user" id="exampleInputPrénom"
-              placeholder="Objectif visé" required>
+          <!-- bouton Ajouter -->
+          <div class="modal-footer perso_middle_modal_footer">
+            <input type="submit" name="validersrov" value="Ajouter" class="btn perso_btn shadow-none"></input>
           </div>
-
-          <div class="form-group col-12">
-            <label for="Description de l'objectif visé">Description de l'objectif visé</label>
-            <textarea class="form-control perso_text_area" id="Description de l'objectif visé" rows="3"></textarea>
-          </div>
-        </div>
-        <!-- bouton Ajouter -->
-        <div class="modal-footer perso_middle_modal_footer">
-          <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
-        </div>
+        </fieldset>
       </form>
     </div>    
 </div>
@@ -598,7 +543,6 @@ aria-hidden="true">
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="content/vendor/jquery/jquery.js"></script>
   <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
   <!-- Core plugin JavaScript-->
@@ -607,17 +551,14 @@ aria-hidden="true">
   <!-- Custom scripts for all pages-->
   <script src="content/js/bootstrap.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="content/vendor/datatables/jquery.dataTables.js"></script>
-  <script src="content/vendor/datatables/dataTables.bootstrap4.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="content/js/modules/tableau/tableau-atelier2a.js"></script>
-
   <!-- Our JS -->
   <script src="content/js/modules/dark_mode.js"></script>
   <script src="content/js/modules/top_bar.js"></script>
   <script src="content/js/modules/side_bar.js"></script>
+  <script src="content/js/modules/realtime.js"></script>
+  <script src="content/js/modules/set_filter_sort_table.js"></script>
+  <script src="content/js/atelier/atelier2a.js"></script>
+  <script src="content/js/modules/sort_table.js"></script>
 </body>
 
 </html>
