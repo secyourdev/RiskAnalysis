@@ -302,7 +302,7 @@ if (typeof jQuery === 'undefined') {
                   // Set last edited column and row.
                   $lastEditedRow = $(td).parent('tr');
 
-                  location.reload();
+                //   location.reload();
               }
           };
   
@@ -339,7 +339,7 @@ if (typeof jQuery === 'undefined') {
                   $(td).find('.tabledit-restore-button').show();
                   // Set last deleted row.
                   $lastDeletedRow = $(td).parent('tr');
-                  location.reload();
+                //   location.reload();
               },
               confirm: function(td) {
                   // Reset all cells in edit mode.
@@ -524,25 +524,26 @@ if (typeof jQuery === 'undefined') {
                   if (event.handled !== true) {
                       event.preventDefault();
                       // Submit and update all columns.
-                    var length_table = $(this).parents('tr').parent('tbody')[0].rows[0].children.length
-                    var length_input=0
+                    // var length_table = $(this).parents('tr').parent('tbody')[0].rows[0].children.length
+                    // var length_input=0
 
-                    for(let i=1;i<length_table-1;i++){
-                        if($(this).parents('tr').parent('tbody')[0].rows[0].children[i].children[1].classList[0]=="tabledit-input"){
-                            length_input++
-                        }
-                    }
+                    // for(let i=1;i<length_table-1;i++){
+                    //     if($(this).parents('tr').parent('tbody')[0].rows[0].children[i].children[1].classList[0]=="tabledit-input"){
+                    //         length_input++
+                    //     }
+                    // }
 
-                    var bool_final=true;
-                    var bool = tableau_verification($(this).parents('tr')[0].rowIndex,$(this).parents('tr').parent('tbody').parent()[0],length_input+1) 
-                    for(let j=1;j<length_table-1;j++){
-                        bool_final = bool_final&&bool[j]
+                    // var bool_final=true;
+                    // var bool = tableau_verification($(this).parents('tr')[0].rowIndex,$(this).parents('tr').parent('tbody').parent()[0],length_input+1) 
+                    // for(let j=1;j<length_table-1;j++){
+                    //     bool_final = bool_final&&bool[j]
                         
-                    }
+                    // }
 
-                    if(bool_final){
-                        Edit.submit($(this).parents('tr').find('td.tabledit-edit-mode'));
-                    }
+                    // if(bool_final){
+                    //     Edit.submit($(this).parents('tr').find('td.tabledit-edit-mode'));
+                    // }
+                    Edit.submit($(this).parents('tr').find('td.tabledit-edit-mode'));
                                        
                     event.handled = true;
                   }
