@@ -400,16 +400,7 @@
                   <form class="user">
                     <div class="form-group">
                       <label class="titre_input" for="nom_etude">Nom</label>
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="nom_etude" placeholder="Nom" value="
-                      <?php
-                        while($row = mysqli_fetch_array($projet_nom))
-                        {
-                          echo 
-                          $row["nom_projet"]
-                          ;
-                        }
-                      ?>
-                      "required></input>
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="nom_etude" placeholder="Nom" required></input>
                     </div>
                     
                     <div class="form-group">
@@ -421,6 +412,16 @@
                       <label class="titre_input" for="cadre_temporel">Cadre Temporel</label>
                       <input type="date" class="perso_form shadow-none form-control form-control-user" id="cadre_temporel" placeholder="Cadre temporel" required>
                     </div>
+
+                    <div class="form-group">
+                      <label for="Select_respo_acceptation_risque_Pop">Personne responsable d'accepter les risques résiduels au terme de l'étude</label>
+                      <select class="form-control" id="Select_respo_acceptation_risque_Pop">
+                        <option value="" selected>...</option>
+                        <option value="1">Directeur</option>
+                        <option value="2">RSSI</option>
+                        <option value="3">Responsable Informatique</option>
+                      </select>
+                      </div>
                   </form>
                   <img src="content/img/task.svg" class="img-fluid perso_img" alt="Responsive image">
 
@@ -493,18 +494,6 @@
                       </tbody>
                     </table>
                   </div>
-
-                  <div class="form-group">
-                    <label for="Select_respo_acceptation_risque_Pop">Personne responsable d'accepter les risques résiduels au terme de l'étude</label>
-                    <select class="form-control" id="Select_respo_acceptation_risque_Pop">
-                      <option value="" selected>...</option>
-                      <option value="1">Directeur</option>
-                      <option value="2">RSSI</option>
-                      <option value="3">Responsable Informatique</option>
-                    </select>
-                  </div>
-
-
                 </div>
               </div>
 
