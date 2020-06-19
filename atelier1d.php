@@ -1,4 +1,4 @@
-<?php include("content/php/atelier1c/selection.php"); ?>
+<?php include("content/php/atelier1d/selection.php"); ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -432,11 +432,11 @@
                 <div class="card-body">
                   <!--tableau-->
                   <div class="table-responsive">
-                    <input type="text" id="rechercher_input" placeholder="Rechercher">
+                    <input type="text" class="rechercher_input" id="rechercher_socle" placeholder="Rechercher">
                     <table id="editable_table_socle" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th id="id_socle_securite">ID</th>
+                          <th id="id">ID</th>
                           <th id="type_de_referentiel">Type de référentiel</th>
                           <th id="nom_referentiel">Nom du référentiel</th>
                           <th id="etat_d_application">État d'application</th>
@@ -445,11 +445,11 @@
                       </thead>
                       <tbody>
                         <?php
-                        while ($row = mysqli_fetch_array($result)) {
+                        while ($row = mysqli_fetch_array($result_socle)) {
                           echo '
                         <tr>
                         <td>' . $row["id_socle_securite"] . '</td>
-                        <td>' . $row["type_referentiel"] . '</td>
+                        
                         <td>' . $row["nom_referentiel"] . '</td>
                         <td>' . $row["etat_d_application"] . '</td>
                         <td>' . $row["etat_de_la_conformite"] . '</td>
@@ -479,39 +479,49 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
+                  <div class="form-group">
+                    <form method="post" action="content/php/atelier1d/ajout_ecart.php" class="user" id="formecartPop">
+                      <fieldset>
+                        <label for="id_socle_securite">id_socle_securite</label>
+                        <select class="form-control" name="id_socle_securite" id="id_socle_securite">
+                          <option value="" selected>...</option>
+                          <?php
+                          while ($row = mysqli_fetch_array($result_id_socle)) //selection.php
+                          {
+                            echo '
+                        <option id="socle_securite" value="' . $row['id_socle_securite'] . '">' . $row['id_socle_securite'] . '</option>
+                        ';
+                          }
+                          ?>
+                        </select>
+                      </fieldset>
+                    </form>
+                  </div>
                   <!--tableau-->
                   <div class="table-responsive">
-                    <input type="text" id="rechercher_input" placeholder="Rechercher">
+                    <input type="text" class="rechercher_input" id="rechercher_ecart" placeholder="Rechercher">
                     <table id="editable_table_ecart" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th id="id_evenement_redoutes">ID</th>
-                          <th id="nom_valeur_metier">Valeur métier</th>
-                          <th id="nom_evenement_redoutes">Nom de l'événement redouté</th>
-                          <th id="description_evenement_redoutes">événement redouté</th>
-                          <th id="impact">Impacts</th>
-                          <th id="confidentialite">C</th>
-                          <th id="integrite">I</th>
-                          <th id="disponibilite">D</th>
-                          <th id="tracabilite">T</th>
-                          <th id="niveau_de_gravite">Gravité</th>
+                          <th id="id_ecarts">ID</th>
+                          <th id="regles">Valeur métier</th>
+                          <th id="etat_de_la_regle">Nom de l'événement redouté</th>
+                          <th id="justification_ecart">événement redouté</th>
+                          <th id="nom">Responsable</th>
+                          <th id="date">Impacts</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php
-                        while ($row = mysqli_fetch_array($result)) {
+                        while ($row = mysqli_fetch_array($result_ecart)) {
                           echo '
                         <tr>
-                        <td>' . $row["id_evenement_redoutes"] . '</td>
-                        <td>' . $row["nom_valeur_metier"] . '</td>
-                        <td>' . $row["nom_evenement_redoutes"] . '</td>
-                        <td>' . $row["description_evenement_redoutes"] . '</td>
-                        <td>' . $row["impact"] . '</td>
-                        <td>' . $row["confidentialite"] . '</td>
-                        <td>' . $row["integrite"] . '</td>
-                        <td>' . $row["disponibilite"] . '</td>
-                        <td>' . $row["tracabilite"] . '</td>
-                        <td>' . $row["niveau_de_gravite"] . '</td>
+                        <td>' . $row["id_ecarts"] . '</td>
+                        <td>' . $row["regles"] . '</td>
+                        <td>' . $row["etat_de_la_regle"] . '</td>
+                        <td>' . $row["justification_ecart"] . '</td>
+                        <td>' . $row["nom"] . '</td>
+                        <td>' . $row["date"] . '</td>
                         </tr>
                         ';
                         }
@@ -522,7 +532,7 @@
 
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_evenement_redoute">Ajouter une nouvelle ligne</button>
+                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_ecart">Ajouter une nouvelle ligne</button>
                   </div>
                 </div>
               </div>
@@ -568,31 +578,32 @@
             </button>
           </div>
           <div class="modal-body perso_modal_body">
-            <form class="user" id="formBienSupportPop">
+            <form method="post" action="content/php/atelier1d/ajout_socle.php" class="user" id="formSoclePop">
+              <fieldset>
 
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" id="customFile">
-                <label class="custom-file-label" for="customFile">Choisir un fichier</label>
-              </div>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="customFile">
+                  <label class="custom-file-label" for="customFile">Choisir un fichier</label>
+                </div>
 
-              <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_type_ref_pop" placeholder="Type de référentiel" required>
-              </div>
-              <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_noom_ref_pop" placeholder="Nom du référentiel" required>
-              </div>
-              <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_etat_appli_pop" placeholder="État d'application" required>
-              </div>
-              <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" id="input_confo_pop" placeholder="État de la conformité" required>
-              </div>
-
+                <div class="form-group">
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="type_referenciel" placeholder="Type de référentiel" required>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_referentiel" placeholder="Nom du référentiel" required>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="etat_d_application" placeholder="État d'application" required>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="etat_de_la_conformite" placeholder="État de la conformité" required>
+                </div>
+                <!-- bouton Ajouter -->
+                <div class="modal-footer perso_middle_modal_footer">
+                  <input type="submit" name="validersocle" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
+                </div>
+              </fieldset>
             </form>
-          </div>
-          <!-- bouton Ajouter -->
-          <div class="modal-footer perso_middle_modal_footer">
-            <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
           </div>
         </div>
       </div>
@@ -601,7 +612,7 @@
     <!-- -------------------------------------------------------------------------------------------------------------- 
   --------------------------------------- modal modification d'un écart ----------------------------------------------
   --------------------------------------------------------------------------------------------------------------  -->
-    <div class="modal fade" id="modif_ecart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="ajout_ecart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -611,52 +622,58 @@
             </button>
           </div>
           <div class="modal-body perso_modal_body">
-            <form class="user" id="formBienSupportPop">
-              <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" id="InputBienSupportPop" placeholder="Règle non respectée" required>
-              </div>
+            <form method="post" action="content/php/atelier1d/ajout_ecart.php" class="user" id="formecartPop">
+              <fieldset>
+                <div class="form-group">
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="regles" placeholder="Règle non respectée" required>
+                </div>
+                <span style="display: none;">
 
-              <div class="form-group">
-                <label for="SelectValeurMetierPop">État de la règle</label>
-                <select class="form-control" id="SelectValeurMetierPop">
-                  <option value="" selected>...</option>
-                  <option value="1">Traitée</option>
-                  <option value="2">Non traitée</option>
-                </select>
-              </div>
+                </span>
+                <div class="form-group">
+                  <label for="etat_de_la_regle">État de la règle</label>
+                  <select class="form-control" name="etat_de_la_regle" id="etat_de_la_regle">
+                    <option value="" selected>...</option>
+                    <option value="traite">Traitée</option>
+                    <option value="non_traite">Non traitée</option>
+                  </select>
+                </div>
 
-              <div class="form-group">
-                <label for="description_ecarts_pop">Description des écarts</label>
-                <textarea class="form-control perso_text_area" id="description_ecarts_pop" rows="3"></textarea>
-              </div>
+                <!-- <div class="form-group">
+                  <label for="description_ecarts_pop">Description des écarts</label>
+                  <textarea class="form-control perso_text_area" id="description_ecarts_pop" rows="3"></textarea>
+                </div> -->
 
-              <div class="form-group">
-                <label for="justification_ecarts_pop">Justification des écarts</label>
-                <textarea class="form-control perso_text_area" id="justification_ecarts_pop" rows="3"></textarea>
-              </div>
+                <div class="form-group">
+                  <label for="justification_ecart">Justification des écarts</label>
+                  <textarea class="form-control perso_text_area" name="justification_ecart" id="justification_ecart" rows="3"></textarea>
+                </div>
 
-              <div class="form-group">
-                <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="responsable_pop" name="Responsable" placeholder="Responsable" required>
-                <datalist id="responsable_pop">
-                  <option value="Internet Explorer">
-                  <option value="Firefox">
-                  <option value="Chrome">
-                  <option value="Opera">
-                  <option value="Safari">
-                </datalist>
-              </div>
+                <div class="form-group">
+                  <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="responsable_pop" name="nom" placeholder="Responsable" required>
+                  <datalist id="responsable_pop">
+                    <?php
+                    while ($row = mysqli_fetch_array($resultprenomresponsable)) {
+                      echo '
+                        <option value="' . $row["nom"] . '">' . $row["nom"] . '</option>
+                        ';
+                    }
+                    ?>
+                  </datalist>
+                </div>
 
-              <div class="form-group">
-                <label for="example-date-input">Date limite de la mise en application</label>
-                <input class="form-control" type="date" id="example-date-input">
-              </div>
-
+                <div class="form-group">
+                  <label for="date-input">Date limite de la mise en application</label>
+                  <input class="form-control" type="date" name="date" id="date-input">
+                </div>
+                <!-- bouton Ajouter -->
+                <div class="modal-footer perso_middle_modal_footer">
+                  <input type="submit" name="validerecart" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
+                </div>
+              </fieldset>
             </form>
           </div>
-          <!-- bouton Ajouter -->
-          <div class="modal-footer perso_middle_modal_footer">
-            <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
-          </div>
+
         </div>
       </div>
     </div>
@@ -694,10 +711,13 @@
     <script src="content/js/modules/dark_mode.js"></script>
     <script src="content/js/modules/top_bar.js"></script>
     <script src="content/js/modules/side_bar.js"></script>
-    <script src="content/js/modules/browse.js"></script>
-    <!--   <script src="content/js/modules/realtime.js"></script> -->
+    <script src="content/js/modules/help_button.js"></script>
+    <script src="content/js/modules/gravite.js"></script>
+    <script src="content/js/modules/realtime.js"></script>
+    <script src="content/js/modules/set_filter_sort_table.js"></script>
     <script src="content/js/atelier/atelier1d.js"></script>
-    <script src="content/js/modules/tableau1.d.js"></script>
+    <script src="content/js/modules/sort_table.js"></script>
+    <script src="content/js/modules/socle_pour_ecart.js"></script>
 </body>
 
 </html>

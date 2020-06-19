@@ -1,4 +1,4 @@
-<?php include("content/php/atelier1c/selection.php"); ?>
+<?php include("content/php/atelier3a/selection.php"); ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -8,7 +8,7 @@
   <meta name="description" content="RiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>RiskManager | Atelier 1.c</title>
+  <title>RiskManager | Atelier 3.a</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -20,7 +20,8 @@
 
   <!-- JS -->
   <script src="content/vendor/jquery/jquery.js"></script>
-  <script src="content/vendor/jquery-tabledit/jquery.tabledit1.c.js"></script>
+  <!-- chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 
 <body id="page-top">
@@ -428,68 +429,169 @@
                   <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <h6>Événements redoutés</h6>
                   </div>
-                  <!-- bouton icon helper -->
-                  <div class="card-header perso_header_right float-right col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <button class="perso_icon_btn custom-control-inline" data-container="body" data-trigger="hover focus" data-toggle="popover" data-placement="bottom" data-content="Ce choix engendre automatiquement le même barème sur vraisemblance ! ">
-                      <i class="fas fa-info-circle"></i>
-                    </button>
-                    <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="radio_gravite5" name="radio_gravite" class="custom-control-input" value="5">
-                      <label class="custom-control-label" for="radio_gravite5">Gravité sur 5</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="radio_gravite4" name="radio_gravite" class="custom-control-input" value="4">
-                      <label class="custom-control-label" for="radio_gravite4">Gravité sur 4</label>
-                    </div>
-                  </div>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <!--tableau-->
-                  <div class="table-responsive">
-                    <input type="text" class="rechercher_input" id="rechercher_evenement_redoute" placeholder="Rechercher">
-                    <table id="editable_table" class="table table-bordered table-striped">
-                      <thead>
-                        <tr>
-                          <th id="id_evenement_redoutes">ID</th>
-                          <th id="nom_valeur_metier">Valeur métier</th>
-                          <th id="nom_evenement_redoutes">Nom de l'événement redouté</th>
-                          <th id="description_evenement_redoutes">événement redouté</th>
-                          <th id="impact">Impacts</th>
-                          <th id="confidentialite">C</th>
-                          <th id="integrite">I</th>
-                          <th id="disponibilite">D</th>
-                          <th id="tracabilite">T</th>
-                          <th id="niveau_de_gravite">Gravité</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php
-                        while ($row = mysqli_fetch_array($result)) {
-                          echo '
-                        <tr>
-                        <td>' . $row["id_evenement_redoutes"] . '</td>
-                        <td>' . $row["nom_valeur_metier"] . '</td>
-                        <td>' . $row["nom_evenement_redoutes"] . '</td>
-                        <td>' . $row["description_evenement_redoutes"] . '</td>
-                        <td>' . $row["impact"] . '</td>
-                        <td>' . $row["confidentialite"] . '</td>
-                        <td>' . $row["integrite"] . '</td>
-                        <td>' . $row["disponibilite"] . '</td>
-                        <td>' . $row["tracabilite"] . '</td>
-                        <td>' . $row["niveau_de_gravite"] . '</td>
-                        </tr>
-                        ';
-                        }
-                        ?>
-                      </tbody>
-                    </table>
-                  </div>
+                  <canvas id="myChart"></canvas>
+                  <!-- <button id="addDataset">Add Dataset</button>
+                  <button id="removeDataset">Remove Dataset</button>
+                  <button id="addData">Add Data</button>
+                  <button id="removeData">Remove Data</button> -->
+                  <!-- <script>
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var chart = new Chart(ctx, {
+                      // The type of chart we want to create
+                      type: 'radar',
 
-                  <!-- bouton Ajouter une nouvelle ligne -->
-                  <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_evenement_redoute">Ajouter une nouvelle ligne</button>
-                  </div>
+                      // The data for our dataset
+                      data: {
+                        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                        datasets: [{
+                          data: [0, 10, 5, 2, 20, 30, 45], //valeur de menace - pronfondeur en axe y
+                          data_exposition: [1, 5, 4, 2, 3, 6, 4], //taille du points
+                          data_fiabilite: [9, 8, 7, 6, 5, 4, 3], //couleur points
+                          label: 'My First dataset',
+                          responsive: true,
+                          backgroundColor: 'rgb(255, 99, 132)',
+                          fill: false,
+                          borderWidth: 0,
+                          pointRadius: function(context) {
+                            var index = context.dataIndex;
+                            var value = 2 * context.dataset.data_exposition[index];
+                            return value;
+                          },
+                          pointBackgroundColor: function(context) {
+                            var index = context.dataIndex;
+                            var value = context.dataset.data_fiabilite[index];
+                            var color_picker = ["#FF6565", "#FFEA83", "#4AD991", "#3B86FF"];
+
+                            if (value < 4) {
+                              return color_picker[0]
+                            } else if (value >= 4 && value <= 5) {
+                              return color_picker[1]
+                            } else if (value >= 6 && value <= 7) {
+                              return color_picker[2]
+                            } else if (value > 7) {
+                              return color_picker[3]
+                            }
+
+                          },
+                          pointHoverRadius: 7,
+                          borderColor: 'rgb(255, 255, 255, 0)',
+                        }]
+                      },
+
+                      // Configuration options go here
+                      options: {
+                        scale: {
+                          gridLines: {
+                            circular: true,
+                            color: ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#FF6565", 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#4AD991", 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#3B86FF"]
+                          },
+                          ticks: {
+                            beginAtZero: true,
+                            reverse: true
+                          }
+                        },
+                        tooltips: {
+                          mode: 'index',
+                          callbacks: {
+                            footer: function(tooltipItems, data) {
+                              var value_expo = 0;
+                              var value_menace = 0;
+                              var value_fiabilite = 0;
+                              tooltipItems.forEach(function(tooltipItem) {
+                                value_menace = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                                value_expo = data.datasets[tooltipItem.datasetIndex].data_exposition[tooltipItem.index];
+                                value_fiabilite = data.datasets[tooltipItem.datasetIndex].data_fiabilite[tooltipItem.index];
+                              });
+                              return 'Menace: ' + value_menace + '\n' + 'Exposition: ' + value_expo + '\n' + 'Fiabilité cyber: ' + value_fiabilite;
+                            },
+                          },
+                          footerFontStyle: 'normal'
+                        },
+                        hover: {
+                          mode: 'index',
+                          intersect: true
+                        },
+                      }
+                    });
+                    var color = Chart.helpers.color;
+                    chartColors = {
+                      red: 'rgb(255, 99, 132)',
+                      orange: 'rgb(255, 159, 64)',
+                      green: 'rgb(75, 192, 192)',
+                      yellow: 'rgb(255, 205, 86)',
+                      blue: 'rgb(54, 162, 235)',
+                      purple: 'rgb(153, 102, 255)',
+                      grey: 'rgb(201, 203, 207)'
+                    };
+
+                    var colorNames = Object.keys(chartColors);
+                    document.getElementById('addDataset').addEventListener('click', function() {
+                      var colorName = colorNames[chart.data.datasets.length % colorNames.length];
+                      var newColor = chartColors[colorName];
+
+                      var newDataset = {
+                        label: 'Dataset ' + chart.data.datasets.length,
+                        borderColor: newColor,
+                        backgroundColor: color(newColor).alpha(0.2).rgbString(),
+                        pointBackgroundColor: newColor,
+                        data: [],
+                        data_exposition_taille: [],
+
+
+                        responsive: true,
+                        backgroundColor: newColor,
+                        fill: false,
+                        borderWidth: 0,
+                        pointRadius: 4,
+                        pointBackgroundColor: newColor,
+                        pointRadius: function(context) {
+                          var index = context.dataIndex;
+                          var value = context.dataset.data_exposition_taille[index];
+                          return value;
+                        },
+                        borderColor: 'rgb(255, 255, 255, 0)',
+                      };
+
+                      for (var index = 0; index < chart.data.labels.length; ++index) {
+                        newDataset.data.push(20);
+                        newDataset.data_exposition_taille.push(8);
+                      }
+
+                      chart.data.datasets.push(newDataset);
+                      chart.update();
+                    });
+
+                    document.getElementById('addData').addEventListener('click', function() {
+                      if (chart.data.datasets.length > 0) {
+                        chart.data.labels.push('dataset #' + chart.data.labels.length);
+
+                        chart.data.datasets.forEach(function(dataset) {
+                          dataset.data.push(20);
+                        });
+
+                        chart.update();
+                      }
+                    });
+
+                    document.getElementById('removeDataset').addEventListener('click', function() {
+                      chart.data.datasets.pop();
+                      chart.update();
+                    });
+
+                    document.getElementById('removeData').addEventListener('click', function() {
+                      chart.data.labels.pop(); // remove the label first
+
+                      chart.data.datasets.forEach(function(dataset) {
+                        dataset.data.pop();
+                      });
+
+                      chart.update();
+                    });
+                  </script> -->
+                  <script src="content/js/modules/3acarto.js"></script>
                 </div>
               </div>
             </div>
@@ -519,114 +621,6 @@
       <i class="fas fa-angle-up"></i>
     </a>
 
-
-    <!-- -------------------------------------------------------------------------------------------------------------- 
---------------------------------------- modal ajout Événement redouté ----------------------------------------------
---------------------------------------------------------------------------------------------------------------  -->
-    <div class="modal fade" id="ajout_evenement_redoute" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ajout d'un événement redouté</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body perso_modal_body">
-            <form method="post" action="content/php/atelier1c/ajout.php" class="user" id="formValeurMetierPop">
-              <fieldset>
-                <div class="row">
-                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <div class="form-group">
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_evenement_redoutes" id="InputEvenementRedoute" placeholder="Dénomination de l'événement redouté" required>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="Select_valeur_metier">Valeur métier</label>
-                      <select class="form-control" name="nom_valeur_metier" id="Select_valeur_metier">
-                        <option value="" selected>...</option>
-                        <?php
-                        while ($row = mysqli_fetch_array($resultvm)) //selection.php
-                        {
-                          echo '
-                        <option value="' . $row['nom_valeur_metier'] . '">' . $row['nom_valeur_metier'] . '</option>
-                        ';
-                        }
-                        ?>
-                      </select>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="Description_event_pop">Événement redouté</label>
-                      <textarea class="form-control perso_text_area" name="description_evenement_redoutes" id="Description_event_pop" rows="3"></textarea>
-                    </div>
-                  </div>
-                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck1" name="formcheck[]" value="1">
-                      <label class="custom-control-label" for="customCheck1">Confidentialité</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck2" name="formcheck[]" value="2">
-                      <label class="custom-control-label" for="customCheck2">Intégrité</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck3" name="formcheck[]" value="3">
-                      <label class="custom-control-label" for="customCheck3">Disponibilité</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck4" name="formcheck[]" value="4">
-                      <label class="custom-control-label" for="customCheck4">Traçabilité</label>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="Description_impact_pop">Impacts</label>
-                      <textarea class="form-control perso_text_area" name="impact" id="Description_impact_pop" rows="3"></textarea>
-                    </div>
-
-                    <div class="form-group" id="niveaudegravité">
-                      <label for="niveaudegravité">Niveau de gravité</label>
-                      <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <?php
-                        include("content/php/atelier1c/selectionmaxgravite.php");
-                        for ($i = 1; $i <= $nbniveaugravite[0]; $i++) //selection.php
-                        {
-                          echo '
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" id="gravite' . $i . '" autocomplete="off" name="niveau_de_gravite" value="' . $i . '"> ' . $i . '
-                        </label>';
-                        }
-                        ?>
-                        <!-- <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" id="gravite1" autocomplete="off" name="niveau_de_gravite" value="1"> 1
-                        </label>
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" id="gravite2" autocomplete="off" name="niveau_de_gravite" value="2"> 2
-                        </label>
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" id="gravite3" autocomplete="off" name="niveau_de_gravite" value="3"> 3
-                        </label>
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" id="gravite4" autocomplete="off" name="niveau_de_gravite" value="4"> 4
-                        </label>
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" id="gravite5" autocomplete="off" name="niveau_de_gravite" value="5"> 5
-                        </label> -->
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-                <!-- bouton Ajouter -->
-                <div class="modal-footer perso_middle_modal_footer">
-                  <input type="submit" name="validerevenementredoute" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
-                </div>
-              </fieldset>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
 
 
     <!-- Logout Modal-->
@@ -662,12 +656,6 @@
     <script src="content/js/modules/top_bar.js"></script>
     <script src="content/js/modules/side_bar.js"></script>
     <script src="content/js/modules/help_button.js"></script>
-    <script src="content/js/modules/gravite.js"></script>
-    <script src="content/js/modules/realtime.js"></script>
-    <script src="content/js/modules/set_filter_sort_table.js"></script>
-    <script src="content/js/atelier/atelier1c.js"></script>
-    <script src="content/js/modules/sort_table.js"></script>
-
 
 </body>
 
