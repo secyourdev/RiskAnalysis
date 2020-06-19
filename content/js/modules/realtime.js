@@ -11,6 +11,11 @@ function verify_textarea(value,regex,input){
     else input.style.border="2px solid #FF6565";
 }
 
+function verify_select(input){
+    if(input.options.selectedIndex!=0) input.style.border="2px solid #4AD991";
+    else input.style.border="1px solid #64789A";
+}
+
 function verify_textarea_2(value,regex,input,save){
     var bool = true;
 

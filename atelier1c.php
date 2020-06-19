@@ -429,7 +429,7 @@
                     <h6>Événements redoutés</h6>
                   </div>
                   <!-- bouton icon helper -->
-                  <div class="card-header perso_header_right float-right col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                  <!-- <div class="card-header perso_header_right float-right col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <button class="perso_icon_btn custom-control-inline" data-container="body" data-trigger="hover focus" data-toggle="popover" data-placement="bottom" data-content="Ce choix engendre automatiquement le même barème sur vraisemblance ! ">
                       <i class="fas fa-info-circle"></i>
                     </button>
@@ -441,7 +441,7 @@
                       <input type="radio" id="radio_gravite4" name="radio_gravite" class="custom-control-input" value="4">
                       <label class="custom-control-label" for="radio_gravite4">Gravité sur 4</label>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">

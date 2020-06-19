@@ -15,6 +15,9 @@ var label_prenom_acteur = document.getElementById('prenom_acteur').previousSibli
 var label_poste_acteur = document.getElementById('poste_acteur').previousSibling.previousSibling
 var raci = document.getElementById('raci')
 var acteur_id_raci = document.getElementById('acteur_id_raci')
+var radio_gravite4 = document.getElementById('radio_gravite4')
+var radio_gravite5 = document.getElementById('radio_gravite5')
+var respo_acceptation_risque = document.getElementById('respo_acceptation_risque')
 var find_acteur_id;
 var find_atelier_num;
 var find_raci_value;
@@ -108,29 +111,28 @@ objectif_atteindre.value = sessionStorage.getItem('objectif_atteindre');
 cadre_temporel.value = sessionStorage.getItem('cadre_temporel');
 
 acteur_verification()
-verify_input(nom_etude.value,regex_nom_etude,nom_etude)
-// sleep(1000).then(() => {
-//     verify_textarea(objectif_atteindre.value,regex_objectif_atteindre,objectif_atteindre)
-//     verify_input(cadre_temporel.value,regex_cadre_temporel,cadre_temporel)
-// })
-activate_label(nom_etude.value,label_nom_etude)
-activate_label(cadre_temporel.value,label_cadre_temporel)
+
 /*----------------------- ENREGISTREMENT DES COOKIES ------------------------*/
 nom_etude.addEventListener('keyup',function(event){
-    //sessionStorage.setItem('nom_etude',nom_etude.value);
     verify_input(nom_etude.value,regex_nom_etude,nom_etude)
     activate_label(nom_etude.value,label_nom_etude)
+    update_database_nom_etude(nom_etude.value)
 }) 
 
 objectif_atteindre.addEventListener('keyup',function(event){
-    //sessionStorage.setItem('objectif_atteindre',objectif_atteindre.value);
     verify_textarea(objectif_atteindre.value,regex_objectif_atteindre,objectif_atteindre)
+    update_database_objectif_atteindre(objectif_atteindre.value)
 })
 
-cadre_temporel.addEventListener('keyup',function(event){
-    //sessionStorage.setItem('cadre_temporel',cadre_temporel.value);
+cadre_temporel.addEventListener('change',function(event){
     verify_input(cadre_temporel.value,regex_cadre_temporel,cadre_temporel)
     activate_label(cadre_temporel.value,label_cadre_temporel)
+    update_database_cadre_temporel(cadre_temporel.value)
+})
+
+respo_acceptation_risque.addEventListener('change',function(event){
+    verify_select(respo_acceptation_risque)
+    update_database_respo_acceptation_risque(respo_acceptation_risque.options[respo_acceptation_risque.selectedIndex].value)
 })
 
 nom_acteur.addEventListener('keyup',function(event){
@@ -155,28 +157,6 @@ poste_acteur.addEventListener('keyup',function(event){
 })
 
 /*-------------------------------- FONCTIONS --------------------------------*/
-function update_database_raci(){
-    var nombre_acteur = raci.rows[0].children.length
-    for(let j=1;j<nombre_acteur;j++){
-        for(let i=0;i<nombre_atelier-2;i++){
-            raci.tBodies[0].children[i].children[j].addEventListener('change',function(){
-                find_atelier_num = raci.tBodies[0].children[i].children[0].attributes[0].value
-                find_raci_value = raci.tBodies[0].children[i].children[j].children[0].options[raci.tBodies[0].children[i].children[j].children[0].selectedIndex].value
-                find_acteur_id = raci.tHead.children[0].children[j].children[0].innerText
-                $.ajax({
-                    url: 'content/php/atelier1a/modification_raci.php',
-                    type: 'POST',
-                    data: {
-                        acteur_id: find_acteur_id,
-                        atelier_num: find_atelier_num,
-                        raci_value: find_raci_value
-                    },
-                });
-            })
-        }
-    }
-}
-
 function get_database_raci(){
     $.ajax({
         url: 'content/php/atelier1a/selection_raci.php',
@@ -206,6 +186,28 @@ function get_database_raci(){
     }); 
 }
 
+function update_database_raci(){
+    var nombre_acteur = raci.rows[0].children.length
+    for(let j=1;j<nombre_acteur;j++){
+        for(let i=0;i<nombre_atelier-2;i++){
+            raci.tBodies[0].children[i].children[j].addEventListener('change',function(){
+                find_atelier_num = raci.tBodies[0].children[i].children[0].attributes[0].value
+                find_raci_value = raci.tBodies[0].children[i].children[j].children[0].options[raci.tBodies[0].children[i].children[j].children[0].selectedIndex].value
+                find_acteur_id = raci.tHead.children[0].children[j].children[0].innerText
+                $.ajax({
+                    url: 'content/php/atelier1a/modification_raci.php',
+                    type: 'POST',
+                    data: {
+                        acteur_id: find_acteur_id,
+                        atelier_num: find_atelier_num,
+                        raci_value: find_raci_value
+                    },
+                });
+            })
+        }
+    }
+}
+
 function get_database_project_info(){
     $.ajax({
         url: 'content/php/atelier1a/selection_projet.php',
@@ -215,13 +217,68 @@ function get_database_project_info(){
             var projet_info = JSON.parse(resultat);
             nom_etude.value = projet_info[0][1]
             objectif_atteindre.value = projet_info[0][2]
-            cadre_temporel.value = projet_info[0][4]
+            
+                if(projet_info[0][3]=="Directeur")
+                    respo_acceptation_risque.options.selectedIndex=1
+                else if(projet_info[0][3]=="RSSI")
+                    respo_acceptation_risque.options.selectedIndex=2
+                else 
+                    respo_acceptation_risque.options.selectedIndex=3
+
+                if(projet_info[0][4]==4)
+                    radio_gravite4.checked=true
+                else 
+                    radio_gravite5.checked=true
+            cadre_temporel.value = projet_info[0][5]
             verify_input(nom_etude.value,regex_nom_etude,nom_etude)
             verify_textarea(objectif_atteindre.value,regex_objectif_atteindre,objectif_atteindre)
             verify_input(cadre_temporel.value,regex_cadre_temporel,cadre_temporel)
+            verify_select(respo_acceptation_risque)
+            activate_label(nom_etude.value,label_nom_etude)
+            activate_label(cadre_temporel.value,label_cadre_temporel)
         },
         error : function(erreur){
             alert('ERROR :'+erreur);
         }
+    }); 
+}
+
+function update_database_nom_etude(nom_etude){
+    $.ajax({
+        url: 'content/php/atelier1a/modification_projet.php',
+        type: 'POST',
+        data: {
+            nom_etude: nom_etude
+        },
+    }); 
+}
+
+function update_database_objectif_atteindre(objectif_atteindre){
+    $.ajax({
+        url: 'content/php/atelier1a/modification_projet.php',
+        type: 'POST',
+        data: {
+            objectif_atteindre: objectif_atteindre
+        },
+    }); 
+}
+
+function update_database_respo_acceptation_risque(respo_acceptation_risque){
+    $.ajax({
+        url: 'content/php/atelier1a/modification_projet.php',
+        type: 'POST',
+        data: {
+            respo_acceptation_risque: respo_acceptation_risque
+        },
+    }); 
+}
+
+function update_database_cadre_temporel(cadre_temporel){
+    $.ajax({
+        url: 'content/php/atelier1a/modification_projet.php',
+        type: 'POST',
+        data: {
+            cadre_temporel: cadre_temporel
+        },
     }); 
 }

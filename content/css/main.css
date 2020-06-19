@@ -447,9 +447,6 @@ h6 {
     padding: 1rem 2rem;
 }
 
-/* .perso_img_full_screen_div{
-    padding: 1rem 2rem;
-} */
 .card-columns {
     padding-right: .75rem;
     padding-left : .75rem;
@@ -1102,4 +1099,8 @@ h6 {
 
 .width_RACI{
     width: -webkit-fill-available;
+}
+
+.gravite{
+    display:contents;
 }

@@ -414,16 +414,29 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="Select_respo_acceptation_risque_Pop">Personne responsable d'accepter les risques résiduels au terme de l'étude</label>
-                      <select class="form-control" id="Select_respo_acceptation_risque_Pop">
-                        <option value="" selected>...</option>
-                        <option value="1">Directeur</option>
-                        <option value="2">RSSI</option>
-                        <option value="3">Responsable Informatique</option>
+                      <label for="respo_acceptation_risque">Personne responsable d'accepter les risques résiduels au terme de l'étude</label>
+                      <select class="form-control" id="respo_acceptation_risque">
+                        <option selected>...</option>
+                        <option>Directeur</option>
+                        <option>RSSI</option>
+                        <option>Responsable Informatique</option>
                       </select>
+                    </div>
+                    <div class="card-header gravite col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="radio_gravite4" name="radio_gravite" class="custom-control-input" value="4">
+                        <label class="custom-control-label" for="radio_gravite4">Gravité sur 4</label>
                       </div>
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="radio_gravite5" name="radio_gravite" class="custom-control-input" value="5">
+                        <label class="custom-control-label" for="radio_gravite5">Gravité sur 5</label>
+                      </div>
+                      <div class="perso_icon_btn custom-control-inline" data-container="body" data-trigger="hover focus" data-toggle="popover" data-placement="bottom" data-content="Ce choix engendre automatiquement le même barème sur vraisemblance ! ">
+                        <i class="fas fa-info-circle"></i>
+                      </div>
+                    </div>
                   </form>
-                  <img src="content/img/task.svg" class="img-fluid perso_img" alt="Responsive image">
+                  <img src="content/img/task.svg" class="img-fluid perso_img">
 
                 </div>
               </div>      
@@ -755,6 +768,8 @@
   <script src="content/js/modules/dark_mode.js"></script>
   <script src="content/js/modules/top_bar.js"></script>
   <script src="content/js/modules/side_bar.js"></script>
+  <script src="content/js/modules/help_button.js"></script>
+  <script src="content/js/modules/gravite.js"></script>
   <script src="content/js/modules/realtime.js"></script>
   <script src="content/js/modules/set_filter_sort_table.js"></script>
   <script src="content/js/atelier/atelier1a.js"></script>
