@@ -402,7 +402,7 @@
                     <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th id=id_srov>ID SROV</th>
+                          <th id="id_srov">ID SROV</th>
                           <th id="type_attaquant">Type d'attaquant</th>
                           <th id="profil_attaquant">Profil d'attaquant</th>
                           <th id="description_source_risque">Description source de risque</th>
@@ -478,14 +478,13 @@ aria-hidden="true">
         <fieldset>
           <div class="row">
             <div class="col-6">
-              <div class="form-group form-colonne">
-                <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Type d'attaquant" name="type_attaquant" placeholder="Type d'attaquant" required>
-                <datalist id="Type d'attaquant">
-                  <option value="Organisation structurée">
-                  <option value="Organisation idéologique">
-                  <option value="Individu isolé">
-                </datalist>
-              </div>
+            <label for="type_attaquant">Type d'attaquant</label>
+            <select class="form-control" name="type_attaquant" id="type_attaquant">
+                <option value="" selected>...</option>
+                <option value="Organisation structurée">Organisation structurée</option>
+                <option value="Organisation idéologique">Organisation idéologique</option>
+                <option value="Individu isolé">Individu isolé</option>
+              </select>
             
               <div class="form-group form-colonne">
                 <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Profil d'attaquant" name="profil_attaquant" placeholder="Profil d'attaquant" required>
