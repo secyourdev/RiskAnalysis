@@ -1,4 +1,4 @@
-<?php include("content/php/atelier1a/selection.php");?>
+<?php include("content/php/compte/selection.php");?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -8,7 +8,7 @@
   <meta name="description" content="RiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>RiskManager | Atelier 1.a</title>
+  <title>RiskManager | Gestion des comptes</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -56,13 +56,13 @@
       <div class="sidebar-heading">Ateliers</div>
       
       <!-- Nav Item - Charts -->
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier1" aria-expanded="true"
           aria-controls="Atelier1">
           <i>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
               <g transform="translate(-1230 -689)">
-                <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
+                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
                 <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-3.432" y="0">1</tspan></text>
               </g>
             </svg>
@@ -322,9 +322,9 @@
             <i class="fa fa-bars"></i>
           </button>
 
-          <div id="top_bar_1" class="top_bar_name_1">Fabrication de vacccin</div>
-          <div id="top_bar_2" class="top_bar_name_2">Atelier 1</div>
-          <div id="top_bar_3" class="top_bar_name_3">Activité 1.a - Cadrer l’étude</div>
+          <div id="top_bar_1" class="top_bar_name_1">Paramètres</div>
+          <div id="top_bar_2" class="top_bar_name_2">Comptes</div>
+          <div id="top_bar_3" class="top_bar_name_3">Gestion des comptes utilisateurs</div>
           
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -366,132 +366,32 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-         <!-- Content Row -->
+          <!-- Content Row -->
           <div class="row">
             <!-- Area Card -->
             <div class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Objectif</h6>
+                  <h6 class="m-0">Compte utilisateur</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <p> Le but de ce premier atelier est de définir le cadre de l’étude, son périmètre métier et technique, les
-                    événements
-                    redoutés associés et le socle de sécurité. Cet atelier est un prérequis à la réalisation d’une appréciation des
-                    risques.
-                    La période à considérer pour cet atelier est celle du cycle stratégique.</p>
-                  <!--text-->
-                </div>
-              </div>
-            </div>
-
-            <div class="card-columns">
-              <!-- Area Card -->
-              <!-- Données principales -->
-              <div class="card shadow mb-4 perso_card_half_screen">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Données principales</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <form class="user">
-                    <div class="form-group">
-                      <label class="titre_input" for="nom_etude">Nom</label>
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="nom_etude" placeholder="Nom" required></input>
-                    </div>
-                    
-                    <div class="form-group">
-                      <label class="titre_textarea" for="objectif_atteindre">Objectif à atteindre</label>
-                      <textarea class="form-control perso_text_area" id="objectif_atteindre" rows="3"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                      <label class="titre_input" for="cadre_temporel">Cadre Temporel</label>
-                      <input type="date" class="perso_form shadow-none form-control form-control-user" id="cadre_temporel" placeholder="Cadre temporel" required>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="respo_acceptation_risque">Personne responsable d'accepter les risques résiduels au terme de l'étude</label>
-                      <select class="form-control" id="respo_acceptation_risque">
-                        <option selected>...</option>
-                        <option>Directeur</option>
-                        <option>RSSI</option>
-                        <option>Responsable Informatique</option>
-                      </select>
-                    </div>
-                    <div class="card-header gravite col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                      <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="radio_gravite4" name="radio_gravite" class="custom-control-input" value="4">
-                        <label class="custom-control-label" for="radio_gravite4">Gravité sur 4</label>
-                      </div>
-                      <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="radio_gravite5" name="radio_gravite" class="custom-control-input" value="5">
-                        <label class="custom-control-label" for="radio_gravite5">Gravité sur 5</label>
-                      </div>
-                      <div class="perso_icon_btn custom-control-inline" data-container="body" data-trigger="hover focus" data-toggle="popover" data-placement="bottom" data-content="Ce choix engendre automatiquement le même barème sur vraisemblance ! ">
-                        <i class="fas fa-info-circle"></i>
-                      </div>
-                    </div>
-                  </form>
-                  <img src="content/img/task.svg" class="img-fluid perso_img">
-
-                </div>
-              </div>      
-
-              <!-- Area Card -->
-              <!-- Acteurs -->
-              <div class="card shadow mb-4 perso_card_half_screen" id=acteurs>
-                <!-- Card Header - Dropdown -->
-                <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Acteurs</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <form method="post" action="content/php/atelier1a/ajout.php" class="user" id="formActeur">
-                  <fieldset>
-                    <div class="form-group">
-                      <label class="titre_input" for="nom_acteur">Nom</label>
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="nom_acteur" name="nom" placeholder="Nom" required>
-                    </div>
-                    <div class="form-group">
-                      <label class="titre_input" for="prenom_acteur">Prénom</label>
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" id="prenom_acteur" name="prenom" placeholder="Prénom" required>
-                    </div>
-
-                    <div class="form-group">
-                      <label class="titre_input" for="poste_acteur">Poste</label>
-                      <input type="text" class="perso_arrow perso_form shadow-none form-control" list="Postes" id="poste_acteur" name="poste" placeholder="Poste" required>
-                      <datalist id="Postes">
-                        <option value="Internet Explorer">
-                        <option value="Firefox">
-                        <option value="Chrome">
-                        <option value="Opera">
-                        <option value="Safari">
-                      </datalist>
-                    </div>
-                    <div>
-                      <input type="submit" name="valider" value="Ajouter" class="btn perso_btn shadow-none"></input>
-                    </div>
-                  </fieldset>
-                  </form>
-                  </br>
-                  <!--tableau-->
                   <div class="table-responsive">
-                    <input type="text" class="rechercher_input" id="rechercher_acteur" placeholder="Rechercher">
-                    <table id="editable_table" class="table table-bordered table-striped">
-                      <thead>
-                        <tr>
-                          <th>ID</th>
-                          <th>Nom</th>
-                          <th>Prénom</th>
-                          <th>Poste</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      <?php
+                  <input type="text" class="rechercher_input" id="rechercher_utilisateur" placeholder="Rechercher">
+                  <table id="editable_table" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Poste</th>
+                        <th>E-mail</th>
+                        <th>Type de compte</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?php
                       while($row = mysqli_fetch_array($result))
                       {
                         echo '
@@ -500,124 +400,25 @@
                         <td>'.$row["nom"].'</td>
                         <td>'.$row["prenom"].'</td>
                         <td>'.$row["poste"].'</td>
+                        <td>'.$row["email"].'</td>
+                        <td>'.$row["type_compte"].'</td>
                         </tr>
                         ';
                       }
                       ?>
-                      </tbody>
-                    </table>
+                    </tbody>
+                  </table>
                   </div>
-                </div>
-              </div>
 
-            </div>
-
-
-            <!-- Area Card -->
-            <!-- RACI -->
-            <div class="col-xl-12 col-lg-12">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="row perso_no_margin">
-                  <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <h6>RACI</h6>
-                  </div>
-                  <!-- bouton ajouter -->
-                  <div class="card-header perso_header_right col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <button type="button" class="btn perso_btn perso_btn_RACI shadow-none">Gérer les droits</button>
-                  </div>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-              
-                  <div class="table-responsive">
-                    <table id="raci" class="table table-bordered">
-                      <thead>
-                        <tr id='acteur_id_raci'>
-                          <th scope="col">#</th>
-                         
-                          <?php
-                        while($row = mysqli_fetch_array($result2))
-                        {
-                          echo '
-                            <th scope="col">
-                              <div class="perso_vertical">'.$row["id_utilisateur"].'</div>
-                            </th>
-                          ';
-                        }
-                        ?>
-                        </tr>
-                        <tr>
-                          <th scope="col">#</th>                       
-                        <?php
-                        while($row = mysqli_fetch_array($result3))
-                        {
-                          echo '
-                            <th scope="col">
-                              <div class="perso_vertical">'.$row["nom"].' <br> '.$row["prenom"].'</div>
-                            </th>
-                          ';
-                        }
-                        ?>
-                        </tr>
-                      </thead>
-
-                      <tbody class="raci_th">
-                        <tr>
-                          <th name="1.a" scope="row">Activité 1.a - Cadrer l’étude</th>
-                        </tr> 
-                        <tr> 
-                          <th name="1.b" scope="row">Activité 1.b - Biens primordiaux/support</th>
-                        </tr>
-                        <tr>
-                          <th name="1.c" scope="row">Activité 1.c - Événement redoutés</th>
-                        </tr>
-                        <tr>
-                          <th name="1.d" scope="row">Activité 1.d - Les socles de sécurité</th>
-                        </tr>
-                        <tr>
-                          <th name="2.a" scope="row">Activité 2.a - Identifier les sources de risques et les objectifs</th>
-                        </tr>
-                        <tr>
-                          <th name="2.b" scope="row">Activité 2.b - Évaluer les couples sources de risque/objectifs visés</th>
-                        </tr>
-                        <tr>
-                          <th name="3.a" scope="row">Activité 3.a - Construire la cartographie des menaces
-                        numériques de l'écosystème et sélectionner les parties prenantes critiques</th>
-                        </tr>
-                        <tr>
-                          <th name="3.b" scope="row">Activité 3.b - Élaborer des scénarios stratégiques</th>
-                        </tr>
-                        <tr>
-                          <th name="3.c" scope="row">Activité 3.c - Définir des mesures de sécurité sur
-                        l'écosystème</th>
-                        </tr>
-                        <tr>
-                          <th name="4.a" scope="row">Activité 4.a - Élaborer les scénarios
-                        opérationnels</th>
-                        </tr>
-                        <tr>
-                          <th name="4.b" scope="row">Activité 4.b - Évaluer la vraisemblance des scénarios
-                        opérationnels</th>
-                        </tr>
-                        <tr>
-                          <th name="5.a" scope="row">Activité 5.a - Réaliser une synthèse des scénarios de
-                        risque</th>
-                        </tr>
-                        <tr>
-                          <th name="5.b" scope="row">Activité 5.b - Décider de la stratégie de traitement du
-                        risque et définir les mesures de sécurité</th>
-                        </tr>
-                        <tr>
-                          <th name="5.c" scope="row">Activité 5.c - Évaluer et documenter les risques
-                        résiduels</th>
-                        </tr>
-                      </tbody>
-                    </table>
+                  <!-- bouton Ajouter un nouvel utilisateur -->
+                  <div class="text-center">
+                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_compte">Ajouter un nouvel utilisateur</button>
                   </div>
                 </div>
               </div>
             </div>
+
+
           </div>
       </div>
       <!-- End of Main Content -->
@@ -641,137 +442,105 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-    <!---------------------------------------------------------------------------------------------------------------- 
-      --------------------------------------- modal modification d'un acteur -----------------------------------------
-      ---------------------------------------------------------------------------------------------------------------->
-    <div class="modal fade" id="modif_acteur" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="Modal1">Modification de l'acteur</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body perso_modal_body">
-            <form method="post" action="content/php/test_modification.php" class="user" id="formActeur_modification">
-             <fieldset>
-              <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_modifie" id="input_id"
-                  placeholder="ID" readonly>
-              </div>
-              <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_modifie" id="input_nom_acteur"
-                  placeholder="Nom" required>
-              </div>
-              <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenom_modifie" id="input_prenom_acteur" placeholder="Prénom" required>
-              </div>
-            
-              <div class="form-group">
-                <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="Postes" name="poste_modifie" id="input_poste_acteur"
-                  placeholder="Poste" required>
-                <datalist id="Postes">
-                  <option value="Internet Explorer">
-                  <option value="Firefox">
-                  <option value="Chrome">
-                  <option value="Opera">
-                  <option value="Safari">
-                </datalist>
-              </div>
-              <div class="modal-footer perso_middle_modal_footer">
-                <input type="submit" name="modifier" value="Modifier" class="btn perso_btn_primary shadow-none"></input>
-              </div>
-             </fieldset>
-            </form>
-          </div>          
-        </div>
+<!-- -------------------------------------------------------------------------------------------------------------- 
+----------------------------------------- modal ajout de compte ---------------------------------------------------
+--------------------------------------------------------------------------------------------------------------  -->
+<div class="modal fade" id="ajout_compte" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajout de compte utilisateur</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <div class="modal-body perso_modal_body">
+        <form method="post" action="content/php/compte/ajout.php" class="user" id="formUtilisateur">
+        <fieldset>
+          <div class="form-group">
+            <input type="text" class="perso_form shadow-none form-control form-control-user" id="nom_utilisateur" name="nom"
+              placeholder="Nom" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="perso_form shadow-none form-control form-control-user" id="prenom_utilisateur" name="prenom"
+              placeholder="Prénom" required>
+          </div>
+          <div class="form-group">
+            <label class="titre_input" for="poste_acteur">Poste</label>
+            <input type="text" class="perso_arrow perso_form shadow-none form-control" list="Postes" id="poste_utilisateur" name="poste" placeholder="Poste" required>
+            <datalist id="Postes">
+              <option value="Internet Explorer">
+              <option value="Firefox">
+              <option value="Chrome">
+              <option value="Opera">
+              <option value="Safari">
+            </datalist>
+          </div>
+          <div class="form-group">
+            <input type="email" class="perso_form shadow-none form-control form-control-user" id="email_utilisateur" name="email"
+              placeholder="E-mail" required>
+          </div>
+          <div class="form-group">
+            <label for="select_type_compte_pop">Type de compte</label>
+            <input type="text" class="perso_arrow perso_form shadow-none form-control" list="Type_Compte" id="type_compte_utilisateur" name="type_compte" placeholder="Type de compte" required>
+            <datalist id="Type_Compte">
+              <option value="" selected>...</option>
+              <option>Administrateur Logiciel</option>
+              <option>Chef de Projet</option>
+              <option>Utilisateur</option>
+            </datalist>
+          </div>
+          <div>
+            <input type="submit" name="valider" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
+          </div>
+          </fieldset>
+        </form>
+      </div>
+      <!-- bouton Ajouter -->
+      
     </div>
+  </div>
+</div>
 
-    <!---------------------------------------------------------------------------------------------------------------- 
-      ---------------------------------------- modal suppression d'un acteur -----------------------------------------
-      ---------------------------------------------------------------------------------------------------------------->
-      <!-- <div class="modal fade" id="suppr_acteur" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="Modal2">Suppression de l'acteur</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body perso_modal_body">
-            <p class="suppression_donnee">Voulez-vous supprimer l'utilisateur suivant ?</p>
-            <form method="post" action="content/php/test_suppression.php" class="user" id="formActeur_suppression">
-             <fieldset>
-              <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_suppr" id="input_id_suppr"
-                  placeholder="ID" readonly>
-              </div>
-              <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_suppr" id="input_nom_suppr"
-                  placeholder="Nom" readonly>
-              </div>
-              <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenom_suppr" id="input_prenom_suppr"
-                 placeholder="Prénom" readonly>
-              </div>
-            
-              <div class="modal-footer perso_middle_modal_footer">
-                <input type="submit" name="supprimer" value="Supprimer" class="btn perso_btn_primary shadow-none"></input>
-              </div>
-             </fieldset>
-            </form>
-          </div>          
-        </div>
-      </div>
-      </div> -->
 
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Êtes-vous prêt à quitter l'application ?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à terminer votre session en cours.</div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
-          <form method="post" action="content/php/deconnexion/logs.php">
-            <fieldset>
-              <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
-              <input type="submit" name="deconnexion" value="Déconnexion" class="btn btn-primary"></input>
-            <fieldset>
-          </form>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+  <script src="content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="content/vendor/jquery-easing/jquery.easing.js"></script>
+  <script src="content/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="content/js/bootstrap.js"></script>
 
-  <!-- Our JS -->
+  <!-- JS pour Dark Mode -->
   <script src="content/js/modules/dark_mode.js"></script>
   <script src="content/js/modules/top_bar.js"></script>
   <script src="content/js/modules/side_bar.js"></script>
-  <script src="content/js/modules/help_button.js"></script>
-  <script src="content/js/modules/gravite.js"></script>
   <script src="content/js/modules/realtime.js"></script>
   <script src="content/js/modules/set_filter_sort_table.js"></script>
-  <script src="content/js/atelier/atelier1a.js"></script>
+  <script src="content/js/compte/gestion_compte.js"></script>  
   <script src="content/js/modules/sort_table.js"></script>  
+
 </body>
 
 </html>
