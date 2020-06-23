@@ -1,4 +1,5 @@
 <?php
+session_start();
 
   //Connexion à la base de donnee
   try{
@@ -14,21 +15,21 @@ $results["error"] = false;
 $results["message"] = [];
 
 if (isset($_POST['connexion'])){
-  $email = $_POST["email"];
+  $email = htmlspecialchars($_POST["email"]);
   $mot_de_passe = $_POST["mot_de_passe"];
 
-  $req = $bdd->prepare("SELECT email, mot_de_passe FROM utilisateur where email = :email");
+  $req = $bdd->prepare("SELECT * FROM utilisateur where email = :email");
   $req->execute([":email" => $email]);
   $row = $req->fetch();
     if($row){
       if(password_verify($mot_de_passe, $row["mot_de_passe"])){
         $results["error"] = false;
         $results["message"] = "Connexion accepte";
-        ini_set('session.cookie_lifetime', 1*60);
-        ini_get("session.gc_maxlifetime",60);
-        ini_set("session.use_only_cookies", true);
-        session_start();
-        header('Location: ../../../atelier-1a');
+        $_SESSION['id_utilisateur'] = $row['id_utilisateur'];
+        $_SESSION['nom'] = $row['nom'];
+        $_SESSION['prenom'] = $row['prenom'];
+        $_SESSION['email'] = $row['email'];
+        header('Location: ../../../atelier-1a&'.$_SESSION['id_utilisateur']);
       }
       else{
         $results["error"] = true;

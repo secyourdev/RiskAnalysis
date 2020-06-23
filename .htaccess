@@ -1,4 +1,7 @@
 Options +FollowSymlinks
 RewriteEngine on
 # Article avec numéro de page :
-RewriteRule ^atelier-([0-9]+)([a-d]+)$ /EBIOS_RM/RiskAnalysis/atelier$1$2.php/* [L]
+RewriteRule ^atelier-([0-9]+)([a-d]+)&([0-9]+)$ /EBIOS_RM/RiskAnalysis/atelier$1$2.php?id_utilisateur=$3/* [L]
+RewriteRule ^gestion_cmp&([0-9]+)$ /EBIOS_RM/RiskAnalysis/compte.php?id_utilisateur=$1/* [L]
+# Faire que le code PHP ressemble à du html
+AddType application/x-httpd-php .htm .html

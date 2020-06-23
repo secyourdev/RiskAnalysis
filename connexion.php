@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+//Connexion à la base de donnee
+try{
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v6;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+}
+
+catch(PDOException $e){
+    die('Erreur :'.$e->getMessage());
+}
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -18,6 +32,13 @@
   <link href="content/css/main.css" rel="stylesheet">
 </head>
 
+<?php 
+if(isset($_SESSION['id_utilisateur']))
+{
+  header('Location: atelier-1a&'.$_SESSION['id_utilisateur']);
+}
+else{
+?>
 
 <body>
   <div class="container">
@@ -44,12 +65,12 @@
             <div class="form-group">
               <input type="password" class="perso_form shadow-none form-control form-control-user" id="exampleInputPassword" name="mot_de_passe" placeholder="Mot de passe" required>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="customCheck">
                 <label class="custom-control-label" for="customCheck">Se rappeler de moi</label>
               </div>
-            </div> 
+            </div>  -->
             <div class="perso_motdepass_center">
               <a class="perso_color_dark_blue" href="forgot-password.html">Mot de passe oublié?</a>
             </div>
@@ -69,3 +90,7 @@
 
     <script src="content/js/modules/dark_mode.js"></script>
 </body>
+<?php
+}
+?>
+</html>

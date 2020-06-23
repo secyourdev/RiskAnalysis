@@ -1,3 +1,23 @@
+<?php
+session_start();
+
+//Connexion à la base de donnee
+try{
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v6;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+}
+
+catch(PDOException $e){
+    die('Erreur :'.$e->getMessage());
+}
+
+if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
+    $getid = intval($_GET['id_utilisateur']);
+    $requser = $bdd->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = ?');
+    $requser->execute(array($getid));
+    $userinfo = $requser->fetch();
+
+?>
 <?php include("content/php/compte/selection.php");?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -23,7 +43,10 @@
   <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
 
 </head>
-
+<?php 
+if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur'])
+{
+?>
 <body id="page-top">
 
   <!-- Page Wrapper -->
@@ -340,7 +363,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Guillaume</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $userinfo['prenom'];?></span>
                 <img class="img-profile rounded-circle" src="content/img/undraw_profile_pic.svg">
               </a>
               <!-- Dropdown - User Information -->
@@ -509,15 +532,19 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Êtes-vous prêt à quitter l'application ?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body">Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à terminer votre session en cours.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <form method="post" action="content/php/deconnexion/logs.php">
+            <fieldset>
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+              <input type="submit" name="deconnexion" value="Déconnexion" class="btn btn-primary"></input>
+            <fieldset>
+          </form>
         </div>
       </div>
     </div>
@@ -542,5 +569,16 @@
   <script src="content/js/modules/sort_table.js"></script>  
 
 </body>
-
+<?php
+}
+else{
+  header('Location: connexion.php');
+}
+?>
 </html>
+<?php
+}
+else{
+  header('Location: connexion.php');
+}
+?>

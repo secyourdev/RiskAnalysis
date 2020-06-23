@@ -1,3 +1,24 @@
+<?php
+session_start();
+
+//Connexion à la base de donnee
+try{
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v6;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+}
+
+catch(PDOException $e){
+    die('Erreur :'.$e->getMessage());
+}
+
+if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
+    $getid = intval($_GET['id_utilisateur']);
+    $requser = $bdd->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = ?');
+    $requser->execute(array($getid));
+    $userinfo = $requser->fetch();
+
+?>
+
 <?php include("content/php/atelier1a/selection.php");?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -24,6 +45,10 @@
 
 </head>
 
+<?php 
+if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur'])
+{
+?>
 <body id="page-top">
 
   <!-- Page Wrapper -->
@@ -340,7 +365,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Guillaume</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $userinfo['prenom'];?></span>
                 <img class="img-profile rounded-circle" src="content/img/undraw_profile_pic.svg">
               </a>
               <!-- Dropdown - User Information -->
@@ -773,5 +798,16 @@
   <script src="content/js/atelier/atelier1a.js"></script>
   <script src="content/js/modules/sort_table.js"></script>  
 </body>
-
+<?php
+}
+else{
+  header('Location: connexion.php');
+}
+?>
 </html>
+<?php
+}
+else{
+  header('Location: connexion.php');
+}
+?>
