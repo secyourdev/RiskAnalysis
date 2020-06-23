@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v9");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v8");
 $query = "SELECT * FROM partie_prenante";
 $query_categorie_partie_prenante = "SELECT categorie_partie_prenante FROM partie_prenante";
 
