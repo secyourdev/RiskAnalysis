@@ -1104,3 +1104,11 @@ h6 {
 .gravite{
     display:contents;
 }
+
+.no_modification{
+    border: none !important;
+    font-size: 0.9em;
+    margin-left: 10px;
+    margin-bottom: 0px;
+    margin-top: 3px;
+}

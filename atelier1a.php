@@ -17,6 +17,9 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $requser->execute(array($getid));
     $userinfo = $requser->fetch();
 
+    $reqdroit = $bdd->prepare('SELECT * FROM disposer NATURAL JOIN avoir WHERE id_utilisateur = ? AND id_atelier="1.a"');
+    $reqdroit->execute(array($getid));
+    $userdroit = $reqdroit->fetch();
 ?>
 
 <?php include("content/php/atelier1a/selection.php");?>
@@ -49,6 +52,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
 if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur'])
 {
 ?>
+  
 <body id="page-top">
 
   <!-- Page Wrapper -->
@@ -335,7 +339,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
     </ul>
     <!-- End of Sidebar -->
-
+    
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
       <!-- Main Content -->
@@ -423,43 +427,106 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <!-- Card Body -->
                 <div class="card-body">
                   <form class="user">
+                    <!--NOM ETUDE-->
                     <div class="form-group">
                       <label class="titre_input" for="nom_etude">Nom</label>
+                    <?php if($userdroit['ecriture']==1){
+                    ?>
                       <input type="text" class="perso_form shadow-none form-control form-control-user" id="nom_etude" placeholder="Nom" required></input>
                     </div>
-                    
+                    <?php
+                    }
+                    else { 
+                    ?>
+                      </br>
+                      <label id="nom_etude" class="no_modification"></input>
+                    </div>
+                    <?php
+                    }
+                    ?>
+                    <!--OBJECTIF ETUDE-->
                     <div class="form-group">
                       <label class="titre_textarea" for="objectif_atteindre">Objectif à atteindre</label>
+                    <?php if($userdroit['ecriture']==1){
+                    ?>
                       <textarea class="form-control perso_text_area" id="objectif_atteindre" rows="3"></textarea>
                     </div>
-
+                    <?php
+                    }
+                    else { 
+                    ?>
+                      </br>
+                      <label id="objectif_atteindre" class="no_modification"></input>
+                    </div>
+                    <?php
+                    }
+                    ?>
+                    <!--CADRE TEMPOREL ETUDE-->
                     <div class="form-group">
                       <label class="titre_input" for="cadre_temporel">Cadre Temporel</label>
+                    <?php if($userdroit['ecriture']==1){
+                    ?>
                       <input type="date" class="perso_form shadow-none form-control form-control-user" id="cadre_temporel" placeholder="Cadre temporel" required>
                     </div>
-
+                    <?php
+                    }
+                    else { 
+                    ?>
+                      <br/>
+                      <label id="cadre_temporel" class="no_modification"></input>
+                    </div>
+                    <?php
+                    }
+                    ?>
+                    <!--RISQUE ETUDE-->
                     <div class="form-group">
-                      <label for="respo_acceptation_risque">Personne responsable d'accepter les risques résiduels au terme de l'étude</label>
-                      <select class="form-control" id="respo_acceptation_risque">
+                      <label class="titre_input" for="respo_acceptation_risque">Personne responsable d'accepter les risques résiduels au terme de l'étude</label>
+                    <?php if($userdroit['ecriture']==1){
+                    ?>
+                    <select class="form-control" id="respo_acceptation_risque">
                         <option selected>...</option>
                         <option>Directeur</option>
                         <option>RSSI</option>
                         <option>Responsable Informatique</option>
-                      </select>
+                    </select>
                     </div>
+                    <?php
+                    }
+                    else { 
+                    ?>
+                      <br/>
+                      <label id="respo_acceptation_risque" class="no_modification"></input>
+                    </div>
+                    <?php
+                    }
+                    ?>
+
                     <div class="card-header gravite col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                      <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="radio_gravite4" name="radio_gravite" class="custom-control-input" value="4">
-                        <label class="custom-control-label" for="radio_gravite4">Gravité sur 4</label>
-                      </div>
-                      <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="radio_gravite5" name="radio_gravite" class="custom-control-input" value="5">
-                        <label class="custom-control-label" for="radio_gravite5">Gravité sur 5</label>
-                      </div>
-                      <div class="perso_icon_btn custom-control-inline" data-container="body" data-trigger="hover focus" data-toggle="popover" data-placement="bottom" data-content="Ce choix engendre automatiquement le même barème sur vraisemblance ! ">
-                        <i class="fas fa-info-circle"></i>
-                      </div>
+                    <?php if($userdroit['ecriture']==1){
+                    ?>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" id="radio_gravite4" name="radio_gravite" class="custom-control-input" value="4">
+                          <label class="custom-control-label" for="radio_gravite4">Gravité sur 4</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" id="radio_gravite5" name="radio_gravite" class="custom-control-input" value="5">
+                          <label class="custom-control-label" for="radio_gravite5">Gravité sur 5</label>
+                        </div>
+                        <div class="perso_icon_btn custom-control-inline" data-container="body" data-trigger="hover focus" data-toggle="popover" data-placement="bottom" data-content="Ce choix engendre automatiquement le même barème sur vraisemblance ! ">
+                          <i class="fas fa-info-circle"></i>
+                        </div>
                     </div>
+                    <?php
+                    }
+                    else { 
+                    ?>
+                      <label class="titre_input">Barème</label>
+                      <br/>
+                      <label id="radio_gravite4" class="no_modification"></label>
+                    </div>
+                    <?php
+                    }
+                    ?>
                   </form>
                   <img src="content/img/task.svg" class="img-fluid perso_img">
 
@@ -796,6 +863,55 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   <script src="content/js/modules/realtime.js"></script>
   <script src="content/js/modules/set_filter_sort_table.js"></script>
   <script src="content/js/atelier/atelier1a.js"></script>
+  <?php if($userdroit['ecriture']==0){
+  ?>
+  <script>
+    $(document).ready(function(){  
+      $('#editable_table').Tabledit({
+       url:'content/php/atelier1a/modification.php',
+       columns:{
+        identifier:[0, "id_utilisateur"],
+        editable:[[1, 'nom'], [2, 'prenom'], [3, 'poste']]
+       },
+       restoreButton:false,
+       editButton: false,
+       deleteButton: false,
+       onSuccess:function(data, textStatus, jqXHR)
+       {
+        if(data.action == 'delete')
+        {
+         $('#'+data.id_utilisateur).remove();
+        }
+       }
+      });
+    });    
+  </script>
+  <?php 
+  }
+  else{
+  ?>
+  <script>
+    $(document).ready(function(){  
+      $('#editable_table').Tabledit({
+       url:'content/php/atelier1a/modification.php',
+       columns:{
+        identifier:[0, "id_utilisateur"],
+        editable:[[1, 'nom'], [2, 'prenom'], [3, 'poste']]
+       },
+       restoreButton:false,
+       onSuccess:function(data, textStatus, jqXHR)
+       {
+        if(data.action == 'delete')
+        {
+         $('#'+data.id_utilisateur).remove();
+        }
+       }
+      });
+    });
+  </script>
+  <?php
+  }
+  ?>
   <script src="content/js/modules/sort_table.js"></script>  
 </body>
 <?php

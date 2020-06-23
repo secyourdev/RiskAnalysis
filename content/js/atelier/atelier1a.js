@@ -40,23 +40,23 @@ var regex_prenom_acteur = /^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/
 var regex_poste_acteur = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
 
 /*--------------------------------- TABLES JS -------------------------------*/
-$(document).ready(function(){  
-    $('#editable_table').Tabledit({
-     url:'content/php/atelier1a/modification.php',
-     columns:{
-      identifier:[0, "id_utilisateur"],
-      editable:[[1, 'nom'], [2, 'prenom'], [3, 'poste']]
-     },
-     restoreButton:false,
-     onSuccess:function(data, textStatus, jqXHR)
-     {
-      if(data.action == 'delete')
-      {
-       $('#'+data.id_utilisateur).remove();
-      }
-     }
-    });
-});
+// $(document).ready(function(){  
+//     $('#editable_table').Tabledit({
+//      url:'content/php/atelier1a/modification.php',
+//      columns:{
+//       identifier:[0, "id_utilisateur"],
+//       editable:[[1, 'nom'], [2, 'prenom'], [3, 'poste']]
+//      },
+//      restoreButton:false,
+//      onSuccess:function(data, textStatus, jqXHR)
+//      {
+//       if(data.action == 'delete')
+//       {
+//        $('#'+data.id_utilisateur).remove();
+//       }
+//      }
+//     });
+// });
 /*--------------------------- SORT & FILTER TABLES --------------------------*/
 setSortTable('editable_table');
 OURJQUERYFN.setFilterTable("#rechercher_acteur","#editable_table tbody tr")
@@ -130,10 +130,12 @@ cadre_temporel.addEventListener('change',function(event){
     update_database_cadre_temporel(cadre_temporel.value)
 })
 
-respo_acceptation_risque.addEventListener('change',function(event){
-    verify_select(respo_acceptation_risque)
-    update_database_respo_acceptation_risque(respo_acceptation_risque.options[respo_acceptation_risque.selectedIndex].value)
-})
+if(respo_acceptation_risque.options!=undefined){
+    respo_acceptation_risque.addEventListener('change',function(event){
+        verify_select(respo_acceptation_risque)
+        update_database_respo_acceptation_risque(respo_acceptation_risque.options[respo_acceptation_risque.selectedIndex].value)
+    })
+}
 
 nom_acteur.addEventListener('keyup',function(event){
     bool_nom_acteur = regex_nom_acteur.test(nom_acteur.value)
@@ -216,24 +218,47 @@ function get_database_project_info(){
         success: function (resultat) {
             var projet_info = JSON.parse(resultat);
             nom_etude.value = projet_info[0][1]
+            nom_etude.innerText = projet_info[0][1]
             objectif_atteindre.value = projet_info[0][2]
-            
+            objectif_atteindre.innerText = projet_info[0][2]
+
+            if(respo_acceptation_risque.options!=undefined){
                 if(projet_info[0][3]=="Directeur")
                     respo_acceptation_risque.options.selectedIndex=1
                 else if(projet_info[0][3]=="RSSI")
                     respo_acceptation_risque.options.selectedIndex=2
                 else 
                     respo_acceptation_risque.options.selectedIndex=3
-
+            }
+            else{
+                if(projet_info[0][3]=="Directeur")
+                    respo_acceptation_risque.innerText="Directeur"
+                else if(projet_info[0][3]=="RSSI")
+                    respo_acceptation_risque.innerText="RSSI"
+                else 
+                    respo_acceptation_risque.innerText="Responsable Informatique"
+            }
+            
+            if(!(radio_gravite4.classList.contains('no_modification')||radio_gravite5.classList.contains('no_modification'))){
                 if(projet_info[0][4]==4)
                     radio_gravite4.checked=true
                 else 
                     radio_gravite5.checked=true
+            }
+            else {
+                if(projet_info[0][4]==4)
+                    radio_gravite4.innerText="Gravité sur 4"
+                else 
+                    radio_gravite4.innerText="Gravité sur 5"
+            }
+
             cadre_temporel.value = projet_info[0][5]
+            cadre_temporel.innerText = projet_info[0][5]
             verify_input(nom_etude.value,regex_nom_etude,nom_etude)
             verify_textarea(objectif_atteindre.value,regex_objectif_atteindre,objectif_atteindre)
             verify_input(cadre_temporel.value,regex_cadre_temporel,cadre_temporel)
-            verify_select(respo_acceptation_risque)
+            if(respo_acceptation_risque.options!=undefined)
+                verify_select(respo_acceptation_risque)
             activate_label(nom_etude.value,label_nom_etude)
             activate_label(cadre_temporel.value,label_cadre_temporel)
         },
