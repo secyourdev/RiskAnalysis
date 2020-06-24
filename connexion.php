@@ -35,7 +35,7 @@ catch(PDOException $e){
 <?php 
 if(isset($_SESSION['id_utilisateur']))
 {
-  header('Location: atelier-1a&'.$_SESSION['id_utilisateur']);
+  header('Location: index&'.$_SESSION['id_utilisateur']);
 }
 else{
 ?>

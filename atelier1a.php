@@ -430,7 +430,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     <!--NOM ETUDE-->
                     <div class="form-group">
                       <label class="titre_input" for="nom_etude">Nom</label>
-                    <?php if($userdroit['ecriture']==1){
+                    <?php if($userdroit['ecriture']=='Réalisation'){
                     ?>
                       <input type="text" class="perso_form shadow-none form-control form-control-user" id="nom_etude" placeholder="Nom" required></input>
                     </div>
@@ -447,7 +447,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     <!--OBJECTIF ETUDE-->
                     <div class="form-group">
                       <label class="titre_textarea" for="objectif_atteindre">Objectif à atteindre</label>
-                    <?php if($userdroit['ecriture']==1){
+                    <?php if($userdroit['ecriture']=='Réalisation'){
                     ?>
                       <textarea class="form-control perso_text_area" id="objectif_atteindre" rows="3"></textarea>
                     </div>
@@ -464,7 +464,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     <!--CADRE TEMPOREL ETUDE-->
                     <div class="form-group">
                       <label class="titre_input" for="cadre_temporel">Cadre Temporel</label>
-                    <?php if($userdroit['ecriture']==1){
+                    <?php if($userdroit['ecriture']=='Réalisation'){
                     ?>
                       <input type="date" class="perso_form shadow-none form-control form-control-user" id="cadre_temporel" placeholder="Cadre temporel" required>
                     </div>
@@ -481,7 +481,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     <!--RISQUE ETUDE-->
                     <div class="form-group">
                       <label class="titre_input" for="respo_acceptation_risque">Personne responsable d'accepter les risques résiduels au terme de l'étude</label>
-                    <?php if($userdroit['ecriture']==1){
+                    <?php if($userdroit['ecriture']=='Réalisation'){
                     ?>
                     <select class="form-control" id="respo_acceptation_risque">
                         <option selected>...</option>
@@ -502,7 +502,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     ?>
 
                     <div class="card-header gravite col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <?php if($userdroit['ecriture']==1){
+                    <?php if($userdroit['ecriture']=='Réalisation'){
                     ?>
                         <div class="custom-control custom-radio custom-control-inline">
                           <input type="radio" id="radio_gravite4" name="radio_gravite" class="custom-control-input" value="4">
@@ -542,6 +542,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
+                <?php if($userdroit['ecriture']=='Réalisation'){
+                ?>
                   <form method="post" action="content/php/atelier1a/ajout.php" class="user" id="formActeur">
                   <fieldset>
                     <div class="form-group">
@@ -570,6 +572,10 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                   </fieldset>
                   </form>
                   </br>
+                  <?php
+                  }
+                  ?>
+                  
                   <!--tableau-->
                   <div class="table-responsive">
                     <input type="text" class="rechercher_input" id="rechercher_acteur" placeholder="Rechercher">
@@ -733,95 +739,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <i class="fas fa-angle-up"></i>
   </a>
 
-    <!---------------------------------------------------------------------------------------------------------------- 
-      --------------------------------------- modal modification d'un acteur -----------------------------------------
-      ---------------------------------------------------------------------------------------------------------------->
-    <div class="modal fade" id="modif_acteur" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="Modal1">Modification de l'acteur</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body perso_modal_body">
-            <form method="post" action="content/php/test_modification.php" class="user" id="formActeur_modification">
-             <fieldset>
-              <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_modifie" id="input_id"
-                  placeholder="ID" readonly>
-              </div>
-              <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_modifie" id="input_nom_acteur"
-                  placeholder="Nom" required>
-              </div>
-              <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenom_modifie" id="input_prenom_acteur" placeholder="Prénom" required>
-              </div>
-            
-              <div class="form-group">
-                <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="Postes" name="poste_modifie" id="input_poste_acteur"
-                  placeholder="Poste" required>
-                <datalist id="Postes">
-                  <option value="Internet Explorer">
-                  <option value="Firefox">
-                  <option value="Chrome">
-                  <option value="Opera">
-                  <option value="Safari">
-                </datalist>
-              </div>
-              <div class="modal-footer perso_middle_modal_footer">
-                <input type="submit" name="modifier" value="Modifier" class="btn perso_btn_primary shadow-none"></input>
-              </div>
-             </fieldset>
-            </form>
-          </div>          
-        </div>
-      </div>
-    </div>
-
-    <!---------------------------------------------------------------------------------------------------------------- 
-      ---------------------------------------- modal suppression d'un acteur -----------------------------------------
-      ---------------------------------------------------------------------------------------------------------------->
-      <!-- <div class="modal fade" id="suppr_acteur" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="Modal2">Suppression de l'acteur</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body perso_modal_body">
-            <p class="suppression_donnee">Voulez-vous supprimer l'utilisateur suivant ?</p>
-            <form method="post" action="content/php/test_suppression.php" class="user" id="formActeur_suppression">
-             <fieldset>
-              <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_suppr" id="input_id_suppr"
-                  placeholder="ID" readonly>
-              </div>
-              <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_suppr" id="input_nom_suppr"
-                  placeholder="Nom" readonly>
-              </div>
-              <div class="form-group">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenom_suppr" id="input_prenom_suppr"
-                 placeholder="Prénom" readonly>
-              </div>
-            
-              <div class="modal-footer perso_middle_modal_footer">
-                <input type="submit" name="supprimer" value="Supprimer" class="btn perso_btn_primary shadow-none"></input>
-              </div>
-             </fieldset>
-            </form>
-          </div>          
-        </div>
-      </div>
-      </div> -->
-
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -862,53 +779,13 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   <script src="content/js/modules/gravite.js"></script>
   <script src="content/js/modules/realtime.js"></script>
   <script src="content/js/modules/set_filter_sort_table.js"></script>
-  <script src="content/js/atelier/atelier1a.js"></script>
-  <?php if($userdroit['ecriture']==0){
-  ?>
-  <script>
-    $(document).ready(function(){  
-      $('#editable_table').Tabledit({
-       url:'content/php/atelier1a/modification.php',
-       columns:{
-        identifier:[0, "id_utilisateur"],
-        editable:[[1, 'nom'], [2, 'prenom'], [3, 'poste']]
-       },
-       restoreButton:false,
-       editButton: false,
-       deleteButton: false,
-       onSuccess:function(data, textStatus, jqXHR)
-       {
-        if(data.action == 'delete')
-        {
-         $('#'+data.id_utilisateur).remove();
-        }
-       }
-      });
-    });    
-  </script>
+  <?php if($userdroit['ecriture']!='Réalisation'){?>
+    <script src="content/js/atelier/atelier1a_no_modification.js"></script>
   <?php 
   }
   else{
   ?>
-  <script>
-    $(document).ready(function(){  
-      $('#editable_table').Tabledit({
-       url:'content/php/atelier1a/modification.php',
-       columns:{
-        identifier:[0, "id_utilisateur"],
-        editable:[[1, 'nom'], [2, 'prenom'], [3, 'poste']]
-       },
-       restoreButton:false,
-       onSuccess:function(data, textStatus, jqXHR)
-       {
-        if(data.action == 'delete')
-        {
-         $('#'+data.id_utilisateur).remove();
-        }
-       }
-      });
-    });
-  </script>
+    <script src="content/js/atelier/atelier1a.js"></script>
   <?php
   }
   ?>

@@ -29,7 +29,7 @@ if (isset($_POST['connexion'])){
         $_SESSION['nom'] = $row['nom'];
         $_SESSION['prenom'] = $row['prenom'];
         $_SESSION['email'] = $row['email'];
-        header('Location: ../../../atelier-1a&'.$_SESSION['id_utilisateur']);
+        header('Location: ../../../index&'.$_SESSION['id_utilisateur']);
       }
       else{
         $results["error"] = true;
