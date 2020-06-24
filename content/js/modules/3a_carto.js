@@ -17,13 +17,6 @@ $.post("content/php/atelier3a/chart.php", function (data) {
     for (let i = 0; i < menace.length; i++) {
         labels.push('R' + i);
     }
-    console.log(data);
-    console.log(data['data_interne']);
-
-    for (var i in data) {
-        console.log(data[i]);
-
-    }
 
     // console.log(menace);
     // console.log(exposition);
@@ -31,7 +24,7 @@ $.post("content/php/atelier3a/chart.php", function (data) {
     // console.log(taille_point);
     // console.log(fiabilite);
 
-    var maxmenace = Math.max(...menace);
+    var maxmenace = Math.max(...menace) + 1.99999;
 
     var chartdata_interne = {
         labels: labels,
@@ -122,7 +115,7 @@ $.post("content/php/atelier3a/chart.php", function (data) {
         labels.push('R' + i);
     }
 
-    var maxmenace = Math.max(...menace);
+    var maxmenace = Math.max(...menace) + 1.99999;
 
     var chartdata_externe = {
         labels: labels,
