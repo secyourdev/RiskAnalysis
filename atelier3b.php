@@ -435,30 +435,30 @@
                   <!--text-->
                   <div class="table-responsive">
                     <input type="text" class="rechercher_input" id="rechercher_evenement_redoute" placeholder="Rechercher">
-                    <table id="editable_table" class="table table-bordered table-striped">
+                    <table id="editable_table_evenement_redoutes" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th id="id_evenement_redoutes">ID</th>
-                          <th id="nom_valeur_metier">Valeur métier</th>
-                          <th id="nom_evenement_redoutes">Nom de l'événement redouté</th>
-                          <th id="description_evenement_redoutes">événement redouté</th>
-                          <th id="impact">Impacts</th>
-                          <th id="confidentialite">C</th>
-                          <th id="integrite">I</th>
-                          <th id="disponibilite">D</th>
-                          <th id="tracabilite">T</th>
-                          <th id="niveau_de_gravite">Gravité</th>
+                          <th>ID</th>
+                          <th>Valeur métier</th>
+                          <th>Nom de l'événement redouté</th>
+                          <th>événement redouté</th>
+                          <th>Impacts</th>
+                          <th>C</th>
+                          <th>I</th>
+                          <th>D</th>
+                          <th>T</th>
+                          <th>Gravité</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php
-                        while ($row = mysqli_fetch_array($result)) {
+                        while ($row = mysqli_fetch_array($result_evenement_redoutes)) {
                           echo '
                         <tr>
-                        <td>' . $row["id_evenement_redoutes"] . '</td>
+                        <td>' . $row["id_evenement_redoute"] . '</td>
                         <td>' . $row["nom_valeur_metier"] . '</td>
-                        <td>' . $row["nom_evenement_redoutes"] . '</td>
-                        <td>' . $row["description_evenement_redoutes"] . '</td>
+                        <td>' . $row["nom_evenement_redoute"] . '</td>
+                        <td>' . $row["description_evenement_redoute"] . '</td>
                         <td>' . $row["impact"] . '</td>
                         <td>' . $row["confidentialite"] . '</td>
                         <td>' . $row["integrite"] . '</td>
@@ -479,35 +479,30 @@
                   </div>
 
                   <div class="table-responsive">
-                    <input type="text" class="rechercher_input" id="rechercher_evenement_redoute" placeholder="Rechercher">
-                    <table id="editable_table" class="table table-bordered table-striped">
+                    <input type="text" class="rechercher_input" id="rechercher_srov" placeholder="Rechercher">
+                    <table id="editable_table_SROV" class="table table-bordered table-striped">
                       <thead>
                         <tr>
                           <th>ID</th>
-                          <th>Catégorie</th>
-                          <th>Partie prenante</th>
-                          <th>Type</th>
-                          <th>Dépendance</th>
-                          <th>Pénétration</th>
-                          <th>Maturité</th>
-                          <th>Confiance</th>
-                          <th>Niveau de menace</th>
+                          <th>Type d'attaquant</th>
+                          <th>Profile d'attaquant</th>
+                          <th>Description source de risque</th>
+                          <th>Objectifs visés</th>
+                          <th>Description de l'objectif</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php
-                        while ($row = mysqli_fetch_array($result)) {
+                        while ($row = mysqli_fetch_array($result_SROV)) {
                           echo '
                         <tr>
-                        <td>' . $row["id_partie_prenante"] . '</td>
-                        <td>' . $row["categorie_partie_prenante"] . '</td>
-                        <td>' . $row["nom_partie_prenante"] . '</td>
-                        <td>' . $row["type"] . '</td>
-                        <td>' . $row["dependance_partie_prenante"] . '</td>
-                        <td>' . $row["penetration_partie_prenante"] . '</td>
-                        <td>' . $row["maturite_partie_prenante"] . '</td>
-                        <td>' . $row["confiance_partie_prenante"] . '</td>
-                        <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
+                        <td>' . $row["id_source_de_risque"] . '</td>
+                        <td>' . $row["type_d_attaquant_source_de_risque"] . '</td>
+                        <td>' . $row["profil_de_l_attaquant_source_de_risque"] . '</td>
+                        <td>' . $row["description_source_de_risque"] . '</td>
+                        <td>' . $row["objectif_vise"] . '</td>
+                        <td>' . $row["description_objectif_vise"] . '</td>
+
                         </tr>
                         ';
                         }
@@ -526,42 +521,34 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Liste des chemins d'attaques stratégiques</h6>
+                  <h6 class="m-0">Liste des scénarios stratégiques</h6>
 
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <!--text-->
                   <div class="table-responsive">
-                    <input type="text" class="rechercher_input" id="rechercher_evenement_redoute" placeholder="Rechercher">
-                    <table id="editable_table" class="table table-bordered table-striped">
+                    <input type="text" class="rechercher_input" id="rechercher_scenario_strategique" placeholder="Rechercher">
+                    <table id="editable_table_scenario_strategique" class="table table-bordered table-striped">
                       <thead>
                         <tr>
                           <th>ID</th>
-                          <th>Catégorie</th>
-                          <th>Partie prenante</th>
-                          <th>Type</th>
-                          <th>Dépendance</th>
-                          <th>Pénétration</th>
-                          <th>Maturité</th>
-                          <th>Confiance</th>
-                          <th>Niveau de menace</th>
+                          <th>nom_scenario_strategique</th>
+                          <th>id_evenement_redoute</th>
+                          <th>id_partie_prenante</th>
+                          <th>id_source_de_risque</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php
-                        while ($row = mysqli_fetch_array($result)) {
+                        while ($row = mysqli_fetch_array($result_scenario_strategique)) {
                           echo '
                         <tr>
+                        <td>' . $row["id_scenario_strategique"] . '</td>
+                        <td>' . $row["nom_scenario_strategique"] . '</td>
+                        <td>' . $row["id_evenement_redoute"] . '</td>
                         <td>' . $row["id_partie_prenante"] . '</td>
-                        <td>' . $row["categorie_partie_prenante"] . '</td>
-                        <td>' . $row["nom_partie_prenante"] . '</td>
-                        <td>' . $row["type"] . '</td>
-                        <td>' . $row["dependance_partie_prenante"] . '</td>
-                        <td>' . $row["penetration_partie_prenante"] . '</td>
-                        <td>' . $row["maturite_partie_prenante"] . '</td>
-                        <td>' . $row["confiance_partie_prenante"] . '</td>
-                        <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
+                        <td>' . $row["id_source_de_risque"] . '</td>
                         </tr>
                         ';
                         }
@@ -576,6 +563,63 @@
                 </div>
               </div>
             </div>
+
+            <!-- Area Card -->
+            <div class="col-xl col-lg">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0">Liste des chemin d'attaque</h6>
+
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <!--text-->
+                  <div class="table-responsive">
+                    <input type="text" class="rechercher_input" id="rechercher_chemin_d_attaque" placeholder="Rechercher">
+                    <table id="editable_table_chemin_d_attaque" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>id_risque</th>
+                          <th>chemin_d_attaque_strategique</th>
+                          <th>dependance_residuelle</th>
+                          <th>penetration_residuelle</th>
+                          <th>maturite_residuelle</th>
+                          <th>confiance_residuelle</th>
+                          <th>niveau_de_menance_residuelle</th>
+                          <th>id_scenario_strategique</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                        while ($row = mysqli_fetch_array($result_chemin_d_attaque)) {
+                          echo '
+                        <tr>
+                        <td>' . $row["id_chemin_d_attaque_strategique"] . '</td>
+                        <td>' . $row["id_risque"] . '</td>
+                        <td>' . $row["chemin_d_attaque_strategique"] . '</td>
+                        <td>' . $row["dependance_residuelle"] . '</td>
+                        <td>' . $row["penetration_residuelle"] . '</td>
+                        <td>' . $row["maturite_residuelle"] . '</td>
+                        <td>' . $row["confiance_residuelle"] . '</td>
+                        <td>' . $row["niveau_de_menance_residuelle"] . '</td>
+                        <td>' . $row["id_scenario_strategique"] . '</td>
+                        </tr>
+                        ';
+                        }
+                        ?>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- bouton Ajouter une nouvelle ligne -->
+                  <div class="text-center">
+                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_chemin_attaque">Ajouter une nouvelle ligne</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
 
 
@@ -619,85 +663,59 @@
           </button>
         </div>
         <div class="modal-body perso_modal_body">
-          <form class="user" id="formchemin">
-            <div class="row">
+          <form method="post" action="content/php/atelier3b/ajout.php" class="user" id="formecartPop">
+            <fieldset>
+
               <div class=" form-group col-12">
-                <input type="search" class="perso_form shadow-none form-control form-control-user" id="Nom du scénario stratégique" placeholder="Nom du scénario stratégique" required>
+                <input type="search" class="perso_form shadow-none form-control form-control-user" name="nom_scenario_strategique" id="Nom du scénario stratégique" placeholder="Nom du scénario stratégique" required>
               </div>
-              <div class="form-group col-6">
-                <label for="SelectSR">Source de risque</label>
-                <select class="form-control" id="SelectSR">
-                  <option value="" selected>...</option>
-                  <option value="1">SR1</option>
-                  <option value="2">SR2</option>
-                  <option value="3">SR3</option>
-                </select>
+
+              <div class="row">
+
+                <div class="form-group col-6">
+                  <label for="SelectSR">Source de risque</label>
+                  <select class="form-control" name="id_risque" id="SelectSR">
+                    <option value="" selected>...</option>
+                    <?php
+                    while ($row = mysqli_fetch_array($result_id_risque)) //selection.php
+                    {
+                      echo '
+                        <option id="risque" value="' . $row["id_risque"] . '">' . $row["id_risque"] . '</option>
+                        ';
+                    }
+                    ?>
+                  </select>
+                </div>
+
+                <div class="form-group col-6">
+                  <label for="SelectER">Événement redouté</label>
+                  <select class="form-control" name="nom_evenement_redoute" id="SelectER">
+                    <option value="" selected>...</option>
+                    <?php
+                    while ($row = mysqli_fetch_array($result_nom_evenement_redoute)) //selection.php
+                    {
+                      echo '
+                        <option id="nom_evenement_redoute" value="' . $row["nom_evenement_redoute"] . '">' . $row["nom_evenement_redoute"] . '</option>
+                        ';
+                    }
+                    ?>
+                  </select>
+                </div>
+
               </div>
-              <div class="form-group col-6">
-                <label for="SelectER">Événement redouté</label>
-                <select class="form-control" id="SelectER">
-                  <option value="" selected>...</option>
-                  <option value="1">ER1</option>
-                  <option value="2">ER2</option>
-                  <option value="3">ER3</option>
-                </select>
-              </div>
+
               <div class="form-group col-12">
                 <label for="Chemin d'attaque stratégique">Chemin d'attaque stratégique</label>
-                <textarea class="form-control perso_text_area" id="Chemin d'attaque stratégique" rows="5"></textarea>
-              </div>
-              <!-- bouton Ajouter un chemin stratégique -->
-              <div class="modal-footer perso_middle_modal_footer col-12">
-                <button type="button" class="btn perso_btn_primary shadow-none">Ajouter un chemin stratégique</button>
-              </div>
-              <div class="table-responsive col-12">
-                <table class="table table-bordered perso_border" id="dataTable4" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Chemin d'attaques stratégique</th>
-                      <th class="perso_border"></th>
-
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <td>Portant directement sur le système d'information de la R&D</td>
-                      <td class="perso_border">
-                        <div class="modification">
-                          <i class="poubelle fas fa-trash-alt"></i>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>sur le système d'informationtion du laboratoire (P3) qui détient une partie des travaux</td>
-                      <td class="perso_border">
-                        <div class="modification">
-                          <i class="poubelle fas fa-trash-alt"></i>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>En passant par le prestataire informatique F3</td>
-                      <td class="perso_border">
-                        <div class="modification">
-                          <i class="poubelle fas fa-trash-alt"></i>
-                        </div>
-                      </td>
-                    </tr>
-
-                  </tbody>
-                </table>
+                <textarea class="form-control perso_text_area" name="chemin_d_attaque_strategique" id="Chemin d'attaque stratégique" rows="5"></textarea>
               </div>
 
-
-            </div>
+              <!-- bouton Ajouter -->
+              <div class="modal-footer perso_middle_modal_footer">
+                <input type="submit" name="validerchemin" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
+              </div>
+            </fieldset>
+          </form>
         </div>
-        <!-- bouton Ajouter -->
-        <div class="modal-footer perso_middle_modal_footer">
-          <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
-        </div>
-        </form>
 
 
       </div>

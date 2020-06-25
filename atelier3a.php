@@ -541,7 +541,7 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="SelectTypeComptePop">Type</label>
+                      <label for="SelectType">Type</label>
                       <select class="form-control" name="type" id="SelectType">
                         <option value="" selected>...</option>
                         <option value="Interne">Interne</option>

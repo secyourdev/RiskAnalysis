@@ -155,21 +155,18 @@ if (typeof jQuery === 'undefined') {
             var $td = $table.find('tbody td:nth-child(' + (parseInt(settings.columns.checkboxeditable[i][0]) + 1) + ')');
 
             $td.each(function () {
-
+              // Get text of this cell.
               var text = $(this).text();
-              if (!settings.editButton) {
-                $(this).css('cursor', 'pointer');
-              }
 
               // Create span element.
               var span = '<span class="tabledit-span">' + text + '</span>';
               // Check if exists the third parameter of editable array.
-              if (typeof settings.columns.editable[i][2] !== 'undefined') {// toujours false
+              if (typeof settings.columns.checkboxeditable[i][2] !== 'undefined') {// toujours false
                 // Create select element.
-                var input = '<select class="tabledit-input ' + settings.inputClass + '" name="' + settings.columns.editable[i][1] + '" style="display: none;" disabled>';
+                var input = '<select class="tabledit-input ' + settings.inputClass + '" name="' + settings.columns.checkboxeditable[i][1] + '" style="display: none;" disabled>';
 
                 // Create options for select element.
-                $.each(jQuery.parseJSON(settings.columns.editable[i][2]), function (index, value) {
+                $.each(jQuery.parseJSON(settings.columns.checkboxeditable[i][2]), function (index, value) {
                   if (text === value) {
                     input += '<option value="' + index + '" selected>' + value + '</option>';
                   } else {

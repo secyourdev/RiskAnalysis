@@ -9,7 +9,8 @@ $(document).ready(function () {
                 [3, 'nom_referentiel'],
                 [4, 'etat_d_application'],
                 [9, 'etat_de_la_conformite']
-            ]
+            ],
+            checkboxeditable: []
         },
         restoreButton: false,
         onSuccess: function (data, textStatus, jqXHR) {

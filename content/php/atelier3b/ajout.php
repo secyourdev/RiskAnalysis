@@ -1,5 +1,5 @@
 <?php
-header('Location: ../../../atelier-3a');
+header('Location: ../../../atelier-3b');
 
 
 //Connexion à la base de donnee
@@ -18,33 +18,51 @@ $results["error"] = false;
 $results["message"] = [];
 
 
-$categorie_partie_prenante = $_POST['categorie_partie_prenante'];
-$nom_partie_prenante = $_POST['nom_partie_prenante'];
-$type = $_POST['type'];
-$dependance_partie_prenante = $_POST['dependance_partie_prenante'];
-$penetration_partie_prenante = $_POST['penetration_partie_prenante'];
-$maturite_partie_prenante = $_POST['maturite_partie_prenante'];
-$confiance_partie_prenante = $_POST['confiance_partie_prenante'];
-$niveau_de_menace_partie_prenante = ($dependance_partie_prenante* $penetration_partie_prenante)/ ($maturite_partie_prenante* $confiance_partie_prenante);
-$id_atelier = '3.a';
+$nom_scenario_strategique = $_POST['nom_scenario_strategique'];
+$description_source_de_risque = $_POST['description_source_de_risque'];
+$objectif_vise = $_POST['objectif_vise'];
+$nom_evenement_redoute = $_POST['nom_evenement_redoute'];
+$id_risque = $_POST['id_risque'];
+$chemin_d_attaque_strategique = $_POST['chemin_d_attaque_strategique'];
+$niveau_de_gravite = $_POST['niveau_de_gravite'];
 
-$recupere = $bdd->prepare("SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = ?");
+$recupere = $bdd->prepare("SELECT id_chemin_d_attaque_strategique, nom_scenario_strategique,description_source_de_risque,objectif_vise,nom_evenement_redoute, id_risque, chemin_d_attaque_strategique, niveau_de_gravite FROM chemin_d_attaque_strategique, scenario_strategique, SROV , evenement_redoute WHERE chemin_d_attaque_strategique.id_scenario_strategique = scenario_strategique.id_scenario_strategique AND scenario_strategique.id_evenement_redoute = evenement_redoute.id_evenement_redoute AND scenario_strategique.id_source_de_risque = SROV.id_source_de_risque");
 
 $insere = $bdd->prepare(
-  'INSERT INTO partie_prenante (
-    id_partie_prenante, 
-    categorie_partie_prenante, 
-    nom_partie_prenante, 
-    type, 
-    dependance_partie_prenante, 
-    penetration_partie_prenante,
-    maturite_partie_prenante, 
-    confiance_partie_prenante, 
-    niveau_de_menace_partie_prenante,
-    id_atelier
+  'INSERT INTO chemin_d_attaque_strategique (
+    id_risque,
+    chemin_d_attaque_strategique, 
     ) 
-    VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )'
-    );
+    VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? )'
+);
+$insere = $bdd->prepare(
+  'INSERT INTO scenario_strategique (
+    id_partie_prenante, 
+    nom_scenario_strategique, 
+    description_source_de_risque, 
+    objectif_vise, 
+    nom_evenement_redoute, 
+    id_risque,
+    chemin_d_attaque_strategique, 
+    niveau_de_gravite, 
+    niveau_de_menace_partie_prenante,
+    ) 
+    VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? )'
+);
+$insere = $bdd->prepare(
+  'INSERT INTO SROV  (
+    id_partie_prenante, 
+    nom_scenario_strategique, 
+    description_source_de_risque, 
+    objectif_vise, 
+    nom_evenement_redoute, 
+    id_risque,
+    chemin_d_attaque_strategique, 
+    niveau_de_gravite, 
+    niveau_de_menace_partie_prenante,
+    ) 
+    VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? )'
+);
 
 
 /* // Verification du nom_valeur_metier
@@ -58,17 +76,16 @@ if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_valeur_metier
 
 
 if ($results["error"] === false && isset($_POST['validerpartie'])) {
-  
+
   $insere->bindParam(1, $id_partie_prenante);
-  $insere->bindParam(2, $categorie_partie_prenante);
-  $insere->bindParam(3, $nom_partie_prenante);
-  $insere->bindParam(4, $type);
-  $insere->bindParam(5, $dependance_partie_prenante);
-  $insere->bindParam(6, $penetration_partie_prenante);
-  $insere->bindParam(7, $maturite_partie_prenante);
-  $insere->bindParam(8, $confiance_partie_prenante);
+  $insere->bindParam(2, $nom_scenario_strategique);
+  $insere->bindParam(3, $description_source_de_risque);
+  $insere->bindParam(4, $objectif_vise);
+  $insere->bindParam(5, $nom_evenement_redoute);
+  $insere->bindParam(6, $id_risque);
+  $insere->bindParam(7, $chemin_d_attaque_strategique);
+  $insere->bindParam(8, $niveau_de_gravite);
   $insere->bindParam(9, $niveau_de_menace_partie_prenante);
-  $insere->bindParam(10, $id_atelier);
   $insere->execute();
 ?>
   <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
