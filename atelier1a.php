@@ -785,6 +785,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   }
   else{
   ?>
+    <script> var sessionIdProjet = <?php echo $_SESSION['id_projet']; ?>;
+    </script>
+
     <script src="content/js/atelier/atelier1a.js"></script>
   <?php
   }

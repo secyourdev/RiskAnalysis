@@ -139,6 +139,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
          <!-- Content Row -->
           <div class="row" id="projets" >
           </div>
+          <div class="text-center">
+            <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_projet">Créer un nouveau projet</button>
+          </div>
       </div>
       <!-- End of Main Content -->
       </br>
@@ -160,6 +163,81 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
+
+<!-------------------------------------------------------------------------------------------------------------- 
+--------------------------------------- modal creation d'un projet ---------------------------------------------
+---------------------------------------------------------------------------------------------------------------->
+<div class="modal fade" id="ajout_projet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Création d'un projet</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body perso_modal_body">
+          <form method="post" action="content/php/accueil/ajout_projet.php">
+            <fieldset>
+              <!--NOM ETUDE-->
+              <div class="form-group">
+                <label class="titre_input" for="nom_etude">Nom</label>
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_etude" id="nom_etude" placeholder="Nom" required></input>
+              </div>
+              
+              <!--OBJECTIF ETUDE-->
+              <div class="form-group">
+                <label class="titre_textarea" for="objectif_atteindre">Objectif à atteindre</label>
+                <textarea class="form-control perso_text_area" name="objectif_atteindre" id="objectif_atteindre" rows="3"></textarea>
+              </div>
+                    
+              <!--CADRE TEMPOREL ETUDE-->
+              <div class="form-group">
+                <label class="titre_input" for="cadre_temporel">Cadre Temporel</label>
+                <input type="date" class="perso_form shadow-none form-control form-control-user" name="cadre_temporel" id="cadre_temporel" placeholder="Cadre temporel" required>
+              </div>
+
+              <!--RISQUE ETUDE-->
+              <div class="form-group">
+                <label class="titre_input" for="respo_acceptation_risque">Personne responsable d'accepter les risques résiduels au terme de l'étude</label>
+                <input type="text" class="perso_arrow perso_form shadow-none form-control" list="liste_respo_acceptation_risque" name="respo_acceptation_risque"
+                  placeholder="..." required>
+                <datalist id="liste_respo_acceptation_risque">
+                  <option>Directeur</option>
+                  <option>RSSI</option>
+                  <option>Responsable Informatique</option>
+                </datalist>
+              </div>
+                  
+              <!--BAREME VRAISEMBLANCE-->
+              <div class="card-header gravite col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="radio_gravite4" name="radio_gravite" class="custom-control-input" value="4">
+                  <label class="custom-control-label" for="radio_gravite4">Gravité sur 4</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="radio_gravite5" name="radio_gravite" class="custom-control-input" value="5">
+                  <label class="custom-control-label" for="radio_gravite5">Gravité sur 5</label>
+                </div>
+                <div class="perso_icon_btn custom-control-inline" data-container="body" data-trigger="hover focus" data-toggle="popover" data-placement="bottom" data-content="Ce choix engendre automatiquement le même barème sur vraisemblance ! ">
+                  <i class="fas fa-info-circle"></i>
+                </div>
+              </div>
+          
+              <div class="modal-footer perso_middle_modal_footer">
+                <input type="submit" name="ajouter_projet" value="Ajouter" class="btn perso_btn shadow-none"></input>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
 
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -219,15 +297,19 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 var fieldset = document.createElement('fieldset')
 
                 var input_text = document.createElement('input')
+                input_text.setAttribute('type','hidden')
                 input_text.setAttribute('id','id_projet'+i)
                 input_text.setAttribute('name','id_projet')
                 input_text.value = projet_JSON[i][0]
             
+                var div_input = document.createElement('div')
+                div_input.setAttribute('class','text-center')
 
                 var input = document.createElement('input')
                 input.setAttribute('type','submit')
                 input.setAttribute('name','search_project')
                 input.setAttribute('value','Ouvrir')
+                input.setAttribute('class','btn perso_btn_primary perso_btn_spacing shadow-none')
                 
                 var a = document.createElement('a');
                 a.setAttribute('href','content/php/accueil/search_project.php')
@@ -248,14 +330,18 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 var label2 = document.createElement('label')
                 label2.innerHTML='Date de fin du projet : ' + projet_JSON[i][5]
 
+                var br = document.createElement('br')
+
                 div4.appendChild(label)
+                div4.appendChild(br)
                 div4.appendChild(label2)
                 div3.appendChild(h6)
                 form.appendChild(fieldset)
                 fieldset.appendChild(div3)
                 fieldset.appendChild(div4)
-                fieldset.appendChild(input_text)
-                fieldset.appendChild(input)
+                div4.appendChild(input_text)
+                div_input.appendChild(input)
+                div4.appendChild(div_input)
                 div2.appendChild(form)
                 div1.appendChild(div2)
                 projets.appendChild(div1)
@@ -268,6 +354,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   </script>
 
 <script src='content/js/accueil/index.js'> </script>
+<script src="content/js/modules/help_button.js"></script>
+
 </body>
 <?php
 }

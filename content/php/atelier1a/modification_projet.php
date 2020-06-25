@@ -13,7 +13,7 @@ try {
 
 if(isset($_POST['nom_etude'])){
     $nom_etude = $_POST['nom_etude'];
-    $update_projet = $bdd->prepare("UPDATE projet SET nom_projet = ?");
+    $update_projet = $bdd->prepare("UPDATE projet SET nom_projet = ?);
     $update_projet->bindParam(1, $nom_etude);
     $update_projet->execute();
 }

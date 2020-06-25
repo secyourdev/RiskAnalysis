@@ -20,7 +20,6 @@ var nombre_atelier = raci.rows.length
 /*--------------------------------- TABLES JS -------------------------------*/
 $(document).ready(function(){  
     $('#editable_table').Tabledit({
-     url:'content/php/atelier1a/modification.php',
      columns:{
       identifier:[0, "id_utilisateur"],
       editable:[]

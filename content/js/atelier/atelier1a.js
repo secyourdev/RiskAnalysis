@@ -216,22 +216,23 @@ function get_database_project_info(){
         dataType : 'html',
         success: function (resultat) {
             var projet_info = JSON.parse(resultat);
-            nom_etude.value = projet_info[0][1]
-            objectif_atteindre.value = projet_info[0][2]
+            sessionIdProjet=sessionIdProjet-1
+            nom_etude.value = projet_info[sessionIdProjet][1]
+            objectif_atteindre.value = projet_info[sessionIdProjet][2]
 
-            if(projet_info[0][3]=="Directeur")
+            if(projet_info[sessionIdProjet][3]=="Directeur")
                 respo_acceptation_risque.options.selectedIndex=1
-            else if(projet_info[0][3]=="RSSI")
+            else if(projet_info[sessionIdProjet][3]=="RSSI")
                 respo_acceptation_risque.options.selectedIndex=2
             else 
                 respo_acceptation_risque.options.selectedIndex=3
            
-            if(projet_info[0][4]==4)
+            if(projet_info[sessionIdProjet][4]==4)
                 radio_gravite4.checked=true
             else 
                 radio_gravite5.checked=true
          
-            cadre_temporel.value = projet_info[0][5]
+            cadre_temporel.value = projet_info[sessionIdProjet][5]
 
             verify_input(nom_etude.value,regex_nom_etude,nom_etude)
             verify_textarea(objectif_atteindre.value,regex_objectif_atteindre,objectif_atteindre)
