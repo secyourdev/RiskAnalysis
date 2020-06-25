@@ -38,9 +38,9 @@ $(document).ready(function () {
             identifier: [0, 'id_scenario_strategique'],
             editable: [
                 [1, 'nom_scenario_strategique'],
-                [2, 'id_evenement_redoute'],
-                [3, 'id_partie_prenante'],
-                [4, 'id_source_de_risque']
+                [2, 'id_source_de_risque'],
+                [3, 'id_evenement_redoute'],
+                [4, 'id_partie_prenante']
             ],
             checkboxeditable: []
         },
@@ -60,11 +60,7 @@ $(document).ready(function () {
             identifier: [0, 'id_chemin_d_attaque_strategique'],
             editable: [
                 [2, 'chemin_d_attaque_strategique'],
-                [3, 'dependance_residuelle'],
-                [4, 'penetration_residuelle'],
-                [5, 'maturite_residuelle'],
-                [6, 'confiance_residuelle'],
-                [7, 'niveau_de_menance_residuelle'],
+                [3, 'id_scenario_strategique'],
             ],
             checkboxeditable: []
         },

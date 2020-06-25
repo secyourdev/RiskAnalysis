@@ -4,12 +4,9 @@ $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bs
 
 $input = filter_input_array(INPUT_POST);
 
+$id_risque = mysqli_real_escape_string($connect, $input['id_risque']);
 $chemin_d_attaque_strategique = mysqli_real_escape_string($connect, $input['chemin_d_attaque_strategique']);
-$dependance_residuelle = mysqli_real_escape_string($connect, $input['dependance_residuelle']);
-$penetration_residuelle = mysqli_real_escape_string($connect, $input['penetration_residuelle']);
-$maturite_residuelle = mysqli_real_escape_string($connect, $input['maturite_residuelle']);
-$confiance_residuelle = mysqli_real_escape_string($connect, $input['confiance_residuelle']);
-$niveau_de_menance_residuelle = mysqli_real_escape_string($connect, $input['niveau_de_menance_residuelle']);
+$id_scenario_strategique = mysqli_real_escape_string($connect, $input['id_scenario_strategique']);
 
 $results["error"] = false;
 $results["message"] = [];
@@ -30,13 +27,9 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
     $query = "
     UPDATE chemin_d_attaque_strategique 
     SET 
-    chemin_d_attaque_strategique = '" . $chemin_d_attaque_strategique . "',
-    dependance_residuelle = '" . $dependance_residuelle . "',
-    penetration_residuelle = '" . $penetration_residuelle . "',
-    maturite_residuelle = '" . $maturite_residuelle . "',
-    confiance_residuelle = '" . $confiance_residuelle . "',
-    niveau_de_menance_residuelle = '" . $niveau_de_menance_residuelle . "'
+    chemin_d_attaque_strategique = '" . $chemin_d_attaque_strategique . "'
     WHERE id_chemin_d_attaque_strategique = '" . $input["id_chemin_d_attaque_strategique"] . "'
+    AND id_scenario_strategique = '" . $input["id_scenario_strategique"] . "'
     ";
     echo $query;
 

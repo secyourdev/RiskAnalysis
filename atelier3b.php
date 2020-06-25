@@ -534,9 +534,9 @@
                         <tr>
                           <th>ID</th>
                           <th>nom_scenario_strategique</th>
+                          <th>id_source_de_risque</th>
                           <th>id_evenement_redoute</th>
                           <th>id_partie_prenante</th>
-                          <th>id_source_de_risque</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -546,9 +546,9 @@
                         <tr>
                         <td>' . $row["id_scenario_strategique"] . '</td>
                         <td>' . $row["nom_scenario_strategique"] . '</td>
+                        <td>' . $row["id_source_de_risque"] . '</td>
                         <td>' . $row["id_evenement_redoute"] . '</td>
                         <td>' . $row["id_partie_prenante"] . '</td>
-                        <td>' . $row["id_source_de_risque"] . '</td>
                         </tr>
                         ';
                         }
@@ -558,7 +558,7 @@
                   </div>
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_chemin_attaque">Ajouter une nouvelle ligne</button>
+                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_scenario_strategique">Ajouter une nouvelle ligne</button>
                   </div>
                 </div>
               </div>
@@ -583,11 +583,6 @@
                           <th>ID</th>
                           <th>id_risque</th>
                           <th>chemin_d_attaque_strategique</th>
-                          <th>dependance_residuelle</th>
-                          <th>penetration_residuelle</th>
-                          <th>maturite_residuelle</th>
-                          <th>confiance_residuelle</th>
-                          <th>niveau_de_menance_residuelle</th>
                           <th>id_scenario_strategique</th>
                         </tr>
                       </thead>
@@ -599,11 +594,6 @@
                         <td>' . $row["id_chemin_d_attaque_strategique"] . '</td>
                         <td>' . $row["id_risque"] . '</td>
                         <td>' . $row["chemin_d_attaque_strategique"] . '</td>
-                        <td>' . $row["dependance_residuelle"] . '</td>
-                        <td>' . $row["penetration_residuelle"] . '</td>
-                        <td>' . $row["maturite_residuelle"] . '</td>
-                        <td>' . $row["confiance_residuelle"] . '</td>
-                        <td>' . $row["niveau_de_menance_residuelle"] . '</td>
                         <td>' . $row["id_scenario_strategique"] . '</td>
                         </tr>
                         ';
@@ -650,6 +640,87 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
+
+  <!-- -------------------------------------------------------------------------------------------------------------- 
+----------------------------------------- modal ajout de ligne ----------------------------------------------------
+--------------------------------------------------------------------------------------------------------------- -->
+  <div class="modal fade" id="ajout_ligne_scenario_strategique" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ajout d'un scénario stratégique</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body perso_modal_body">
+          <form method="post" action="content/php/atelier3b/ajout_scenario.php" class="user" id="form_scenario_strategique">
+            <fieldset>
+
+              <div class=" form-group col-12">
+                <input type="search" class="perso_form shadow-none form-control form-control-user" name="nom_scenario_strategique" id="nom_scenario_strategique" placeholder="Nom du scénario stratégique" required>
+              </div>
+
+              <div class="form-group col-12">
+                <label for="Select_source_de_risque">ID de la source de risque</label>
+                <select class="form-control" name="id_source_de_risque" id="Select_source_de_risque">
+                  <option value="" selected>...</option>
+                  <?php
+                  while ($row = mysqli_fetch_array($result_id_source_de_risque)) //selection.php
+                  {
+                    echo '
+                        <option id="id_source_de_risque" value="' . $row["id_source_de_risque"] . '">' . $row["description_source_de_risque"] . ' | ' . $row["objectif_vise"] . '</option>
+                        ';
+                  }
+                  ?>
+                </select>
+              </div>
+
+              <div class="form-group col-12">
+                <label for="Select_evenement_redoute">ID événement redouté</label>
+                <select class="form-control" name="id_evenement_redoute" id="Select_evenement_redoute">
+                  <option value="" selected>...</option>
+                  <?php
+                  while ($row = mysqli_fetch_array($result_id_evenement_redoute)) //selection.php
+                  {
+                    echo '
+                        <option id="id_evenement_redoute" value="' . $row["id_evenement_redoute"] . '">' . $row["nom_evenement_redoute"] . '</option>
+                        ';
+                  }
+                  ?>
+                </select>
+              </div>
+
+              <div class="form-group col-12">
+                <label for="Select_partie_prenante">ID de la partie prenante</label>
+                <select class="form-control" name="id_partie_prenante" id="Select_partie_prenante">
+                  <option value="" selected>...</option>
+                  <?php
+                  while ($row = mysqli_fetch_array($result_id_partie_prenante)) //selection.php
+                  {
+                    echo '
+                        <option id="id_partie_prenante" value="' . $row["id_partie_prenante"] . '">' . $row["nom_partie_prenante"] . '</option>
+                        ';
+                  }
+                  ?>
+                </select>
+              </div>
+
+
+              <!-- bouton Ajouter -->
+              <div class="modal-footer perso_middle_modal_footer">
+                <input type="submit" name="validerscenario" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
   <!-- -------------------------------------------------------------------------------------------------------------- 
 ----------------------------------------- modal ajout de ligne ----------------------------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
@@ -663,50 +734,31 @@
           </button>
         </div>
         <div class="modal-body perso_modal_body">
-          <form method="post" action="content/php/atelier3b/ajout.php" class="user" id="formecartPop">
+          <form method="post" action="content/php/atelier3b/ajout_chemin.php" class="user" id="form_chemin_attaque">
             <fieldset>
 
               <div class=" form-group col-12">
-                <input type="search" class="perso_form shadow-none form-control form-control-user" name="nom_scenario_strategique" id="Nom du scénario stratégique" placeholder="Nom du scénario stratégique" required>
-              </div>
-
-              <div class="row">
-
-                <div class="form-group col-6">
-                  <label for="SelectSR">Source de risque</label>
-                  <select class="form-control" name="id_risque" id="SelectSR">
-                    <option value="" selected>...</option>
-                    <?php
-                    while ($row = mysqli_fetch_array($result_id_risque)) //selection.php
-                    {
-                      echo '
-                        <option id="risque" value="' . $row["id_risque"] . '">' . $row["id_risque"] . '</option>
-                        ';
-                    }
-                    ?>
-                  </select>
-                </div>
-
-                <div class="form-group col-6">
-                  <label for="SelectER">Événement redouté</label>
-                  <select class="form-control" name="nom_evenement_redoute" id="SelectER">
-                    <option value="" selected>...</option>
-                    <?php
-                    while ($row = mysqli_fetch_array($result_nom_evenement_redoute)) //selection.php
-                    {
-                      echo '
-                        <option id="nom_evenement_redoute" value="' . $row["nom_evenement_redoute"] . '">' . $row["nom_evenement_redoute"] . '</option>
-                        ';
-                    }
-                    ?>
-                  </select>
-                </div>
-
+                <input type="search" class="perso_form shadow-none form-control form-control-user" name="id_risque" id="id_risque" placeholder="ID du risque" required>
               </div>
 
               <div class="form-group col-12">
                 <label for="Chemin d'attaque stratégique">Chemin d'attaque stratégique</label>
-                <textarea class="form-control perso_text_area" name="chemin_d_attaque_strategique" id="Chemin d'attaque stratégique" rows="5"></textarea>
+                <textarea class="form-control perso_text_area" name="chemin_d_attaque_strategique" id="chemin_d_attaque_strategique" rows="5"></textarea>
+              </div>
+
+              <div class="form-group col-12">
+                <label for="Select_scenario_strategique">ID scénario stratégique</label>
+                <select class="form-control" name="id_scenario_strategique" id="Select_scenario_strategique">
+                  <option value="" selected>...</option>
+                  <?php
+                  while ($row = mysqli_fetch_array($result_id_scenario_strategique)) //selection.php
+                  {
+                    echo '
+                        <option id="id_scenario_strategiqueid_scenario_strategique" value="' . $row["id_scenario_strategique"] . '">' . $row["nom_scenario_strategique"] . '</option>
+                        ';
+                  }
+                  ?>
+                </select>
               </div>
 
               <!-- bouton Ajouter -->

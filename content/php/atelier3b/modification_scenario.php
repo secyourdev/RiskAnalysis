@@ -6,9 +6,6 @@ $input = filter_input_array(INPUT_POST);
 
 
 $nom_scenario_strategique = mysqli_real_escape_string($connect, $input['nom_scenario_strategique']);
-$id_evenement_redoute = mysqli_real_escape_string($connect, $input['id_evenement_redoute']);
-$id_partie_prenante = mysqli_real_escape_string($connect, $input['id_partie_prenante']);
-$id_source_de_risque = mysqli_real_escape_string($connect, $input['id_source_de_risque']);
 
 $results["error"] = false;
 $results["message"] = [];
@@ -29,11 +26,11 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
     $query = "
     UPDATE scenario_strategique 
     SET 
-    nom_scenario_strategique = '" . $nom_scenario_strategique . "',
-    id_evenement_redoute = '" . $id_evenement_redoute . "',
-    id_partie_prenante = '" . $id_partie_prenante . "',
-    id_source_de_risque = '" . $id_source_de_risque . "'
+    nom_scenario_strategique = '" . $nom_scenario_strategique . "'
     WHERE id_scenario_strategique = '" . $input["id_scenario_strategique"] . "'
+    AND id_source_de_risque = '" . $input['id_source_de_risque'] . "'
+    AND id_evenement_redoute = '" . $input['id_evenement_redoute'] . "'
+    AND id_partie_prenante = '" . $input['id_partie_prenante'] . "'
     ";
     echo $query;
 
