@@ -6,27 +6,21 @@ var j=0;
 
 $(document).ready(function () {
     $('#editable_table').Tabledit({
-        url: 'content/php/atelier1c/modification.php',
-        sortable: true,
+        url: 'content/php/atelier2a/modification.php',
         columns: {
-            identifier: [0, 'id_evenement_redoute'],
+            identifier: [0, 'id_source_de_risque'],
             editable: [
-                [2, 'nom_evenement_redoute'],
-                [3, 'description_evenement_redoute'],
-                [4, 'impact'], 
-                [9, 'niveau_de_gravite']
+                [1, 'type_d_attaquant_source_de_risque'],
+                [2, 'profil_de_l_attaquant_source_de_risque'],
+                [3, 'description_source_de_risque'], 
+                [4, 'objectif_vise'],
+                [5, 'description_objectif_vise']
             ],
-            checkboxeditable: [
-               [5, 'confidentialite'],
-               [6, 'integrite'],
-               [7, 'disponibilite'],
-               [8, 'tracabilite']
-           ]
         },
         restoreButton: false,
         onSuccess: function (data, textStatus, jqXHR) {
             if (data.action == 'delete') {
-                $('#' + data.id_evenement_redoutes).remove();
+                $('#' + data.id_source_de_risque).remove();
             }
         }
     });
@@ -35,13 +29,13 @@ $(document).ready(function () {
 
 /*--------------------------- SORT & FILTER TABLES --------------------------*/
 setSortTable('editable_table');
-OURJQUERYFN.setFilterTable("#rechercher_evenement_redoute","#editable_table tbody tr")
+OURJQUERYFN.setFilterTable("#rechercher_srov","#editable_table tbody tr")
 
 
 /*------------------ AJOUT DE LA VERIFICATION DES TABLEAUX ------------------*/
 sleep(100).then(() => {
     for(let i=0;i<editable_table.rows.length-1;i++){
         j=i+1;
-        button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table'+','+'4'+')')
+        button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table'+','+'6'+')')
     }
 });

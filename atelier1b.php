@@ -674,7 +674,7 @@
             <fieldset>
 
             <div class="form-group">
-                <label for="SelectNaturePop">Nature</label>
+                <label for="SelectNaturePop">Mission</label>
                 <select class="form-control" name="nommission" id="SelectMission">
                   <option value="" selected>...</option>
                   <?php
@@ -719,13 +719,7 @@
               <div class="form-group">
                 <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="posteresponsablevm" name="posteresponsablevm"
                   placeholder="Poste" required>
-                <datalist id="PostesValeurPop">
-                  <option value="Internet Explorer">
-                  <option value="Firefox">
-                  <option value="Chrome">
-                  <option value="Opera">
-                  <option value="Safari">
-                </datalist>
+                
               </div>
               <!-- bouton Ajouter -->
               <div class="modal-footer perso_middle_modal_footer">
@@ -794,13 +788,6 @@
               <div class="form-group">
                 <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="PostesBienPop" name="posteresponsablebs"
                   placeholder="Poste" required>
-                <datalist id="PostesBienPop">
-                  <option value="Internet Explorer">
-                  <option value="Firefox">
-                  <option value="Chrome">
-                  <option value="Opera">
-                  <option value="Safari">
-                </datalist>
               </div>
               <!-- bouton Ajouter -->
               <div class="modal-footer perso_middle_modal_footer">

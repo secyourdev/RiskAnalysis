@@ -1,11 +1,11 @@
 <?php
-header('Location: ../../../atelier-1c');
+// header('Location: ../../../atelier-1c');
 
 
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v6;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v9;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -17,10 +17,10 @@ try {
 $results["error"] = false;
 $results["message"] = [];
 
-$nom_evenement_redoutes = $_POST['nom_evenement_redoutes'];
+$nom_evenement_redoutes = $_POST['nom_evenement_redoute'];
 $nom_valeur_metier = $_POST['nom_valeur_metier'];
-$nom_evenement_redoutes = $_POST['nom_evenement_redoutes'];
-$description_evenement_redoutes = $_POST['description_evenement_redoutes'];
+$nom_evenement_redoutes = $_POST['nom_evenement_redoute'];
+$description_evenement_redoutes = $_POST['description_evenement_redoute'];
 $impact = $_POST['impact'];
 $confidentialite = 0;
 $integrite = 0;
@@ -85,7 +85,7 @@ if (IsChecked('formcheck', '4')) {
 
 
 $recupere = $bdd->prepare("SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = ?");
-$insere = $bdd->prepare('INSERT INTO `evenement_redoutes`(`id_evenement_redoutes`, `nom_evenement_redoutes`, `description_evenement_redoutes`, `confidentialite`, `integrite`, `disponibilite`, `tracabilite`, `impact`, `niveau_de_gravite`, `id_valeur_metier`, `id_atelier`) VALUES (?,?,?,?,?,?,?,?,?,?,?)');
+$insere = $bdd->prepare('INSERT INTO `evenement_redoute`(`id_evenement_redoute`, `nom_evenement_redoute`, `description_evenement_redoute`, `confidentialite`, `integrite`, `disponibilite`, `tracabilite`, `impact`, `niveau_de_gravite`, `id_valeur_metier`, `id_atelier`) VALUES (?,?,?,?,?,?,?,?,?,?,?)');
 
 
 /* // Verification du nom_valeur_metier
@@ -100,7 +100,7 @@ if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_valeur_metier
 // Verification du nom_evenement_redoutes
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_evenement_redoutes)) {
   $results["error"] = true;
-  $results["message"]["nom_evenement_redoutes"] = "nom_evenement_redoutes invalide";
+  $results["message"]["nom_evenement_redoute"] = "nom_evenement_redoute invalide";
 ?>
   <strong style="color:#FF6565;">nom_evenement_redoutes invalide </br></strong>
 <?php
@@ -109,7 +109,7 @@ if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_evenement_red
 // Verification du description_evenement_redoutes
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_evenement_redoutes)) {
   $results["error"] = true;
-  $results["message"]["description_evenement_redoutes"] = "description_evenement_redoutes invalide";
+  $results["message"]["description_evenement_redoute"] = "description_evenement_redoute invalide";
 ?>
   <strong style="color:#FF6565;">description_evenement_redoutes invalide </br></strong>
 <?php

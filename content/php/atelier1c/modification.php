@@ -1,11 +1,11 @@
 <?php
 //action.php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v6");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v9");
 
 $input = filter_input_array(INPUT_POST);
 
-$nom_evenement_redoutes = mysqli_real_escape_string($connect, $input['nom_evenement_redoutes']);
-$description_evenement_redoutes = mysqli_real_escape_string($connect, $input['description_evenement_redoutes']);
+$nom_evenement_redoutes = mysqli_real_escape_string($connect, $input['nom_evenement_redoute']);
+$description_evenement_redoutes = mysqli_real_escape_string($connect, $input['description_evenement_redoute']);
 $impact = mysqli_real_escape_string($connect, $input['impact']);
 $niveau_de_gravite = mysqli_real_escape_string($connect, $input['niveau_de_gravite']);
 
@@ -47,7 +47,7 @@ if (in_array('a3', $cleanArray)) {
 // Verification du nom_evenement_redoutes
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_evenement_redoutes)) {
     $results["error"] = true;
-    $results["message"]["nom_evenement_redoutes"] = "Nom de l'évenement redouté invalide";
+    $results["message"]["nom_evenement_redoute"] = "Nom de l'évenement redouté invalide";
     ?>
     <strong style="color:#FF6565;">nom_evenement_redoutes invalide </br></strong>
     <?php
@@ -56,7 +56,7 @@ if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_evenement_red
 // Verification du description_evenement_redoutes
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $description_evenement_redoutes)) {
     $results["error"] = true;
-    $results["message"]["description_evenement_redoutes"] = "Description de l'événement redouté invalide";
+    $results["message"]["description_evenement_redoute"] = "Description de l'événement redouté invalide";
     ?>
     <strong style="color:#FF6565;">description_evenement_redoutes invalide </br></strong>
     <?php
@@ -81,25 +81,25 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/", $niveau_de_grav
 
 if ($input["action"] === 'edit' && $results["error"] === false) {
     $query = "
-    UPDATE evenement_redoutes 
+    UPDATE evenement_redoute 
     SET 
-    nom_evenement_redoutes = '" . $nom_evenement_redoutes . "',
-    description_evenement_redoutes = '" . $description_evenement_redoutes . "',
+    nom_evenement_redoute = '" . $nom_evenement_redoutes . "',
+    description_evenement_redoute = '" . $description_evenement_redoutes . "',
     impact = '" . $impact . "',
     confidentialite = '" . $confidentialite . "',
     integrite = '" . $integrite . "',
     disponibilite = '" . $disponibilite . "',
     tracabilite = '" . $tracabilite . "',
     niveau_de_gravite = '" . $niveau_de_gravite . "'
-    WHERE id_evenement_redoutes = '" . $input["id_evenement_redoutes"] . "'
+    WHERE id_evenement_redoute = '" . $input["id_evenement_redoute"] . "'
     ";
 
     mysqli_query($connect, $query);
 }
 if ($input["action"] === 'delete') {
     $query = "
-    DELETE FROM evenement_redoutes 
-    WHERE id_evenement_redoutes = '".$input["id_evenement_redoutes"]."'
+    DELETE FROM evenement_redoute 
+    WHERE id_evenement_redoute = '".$input["id_evenement_redoute"]."'
     ";
     mysqli_query($connect, $query);
 }

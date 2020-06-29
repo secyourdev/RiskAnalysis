@@ -468,10 +468,10 @@
                         while ($row = mysqli_fetch_array($result)) {
                           echo '
                         <tr>
-                        <td>' . $row["id_evenement_redoutes"] . '</td>
+                        <td>' . $row["id_evenement_redoute"] . '</td>
                         <td>' . $row["nom_valeur_metier"] . '</td>
-                        <td>' . $row["nom_evenement_redoutes"] . '</td>
-                        <td>' . $row["description_evenement_redoutes"] . '</td>
+                        <td>' . $row["nom_evenement_redoute"] . '</td>
+                        <td>' . $row["description_evenement_redoute"] . '</td>
                         <td>' . $row["impact"] . '</td>
                         <td>' . $row["confidentialite"] . '</td>
                         <td>' . $row["integrite"] . '</td>
@@ -538,7 +538,7 @@
                 <div class="row">
                   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="form-group">
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_evenement_redoutes" id="InputEvenementRedoute" placeholder="Dénomination de l'événement redouté" required>
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_evenement_redoute" id="InputEvenementRedoute" placeholder="Dénomination de l'événement redouté" required>
                     </div>
 
                     <div class="form-group">

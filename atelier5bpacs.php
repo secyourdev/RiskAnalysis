@@ -1,4 +1,4 @@
-<?php include("content/php/atelier4b/selection.php");?>
+<?php include("content/php/atelier5bpacs/selection.php");?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -8,7 +8,7 @@
   <meta name="description" content="RiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>RiskManager | Atelier 4.b</title>
+  <title>RiskManager | Atelier 5.b</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -323,7 +323,7 @@
 
           <div id="top_bar_1" class="top_bar_name_1">Fabrication de vacccin</div>
           <div id="top_bar_2" class="top_bar_name_2">Atelier 4</div>
-          <div id="top_bar_3" class="top_bar_name_3">Activité 4.b - Évaluer la vraisemblance des scénarios opérationnels</div>
+          <div id="top_bar_3" class="top_bar_name_3">Activité 4.a - Élaborer les scénarios opérationnels</div>
           
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -377,8 +377,9 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <p>Le but de l'atelier 4 est de construire des scénarios techniques reprenant les modes opératoires susceptibles d'être utilisés par les sources de risque pour réaliser les scénarios stratégiues.
-                    Cet atelier adopte ue démarche similaire à celle de l'atelier précédent mais se concentre sur les biens supports critiques. Vous évaluez ensuite le niveau de vraisemblance des scénarios opérationnels obtenus.
+                  <p>Le but de cet atelier est de réaliser une synthèse des scéarios de risque identifiés et de définir une stratégie de traitement du risque. 
+                      Cette stratégie aboutit à la définition de mesures de sécurité, recensées dans un plan d'amélioration continue de la sécurité (PACS).
+                      Les risques résiduels sont ensuite identifiés ainsi que le cadre de suivi de ces risques.
                   </p>
                   <!--text-->
                 </div>
@@ -387,13 +388,13 @@
           </div>
 
           <div class="row">
+
             <!-- Area Card -->
             <div class="col-xl col-lg">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Évaluation de la vraisemblance</h6>
-          
+                  <h6 class="m-0">Plan d'amélioration continue de la sécurité</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -403,33 +404,45 @@
                     <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th id="id_scenario_ope">ID scénario operationnel</th>
-                          <th id="numero_risque">Numéro du risque</th>
-                          <th id="chemin_attaque_strategique">Chemin d'attaque stratégique</th>
-                          <th id="scenario_operationnel">Scénario opérationnel</th>
-                          <th id="vraisemblance">Vraisemblance</th>
+                          <th id="id_traitement_de_securite">ID traitement de sécurité</th>
+                          <th id="principe">Principe de sécurité</th>
+                          <th id="scenario_risques_associes">Scénario des risques associés</th>
+                          <th id="responsable">Responsable</th>
+                          <th id="freins_et_difficulte">Frein et difficultés de mise en oeuvre</th>
+                          <th id="cout">Coût</th>
+                          <th id="echeance">Échéance</th>
+                          <th id="Statut">Statut</th>
                           
                         </tr>
                       </thead>
                         
                       <tbody>
                       <?php
-                      while($row = mysqli_fetch_array($result1))
+                      while($row = mysqli_fetch_array($result))
                       {
                         echo '
                         <tr>
-                        <td>'.$row["id_scenario_strategique"].'</td>
-                        <td>'.$row["id_risque"].'</td>
-                        <td>'.$row["chemin_d_attaque_strategique"].'</td>
-                        <td>'.$row["description_scenario_operationnel"].'</td>
-                        <td>'.$row["vraisemblance"].'</td>
+                        <td>'.$row["id_traitement_de_securite"].'</td>
+                        <td>'.$row["principe_de_securite"].'</td>
+                        <td></td>
+                        <td></td>
+                        <td>'.$row["difficulte_traitement_de_securite"].'</td>
+                        <td>'.$row["cout_traitement_de_securite"].'</td>
+                        <td>'.$row["date_traitement_de_securite"].'</td>
+                        <td>'.$row["statut"].'</td>
                         </tr>
                         ';
                       }
                       ?>
                       </tbody>
                     </table>
+                  </div>    
+                  <!-- bouton Ajouter une nouvelle ligne -->
+                  <div class="text-center">
+                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_pacs">Ajouter une nouvelle ligne</button>
                   </div> 
+
+
                 </div>
               </div>
             </div>
@@ -462,6 +475,95 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
+<!-- -------------------------------------------------------------------------------------------------------------- 
+----------------------------------------- modal ajout de ligne ----------------------------------------------------
+--------------------------------------------------------------------------------------------------------------- -->
+<div class="modal fade" id="ajout_ligne_pacs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Ajout d'une partie prenante</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body perso_modal_body">
+      <form method="post" action="content/php/atelier5bpacs/ajout.php" class="user" id="formpacs">
+        <fieldset>
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                  <label for="SelectPrincipe">Type</label>
+                  <select class="form-control" name="principe_de_securite" id="SelectPrincipe">
+                  <option value="" selected>...</option>
+                  <option value="Gouvernance">Gouvernance</option>
+                  <option value="Protection">Protection</option>
+                  <option value="Défense">Défense</option>
+                  <option value="résilience">résilience</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                  <label for="Selectscenar">Type</label>
+                  <select class="form-control" name="scenario_risques_associes" id="Selectscenar">
+                  <option value="" selected>...</option>
+                  <option value="Scenar1">Scenar1</option>
+                  <option value="Scenar2">Scenar2</option>
+                  <option value="Scenar3">Scenar3</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                  <label for="Selectresponsable">Type</label>
+                  <select class="form-control" name="responsable" id="Selectresponsable">
+                  <option value="" selected>...</option>
+                  <option value="Responsable1">Responsable1</option>
+                  <option value="Responsable2">Responsable2</option>
+                  <option value="Responsable3">Responsable3</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                  <label for="Frein et difficulté">Frein et difficulté</label>
+                  <textarea name="difficulte_traitement_de_securite" class="form-control perso_text_area" id="Frein et et difficulté" rows="5"></textarea>
+              </div>
+              <div class="form-group">
+                  <label for="SelectCout">Type</label>
+                  <select class="form-control" name="cout_traitement_de_securite" id="SelectCout">
+                  <option value="" selected>...</option>
+                  <option value="+">+</option>
+                  <option value="++">++</option>
+                  <option value="+++">+++</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                <label for="Échéance">Échéance</label><br>
+                <input type="date" name="date_traitement_de_securite" id="Échéance">
+              </div>
+
+
+              <div class="form-group">
+                  <label for="SelectStatut">Statut</label>
+                  <select class="form-control" name="statut" id="SelectStatut">
+                  <option value="" selected>...</option>
+                  <option value="A lancer">A lancer</option>
+                  <option value="En cours">En cours</option>
+                  <option value="Terminé">Terminé</option>
+                  </select>
+              </div>
+              
+              
+            </div>
+          </div>
+          <!-- bouton Ajouter -->
+          <div class="modal-footer perso_middle_modal_footer">
+            <input type="submit" name="validerpacs" value="Ajouter" class="btn perso_btn shadow-none"></input>
+          </div>
+        </fieldset>
+      </form>
+     
+    
+    </div>
+</div>
+</div>
 
 
   <!-- Logout Modal-->
@@ -498,8 +600,7 @@
   <script src="content/js/modules/side_bar.js"></script>
   <script src="content/js/modules/realtime.js"></script>
   <script src="content/js/modules/set_filter_sort_table.js"></script>
-  <script src="content/js/atelier/atelier4b.js"></script>
+  <script src="content/js/atelier/atelier5bpacs.js"></script>
   <script src="content/js/modules/sort_table.js"></script>
  </body>
-
 </html>
