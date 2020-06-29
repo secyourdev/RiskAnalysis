@@ -108,21 +108,6 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/", $faits_armes)) 
 }
 
 if ($input["action"] === 'edit' && $results["error"] === false) {
-
-    if ($pertinence === "Auto"){
-        if (($ressources === 1 && $motivation ===1) || ($ressources === 1 && $motivation ===2) || ($ressources === 2 && $motivation ===1)) {
-            $pertinence = "Faible";
-            echo "Faible";
-        }
-        elseif (($ressources === 3 && $motivation ===1) || ($ressources === 2 && $motivation ===2) || ($ressources === 1 && $motivation ===3)) {
-            $pertinence = "Moyen";
-            echo "Moyen";
-        }
-        else {
-            $pertinence = "Elevé";
-            echo "Elevé";
-        }
-    }
     
     $query = "
     UPDATE SROV 
@@ -142,7 +127,6 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
     choix_source_de_risque = '".$choix_sr."'
     WHERE id_source_de_risque = '".$input["id_source_de_risque"]."'
     ";
-    echo $query;
     mysqli_query($connect, $query);
 }
 if ($input["action"] === 'delete') {

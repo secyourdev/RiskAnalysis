@@ -393,13 +393,12 @@
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0">Liste des scénarios stratégiques établis lors de l'atelier 3</h6>
-
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <!--text-->
                   <div class="table-responsive">
-                  <input type="text" class="rechercher_input" id="rechercher_srov" placeholder="Rechercher">
+                  <input type="text" class="rechercher_input" id="rechercher_chemin" placeholder="Rechercher">
                     <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
@@ -423,7 +422,7 @@
                         <tr>
                         <td>'.$row["id_scenario_strategique"].'</td>
                         <td>'.$row["nom_scenario_strategique"].'</td>
-                        <td>'.$row["descrition_source_de_risque"].'</td>
+                        <td>'.$row["description_source_de_risque"].'</td>
                         <td>'.$row["objectif_vise"].'</td>
                         <td>'.$row["nom_evenement_redoute"].'</td>
                         <td>'.$row["id_risque"].'</td>
@@ -435,7 +434,7 @@
                       ?>
                       </tbody>
                     </table>
-                </div>
+                  </div>
     
 
                 </div>   
@@ -443,8 +442,8 @@
                 </div>
               </div>
             
-            <!-- Area Card -->
-            <div class="col-xl col-lg">
+              <!-- Area Card -->
+              <div class="col-xl-12 col-lg-12">
                 <div class="card shadow mb-4">
                   <!-- Card Header - Dropdown -->
                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -455,103 +454,112 @@
                   <div class="card-body">
                     <!--text-->
                     <div class="table-responsive">
-                        <table class="table table-bordered perso_border" id="dataTable2" width="100%" cellspacing="0">
-                          <thead>
-                            <tr>
-                              <th>N° Risque</th>
-                              <th>Chemin d'attaque stratégique</th>
-                              <th>Scénario opérationnel</th>
-                              <th>Mode opératoire</th>
-                              <th class="perso_border"></th>
-                              
-                            </tr>
-                          </thead>
+                      <input type="text" class="rechercher_input" id="rechercher_ope" placeholder="Rechercher">
+                      <table id="tableau_ope" class="table table-bordered table-striped">
+                        <thead>
+                          <tr>
+                            <th id="id_chemin_attaque_strategique">ID chemin d'attaque strategique</th>
+                            <th id="numero_risque">N° Risque</th>
+                            <th id="chemin_attaque_strategique">Chemin d'attaque stratégique</th>
+                            <th id="scenario_operationnel">Scénario opérationnel</th>
                             
-                            <tbody>
-                                <tr>
-                                    <td>R1</td>
-                                    <td>Portant directement sur le système d'information de la R&D</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="perso_border">
-                                      <div class="modification">
-                                        <i data-toggle="modal" data-target="#ajout_ligne_scénario_opérationnel" class="crayon fas fa-pen"></i>
-                                        <i class="poubelle fas fa-trash-alt"></i>
-                                      </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>R2</td>
-                                    <td>Sur le système d'information du laboratoire (P3) qui détient une partie des travaux</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="perso_border">
-                                      <div class="modification">
-                                        <i data-toggle="modal" data-target="#ajout_ligne_scénario_opérationnel" class="crayon fas fa-pen"></i>
-                                        <i class="poubelle fas fa-trash-alt"></i>
-                                      </div>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td>R3</td>
-                                    <td>En passant par le prestataire informatique F3</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="perso_border">
-                                      <div class="modification">
-                                        <i data-toggle="modal" data-target="#ajout_ligne_scénario_opérationnel" class="crayon fas fa-pen"></i>
-                                        <i class="poubelle fas fa-trash-alt"></i>
-                                      </div>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td>R4</td>
-                                    <td>Portant directement sur le système d'information de la R&D</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="perso_border">
-                                      <div class="modification">
-                                        <i data-toggle="modal" data-target="#ajout_ligne_scénario_opérationnel" class="crayon fas fa-pen"></i>
-                                        <i class="poubelle fas fa-trash-alt"></i>
-                                      </div>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td>R5</td>
-                                    <td>Sur le système d'information du laboratoire (P3) qui détient une partie des travaux</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="perso_border">
-                                      <div class="modification">
-                                        <i data-toggle="modal" data-target="#ajout_ligne_scénario_opérationnel" class="crayon fas fa-pen"></i>
-                                        <i class="poubelle fas fa-trash-alt"></i>
-                                      </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>R6</td>
-                                    <td>En passant par le prestataire informatique F3</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="perso_border">
-                                      <div class="modification">
-                                        <i data-toggle="modal" data-target="#ajout_ligne_scénario_opérationnel" class="crayon fas fa-pen"></i>
-                                        <i class="poubelle fas fa-trash-alt"></i>
-                                      </div>
-                                    </td> 
-                                </tr>
-                                
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- bouton Ajouter une nouvelle ligne -->
-                    <div class="text-center">
-                      <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_scénario_opérationnel">Ajouter une nouvelle ligne</button>
+                          </tr>
+                        </thead>
+                          
+                          <tbody>
+                          <?php
+                            while($row = mysqli_fetch_array($result2))
+                            {
+                              echo '
+                              <tr>
+                              <td>'.$row["id_scenario_operationnel"].'</td>
+                              <td>'.$row["id_risque"].'</td>
+                              <td>'.$row["chemin_d_attaque_strategique"].'</td>
+                              <td>'.$row["description_scenario_operationnel"].'</td>
+                              </tr>
+                              ';
+                            }
+                          ?>
+                          </tbody>
+                      </table>
                     </div> 
                   </div>
                 </div>
               </div>
+              <!-- Area Card -->
+              <div class="col-xl-12 col-lg-12">
+                <div class="card shadow mb-4">
+                  <!-- Card Header - Dropdown -->
+                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0">Ajouter un mode opératoire</h6>
+                    
+                  </div>
+                  <!-- Card Body -->
+                  <div class="card-body">
+                    <!--text-->
+                    <form method="post" action="content/php/atelier4a/ajout.php" class="user" id="formValeurMetierPop">
+                      <fieldset>
+                        <div class="form-group">
+                          <label for="nomscenar">Choix du scénario opérationnel</label>
+                          <select class="form-control" name="nomscenar" id="nomscenar">
+                            <option value="" selected>...</option>
+                            <?php
+                                while($row = mysqli_fetch_array($result3))
+                                {
+                                  echo '
+                                  <option value="'.$row["description_scenario_operationnel"].'">'.$row["description_scenario_operationnel"].'</option>
+                                  ';
+                                }
+                            ?>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="modeope">Mode opératoire</label>
+                          <textarea class="form-control perso_text_area" name="modeope" id="modeope" rows="3"></textarea>
+                        </div>
+                        
+                        <!-- bouton Ajouter une nouvelle ligne -->
+                        <div class="modal-footer perso_middle_modal_footer">
+                          <input type="submit" name="validerope" value="Ajouter" class="btn perso_btn shadow-none"></input>
+                        </div> 
+                      </fieldset>
+                    </form>
+
+                    <div class="table-responsive">
+                      <input type="text" class="rechercher_input" id="rechercher_mode_ope" placeholder="Rechercher">
+                      <table id="tableau_mode_ope" class="table table-bordered table-striped">
+                        <thead>
+                          <tr>
+                            <th id="id_mode_operatoire">ID scénario opérationnel</th>
+                            <th id="scenario_operationnel">Scénario opérationnel</th>
+                            <th id="mode_operatoire">Mode opératoire</th>
+                            
+                          </tr>
+                        </thead>
+                          
+                          <tbody>
+                          <?php
+                            while($row = mysqli_fetch_array($result4))
+                            {
+                              echo '
+                              <tr>
+                              <td>'.$row["id_mode_operatoire"].'</td>
+                              <td>'.$row["description_scenario_operationnel"].'</td>
+                              <td>'.$row["mode_operatoire"].'</td>
+                              </tr>
+                              ';
+                            }
+                          ?>
+                          </tbody>
+                      </table>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
             </div>
+
 
            
           </div>
@@ -582,98 +590,7 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-<!-- -------------------------------------------------------------------------------------------------------------- 
------------------------------------------ modal ajout de ligne ----------------------------------------------------
---------------------------------------------------------------------------------------------------------------- -->
-<div class="modal fade" id="ajout_ligne_scénario_opérationnel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog modal-lg" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Ajout d'un scénario opérationnel</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body perso_modal_body">
-      <form class="user" id="formopérationnel">
-        <div class="row">
-          <div class="form-group col-12">
-            <div class="form-group">
-              <label for="SelectChemin">Chemin d'attaque stratégique</label>
-              <select class="form-control" id="SelectTypeComptePop">
-                <option value="" selected>...</option>
-                <option value="1">Arrêt de production de l'équipement</option>
-                <option value="2">Vol d'information en passant par le prestataire informatique</option>
-                <option value="3">Vol d'informations sur le système d'information du laboratoire</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <input type="search" class="perso_form shadow-none form-control form-control-user" id="Scénario opérationnel"
-                placeholder="Scénario opérationnel" required>
-            </div>
-            <div class="form-group">
-              <input type="search" class="perso_form shadow-none form-control form-control-user" id="Mode opératoire"
-              placeholder="Mode opératoire" required>
-            </div>
-          </div>
-          
-          <!-- bouton Ajouter un mode opératoire -->
-          <div class="modal-footer perso_middle_modal_footer col-12">
-            <button type="button" class="btn perso_btn_primary shadow-none">Ajouter un mode opératoire</button>
-          </div>
-          <div class="table-responsive col-12">
-            <table class="table table-bordered perso_border" id="dataTable4" width="100%" cellspacing="0">
-              <thead>
-                <tr>
-                  <th>Chemin d'attaques stratégique</th>
-                  <th class="perso_border"></th>
-                  
-                </tr>
-              </thead>
-                
-                <tbody>
-                    <tr>
-                        <td>Portant directement sur le système d'information de la R&D</td>
-                        <td class="perso_border">
-                          <div class="modification">
-                            <i class="poubelle fas fa-trash-alt"></i>
-                          </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>sur le système d'informationtion du laboratoire (P3) qui détient une partie des travaux</td>
-                        <td class="perso_border">
-                          <div class="modification">
-                            <i class="poubelle fas fa-trash-alt"></i>
-                          </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>En passant par le prestataire informatique F3</td>
-                        <td class="perso_border">
-                          <div class="modification">
-                            <i class="poubelle fas fa-trash-alt"></i>
-                          </div>
-                        </td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-        </div>
-  
-        
-        </div>
-      </div>
-      <!-- bouton Ajouter -->
-      <div class="modal-footer perso_middle_modal_footer">
-        <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
-      </div>
-    </form>
 
-    </div>
-</div>
-</div>
 
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

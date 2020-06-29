@@ -490,8 +490,13 @@ aria-hidden="true">
                 <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Profil d'attaquant" name="profil_attaquant" placeholder="Profil d'attaquant" required>
                 <datalist id="Profil d'attaquant">
                   <option value="Etatique">
+                  <option value="Crime organisé">
                   <option value="Terroriste">
+                  <option value="Activiste idéologique">
+                  <option value="Officine spécialisée">
                   <option value="Amateur">
+                  <option value="Vengeur">
+                  <option value="Malveillant pathologique">
                 </datalist>
               </div>
             </div>
@@ -502,10 +507,21 @@ aria-hidden="true">
             </div>
           </div>
           <div class="row">
-            <div class="form-group col-12">
+            <!-- <div class="form-group col-12">
               <input type="search" class="perso_form shadow-none form-control form-control-user" id="objectif_vise" name="objectif_vise"
                 placeholder="Objectif visé" required>
-            </div>
+            </div> -->
+            <div class="form-group form-colonne col-12">
+                <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Objectif visé" name="objectif_vise" placeholder="Objectif visé" required>
+                <datalist id="Objectif visé">
+                  <option value="Espionnage">
+                  <option value="Prépositionnement stratégique">
+                  <option value="Influence">
+                  <option value="Entrave au fonctionnement">
+                  <option value="Lucratif">
+                  <option value="Défi, amusement">
+                </datalist>
+              </div>
 
             <div class="form-group col-12">
               <label for="Description de l'objectif visé">Description de l'objectif visé</label>
