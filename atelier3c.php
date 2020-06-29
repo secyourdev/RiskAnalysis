@@ -521,20 +521,10 @@
                 <!-- Card Body -->
                 <div class="card-body">
 
-                  <form method="post" action="content/php/atelier3c/parser_regles.php" class="user" id="formSoclePop">
-                    <fieldset>
-
-                      <div class="custom-file">
-                        <input type="file" name="json" class="custom-file-input" id="customFile">
-                        <label class="custom-file-label" for="customFile">Choisir un fichier</label>
-                      </div>
-
-                      <!-- bouton Ajouter -->
-                      <div class="modal-footer perso_middle_modal_footer">
-                        <input type="submit" name="validersocle" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
-                      </div>
-
-                    </fieldset>
+                  <form action="content/php/atelier3c/parser_regles.php" method="post" enctype="multipart/form-data">
+                    Select image to upload:
+                    <input type="file" name="fileToUpload" id="fileToUpload">
+                    <input type="submit" value="Upload Image" name="file_submit">
                   </form>
 
                 </div>
