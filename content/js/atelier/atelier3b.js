@@ -60,7 +60,7 @@ $(document).ready(function () {
             identifier: [0, 'id_chemin_d_attaque_strategique'],
             editable: [
                 [2, 'chemin_d_attaque_strategique'],
-                [3, 'id_scenario_strategique'],
+                [3, 'nom_scenario_strategique'],
             ],
             checkboxeditable: []
         },

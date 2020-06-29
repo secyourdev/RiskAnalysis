@@ -1,5 +1,5 @@
 <?php
-header('Location: ../../../atelier-3b');
+// header('Location: ../../../atelier-3b');
 
 
 //Connexion à la base de donnee
@@ -20,14 +20,18 @@ $results["message"] = [];
 
 $id_risque = $_POST['id_risque'];
 $chemin_d_attaque_strategique = $_POST['chemin_d_attaque_strategique'];
-$id_scenario_strategique = $_POST['id_scenario_strategique'];
+$nom_scenario_strategique = $_POST['nom_scenario_strategique'];
+$id_chemin_d_attaque = 4;
+
+
+$recupere = $bdd->prepare("SELECT scenario_strategique.id_scenario_strategique FROM scenario_strategique  WHERE scenario_strategique.nom_scenario_strategique = ?");
 
 $insere = $bdd->prepare(
   'INSERT INTO 
   chemin_d_attaque_strategique 
-  (id_risque,chemin_d_attaque_strategique,dependance_residuelle, penetration_residuelle, maturite_residuelle,confiance_residuelle, niveau_de_menance_residuelle, id_scenario_strategique) 
+  (id_chemin_d_attaque_strategique,id_risque,chemin_d_attaque_strategique,dependance_residuelle, penetration_residuelle, maturite_residuelle,confiance_residuelle, niveau_de_menance_residuelle, id_scenario_strategique) 
   VALUES 
-  ( ?, ?, NULL, NULL, NULL, NULL, NULL, ? )'
+  (?, ?, ?, NULL, NULL, NULL, NULL, NULL, ? )'
 );
 
 
@@ -43,11 +47,14 @@ if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $chemin_d_attaque_
 
 
 if ($results["error"] === false && isset($_POST['validerchemin'])) {
+  $recupere->bindParam(1, $nom_scenario_strategique);
+  $recupere->execute();
+  $id_scenario_strategique = $recupere->fetch();
 
-  $insere->bindParam(1, $id_risque);
-  $insere->bindParam(2, $chemin_d_attaque_strategique);
-  $insere->bindParam(3, $id_scenario_strategique);
-
+  $insere->bindParam(1, $id_chemin_d_attaque);
+  $insere->bindParam(2, $id_risque);
+  $insere->bindParam(3, $chemin_d_attaque_strategique);
+  $insere->bindParam(4, $id_scenario_strategique[0]);
   $insere->execute();
 ?>
   <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>

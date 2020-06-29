@@ -1,3 +1,4 @@
+<?php include("content/php/atelier3c/selection.php"); ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -10,12 +11,16 @@
   <title>RiskManager | Atelier 3.c</title>
 
   <!-- Fonts-->
-  <link href="content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template-->
+  <!-- CSS -->
   <link href="content/css/bootstrap.css" rel="stylesheet">
   <link href="content/css/main.css" rel="stylesheet">
+
+  <!-- JS -->
+  <script src="content/vendor/jquery/jquery.js"></script>
+  <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
 </head>
 
 <body id="page-top">
@@ -26,7 +31,7 @@
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">      
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <!-- Logo -->
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-shield-alt"></i>
@@ -49,16 +54,17 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">Ateliers</div>
-      
+
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier1" aria-expanded="true"
-          aria-controls="Atelier1">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier1" aria-expanded="true" aria-controls="Atelier1">
           <i>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
               <g transform="translate(-1230 -689)">
-                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
-                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-3.432" y="0">1</tspan></text>
+                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                  <tspan x="-3.432" y="0">1</tspan>
+                </text>
               </g>
             </svg>
           </i>
@@ -68,45 +74,53 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="atelier-1a">
               <i>
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
-                <g transform="translate(-124 -292)">
-                  <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                  <text class="number_sub_activity_text" data-name="1.a" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">1.a</tspan></text>
-                </g>
-              </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                  <g transform="translate(-124 -292)">
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="1.a" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">1.a</tspan>
+                    </text>
+                  </g>
+                </svg>
               </i>
               <span id="nom_sous_atelier_1" title="Cadrer l’étude">Cadrer l’étude</span>
             </a>
             <a class="collapse-item" href="atelier-1b">
               <i>
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
-                <g transform="translate(-124 -292)">
-                  <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                  <text class="number_sub_activity_text" data-name="1.b" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">1.b</tspan></text>
-                </g>
-              </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                  <g transform="translate(-124 -292)">
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="1.b" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">1.b</tspan>
+                    </text>
+                  </g>
+                </svg>
               </i>
               <span id="nom_sous_atelier_2" title="Biens primordiaux/support">Biens primordiaux/support</span>
             </a>
             <a class="collapse-item" href="atelier-1c">
               <i>
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
-                <g transform="translate(-124 -292)">
-                  <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                  <text class="number_sub_activity_text" data-name="1.c" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">1.c</tspan></text>
-                </g>
-              </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                  <g transform="translate(-124 -292)">
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="1.c" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">1.c</tspan>
+                    </text>
+                  </g>
+                </svg>
               </i>
               <span id="nom_sous_atelier_3" title="Événements redoutés">Événements redoutés</span>
             </a>
             <a class="collapse-item" href="atelier-1d">
               <i>
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
-                <g transform="translate(-124 -292)">
-                  <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                  <text class="number_sub_activity_text" data-name="1.d" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">1.d</tspan></text>
-                </g>
-              </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                  <g transform="translate(-124 -292)">
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="1.d" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">1.d</tspan>
+                    </text>
+                  </g>
+                </svg>
               </i>
               <span id="nom_sous_atelier_4" title="Le socle de sécurité">Le socle de sécurité</span>
             </a>
@@ -114,13 +128,14 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier2" aria-expanded="true"
-          aria-controls="Atelier2">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier2" aria-expanded="true" aria-controls="Atelier2">
           <i>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
               <g transform="translate(-1230 -689)">
-                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
-                <text class="number_activity_text" data-name="2" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-3.432" y="0">2</tspan></text>
+                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                <text class="number_activity_text" data-name="2" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                  <tspan x="-3.432" y="0">2</tspan>
+                </text>
               </g>
             </svg>
           </i>
@@ -130,23 +145,27 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="atelier-2a">
               <i>
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
-                <g transform="translate(-124 -292)">
-                  <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                  <text class="number_sub_activity_text" data-name="2.a" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">2.a</tspan></text>
-                </g>
-              </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                  <g transform="translate(-124 -292)">
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="2.a" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">2.a</tspan>
+                    </text>
+                  </g>
+                </svg>
               </i>
               <span id="nom_sous_atelier_5" title="Identifier les sources de risques et les objectifs">Identifier les sources de risques et les objectifs</span>
             </a>
             <a class="collapse-item" href="atelier-2b">
               <i>
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
-                <g transform="translate(-124 -292)">
-                  <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                  <text class="number_sub_activity_text" data-name="2.b" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">2.b</tspan></text>
-                </g>
-              </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                  <g transform="translate(-124 -292)">
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="2.b" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">2.b</tspan>
+                    </text>
+                  </g>
+                </svg>
               </i>
               <span id="nom_sous_atelier_6" title="Évaluer les couples sources de risque/objectifs visés">Évaluer les couples sources de risque/objectifs visés</span>
             </a>
@@ -154,13 +173,14 @@
         </div>
       </li>
       <li class="nav-item active">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier3" aria-expanded="true"
-          aria-controls="Atelier3">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier3" aria-expanded="true" aria-controls="Atelier3">
           <i>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
               <g transform="translate(-1230 -689)">
-                <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
-                <text class="number_activity_text" data-name="3" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-3.432" y="0">3</tspan></text>
+                <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                <text class="number_activity_text" data-name="3" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                  <tspan x="-3.432" y="0">3</tspan>
+                </text>
               </g>
             </svg>
           </i>
@@ -168,50 +188,57 @@
         </a>
         <div id="Atelier3" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="atelier-3a">
-                <i>
+            <a class="collapse-item" href="atelier-3a">
+              <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
-                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                    <text class="number_sub_activity_text" data-name="3.a" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">3.a</tspan></text>
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="3.a" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">3.a</tspan>
+                    </text>
                   </g>
                 </svg>
-                </i>
-                <span id="nom_sous_atelier_7" title="Construire la cartographie des menaces numériques de l'écosystème et sélectionner les parties prenantes critiques">Construire la cartographie des menaces numériques de l'écosystème et sélectionner les parties prenantes critiques</span>
-              </a>
-              <a class="collapse-item" href="atelier-3b">
-                <i>
+              </i>
+              <span id="nom_sous_atelier_7" title="Construire la cartographie des menaces numériques de l'écosystème et sélectionner les parties prenantes critiques">Construire la cartographie des menaces numériques de l'écosystème et sélectionner les parties prenantes critiques</span>
+            </a>
+            <a class="collapse-item" href="atelier-3b">
+              <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
-                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                    <text class="number_sub_activity_text" data-name="3.b" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">3.b</tspan></text>
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="3.b" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">3.b</tspan>
+                    </text>
                   </g>
                 </svg>
-                </i>
-                <span id="nom_sous_atelier_8" title="Élaborer des scénarios stratégiques">Élaborer des scénarios stratégiques</span>
-              </a>
-              <a class="collapse-item" href="atelier-3c">
-                <i>
+              </i>
+              <span id="nom_sous_atelier_8" title="Élaborer des scénarios stratégiques">Élaborer des scénarios stratégiques</span>
+            </a>
+            <a class="collapse-item" href="atelier-3c">
+              <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
-                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                    <text class="number_sub_activity_text" data-name="3.c" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">3.c</tspan></text>
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="3.c" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">3.c</tspan>
+                    </text>
                   </g>
                 </svg>
-                </i>
-                <span id="nom_sous_atelier_9" title="Définir des mesures de sécurité sur l’écosystème">Définir des mesures de sécurité sur l’écosystème</span>
-              </a>
+              </i>
+              <span id="nom_sous_atelier_9" title="Définir des mesures de sécurité sur l’écosystème">Définir des mesures de sécurité sur l’écosystème</span>
+            </a>
           </div>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier4" aria-expanded="true"
-          aria-controls="Atelier4">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier4" aria-expanded="true" aria-controls="Atelier4">
           <i>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
               <g transform="translate(-1230 -689)">
-                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
-                <text class="number_activity_text" data-name="4" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-3.432" y="0">4</tspan></text>
+                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                <text class="number_activity_text" data-name="4" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                  <tspan x="-3.432" y="0">4</tspan>
+                </text>
               </g>
             </svg>
           </i>
@@ -219,39 +246,44 @@
         </a>
         <div id="Atelier4" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="atelier-4a">
-                <i>
+            <a class="collapse-item" href="atelier-4a">
+              <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
-                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                    <text class="number_sub_activity_text" data-name="4.a" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">4.a</tspan></text>
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="4.a" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">4.a</tspan>
+                    </text>
                   </g>
                 </svg>
-                </i>
-                <span id="nom_sous_atelier_10" title="Élaborer les scénarios opérationnels">Élaborer les scénarios opérationnels</span>
-              </a>
-              <a class="collapse-item" href="atelier-4b">
-                <i>
+              </i>
+              <span id="nom_sous_atelier_10" title="Élaborer les scénarios opérationnels">Élaborer les scénarios opérationnels</span>
+            </a>
+            <a class="collapse-item" href="atelier-4b">
+              <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
-                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                    <text class="number_sub_activity_text" data-name="4.b" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">4.b</tspan></text>
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="4.b" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">4.b</tspan>
+                    </text>
                   </g>
                 </svg>
-                </i>
-                <span id="nom_sous_atelier_11" title="Évaluer la vraisemblance des scénarios opérationnels">Évaluer la vraisemblance des scénarios opérationnels</span>
-              </a>
+              </i>
+              <span id="nom_sous_atelier_11" title="Évaluer la vraisemblance des scénarios opérationnels">Évaluer la vraisemblance des scénarios opérationnels</span>
+            </a>
           </div>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier5" aria-expanded="true"
-          aria-controls="Atelier5">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier5" aria-expanded="true" aria-controls="Atelier5">
           <i>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
               <g transform="translate(-1230 -689)">
-                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
-                <text class="number_activity_text" data-name="5" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-3.432" y="0">5</tspan></text>
+                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                <text class="number_activity_text" data-name="5" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                  <tspan x="-3.432" y="0">5</tspan>
+                </text>
               </g>
             </svg>
           </i>
@@ -259,39 +291,45 @@
         </a>
         <div id="Atelier5" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="atelier-5a">
-                <i>
+            <a class="collapse-item" href="atelier-5a">
+              <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
-                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                    <text class="number_sub_activity_text" data-name="5.a" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">5.a</tspan></text>
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="5.a" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">5.a</tspan>
+                    </text>
                   </g>
                 </svg>
-                </i>
-                <span id="nom_sous_atelier_12" title="Réaliser une synthèse des scénarios de risque">Réaliser une synthèse des scénarios de risque</span>
-              </a>
-              <a class="collapse-item" href="atelier-5b">
-                <i>
+              </i>
+              <span id="nom_sous_atelier_12" title="Réaliser une synthèse des scénarios de risque">Réaliser une synthèse des scénarios de risque</span>
+            </a>
+            <a class="collapse-item" href="atelier-5b">
+              <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
-                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                    <text class="number_sub_activity_text" data-name="5.b" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">5.b</tspan></text>
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="5.b" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">5.b</tspan>
+                    </text>
                   </g>
                 </svg>
-                </i>
-                <span id="nom_sous_atelier_13" title="Décider de la stratégie de traitement du risque et définir les mesures de sécurité">Décider de la stratégie de traitement du risque et définir les mesures de sécurité</span>
-              </a>
-              <a class="collapse-item" href="atelier-5c">
-                <i>
+              </i>
+              <span id="nom_sous_atelier_13" title="Décider de la stratégie de traitement du risque et définir les mesures de sécurité">Décider de la stratégie de traitement du risque et définir les mesures de sécurité</span>
+            </a>
+            <a class="collapse-item" href="atelier-5c">
+              <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
-                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
-                    <text class="number_sub_activity_text" data-name="5.c" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">5.c</tspan></text>
+                    <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
+                    <text class="number_sub_activity_text" data-name="5.c" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <tspan x="-7.5" y="-1.5">5.c</tspan>
+                    </text>
                   </g>
                 </svg>
-                </i>
-                <span id="nom_sous_atelier_14" title="Évaluer et documenter les risques résiduels">Évaluer et documenter les risques résiduels</span>
-              </a>
+              </i>
+              <span id="nom_sous_atelier_14" title="Évaluer et documenter les risques résiduels">Évaluer et documenter les risques résiduels</span>
+            </a>
           </div>
         </div>
       </li>
@@ -319,15 +357,15 @@
           <div id="top_bar_1" class="top_bar_name_1">Fabrication de vacccin</div>
           <div id="top_bar_2" class="top_bar_name_2">Atelier 3</div>
           <div id="top_bar_3" class="top_bar_name_3">Activité 3.c - Définir des mesures de sécurité sur l’écosystème</div>
-          
+
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
             <!-- Dark Mode toggle switch -->
 
-              <label class="theme-switch" for="checkbox_dark_theme">
-                <input class="perso_switch" type="checkbox" id="checkbox_dark_theme" />
-                <div class="slider round"></div>
-              </label>
+            <label class="theme-switch" for="checkbox_dark_theme">
+              <input class="perso_switch" type="checkbox" id="checkbox_dark_theme" />
+              <div class="slider round"></div>
+            </label>
 
             <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -396,9 +434,11 @@
                 <div class="card-body">
                   <!--text-->
                   <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
+                    <input type="text" class="rechercher_input" id="rechercher_partie_prenante" placeholder="Rechercher">
+                    <table id="editable_table_partie_prenante" class="table table-bordered table-striped">
                       <thead>
                         <tr>
+                          <th>ID</th>
                           <th>Catégorie</th>
                           <th>Partie prenante</th>
                           <th>Type</th>
@@ -409,292 +449,151 @@
                           <th>Niveau de menace</th>
                         </tr>
                       </thead>
-                        
                       <tbody>
+                        <?php
+                        while ($row = mysqli_fetch_array($result)) {
+                          echo '
                         <tr>
-                          <td>Clients</td>
-                          <td>C1 - Établissements de santé</td>
-                          <td>interne</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>0.3</td>
-                            
+                        <td>' . $row["id_partie_prenante"] . '</td>
+                        <td>' . $row["categorie_partie_prenante"] . '</td>
+                        <td>' . $row["nom_partie_prenante"] . '</td>
+                        <td>' . $row["type"] . '</td>
+                        <td>' . $row["dependance_partie_prenante"] . '</td>
+                        <td>' . $row["penetration_partie_prenante"] . '</td>
+                        <td>' . $row["maturite_partie_prenante"] . '</td>
+                        <td>' . $row["confiance_partie_prenante"] . '</td>
+                        <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
                         </tr>
-                        <tr>
-                          <td>Clients</td>
-                          <td>C2 - Pharmacies</td>
-                          <td>Interne</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>2</td>
-                          <td>3</td>
-                          <td>0.2</td>
-                        </tr>
-                        <tr>
-                          <td>Clients</td>
-                          <td>C3 - Dépositaires / Grossistes répartiteurs</td>
-                          <td>Interne</td>
-                          <td>1</td>
-                          <td>2</td>
-                          <td>2</td>
-                          <td>3</td>
-                          <td>0.3</td>
-                        </tr>
-                        <tr>
-                          <td>Partenaires</td>
-                          <td>P1 - Universités</td>
-                          <td>Interne</td>
-                          <td>2</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>2</td>
-                          <td>1</td>
-                        </tr>
-                        <tr>
-                          <td>Partenaires</td>
-                          <td>P2 - Régulateurs</td>
-                          <td>Interne</td>
-                          <td>2</td>
-                          <td>1</td>
-                          <td>2</td>
-                          <td>4</td>
-                          <td>0.3</td>
-                        </tr>
-                        <tr>
-                          <td>Partenaires</td>
-                          <td>P3 - Laboratoires</td>
-                          <td>Interne</td>
-                          <td>3</td>
-                          <td>3</td>
-                          <td>2</td>
-                          <td>1</td>
-                          <td>2.25</td>
-                        </tr>
-                        <tr>
-                          <td>Prestataires</td>
-                          <td>F1 - Fournisseurs industriels chimistes</td>
-                          <td>Interne</td>
-                          <td>4</td>
-                          <td>2</td>
-                          <td>2</td>
-                          <td>3</td>
-                          <td>1.3</td>
-                        </tr>
-                        <tr>
-                          <td>Prestataires</td>
-                          <td>F2 - Fournisseurs de matériel de production</td>
-                          <td>Interne</td>
-                          <td>4</td>
-                          <td>3</td>
-                          <td>2</td>
-                          <td>3</td>
-                          <td>2</td>
-                        </tr>
-                        <tr>
-                          <td>Prestataires</td>
-                          <td>F3 - Prestataire informatique</td>
-                          <td>Interne</td>
-                          <td>3</td>
-                          <td>4</td>
-                          <td>2</td>
-                          <td>2</td>
-                          <td>3</td>
-                        </td>
-                        </tr>
-
+                        ';
+                        }
+                        ?>
                       </tbody>
-                    </table>  
+                    </table>
                   </div>
 
                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0">Liste des scénarios stratégiques</h6>
-  
+
                   </div>
                   <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                              <th>Nom du scénario stratégique</th>
-                              <th>Description source de risque</th>
-                              <th>Objectifs visés</th>
-                              <th>Événements redoutés</th>
-                              <th>N° Risque</th>
-                              <th>Chemin d'attaques stratégiques</th>
-                              <th>Gravité</th>
-                              
-                            </tr>
-                          </thead>
-                            
-                            <tbody>
-                                <tr>
-                                    <td>Vol de travaux par canal d'exfiltration de données</td>
-                                    <td>Al-Qaida</td>
-                                    <td>Voler des informations en espionnant les travaux de R&D en vue d'obtenir un avantage concurrentiel
-                                    </td>
-                                    <td>Fuite des informations d'études et recherches de l'entreprise</td>
-                                    <td>R1</td>
-                                    <td>Portant directement dur le système d'information de la R&D</td>
-                                    <td>3 Grave</td>
-                                </tr>
-                                <tr>
-                                    <td>Vol de travaux par canal d'exfiltration de données</td>
-                                    <td>Al-Qaida</td>
-                                    <td>Voler des informations en espionnant les travaux de R&D en vue d'obtenir un avantage concurrentiel
-                                    </td>
-                                    <td>Fuite des informations d'études et recherches de l'entreprise</td>
-                                    <td>R2</td>
-                                    <td>Sur le système d'information du laboratoire (P3) qui détient une partie des travaux</td>
-                                    <td>3 Grave</td> 
-                                </tr>
-                                <tr>
-                                    <td>Vol de travaux par canal d'exfiltration de données</td>
-                                    <td>Al-Qaida</td>
-                                    <td>Voler des informations en espionnant les travaux de R&D en vue d'obtenir un avantage concurrentiel
-                                    </td>
-                                    <td>Fuite des informations d'études et recherches de l'entreprise</td>
-                                    <td>R3</td>
-                                    <td>En passant par le prestataire informatique F3</td>
-                                    <td>3 Grave</td> 
-                                </tr>
-                                <tr>
-                                    <td>Sabotage de la campagne nationale de vaccination</td>
-                                    <td>DGSE</td>
-                                    <td>Saboter la prochaine campagne nationale de vaccination pour générer
-                                        un choc psychologique sur la population et discréditer les pouvoirs publics
-                                    </td>
-                                    <td>Perte ou desctruction des informations d'études et recherches conduisanr à un fort impact,
-                                        notamment sur les futures autorisations de mises sur le marché de l'entreprise
-                                    </td>
-                                    <td>R4</td>
-                                    <td>Portant directement dur le système d'information de la R&D</td>
-                                    <td>4 critique</td> 
-                                </tr>
-                                <tr>
-                                    <td>Sabotage de la campagne nationale de vaccination</td>
-                                    <td>DGSE</td>
-                                    <td>Saboter la prochaine campagne nationale de vaccination pour générer
-                                        un choc psychologique sur la population et discréditer les pouvoirs publics
-                                    </td>
-                                    <td>Perte ou desctruction des informations d'études et recherches conduisanr à un fort impact,
-                                        notamment sur les futures autorisations de mises sur le marché de l'entreprise
-                                    </td>
-                                    <td>R5</td>
-                                    <td>Portant directement dur le système d'information de la R&D</td>
-                                    <td>4 critique</td> 
-                                </tr>
-                                <tr>
-                                    <td>Sabotage de la campagne nationale de vaccination</td>
-                                    <td>DGSE</td>
-                                    <td>Saboter la prochaine campagne nationale de vaccination pour générer
-                                        un choc psychologique sur la population et discréditer les pouvoirs publics
-                                    </td>
-                                    <td>Perte ou desctruction des informations d'études et recherches conduisanr à un fort impact,
-                                        notamment sur les futures autorisations de mises sur le marché de l'entreprise
-                                    </td>
-                                    <td>R6</td>
-                                    <td>Portant directement dur le système d'information de la R&D</td>
-                                    <td>4 critique</td>
-                                </tr>
-                            </tbody>
-                    </table>  
-                  </div>    
-
-                </div>   
+                    <input type="text" class="rechercher_input" id="rechercher_scenario_strategique" placeholder="Rechercher">
+                    <table id="editable_table_scenario_strategique" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>nom_scenario_strategique</th>
+                          <th>id_source_de_risque</th>
+                          <th>id_evenement_redoute</th>
+                          <th>id_partie_prenante</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                        while ($row = mysqli_fetch_array($result_scenario_strategique)) {
+                          echo '
+                        <tr>
+                        <td>' . $row["id_scenario_strategique"] . '</td>
+                        <td>' . $row["nom_scenario_strategique"] . '</td>
+                        <td>' . $row["id_source_de_risque"] . '</td>
+                        <td>' . $row["id_evenement_redoute"] . '</td>
+                        <td>' . $row["id_partie_prenante"] . '</td>
+                        </tr>
+                        ';
+                        }
+                        ?>
+                      </tbody>
+                    </table>
+                  </div>
 
                 </div>
+
               </div>
-            
+            </div>
+
             <!-- Area Card -->
-            <div class="col-xl col-lg">
-                <div class="card shadow mb-4">
-                  <!-- Card Header - Dropdown -->
-                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0">Ajouter une mesure de sécurité</h6>
-                    
-                  </div>
-                  <!-- Card Body -->
-                  <div class="card-body">
-                    <!--text-->
-                    <div class="table-responsive">
-                        <table class="table table-bordered perso_border" id="dataTable3" width="100%" cellspacing="0">
-                          <thead>
-                            <tr>
-                              <th>Partie prenante</th>
-                              <th>Chemin d'attaque stratégique</th>
-                              <th>Mesures de sécurité</th>
-                              <th>Menace initiale</th>
-                              <th>Menace résiduelle</th>
-                              <th class="perso_border"></th>
-                              
-                            </tr>
-                          </thead>
-                            
-                            <tbody>
-                                <tr>
-                                    <td>F2 - Fournisseurs de matériel</td>
-                                    <td>Arrêt de production par compromission de l'équipement de maintenance</td>
-                                    <td>Réduire le risque de piégeage des équipements de maintenance utilisés sur le 
-                                        système industriel. Dotation de matériels de maintenance administrés par la DSI 
-                                        et qui seront mis à disposition du prestataire sur site (permet de réduire la Pénétration
-                                        des fournisseurs de 3 à 2)
-                                    </td>
-                                    <td>2</td>
-                                    <td>1.3</td>
-                                    <td class="perso_border">
-                                      <div class="modification">
-                                        <i data-toggle="modal" data-target="#ajout_ligne_mesure_sécurité" class="crayon fas fa-pen"></i>
-                                        <i class="poubelle fas fa-trash-alt"></i>
-                                      </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>F3 - Prestataire informatique</td>
-                                    <td>Vol d'informations en passant par le prestataire informatique</td>
-                                    <td>Accroitre la maturité cyber du prestataire (2 -> 3) : audit de sécurité (à inclure dans le contrat) ; suivi du plan d'action interne
-                                        Renforcer la protection des donnéees de R&D. Solution à investiguer : chiffrement, cloisonnement du réseau R&D
-                                    </td>
-                                    <td>3</td>
-                                    <td>2</td>
-                                    <td class="perso_border">
-                                      <div class="modification">
-                                        <i data-toggle="modal" data-target="#ajout_ligne_mesure_sécurité" class="crayon fas fa-pen"></i>
-                                        <i class="poubelle fas fa-trash-alt"></i>
-                                      </div>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td>P3 - Laboratoires</td>
-                                    <td>Vol d'informations sur le système d'information du laboratoire</td>
-                                    <td>Diminuer la pénétration des laboratoires (3 -> 2):
-                                        Limitation des données transmises au laboratoire au juste besoin
-                                        (mauvaise habitude actuelle de "tout" diffuser)
-                                    </td>
-                                    <td>2.25</td>
-                                    <td>1.5</td>
-                                    <td class="perso_border">
-                                      <div class="modification">
-                                        <i data-toggle="modal" data-target="#ajout_ligne_mesure_sécurité" class="crayon fas fa-pen"></i>
-                                        <i class="poubelle fas fa-trash-alt"></i>
-                                      </div>
-                                    </td> 
-                                </tr>
-                                
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- bouton Ajouter une nouvelle ligne -->
-                    <div class="text-center">
-                      <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_mesure_sécurité">Ajouter une mesure de sécurité</button>
-                    </div>   
-                  </div>
+            <!-- Socle de sécurité -->
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0">Socle de sécurité</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+
+                  <form method="post" action="content/php/atelier3c/parser_regles.php" class="user" id="formSoclePop">
+                    <fieldset>
+
+                      <div class="custom-file">
+                        <input type="file" name="json" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Choisir un fichier</label>
+                      </div>
+
+                      <!-- bouton Ajouter -->
+                      <div class="modal-footer perso_middle_modal_footer">
+                        <input type="submit" name="validersocle" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
+                      </div>
+
+                    </fieldset>
+                  </form>
+
                 </div>
               </div>
             </div>
 
-           
+            <!-- Area Card -->
+            <div class="col-xl col-lg">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0">Ajouter une mesure de sécurité</h6>
+
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <!--text-->
+                  <div class="table-responsive">
+                    <input type="text" class="rechercher_input" id="rechercher_mesure" placeholder="Rechercher">
+                    <table id="editable_table" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Partie prenante</th>
+                          <th>Chemin d'attaque stratégique</th>
+                          <th>Mesure de sécurité</th>
+                          <th>Menace initiale</th>
+                          <th>menace résiduelle</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                        while ($row = mysqli_fetch_array($result)) {
+                          echo '
+                        <tr>
+                        <td>' . $row["id_chemin_d_attaque_strategique"] . '</td>
+                        <td>' . $row["nom_partie_prenante"] . '</td>
+                        <td>' . $row["chemin_d_attaque_strategique"] . '</td>
+                        <td>' . $row["regles"] . '</td>
+                        <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
+                        <td>' . $row["niveau_de_menance_residuelle"] . '</td>
+                        </tr>
+                        ';
+                        }
+                        ?>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- bouton Ajouter une nouvelle ligne -->
+                  <div class="text-center">
+                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_mesure_sécurité">Ajouter une mesure de sécurité</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+
+
+        </div>
 
 
 
@@ -721,158 +620,157 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
-<!-- -------------------------------------------------------------------------------------------------------------- 
+  <!-- -------------------------------------------------------------------------------------------------------------- 
 ----------------------------------------- modal ajout de ligne ----------------------------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
-<div class="modal fade" id="ajout_ligne_mesure_sécurité" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog modal-lg" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Ajout d'une mesure de sécurité</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body perso_modal_body">
-      <form class="user" id="formpp">
-        <div class="row">
-          <div class="form-group col-6">
-            <label for="SelectPP">Partie prenante</label>
-            <select class="form-control" id="SelectPP">
-              <option value="" selected>...</option>
-              <option value="1">F2 - Fournisseurs de matériel</option>
-              <option value="2">F3 - Prestataire informatique</option>
-              <option value="3">P3 - Laboratoires</option>
-            </select>
-          </div>
-          <div class="form-group col-6">
-            <label for="SelectChemin">Chemin d'attaque stratégique</label>
-            <select class="form-control" id="SelectTypeComptePop">
-              <option value="" selected>...</option>
-              <option value="1">Arrêt de production de l'équipement</option>
-              <option value="2">Vol d'information en passant par le prestataire informatique</option>
-              <option value="3">Vol d'informations sur le système d'information du laboratoire</option>
-            </select>
-          </div>
-          <div class="form-group col-12">
-            <label for="Mesures de sécurité">Mesures de sécurité</label>
-            <textarea class="form-control perso_text_area" id="Mesures de sécurité" rows="5"></textarea>
-          </div>
+  <div class="modal fade" id="ajout_ligne_mesure_sécurité" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ajout d'une mesure de sécurité</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <div class="row">
-          <div class=" col-6">
-            <div class="choix-valeur">
-              <!-- <div>Dépendance</div> -->
-              <div>
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck1">
-                  <label class="custom-control-label" for="customCheck1">Dépendance</label>
-                </div>
-                <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Motivation">
-                  <label class="btn perso_checkbox shadow-none">
-                    <input type="radio" name="options" id="option1" autocomplete="off"> 1
-                  </label>
-                  <label class="btn perso_checkbox shadow-none">
-                    <input type="radio" name="options" id="option2" autocomplete="off"> 2
-                  </label>
-                  <label class="btn perso_checkbox shadow-none">
-                    <input type="radio" name="options" id="option3" autocomplete="off"> 3
-                  </label>
-                  <label class="btn perso_checkbox shadow-none">
-                    <input type="radio" name="options" id="option4" autocomplete="off"> 4
-                  </label>
-                </div>
-                </div>
+        <div class="modal-body perso_modal_body">
+          <form class="user" id="formpp">
+            <div class="row">
+              <div class="form-group col-6">
+                <label for="SelectPP">Partie prenante</label>
+                <select class="form-control" id="SelectPP">
+                  <option value="" selected>...</option>
+                  <option value="1">F2 - Fournisseurs de matériel</option>
+                  <option value="2">F3 - Prestataire informatique</option>
+                  <option value="3">P3 - Laboratoires</option>
+                </select>
               </div>
-            
-          
+              <div class="form-group col-6">
+                <label for="SelectChemin">Chemin d'attaque stratégique</label>
+                <select class="form-control" id="SelectTypeComptePop">
+                  <option value="" selected>...</option>
+                  <option value="1">Arrêt de production de l'équipement</option>
+                  <option value="2">Vol d'information en passant par le prestataire informatique</option>
+                  <option value="3">Vol d'informations sur le système d'information du laboratoire</option>
+                </select>
+              </div>
+              <div class="form-group col-12">
+                <label for="Mesures de sécurité">Mesures de sécurité</label>
+                <textarea class="form-control perso_text_area" id="Mesures de sécurité" rows="5"></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div class=" col-6">
+                <div class="choix-valeur">
+                  <!-- <div>Dépendance</div> -->
+                  <div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="customCheck1">
+                      <label class="custom-control-label" for="customCheck1">Dépendance</label>
+                    </div>
+                    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Motivation">
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="options" autocomplete="off"> 1
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="options" autocomplete="off"> 2
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="options" autocomplete="off"> 3
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="options" id="option4" autocomplete="off"> 4
+                      </label>
+                    </div>
+                  </div>
+                </div>
 
-            <div class="choix-valeur">
-              <!-- <div>Ressources</div> -->
-              <div>
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck2">
-                  <label class="custom-control-label" for="customCheck2">Ressources</label>
+
+
+                <div class="choix-valeur">
+                  <!-- <div>Ressources</div> -->
+                  <div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="customCheck2">
+                      <label class="custom-control-label" for="customCheck2">Ressources</label>
+                    </div>
+                    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Ressources">
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="options" autocomplete="off"> 1
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="options" autocomplete="off"> 2
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="options" autocomplete="off"> 3
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="options" autocomplete="off"> 4
+                      </label>
+                    </div>
+                  </div>
                 </div>
-              <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Ressources">
-                <label class="btn perso_checkbox shadow-none">
-                  <input type="radio" name="options" id="option1" autocomplete="off"> 1
-                </label>
-                <label class="btn perso_checkbox shadow-none">
-                  <input type="radio" name="options" id="option2" autocomplete="off"> 2
-                </label>
-                <label class="btn perso_checkbox shadow-none">
-                  <input type="radio" name="options" id="option3" autocomplete="off"> 3
-                </label>
-                <label class="btn perso_checkbox shadow-none">
-                  <input type="radio" name="options" id="option4" autocomplete="off"> 4
-                </label>
               </div>
+              <div class=" col-6">
+                <div class="choix-valeur">
+                  <!-- <div>Activité</div> -->
+                  <div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="customCheck3">
+                      <label class="custom-control-label" for="customCheck3">Activité</label>
+                    </div>
+                    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Activité">
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="options" autocomplete="off"> 1
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="options" autocomplete="off"> 2
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="options" autocomplete="off"> 3
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="options" autocomplete="off"> 4
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="choix-valeur">
+                  <!-- <div>Choix</div> -->
+                  <div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="customCheck4">
+                      <label class="custom-control-label" for="customCheck4">Choix</label>
+                    </div>
+                    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Choix">
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="options" autocomplete="off"> 1
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="options" autocomplete="off"> 2
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="options" autocomplete="off"> 3
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="options" autocomplete="off"> 4
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class=" col-6">
-            <div class="choix-valeur">
-              <!-- <div>Activité</div> -->
-              <div>
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck3">
-                  <label class="custom-control-label" for="customCheck3">Activité</label>
-                </div>
-                <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Activité">
-                  <label class="btn perso_checkbox shadow-none">
-                    <input type="radio" name="options" id="option1" autocomplete="off"> 1
-                  </label>
-                  <label class="btn perso_checkbox shadow-none">
-                    <input type="radio" name="options" id="option2" autocomplete="off"> 2
-                  </label>
-                  <label class="btn perso_checkbox shadow-none">
-                    <input type="radio" name="options" id="option3" autocomplete="off"> 3
-                  </label>
-                  <label class="btn perso_checkbox shadow-none">
-                    <input type="radio" name="options" id="option4" autocomplete="off"> 4
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="choix-valeur">
-              <!-- <div>Choix</div> -->
-              <div>
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck4">
-                  <label class="custom-control-label" for="customCheck4">Choix</label>
-                </div>
-                <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Choix">
-                  <label class="btn perso_checkbox shadow-none">
-                    <input type="radio" name="options" id="option1" autocomplete="off"> 1
-                  </label>
-                  <label class="btn perso_checkbox shadow-none">
-                    <input type="radio" name="options" id="option2" autocomplete="off"> 2
-                  </label>
-                  <label class="btn perso_checkbox shadow-none">
-                    <input type="radio" name="options" id="option3" autocomplete="off"> 3
-                  </label>
-                  <label class="btn perso_checkbox shadow-none">
-                    <input type="radio" name="options" id="option4" autocomplete="off"> 4
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
+
         </div>
-    
+        <!-- bouton Ajouter -->
+        <div class="modal-footer perso_middle_modal_footer">
+          <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
+        </div>
+        </form>
+
+
+      </div>
     </div>
-    <!-- bouton Ajouter -->
-    <div class="modal-footer perso_middle_modal_footer">
-      <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
-    </div>
-    </form>
-     
-    
-    </div>
-</div>
-</div>
+  </div>
 
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -894,27 +792,25 @@ aria-hidden="true">
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="content/vendor/jquery/jquery.min.js"></script>
-  <script src="content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="content/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="content/vendor/jquery-easing/jquery.easing.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="content/js/bootstrap.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="content/vendor/datatables/jquery.dataTables.js"></script>
-  <script src="content/vendor/datatables/dataTables.bootstrap4.js"></script>
-  <script src="content/vendor/datatables/dataTables.rowsGroup.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="content/js/modules/tableau/tableau-atelier3c.js"></script>
-
- <!-- Our JS -->
+  <!-- Our JS -->
   <script src="content/js/modules/dark_mode.js"></script>
   <script src="content/js/modules/top_bar.js"></script>
   <script src="content/js/modules/side_bar.js"></script>
-  
- </body>
+  <script src="content/js/modules/help_button.js"></script>
+  <script src="content/js/modules/gravite.js"></script>
+  <script src="content/js/modules/realtime.js"></script>
+  <script src="content/js/modules/set_filter_sort_table.js"></script>
+  <script src="content/js/atelier/atelier3c.js"></script>
+  <script src="content/js/modules/sort_table.js"></script>
+  <script src="content/js/modules/browse.js"></script>
+</body>
+
 </html>

@@ -533,10 +533,11 @@
                       <thead>
                         <tr>
                           <th>ID</th>
-                          <th>nom_scenario_strategique</th>
-                          <th>id_source_de_risque</th>
-                          <th>id_evenement_redoute</th>
-                          <th>id_partie_prenante</th>
+                          <th>Nom du scénario strategique</th>
+                          <th>Source de risque : objectif visé</th>
+                          <th>Nom de l'événement redouté</th>
+                          <th>Nom de la partie prenante</th>
+                          <th>niveau de gravite</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -546,9 +547,10 @@
                         <tr>
                         <td>' . $row["id_scenario_strategique"] . '</td>
                         <td>' . $row["nom_scenario_strategique"] . '</td>
-                        <td>' . $row["id_source_de_risque"] . '</td>
-                        <td>' . $row["id_evenement_redoute"] . '</td>
-                        <td>' . $row["id_partie_prenante"] . '</td>
+                        <td>' . $row["description_source_de_risque"] . ' : ' . $row["objectif_vise"] . '</td>
+                        <td>' . $row["nom_evenement_redoute"] . '</td>
+                        <td>' . $row["nom_partie_prenante"] . '</td>
+                        <td>' . $row["niveau_de_gravite"] . '</td>
                         </tr>
                         ';
                         }
@@ -581,9 +583,9 @@
                       <thead>
                         <tr>
                           <th>ID</th>
-                          <th>id_risque</th>
-                          <th>chemin_d_attaque_strategique</th>
-                          <th>id_scenario_strategique</th>
+                          <th>ID du risque</th>
+                          <th>Chemin d'attaque stratégique</th>
+                          <th>nom du scénario stratégique</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -594,7 +596,7 @@
                         <td>' . $row["id_chemin_d_attaque_strategique"] . '</td>
                         <td>' . $row["id_risque"] . '</td>
                         <td>' . $row["chemin_d_attaque_strategique"] . '</td>
-                        <td>' . $row["id_scenario_strategique"] . '</td>
+                        <td>' . $row["nom_scenario_strategique"] . '</td>
                         </tr>
                         ';
                         }
@@ -747,14 +749,14 @@
               </div>
 
               <div class="form-group col-12">
-                <label for="Select_scenario_strategique">ID scénario stratégique</label>
-                <select class="form-control" name="id_scenario_strategique" id="Select_scenario_strategique">
+                <label for="Select_nom_scenario_strategique">ID scénario stratégique</label>
+                <select class="form-control" name="nom_scenario_strategique" id="Select_nom_scenario_strategique">
                   <option value="" selected>...</option>
                   <?php
                   while ($row = mysqli_fetch_array($result_id_scenario_strategique)) //selection.php
                   {
                     echo '
-                        <option id="id_scenario_strategiqueid_scenario_strategique" value="' . $row["id_scenario_strategique"] . '">' . $row["nom_scenario_strategique"] . '</option>
+                        <option id="nom_scenario_strategique" value="' . $row["nom_scenario_strategique"] . '">' . $row["nom_scenario_strategique"] . '</option>
                         ';
                   }
                   ?>

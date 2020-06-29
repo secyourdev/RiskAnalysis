@@ -6,8 +6,33 @@ $query_evenement_redoutes = "SELECT * FROM evenement_redoute INNER JOIN valeur_m
 $query_SROV = "SELECT id_source_de_risque, type_d_attaquant_source_de_risque,profil_de_l_attaquant_source_de_risque, description_source_de_risque, objectif_vise, description_objectif_vise FROM SROV ORDER BY id_source_de_risque";
 
 //affichage tableau modifiable
-$query_scenario_strategique = "SELECT * FROM scenario_strategique ORDER BY id_scenario_strategique ASC";
-$query_chemin_d_attaque = "SELECT * FROM chemin_d_attaque_strategique ORDER BY id_chemin_d_attaque_strategique ASC";
+$query_scenario_strategique =
+"SELECT 
+scenario_strategique.id_scenario_strategique, 
+nom_scenario_strategique, 
+scenario_strategique.id_source_de_risque, 
+scenario_strategique.id_evenement_redoute, 
+scenario_strategique.id_partie_prenante, 
+nom_evenement_redoute, 
+niveau_de_gravite, 
+nom_partie_prenante, 
+SROV.description_source_de_risque, 
+objectif_vise 
+FROM scenario_strategique, evenement_redoute, partie_prenante, SROV 
+WHERE scenario_strategique.id_evenement_redoute = evenement_redoute.id_evenement_redoute 
+AND scenario_strategique.id_partie_prenante = partie_prenante.id_partie_prenante 
+AND scenario_strategique.id_source_de_risque = SROV.id_source_de_risque 
+ORDER BY id_scenario_strategique ASC";
+
+$query_chemin_d_attaque = 
+"SELECT chemin_d_attaque_strategique.id_chemin_d_attaque_strategique, 
+chemin_d_attaque_strategique.id_risque, 
+chemin_d_attaque_strategique.chemin_d_attaque_strategique, 
+chemin_d_attaque_strategique.id_scenario_strategique, 
+scenario_strategique.nom_scenario_strategique 
+FROM scenario_strategique, chemin_d_attaque_strategique 
+WHERE chemin_d_attaque_strategique.id_scenario_strategique = scenario_strategique.id_scenario_strategique 
+ORDER BY id_chemin_d_attaque_strategique ASC";
 
 
 $result_evenement_redoutes = mysqli_query($connect, $query_evenement_redoutes);
