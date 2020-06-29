@@ -1,10 +1,11 @@
 <?php
-header('Location: ../../../atelier-1b');
+  session_start();
+  $getid_projet = $_SESSION['id_projet'];
 
-
+  header('Location: ../../../atelier-1b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
   //Connexion à la base de donnee
   try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v6;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v11;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
   }
 
@@ -31,11 +32,7 @@ header('Location: ../../../atelier-1b');
   $recuperepersonne = $bdd->prepare('SELECT id_personne FROM personne WHERE nom = ? AND prenom = ? AND poste = ?');
   $recuperemission = $bdd->prepare('SELECT id_mission FROM mission WHERE nom_mission = ?');
   $inserepersonne = $bdd->prepare('INSERT INTO `personne`(`id_personne`, `nom`, `prenom`, `poste`) VALUES (?,?,?,?)');
-  $inserevm = $bdd->prepare('INSERT INTO `valeur_metier`(`id_valeur_metier`, `nom_valeur_metier`, `nature_valeur_metier`, `description_valeur_metier`, `id_atelier`, `id_personne`, `id_mission`) VALUES (?,?,?,?,?,?,?)');
-
-
-
-
+  $inserevm = $bdd->prepare('INSERT INTO `valeur_metier`(`id_valeur_metier`, `nom_valeur_metier`, `nature_valeur_metier`, `description_valeur_metier`, `id_atelier`, `id_personne`, `id_mission`, `id_projet`) VALUES (?,?,?,?,?,?,?,?)');
 
     // Verification du nom de la valeur métier
     if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nomvm)){
@@ -95,6 +92,7 @@ header('Location: ../../../atelier-1b');
       $inserevm->bindParam(5, $id_atelier);
       $inserevm->bindParam(6, $id_personne[0]);
       $inserevm->bindParam(7, $id_mission[0]);
+      $inserevm->bindParam(8, $getid_projet);
 
       $inserevm->execute();
     ?>

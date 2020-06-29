@@ -1,10 +1,11 @@
 <?php
-header('Location: ../../../atelier-1b');
+  session_start();
+  $getid_projet = $_SESSION['id_projet'];
 
-
+  header('Location: ../../../atelier-1b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
   //Connexion à la base de donnee
   try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v6;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v11;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
   }
 
@@ -22,7 +23,7 @@ header('Location: ../../../atelier-1b');
   $id_mission="id_mission";
   $id_atelier="1.b";
   $recupere = $bdd->prepare('SELECT id_personne FROM personne WHERE nom = ? AND prenom = ? AND poste = ?');
-  $insere = $bdd->prepare('INSERT INTO `mission`(`id_mission`, `nom_mission`, `id_atelier`, `id_personne`) VALUES (?,?,?,?)');
+  $insere = $bdd->prepare('INSERT INTO `mission`(`id_mission`, `nom_mission`, `id_atelier`, `id_personne`, `id_projet`) VALUES (?,?,?,?,?)');
 
 
 
@@ -74,6 +75,7 @@ header('Location: ../../../atelier-1b');
         $insere->bindParam(2, $mission);
         $insere->bindParam(3, $id_atelier);
         $insere->bindParam(4, $id_personne[0]);
+        $insere->bindParam(5, $getid_projet);
         $insere->execute();
         ?>
         <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>

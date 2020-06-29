@@ -1,10 +1,12 @@
 <?php
-header('Location: ../../../atelier-1b');
+  session_start();
+  $getid_projet = $_SESSION['id_projet'];
 
+  header('Location: ../../../atelier-1b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
 
   //Connexion à la base de donnee
   try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v6;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v11;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
   }
 
@@ -28,11 +30,8 @@ header('Location: ../../../atelier-1b');
   $recuperepersonne = $bdd->prepare('SELECT id_personne FROM personne WHERE nom = ? AND prenom = ? AND poste = ?');
   $recuperevm = $bdd->prepare('SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = ?');
   $inserepersonne = $bdd->prepare('INSERT INTO `personne`(`id_personne`, `nom`, `prenom`, `poste`) VALUES (?,?,?,?)');
-  $inserebs = $bdd->prepare('INSERT INTO `bien_support`(`id_bien_support`, `nom_bien_support`, `description_bien_support`, `id_atelier`, `id_valeur_metier`, `id_personne`) VALUES (?,?,?,?,?,?)');
+  $inserebs = $bdd->prepare('INSERT INTO `bien_support`(`id_bien_support`, `nom_bien_support`, `description_bien_support`, `id_atelier`, `id_valeur_metier`, `id_personne`, `id_projet`) VALUES (?,?,?,?,?,?,?)');
 
-
-
-  
     // Verification du nom du bien support
     if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $biensupport)){
       $results["error"] = true;
@@ -98,6 +97,7 @@ header('Location: ../../../atelier-1b');
       $inserebs->bindParam(4, $id_atelier);
       $inserebs->bindParam(5, $id_valeur_metier[0]);
       $inserebs->bindParam(6, $id_personne[0]);
+      $inserebs->bindParam(7, $getid_projet);
       $inserebs->execute();
       ?>
       <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>

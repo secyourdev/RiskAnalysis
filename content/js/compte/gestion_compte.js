@@ -7,7 +7,7 @@ $(document).ready(function(){
      url:'content/php/compte/modification.php',
      columns:{
       identifier:[0, "id_utilisateur"],
-      editable:[[1, 'nom'], [2, 'prenom'], [3, 'poste'], [4, 'email'], [5, 'type_compte','{"Administrateur":"Administrateur Logiciel","Chef de Projet":"Chef de Projet","Utilisateur":"Utilisateur"}']]
+      editable:[[1, 'nom'], [2, 'prenom'], [3, 'poste'], [4, 'email'], [5, 'type_compte','{"Administrateur Logiciel":"Administrateur Logiciel","Chef de Projet":"Chef de Projet","Utilisateur":"Utilisateur"}']]
      },
      restoreButton:false,
      hideIdentifier: false,

@@ -430,7 +430,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     <!--NOM ETUDE-->
                     <div class="form-group">
                       <label class="titre_input" for="nom_etude">Nom</label>
-                    <?php if($userdroit['ecriture']=='Réalisation'){
+                    <?php if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){
                     ?>
                       <input type="text" class="perso_form shadow-none form-control form-control-user" id="nom_etude" placeholder="Nom" required></input>
                     </div>
@@ -447,7 +447,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     <!--OBJECTIF ETUDE-->
                     <div class="form-group">
                       <label class="titre_textarea" for="objectif_atteindre">Objectif à atteindre</label>
-                    <?php if($userdroit['ecriture']=='Réalisation'){
+                    <?php if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){
                     ?>
                       <textarea class="form-control perso_text_area" id="objectif_atteindre" rows="3"></textarea>
                     </div>
@@ -464,7 +464,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     <!--CADRE TEMPOREL ETUDE-->
                     <div class="form-group">
                       <label class="titre_input" for="cadre_temporel">Cadre Temporel</label>
-                    <?php if($userdroit['ecriture']=='Réalisation'){
+                    <?php if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){
                     ?>
                       <input type="date" class="perso_form shadow-none form-control form-control-user" id="cadre_temporel" placeholder="Cadre temporel" required>
                     </div>
@@ -481,7 +481,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     <!--RISQUE ETUDE-->
                     <div class="form-group">
                       <label class="titre_input" for="respo_acceptation_risque">Personne responsable d'accepter les risques résiduels au terme de l'étude</label>
-                    <?php if($userdroit['ecriture']=='Réalisation'){
+                    <?php if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){
                     ?>
                     <select class="form-control" id="respo_acceptation_risque">
                         <option selected>...</option>
@@ -502,7 +502,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     ?>
 
                     <div class="card-header gravite col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <?php if($userdroit['ecriture']=='Réalisation'){
+                    <?php if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){
                     ?>
                         <div class="custom-control custom-radio custom-control-inline">
                           <input type="radio" id="radio_gravite4" name="radio_gravite" class="custom-control-input" value="4">
@@ -542,7 +542,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                <?php if($userdroit['ecriture']=='Réalisation'){
+                <?php if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){
                 ?>
                   <form method="post" action="content/php/atelier1a/ajout.php" class="user" id="formActeur">
                   <fieldset>
@@ -779,16 +779,15 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   <script src="content/js/modules/gravite.js"></script>
   <script src="content/js/modules/realtime.js"></script>
   <script src="content/js/modules/set_filter_sort_table.js"></script>
-  <?php if($userdroit['ecriture']!='Réalisation'){?>
-    <script src="content/js/atelier/atelier1a_no_modification.js"></script>
+  <?php if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){?>
+    <script> var sessionIdProjet = <?php echo $_SESSION['id_projet']; ?>;
+    </script>
+    <script src="content/js/atelier/atelier1a.js"></script>  
   <?php 
   }
   else{
   ?>
-    <script> var sessionIdProjet = <?php echo $_SESSION['id_projet']; ?>;
-    </script>
-
-    <script src="content/js/atelier/atelier1a.js"></script>
+    <script src="content/js/atelier/atelier1a_no_modification.js"></script>
   <?php
   }
   ?>
