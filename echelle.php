@@ -1,3 +1,4 @@
+<?php include("content/php/echelle/selection.php");?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -7,15 +8,19 @@
   <meta name="description" content="CyberRiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>CyberRiskManager | Atelier 5.c</title>
+  <title>CyberRiskManager | Echelle</title>
 
   <!-- Fonts-->
-  <link href="content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template-->
+  <!-- CSS -->
   <link href="content/css/bootstrap.css" rel="stylesheet">
   <link href="content/css/main.css" rel="stylesheet">
+
+  <!-- JS -->
+  <script src="content/vendor/jquery/jquery.js"></script>
+  <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
 </head>
 
 <body id="page-top">
@@ -23,8 +28,8 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+   <!-- Sidebar -->
+   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">      
         <!-- Logo -->
@@ -51,13 +56,13 @@
       <div class="sidebar-heading">Ateliers</div>
       
       <!-- Nav Item - Charts -->
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier1" aria-expanded="true"
           aria-controls="Atelier1">
           <i>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
               <g transform="translate(-1230 -689)">
-                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
+                <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
                 <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-3.432" y="0">1</tspan></text>
               </g>
             </svg>
@@ -244,13 +249,13 @@
           </div>
         </div>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier5" aria-expanded="true"
           aria-controls="Atelier5">
           <i>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
               <g transform="translate(-1230 -689)">
-                <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
+                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
                 <text class="number_activity_text" data-name="5" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-3.432" y="0">5</tspan></text>
               </g>
             </svg>
@@ -302,6 +307,7 @@
       <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
       </div>
+
     </ul>
     <!-- End of Sidebar -->
 
@@ -309,52 +315,52 @@
     <div id="content-wrapper" class="d-flex flex-column">
       <!-- Main Content -->
       <div id="content">
-        <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
+       <!-- Topbar -->
+       <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <!-- Sidebar Toggle (Topbar) -->
+        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+          <i class="fa fa-bars"></i>
+        </button>
 
-          <div id="top_bar_1" class="top_bar_name_1">Fabrication de vacccin</div>
-          <div id="top_bar_2" class="top_bar_name_2">Atelier 5</div>
-          <div id="top_bar_3" class="top_bar_name_3">Activité 5.c -  Évaluer et documenter les risques résiduels</div>
-          
-          <!-- Topbar Navbar -->
-          <ul class="navbar-nav ml-auto">
-            <!-- Dark Mode toggle switch -->
+        <div id="top_bar_1" class="top_bar_name_1">Cyber Risk Manager</div>
+        <div id="top_bar_2" class="top_bar_name_2">Paramètres</div>
+        <div id="top_bar_3" class="top_bar_name_3">Échelle</div>
 
-              <label class="theme-switch" for="checkbox_dark_theme">
-                <input class="perso_switch" type="checkbox" id="checkbox_dark_theme" />
-                <div class="slider round"></div>
-              </label>
+        <!-- Topbar Navbar -->
+        <ul class="navbar-nav ml-auto">
+          <!-- Dark Mode toggle switch -->
 
-            <div class="topbar-divider d-none d-sm-block"></div>
+            <label class="theme-switch" for="checkbox_dark_theme">
+              <input class="perso_switch" type="checkbox" id="checkbox_dark_theme" />
+              <div class="slider round"></div>
+            </label>
 
-            <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Guillaume</span>
-                <img class="img-profile rounded-circle" src="content/img/undraw_profile_pic.svg">
+          <div class="topbar-divider d-none d-sm-block"></div>
+
+          <!-- Nav Item - User Information -->
+          <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="mr-2 d-none d-lg-inline text-gray-600 small">Guillaume</span>
+              <img class="img-profile rounded-circle" src="content/img/undraw_profile_pic.svg">
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                Profile
               </a>
-              <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Paramètres
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Déconnexion
-                </a>
-              </div>
-            </li>
-          </ul>
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                Paramètres
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                Déconnexion
+              </a>
+            </div>
+          </li>
+        </ul>
         </nav>
         <!-- End of Topbar -->
 
@@ -363,151 +369,132 @@
           <!-- Content Row -->
           <div class="row">
             <!-- Area Card -->
-            <div class="col-xl col-lg">
+            <!-- Objectif -->
+            <div class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Objectif</h6>
-                  
+                <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0">Echelles</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <p>Le but de cet atelier est de réaliser une synthèse des scénarios de risque identifiés et de définir une stratégie de traitement du risque. Cette stratégie aboutit à la définition de mesures de 
-                      sécuriité, recensées dans un plan d'amélioration continue de la sécurité (PACS). Les risques résiduels sont ensuite identifiés ainsi que le cadre de suivi de ces risques.
-                  </p>
+                  <p> Le but de ce premier atelier est de définir le cadre de l’étude, son périmètre métier et technique, les
+                    événements
+                    redoutés associés et le socle de sécurité. Cet atelier est un prérequis à la réalisation d’une appréciation des
+                    risques.
+                    La période à considérer pour cet atelier est celle du cycle stratégique.</p>
                   <!--text-->
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="row">
-            <!-- Area Card -->
-            <div class="col-xl col-lg">
+
+            <div class="col-xl-12 col-lg-12">
+              <!-- Area Card -->
+              <!-- Mission -->
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Évaluation et documentation des risques résiduels</h6>
-                  
-
-              
-
-
-
+                <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0">Echelle</h6>
                 </div>
                 <!-- Card Body -->
-                <div class="card-body">
-                  <!--text-->
+                <div class="card-body row perso_card_body_row">
+                  <!--tableau-->
                   <div class="table-responsive">
-                    <table class="table table-bordered perso_border" id="dataTable" width="100%" cellspacing="0">
+                    <input type="text" class="rechercher_input" id="rechercher_echelle" placeholder="Rechercher">
+                    <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th>Nom du risque</th>
-                          <th>Gravité initiale</th>
-                          <th>Vraisemblance initiale</th>
-                          <th>Risque initial</th>
-                          <th>Gravité résiduelle</th>
-                          <th>Vraisemblance résiduelle</th>
-                          <th>Risque résiduel</th>
-                          <th class="perso_border"></th>
+                          <th id="id_echelle">ID echelle</th>
+                          <th id="nom_echelle">Nom de l'échelle</th>
+                          <th id="echelle_gravite">Echelle de la gravité</th>
+                          <th id="echelle_vraisemblance">Echelle de la vraisemblance</th>
                         </tr>
                       </thead>
-                        
                       <tbody>
+                      <?php
+                      while($row = mysqli_fetch_array($result1))
+                      {
+                        echo '
                         <tr>
-                          <td>Un concurrent vole des informations de R&D grâce à un canal d'exfiltration</td>
-                          <td>3</td>
-                          <td>3</td>
-                          <td>9</td>
-                          <td>3</td>
-                          <td>2</td>
-                          <td>6</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_vraisemblance_résiduelle" class="crayon fas fa-pen"></i>
-                            </div>
-                          </td>
-                            
+                        <td>'.$row["id_echelle"].'</td>
+                        <td>'.$row["nom_echelle"].'</td>
+                        <td>'.$row["echelle_gravite"].'</td>
+                        <td>'.$row["echelle_vraisemblance"].'</td>
                         </tr>
-                        <tr>
-                          <td>Un concurrent vole des informations de R&D en exfiltrant celles détenues par le laboratoire</td>
-                          <td>3</td>
-                          <td>2</td>
-                          <td>6</td>
-                          <td>3</td>
-                          <td>1</td>
-                          <td>3</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_vraisemblance_résiduelle" class="crayon fas fa-pen"></i>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Un concurrent vole des informations de R&D grâce à un canal d'exfiltration via le prestataire informatique</td>
-                          <td>3</td>
-                          <td>4</td>
-                          <td>12</td>
-                          <td>3</td>
-                          <td>3</td>
-                          <td>9</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_vraisemblance_résiduelle" class="crayon fas fa-pen"></i>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Un hacktiviste provoque un arrêt de la production des vaccins en compromettant l'équipement de maintenance des fournisseurs de matériel</td>
-                          <td>4</td>
-                          <td>2</td>
-                          <td>8</td>
-                          <td>4</td>
-                          <td>1</td>
-                          <td>4</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_vraisemblance_résiduelle" class="crayon fas fa-pen"></i>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Un hacktiviste provoque un arrêt de la production des vacances en compromettant l'équipement de maintenance des fournisseurs de matériel</td>
-                          <td>4</td>
-                          <td>1</td>
-                          <td>4</td>
-                          <td>4</td>
-                          <td>1</td>
-                          <td>4</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_vraisemblance_résiduelle" class="crayon fas fa-pen"></i>
-                            </div>
-                          </td>
-                        </tr>
-                        
-
+                        ';
+                      }
+                      ?>
                       </tbody>
-                    </table>  
-                  </div>    
+                    </table>
+                  </div>
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_vraisemblance_résiduelle">Ajouter une nouvelle ligne</button>
-                  </div> 
-
-
+                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_mission">Ajouter une nouvelle ligne</button>
+                  </div>
                 </div>
               </div>
             </div>
 
-           
+            <!-- Area Card -->
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0">Niveaux</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="SelectNaturePop">Echelles</label>
+                    <select class="form-control" name="nomechelle" id="nomechelle">
+                      <option value="" selected>...</option>
+                      <?php
+                          while($row = mysqli_fetch_array($resultechelle))
+                          {
+                            echo '
+                            <option value="'.$row["nom_echelle"].'">'.$row["nom_echelle"].'</option>
+                            ';
+                          }
+                      ?>
+                    </select>
+                  </div>
+                  <!--tableau-->
+                  <div class="table-responsive">
+                    <input type="text" class="rechercher_input" id="rechercher_niveau" placeholder="Rechercher">
+                    <table id="tableau_niveau" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th id="id_niveau">ID niveau</th>
+                          <th id="valeur_niveau">Valeur du niveau</th>
+                          <th id="description_niveau">Description du niveau</th>
+                        </tr>
+                      </thead>
+                      
+                      <script src="content/js/modules/niveau_echelle.js"></script>
+                      <tbody id="ecrire_niveau">
+                      <!-- <?php
+                      while($row = $query->fetch(PDO::FETCH_ASSOC))
+                      {
+                        echo '
+                        <tr>
+                        <td>'.$row["id_niveau"].'</td>
+                        <td>'.$row["valeur_niveau"].'</td>
+                        <td>'.$row["description_niveau"].'</td>
+                        </tr>
+                        ';
+                      }
+                      ?> -->
+                      </tbody>
+                    </table>
+                  </div> 
+                </div>
+              </div>
+            </div>
           </div>
-
-
-
       </div>
       <!-- End of Main Content -->
-
+      
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -517,7 +504,6 @@
         </div>
       </footer>
       <!-- End of Footer -->
-
     </div>
     <!-- End of Content Wrapper -->
 
@@ -528,85 +514,62 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
+
+
 <!-- -------------------------------------------------------------------------------------------------------------- 
------------------------------------------ modal ajout de ligne ----------------------------------------------------
---------------------------------------------------------------------------------------------------------------- -->
-<div class="modal fade" id="ajout_vraisemblance_résiduelle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog modal-lg" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Ajout de la vraisemblance résiduelle</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body perso_modal_body">
-      <form class="user" id="formvraisemblance">
-        <div class="row">
-          <div class="form-group centre-vraisemblance col-12">
-            <div>
-              <input type="radio" id="Invraisemblable"
-               name="Vraisemblance" value="Invraisemblable">
-              <label for="Invraisemblable">Invraisemblable</label>
-            </div>
-            <div class="texte-vraisemblance">La source de risque a très peu de chances d'atteindre son objectif visé en 
-              empruntant l'un des modes opératoires envisagés.<br>
-              La vraisemblance du scénario de risque est très faible
-            </div>
-            <div>
-              <input type="radio" id="Peu vraisemblable"
-               name="Vraisemblance" value="Peu Vraisemblable">
-              <label for="Peu vraisemblable">Peu vraisemblable</label>
-            </div>
-            <div class="texte-vraisemblance">La source de risque a relativement peu de chances d'atteidre son objectif en
-              empruntant l'un des modes opératoires envisagé.<br>
-              La vraisemblance du scénario de risque est faible.
-            </div>
-            <div>
-              <input type="radio" id="Vraisemblable"
-               name="Vraisemblance" value="Vrasemblable">
-              <label for="Vraisemblable">Vraisemblable</label>
-            </div>
-            <div class="texte-vraisemblance">
-              La source de rsique est susceptible d'atteidre son objectif en empruntant
-              l'un des modes opératoires envisagés. <br>
-              La vraisemblance du scénario de risque est significative.
-            </div>
-            <div>
-              <input type="radio" id="Très vraisemblable"
-               name="Vraisemblance" value="Très vraisemblable">
-              <label for="Très vraisemblable">Très vraisemblable</label>
-            </div>
-            <div class="texte-vraisemblance">
-              La source de risque va probablement atteindre son objectif en empruntant
-              l'un des modes opératoires envisagés.<br>
-              La vraisemblance du scénario de risque est élevée.
-            </div>
-            <div>
-              <input type="radio" id="Quasi certain"
-               name="Vraisemblance" value="Quasi certain">
-              <label for="Quasi certain">Quasi certain</label>
-            </div>
-            <div class="texte-vraisemblance">
-              La source de risque va très certainement atteindre son objectif en empruntant
-              l'un des modes opératoires envisagés.<br>
-              La vraisemblance du scénario de risque est très élevée
-            </div>
-            
-          </div>
+--------------------------------------- modal ajout de mission ----------------------------------------------
+--------------------------------------------------------------------------------------------------------------  -->
+<div class="modal fade" id="ajout_mission" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ajout d'une mission</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body perso_modal_body">
+          <form method="post" action="content/php/echelle/ajoutechelle.php" class="user" id="formMission">
+            <fieldset>
+              <div class="form-group">
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name ="nom_echelle" id="nom_echelle"
+                  placeholder="Nom de l'échelle" required>
+              </div>
+
+              <div class="form-group">
+                <label for="SelectNaturePop">Nom du responsable</label>
+                <select class="form-control" name="echelle_gravite" id="echelle_gravite">
+                  <option value="" selected>...</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="SelectNaturePop">Poste</label>
+                <select class="form-control" name="echelle_vraisemblance" id="echelle_vraisemblance">
+                  <option value="" selected>...</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+
+              <!-- bouton Ajouter -->
+              <div class="modal-footer perso_middle_modal_footer">
+                <input type="submit" name="validerechelle" value="Ajouter" class="btn perso_btn shadow-none"></input>
+              </div>
+            </fieldset>
+            
+          
+          </form>
+        </div>
+        
+        
       </div>
-      <!-- bouton Ajouter -->
-      <div class="modal-footer perso_middle_modal_footer">
-        <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
-      </div>
-    </form>
-     
-    
     </div>
-</div>
-</div>
+  </div>
+
 
 
   <!-- Logout Modal-->
@@ -629,26 +592,23 @@ aria-hidden="true">
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="content/vendor/jquery/jquery.min.js"></script>
-  <script src="content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="content/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="content/vendor/jquery-easing/jquery.easing.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="content/js/bootstrap.js"></script>
-
-  <!-- Page level plugins -->
-  <script src="content/vendor/datatables/jquery.dataTables.js"></script>
-  <script src="content/vendor/datatables/dataTables.bootstrap4.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="content/js/modules/tableau/tableau-atelier5c.js"></script>
 
   <!-- Our JS -->
   <script src="content/js/modules/dark_mode.js"></script>
   <script src="content/js/modules/top_bar.js"></script>
   <script src="content/js/modules/side_bar.js"></script>
+  <script src="content/js/modules/realtime.js"></script>
+  <script src="content/js/modules/set_filter_sort_table.js"></script>
+  <script src="content/js/atelier/echelle.js"></script>
+  <script src="content/js/modules/sort_table.js"></script>
+  
 </body>
 
 </html>

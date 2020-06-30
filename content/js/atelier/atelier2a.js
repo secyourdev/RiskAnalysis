@@ -10,7 +10,7 @@ $(document).ready(function () {
         columns: {
             identifier: [0, 'id_source_de_risque'],
             editable: [
-                [1, 'type_d_attaquant_source_de_risque'],
+                [1, 'type_d_attaquant_source_de_risque', '{"Organisation structurée" : "Organisation structurée", "Organisation idéologique" : "Organisation idéologique", "Individu isolé" : "Individu isolé"}'],
                 [2, 'profil_de_l_attaquant_source_de_risque'],
                 [3, 'description_source_de_risque'], 
                 [4, 'objectif_vise'],
