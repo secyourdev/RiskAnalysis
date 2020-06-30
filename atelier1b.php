@@ -5,10 +5,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="RiskManager">
+  <meta name="description" content="CyberRiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>RiskManager | Atelier 1.b</title>
+  <title>CyberRiskManager | Atelier 1.b</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -36,7 +36,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-shield-alt"></i>
         </div>
-        <div class="sidebar-brand-text mx-2">RISK MANAGER</div>
+        <div class="sidebar-brand-text mx-2">CYBER RISK MANAGER</div>
       </a>
 
       <!-- Divider -->
@@ -559,7 +559,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; RISK MANAGER 2020</span>
+            <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
           </div>
         </div>
       </footer>
@@ -598,49 +598,23 @@
               </div>
 
               <div class="form-group">
-                <label for="SelectNaturePop">Nom du responsable</label>
-                <select class="form-control" name="nomresponsable" id="SelectNom">
-                  <option value="" selected>...</option>
-                  <?php
-                      while($row = mysqli_fetch_array($resultnomresponsablemission))
-                      {
-                        echo '
-                        <option value="'.$row["nom"].'">'.$row["nom"].'</option>
-                        ';
-                      }
-                  ?>
-                </select>
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomresponsable" id="nomresponsable"
+                  placeholder="Nom du responsable" required>
               </div>
 
-              <div class="form-group">
-                <label for="SelectNaturePop">Poste</label>
-                <select class="form-control" name="prenomresponsable" id="SelectPrenom">
-                  <option value="" selected>...</option>
-                  <?php
-                      while($row = mysqli_fetch_array($resultprenomresponsablemission))
-                      {
-                        echo '
-                        <option value="'.$row["prenom"].'">'.$row["prenom"].'</option>
-                        ';
-                      }
-                  ?>
-                </select>
-              </div>
 
               <div class="form-group">
-                <label for="SelectNaturePop">Poste</label>
-                <select class="form-control" name="poste" id="SelectPoste">
-                  <option value="" selected>...</option>
-                  <?php
-                      while($row = mysqli_fetch_array($resultposteresponsablemission))
-                      {
-                        echo '
-                        <option value="'.$row["poste"].'">'.$row["poste"].'</option>
-                        ';
-                      }
-                  ?>
-                </select>
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsable" id="prenomresponsable"
+                  placeholder="Prenom du responsable" required>
               </div>
+              
+              <div class="form-group">
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="poste" id="poste"
+                  placeholder="Poste du responsable" required>
+              </div>
+              
+
+              
               <!-- bouton Ajouter -->
               <div class="modal-footer perso_middle_modal_footer">
                 <input type="submit" name="validermission" value="Ajouter" class="btn perso_btn shadow-none"></input>

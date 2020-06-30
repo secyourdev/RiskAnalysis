@@ -110,11 +110,13 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/", $faits_armes)) 
 if ($input["action"] === 'edit' && $results["error"] === false) {
 
     if ($pertinence === "Auto"){
-        if (($ressources === 1 && $motivation ===1) || ($ressources === 1 && $motivation ===2) || ($ressources === 2 && $motivation ===1)) {
+        echo $ressources;
+        echo $motivation;
+        if (($ressources === "1" && $motivation === "1") || ($ressources === "1" && $motivation === "2") || ($ressources === "2" && $motivation === "1")) {
             $pertinence = "Faible";
             echo "Faible";
         }
-        elseif (($ressources === 3 && $motivation ===1) || ($ressources === 2 && $motivation ===2) || ($ressources === 1 && $motivation ===3)) {
+        elseif (($ressources === "3" && $motivation === "1") || ($ressources === "2" && $motivation === "2") || ($ressources === "1" && $motivation === "3")) {
             $pertinence = "Moyen";
             echo "Moyen";
         }

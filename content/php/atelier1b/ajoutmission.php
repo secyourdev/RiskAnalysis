@@ -21,8 +21,11 @@ header('Location: ../../../atelier-1b');
   $poste=$_POST['poste'];
   $id_mission="id_mission";
   $id_atelier="1.b";
+  $id_personne="id_personne";
+
   $recupere = $bdd->prepare('SELECT id_personne FROM personne WHERE nom = ? AND prenom = ? AND poste = ?');
   $insere = $bdd->prepare('INSERT INTO `mission`(`id_mission`, `nom_mission`, `id_atelier`, `id_personne`) VALUES (?,?,?,?)');
+  $inserepersonne = $bdd->prepare('INSERT INTO `personne`(`id_personne`, `nom`, `prenom`, `poste`) VALUES (?,?,?,?)');
 
 
 
@@ -65,6 +68,11 @@ header('Location: ../../../atelier-1b');
     
 
     if ($results["error"] === false && isset($_POST['validermission'])){
+        $inserepersonne->bindParam(1, $id_personne);
+        $inserepersonne->bindParam(2, $nomresponsable);
+        $inserepersonne->bindParam(3, $prenomresponsable);
+        $inserepersonne->bindParam(4, $poste);
+        $inserepersonne->execute();
         $recupere->bindParam(1, $nomresponsable);
         $recupere->bindParam(2, $prenomresponsable);
         $recupere->bindParam(3, $poste);
