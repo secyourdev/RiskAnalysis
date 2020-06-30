@@ -1,14 +1,14 @@
 $(document).ready(function () {
     $('#editable_table_socle').Tabledit({
-        url: 'content/php/atelier1d/modification.php',
+        url: 'content/php/atelier1d/modification_socle.php',
         sortable: true,
         columns: {
             identifier: [0, 'id_socle_securite'],
             editable: [
-                [2, 'type_referentiel'],
-                [3, 'nom_referentiel'],
-                [4, 'etat_d_application'],
-                [9, 'etat_de_la_conformite']
+                // [1, 'type_referentiel'],
+                // [2, 'nom_referentiel'],
+                [3, 'etat_d_application'],
+                [4, 'etat_de_la_conformite']
             ],
             checkboxeditable: []
         },
@@ -22,21 +22,16 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
     $('#editable_table_ecart').Tabledit({
-        url: 'content/php/atelier1d/modification.php',
+        url: 'content/php/atelier1d/modification_ecart.php',
         sortable: true,
         columns: {
-            identifier: [0, 'id_evenement_redoutes'],
+            identifier: [0, 'id_ecarts'],
             editable: [
-                [2, 'nom_evenement_redoutes'],
-                [3, 'description_evenement_redoutes'],
-                [4, 'impact'],
-                [9, 'niveau_de_gravite']
-            ],
-            checkboxeditable: [
-                [5, 'confidentialite'],
-                [6, 'integrite'],
-                [7, 'disponibilite'],
-                [8, 'tracabilite']
+                // [1, 'titre'],
+                [2, 'etat_de_la_regle'],
+                [3, 'justification_ecart'],
+                [4, 'nom'],
+                [5, 'date']
             ]
         },
         restoreButton: false,
