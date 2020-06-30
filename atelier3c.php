@@ -521,11 +521,11 @@
                 <!-- Card Body -->
                 <div class="card-body">
 
-                  <form action="content/php/atelier3c/parser_regles.php" method="post" enctype="multipart/form-data">
-                    Select image to upload:
-                    <input type="file" name="fileToUpload" id="fileToUpload">
-                    <input type="submit" value="Upload Image" name="file_submit">
-                  </form>
+                  <!-- <form action="content/php/atelier3c/parser_regles.php" method="post" enctype="multipart/form-data">
+                    Select image to upload: -->
+                  <input type="file" name="fileToUpload" id="fileToUpload">
+                  <input type="submit" value="Upload Image" id="file_submit" name="file_submit">
+                  <!-- </form> -->
 
                 </div>
               </div>
@@ -801,6 +801,7 @@
   <script src="content/js/atelier/atelier3c.js"></script>
   <script src="content/js/modules/sort_table.js"></script>
   <script src="content/js/modules/browse.js"></script>
+  <script src="content/js/modules/parser.js"></script>
 </body>
 
 </html>
