@@ -7,7 +7,7 @@ $(document).ready(function () {
         fd.append('fileToUpload', files);
 
         $.ajax({
-            url: 'content/php/atelier1c/parser_regles.php',
+            url: 'content/php/atelier1d/parser_regles.php',
             type: 'post',
             data: fd,
             contentType: false,

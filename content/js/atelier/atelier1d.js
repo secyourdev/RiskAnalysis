@@ -29,7 +29,7 @@ $(document).ready(function () {
             editable: [
                 // [1, 'id_regle'],
                 // [2, 'titre'],
-                [3, 'etat_de_la_regle'],
+                [3, 'etat_de_la_regle', '{"Non traité" : "Non traité" , "Conforme" : "Conforme" , "Partiellement conforme" : "Partiellement conforme" ,  "Non conforme" : "Non conforme", "Non applicable" : "Non applicable"}'],
                 [4, 'justification_ecart'],
                 [5, 'nom'],
                 [6, 'date']

@@ -1,5 +1,5 @@
 <?php
-// header('Refresh:5; Location: ../../../atelier-3c');
+header('Location: ../../../atelier-1d');
 
 //Connexion à la base de donnee
 try {
@@ -13,18 +13,18 @@ try {
   die('Erreur :' . $e->getMessage());
 }
 
-
+var_dump($_FILES);
 //set directory
-$target_dir = "../../../uploads/";
+$uploaddir  = "../../../uploads/";
 //set future name of the file
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
 $uploadOk = 1;
 //check type of the file, ie: JSON  
-$fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+$fileType = strtolower(pathinfo($uploadfile , PATHINFO_EXTENSION));
 
 // Check if image file is a actual image or fake image
 // if (isset($_POST["file_submit"])) {
-//   $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+//   $check = getimagesize($_FILES["userfile"]["tmp_name"]);
 //   if ($check !== false) {
 //     echo "File is an image - " . $check["mime"] . ".";
 //     $uploadOk = 1;
@@ -35,7 +35,7 @@ $fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 // }
 
 if (isset($_POST["file_submit"])) {
-  $sJson = file_get_contents($_FILES["fileToUpload"]["tmp_name"]);
+  $sJson = file_get_contents($_FILES["userfile"]["tmp_name"]);
   //try to decode it
   $json = json_decode($sJson);
   if (json_last_error() === JSON_ERROR_NONE) {
@@ -52,13 +52,13 @@ if (isset($_POST["file_submit"])) {
 }
 
 // Check if file already exists
-if (file_exists($target_file)) {
+if (file_exists($uploadfile )) {
   echo "Sorry, file already exists. ";
   $uploadOk = 0;
 }
 
 // Check file size
-// if ($_FILES["fileToUpload"]["size"] > 500000) {
+// if ($_FILES["userfile"]["size"] > 500000) {
 //   echo "Sorry, your file is too large.";
 //   $uploadOk = 0;
 // }
@@ -85,15 +85,15 @@ if ($uploadOk == 0) {
   echo "Your file was not uploaded. ";
   // if everything is ok, try to upload file
 } else {
-  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded. ";
+  if (move_uploaded_file($_FILES["userfile"]["tmp_name"], $uploadfile )) {
+    echo "The file " . basename($_FILES["userfile"]["name"]) . " has been uploaded. ";
   } else {
     echo "Sorry, there was an error uploading your file. ";
   }
 }
 
 //read the json file
-$json = file_get_contents($target_file);
+$json = file_get_contents($uploadfile );
 $data = json_decode($json, true);
 print '<br />';
 

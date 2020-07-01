@@ -16,11 +16,11 @@ WHERE
 ecarts.id_regle = referentiel.id_regle
 AND ecarts.id_date = dates.id_date
 AND ecarts.id_personne = personne.id_personne";
-// $query_id_socle = 'SELECT id_socle_securite FROM socle_de_securite';
+$query_titre_regle = 'SELECT referentiel.titre FROM referentiel';
 // $queryprenomresponsable = "SELECT nom FROM personne";
 
 
 $result_socle = mysqli_query($connect, $query_socle);
 $result_ecart = mysqli_query($connect, $query_ecart);
-// $resultprenomresponsable = mysqli_query($connect, $queryprenomresponsable);
+$result_titre_regle = mysqli_query($connect, $query_titre_regle);
 // $result_id_socle = mysqli_query($connect, $query_id_socle);

@@ -580,6 +580,38 @@
             </button>
           </div>
           <div class="modal-body perso_modal_body">
+            <form enctype="multipart/form-data" action="content/php/atelier1d/parser_regles.php" method="post" class="user" id="formSoclePop">
+              <fieldset>
+
+                <div class="custom-file">
+                  <input name="userfile" id="fileToUpload" class="custom-file-input" type="file">
+                  <label class="custom-file-label" for="fileToUpload">Choisir un fichier</label>
+                </div>
+
+                <!-- bouton Ajouter -->
+                <div class="modal-footer perso_middle_modal_footer">
+                  <input type="submit" id="file_submit" name="file_submit" value="Ajouter un fichier" class="btn perso_btn_primary shadow-none"></input>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- -------------------------------------------------------------------------------------------------------------- 
+--------------------------------------- modal créer socle de sécurité ----------------------------------------------
+--------------------------------------------------------------------------------------------------------------  -->
+    <div class="modal fade" id="ajout_socle_de_securite" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ajout d'un socle de sécurité</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body perso_modal_body">
             <form method="post" action="content/php/atelier1d/ajout_socle.php" class="user" id="formSoclePop">
               <fieldset>
 
@@ -613,34 +645,44 @@
     </div>
 
     <!-- -------------------------------------------------------------------------------------------------------------- 
-  --------------------------------------- modal modification d'un écart ----------------------------------------------
+  --------------------------------------- modal Ajout d'une règle ----------------------------------------------
   --------------------------------------------------------------------------------------------------------------  -->
     <div class="modal fade" id="ajout_ecart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modification d'un écart</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Ajout d'une règle</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body perso_modal_body">
-            <form method="post" action="content/php/atelier1d/ajout_ecart.php" class="user" id="formecartPop">
+            <form method="post" action="content/php/atelier1d/ajout_regle.php" class="user" id="formecartPop">
               <fieldset>
-                <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="regles" placeholder="Règle non respectée" required>
-                </div>
-                <span style="display: none;">
 
-                </span>
+                <div class="form-group">
+                  <label for="Select_regle">Règle non respectée</label>
+                  <select class="form-control" name="titre" id="Select_regle">
+                    <option value="" selected>...</option>
+                    <?php
+                    while ($row = mysqli_fetch_array($result_titre_regle)) //selection.php
+                    {
+                      echo '
+                        <option value="' . $row['titre'] . '">' . $row['titre'] . '</option>
+                        ';
+                    }
+                    ?>
+                  </select>
+                </div>
+<!-- 
                 <div class="form-group">
                   <label for="etat_de_la_regle">État de la règle</label>
                   <select class="form-control" name="etat_de_la_regle" id="etat_de_la_regle">
                     <option value="" selected>...</option>
-                    <option value="traite">Traitée</option>
-                    <option value="non_traite">Non traitée</option>
+                    <option value="Conforme">Conforme</option>
+                    <option value="Non traité">Non traitée</option>
                   </select>
-                </div>
+                </div> -->
 
                 <!-- <div class="form-group">
                   <label for="description_ecarts_pop">Description des écarts</label>
@@ -722,7 +764,7 @@
     <script src="content/js/modules/sort_table.js"></script>
     <script src="content/js/modules/socle_pour_ecart.js"></script>
     <script src="content/js/modules/browse.js"></script>
-    <script src="content/js/modules/parser.js"></script>
+    <!-- <script src="content/js/modules/parser.js"></script> -->
 </body>
 
 </html>
