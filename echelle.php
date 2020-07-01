@@ -460,6 +460,7 @@
                     </select>
                   </div>
                   <!--tableau-->
+                  <script src="content/js/modules/niveau_echelle.js"></script>
                   <div class="table-responsive">
                     <input type="text" class="rechercher_input" id="rechercher_niveau" placeholder="Rechercher">
                     <table id="tableau_niveau" class="table table-bordered table-striped">
@@ -471,20 +472,20 @@
                         </tr>
                       </thead>
                       
-                      <script src="content/js/modules/niveau_echelle.js"></script>
+                      
                       <tbody id="ecrire_niveau">
-                      <!-- <?php
-                      while($row = $query->fetch(PDO::FETCH_ASSOC))
-                      {
-                        echo '
-                        <tr>
-                        <td>'.$row["id_niveau"].'</td>
-                        <td>'.$row["valeur_niveau"].'</td>
-                        <td>'.$row["description_niveau"].'</td>
-                        </tr>
-                        ';
-                      }
-                      ?> -->
+                      <?php
+                      // while($row = $query->fetch(PDO::FETCH_ASSOC))
+                      // {
+                      //   echo '
+                      //   <tr>
+                      //   <td>'.$row["id_niveau"].'</td>
+                      //   <td>'.$row["valeur_niveau"].'</td>
+                      //   <td>'.$row["description_niveau"].'</td>
+                      //   </tr>
+                      //   ';
+                      // }
+                      ?> 
                       </tbody>
                     </table>
                   </div> 

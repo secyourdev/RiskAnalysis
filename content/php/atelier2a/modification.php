@@ -80,6 +80,7 @@ if ($input["action"] === 'delete') {
     DELETE FROM SROV 
     WHERE id_source_de_risque = '".$input["id_source_de_risque"]."'
     ";
+    echo $query;
     mysqli_query($connect, $query);
 }
 

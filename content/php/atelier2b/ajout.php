@@ -17,7 +17,6 @@ try {
 $results["error"] = false;
 $results["message"] = [];
 
-$type_attaquant = $_POST['type_attaquant'];
 $profil_attaquant = $_POST['profil_attaquant'];
 $description_source_risque = $_POST['description_sr'];
 $objectif_vise = $_POST['objectif_vise'];
@@ -40,14 +39,6 @@ $recupere = $bdd->prepare("SELECT id_valeur_metier FROM valeur_metier WHERE nom_
 $insere = $bdd->prepare('INSERT INTO `SROV`(`id_source_de_risque`, `type_d_attaquant_source_de_risque`, `profil_de_l_attaquant_source_de_risque`, `description_source_de_risque`, `objectif_vise`, `description_objectif_vise`, `motivation`, `ressources`, `activite`, `mode_operatoire`, `secteur_d_activite`,`arsenal_d_attaque`, `faits_d_armes`, `pertinence`, `choix_source_de_risque`, `id_atelier`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
 
 
-// Verification du type de l'attaquant
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $type_attaquant)) {
-  $results["error"] = true;
-  $results["message"]["type_attaquant"] = "Type de l'attaquant invalide";
-  ?>
-  <strong style="color:#FF6565;">Type de l'attaquant invalide </br></strong>
-  <?php
-}
 
 // Verification du profil de l'attaquant
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $profil_attaquant)) {
@@ -89,21 +80,20 @@ if ($results["error"] === false && isset($_POST['validersrov'])) {
   $recupere->execute();
   $id_valeur_metier = $recupere->fetch();
   $insere->bindParam(1, $id_source_risque);
-  $insere->bindParam(2, $type_attaquant);
-  $insere->bindParam(3, $profil_attaquant);
-  $insere->bindParam(4, $description_source_risque);
-  $insere->bindParam(5, $objectif_vise);
-  $insere->bindParam(6, $description_objectif_vise);
-  $insere->bindParam(7, $motivation);
-  $insere->bindParam(8, $ressources);
-  $insere->bindParam(9, $activite);
-  $insere->bindParam(10, $mode_operatoire);
-  $insere->bindParam(11, $secteur_activite);
-  $insere->bindParam(12, $arsenal_attaque);
-  $insere->bindParam(13, $faits_armes);
-  $insere->bindParam(14, $pertinence);
-  $insere->bindParam(15, $choix_sr);
-  $insere->bindParam(16, $id_atelier);
+  $insere->bindParam(2, $profil_attaquant);
+  $insere->bindParam(3, $description_source_risque);
+  $insere->bindParam(4, $objectif_vise);
+  $insere->bindParam(5, $description_objectif_vise);
+  $insere->bindParam(6, $motivation);
+  $insere->bindParam(7, $ressources);
+  $insere->bindParam(8, $activite);
+  $insere->bindParam(9, $mode_operatoire);
+  $insere->bindParam(10, $secteur_activite);
+  $insere->bindParam(11, $arsenal_attaque);
+  $insere->bindParam(12, $faits_armes);
+  $insere->bindParam(13, $pertinence);
+  $insere->bindParam(14, $choix_sr);
+  $insere->bindParam(15, $id_atelier);
   $insere->execute();
 ?>
   <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
