@@ -7,7 +7,7 @@ $(document).ready(function () {
             editable: [
                 // [1, 'type_referentiel'],
                 // [2, 'nom_referentiel'],
-                [3, 'etat_d_application'],
+                [3, 'etat_d_application', '{"Non appliqué" : "Non appliqué" , "Appliqué sans restriction" : "Appliqué sans restriction" , "Appliqué avec restriction" : "Appliqué avec restriction"}'],
                 [4, 'etat_de_la_conformite']
             ],
             checkboxeditable: []
@@ -27,11 +27,12 @@ $(document).ready(function () {
         columns: {
             identifier: [0, 'id_ecarts'],
             editable: [
-                // [1, 'titre'],
-                [2, 'etat_de_la_regle'],
-                [3, 'justification_ecart'],
-                [4, 'nom'],
-                [5, 'date']
+                // [1, 'id_regle'],
+                // [2, 'titre'],
+                [3, 'etat_de_la_regle'],
+                [4, 'justification_ecart'],
+                [5, 'nom'],
+                [6, 'date']
             ]
         },
         restoreButton: false,

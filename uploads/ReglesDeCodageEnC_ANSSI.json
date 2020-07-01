@@ -543,7 +543,7 @@
         "Description": "Vide"
       },
       {
-        "id": "109",
+        "id,": "109",
         "Titre": "BONNE PRATIQUE — Éviter les constantes flottantes",
         "Description": "Ne pas utiliser de constantes numériques flottantes pour éviter les pertes de précision et autres phénomènes liés aux nombres flottants. Si cela ne peut être évité, la représentativité de la valeur flottante en question doit être vérifiée."
       },

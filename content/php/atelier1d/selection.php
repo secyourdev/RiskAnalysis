@@ -1,9 +1,10 @@
 <?php
 $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v12");
 $query_socle = "SELECT * FROM socle_de_securite ORDER BY id_socle_securite";
-$query_ecart = 
+$query_ecart =
 "SELECT
 ecarts.id_ecarts,
+referentiel.id_regle,
 referentiel.titre,
 referentiel.etat_de_la_regle,
 ecarts.justification_ecart,

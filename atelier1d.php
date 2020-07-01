@@ -440,7 +440,7 @@
                           <th>Type de référentiel</th>
                           <th>Nom du référentiel</th>
                           <th>État d'application</th>
-                          <th>État de la conformité</th>
+                          <th>Commentaire</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -463,7 +463,7 @@
 
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite">Ajouter une nouvelle ligne</button>
+                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite">Ajouter un nouveau référentiel de sécurité</button>
                   </div>
                 </div>
               </div>
@@ -475,14 +475,14 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Écarts</h6>
+                  <h6 class="m-0">Règles</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="form-group">
                     <form method="post" action="content/php/atelier1d/ajout_ecart.php" class="user" id="formecartPop">
                       <fieldset>
-                        <label for="id_socle_securite">id_socle_securite</label>
+                        <label for="id_socle_securite">Nom du référentiel de sécurité</label>
                         <select class="form-control" name="id_socle_securite" id="id_socle_securite">
                           <option value="" selected>...</option>
                           <?php
@@ -504,7 +504,8 @@
                       <thead>
                         <tr>
                           <th>ID</th>
-                          <th>Règle</th>
+                          <th>ID de la règle</th>
+                          <th>Description de la règle</th>
                           <th>État de la règle</th>
                           <th>Justification des écarts</th>
                           <th>Responsable</th>
@@ -517,6 +518,7 @@
                           echo '
                         <tr>
                         <td>' . $row["id_ecarts"] . '</td>
+                        <td>' . $row["id_regle"] . '</td>
                         <td>' . $row["titre"] . '</td>
                         <td>' . $row["etat_de_la_regle"] . '</td>
                         <td>' . $row["justification_ecart"] . '</td>

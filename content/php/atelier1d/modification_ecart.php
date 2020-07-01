@@ -71,8 +71,8 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
 }
 if ($input["action"] === 'delete') {
     $query = "
-    DELETE FROM evenement_redoutes 
-    WHERE id_evenement_redoutes = '" . $input["id_evenement_redoutes"] . "'
+    DELETE FROM ecarts 
+    WHERE id_ecarts = '" . $input["id_ecarts"] . "'
     ";
     mysqli_query($connect, $query);
 }

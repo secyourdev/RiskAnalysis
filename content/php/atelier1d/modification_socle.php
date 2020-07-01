@@ -11,7 +11,7 @@ $results["error"] = false;
 $results["message"] = [];
 
 
-
+/* 
 // Verification du etat_d_application
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $etat_d_application)) {
     $results["error"] = true;
@@ -28,7 +28,7 @@ if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $etat_de_la_confo
 ?>
     <strong style="color:#FF6565;">etat_de_la_conformite invalide </br></strong>
 <?php
-}
+} */
 
 
 if ($input["action"] === 'edit' && $results["error"] === false) {
@@ -47,10 +47,10 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
     mysqli_query($connect, $query);
 }
 if ($input["action"] === 'delete') {
-    $query = "
-    DELETE FROM evenement_redoutes 
-    WHERE id_socle_securite = '" . $input["id_socle_securite"] . "'
-    ";
+    $query = 
+    "DELETE FROM socle_de_securite 
+    WHERE id_socle_securite = " . $input["id_socle_securite"] . "";
+    print $query;
     mysqli_query($connect, $query);
 }
 
