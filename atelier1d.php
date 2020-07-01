@@ -436,11 +436,11 @@
                     <table id="editable_table_socle" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th id="id">ID</th>
-                          <th id="type_de_referentiel">Type de référentiel</th>
-                          <th id="nom_referentiel">Nom du référentiel</th>
-                          <th id="etat_d_application">État d'application</th>
-                          <th id="etat_de_la_conformite">État de la conformité</th>
+                          <th>ID</th>
+                          <th>Type de référentiel</th>
+                          <th>Nom du référentiel</th>
+                          <th>État d'application</th>
+                          <th>Commentaire</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -449,7 +449,7 @@
                           echo '
                         <tr>
                         <td>' . $row["id_socle_securite"] . '</td>
-                        
+                        <td>' . $row["type_referentiel"] . '</td>
                         <td>' . $row["nom_referentiel"] . '</td>
                         <td>' . $row["etat_d_application"] . '</td>
                         <td>' . $row["etat_de_la_conformite"] . '</td>
@@ -463,7 +463,7 @@
 
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite">Ajouter une nouvelle ligne</button>
+                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite">Ajouter un nouveau référentiel de sécurité</button>
                   </div>
                 </div>
               </div>
@@ -475,14 +475,14 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Écarts</h6>
+                  <h6 class="m-0">Règles</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="form-group">
                     <form method="post" action="content/php/atelier1d/ajout_ecart.php" class="user" id="formecartPop">
                       <fieldset>
-                        <label for="id_socle_securite">id_socle_securite</label>
+                        <label for="id_socle_securite">Nom du référentiel de sécurité</label>
                         <select class="form-control" name="id_socle_securite" id="id_socle_securite">
                           <option value="" selected>...</option>
                           <?php
@@ -503,12 +503,13 @@
                     <table id="editable_table_ecart" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th id="id_ecarts">ID</th>
-                          <th id="regles">Valeur métier</th>
-                          <th id="etat_de_la_regle">Nom de l'événement redouté</th>
-                          <th id="justification_ecart">événement redouté</th>
-                          <th id="nom">Responsable</th>
-                          <th id="date">Impacts</th>
+                          <th>ID</th>
+                          <th>ID de la règle</th>
+                          <th>Description de la règle</th>
+                          <th>État de la règle</th>
+                          <th>Justification des écarts</th>
+                          <th>Responsable</th>
+                          <th>Date limite de la mise en application</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -517,7 +518,8 @@
                           echo '
                         <tr>
                         <td>' . $row["id_ecarts"] . '</td>
-                        <td>' . $row["regles"] . '</td>
+                        <td>' . $row["id_regle"] . '</td>
+                        <td>' . $row["titre"] . '</td>
                         <td>' . $row["etat_de_la_regle"] . '</td>
                         <td>' . $row["justification_ecart"] . '</td>
                         <td>' . $row["nom"] . '</td>
@@ -582,8 +584,9 @@
               <fieldset>
 
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="customFile">
-                  <label class="custom-file-label" for="customFile">Choisir un fichier</label>
+                  <input type="file" class="custom-file-input" name="fileToUpload" id="fileToUpload">
+                  <label class="custom-file-label" for="fileToUpload">Choisir un fichier</label>
+                  <input type="submit" value="Upload File" id="file_submit" name="file_submit">
                 </div>
 
                 <div class="form-group">
@@ -718,6 +721,8 @@
     <script src="content/js/atelier/atelier1d.js"></script>
     <script src="content/js/modules/sort_table.js"></script>
     <script src="content/js/modules/socle_pour_ecart.js"></script>
+    <script src="content/js/modules/browse.js"></script>
+    <script src="content/js/modules/parser.js"></script>
 </body>
 
 </html>
