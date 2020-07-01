@@ -78,6 +78,7 @@ if($input["action"] === 'delete'){
     DELETE FROM mission 
     WHERE id_mission = '".$input["id_mission"]."'
     ";
+    echo $query;
     mysqli_query($connect, $query);
 }
 

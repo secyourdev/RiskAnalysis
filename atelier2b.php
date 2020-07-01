@@ -421,7 +421,6 @@
                       <thead>
                         <tr>
                           <th id=id_srov>ID SROV</th>
-                          <th id="type_attaquant">Type d'attaquant</th>
                           <th id="profil_attaquant">Profil d'attaquant</th>
                           <th id="description_source_risque">Description source de risque</th>
                           <th id="objectif vise">Objectif visé</th>
@@ -444,7 +443,6 @@
                         echo '
                         <tr>
                         <td>'.$row["id_source_de_risque"].'</td>
-                        <td>'.$row["type_d_attaquant_source_de_risque"].'</td>
                         <td>'.$row["profil_de_l_attaquant_source_de_risque"].'</td>
                         <td>'.$row["description_source_de_risque"].'</td>
                         <td>'.$row["objectif_vise"].'</td>

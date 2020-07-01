@@ -687,7 +687,7 @@
 
               <div class="form-group">
                 <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsablevm" id="InputPrenomResponsablevm"
-                  placeholder="Prénomom du responsable" required>
+                  placeholder="Prénom du responsable" required>
               </div>
               
               <div class="form-group">

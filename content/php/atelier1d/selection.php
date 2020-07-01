@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v8");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v12");
 $query_socle = "SELECT * FROM socle_de_securite ORDER BY id_socle_securite";
 $query_ecart = "SELECT * FROM ecarts, personne, dates, referentiel WHERE personne.id_personne = ecarts.id_personne AND dates.id_date = ecarts.id_date AND referentiel.id_referenciel = ecarts.id_referenciel";
 $query_id_socle = 'SELECT id_socle_securite FROM socle_de_securite';

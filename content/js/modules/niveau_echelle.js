@@ -3,7 +3,7 @@ const selectechelle = document.getElementById('nomechelle');
 
 selectechelle.addEventListener('change', (event) => {
 //   const result = document.querySelector('.result');
-  console.log(`Valeur  ${selectechelle.value}`);
+//   console.log(`Valeur  ${selectechelle.value}`);
   $.ajax({
       url: 'content/php/echelle/niveau.php',
       type: 'POST',
@@ -11,8 +11,8 @@ selectechelle.addEventListener('change', (event) => {
           nom_echelle: selectechelle.value
       },
       success: function(data){
-          console.log(data);
-          document.getElementById('ecrire_niveau').outerHTML = data; 
+        //   console.log(data);
+          document.getElementById('tableau_niveau').innerHTML = data; 
       }
   })
 });

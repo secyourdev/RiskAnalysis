@@ -25,8 +25,21 @@ if(isset($_POST['nom_echelle'])){
     // print_r($resultat[0]);
     $query->bindParam(1, $resultat[0]);
     $query->execute();
-    $row = $query->fetch(PDO::FETCH_ASSOC);
+    // $row = $query->fetch(PDO::FETCH_ASSOC);
     // print_r($row);
+    echo '
+      <thead>
+        <tr>
+          <th id="id_niveau">ID niveau</th>
+          <th id="valeur_niveau">Valeur du niveau</th>
+          <th id="description_niveau">Description du niveau</th>
+        </tr>
+      </thead>
+      
+      <tbody id="ecrire_niveau">
+      
+      </tbody>
+    ';
     while($row = $query->fetch(PDO::FETCH_ASSOC))
     {
       echo '
