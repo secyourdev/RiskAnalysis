@@ -1,6 +1,6 @@
 <?php  
 //action.php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v9");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v13");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -83,8 +83,8 @@ if($input["action"] === 'edit' && $results["error"] === false){
 
 if($input["action"] === 'delete'){
     $query = "
-    DELETE FROM bien_support 
-    WHERE id_bien_support = '".$input["id_bien_support"]."'
+    DELETE FROM echelle 
+    WHERE id_echelle = '".$input["id_echelle"]."'
     ";
     mysqli_query($connect, $query);
 }

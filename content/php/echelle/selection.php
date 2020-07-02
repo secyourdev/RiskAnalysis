@@ -1,8 +1,9 @@
 <?php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v11");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v13");
 $query1 = "SELECT * FROM echelle";
 $query2 = "SELECT * FROM niveau NATURAL JOIN echelle";
 $queryechelle = "SELECT nom_echelle FROM echelle";
+$queryechelle2 = "SELECT nom_echelle FROM echelle";
 
 if(isset($_POST['nomechelle'])){
     $nom_echelle = $_POST['nomechelle'];
@@ -14,5 +15,6 @@ if(isset($_POST['nomechelle'])){
 $result1 = mysqli_query($connect, $query1);
 $result2 = mysqli_query($connect, $query2);
 $resultechelle = mysqli_query($connect, $queryechelle);
+$resultechelle2 = mysqli_query($connect, $queryechelle2);
 
 ?>
