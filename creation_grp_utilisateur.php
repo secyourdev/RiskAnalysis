@@ -27,7 +27,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     <meta name="description" content="RiskManager">
     <meta name="author" content="SecYourDev">
 
-    <title>RiskManager | Tableau de bord</title>
+    <title>RiskManager | Création de groupe d'utilisateur</title>
 
     <!-- Fonts-->
     <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -141,84 +141,16 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- Content Row -->
-                    <h5>TABLEAU DE BORD</h5></br>
                     <div class="row">
-                        <div class="col-xl-3 col-lg-3">
-                            <div class="card shadow mb-4 tableau_de_bord_card">
-                                <div class="card-header d-flex flex-row align-items-center justify-content-between tableau_de_bord_card"
-                                    onclick="location.href='#'">
-                                    <table class="tableau_de_bord_table">
-                                        <tbody>
-                                            <tr>
-                                                <th>Projets</th>
-                                            </tr>
-                                            <tr>
-                                                <td class="compteur" id="prj"><b nbobs="7">0</b></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                        <!-- Area Card -->
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="card shadow mb-4">
+                                <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0">Création d'un groupe d'utilisateur</h6>
                                 </div>
+                                
                             </div>
                         </div>
-                        <div class="col-xl-3 col-lg-3">
-                            <div class="card shadow mb-4 tableau_de_bord_card">
-                                <div
-                                    class="card-header d-flex flex-row align-items-center justify-content-between tableau_de_bord_card">
-                                    <table class="tableau_de_bord_table">
-                                        <tbody>
-                                            <tr>
-                                                <th>Groupe d'utilisateurs</th>
-                                            </tr>
-                                            <tr>
-                                                <td class="compteur" id="grp_user"><b nbobs="7">0</b></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3">
-                            <div class="card shadow mb-4 tableau_de_bord_card">
-                                <div
-                                    class="card-header d-flex flex-row align-items-center justify-content-between tableau_de_bord_card">
-                                    <table class="tableau_de_bord_table">
-                                        <tbody>
-                                            <tr>
-                                                <th>Application</th>
-                                            </tr>
-                                            <tr>
-                                                <td class="compteur" id="app"><b nbobs="7">0</b></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3">
-                            <div class="card shadow mb-4 tableau_de_bord_card">
-                                <div
-                                    class="card-header d-flex flex-row align-items-center justify-content-between tableau_de_bord_card">
-                                    <table class="tableau_de_bord_table">
-                                        <tbody>
-                                            <tr>
-                                                <th>Base de données</th>
-                                            </tr>
-                                            <tr>
-                                                <td class="compteur" id="bdd"><b nbobs="7">0</b></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </br></br>
-                    <div class="row" id="projets">
-                    </div>
-
-                    <div class="text-center">
-                        <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none"
-                            data-toggle="modal" data-target="#ajout_projet">Créer un nouveau projet</button>
                     </div>
                 </div>
                 <!-- End of Main Content -->
@@ -242,68 +174,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             <i class="fas fa-angle-up"></i>
         </a>
 
-        <!-------------------------------------------------------------------------------------------------------------- 
-        --------------------------------------- modal creation d'un projet ---------------------------------------------
-        ---------------------------------------------------------------------------------------------------------------->
-        <div class="modal fade" id="ajout_projet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Création d'un projet</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body perso_modal_body">
-                        <form method="post" action="content/php/accueil/ajout_projet.php">
-                            <fieldset>
-                                <!--NOM ETUDE-->
-                                <div class="form-group">
-                                    <label class="titre_input" for="nom_etude">Nom</label>
-                                    <input type="text" class="perso_form shadow-none form-control form-control-user"
-                                        name="nom_etude" id="nom_etude" placeholder="Nom" required></input>
-                                </div>
-
-                                <!--OBJECTIF ETUDE-->
-                                <div class="form-group">
-                                    <label class="titre_textarea" for="objectif_atteindre">Objectif à atteindre</label>
-                                    <textarea class="form-control perso_text_area" name="objectif_atteindre"
-                                        id="objectif_atteindre" rows="3"></textarea>
-                                </div>
-
-                                <!--CADRE TEMPOREL ETUDE-->
-                                <div class="form-group">
-                                    <label class="titre_input" for="cadre_temporel">Cadre Temporel</label>
-                                    <input type="date" class="perso_form shadow-none form-control form-control-user"
-                                        name="cadre_temporel" id="cadre_temporel" placeholder="Cadre temporel" required>
-                                </div>
-
-                                <!--RISQUE ETUDE-->
-                                <div class="form-group">
-                                    <label class="titre_input" for="respo_acceptation_risque">Personne responsable
-                                        d'accepter les risques résiduels au terme de l'étude</label>
-                                    <input type="text" class="perso_arrow perso_form shadow-none form-control"
-                                        list="liste_respo_acceptation_risque" name="respo_acceptation_risque"
-                                        placeholder="..." required>
-                                    <datalist id="liste_respo_acceptation_risque">
-                                        <option>Directeur</option>
-                                        <option>RSSI</option>
-                                        <option>Responsable Informatique</option>
-                                    </datalist>
-                                </div>
-
-                                <div class="modal-footer perso_middle_modal_footer">
-                                    <input type="submit" name="ajouter_projet" value="Ajouter"
-                                        class="btn perso_btn shadow-none"></input>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
         <!-- Logout Modal-->
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -341,9 +211,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
         <!-- Our JS -->
         <script src="content/js/modules/dark_mode.js"></script>
-        <script src='content/js/accueil/index.js'> </script>
-        <script src="content/js/modules/help_button.js"></script>
-
+        
 </body>
 <?php
 }

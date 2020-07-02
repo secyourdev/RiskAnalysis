@@ -60,7 +60,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">      
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">      
         <!-- Logo -->
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-shield-alt"></i>
@@ -73,7 +73,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Tableau de Bord</span></a>
       </li>
@@ -374,12 +374,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                <a class="dropdown-item" href="parametres.php">
+                  <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
                   Paramètres
                 </a>
                 <div class="dropdown-divider"></div>
@@ -496,33 +492,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     ?>
                       <br/>
                       <label id="respo_acceptation_risque" class="no_modification"></input>
-                    </div>
-                    <?php
-                    }
-                    ?>
-
-                    <div class="card-header gravite col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <?php if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){
-                    ?>
-                        <div class="custom-control custom-radio custom-control-inline">
-                          <input type="radio" id="radio_gravite4" name="radio_gravite" class="custom-control-input" value="4">
-                          <label class="custom-control-label" for="radio_gravite4">Gravité sur 4</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                          <input type="radio" id="radio_gravite5" name="radio_gravite" class="custom-control-input" value="5">
-                          <label class="custom-control-label" for="radio_gravite5">Gravité sur 5</label>
-                        </div>
-                        <div class="perso_icon_btn custom-control-inline" data-container="body" data-trigger="hover focus" data-toggle="popover" data-placement="bottom" data-content="Ce choix engendre automatiquement le même barème sur vraisemblance ! ">
-                          <i class="fas fa-info-circle"></i>
-                        </div>
-                    </div>
-                    <?php
-                    }
-                    else { 
-                    ?>
-                      <label class="titre_input">Barème</label>
-                      <br/>
-                      <label id="radio_gravite4" class="no_modification"></label>
                     </div>
                     <?php
                     }

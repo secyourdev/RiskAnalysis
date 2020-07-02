@@ -1112,3 +1112,48 @@ h6 {
     margin-bottom: 0px;
     margin-top: 3px;
 }
+
+/*Tableau de Bord*/
+.tableau_de_bord_card{
+    height: 117px;
+}
+
+.tableau_de_bord_table{
+    width: 100%;
+}
+
+.tableau_de_bord_table td {
+    text-align: right;
+}
+
+.tableau_de_bord_table th {
+    text-align: left;
+    font-size: 1.3em;
+}
+
+#prj {
+    color: #4AD991;
+    font-size: 2em;
+}
+
+#grp_user {
+    color: #FF6565;
+    font-size: 2em;
+}
+
+#app {
+    color: #FFCA83;
+    font-size: 2em;
+}
+
+#bdd {
+    color: #A0C0FF;
+    font-size: 2em;
+}
+.tableau_de_bord_card{
+    cursor: pointer;
+}
+
+.tableau_de_bord_card:hover{
+    background-color: var(--card-divider) !important;
+}

@@ -226,11 +226,6 @@ function get_database_project_info(){
                 respo_acceptation_risque.options.selectedIndex=2
             else 
                 respo_acceptation_risque.options.selectedIndex=3
-           
-            if(projet_info[sessionIdProjet][4]==4)
-                radio_gravite4.checked=true
-            else 
-                radio_gravite5.checked=true
          
             cadre_temporel.value = projet_info[sessionIdProjet][5]
 

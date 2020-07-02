@@ -373,7 +373,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                   Profile
                 </a>
                 <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
                   Paramètres
                 </a>
                 <div class="dropdown-divider"></div>
