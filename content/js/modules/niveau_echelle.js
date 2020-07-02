@@ -15,10 +15,10 @@ selectechelle.addEventListener('change', (event) => {
       document.getElementById('ecrire_niveau').innerHTML = data;
       $('#tableau_niveau').Tabledit({
         deleteButton: false,
-        url: 'content/php/atelier1b/modification.php',
+        url: 'content/php/echelle/modificationniveau.php',
         columns: {
           identifier: [0, "id_niveau"],
-          editable: [[1, 'description_niveau'], [2, 'valeur_niveau']]
+          editable: [[2, 'description_niveau']]
         },
         restoreButton: false,
         onSuccess: function (data, textStatus, jqXHR) {
