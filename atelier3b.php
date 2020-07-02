@@ -435,7 +435,7 @@
                   <!--text-->
                   <div class="table-responsive">
                     <input type="text" class="rechercher_input" id="rechercher_evenement_redoute" placeholder="Rechercher">
-                    <table id="editable_table_evenement_redoutes" class="table table-bordered table-striped">
+                    <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
                           <th>ID</th>
