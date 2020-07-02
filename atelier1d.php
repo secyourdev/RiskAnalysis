@@ -443,7 +443,7 @@
                           <th>Commentaire</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody id="ecrire_socle">
                         <?php
                         while ($row = mysqli_fetch_array($result_socle)) {
                           echo '
@@ -480,22 +480,20 @@
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="form-group">
-                    <form method="post" action="content/php/atelier1d/ajout_ecart.php" class="user" id="formecartPop">
-                      <fieldset>
-                        <label for="id_socle_securite">Nom du référentiel de sécurité</label>
-                        <select class="form-control" name="id_socle_securite" id="id_socle_securite">
-                          <option value="" selected>...</option>
-                          <?php
-                          while ($row = mysqli_fetch_array($result_id_socle)) //selection.php
-                          {
-                            echo '
-                        <option id="socle_securite" value="' . $row['id_socle_securite'] . '">' . $row['id_socle_securite'] . '</option>
+
+                    <label for="nomreferentiel">Nom du référentiel de sécurité</label>
+                    <select class="form-control" name="nomreferentiel" id="nomreferentiel">
+                      <option value="" selected>...</option>
+                      <?php
+                      while ($row = mysqli_fetch_array($result_nom_referentiel)) //selection.php
+                      {
+                        echo '
+                        <option id="socle_securite" value="' . $row['nom_referentiel'] . '">' . $row['nom_referentiel'] . '</option>
                         ';
-                          }
-                          ?>
-                        </select>
-                      </fieldset>
-                    </form>
+                      }
+                      ?>
+                    </select>
+
                   </div>
                   <!--tableau-->
                   <div class="table-responsive">
@@ -512,22 +510,7 @@
                           <th>Date limite de la mise en application</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <?php
-                        while ($row = mysqli_fetch_array($result_ecart)) {
-                          echo '
-                        <tr>
-                        <td>' . $row["id_ecarts"] . '</td>
-                        <td>' . $row["id_regle"] . '</td>
-                        <td>' . $row["titre"] . '</td>
-                        <td>' . $row["etat_de_la_regle"] . '</td>
-                        <td>' . $row["justification_ecart"] . '</td>
-                        <td>' . $row["nom"] . '</td>
-                        <td>' . $row["date"] . '</td>
-                        </tr>
-                        ';
-                        }
-                        ?>
+                      <tbody id="ecrire_ecart">
                       </tbody>
                     </table>
                   </div>
@@ -580,7 +563,7 @@
             </button>
           </div>
           <div class="modal-body perso_modal_body">
-            <form enctype="multipart/form-data" action="content/php/atelier1d/parser_regles.php" method="post" class="user" id="formSoclePop">
+            <form enctype="multipart/form-data" action="content/php/atelier1d/parser_regles.php" method="post" class="user" id="formajoutsocle">
               <fieldset>
 
                 <div class="custom-file">
@@ -602,7 +585,7 @@
     <!-- -------------------------------------------------------------------------------------------------------------- 
 --------------------------------------- modal créer socle de sécurité ----------------------------------------------
 --------------------------------------------------------------------------------------------------------------  -->
-    <div class="modal fade" id="ajout_socle_de_securite" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="ajout_socle_de_securite" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -633,7 +616,7 @@
                 <div class="form-group">
                   <input type="text" class="perso_form shadow-none form-control form-control-user" name="etat_de_la_conformite" placeholder="État de la conformité" required>
                 </div>
-                <!-- bouton Ajouter -->
+
                 <div class="modal-footer perso_middle_modal_footer">
                   <input type="submit" name="validersocle" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
                 </div>
@@ -642,7 +625,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- -------------------------------------------------------------------------------------------------------------- 
   --------------------------------------- modal Ajout d'une règle ----------------------------------------------
@@ -674,7 +657,7 @@
                     ?>
                   </select>
                 </div>
-<!-- 
+                <!-- 
                 <div class="form-group">
                   <label for="etat_de_la_regle">État de la règle</label>
                   <select class="form-control" name="etat_de_la_regle" id="etat_de_la_regle">
