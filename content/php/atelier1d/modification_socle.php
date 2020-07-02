@@ -4,8 +4,12 @@ $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bs
 
 $input = filter_input_array(INPUT_POST);
 
-$etat_d_application = mysqli_real_escape_string($connect, $input['etat_d_application']);
-$etat_de_la_conformite = mysqli_real_escape_string($connect, $input['etat_de_la_conformite']);
+if (isset($input['etat_d_application'])){
+    $etat_d_application = mysqli_real_escape_string($connect, $input['etat_d_application']);
+}
+if (isset($input['etat_de_la_conformite'])){
+    $etat_de_la_conformite = mysqli_real_escape_string($connect, $input['etat_de_la_conformite']);
+}
 
 $results["error"] = false;
 $results["message"] = [];

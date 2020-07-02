@@ -50,3 +50,15 @@ $(document).ready(function () {
         }
     });
 });
+
+
+
+/*--------------------------- SORT & FILTER TABLES --------------------------*/
+setSortTable('editable_table_partie_prenante');
+OURJQUERYFN.setFilterTable("#rechercher_partie_prenante", "#editable_table_partie_prenante tbody tr")
+/*--------------------------- SORT & FILTER TABLES --------------------------*/
+setSortTable('editable_table_scenario_strategique');
+OURJQUERYFN.setFilterTable("#rechercher_scenario_strategique", "#editable_table_scenario_strategique tbody tr")
+/*--------------------------- SORT & FILTER TABLES --------------------------*/
+setSortTable('editable_table_mesure');
+OURJQUERYFN.setFilterTable("#rechercher_mesure", "#editable_table tbody tr")

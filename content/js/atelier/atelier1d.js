@@ -43,3 +43,10 @@ $(document).ready(function () {
         }
     });
 });
+
+/*--------------------------- SORT & FILTER TABLES --------------------------*/
+setSortTable('editable_table_socle');
+OURJQUERYFN.setFilterTable("#rechercher_socle", "#editable_table_socle tbody tr")
+/*--------------------------- SORT & FILTER TABLES --------------------------*/
+setSortTable('editable_table_ecart');
+OURJQUERYFN.setFilterTable("#rechercher_ecart", "#editable_table_ecart tbody tr")

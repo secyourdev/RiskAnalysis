@@ -494,9 +494,9 @@
                         <tr>
                         <td>' . $row["id_scenario_strategique"] . '</td>
                         <td>' . $row["nom_scenario_strategique"] . '</td>
-                        <td>' . $row["id_source_de_risque"] . '</td>
-                        <td>' . $row["id_evenement_redoute"] . '</td>
-                        <td>' . $row["id_partie_prenante"] . '</td>
+                        <td>' . $row["description_source_de_risque"] . ' : ' . $row["objectif_vise"] . '</td>
+                        <td>' . $row["nom_evenement_redoute"] . '</td>
+                        <td>' . $row["nom_partie_prenante"] . '</td>
                         </tr>
                         ';
                         }
@@ -512,24 +512,24 @@
 
             <!-- Area Card -->
             <!-- Socle de sécurité -->
-            <div class="col-xl-12 col-lg-12">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header d-flex flex-row align-items-center justify-content-between">
+            <!-- <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4"> -->
+            <!-- Card Header - Dropdown -->
+            <!-- <div class="card-header d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0">Socle de sécurité</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
+                </div> -->
+            <!-- Card Body -->
+            <!-- <div class="card-body"> -->
 
-                  <!-- <form action="content/php/atelier3c/parser_regles.php" method="post" enctype="multipart/form-data">
+            <!-- <form action="content/php/atelier3c/parser_regles.php" method="post" enctype="multipart/form-data">
                     Select image to upload: -->
-                  <input type="file" name="fileToUpload" id="fileToUpload">
-                  <input type="submit" value="Upload Image" id="file_submit" name="file_submit">
-                  <!-- </form> -->
+            <!-- <input type="file" name="fileToUpload" id="fileToUpload">
+                  <input type="submit" value="Upload Image" id="file_submit" name="file_submit"> -->
+            <!-- </form> -->
 
-                </div>
+            <!-- </div>
               </div>
-            </div>
+            </div> -->
 
             <!-- Area Card -->
             <div class="col-xl col-lg">
@@ -544,7 +544,7 @@
                   <!--text-->
                   <div class="table-responsive">
                     <input type="text" class="rechercher_input" id="rechercher_mesure" placeholder="Rechercher">
-                    <table id="editable_table" class="table table-bordered table-striped">
+                    <table id="editable_table_mesure" class="table table-bordered table-striped">
                       <thead>
                         <tr>
                           <th>ID</th>
@@ -651,12 +651,8 @@
             <div class="row">
               <div class=" col-6">
                 <div class="choix-valeur">
-                  <!-- <div>Dépendance</div> -->
+                  <div>Dépendance</div>
                   <div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck1">
-                      <label class="custom-control-label" for="customCheck1">Dépendance</label>
-                    </div>
                     <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Motivation">
                       <label class="btn perso_checkbox shadow-none">
                         <input type="radio" name="options" autocomplete="off"> 1
@@ -677,12 +673,8 @@
 
 
                 <div class="choix-valeur">
-                  <!-- <div>Ressources</div> -->
+                  <div>Ressources</div>
                   <div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck2">
-                      <label class="custom-control-label" for="customCheck2">Ressources</label>
-                    </div>
                     <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Ressources">
                       <label class="btn perso_checkbox shadow-none">
                         <input type="radio" name="options" autocomplete="off"> 1
@@ -702,12 +694,9 @@
               </div>
               <div class=" col-6">
                 <div class="choix-valeur">
-                  <!-- <div>Activité</div> -->
+                  <div>Activité</div>
                   <div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck3">
-                      <label class="custom-control-label" for="customCheck3">Activité</label>
-                    </div>
+
                     <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Activité">
                       <label class="btn perso_checkbox shadow-none">
                         <input type="radio" name="options" autocomplete="off"> 1
@@ -725,12 +714,8 @@
                   </div>
                 </div>
                 <div class="choix-valeur">
-                  <!-- <div>Choix</div> -->
+                  <div>Choix</div>
                   <div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck4">
-                      <label class="custom-control-label" for="customCheck4">Choix</label>
-                    </div>
                     <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Choix">
                       <label class="btn perso_checkbox shadow-none">
                         <input type="radio" name="options" autocomplete="off"> 1

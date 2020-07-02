@@ -517,7 +517,7 @@
 
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_ecart">Ajouter une nouvelle ligne</button>
+                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_ecart">Ajouter une nouvelle règle</button>
                   </div>
                 </div>
               </div>
@@ -563,8 +563,8 @@
             </button>
           </div>
           <div class="modal-body perso_modal_body">
-            <form enctype="multipart/form-data" action="content/php/atelier1d/parser_regles.php" method="post" class="user" id="formajoutsocle">
-              <fieldset>
+            <!-- <form enctype="multipart/form-data" action="content/php/atelier1d/parser_regles.php" method="post" class="user" id="formajoutsocle">
+              <fieldset> -->
 
                 <div class="custom-file">
                   <input name="userfile" id="fileToUpload" class="custom-file-input" type="file">
@@ -575,8 +575,8 @@
                 <div class="modal-footer perso_middle_modal_footer">
                   <input type="submit" id="file_submit" name="file_submit" value="Ajouter un fichier" class="btn perso_btn_primary shadow-none"></input>
                 </div>
-              </fieldset>
-            </form>
+              <!-- </fieldset>
+            </form> -->
           </div>
         </div>
       </div>
@@ -747,7 +747,7 @@
     <script src="content/js/modules/sort_table.js"></script>
     <script src="content/js/modules/socle_pour_ecart.js"></script>
     <script src="content/js/modules/browse.js"></script>
-    <!-- <script src="content/js/modules/parser.js"></script> -->
+    <script src="content/js/modules/parser.js"></script>
 </body>
 
 </html>
