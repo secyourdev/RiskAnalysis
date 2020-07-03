@@ -1,6 +1,6 @@
 <?php
 //action.php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v12");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v13");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -33,12 +33,12 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
     echo $query_date;
     print '</br>';
 
-    $query_referentiel =
-    "UPDATE referentiel 
+    $query_regle =
+    "UPDATE regle 
     SET 
     etat_de_la_regle = '" . $etat_de_la_regle . "'
     WHERE id_regle = (SELECT id_regle FROM ecarts WHERE id_ecarts = " . $input["id_ecarts"] . ")";
-    echo $query_referentiel;
+    echo $query_regle;
     print '</br>';
 
     $query_responsable =
@@ -59,7 +59,7 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
     mysqli_query($connect, $query_date);
     print '</br>';
     print '1';
-    mysqli_query($connect, $query_referentiel);
+    mysqli_query($connect, $query_regle);
     print '</br>';
     print '2';
     mysqli_query($connect, $query_responsable);

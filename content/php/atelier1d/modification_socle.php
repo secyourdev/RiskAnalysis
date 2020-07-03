@@ -1,6 +1,6 @@
 <?php
 //action.php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v12");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v13");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -41,8 +41,8 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
     SET
     etat_d_application = '" . $etat_d_application . "',
     etat_de_la_conformite = '" . $etat_de_la_conformite . "',
-    id_atelier = '" . 1 . "',
-    id_projet = '" . 1 . "'
+    id_atelier = '1.d',
+    id_projet = '99'
     WHERE id_socle_securite = '" . $input["id_socle_securite"] . "'
     ";
     

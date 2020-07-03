@@ -6,9 +6,14 @@ $input = filter_input_array(INPUT_POST);
 
 
 $nom_mission = mysqli_real_escape_string($connect, $input["nom_mission"]);
-$nom = mysqli_real_escape_string($connect, $input["nom"]);
-$prenom = mysqli_real_escape_string($connect, $input["prenom"]);
-$poste = mysqli_real_escape_string($connect, $input["poste"]);
+$respo_mis_nom = mysqli_real_escape_string($connect, $input["respo_mis_nom"]);
+$respo_mis_prenom = mysqli_real_escape_string($connect, $input["respo_mis_prenom"]);
+$respo_mis_poste = mysqli_real_escape_string($connect, $input["respo_mis_poste"]);
+
+$nom_valeur_metier = mysqli_real_escape_string($connect, $input["nom_valeur_metier"]);
+$respo_val_nom = mysqli_real_escape_string($connect, $input["respo_val_nom"]);
+$nom_bien_support = mysqli_real_escape_string($connect, $input["nom_bien_support"]);
+$respo_bien_nom = mysqli_real_escape_string($connect, $input["respo_bien_nom"]);
 
 
 
@@ -25,30 +30,30 @@ if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_mission)){
     <?php
 }
 
-// Verification du nom du responsable
-if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom)){
+// Verification du respo_mis_nom du responsable
+if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $respo_mis_nom)){
     $results["error"] = true;
-    $results["message"]["prenom"] = "Nom invalide";
+    $results["message"]["respo_mis_nom"] = "respo_mis_nom invalide";
     ?>
-    <strong style="color:#FF6565;">Nom invalide </br></strong>
+    <strong style="color:#FF6565;">respo_mis_nom invalide </br></strong>
     <?php
 }
 
-// Verification du prenom du responsable
-if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $prenom)){
+// Verification du respo_mis_prenom du responsable
+if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $respo_mis_prenom)){
     $results["error"] = true;
-    $results["message"]["prenom"] = "Prenom invalide";
+    $results["message"]["respo_mis_prenom"] = "respo_mis_prenom invalide";
     ?>
-    <strong style="color:#FF6565;">Prénom invalide </br></strong>
+    <strong style="color:#FF6565;">respo_mis_prenom invalide </br></strong>
     <?php
 }
 
-// Verification du poste du responsable
-if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $poste)){
+// Verification du respo_mis_poste du responsable
+if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $respo_mis_poste)){
     $results["error"] = true;
-    $results["message"]["prenom"] = "Poste invalide";
+    $results["message"]["respo_mis_poste"] = "respo_mis_poste invalide";
     ?>
-    <strong style="color:#FF6565;">Poste invalide </br></strong>
+    <strong style="color:#FF6565;">respo_mis_poste invalide </br></strong>
     <?php
 }
 
@@ -69,8 +74,15 @@ if($input["action"] === 'edit' && $results["error"] === false){
     WHERE id_mission = '".$input["id_mission"]."'
     ";
 
+    $queryvm = "
+    UPDATE valeur_metier 
+    SET id_mission = (SELECT id_mission FROM mission WHERE nom_mission = '". $nom_mission . "'
+    WHERE nom_valeur_metier = '" . $input["nom_valeur_metier"] . "'
+    ";
+
     mysqli_query($connect, $queryp);
     mysqli_query($connect, $querym);
+    mysqli_query($connect, $queryvm);
 }
 
 if($input["action"] === 'delete'){

@@ -11,7 +11,7 @@ $("#file_submit").click(function () {
         contentType: false,
         processData: false,
         success: function (data) {
-            //   console.log(data);
+              console.log(data);
             // document.getElementById('ecrire_socle').innerHTML = data;
             $('#editable_table_socle tbody').append("<tr>"  + data + "</tr>");
             // document.getElementById('ecrire_socle').appendChild(data);

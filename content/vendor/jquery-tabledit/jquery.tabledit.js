@@ -67,9 +67,9 @@ if (typeof jQuery === 'undefined') {
                   }
               },
               onDraw: function() { return; },
-              onSuccess: function() { return; },
+              onSuccess: function () { return; },
               onFail: function() { return; },
-              onAlways: function() { return; },
+              onAlways: function() {location.reload(); },
               onAjax: function() { return; }
           };
   
@@ -302,7 +302,7 @@ if (typeof jQuery === 'undefined') {
                   // Set last edited column and row.
                   $lastEditedRow = $(td).parent('tr');
 
-                  location.reload();
+                //   location.reload();
               }
           };
   
@@ -339,7 +339,7 @@ if (typeof jQuery === 'undefined') {
                   $(td).find('.tabledit-restore-button').show();
                   // Set last deleted row.
                   $lastDeletedRow = $(td).parent('tr');
-                  location.reload();
+                //   location.reload();
               },
               confirm: function(td) {
                   // Reset all cells in edit mode.

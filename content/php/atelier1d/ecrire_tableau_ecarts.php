@@ -2,7 +2,7 @@
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v12;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v13;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -14,24 +14,24 @@ try {
 $query = $bdd->prepare(
   "SELECT 
   ecarts.id_ecarts, 
-  referentiel.id_regle, 
-  referentiel.titre, 
-  referentiel.etat_de_la_regle, 
+  regle.id_regle, 
+  regle.titre, 
+  regle.etat_de_la_regle, 
   ecarts.justification_ecart, 
   personne.nom, 
   dates.date 
-  FROM referentiel, ecarts, personne, dates 
-  WHERE ecarts.id_regle = referentiel.id_regle 
+  FROM regle, ecarts, personne, dates 
+  WHERE ecarts.id_regle = regle.id_regle 
   AND ecarts.id_date = dates.id_date 
   AND ecarts.id_personne = personne.id_personne 
-  AND referentiel.id_socle_securite = ?"
+  AND regle.id_socle_securite = ?"
 );
 $query_vide = $bdd->prepare(
   "SELECT 
-  referentiel.id_regle, 
-  referentiel.titre
-  FROM referentiel
-  WHERE referentiel.id_socle_securite = ?"
+  regle.id_regle, 
+  regle.titre
+  FROM regle
+  WHERE regle.id_socle_securite = ?"
 );
 
 

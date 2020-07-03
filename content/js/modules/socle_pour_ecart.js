@@ -13,8 +13,8 @@ selectsocle.addEventListener('change', (event) => {
         success: function (data) {
             //   console.log(data);
             document.getElementById('ecrire_ecart').innerHTML = data;
-
-            $('#tableau_niveau').Tabledit({
+            // $('#editable_table_ecart tbody').append(data);
+            $('#editable_table_ecart').Tabledit({
                 deleteButton: false,
                 url: 'content/php/atelier1b/modification_ecart.php',
                 columns: {

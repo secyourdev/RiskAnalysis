@@ -1,0 +1,132 @@
+﻿{
+  "Référentiel de sécurité": {
+    "name": "Cloisonnement système",
+    "Exigence": [
+      {
+        "id": "1",
+        "Titre": "Appliquer le principe de moindre privilège dès la conception",
+        "Description": "Interdire par défaut toute action et procéder à l’autorisation exclusive de ce qui estnécessaire aux tâches constitue la stratégie la plus efficace de mise en œuvre duprincipe de moindre privilège. Il convient de s’y conformer autant que possible dèsla phase de conception du composant."
+      },
+      {
+        "id": "2",
+        "Titre": "Tenir compte de ses besoins en cloisonnement dès l'initiation d'un projet",
+        "Description": "Les besoins en cloisonnement d’un composant doivent faire l’objet d’un diagnosticet être considérés comme des besoins au même titre que les besoins fonctionnels, etce dès le début du projet."
+      },
+      {
+        "id": "3",
+        "Titre": "Préférer des composants implémentant un cloisonnement pertinent",
+        "Description": "Lors d’un choix entre différentes solutions, celles qui démontrent la meilleure priseen compte du principe du moindre privilège devront être préférées."
+      },
+      {
+        "id": "4",
+        "Titre": "Garantir l'intégrité des composants de confiance",
+        "Description": "Il est impératif de garantir concrètement l’intégrité des composants de confiancepour que la sécurité de l’ensemble du composant soit assurée. Des recommandationsplus précises sont fournies en4.1."
+      },
+      {
+        "id": "5",
+        "Titre": "Rédiger l'analyse de la sécurité attendue du composant",
+        "Description": "Une analyse de la sécurité attendue du composant doit faire partie des documentsde conception ou intégration mis à disposition.Elle doit comporter les définitions des quatre éléments cités ci-dessus :\nla liste des biens sensibles à protéger;\nle modèle d’attaquant pris en compte (duquel découle en particulier l’identifica-tion des composants de confiance);\nnle périmètre du composant, c’est-à-dire sa surface d’attaque et sa surface de fric-tion avec le système global;\nnles fonctions de sécurité attendues."
+      },
+      {
+        "id": "6",
+        "Titre": "Caractériser des usages du composant",
+        "Description": "Réaliser une liste des usages du composant à partir de ses fonctionnalités et de laliste des ressources auxquelles il accède."
+      },
+      {
+        "id": "7",
+        "Titre": "Minimiser de la surface d'attaque",
+        "Description": "Réduire systématiquement la surface d’attaque pour chaque usage, de manière à n’-exposer que les interfaces externes utiles pour l’usage considéré."
+      },
+      {
+        "id": "8",
+        "Titre": "Cloisonner les usages entre eux",
+        "Description": "Mettre en place un moniteur de référence en s’appuyant sur les composants de con-fiance pour faire en sorte que chaque usage soit confiné dans un domaine."
+      },
+      {
+        "id": "9",
+        "Titre": "Minimiser la surface de friction",
+        "Description": "Réduire systématiquement les actions possibles pour chaque domaine aux seuls be-soins liés à l’usage, c’est-à-dire réduire la surface de friction avec le système global."
+      },
+      {
+        "id": "10",
+        "Titre": "Considérer le moniteur comme un composant de confiance",
+        "Description": "Vis-à-vis d’un attaquant de la fonction de sécurité de cloisonnement, le moniteur deréférence fait partie des composants de confiance. Ainsi, il doit respecter les recom-mandations de cette section."
+      },
+      {
+        "id": "11",
+        "Titre": "Identifier les composants de confiance",
+        "Description": "Tout composant du système qui dispose d’un privilège lui permettant de porter at-teinte à l’intégrité du moniteur, ou des politiques de sécurité qu’il met en place, est àconsidérer comme faisant partie des composants de confiance vis-à-vis du composantanalysé.Tous ces composants doivent donc vérifier les exigences propres aux composants deconfiance."
+      },
+      {
+        "id": "12",
+        "Titre": "Concevoir des composants simples et concis",
+        "Description": "Les composants de confiance doivent être conçus en suivant des spécifications claireset complètes, permettant de définir et combiner des éléments simples (suivant leprincipe « Keep It Short and Simple ») qui facilitent développement et validation."
+      },
+      {
+        "id": "13",
+        "Titre": "Choisir un langage approprié",
+        "Description": "Utiliser un langage de programmation fortement typé, qui entre autres prévient lesdébordements de tableau, d’entier, ou l’utilisation de pointeurs invalides, est forte-ment souhaitable pour le développement des composants de confiance."
+      },
+      {
+        "id": "14",
+        "Titre": "Développer selon un référentiel de sécurité",
+        "Description": "Un référentiel de développement sécurisé doit être utilisé systématiquement lors dudéveloppement de composants de confiance.La vérification du respect du référentiel de codage doit être assurée.Le respect de cette recommandation est critique dans le cas du choix d’un langagene respectant pas les critères conseillés ci-dessus."
+      },
+      {
+        "id": "15",
+        "Titre": "Auditer le code de l'implémentation des composants de confiance",
+        "Description": "L’intégralité du code des composants de confiance devra faire l’objet d’un audit decode par des personnels qui n’en sont pas développeurs, de préférence indépendantsdu projet concerné."
+      },
+      {
+        "id": "16",
+        "Titre": "Valider l'implémentation des composants de confiance",
+        "Description": "Des tests fonctionnels complets devront permettre de valider le bon fonctionnementdes fonctions de sécurité implémentées. Une attention particulière sera portée àtester aussi bien les opérations qui doivent être refusées que celles qui doivent êtremenées à bien avec succès."
+      },
+      {
+        "id": "17",
+        "Titre": "Prouver l'implémentation des composants de confiance",
+        "Description": "Il est fortement recommandé de compléter les tests par une preuve formelle del’absence d’erreur à l’exécution d’un composant de confiance, par exemple à l’aided’outils d’analyse (statique ou dynamique) pour prévenir certains types de vulnérabilités."
+      },
+      {
+        "id": "18",
+        "Titre": "Supprimer toute partie inutilisée d'un composant de confiance",
+        "Description": "Un composant de confiance doit être minimal. Dès que possible, la suppression ducode inutilisé sera privilégiée. A défaut, sa désactivation par configuration sera effectuée."
+      },
+      {
+        "id": "19",
+        "Titre": "Appliquer des techniques de durcissement aux composants de confiance",
+        "Description": "Les composants de confiance doivent se voir appliquer des techniques de durcisse-ment à l’état de l’art afin de compliquer l’exploitation d’une vulnérabilité et le dé-tournement du flot de contrôle, comme par exemple :\nprésence de motifs d’intégrité de la pile et du tas (canaris);\nprincipe W+X : au cours de toute son utilisation par le système, une zone mé-moire donnée ne doit pas être inscriptible et exécutable, que ce soit simultané-ment ou non;\nrépartition aléatoire de l’espace d’adressage (ou Address Space Layout Random-ization (ASLR))."
+      },
+      {
+        "id": "20",
+        "Titre": "Justifier le respect des propriétés fondamentales du moniteur de référence",
+        "Description": "Le développement, l’intégration et la validation du moniteur de référence doiventpermettre de garantir qu’il vérifie les propriétés suivantes.\n1.Complétude du contrôle exercé: le moniteur est impliqué pour chaque tenta-tive d’accès à une ressource, et ce au moment opportun (i.e. absence d’attaquesTOCTTOU (Time Of Check To Time Of Use), liées à une évolution des propriétésde l’objet entre le moment de la requête au moniteur et l’action effective).\n2.Maintien de l’intégrité du moniteur.\n3.Validation et audit de la politique de sécurité. La possibilité de consulter la poli-tique de sécurité implémentée par le moniteur à un instant donné permettral’audit de celle-ci.Des justifications construites confirmant le respect de ces propriétés doivent figurerdans les documents de conception du composant utilisant le moniteur de référence."
+      },
+      {
+        "id": "21",
+        "Titre": "Assurer au moniteur de référence un niveau de privilège supérieur à celuides tâches cloisonnées",
+        "Description": "De manière à préserver l’intégrité du moniteur et des politiques de sécurité qu’il meten application, les tâches cloisonnées ne doivent pas disposer des privilèges néces-saires à la relaxe de la politique de sécurité appliquée.Une façon de garantir ceci est d’assurer que les politiques sont non-modifiables parles tâches cloisonnées et que le moniteur s’exécute à un niveau de privilège supérieurà celui des tâches qu’il cloisonne."
+      },
+      {
+        "id": "22",
+        "Titre": "Appliquer le principe d'interdiction par défaut",
+        "Description": "Un moniteur de référence doit être configurable pour que toute action soit interditeà une tâche, sauf à lui être explicitement autorisée."
+      },
+      {
+        "id": "23",
+        "Titre": "Minimiser le nombre et l'impact des configurations possibles",
+        "Description": "Dans une démarche de durcissement du moniteur, les options de configuration lais-sées au choix de l’utilisateur (même privilégié) en production doivent être restreintesau strict minimum, de manière à réduire l’impact possible d’une erreur sur la sécuritéglobale du système. Pour les choix laissés à l’utilisateur, les messages d’avertissementsur les conséquences en terme de sécurité doivent être suffisamment explicites."
+      },
+      {
+        "id": "24",
+        "Titre": "Spécifier le cloisonnement proposé",
+        "Description": "Pour présenter le cloisonnement mis en place, il est recommandé de procéder de lamanière suivante.\n1.Expliciter les usages identifiés.\n2.Décrire le mécanisme de cloisonnement mis en oeuvre en explicitant ce àquoi correspondent les définitions de tâches, ressources propres et partagéeset moniteur de référence.\n3. Expliciter la politique de sécurité mise en place pour chaque usage.Pour chaque domaine, il faut reprendre la liste des interfaces externes dressées précédem-ment et caractériser les actions autorisées."
+      },
+      {
+        "id": "25",
+        "Titre": "Assurer l'innocuité du composant pour le système qui l'accueille",
+        "Description": "Un composant ne doit pas dégrader la sécurité globale du système, notamment enlimitant la mise en place du cloisonnement par d’autres composants utilisés sur lemême système.En particulier, un composant ne doit pas exiger pour fonctionner d’abaisser le niveaude sécurité du système qui l’héberge : le composant doit être compatible avec unniveau de durcissement à l’état de l’art au moment de sa mise en production."
+      }
+    ]
+  }
+}
