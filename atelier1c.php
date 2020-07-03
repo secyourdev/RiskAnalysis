@@ -438,7 +438,6 @@
                           <th id="id_echelle">ID echelle</th>
                           <th id="nom_echelle">Nom de l'échelle</th>
                           <th id="echelle_gravite">Echelle de la gravité</th>
-                          <th id="echelle_vraisemblance">Echelle de la vraisemblance</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -450,7 +449,6 @@
                         <td>'.$row["id_echelle"].'</td>
                         <td>'.$row["nom_echelle"].'</td>
                         <td>'.$row["echelle_gravite"].'</td>
-                        <td>'.$row["echelle_vraisemblance"].'</td>
                         </tr>
                         ';
                       }
@@ -547,8 +545,8 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                <div class="form-group">
-                    <label for="SelectNaturePop">Echelles</label>
+                  <div class="form-group">
+                    <label for="SelectNaturePop">Choix de l'échelle à utiliser pour le projet</label>
                     <select class="form-control" name="nomechelleprojet" id="nomechelleprojet">
                       <option value="" selected>...</option>
                       <?php
@@ -557,10 +555,18 @@
                             echo '
                             <option value="'.$row["nom_echelle"].'">'.$row["nom_echelle"].'</option>
                             ';
-                          }
+                          }  
                       ?>
                     </select>
+                    <div id="echelle_choisie">
+                      Echelle choisie : 
+                      <?php 
+                        $echelle_projet = mysqli_fetch_array($resultprojet);
+                        echo $echelle_projet[0];
+                      ?>
+                    </div>
                   </div>
+                  <script src="content/js/modules/echelle_projet.js"></script>
                   <!--tableau-->
                   <div class="table-responsive">
                     <input type="text" class="rechercher_input" id="rechercher_er" placeholder="Rechercher">
@@ -666,15 +672,6 @@
                 </select>
               </div>
 
-              <div class="form-group">
-                <label for="SelectNaturePop">Valeur vraisemblance</label>
-                <select class="form-control" name="echelle_vraisemblance" id="echelle_vraisemblance">
-                  <option value="" selected>...</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-              </div>
-
               <!-- bouton Ajouter -->
               <div class="modal-footer perso_middle_modal_footer">
                 <input type="submit" name="validerechelle" value="Ajouter" class="btn perso_btn shadow-none"></input>
@@ -728,7 +725,26 @@
 
                     <div class="form-group">
                       <label for="Description_event_pop">Événement redouté</label>
-                      <textarea class="form-control perso_text_area" name="description_evenement_redoutes" id="Description_event_pop" rows="3"></textarea>
+                      <textarea class="form-control perso_text_area" name="description_evenement_redoute" id="Description_event_pop" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Select_valeur_metier">Confidentialité</label>
+                      <select class="form-control" name="confidentialite" id="confidentialite">
+                        <option value="" selected>...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="Select_valeur_metier">Intégrité</label>
+                      <select class="form-control" name="integrite" id="integrite">
+                        <option value="" selected>...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                      </select>
                     </div>
                   </div>
                   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
@@ -748,6 +764,29 @@
                       <input type="checkbox" class="custom-control-input" id="customCheck4" name="formcheck[]" value="4">
                       <label class="custom-control-label" for="customCheck4">Traçabilité</label>
                     </div> -->
+
+                    <div class="form-group">
+                      <label for="Select_valeur_metier">Disponibilité</label>
+                      <select class="form-control" name="disponibilite" id="disponibilite">
+                        <option value="" selected>...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="Select_valeur_metier">Traçabilité</label>
+                      <select class="form-control" name="tracabilite" id="tracabilite">
+                        <option value="" selected>...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                      </select>
+                    </div>
+
+                    
+
+
 
                     <div class="form-group">
                       <label for="Description_impact_pop">Impacts</label>

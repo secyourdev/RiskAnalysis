@@ -7,6 +7,7 @@ $queryniveaugravite = "SELECT valeur_max_gravite FROM projet";
 $query1 = "SELECT * FROM echelle";
 $query2 = "SELECT * FROM niveau NATURAL JOIN echelle";
 $queryechelle = "SELECT nom_echelle FROM echelle";
+$queryprojet = "SELECT nom_echelle FROM projet NATURAL JOIN echelle WHERE id_projet = 99";
 
 if(isset($_POST['nomechelle'])){
     $nom_echelle = $_POST['nomechelle'];
@@ -25,5 +26,5 @@ $resultechelle2 = mysqli_query($connect, $queryechelle);
 $result = mysqli_query($connect, $query);
 $resultvm = mysqli_query($connect, $queryvm);
 $resultniveaugravite = mysqli_query($connect, $queryniveaugravite);
-
+$resultprojet = mysqli_query($connect, $queryprojet);
 ?>
