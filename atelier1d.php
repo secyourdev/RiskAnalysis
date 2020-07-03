@@ -5,10 +5,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="RiskManager">
+  <meta name="description" content="CyberRiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>RiskManager | Atelier 1.d</title>
+  <title>CyberRiskManager | Atelier 1.d</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -36,7 +36,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-shield-alt"></i>
         </div>
-        <div class="sidebar-brand-text mx-2">RISK MANAGER</div>
+        <div class="sidebar-brand-text mx-2">CYBER RISK MANAGER</div>
       </a>
 
       <!-- Divider -->
@@ -436,20 +436,20 @@
                     <table id="editable_table_socle" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th id="id">ID</th>
-                          <th id="type_de_referentiel">Type de référentiel</th>
-                          <th id="nom_referentiel">Nom du référentiel</th>
-                          <th id="etat_d_application">État d'application</th>
-                          <th id="etat_de_la_conformite">État de la conformité</th>
+                          <th>ID</th>
+                          <th>Type de référentiel</th>
+                          <th>Nom du référentiel</th>
+                          <th>État d'application</th>
+                          <th>Commentaire</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody id="ecrire_socle">
                         <?php
                         while ($row = mysqli_fetch_array($result_socle)) {
                           echo '
                         <tr>
                         <td>' . $row["id_socle_securite"] . '</td>
-                        
+                        <td>' . $row["type_referentiel"] . '</td>
                         <td>' . $row["nom_referentiel"] . '</td>
                         <td>' . $row["etat_d_application"] . '</td>
                         <td>' . $row["etat_de_la_conformite"] . '</td>
@@ -463,7 +463,7 @@
 
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite">Ajouter une nouvelle ligne</button>
+                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite">Ajouter un nouveau référentiel de sécurité</button>
                   </div>
                 </div>
               </div>
@@ -475,27 +475,25 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Écarts</h6>
+                  <h6 class="m-0">Règles</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="form-group">
-                    <form method="post" action="content/php/atelier1d/ajout_ecart.php" class="user" id="formecartPop">
-                      <fieldset>
-                        <label for="id_socle_securite">id_socle_securite</label>
-                        <select class="form-control" name="id_socle_securite" id="id_socle_securite">
-                          <option value="" selected>...</option>
-                          <?php
-                          while ($row = mysqli_fetch_array($result_id_socle)) //selection.php
-                          {
-                            echo '
-                        <option id="socle_securite" value="' . $row['id_socle_securite'] . '">' . $row['id_socle_securite'] . '</option>
+
+                    <label for="nomreferentiel">Nom du référentiel de sécurité</label>
+                    <select class="form-control" name="nomreferentiel" id="nomreferentiel">
+                      <option value="" selected>...</option>
+                      <?php
+                      while ($row = mysqli_fetch_array($result_nom_referentiel)) //selection.php
+                      {
+                        echo '
+                        <option id="socle_securite" value="' . $row['nom_referentiel'] . '">' . $row['nom_referentiel'] . '</option>
                         ';
-                          }
-                          ?>
-                        </select>
-                      </fieldset>
-                    </form>
+                      }
+                      ?>
+                    </select>
+
                   </div>
                   <!--tableau-->
                   <div class="table-responsive">
@@ -503,36 +501,23 @@
                     <table id="editable_table_ecart" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th id="id_ecarts">ID</th>
-                          <th id="regles">Valeur métier</th>
-                          <th id="etat_de_la_regle">Nom de l'événement redouté</th>
-                          <th id="justification_ecart">événement redouté</th>
-                          <th id="nom">Responsable</th>
-                          <th id="date">Impacts</th>
+                          <th>ID</th>
+                          <th>ID de la règle</th>
+                          <th>Description de la règle</th>
+                          <th>État de la règle</th>
+                          <th>Justification des écarts</th>
+                          <th>Responsable</th>
+                          <th>Date limite de la mise en application</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <?php
-                        while ($row = mysqli_fetch_array($result_ecart)) {
-                          echo '
-                        <tr>
-                        <td>' . $row["id_ecarts"] . '</td>
-                        <td>' . $row["regles"] . '</td>
-                        <td>' . $row["etat_de_la_regle"] . '</td>
-                        <td>' . $row["justification_ecart"] . '</td>
-                        <td>' . $row["nom"] . '</td>
-                        <td>' . $row["date"] . '</td>
-                        </tr>
-                        ';
-                        }
-                        ?>
+                      <tbody id="ecrire_ecart">
                       </tbody>
                     </table>
                   </div>
 
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_ecart">Ajouter une nouvelle ligne</button>
+                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_ecart">Ajouter une nouvelle règle</button>
                   </div>
                 </div>
               </div>
@@ -546,7 +531,7 @@
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright &copy; RISK MANAGER 2020</span>
+              <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
             </div>
           </div>
         </footer>
@@ -578,12 +563,45 @@
             </button>
           </div>
           <div class="modal-body perso_modal_body">
+            <!-- <form enctype="multipart/form-data" action="content/php/atelier1d/parser_regles.php" method="post" class="user" id="formajoutsocle">
+              <fieldset> -->
+
+                <div class="custom-file">
+                  <input name="userfile" id="fileToUpload" class="custom-file-input" type="file">
+                  <label class="custom-file-label" for="fileToUpload">Choisir un fichier</label>
+                </div>
+
+                <!-- bouton Ajouter -->
+                <div class="modal-footer perso_middle_modal_footer">
+                  <input type="submit" id="file_submit" name="file_submit" value="Ajouter un fichier" class="btn perso_btn_primary shadow-none"></input>
+                </div>
+              <!-- </fieldset>
+            </form> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- -------------------------------------------------------------------------------------------------------------- 
+--------------------------------------- modal créer socle de sécurité ----------------------------------------------
+--------------------------------------------------------------------------------------------------------------  -->
+    <!-- <div class="modal fade" id="ajout_socle_de_securite" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ajout d'un socle de sécurité</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body perso_modal_body">
             <form method="post" action="content/php/atelier1d/ajout_socle.php" class="user" id="formSoclePop">
               <fieldset>
 
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="customFile">
-                  <label class="custom-file-label" for="customFile">Choisir un fichier</label>
+                  <input type="file" class="custom-file-input" name="fileToUpload" id="fileToUpload">
+                  <label class="custom-file-label" for="fileToUpload">Choisir un fichier</label>
+                  <input type="submit" value="Upload File" id="file_submit" name="file_submit">
                 </div>
 
                 <div class="form-group">
@@ -598,7 +616,7 @@
                 <div class="form-group">
                   <input type="text" class="perso_form shadow-none form-control form-control-user" name="etat_de_la_conformite" placeholder="État de la conformité" required>
                 </div>
-                <!-- bouton Ajouter -->
+
                 <div class="modal-footer perso_middle_modal_footer">
                   <input type="submit" name="validersocle" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
                 </div>
@@ -607,37 +625,47 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- -------------------------------------------------------------------------------------------------------------- 
-  --------------------------------------- modal modification d'un écart ----------------------------------------------
+  --------------------------------------- modal Ajout d'une règle ----------------------------------------------
   --------------------------------------------------------------------------------------------------------------  -->
     <div class="modal fade" id="ajout_ecart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modification d'un écart</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Ajout d'une règle</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body perso_modal_body">
-            <form method="post" action="content/php/atelier1d/ajout_ecart.php" class="user" id="formecartPop">
+            <form method="post" action="content/php/atelier1d/ajout_regle.php" class="user" id="formecartPop">
               <fieldset>
-                <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="regles" placeholder="Règle non respectée" required>
-                </div>
-                <span style="display: none;">
 
-                </span>
+                <div class="form-group">
+                  <label for="Select_regle">Règle non respectée</label>
+                  <select class="form-control" name="titre" id="Select_regle">
+                    <option value="" selected>...</option>
+                    <?php
+                    while ($row = mysqli_fetch_array($result_titre_regle)) //selection.php
+                    {
+                      echo '
+                        <option value="' . $row['titre'] . '">' . $row['titre'] . '</option>
+                        ';
+                    }
+                    ?>
+                  </select>
+                </div>
+                <!-- 
                 <div class="form-group">
                   <label for="etat_de_la_regle">État de la règle</label>
                   <select class="form-control" name="etat_de_la_regle" id="etat_de_la_regle">
                     <option value="" selected>...</option>
-                    <option value="traite">Traitée</option>
-                    <option value="non_traite">Non traitée</option>
+                    <option value="Conforme">Conforme</option>
+                    <option value="Non traité">Non traitée</option>
                   </select>
-                </div>
+                </div> -->
 
                 <!-- <div class="form-group">
                   <label for="description_ecarts_pop">Description des écarts</label>
@@ -718,6 +746,8 @@
     <script src="content/js/atelier/atelier1d.js"></script>
     <script src="content/js/modules/sort_table.js"></script>
     <script src="content/js/modules/socle_pour_ecart.js"></script>
+    <script src="content/js/modules/browse.js"></script>
+    <script src="content/js/modules/parser.js"></script>
 </body>
 
 </html>

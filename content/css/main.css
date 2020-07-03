@@ -447,6 +447,10 @@ h6 {
     padding: 1rem 2rem;
 }
 
+.perso_img_full_screen_div{
+    /* padding: 1rem 2rem; */
+    max-width: 50%;
+}
 .card-columns {
     padding-right: .75rem;
     padding-left : .75rem;
@@ -635,9 +639,10 @@ h6 {
         padding: 1rem 2rem;
     }
 
-    /* .perso_img_full_screen_div{
-    padding: 1rem 2rem;
-    } */
+    .perso_img_full_screen_div{
+    /* padding: 1rem 2rem; */
+    max-width: 70%;
+    }
     .card-columns {
         -moz-column-count: 1;
         column-count     : 1;
@@ -698,9 +703,10 @@ h6 {
         padding: 1rem 1rem;
     }
 
-    /* .perso_img_full_screen_div{
-    padding: 1rem 4rem;
-    } */
+    .perso_img_full_screen_div{
+    /* padding: 1rem 4rem; */
+    max-width: 50%;
+    }
     .card-columns {
         -moz-column-count: 2;
         column-count     : 2;
@@ -807,7 +813,7 @@ h6 {
 
     .perso_img_full_screen_div {
         padding  : 0rem 1rem;
-        max-width: 50%;
+        max-width: 40%;
     }
 }
 
@@ -818,7 +824,7 @@ h6 {
 
     .perso_img_full_screen_div {
         /*     padding: 0rem 3rem; */
-        max-width: 50%;
+        max-width: 40%;
     }
 
     .perso_img_full_screen_div2 {

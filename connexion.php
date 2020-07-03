@@ -18,10 +18,10 @@ catch(PDOException $e){
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="RiskManager">
+  <meta name="description" content="CyberRiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>RiskManager | Connexion</title>
+  <title>CyberRiskManager | Connexion</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -54,7 +54,7 @@ else{
           </div>
 
           <div class="text-center">
-            <h1 class="h4 text-gray-900 mb-5 perso_risk_manager">RISK MANAGER</h1>
+            <h1 class="h4 text-gray-900 mb-5 perso_risk_manager">CYBER RISK MANAGER</h1>
           </div>
           <form method="post" action="content/php/connexion/logs.php" class="user" id="formConnexion">
            <fieldset>

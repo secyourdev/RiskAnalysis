@@ -5,7 +5,7 @@
   header('Location: ../../../atelier-1b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
   //Connexion à la base de donnee
   try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v11;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v9;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
   }
 
@@ -22,8 +22,11 @@
   $poste=$_POST['poste'];
   $id_mission="id_mission";
   $id_atelier="1.b";
+  $id_personne="id_personne";
+
   $recupere = $bdd->prepare('SELECT id_personne FROM personne WHERE nom = ? AND prenom = ? AND poste = ?');
-  $insere = $bdd->prepare('INSERT INTO `mission`(`id_mission`, `nom_mission`, `id_atelier`, `id_personne`, `id_projet`) VALUES (?,?,?,?,?)');
+  $insere = $bdd->prepare('INSERT INTO `mission`(`id_mission`, `nom_mission`, `id_atelier`, `id_personne`) VALUES (?,?,?,?)');
+  $inserepersonne = $bdd->prepare('INSERT INTO `personne`(`id_personne`, `nom`, `prenom`, `poste`) VALUES (?,?,?,?)');
 
 
 
@@ -66,6 +69,11 @@
     
 
     if ($results["error"] === false && isset($_POST['validermission'])){
+        $inserepersonne->bindParam(1, $id_personne);
+        $inserepersonne->bindParam(2, $nomresponsable);
+        $inserepersonne->bindParam(3, $prenomresponsable);
+        $inserepersonne->bindParam(4, $poste);
+        $inserepersonne->execute();
         $recupere->bindParam(1, $nomresponsable);
         $recupere->bindParam(2, $prenomresponsable);
         $recupere->bindParam(3, $poste);

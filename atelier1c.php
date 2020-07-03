@@ -5,10 +5,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="RiskManager">
+  <meta name="description" content="CyberRiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>RiskManager | Atelier 1.c</title>
+  <title>CyberRiskManager | Atelier 1.c</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -20,7 +20,7 @@
 
   <!-- JS -->
   <script src="content/vendor/jquery/jquery.js"></script>
-  <script src="content/vendor/jquery-tabledit/jquery.tabledit1.c.js"></script>
+  <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
 </head>
 
 <body id="page-top">
@@ -36,7 +36,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-shield-alt"></i>
         </div>
-        <div class="sidebar-brand-text mx-2">RISK MANAGER</div>
+        <div class="sidebar-brand-text mx-2">CYBER RISK MANAGER</div>
       </a>
 
       <!-- Divider -->
@@ -419,7 +419,107 @@
                 </div>
               </div>
             </div>
+            <div class="col-xl-12 col-lg-12">
+              <!-- Area Card -->
+              <!-- Mission -->
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0">Echelle</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body row perso_card_body_row">
+                  <!--tableau-->
+                  <div class="table-responsive">
+                    <input type="text" class="rechercher_input" id="rechercher_echelle" placeholder="Rechercher">
+                    <table id="editable_table" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th id="id_echelle">ID echelle</th>
+                          <th id="nom_echelle">Nom de l'échelle</th>
+                          <th id="echelle_gravite">Echelle de la gravité</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <?php
+                      while($row = mysqli_fetch_array($result1))
+                      {
+                        echo '
+                        <tr>
+                        <td>'.$row["id_echelle"].'</td>
+                        <td>'.$row["nom_echelle"].'</td>
+                        <td>'.$row["echelle_gravite"].'</td>
+                        </tr>
+                        ';
+                      }
+                      ?>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- bouton Ajouter une nouvelle ligne -->
+                  <div class="text-center">
+                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_mission">Ajouter une nouvelle ligne</button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
+            <!-- Area Card -->
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0">Niveaux</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="SelectNaturePop">Echelles</label>
+                    <select class="form-control" name="nomechelle" id="nomechelle">
+                      <option value="" selected>...</option>
+                      <?php
+                          while($row = mysqli_fetch_array($resultechelle))
+                          {
+                            echo '
+                            <option value="'.$row["nom_echelle"].'">'.$row["nom_echelle"].'</option>
+                            ';
+                          }
+                      ?>
+                    </select>
+                  </div>
+                  <!--tableau-->
+                  <script src="content/js/modules/niveau_echelle.js"></script>
+                  <div class="table-responsive">
+                    <input type="text" class="rechercher_input" id="rechercher_niveau" placeholder="Rechercher">
+                    <table id="tableau_niveau" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th id="id_niveau">ID niveau</th>
+                          <th id="valeur_niveau">Valeur du niveau</th>
+                          <th id="description_niveau">Description du niveau</th>
+                        </tr>
+                      </thead>
+                      
+                      
+                      <tbody id="ecrire_niveau">
+                      <?php
+                      // while($row = $query->fetch(PDO::FETCH_ASSOC))
+                      // {
+                      //   echo '
+                      //   <tr>
+                      //   <td>'.$row["id_niveau"].'</td>
+                      //   <td>'.$row["valeur_niveau"].'</td>
+                      //   <td>'.$row["description_niveau"].'</td>
+                      //   </tr>
+                      //   ';
+                      // }
+                      ?> 
+                      </tbody>
+                    </table>
+                  </div> 
+                </div>
+              </div>
+            </div>
             <!-- Area Card -->
             <div class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
@@ -445,10 +545,32 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
+                  <div class="form-group">
+                    <label for="SelectNaturePop">Choix de l'échelle à utiliser pour le projet</label>
+                    <select class="form-control" name="nomechelleprojet" id="nomechelleprojet">
+                      <option value="" selected>...</option>
+                      <?php
+                          while($row = mysqli_fetch_array($resultechelle2))
+                          {
+                            echo '
+                            <option value="'.$row["nom_echelle"].'">'.$row["nom_echelle"].'</option>
+                            ';
+                          }  
+                      ?>
+                    </select>
+                    <div id="echelle_choisie">
+                      Echelle choisie : 
+                      <?php 
+                        $echelle_projet = mysqli_fetch_array($resultprojet);
+                        echo $echelle_projet[0];
+                      ?>
+                    </div>
+                  </div>
+                  <script src="content/js/modules/echelle_projet.js"></script>
                   <!--tableau-->
                   <div class="table-responsive">
-                    <input type="text" class="rechercher_input" id="rechercher_evenement_redoute" placeholder="Rechercher">
-                    <table id="editable_table" class="table table-bordered table-striped">
+                    <input type="text" class="rechercher_input" id="rechercher_er" placeholder="Rechercher">
+                    <table id="tableau_er" class="table table-bordered table-striped">
                       <thead>
                         <tr>
                           <th id="id_evenement_redoutes">ID</th>
@@ -468,10 +590,10 @@
                         while ($row = mysqli_fetch_array($result)) {
                           echo '
                         <tr>
-                        <td>' . $row["id_evenement_redoutes"] . '</td>
+                        <td>' . $row["id_evenement_redoute"] . '</td>
                         <td>' . $row["nom_valeur_metier"] . '</td>
-                        <td>' . $row["nom_evenement_redoutes"] . '</td>
-                        <td>' . $row["description_evenement_redoutes"] . '</td>
+                        <td>' . $row["nom_evenement_redoute"] . '</td>
+                        <td>' . $row["description_evenement_redoute"] . '</td>
                         <td>' . $row["impact"] . '</td>
                         <td>' . $row["confidentialite"] . '</td>
                         <td>' . $row["integrite"] . '</td>
@@ -502,7 +624,7 @@
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright &copy; RISK MANAGER 2020</span>
+              <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
             </div>
           </div>
         </footer>
@@ -519,6 +641,51 @@
       <i class="fas fa-angle-up"></i>
     </a>
 
+
+<!-- -------------------------------------------------------------------------------------------------------------- 
+--------------------------------------- modal ajout de mission ----------------------------------------------
+--------------------------------------------------------------------------------------------------------------  -->
+<div class="modal fade" id="ajout_mission" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ajout d'une mission</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body perso_modal_body">
+          <form method="post" action="content/php/echelle/ajoutechelle.php" class="user" id="formMission">
+            <fieldset>
+              <div class="form-group">
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name ="nom_echelle" id="nom_echelle"
+                  placeholder="Nom de l'échelle" required>
+              </div>
+
+              <div class="form-group">
+                <label for="SelectNaturePop">Valeur gravité</label>
+                <select class="form-control" name="echelle_gravite" id="echelle_gravite">
+                  <option value="" selected>...</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+
+              <!-- bouton Ajouter -->
+              <div class="modal-footer perso_middle_modal_footer">
+                <input type="submit" name="validerechelle" value="Ajouter" class="btn perso_btn shadow-none"></input>
+              </div>
+            </fieldset>
+            
+          
+          </form>
+        </div>
+        
+        
+      </div>
+    </div>
+  </div>
 
     <!-- -------------------------------------------------------------------------------------------------------------- 
 --------------------------------------- modal ajout Événement redouté ----------------------------------------------
@@ -538,7 +705,7 @@
                 <div class="row">
                   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="form-group">
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_evenement_redoutes" id="InputEvenementRedoute" placeholder="Dénomination de l'événement redouté" required>
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_evenement_redoute" id="InputEvenementRedoute" placeholder="Dénomination de l'événement redouté" required>
                     </div>
 
                     <div class="form-group">
@@ -558,11 +725,30 @@
 
                     <div class="form-group">
                       <label for="Description_event_pop">Événement redouté</label>
-                      <textarea class="form-control perso_text_area" name="description_evenement_redoutes" id="Description_event_pop" rows="3"></textarea>
+                      <textarea class="form-control perso_text_area" name="description_evenement_redoute" id="Description_event_pop" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Select_valeur_metier">Confidentialité</label>
+                      <select class="form-control" name="confidentialite" id="confidentialite">
+                        <option value="" selected>...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="Select_valeur_metier">Intégrité</label>
+                      <select class="form-control" name="integrite" id="integrite">
+                        <option value="" selected>...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                      </select>
                     </div>
                   </div>
                   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <div class="custom-control custom-checkbox">
+                    <!-- <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input" id="customCheck1" name="formcheck[]" value="1">
                       <label class="custom-control-label" for="customCheck1">Confidentialité</label>
                     </div>
@@ -577,7 +763,30 @@
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input" id="customCheck4" name="formcheck[]" value="4">
                       <label class="custom-control-label" for="customCheck4">Traçabilité</label>
+                    </div> -->
+
+                    <div class="form-group">
+                      <label for="Select_valeur_metier">Disponibilité</label>
+                      <select class="form-control" name="disponibilite" id="disponibilite">
+                        <option value="" selected>...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                      </select>
                     </div>
+                    <div class="form-group">
+                      <label for="Select_valeur_metier">Traçabilité</label>
+                      <select class="form-control" name="tracabilite" id="tracabilite">
+                        <option value="" selected>...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                      </select>
+                    </div>
+
+                    
+
+
 
                     <div class="form-group">
                       <label for="Description_impact_pop">Impacts</label>
@@ -661,8 +870,8 @@
     <script src="content/js/modules/dark_mode.js"></script>
     <script src="content/js/modules/top_bar.js"></script>
     <script src="content/js/modules/side_bar.js"></script>
-    <script src="content/js/modules/help_button.js"></script>
-    <script src="content/js/modules/gravite.js"></script>
+    <!-- <script src="content/js/modules/help_button.js"></script> -->
+    <!-- <script src="content/js/modules/gravite.js"></script> -->
     <script src="content/js/modules/realtime.js"></script>
     <script src="content/js/modules/set_filter_sort_table.js"></script>
     <script src="content/js/atelier/atelier1c.js"></script>

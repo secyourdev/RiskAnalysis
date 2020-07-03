@@ -1,3 +1,9 @@
+var button = document.getElementsByClassName('tabledit-edit-button')
+var save_button = document.getElementsByClassName('tabledit-save-button')
+var j=0;
+
+
+
 $(document).ready(function () {
     $('#editable_table').Tabledit({
         url: 'content/php/atelier3a/modification.php',
@@ -7,11 +13,11 @@ $(document).ready(function () {
             editable: [
                 [1, 'categorie_partie_prenante'],
                 [2, 'nom_partie_prenante'],
-                [3, 'type','{"Interne": "Interne", "Externe":"Externe" }'],
-                [4, 'dependance_partie_prenante'],
-                [5, 'penetration_partie_prenante'],
-                [6, 'maturite_partie_prenante'],
-                [7, 'confiance_partie_prenante']
+                [3, 'type', '{"Interne": "Interne", "Externe":"Externe" }'],
+                [4, 'dependance_partie_prenante', '{ "1": "1", "2": "2", "3": "3", "4": "4" }'],
+                [5, 'penetration_partie_prenante', '{ "1": "1", "2": "2", "3": "3", "4": "4" }'],
+                [6, 'maturite_partie_prenante', '{ "1": "1", "2": "2", "3": "3", "4": "4" }'],
+                [7, 'confiance_partie_prenante', '{ "1": "1", "2": "2", "3": "3", "4": "4" }']
             ]
         },
         restoreButton: false,
@@ -21,4 +27,17 @@ $(document).ready(function () {
             }
         }
     });
+});
+
+/*--------------------------- SORT & FILTER TABLES --------------------------*/
+setSortTable('editable_table');
+OURJQUERYFN.setFilterTable("#rechercher_evenement_redoute","#editable_table tbody tr")
+
+
+/*------------------ AJOUT DE LA VERIFICATION DES TABLEAUX ------------------*/
+sleep(100).then(() => {
+    for(let i=0;i<editable_table.rows.length-1;i++){
+        j=i+1;
+        button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table'+','+'15'+')')
+    }
 });

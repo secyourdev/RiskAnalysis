@@ -1,21 +1,26 @@
+<?php include("content/php/atelier4b/selection.php");?>
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="RiskManager">
+  <meta name="description" content="CyberRiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>RiskManager | Atelier 4.b</title>
+  <title>CyberRiskManager | Atelier 4.b</title>
 
   <!-- Fonts-->
-  <link href="content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template-->
+  <!-- CSS -->
   <link href="content/css/bootstrap.css" rel="stylesheet">
   <link href="content/css/main.css" rel="stylesheet">
+
+  <!-- JS -->
+  <script src="content/vendor/jquery/jquery.js"></script>
+  <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
 </head>
 
 <body id="page-top">
@@ -31,7 +36,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-shield-alt"></i>
         </div>
-        <div class="sidebar-brand-text mx-2">RISK MANAGER</div>
+        <div class="sidebar-brand-text mx-2">CYBER RISK MANAGER</div>
       </a>
 
       <!-- Divider -->
@@ -394,99 +399,37 @@
                 <div class="card-body">
                   <!--text-->
                   <div class="table-responsive">
-                    <table class="table table-bordered perso_border" id="dataTable" width="100%" cellspacing="0">
+                  <input type="text" class="rechercher_input" id="rechercher_chemin" placeholder="Rechercher">
+                    <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th>N° Risque</th>
-                          <th>Chemin d'attaques stratégique</th>
-                          <th>Scénario opérationnel</th>
-                          <th>Vraisemblance</th>
-                          <th class="perso_border"></th>
+                          <th id="id_scenario_ope">ID scénario operationnel</th>
+                          <th id="numero_risque">Numéro du risque</th>
+                          <th id="chemin_attaque_strategique">Chemin d'attaque stratégique</th>
+                          <th id="scenario_operationnel">Scénario opérationnel</th>
+                          <th id="vraisemblance">Vraisemblance</th>
+                          
                         </tr>
                       </thead>
                         
                       <tbody>
+                      <?php
+                      while($row = mysqli_fetch_array($result1))
+                      {
+                        echo '
                         <tr>
-                          <td>R1</td>
-                          <td>Portant directement sur le système d'information de la R&D</td>
-                          <td></td>
-                          <td>Vraisemblable</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_vraisemblance" class="crayon fas fa-pen"></i>
-                            </div>
-                          </td>
-                            
+                        <td>'.$row["id_scenario_strategique"].'</td>
+                        <td>'.$row["id_risque"].'</td>
+                        <td>'.$row["chemin_d_attaque_strategique"].'</td>
+                        <td>'.$row["description_scenario_operationnel"].'</td>
+                        <td>'.$row["vraisemblance"].'</td>
                         </tr>
-                        <tr>
-                          <td>R2</td>
-                          <td>Sur le système d'information du laboratoire (P3) qui détient une partie des travaux</td>
-                          <td></td>
-                          <td>Peu vraisemblable</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_vraisemblance" class="crayon fas fa-pen"></i>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>R3</td>
-                          <td>En passant par le prestataire informatique F3</td>
-                          <td></td>
-                          <td>Peu vraisemblable</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_vraisemblance" class="crayon fas fa-pen"></i>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>R4</td>
-                          <td>Portant directement sur le système d'information de la R&D</td>
-                          <td></td>
-                          <td>Invraisemblable</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_vraisemblance" class="crayon fas fa-pen"></i>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>R5</td>
-                          <td>Sur le système d'information du laboratoire (P3) qui détient une partie des travaux</td>
-                          <td></td>
-                          <td>Quasi-certain</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_vraisemblance" class="crayon fas fa-pen"></i>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>R6</td>
-                          <td>En passant par le prestataire informatique F3</td>
-                          <td></td>
-                          <td>Quasi-certain</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_vraisemblance" class="crayon fas fa-pen"></i>
-                            </div>
-                          </td>
-                        </tr>
-                        
-
+                        ';
+                      }
+                      ?>
                       </tbody>
-                    </table>  
-                  </div>    
-                  <!-- bouton Ajouter la vraisemblance -->
-                  <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_vraisemblance">Ajouter une nouvelle ligne</button>
-                  </div>
-
-
-
-
-
+                    </table>
+                  </div> 
                 </div>
               </div>
             </div>
@@ -503,7 +446,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; RISK MANAGER 2020</span>
+            <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
           </div>
         </div>
       </footer>
@@ -520,84 +463,7 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-<!-- -------------------------------------------------------------------------------------------------------------- 
------------------------------------------ modal ajout de ligne ----------------------------------------------------
---------------------------------------------------------------------------------------------------------------- -->
-<div class="modal fade" id="ajout_vraisemblance" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog modal-lg" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Ajout de la vraisemblance</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body perso_modal_body">
-      <form class="user" id="formvraisemblance">
-        <div class="row">
-          <div class="form-group centre-vraisemblance col-12">
-            <div>
-              <input type="radio" id="Invraisemblable"
-               name="Vraisemblance" value="Invraisemblable">
-              <label for="Invraisemblable">Invraisemblable</label>
-            </div>
-            <div class="texte-vraisemblance">La source de risque a très peu de chances d'atteindre son objectif visé en 
-              empruntant l'un des modes opératoires envisagés.<br>
-              La vraisemblance du scénario de risque est très faible
-            </div>
-            <div>
-              <input type="radio" id="Peu vraisemblable"
-               name="Vraisemblance" value="Peu Vraisemblable">
-              <label for="Peu vraisemblable">Peu vraisemblable</label>
-            </div>
-            <div class="texte-vraisemblance">La source de risque a relativement peu de chances d'atteidre son objectif en
-              empruntant l'un des modes opératoires envisagé.<br>
-              La vraisemblance du scénario de risque est faible.
-            </div>
-            <div>
-              <input type="radio" id="Vraisemblable"
-               name="Vraisemblance" value="Vrasemblable">
-              <label for="Vraisemblable">Vraisemblable</label>
-            </div>
-            <div class="texte-vraisemblance">
-              La source de rsique est susceptible d'atteidre son objectif en empruntant
-              l'un des modes opératoires envisagés. <br>
-              La vraisemblance du scénario de risque est significative.
-            </div>
-            <div>
-              <input type="radio" id="Très vraisemblable"
-               name="Vraisemblance" value="Très vraisemblable">
-              <label for="Très vraisemblable">Très vraisemblable</label>
-            </div>
-            <div class="texte-vraisemblance">
-              La source de risque va probablement atteindre son objectif en empruntant
-              l'un des modes opératoires envisagés.<br>
-              La vraisemblance du scénario de risque est élevée.
-            </div>
-            <div>
-              <input type="radio" id="Quasi certain"
-               name="Vraisemblance" value="Quasi certain">
-              <label for="Quasi certain">Quasi certain</label>
-            </div>
-            <div class="texte-vraisemblance">
-              La source de risque va très certainement atteindre son objectif en empruntant
-              l'un des modes opératoires envisagés.<br>
-              La vraisemblance du scénario de risque est très élevée
-            </div>
-            
-          </div>
-        </div>
-      </div>
-      <!-- bouton Ajouter -->
-      <div class="modal-footer perso_middle_modal_footer">
-        <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
-      </div>
-    </form>
-     
-    </div>
-</div>
-</div>
+
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -618,26 +484,22 @@ aria-hidden="true">
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="content/vendor/jquery/jquery.min.js"></script>
-  <script src="content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="content/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="content/vendor/jquery-easing/jquery.easing.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="content/js/bootstrap.js"></script>
-
-  <!-- Page level plugins -->
-  <script src="content/vendor/datatables/jquery.dataTables.js"></script>
-  <script src="content/vendor/datatables/dataTables.bootstrap4.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="content/js/modules/tableau/tableau-atelier3a.js"></script>
 
   <!-- Our JS -->
   <script src="content/js/modules/dark_mode.js"></script>
   <script src="content/js/modules/top_bar.js"></script>
   <script src="content/js/modules/side_bar.js"></script>
-</body>
+  <script src="content/js/modules/realtime.js"></script>
+  <script src="content/js/modules/set_filter_sort_table.js"></script>
+  <script src="content/js/atelier/atelier4b.js"></script>
+  <script src="content/js/modules/sort_table.js"></script>
+ </body>
 
 </html>

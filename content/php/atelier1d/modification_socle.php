@@ -1,106 +1,60 @@
 <?php
 //action.php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v8");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v13");
 
 $input = filter_input_array(INPUT_POST);
 
-$nom_evenement_redoutes = mysqli_real_escape_string($connect, $input['nom_evenement_redoutes']);
-$description_evenement_redoutes = mysqli_real_escape_string($connect, $input['description_evenement_redoutes']);
-$impact = mysqli_real_escape_string($connect, $input['impact']);
-$niveau_de_gravite = mysqli_real_escape_string($connect, $input['niveau_de_gravite']);
-
-$confidentialite = 0;
-$integrite = 0;
-$disponibilite = 0;
-$tracabilite = 0;
+if (isset($input['etat_d_application'])){
+    $etat_d_application = mysqli_real_escape_string($connect, $input['etat_d_application']);
+}
+if (isset($input['etat_de_la_conformite'])){
+    $etat_de_la_conformite = mysqli_real_escape_string($connect, $input['etat_de_la_conformite']);
+}
 
 $results["error"] = false;
 $results["message"] = [];
 
 
-
-
-/* $cleanArray = [];
-foreach ($_POST['cidt'] as $val)
-    $cleanArray[] = mysqli_real_escape_string($connect, $val);
-
-if (in_array('a0', $cleanArray)) {
-    //do somthing ...
-    $confidentialite = 1;
-};
-if (in_array('a1', $cleanArray)) {
-    //do somthing ...
-    $integrite = 1;
-};
-if (in_array('a2', $cleanArray)) {
-    //do somthing ...
-    $disponibilite = 1;
-};
-if (in_array('a3', $cleanArray)) {
-    //do somthing ...
-    $tracabilite = 1;
-}; */
-
-
-
-
-// Verification du nom_evenement_redoutes
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_evenement_redoutes)) {
+/* 
+// Verification du etat_d_application
+if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $etat_d_application)) {
     $results["error"] = true;
-    $results["message"]["nom_evenement_redoutes"] = "Nom de l'évenement redouté invalide";
-    ?>
-    <strong style="color:#FF6565;">nom_evenement_redoutes invalide </br></strong>
-    <?php
+    $results["message"]["etat_d_application"] = "Nom de l'évenement redouté invalide";
+?>
+    <strong style="color:#FF6565;">etat_d_application invalide </br></strong>
+<?php
 }
 
-// Verification du description_evenement_redoutes
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $description_evenement_redoutes)) {
+// Verification du etat_de_la_conformite
+if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $etat_de_la_conformite)) {
     $results["error"] = true;
-    $results["message"]["description_evenement_redoutes"] = "Description de l'événement redouté invalide";
-    ?>
-    <strong style="color:#FF6565;">description_evenement_redoutes invalide </br></strong>
-    <?php
-}
+    $results["message"]["etat_de_la_conformite"] = "Description de l'événement redouté invalide";
+?>
+    <strong style="color:#FF6565;">etat_de_la_conformite invalide </br></strong>
+<?php
+} */
 
-// Verification du impact
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $impact)) {
-    $results["error"] = true;
-    $results["message"]["impact"] = "impact invalide";
-    ?>
-    <strong style="color:#FF6565;">impact invalide </br></strong>
-    <?php
-}
-// Verification du niveau_de_gravite
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/", $niveau_de_gravite)) {
-    $results["error"] = true;
-    $results["message"]["niveau_de_gravite"] = "niveau_de_gravite invalide";
-    ?>
-    <strong style="color:#FF6565;">niveau_de_gravite invalide </br></strong>
-    <?php
-}
 
 if ($input["action"] === 'edit' && $results["error"] === false) {
     $query = "
-    UPDATE evenement_redoutes 
-    SET 
-    nom_evenement_redoutes = '" . $nom_evenement_redoutes . "',
-    description_evenement_redoutes = '" . $description_evenement_redoutes . "',
-    impact = '" . $impact . "',
-    confidentialite = '" . $confidentialite . "',
-    integrite = '" . $integrite . "',
-    disponibilite = '" . $disponibilite . "',
-    tracabilite = '" . $tracabilite . "',
-    niveau_de_gravite = '" . $niveau_de_gravite . "'
-    WHERE id_evenement_redoutes = '" . $input["id_evenement_redoutes"] . "'
+    UPDATE socle_de_securite 
+    SET
+    etat_d_application = '" . $etat_d_application . "',
+    etat_de_la_conformite = '" . $etat_de_la_conformite . "',
+    id_atelier = '1.d',
+    id_projet = '99'
+    WHERE id_socle_securite = '" . $input["id_socle_securite"] . "'
     ";
-
+    
+    print $query;
+    
     mysqli_query($connect, $query);
 }
 if ($input["action"] === 'delete') {
-    $query = "
-    DELETE FROM evenement_redoutes 
-    WHERE id_evenement_redoutes = '".$input["id_evenement_redoutes"]."'
-    ";
+    $query = 
+    "DELETE FROM socle_de_securite 
+    WHERE id_socle_securite = " . $input["id_socle_securite"] . "";
+    print $query;
     mysqli_query($connect, $query);
 }
 

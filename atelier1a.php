@@ -29,10 +29,10 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="RiskManager">
+  <meta name="description" content="CyberRiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>RiskManager | Atelier 1.a</title>
+  <title>CyberRiskManager | Atelier 1.a</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -65,7 +65,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-shield-alt"></i>
         </div>
-        <div class="sidebar-brand-text mx-2">RISK MANAGER</div>
+        <div class="sidebar-brand-text mx-2">CYBER RISK MANAGER</div>
       </a>
 
       <!-- Divider -->
@@ -693,7 +693,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; RISK MANAGER 2020</span>
+            <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
           </div>
         </div>
       </footer>

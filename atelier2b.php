@@ -1,21 +1,26 @@
+<?php include("content/php/atelier2b/selection.php");?>
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="RiskManager">
+  <meta name="description" content="CyberRiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>RiskManager | Atelier 2.b</title>
+  <title>CyberRiskManager | Atelier 2.b</title>
 
   <!-- Fonts-->
-  <link href="content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template-->
+  <!-- CSS -->
   <link href="content/css/bootstrap.css" rel="stylesheet">
   <link href="content/css/main.css" rel="stylesheet">
+
+  <!-- JS -->
+  <script src="content/vendor/jquery/jquery.js"></script>
+  <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
 </head>
 
 <body id="page-top">
@@ -31,7 +36,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-shield-alt"></i>
         </div>
-        <div class="sidebar-brand-text mx-2">RISK MANAGER</div>
+        <div class="sidebar-brand-text mx-2">CYBER RISK MANAGER</div>
       </a>
 
       <!-- Divider -->
@@ -411,122 +416,59 @@
                 <div class="card-body">
                   <!--text-->
                   <div class="table-responsive">
-                    <table class="table table-bordered perso_border" id="dataTable" width="100%" cellspacing="0">
+                    <input type="text" class="rechercher_input" id="rechercher_srov" placeholder="Rechercher">
+                    <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th>Type d'attaquant</th>
-                          <th>Profil d'attaquant</th>
-                          <th>Description source de risque</th>
-                          <th>Objectifs visés</th>
-                          <th>Motivation</th>
-                          <th>Ressources</th>
-                          <th>Activité</th>
-                          <th>Modes opératoires</th>
-                          <th>Secteurs d'activité</th>
-                          <th>Arsenal d'attaque</th>
-                          <th>Faits d'armes</th>
-                          <th>Pertinence</th>
-                          <th>Choix</th>
-                          <th class="perso_border"></th>
+                          <th id=id_srov>ID SROV</th>
+                          <th id="profil_attaquant">Profil d'attaquant</th>
+                          <th id="description_source_risque">Description source de risque</th>
+                          <th id="objectif vise">Objectif visé</th>
+                          <th id="description_objectif">Description de l'objectif</th>
+                          <th id="motivation">Motivation</th>
+                          <th id="ressources">Ressources</th>
+                          <th id="activite">Activité</th>
+                          <th id="mode_operatoire">Mode opératoire</th>
+                          <th id="secteur_activite">Secteur d'activité</th>
+                          <th id="arsenal_attque">Arsenal d'attaque</th>
+                          <th id="faits_armes">Faits d'armes</th>
+                          <th id="pertinence">Pertinence</th>
+                          <th id="choix">Choix</th>
                         </tr>
                       </thead>
                       <tbody>
+                      <?php
+                      while($row = mysqli_fetch_array($result))
+                      {
+                        echo '
                         <tr>
-                          <td>Organisation structurée</td>
-                          <td>Etatique</td>
-                          <td>DGSE</td>
-                          <td>Saboter la campagne nationale de vaccination</td>
-                          <td>2</td>
-                          <td>3</td>
-                          <td>1</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Moyenne</td>
-                          <td>P1</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_ligne_eval_sr" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-                          </td>
+                        <td>'.$row["id_source_de_risque"].'</td>
+                        <td>'.$row["profil_de_l_attaquant_source_de_risque"].'</td>
+                        <td>'.$row["description_source_de_risque"].'</td>
+                        <td>'.$row["objectif_vise"].'</td>
+                        <td>'.$row["description_objectif_vise"].'</td>
+                        <td>'.$row["motivation"].'</td>
+                        <td>'.$row["ressources"].'</td>
+                        <td>'.$row["activite"].'</td>
+                        <td>'.$row["mode_operatoire"].'</td>
+                        <td>'.$row["secteur_d_activite"].'</td>
+                        <td>'.$row["arsenal_d_attaque"].'</td>
+                        <td>'.$row["faits_d_armes"].'</td>
+                        <td>'.$row["pertinence"].'</td>
+                        <td>'.$row["choix_source_de_risque"].'</td>
                         </tr>
-                        <tr>
-                          <td>Organisation idéologique</td>
-                          <td>Terroriste</td>
-                          <td>Al-Qaida</td>
-                          <td>Voler des informations</td>
-                          <td>2</td>
-                          <td>3</td>
-                          <td>2</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Elevée</td>
-                          <td>P2</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_ligne_eval_sr" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Individu isolé</td>
-                          <td>Amateur</td>
-                          <td>Hackeur</td>
-                          <td>Divulguer des informations sur les tests animaliers</td>
-                          <td>2</td>
-                          <td>2</td>
-                          <td>2</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Faible</td>
-                          <td>P1</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_ligne_eval_sr" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Organisation structurée</td>
-                          <td>Concurrent</td>
-                          <td>Amazon.com</td>
-                          <td>Altérer la compositionde vaccins à des fins bioterroristes</td>
-                          <td>1</td>
-                          <td>2</td>
-                          <td>3</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</td>
-                          <td>Faible</td>
-                          <td>P1</td>
-                          <td class="perso_border">
-                            <div class="modification">
-                              <i data-toggle="modal" data-target="#ajout_ligne_eval_sr" class="crayon fas fa-pen"></i>
-                              <i class="poubelle fas fa-trash-alt"></i>
-                            </div>
-                          </td>
-                        </tr>
+                        ';
+                      }
+                      ?>
                       </tbody>
-                    </table> 
+                    </table>
                   </div> 
-                  <!-- bouton Ajouter une nouvelle ligne -->
-                  <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_eval_sr">Ajouter une nouvelle ligne</button>
-                  </div>  
-                  </div>    
-                </div>
+                   
+                </div>    
               </div>
-            </div>         
-          </div>
+            </div>
+          </div>         
+        </div>
       </div>
       <!-- End of Main Content -->
 
@@ -534,7 +476,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; RISK MANAGER 2020</span>
+            <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
           </div>
         </div>
       </footer>
@@ -551,146 +493,7 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-  <!-- -------------------------------------------------------------------------------------------------------------- 
------------------------------------------ modal ajout de ligne ----------------------------------------------------
---------------------------------------------------------------------------------------------------------------- -->
-<div class="modal fade" id="ajout_ligne_eval_sr" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog modal-lg" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Modification de l'évaluation de la source de risque</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body perso_modal_body">
-      <form class="user" id="formsr">
-        <div class="row">
-          <div class="col-6">
-          <div class="form-group">
-            <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Source de risque" name="Source de risque" placeholder="Source de risque" required>
-            <datalist id="Type d'attaquant">
-              <option value="Source de risque 1">
-              <option value="Source de risque 2">
-              <option value="Source de risque 3">
-            </datalist>
-          </div>
-          <div class="form-group">
-            <label for="Modes opératoires">Modes opératoires</label>
-            <textarea class="form-control perso_text_area" id="Modes opératoires" rows="5"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="Arsenal d'attaque">Arsenal d'attaque</label>
-            <textarea class="form-control perso_text_area" id="Arsenal d'attaque" rows="5"></textarea>
-          </div>
-          
-          </div>
-
-
-
-          <div class="col-6">
-            <div class="form-group">
-              <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Pertinence" name="Pertinence" placeholder="Pertinence" required>
-              <datalist id="Profil d'attaquant">
-                <option value="Faible">
-                <option value="Moyen">
-                <option value="Élevée">
-              </datalist>
-            </div>
-            <div class="form-group">
-              <label for="Secteur d'activité">Secteur d'activité</label>
-              <textarea class="form-control perso_text_area" id="Secteur d'activité" rows="5"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="Faits d'armes">Faits d'armes</label>
-              <textarea class="form-control perso_text_area" id="Faits d'armes" rows="5"></textarea>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="choix-valeur col-3">
-            <!-- <label for="Motivation">Motivation</label> -->
-            <div>Motivation</div>
-            <div>
-              <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Motivation">
-                <label class="btn perso_checkbox shadow-none">
-                  <input type="radio" name="options" id="option1" autocomplete="off"> 1
-                </label>
-                <label class="btn perso_checkbox shadow-none">
-                  <input type="radio" name="options" id="option2" autocomplete="off"> 2
-                </label>
-                <label class="btn perso_checkbox shadow-none">
-                  <input type="radio" name="options" id="option3" autocomplete="off"> 3
-                </label>
-              </div>
-            </div>
-          </div>
-
-            <div class="choix-valeur col-3">
-              <!-- <label for="Ressources">Ressources</label> -->
-              <div>Ressources</div>
-              <div>
-                <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Ressources">
-                  <label class="btn perso_checkbox shadow-none">
-                    <input type="radio" name="options" id="option1" autocomplete="off"> 1
-                  </label>
-                  <label class="btn perso_checkbox shadow-none">
-                    <input type="radio" name="options" id="option2" autocomplete="off"> 2
-                  </label>
-                  <label class="btn perso_checkbox shadow-none">
-                    <input type="radio" name="options" id="option3" autocomplete="off"> 3
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            <div class="choix-valeur col-3">
-              <!-- <label for="Activité">Activité</label> -->
-              <div>Activité</div>
-              <div>
-                <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Activité">
-                  <label class="btn perso_checkbox shadow-none">
-                    <input type="radio" name="options" id="option1" autocomplete="off"> 1
-                  </label>
-                  <label class="btn perso_checkbox shadow-none">
-                    <input type="radio" name="options" id="option2" autocomplete="off"> 2
-                  </label>
-                  <label class="btn perso_checkbox shadow-none">
-                    <input type="radio" name="options" id="option3" autocomplete="off"> 3
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="choix-valeur col-3">
-              <!-- <label for="Choix">Choix</label> -->
-              <div>Choix</div>
-              <div>
-                <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Choix">
-                  <label class="btn perso_checkbox shadow-none">
-                    <input type="radio" name="options" id="option1" autocomplete="off"> 1
-                  </label>
-                  <label class="btn perso_checkbox shadow-none">
-                    <input type="radio" name="options" id="option2" autocomplete="off"> 2
-                  </label>
-                  <label class="btn perso_checkbox shadow-none">
-                    <input type="radio" name="options" id="option3" autocomplete="off"> 3
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- bouton Ajouter -->
-        <div class="modal-footer perso_middle_modal_footer">
-          <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
-        </div>
-      </form>
-     
-    
-    </div>
-</div>
-</div>
+ 
 
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -712,7 +515,6 @@ aria-hidden="true">
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="content/vendor/jquery/jquery.js"></script>
   <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
   <!-- Core plugin JavaScript-->
@@ -721,16 +523,13 @@ aria-hidden="true">
   <!-- Custom scripts for all pages-->
   <script src="content/js/bootstrap.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="content/vendor/datatables/jquery.dataTables.js"></script>
-  <script src="content/vendor/datatables/dataTables.bootstrap4.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="content/js/modules/tableau/tableau-atelier2b.js"></script>
-
   <!-- Our JS -->
   <script src="content/js/modules/dark_mode.js"></script>
   <script src="content/js/modules/top_bar.js"></script>
   <script src="content/js/modules/side_bar.js"></script>
+  <script src="content/js/modules/realtime.js"></script>
+  <script src="content/js/modules/set_filter_sort_table.js"></script>
+  <script src="content/js/atelier/atelier2b.js"></script>
+  <script src="content/js/modules/sort_table.js"></script>
 </body>
 </html>
