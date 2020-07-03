@@ -3,7 +3,7 @@
 session_start();
   //Connexion à la base de donnee
   try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v11;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v13;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
   }
 
@@ -18,6 +18,7 @@ session_start();
   $objectif_atteindre=$_POST['objectif_atteindre'];
   $respo_acceptation_risque=$_POST['respo_acceptation_risque'];
   $cadre_temporel=$_POST['cadre_temporel'];
+  $nom_grp_utilisateur=$_POST['nom_grp_utilisateur'];
   $echelle='1';
 
   $insereprojet = $bdd->prepare('INSERT INTO `projet`(`nom_projet`, `objectif_projet`, `responsable_risque_residuel`, `cadre_temporel`, `id_echelle`) VALUES (?,?,?,?,?)');
@@ -58,14 +59,24 @@ session_start();
 <?php
       }
 
+    // Verification du nom du responsable du projet
+    if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_grp_utilisateur)){
+      $results["error"] = true;
+      $results["message"]["groupe_utilisateur"] = "Groupe d'utilisateur invalide";
+      ?>
+<strong style="color:#FF6565;">Groupe d'utilisateur invalide </br></strong>
+<?php
+    }
+
     if ($results["error"] === false && isset($_POST['ajouter_projet'])){
       $insereprojet->bindParam(1, $nom_etude);
       $insereprojet->bindParam(2, $objectif_atteindre);
       $insereprojet->bindParam(3, $respo_acceptation_risque);
       $insereprojet->bindParam(4, $cadre_temporel);
       $insereprojet->bindParam(5, $echelle);
+      //$insereprojet->bindParam(6, $nom_grp_utilisateur);
       $insereprojet->execute();
-      header('Location: ../../../creation_grp_utilisateur&'.$_SESSION['id_utilisateur']);
+      header('Location: ../../../index&'.$_SESSION['id_utilisateur']);
     ?>
 <strong style="color:#4AD991;">Le projet a bien été crée !</br></strong>
 <?php

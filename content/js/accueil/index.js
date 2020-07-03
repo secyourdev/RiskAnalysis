@@ -1,5 +1,76 @@
 /* ----------------------------------- VARIABLES --------------------------------- */
 var lenght_projet;
+var lenght_grp_user;
+var project_card = document.getElementById('project_card')
+var grp_user_card = document.getElementById('grp_user_card')
+var apps_card = document.getElementById('apps_card')
+var bdd_card = document.getElementById('bdd_card')
+
+var tableau_de_bord_projet = document.getElementById('tableau_de_bord_projet')
+var tableau_de_bord_grp_user = document.getElementById('tableau_de_bord_grp_user')
+var tableau_de_bord_app = document.getElementById('tableau_de_bord_app')
+var tableau_de_bord_bdd = document.getElementById('tableau_de_bord_bdd')
+
+var projets = document.getElementById('projets')
+var button_add_user_in_grp = document.getElementById('button_add_user_in_grp')
+var ajouter_user = document.getElementById('ajouter_user')
+
+button_add_user_in_grp.style.display='none'
+grp_user_card.style.display="none"
+apps_card.style.display="none"
+bdd_card.style.display="none"
+/*--------------------------------- TABLES JS -------------------------------*/
+$(document).ready(function() {
+    $('#editable_table').Tabledit({
+        url: 'content/php/accueil/modification_grp_user.php',
+        columns: {
+            identifier: [0, "id_grp_utilisateur"],
+            editable: [[1, "nom_grp_utilisateur"]]
+        },
+        restoreButton: false,
+        hideIdentifier: false,
+        onSuccess: function(data, textStatus, jqXHR) {
+            if (data.action == 'delete') {
+                $('#' + data.id_grp_utilisateur).remove();
+            }
+        }
+    });
+});
+/*--------------------------- SORT & FILTER TABLES --------------------------*/
+setSortTable('editable_table');
+OURJQUERYFN.setFilterTable("#rechercher_grp_user","#editable_table tbody tr")
+
+setSortTable('tableau_user');
+OURJQUERYFN.setFilterTable("#rechercher_user","#tableau_user tbody tr")
+/*----------------------------- CHARGEMENT DES ONGLETS ----------------------------*/
+selection_onglet(project_card,grp_user_card,apps_card,bdd_card,tableau_de_bord_projet)
+selection_onglet(grp_user_card,project_card,apps_card,bdd_card,tableau_de_bord_grp_user)
+selection_onglet(apps_card,project_card,grp_user_card,bdd_card,tableau_de_bord_app)
+selection_onglet(bdd_card,project_card,grp_user_card,apps_card,tableau_de_bord_bdd)
+
+function selection_onglet(onglet1,onglet2,onglet3,onglet4,button){
+    button.addEventListener('click',function(){
+        onglet1.style.display='table'
+        onglet2.style.display="none"
+        onglet3.style.display="none"
+        onglet4.style.display="none"
+    })
+}
+/*------------------------ CHARGEMENT DES GRP UTILISATEURS  ------------------------*/
+$.ajax({
+    url: 'content/php/accueil/selection_json_grp_user.php',
+    type: 'POST',
+    dataType: 'html',
+    success: function (resultat) {
+        var grp_user_JSON = JSON.parse(resultat);
+        lenght_grp_user = grp_user_JSON.length;
+        grp_user = lenght_grp_user;
+    },
+    error: function (erreur) {
+        alert('ERROR :' + erreur);
+    }
+});
+
 /*----------------------------- CHARGEMENT DES PROJETS ----------------------------*/
 $.ajax({
     url: 'content/php/accueil/selection_projet.php',
@@ -74,8 +145,8 @@ $.ajax({
             div1.appendChild(div2)
             projets.appendChild(div1)
           
-            prj = lenght_projet;
-            grp_user = 15;
+            prj = lenght_projet;  
+            grp_user = lenght_grp_user; 
             app = 10;
             bdd = 10;
             compteur_anim();
@@ -85,7 +156,6 @@ $.ajax({
         alert('ERROR :' + erreur);
     }
 });
-
 /*----------------------------------- FONCTIONS -----------------------------------*/
 function compteur_anim() {
     $('#prj.compteur b').animate({
@@ -127,3 +197,16 @@ function compteur_anim() {
 };
 
 
+ajouter_user.addEventListener('click', (event) => {
+    $.ajax({
+      url: 'content/php/accueil/ajout_user.php',
+      type: 'POST',
+      data: {
+            id_utilisateur: SelectUser.options[SelectUser.selectedIndex].value.substring(0,SelectUser.options[SelectUser.selectedIndex].value.indexOf("-",0)),
+            nom_grp_utilisateur: nomgrpuser.value
+      },
+      success: function (data) {
+          location.reload();
+      }
+    })
+  });

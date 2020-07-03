@@ -17,7 +17,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $requser->execute(array($getid));
     $userinfo = $requser->fetch();
 ?>
-
+<?php include("content/php/accueil/selection_grp_user.php");?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -144,8 +144,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     <h5>TABLEAU DE BORD</h5></br>
                     <div class="row">
                         <div class="col-xl-3 col-lg-3">
-                            <div class="card shadow mb-4 tableau_de_bord_card">
-                                <div class="card-header d-flex flex-row align-items-center justify-content-between tableau_de_bord_card"
+                            <div class="card shadow mb-4">
+                                <div id="tableau_de_bord_projet"
+                                    class="card-header d-flex flex-row align-items-center justify-content-between tableau_de_bord_card"
                                     onclick="location.href='#'">
                                     <table class="tableau_de_bord_table">
                                         <tbody>
@@ -161,8 +162,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-3">
-                            <div class="card shadow mb-4 tableau_de_bord_card">
-                                <div
+                            <div class="card shadow mb-4">
+                                <div id="tableau_de_bord_grp_user"
                                     class="card-header d-flex flex-row align-items-center justify-content-between tableau_de_bord_card">
                                     <table class="tableau_de_bord_table">
                                         <tbody>
@@ -178,8 +179,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-3">
-                            <div class="card shadow mb-4 tableau_de_bord_card">
-                                <div
+                            <div class="card shadow mb-4">
+                                <div id="tableau_de_bord_app"
                                     class="card-header d-flex flex-row align-items-center justify-content-between tableau_de_bord_card">
                                     <table class="tableau_de_bord_table">
                                         <tbody>
@@ -195,8 +196,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-3">
-                            <div class="card shadow mb-4 tableau_de_bord_card">
-                                <div
+                            <div class="card shadow mb-4">
+                                <div id="tableau_de_bord_bdd"
                                     class="card-header d-flex flex-row align-items-center justify-content-between tableau_de_bord_card">
                                     <table class="tableau_de_bord_table">
                                         <tbody>
@@ -213,13 +214,114 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         </div>
                     </div>
                     </br></br>
-                    <div class="row" id="projets">
+
+                    <div id="project_card" class="test">
+                        <div class="row" id="projets"> </div>
+
+                        <div class="text-center">
+                            <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none"
+                                data-toggle="modal" data-target="#ajout_projet">Créer un nouveau projet</button>
+                        </div>
                     </div>
 
-                    <div class="text-center">
-                        <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none"
-                            data-toggle="modal" data-target="#ajout_projet">Créer un nouveau projet</button>
+
+                    <div id="grp_user_card" class="col-xl-12 col-lg-12 test">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0">Groupes d'utilisateur</h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <!--tableau-->
+                                <div class="table-responsive">
+                                    <input type="text" class="rechercher_input" id="rechercher_grp_user"
+                                        placeholder="Rechercher">
+                                    <table id="editable_table" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>ID Groupe d'utilisateur</th>
+                                                <th>Nom du groupe d'utilisateur</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            while($row = mysqli_fetch_array($result))
+                                            {
+                                                echo '
+                                                <tr>
+                                                <td>'.$row["id_grp_utilisateur"].'</td>
+                                                <td>'.$row["nom_grp_utilisateur"].'</td>
+                                                </tr>
+                                                ';
+                                            }
+                                        ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!-- bouton Ajouter une nouvelle ligne -->
+                                <div class="text-center">
+                                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none"
+                                        data-toggle="modal" data-target="#ajout_grp_user">Ajouter un nouveau groupe d'utilisateur</button>
+                                </div>
+                            </div>
+                        </div>
+                            <!-- Area Card -->
+                            <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0">Utilisateurs</h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="SelectGrpUserPop">Groupe d'utilisateur</label>
+                                    <select class="form-control" name="nomgrpuser" id="nomgrpuser">
+                                        <option value="" selected>...</option>
+                                        <?php
+                                    while($row = mysqli_fetch_array($result_grp_user))
+                                    {
+                                        echo '
+                                        <option value="'.$row["nom_grp_utilisateur"].'">'.$row["nom_grp_utilisateur"].'</option>
+                                        ';
+                                    }
+                                ?>
+                                    </select>
+                                </div>
+                                <!--tableau-->
+                                <script src="content/js/accueil/recherche_utilisateur.js"></script>
+                                <div class="table-responsive">
+                                    <input type="text" class="rechercher_input" id="rechercher_user"
+                                        placeholder="Rechercher">
+                                    <table id="tableau_user" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nom</th>
+                                                <th>Prénom</th>
+                                                <th>Poste</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody id="ecrire_user">
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- bouton Ajouter une nouvelle ligne -->
+                                <div class="text-center">
+                                    <button id='button_add_user_in_grp' type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none"
+                                        data-toggle="modal" data-target="#ajout_user">Ajouter un utilisateur dans un groupe</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+
+                    <div id="apps_card"> TEST2 </div>
+
+                    <div id="bdd_card"> TEST3</div>
+
                 </div>
                 <!-- End of Main Content -->
                 </br>
@@ -293,9 +395,102 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                     </datalist>
                                 </div>
 
+                                <!--GROUPE UTILISATEUR-->
+                                <div class="form-group">
+                                    <label for="SelectGrpUserPop">Groupe d'utilisateur</label>
+                                    <select class="form-control" name="nom_grp_utilisateur" id="SelectGrpUser">
+                                        <option value="" selected>...</option>
+                                        <?php
+                                        while($row = mysqli_fetch_array($result_grp_user_creation))
+                                            {
+                                                echo '
+                                                <option value="'.$row["nom_grp_utilisateur"].'">'.$row["nom_grp_utilisateur"].'</option>
+                                                ';
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
                                 <div class="modal-footer perso_middle_modal_footer">
                                     <input type="submit" name="ajouter_projet" value="Ajouter"
                                         class="btn perso_btn shadow-none"></input>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-------------------------------------------------------------------------------------------------------------- 
+        --------------------------------------- modal creation d'un groupe utilisateur ---------------------------------
+        ---------------------------------------------------------------------------------------------------------------->
+        <div class="modal fade" id="ajout_grp_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Création d'un groupe d'utilisateur</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body perso_modal_body">
+                        <form method="post" action="content/php/accueil/ajout_grp_user.php">
+                            <fieldset>
+                                <!--NOM ETUDE-->
+                                <div class="form-group">
+                                    <label class="titre_input" for="nom_grp_user">Nom</label>
+                                    <input type="text" class="perso_form shadow-none form-control form-control-user"
+                                        name="nom_grp_user" id="nom_grp_user" placeholder="Nom" required></input>
+                                </div>
+
+                                <div class="modal-footer perso_middle_modal_footer">
+                                    <input type="submit" name="ajouter_grp_user" value="Ajouter"
+                                        class="btn perso_btn shadow-none"></input>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-------------------------------------------------------------------------------------------------------------- 
+        --------------------------------------------- modal ajout d'un utilisateur -------------------------------------
+        ---------------------------------------------------------------------------------------------------------------->
+        <div class="modal fade" id="ajout_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ajout d'un utilisateur</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body perso_modal_body">
+                        <form>
+                            <fieldset>
+                                <!--UTILISATEUR-->
+                                <div class="form-group">
+                                    <label for="SelectUserPop">Utilisateur</label>
+                                    <select class="form-control" name="nom_utilisateur" id="SelectUser">
+                                        <option value="" selected>...</option>
+                                        <?php
+                                        while($row = mysqli_fetch_array($result_user))
+                                            {
+                                                echo '
+                                                <option value="'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'">'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'</option>
+                                                ';
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="modal-footer perso_middle_modal_footer">
+                                    <button type="button" id='ajouter_user' name="ajouter_user"
+                                        class="btn perso_btn shadow-none">Ajouter</button>
                                 </div>
                             </fieldset>
                         </form>
@@ -341,9 +536,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
         <!-- Our JS -->
         <script src="content/js/modules/dark_mode.js"></script>
+        <script src="content/js/modules/set_filter_sort_table.js"></script>
         <script src='content/js/accueil/index.js'> </script>
-        <script src="content/js/modules/help_button.js"></script>
-
+        <script src="content/js/modules/sort_table.js"></script>
 </body>
 <?php
 }
