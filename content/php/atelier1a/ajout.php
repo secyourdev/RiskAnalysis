@@ -1,5 +1,5 @@
 <?php
-header('Location: ../../../atelier-1a#acteurs');
+session_start();
 
   //Connexion à la base de donnee
   try{
@@ -89,7 +89,7 @@ header('Location: ../../../atelier-1a#acteurs');
         $insert_raci_5a->execute();
         $insert_raci_5b->execute();
         $insert_raci_5c->execute();
-
+        header('Location: ../../../atelier-1a&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
         ?>
         <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
         <?php

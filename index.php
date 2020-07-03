@@ -62,7 +62,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-shield-alt"></i>
                 </div>
-                <div class="sidebar-brand-text mx-2">RISK MANAGER</div>
+                <div class="sidebar-brand-text mx-2"> CYBER RISK MANAGER</div>
             </a>
 
             <!-- Divider -->
@@ -329,7 +329,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <footer class="sticky-footer bg-white">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; RISK MANAGER 2020</span>
+                            <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
                         </div>
                     </div>
                 </footer>

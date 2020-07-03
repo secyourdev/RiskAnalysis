@@ -127,7 +127,7 @@ $.ajax({
             label.innerHTML = projet_JSON[i][2]
 
             var label2 = document.createElement('label')
-            label2.innerHTML = 'Date de fin du projet : ' + projet_JSON[i][5]
+            label2.innerHTML = 'Date de fin du projet : ' + projet_JSON[i][4]
 
             var br = document.createElement('br')
 
