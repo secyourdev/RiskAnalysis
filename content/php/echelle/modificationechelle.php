@@ -4,81 +4,56 @@ $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bs
 
 $input = filter_input_array(INPUT_POST);
 
-$nom_bien_support = mysqli_real_escape_string($connect, $input["nom_bien_support"]);
-$nom_valeur_metier = mysqli_real_escape_string($connect, $input["nom_valeur_metier"]);
-$description_bien_support = mysqli_real_escape_string($connect, $input["description_bien_support"]);
-$nom_responsable = mysqli_real_escape_string($connect, $input["nom_responsable"]);
-$prenom_responsable = mysqli_real_escape_string($connect, $input["prenom_responsable"]);
-$poste_responsable = mysqli_real_escape_string($connect, $input["poste_responsable"]);
+$nom_echelle = mysqli_real_escape_string($connect, $input["nom_echelle"]);
+$echelle_gravite = mysqli_real_escape_string($connect, $input["echelle_gravite"]);
 
 
 $results["error"] = false;
 $results["message"] = [];
 
-// Verification du nom du bien support
-if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_bien_support)){
+// Verification du nom de l'échelle
+if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_echelle)){
     $results["error"] = true;
-    $results["message"]["nom"] = "Nom invalide";
+    $results["message"]["nom"] = "Nom de l'échelle invalide";
     ?>
-    <strong style="color:#FF6565;">Nom invalide </br></strong>
+    <strong style="color:#FF6565;">Nom de l'échelle invalide </br></strong>
     <?php
 }
 
-// Verification de la description
-if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_bien_support)){
-    $results["error"] = true;
-    $results["message"]["prenom"] = "Description invalide";
-    ?>
-    <strong style="color:#FF6565;">Description invalide </br></strong>
-    <?php
-}
 
-// Verification du nom du responsable
-if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_responsable)){
-    $results["error"] = true;
-    $results["message"]["poste"] = "Nom invalide";
-    ?>
-    <strong style="color:#FF6565;">Nom invalide </br></strong>
-    <?php
-}
-
-// Verification du prenom du responsable
-if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $prenom_responsable)){
-    $results["error"] = true;
-    $results["message"]["poste"] = "Prenom invalide";
-    ?>
-    <strong style="color:#FF6565;">Prenom invalide </br></strong>
-    <?php
-}
-
-// Verification du nom du responsable
-if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $poste_responsable)){
-    $results["error"] = true;
-    $results["message"]["poste"] = "Poste invalide";
-    ?>
-    <strong style="color:#FF6565;">Poste invalide </br></strong>
-    <?php
-}
 
 
 if($input["action"] === 'edit' && $results["error"] === false){
-    $queryp = "
-    UPDATE personne
-    SET nom = '".$nom_responsable."',
-    prenom = '".$prenom_responsable."',
-    poste = '".$poste_responsable."'
-    WHERE id_personne = (SELECT id_personne FROM bien_support WHERE id_bien_support = '".$input["id_bien_support"]."')
+    $query = "
+    UPDATE echelle
+    SET nom_echelle = '".$nom_echelle."',
+    echelle_gravite = '".$echelle_gravite."'
+    WHERE id_echelle = '".$input["id_echelle"]."'
     ";
-    
-    $querybs = "
-    UPDATE bien_support 
-    SET nom_bien_support = '".$nom_bien_support."', 
-    description_bien_support = '".$description_bien_support."',
-    id_valeur_metier = (SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = '".$nom_valeur_metier."')
-    WHERE id_bien_support = '".$input["id_bien_support"]."'
-    ";
-    mysqli_query($connect, $queryp);
-    mysqli_query($connect, $querybs);
+    mysqli_query($connect, $query);
+
+    if ($echelle_gravite === "4"){
+        $query4 = "
+        DELETE FROM niveau
+        WHERE id_echelle = '".$input["id_echelle"]."'
+        AND valeur_niveau = '5'
+        ";
+        mysqli_query($connect, $query4);
+    }
+    else {
+        $querycount = "SELECT * FROM niveau
+        WHERE id_echelle = '".$input["id_echelle"]."'
+        ";
+        $result = mysqli_query($connect, $querycount);
+        if(mysqli_num_rows($result) === 4){
+        $query5 = "
+            INSERT INTO niveau (id_niveau, description_niveau, valeur_niveau, id_echelle) 
+            VALUES (NULL, NULL, 5, '".$input["id_echelle"]."')
+            ";
+            echo $query5;
+            mysqli_query($connect, $query5);
+            }      
+    }
 }
 
 if($input["action"] === 'delete'){

@@ -8,7 +8,7 @@ var l=0;
 
 $(document).ready(function(){  
     $('#editable_table').Tabledit({
-     url:'content/php/echelle/modification_echelle.php',
+     url:'content/php/echelle/modificationechelle.php',
      columns:{
       identifier:[0, 'id_echelle'],
       editable:[[1, 'nom_echelle'], [2, "echelle_gravite", '{"4" : "4", "5" : "5"}'], [3, "echelle_vraisemblance", '{"4" : "4", "5" : "5"}']]
@@ -45,13 +45,14 @@ $(document).ready(function(){
             columns: {
                 identifier: [0, 'id_evenement_redoute'],
                 editable: [
+                    [1, 'nom_valeur_metier'],
                     [2, 'nom_evenement_redoute'],
                     [3, 'description_evenement_redoute'],
                     [4, 'impact'], 
-                    [5, 'confidentialite'],
-                    [6, 'integrite'],
-                    [7, 'disponibilite'],
-                    [8, 'tracabilite'],
+                    [5, 'confidentialite', '{"1" : "1", "2" : "2", "3" : "3"}'],
+                    [6, 'integrite', '{"1" : "1", "2" : "2", "3" : "3"}'],
+                    [7, 'disponibilite', '{"1" : "1", "2" : "2", "3" : "3"}'],
+                    [8, 'tracabilite', '{"1" : "1", "2" : "2", "3" : "3"}'],
                     [9, 'niveau_de_gravite']
                 ],
             },
@@ -79,7 +80,7 @@ OURJQUERYFN.setFilterTable("#rechercher_er","#tableau_er tbody tr")
 sleep(100).then(() => {
     for(let i=0;i<editable_table.rows.length-1;i++){
         j=i+1;
-        button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table'+','+'4'+')')
+        button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table'+','+'3'+')')
     }
 });
 

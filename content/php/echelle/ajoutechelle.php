@@ -18,10 +18,9 @@ header('Location: ../../../atelier-1c');
 
   $nom_echelle=$_POST['nom_echelle'];
   $echelle_gravite=$_POST['echelle_gravite'];
-  $echelle_vraisemblance=$_POST['echelle_vraisemblance'];
   $id_echelle="id_echelle";
 
-  $insere = $bdd->prepare('INSERT INTO `echelle`(`id_echelle`, `nom_echelle`, `echelle_gravite`, `echelle_vraisemblance`) VALUES (?,?,?,?)');
+  $insere = $bdd->prepare('INSERT INTO `echelle`(`id_echelle`, `nom_echelle`, `echelle_gravite`, `echelle_vraisemblance`) VALUES (?,?,?,0)');
   $recupere = $bdd->prepare('SELECT id_echelle FROM echelle WHERE nom_echelle = ?');
   
   $insere_niveau_1 = $bdd->prepare('INSERT INTO `niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`) VALUES (NULL, NULL, 1,?)');
@@ -42,8 +41,7 @@ header('Location: ../../../atelier-1c');
     if ($results["error"] === false && isset($_POST['validerechelle'])){
       $insere->bindParam(1, $id_echelle);
       $insere->bindParam(2, $nom_echelle);
-      $insere->bindParam(3, $echelle_vraisemblance);
-      $insere->bindParam(4, $echelle_gravite);
+      $insere->bindParam(3, $echelle_gravite);
       $insere->execute();
       $recupere->bindParam(1, $nom_echelle);
       $recupere->execute();
