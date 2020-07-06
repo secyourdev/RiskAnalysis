@@ -622,7 +622,7 @@
 
 
                 <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsable" id="prenomresponsable" placeholder="Prenom du responsable" required>
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsable" id="prenomresponsable" placeholder="Prénom du responsable" required>
                 </div>
 
                 <div class="form-group">
