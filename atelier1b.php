@@ -1,3 +1,27 @@
+<?php
+session_start();
+
+//Connexion à la base de donnee
+try{
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v14;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+}
+
+catch(PDOException $e){
+    die('Erreur :'.$e->getMessage());
+}
+
+if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
+    $getid = intval($_GET['id_utilisateur']);
+    $requser = $bdd->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = ?');
+    $requser->execute(array($getid));
+    $userinfo = $requser->fetch();
+
+    $reqdroit = $bdd->prepare('SELECT * FROM disposer NATURAL JOIN avoir WHERE id_utilisateur = ? AND id_atelier="1.a"');
+    $reqdroit->execute(array($getid));
+    $userdroit = $reqdroit->fetch();
+?>
+
 <?php include("content/php/atelier1b/selection.php"); ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -23,6 +47,11 @@
   <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
 </head>
 
+<?php 
+if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur'])
+{
+?>
+
 <body id="page-top">
 
   <!-- Page Wrapper -->
@@ -31,7 +60,7 @@
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <!-- Logo -->
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-shield-alt"></i>
@@ -44,7 +73,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Tableau de Bord</span></a>
       </li>
@@ -72,7 +101,7 @@
         </a>
         <div id="Atelier1" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="atelier-1a">
+            <a class="collapse-item" href="atelier-1a&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
               <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
@@ -85,7 +114,7 @@
               </i>
               <span id="nom_sous_atelier_1" title="Cadrer l’étude">Cadrer l’étude</span>
             </a>
-            <a class="collapse-item" href="atelier-1b">
+            <a class="collapse-item" href="atelier-1b&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
               <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
@@ -98,7 +127,7 @@
               </i>
               <span id="nom_sous_atelier_2" title="Biens primordiaux/support">Biens primordiaux/support</span>
             </a>
-            <a class="collapse-item" href="atelier-1c">
+            <a class="collapse-item" href="atelier-1c&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
               <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
@@ -111,7 +140,7 @@
               </i>
               <span id="nom_sous_atelier_3" title="Événements redoutés">Événements redoutés</span>
             </a>
-            <a class="collapse-item" href="atelier-1d">
+            <a class="collapse-item" href="atelier-1d&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
               <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
@@ -143,7 +172,7 @@
         </a>
         <div id="Atelier2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="atelier-2a">
+            <a class="collapse-item" href="atelier-2a&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
               <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
@@ -156,7 +185,7 @@
               </i>
               <span id="nom_sous_atelier_5" title="Identifier les sources de risques et les objectifs">Identifier les sources de risques et les objectifs</span>
             </a>
-            <a class="collapse-item" href="atelier-2b">
+            <a class="collapse-item" href="atelier-2b&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
               <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
@@ -188,7 +217,7 @@
         </a>
         <div id="Atelier3" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="atelier-3a">
+            <a class="collapse-item" href="atelier-3a&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
               <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
@@ -201,7 +230,7 @@
               </i>
               <span id="nom_sous_atelier_7" title="Construire la cartographie des menaces numériques de l'écosystème et sélectionner les parties prenantes critiques">Construire la cartographie des menaces numériques de l'écosystème et sélectionner les parties prenantes critiques</span>
             </a>
-            <a class="collapse-item" href="atelier-3b">
+            <a class="collapse-item" href="atelier-3b&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
               <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
@@ -214,7 +243,7 @@
               </i>
               <span id="nom_sous_atelier_8" title="Élaborer des scénarios stratégiques">Élaborer des scénarios stratégiques</span>
             </a>
-            <a class="collapse-item" href="atelier-3c">
+            <a class="collapse-item" href="atelier-3c&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
               <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
@@ -246,7 +275,7 @@
         </a>
         <div id="Atelier4" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="atelier-4a">
+            <a class="collapse-item" href="atelier-4a&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
               <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
@@ -259,7 +288,7 @@
               </i>
               <span id="nom_sous_atelier_10" title="Élaborer les scénarios opérationnels">Élaborer les scénarios opérationnels</span>
             </a>
-            <a class="collapse-item" href="atelier-4b">
+            <a class="collapse-item" href="atelier-4b&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
               <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
@@ -291,7 +320,7 @@
         </a>
         <div id="Atelier5" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="atelier-5a">
+            <a class="collapse-item" href="atelier-5a&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
               <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
@@ -304,7 +333,7 @@
               </i>
               <span id="nom_sous_atelier_12" title="Réaliser une synthèse des scénarios de risque">Réaliser une synthèse des scénarios de risque</span>
             </a>
-            <a class="collapse-item" href="atelier-5b">
+            <a class="collapse-item" href="atelier-5b&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
               <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
@@ -317,7 +346,7 @@
               </i>
               <span id="nom_sous_atelier_13" title="Décider de la stratégie de traitement du risque et définir les mesures de sécurité">Décider de la stratégie de traitement du risque et définir les mesures de sécurité</span>
             </a>
-            <a class="collapse-item" href="atelier-5c">
+            <a class="collapse-item" href="atelier-5c&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
               <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
@@ -373,7 +402,7 @@
           <!-- Nav Item - User Information -->
           <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="mr-2 d-none d-lg-inline text-gray-600 small">Guillaume</span>
+              <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $userinfo['prenom'];?></span>
               <img class="img-profile rounded-circle" src="content/img/undraw_profile_pic.svg">
             </a>
             <!-- Dropdown - User Information -->
@@ -596,51 +625,55 @@
       <i class="fas fa-angle-up"></i>
     </a>
 
-
     <!-- -------------------------------------------------------------------------------------------------------------- 
---------------------------------------- modal ajout de mission ----------------------------------------------
+--------------------------------------- modal ajout de bien support ----------------------------------------------
 --------------------------------------------------------------------------------------------------------------  -->
-    <div class="modal fade" id="ajout_mission" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="ajout_bien_support" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ajout d'une mission</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Ajout d'un bien support</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body perso_modal_body">
-            <form method="post" action="content/php/atelier1b/ajoutmission.php" class="user" id="formMission">
+            <form method="post" action="content/php/atelier1b/ajoutbs.php" class="user" id="formBienSupportPop">
               <fieldset>
+
                 <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="mission" id="InputNomMission" placeholder="Mission" required>
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="biensupport" id="InputBienSupportPop" placeholder="Dénomination du bien support" required>
                 </div>
 
                 <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomresponsable" id="nomresponsable" placeholder="Nom du responsable" required>
+                  <label for="DescriptionBienPop">Description</label>
+                  <textarea class="form-control perso_text_area" name="descriptionbs" id="DescriptionBienPop" rows="3"></textarea>
                 </div>
 
+<<<<<<< HEAD
 
                 <div class="form-group">
                   <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsable" id="prenomresponsable" placeholder="Prénom du responsable" required>
+=======
+                <!-- <div class="form-group">
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomresponsablebs" id="InputNomResponsablebs" placeholder="Nom du responsable" required>
+>>>>>>> origin/Joyston
                 </div>
 
                 <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="poste" id="poste" placeholder="Poste du responsable" required>
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsablebs" id="InputPrenomResponsablebs" placeholder="Prénom du responsable" required>
                 </div>
 
-
-
+                <div class="form-group">
+                  <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="PostesBienPop" name="posteresponsablebs" placeholder="Poste" required>
+                </div> -->
                 <!-- bouton Ajouter -->
                 <div class="modal-footer perso_middle_modal_footer">
-                  <input type="submit" name="validermission" value="Ajouter" class="btn perso_btn shadow-none"></input>
+                  <input type="submit" name="validerbs" value="Ajouter" class="btn perso_btn shadow-none"></input>
                 </div>
               </fieldset>
-
-
             </form>
           </div>
-
 
         </div>
       </div>
@@ -662,19 +695,6 @@
             <form method="post" action="content/php/atelier1b/ajoutvm.php" class="user" id="formValeurMetierPop">
               <fieldset>
 
-                <!-- <div class="form-group">
-                  <label for="SelectNaturePop">Mission</label>
-                  <select class="form-control" name="nommission" id="SelectMission">
-                    <option value="" selected>...</option>
-                    <?php
-                    while ($row = mysqli_fetch_array($resultmission)) {
-                      echo '
-                        <option value="' . $row["nom_mission"] . '">' . $row["nom_mission"] . '</option>
-                        ';
-                    }
-                    ?>
-                  </select>
-                </div> -->
                 <div class="form-group">
                   <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomvm" id="InputValeurMetierPop" placeholder="Dénomination de la valeur métier" required>
                 </div>
@@ -718,28 +738,40 @@
 
 
     <!-- -------------------------------------------------------------------------------------------------------------- 
---------------------------------------- modal ajout de bien support ----------------------------------------------
+--------------------------------------- modal ajout de mission ----------------------------------------------
 --------------------------------------------------------------------------------------------------------------  -->
-    <div class="modal fade" id="ajout_bien_support" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="ajout_mission" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ajout d'un bien support</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Ajout d'une mission</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body perso_modal_body">
-            <form method="post" action="content/php/atelier1b/ajoutbs.php" class="user" id="formBienSupportPop">
+            <form method="post" action="content/php/atelier1b/ajoutmission.php" class="user" id="formMission">
               <fieldset>
-
                 <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="biensupport" id="InputBienSupportPop" placeholder="Dénomination du bien support" required>
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_mission" id="InputNomMission" placeholder="Mission" required>
                 </div>
 
-                <!-- <div class="form-group">
-                  <label for="SelectValeurMetierPop">Valeur métier</label>
-                  <select class="form-control" name="vm" id="SelectValeurMetierPop">
+                <div class="form-group">
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomresponsable" id="nomresponsable" placeholder="Nom du responsable" required>
+                </div>
+
+
+                <div class="form-group">
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsable" id="prenomresponsable" placeholder="Prenom du responsable" required>
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="poste" id="poste" placeholder="Poste du responsable" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="Selectnom_valeur_metier">Valeur métier</label>
+                  <select class="form-control" name="nom_valeur_metier" id="Selectnom_valeur_metier">
                     <option value="" selected>...</option>
                     <?php
                     while ($row = mysqli_fetch_array($resultvm)) {
@@ -749,35 +781,68 @@
                     }
                     ?>
                   </select>
-                </div> -->
-
-                <div class="form-group">
-                  <label for="DescriptionBienPop">Description</label>
-                  <textarea class="form-control perso_text_area" name="descriptionbs" id="DescriptionBienPop" rows="3"></textarea>
-                </div>
-
-                <!-- <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomresponsablebs" id="InputNomResponsablebs" placeholder="Nom du responsable" required>
                 </div>
 
                 <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsablebs" id="InputPrenomResponsablebs" placeholder="Prénom du responsable" required>
+                  <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="posteresponsablevm" name="posteresponsablevm" placeholder="Responsable" required>
+                  <datalist id="posteresponsablevm">
+                    <?php
+                    while ($row = mysqli_fetch_array($resultposteresponsablevm)) {
+                      echo '
+                        <option value="' . $row["poste"] . '">' . $row["poste"] . '</option>
+                        ';
+                    }
+                    ?>
+                  </datalist>
                 </div>
 
                 <div class="form-group">
-                  <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="PostesBienPop" name="posteresponsablebs" placeholder="Poste" required>
-                </div> -->
+                  <label for="Selectnom_bien_support">Bien support</label>
+                  <select class="form-control" name="nom_bien_support" id="Selectnom_bien_support">
+                    <option value="" selected>...</option>
+                    <?php
+                    while ($row = mysqli_fetch_array($resultbien)) {
+                      echo '
+                        <option value="' . $row["nom_bien_support"] . '">' . $row["nom_bien_support"] . '</option>
+                        ';
+                    }
+                    ?>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="posteresponsablebien" name="posteresponsablebien" placeholder="Responsable" required>
+                  <datalist id="posteresponsablebien">
+                    <?php
+                    while ($row = mysqli_fetch_array($resultposteresponsablebien)) {
+                      echo '
+                        <option value="' . $row["poste"] . '">' . $row["poste"] . '</option>
+                        ';
+                    }
+                    ?>
+                  </datalist>
+                </div>
+
+
+
                 <!-- bouton Ajouter -->
                 <div class="modal-footer perso_middle_modal_footer">
-                  <input type="submit" name="validerbs" value="Ajouter" class="btn perso_btn shadow-none"></input>
+                  <input type="submit" name="validermission" value="Ajouter" class="btn perso_btn shadow-none"></input>
                 </div>
               </fieldset>
+
+
             </form>
           </div>
+
 
         </div>
       </div>
     </div>
+
+
+
+
 
 
     <!-- Logout Modal-->
@@ -818,5 +883,16 @@
     <script src="content/js/modules/sort_table.js"></script>
 
 </body>
-
+<?php
+}
+else{
+  header('Location: connexion');
+}
+?>
 </html>
+<?php
+}
+else{
+  header('Location: connexion');
+}
+?>

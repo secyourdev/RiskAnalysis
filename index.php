@@ -3,7 +3,7 @@ session_start();
 
 //Connexion à la base de donnee
 try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v6;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v14;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 }
 
@@ -17,7 +17,10 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $requser->execute(array($getid));
     $userinfo = $requser->fetch();
 ?>
-<?php include("content/php/accueil/selection_grp_user.php");?>
+<?php 
+    include("content/php/accueil/selection_grp_user.php");
+    include("content/php/accueil/selection_user.php");
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -185,7 +188,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                     <table class="tableau_de_bord_table">
                                         <tbody>
                                             <tr>
-                                                <th>Application</th>
+                                                <th>Utilisateurs</th>
                                             </tr>
                                             <tr>
                                                 <td class="compteur" id="app"><b nbobs="7">0</b></td>
@@ -215,7 +218,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     </div>
                     </br></br>
 
-                    <div id="project_card" class="test">
+                    <div id="project_card" class="fondu">
                         <div class="row" id="projets"> </div>
 
                         <div class="text-center">
@@ -225,7 +228,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     </div>
 
 
-                    <div id="grp_user_card" class="col-xl-12 col-lg-12 test">
+                    <div id="grp_user_card" class="col-xl-12 col-lg-12 fondu">
                         <div class="card shadow mb-4">
                             <!-- Card Header - Dropdown -->
                             <div class="card-header d-flex flex-row align-items-center justify-content-between">
@@ -263,12 +266,13 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                 <!-- bouton Ajouter une nouvelle ligne -->
                                 <div class="text-center">
                                     <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none"
-                                        data-toggle="modal" data-target="#ajout_grp_user">Ajouter un nouveau groupe d'utilisateur</button>
+                                        data-toggle="modal" data-target="#ajout_grp_user">Ajouter un nouveau groupe
+                                        d'utilisateur</button>
                                 </div>
                             </div>
                         </div>
-                            <!-- Area Card -->
-                            <div class="card shadow mb-4">
+                        <!-- Area Card -->
+                        <div class="card shadow mb-4">
                             <!-- Card Header - Dropdown -->
                             <div class="card-header d-flex flex-row align-items-center justify-content-between">
                                 <h6 class="m-0">Utilisateurs</h6>
@@ -310,15 +314,68 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                 </div>
                                 <!-- bouton Ajouter une nouvelle ligne -->
                                 <div class="text-center">
-                                    <button id='button_add_user_in_grp' type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none"
-                                        data-toggle="modal" data-target="#ajout_user">Ajouter un utilisateur dans un groupe</button>
+                                    <button id='button_add_user_in_grp' type="button"
+                                        class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal"
+                                        data-target="#ajout_user">Ajouter un utilisateur dans un groupe</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
 
-                    <div id="apps_card"> TEST2 </div>
+                    <div id="apps_card" class="col-xl-12 col-lg-12 fondu">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0">Compte Utilisateur</h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <!--tableau-->
+                                <div class="table-responsive">
+                                    <input type="text" class="rechercher_input" id="rechercher_app_utilisateur"
+                                        placeholder="Rechercher">
+                                    <table id="table_app_user" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nom</th>
+                                                <th>Prénom</th>
+                                                <th>Poste</th>
+                                                <th>E-mail</th>
+                                                <th>Type de compte</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            while($row = mysqli_fetch_array($result_full_user))
+                                            {
+                                                echo '
+                                                <tr>
+                                                    <td>'.$row["id_utilisateur"].'</td>
+                                                    <td>'.$row["nom"].'</td>
+                                                    <td>'.$row["prenom"].'</td>
+                                                    <td>'.$row["poste"].'</td>
+                                                    <td>'.$row["email"].'</td>
+                                                    <td>'.$row["type_compte"].'</td>
+                                                </tr>
+                                                ';
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!-- bouton Ajouter une nouvelle ligne -->
+                                <div class="text-center">
+                                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none"
+                                        data-toggle="modal" data-target="#ajout_compte">Ajouter un nouvel
+                                        utilisateur</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <div id="bdd_card"> TEST3</div>
 
@@ -452,7 +509,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             </fieldset>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -495,10 +551,73 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             </fieldset>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
+        <!----------------------------------------------------------------------------------------------------------------- 
+        ----------------------------------------- modal ajout de compte ---------------------------------------------------
+        ------------------------------------------------------------------------------------------------------------------>
+        <div class="modal fade" id="ajout_compte" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ajout de compte utilisateur</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body perso_modal_body">
+                        <form method="post" action="content/php/accueil/ajout_app_utilisateur.php" class="user" id="formUtilisateur">
+                            <fieldset>
+                                <div class="form-group">
+                                    <input type="text" class="perso_form shadow-none form-control form-control-user"
+                                        id="nom_utilisateur" name="nom" placeholder="Nom" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="perso_form shadow-none form-control form-control-user"
+                                        id="prenom_utilisateur" name="prenom" placeholder="Prénom" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="titre_input" for="poste_acteur">Poste</label>
+                                    <input type="text" class="perso_arrow perso_form shadow-none form-control"
+                                        list="Postes" id="poste_utilisateur" name="poste" placeholder="Poste" required>
+                                    <datalist id="Postes">
+                                        <option value="Internet Explorer">
+                                        <option value="Firefox">
+                                        <option value="Chrome">
+                                        <option value="Opera">
+                                        <option value="Safari">
+                                    </datalist>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="perso_form shadow-none form-control form-control-user"
+                                        id="email_utilisateur" name="email" placeholder="E-mail" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="select_type_compte_pop">Type de compte</label>
+                                    <input type="text" class="perso_arrow perso_form shadow-none form-control"
+                                        list="Type_Compte" id="type_compte_utilisateur" name="type_compte"
+                                        placeholder="Type de compte" required>
+                                    <datalist id="Type_Compte">
+                                        <option value="" selected>...</option>
+                                        <option>Administrateur Logiciel</option>
+                                        <option>Chef de Projet</option>
+                                        <option>Utilisateur</option>
+                                    </datalist>
+                                </div>
+                                <div>
+                                    <input type="submit" name="valider" value="Ajouter"
+                                        class="btn perso_btn_primary shadow-none"></input>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <!-- Logout Modal-->
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -536,6 +655,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
         <!-- Our JS -->
         <script src="content/js/modules/dark_mode.js"></script>
+        <script src="content/js/modules/realtime.js"></script>
         <script src="content/js/modules/set_filter_sort_table.js"></script>
         <script src='content/js/accueil/index.js'> </script>
         <script src="content/js/modules/sort_table.js"></script>
@@ -543,7 +663,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 <?php
 }
 else{
-  header('Location: connexion.php');
+  header('Location: connexion');
 }
 ?>
 
@@ -551,6 +671,6 @@ else{
 <?php
 }
 else{
-  header('Location: connexion.php');
+  header('Location: connexion');
 }
 ?>

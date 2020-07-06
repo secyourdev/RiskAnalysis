@@ -17,6 +17,11 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $requser->execute(array($getid));
     $userinfo = $requser->fetch();
 
+    $getidproject = intval($_GET['id_projet']);
+    $reqproject = $bdd->prepare('SELECT nom_projet FROM projet WHERE id_projet = ?');
+    $reqproject->execute(array($getidproject));
+    $projectinfo = $reqproject->fetch();
+
     $reqdroit = $bdd->prepare('SELECT * FROM disposer NATURAL JOIN avoir WHERE id_utilisateur = ? AND id_atelier="1.a"');
     $reqdroit->execute(array($getid));
     $userdroit = $reqdroit->fetch();
@@ -100,7 +105,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         </a>
         <div id="Atelier1" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="atelier-1a">
+            <a class="collapse-item" href="atelier-1a&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
               <i>
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                 <g transform="translate(-124 -292)">
@@ -111,7 +116,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               </i>
               <span id="nom_sous_atelier_1" title="Cadrer l’étude">Cadrer l’étude</span>
             </a>
-            <a class="collapse-item" href="atelier-1b">
+            <a class="collapse-item" href="atelier-1b&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
               <i>
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                 <g transform="translate(-124 -292)">
@@ -122,7 +127,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               </i>
               <span id="nom_sous_atelier_2" title="Biens primordiaux/support">Biens primordiaux/support</span>
             </a>
-            <a class="collapse-item" href="atelier-1c">
+            <a class="collapse-item" href="atelier-1c&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
               <i>
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                 <g transform="translate(-124 -292)">
@@ -133,7 +138,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               </i>
               <span id="nom_sous_atelier_3" title="Événements redoutés">Événements redoutés</span>
             </a>
-            <a class="collapse-item" href="atelier-1d">
+            <a class="collapse-item" href="atelier-1d&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
               <i>
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                 <g transform="translate(-124 -292)">
@@ -162,7 +167,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         </a>
         <div id="Atelier2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="atelier-2a">
+            <a class="collapse-item" href="atelier-2a&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
               <i>
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                 <g transform="translate(-124 -292)">
@@ -173,7 +178,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               </i>
               <span id="nom_sous_atelier_5" title="Identifier les sources de risques et les objectifs">Identifier les sources de risques et les objectifs</span>
             </a>
-            <a class="collapse-item" href="atelier-2b">
+            <a class="collapse-item" href="atelier-2b&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
               <i>
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                 <g transform="translate(-124 -292)">
@@ -202,7 +207,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         </a>
         <div id="Atelier3" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="atelier-3a">
+              <a class="collapse-item" href="atelier-3a&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
                 <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
@@ -213,7 +218,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </i>
                 <span id="nom_sous_atelier_7" title="Construire la cartographie des menaces numériques de l'écosystème et sélectionner les parties prenantes critiques">Construire la cartographie des menaces numériques de l'écosystème et sélectionner les parties prenantes critiques</span>
               </a>
-              <a class="collapse-item" href="atelier-3b">
+              <a class="collapse-item" href="atelier-3b&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
                 <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
@@ -224,7 +229,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </i>
                 <span id="nom_sous_atelier_8" title="Élaborer des scénarios stratégiques">Élaborer des scénarios stratégiques</span>
               </a>
-              <a class="collapse-item" href="atelier-3c">
+              <a class="collapse-item" href="atelier-3c&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
                 <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
@@ -253,7 +258,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         </a>
         <div id="Atelier4" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="atelier-4a">
+              <a class="collapse-item" href="atelier-4a&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
                 <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
@@ -264,7 +269,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </i>
                 <span id="nom_sous_atelier_10" title="Élaborer les scénarios opérationnels">Élaborer les scénarios opérationnels</span>
               </a>
-              <a class="collapse-item" href="atelier-4b">
+              <a class="collapse-item" href="atelier-4b&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
                 <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
@@ -293,7 +298,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         </a>
         <div id="Atelier5" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="atelier-5a">
+              <a class="collapse-item" href="atelier-5a&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
                 <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
@@ -304,7 +309,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </i>
                 <span id="nom_sous_atelier_12" title="Réaliser une synthèse des scénarios de risque">Réaliser une synthèse des scénarios de risque</span>
               </a>
-              <a class="collapse-item" href="atelier-5b">
+              <a class="collapse-item" href="atelier-5b&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
                 <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
@@ -315,7 +320,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </i>
                 <span id="nom_sous_atelier_13" title="Décider de la stratégie de traitement du risque et définir les mesures de sécurité">Décider de la stratégie de traitement du risque et définir les mesures de sécurité</span>
               </a>
-              <a class="collapse-item" href="atelier-5c">
+              <a class="collapse-item" href="atelier-5c&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
                 <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
                   <g transform="translate(-124 -292)">
@@ -351,7 +356,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             <i class="fa fa-bars"></i>
           </button>
 
-          <div id="top_bar_1" class="top_bar_name_1">Fabrication de vacccin</div>
+          <div id="top_bar_1" class="top_bar_name_1"><?php echo $projectinfo['nom_projet'];?></div>
           <div id="top_bar_2" class="top_bar_name_2">Atelier 1</div>
           <div id="top_bar_3" class="top_bar_name_3">Activité 1.a - Cadrer l’étude</div>
           
@@ -496,6 +501,33 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     <?php
                     }
                     ?>
+                    <!--GROUPE D'UTILISATEUR-->
+                    <div class="form-group">
+                      <label class="titre_input" for="grp_user_1a">Groupe d'utilisateur</label>
+                    <?php if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){
+                    ?>
+                    <select class="form-control" name="nom_grp_utilisateur" id="grp_user_1a">
+                      <option value="" selected>...</option>
+                      <?php
+                        while($row = mysqli_fetch_array($result_grp_user))
+                            {
+                                echo '
+                                <option value="'.$row["nom_grp_utilisateur"].'">'.$row["nom_grp_utilisateur"].'</option>
+                                ';
+                            }
+                      ?>  
+                    </select>
+                    </div>
+                    <?php
+                    }
+                    else { 
+                    ?>
+                      <br/>
+                      <label id="grp_user" class="no_modification"></input>
+                    </div>
+                    <?php
+                    }
+                    ?>
                   </form>
                   <img src="content/img/task.svg" class="img-fluid perso_img">
 
@@ -515,7 +547,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 ?>
                   <form method="post" action="content/php/atelier1a/ajout.php" class="user" id="formActeur">
                   <fieldset>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label class="titre_input" for="nom_acteur">Nom</label>
                       <input type="text" class="perso_form shadow-none form-control form-control-user" id="nom_acteur" name="nom" placeholder="Nom" required>
                     </div>
@@ -537,7 +569,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     </div>
                     <div>
                       <input type="submit" name="valider" value="Ajouter" class="btn perso_btn shadow-none"></input>
-                    </div>
+                    </div> -->
                   </fieldset>
                   </form>
                   </br>
@@ -588,10 +620,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <div class="row perso_no_margin">
                   <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <h6>RACI</h6>
-                  </div>
-                  <!-- bouton ajouter -->
-                  <div class="card-header perso_header_right col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <button type="button" class="btn perso_btn perso_btn_RACI shadow-none">Gérer les droits</button>
                   </div>
                 </div>
                 <!-- Card Body -->
@@ -765,13 +793,13 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 <?php
 }
 else{
-  header('Location: connexion.php');
+  header('Location: connexion');
 }
 ?>
 </html>
 <?php
 }
 else{
-  header('Location: connexion.php');
+  header('Location: connexion');
 }
 ?>

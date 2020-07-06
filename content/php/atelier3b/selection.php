@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v9");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v13");
 
 //affichage tableau de rappel
 $query_evenement_redoutes = "SELECT * FROM evenement_redoute INNER JOIN valeur_metier on evenement_redoute.id_valeur_metier = valeur_metier.id_valeur_metier";
@@ -27,7 +27,7 @@ ORDER BY id_scenario_strategique ASC";
 $query_chemin_d_attaque = 
 "SELECT chemin_d_attaque_strategique.id_chemin_d_attaque_strategique, 
 chemin_d_attaque_strategique.id_risque, 
-chemin_d_attaque_strategique.chemin_d_attaque_strategique, 
+chemin_d_attaque_strategique.nom_chemin_d_attaque_strategique, 
 chemin_d_attaque_strategique.id_scenario_strategique, 
 scenario_strategique.nom_scenario_strategique 
 FROM scenario_strategique, chemin_d_attaque_strategique 

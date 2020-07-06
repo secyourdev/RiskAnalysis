@@ -39,30 +39,73 @@ $(document).ready(function(){
      }
     })
     $(document).ready(function () {
-        $('#tableau_er').Tabledit({
-            url: 'content/php/atelier1c/modification.php',
-            sortable: true,
-            columns: {
-                identifier: [0, 'id_evenement_redoute'],
-                editable: [
-                    [1, 'nom_valeur_metier'],
-                    [2, 'nom_evenement_redoute'],
-                    [3, 'description_evenement_redoute'],
-                    [4, 'impact'], 
-                    [5, 'confidentialite', '{"1" : "1", "2" : "2", "3" : "3"}'],
-                    [6, 'integrite', '{"1" : "1", "2" : "2", "3" : "3"}'],
-                    [7, 'disponibilite', '{"1" : "1", "2" : "2", "3" : "3"}'],
-                    [8, 'tracabilite', '{"1" : "1", "2" : "2", "3" : "3"}'],
-                    [9, 'niveau_de_gravite']
-                ],
-            },
-            restoreButton: false,
-            onSuccess: function (data, textStatus, jqXHR) {
-                if (data.action == 'delete') {
-                    $('#' + data.id_evenement_redoutes).remove();
+        var json_gravite = "";
+        var gravite ="";
+        $.ajax({
+            url: 'content/php/atelier1c/gravite_choisie.php',
+            type: 'POST',
+            success: function (data) {
+                // console.log(data);
+                gravite = data;
+                console.log(gravite);
+                if (gravite == 4) {
+                    json_gravite = '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}';
                 }
+                else {
+                    json_gravite = '{"1" : "1", "2" : "2", "3" : "3", "4" : "4", "5" : "5"}';
+                }
+                console.log(json_gravite);
+                $('#tableau_er').Tabledit({
+                    url: 'content/php/atelier1c/modification.php',
+                    sortable: true,
+                    columns: {
+                        identifier: [0, 'id_evenement_redoute'],
+                        editable: [
+                            [1, 'nom_valeur_metier'],
+                            [2, 'nom_evenement_redoute'],
+                            [3, 'description_evenement_redoute'],
+                            [4, 'impact'], 
+                            [5, 'confidentialite', '{"1" : "1", "2" : "2", "3" : "3"}'],
+                            [6, 'integrite', '{"1" : "1", "2" : "2", "3" : "3"}'],
+                            [7, 'disponibilite', '{"1" : "1", "2" : "2", "3" : "3"}'],
+                            [8, 'tracabilite', '{"1" : "1", "2" : "2", "3" : "3"}'],
+                            [9, 'niveau_de_gravite', json_gravite]
+                        ],
+                    },
+                    restoreButton: false,
+                    onSuccess: function (data, textStatus, jqXHR) {
+                        if (data.action == 'delete') {
+                            $('#' + data.id_evenement_redoutes).remove();
+                        }
+                    }
+                });
             }
-        });
+        }) 
+        // console.log(gravite);  
+        // $('#tableau_er').Tabledit({
+        //     url: 'content/php/atelier1c/modification.php',
+        //     sortable: true,
+        //     columns: {
+        //         identifier: [0, 'id_evenement_redoute'],
+        //         editable: [
+        //             [1, 'nom_valeur_metier'],
+        //             [2, 'nom_evenement_redoute'],
+        //             [3, 'description_evenement_redoute'],
+        //             [4, 'impact'], 
+        //             [5, 'confidentialite', '{"1" : "1", "2" : "2", "3" : "3"}'],
+        //             [6, 'integrite', '{"1" : "1", "2" : "2", "3" : "3"}'],
+        //             [7, 'disponibilite', '{"1" : "1", "2" : "2", "3" : "3"}'],
+        //             [8, 'tracabilite', '{"1" : "1", "2" : "2", "3" : "3"}'],
+        //             [9, 'niveau_de_gravite']
+        //         ],
+        //     },
+        //     restoreButton: false,
+        //     onSuccess: function (data, textStatus, jqXHR) {
+        //         if (data.action == 'delete') {
+        //             $('#' + data.id_evenement_redoutes).remove();
+        //         }
+        //     }
+        // });
     });
 });
 
