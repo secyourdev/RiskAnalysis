@@ -44,6 +44,10 @@ $(document).ready(function () {
         type: 'POST',
         success: function(data){
             console.log(data);
+            // var SROV = data[0];
+            // var ER = data[1];
+            // console.log(SROV);
+            // console.log(ER);
         }
     })
     $('#editable_table_scenario_strategique').Tabledit({
@@ -55,7 +59,6 @@ $(document).ready(function () {
                 [1, 'nom_scenario_strategique'],
                 [2, 'id_source_de_risque'],
                 [3, 'id_evenement_redoute'],
-                [4, 'id_partie_prenante']
             ],
             checkboxeditable: []
         },
