@@ -650,14 +650,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                   <textarea class="form-control perso_text_area" name="descriptionbs" id="DescriptionBienPop" rows="3"></textarea>
                 </div>
 
-<<<<<<< HEAD
-
-                <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsable" id="prenomresponsable" placeholder="Prénom du responsable" required>
-=======
                 <!-- <div class="form-group">
                   <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomresponsablebs" id="InputNomResponsablebs" placeholder="Nom du responsable" required>
->>>>>>> origin/Joyston
                 </div>
 
                 <div class="form-group">
