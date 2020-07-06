@@ -216,7 +216,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 <?php
 }
 else{
-  header('Location: connexion.php');
+  header('Location: connexion');
 }
 ?>
 
@@ -224,6 +224,6 @@ else{
 <?php
 }
 else{
-  header('Location: connexion.php');
+  header('Location: connexion');
 }
 ?>

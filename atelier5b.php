@@ -664,13 +664,13 @@ aria-hidden="true">
 <?php
 }
 else{
-  header('Location: connexion.php');
+  header('Location: connexion');
 }
 ?>
 </html>
 <?php
 }
 else{
-  header('Location: connexion.php');
+  header('Location: connexion');
 }
 ?>

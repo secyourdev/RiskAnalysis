@@ -54,4 +54,14 @@ if(isset($_POST['cadre_temporel'])){
     }
 }
 
+if(isset($_POST['id_grp_utilisateur'])){//NE MARCHE PAS POUR L'INSTANT ! => PB CONSTRAINT
+  $id_grp_utilisateur = $_POST['id_grp_utilisateur'];
+  $update_projet = $bdd->prepare("UPDATE `projet` SET `id_grp_utilisateur` = ? WHERE `projet`.`id_projet`=?");
+  $update_projet->bindParam(1, $id_grp_utilisateur);
+  $update_projet->bindParam(2, $getid_projet);
+  if(!preg_match("/^[0-9\s-]{1,100}$/", $id_grp_utilisateur)){
+    $update_projet->execute();
+  }
+}
+
 ?>

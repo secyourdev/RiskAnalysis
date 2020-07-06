@@ -496,6 +496,33 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     <?php
                     }
                     ?>
+                    <!--GROUPE D'UTILISATEUR-->
+                    <div class="form-group">
+                      <label class="titre_input" for="grp_user_1a">Groupe d'utilisateur</label>
+                    <?php if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){
+                    ?>
+                    <select class="form-control" name="nom_grp_utilisateur" id="grp_user_1a">
+                      <option value="" selected>...</option>
+                      <?php
+                        while($row = mysqli_fetch_array($result_grp_user))
+                            {
+                                echo '
+                                <option value="'.$row["nom_grp_utilisateur"].'">'.$row["nom_grp_utilisateur"].'</option>
+                                ';
+                            }
+                      ?>  
+                    </select>
+                    </div>
+                    <?php
+                    }
+                    else { 
+                    ?>
+                      <br/>
+                      <label id="grp_user" class="no_modification"></input>
+                    </div>
+                    <?php
+                    }
+                    ?>
                   </form>
                   <img src="content/img/task.svg" class="img-fluid perso_img">
 
@@ -515,7 +542,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 ?>
                   <form method="post" action="content/php/atelier1a/ajout.php" class="user" id="formActeur">
                   <fieldset>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label class="titre_input" for="nom_acteur">Nom</label>
                       <input type="text" class="perso_form shadow-none form-control form-control-user" id="nom_acteur" name="nom" placeholder="Nom" required>
                     </div>
@@ -537,7 +564,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     </div>
                     <div>
                       <input type="submit" name="valider" value="Ajouter" class="btn perso_btn shadow-none"></input>
-                    </div>
+                    </div> -->
                   </fieldset>
                   </form>
                   </br>
@@ -588,10 +615,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <div class="row perso_no_margin">
                   <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <h6>RACI</h6>
-                  </div>
-                  <!-- bouton ajouter -->
-                  <div class="card-header perso_header_right col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <button type="button" class="btn perso_btn perso_btn_RACI shadow-none">Gérer les droits</button>
                   </div>
                 </div>
                 <!-- Card Body -->
@@ -765,13 +788,13 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 <?php
 }
 else{
-  header('Location: connexion.php');
+  header('Location: connexion');
 }
 ?>
 </html>
 <?php
 }
 else{
-  header('Location: connexion.php');
+  header('Location: connexion');
 }
 ?>

@@ -1,6 +1,7 @@
 /* ----------------------------------- VARIABLES --------------------------------- */
 var lenght_projet;
 var lenght_grp_user;
+var lenght_user;
 var project_card = document.getElementById('project_card')
 var grp_user_card = document.getElementById('grp_user_card')
 var apps_card = document.getElementById('apps_card')
@@ -36,12 +37,33 @@ $(document).ready(function() {
         }
     });
 });
+
+$(document).ready(function(){  
+    $('#table_app_user').Tabledit({
+     url:'content/php/accueil/modification_app_utilisateur.php',
+     columns:{
+      identifier:[0, "id_utilisateur"],
+      editable:[[1, 'nom'], [2, 'prenom'], [3, 'poste'], [4, 'email'], [5, 'type_compte','{"Administrateur Logiciel":"Administrateur Logiciel","Chef de Projet":"Chef de Projet","Utilisateur":"Utilisateur"}']]
+     },
+     restoreButton:false,
+     onSuccess:function(data, textStatus, jqXHR)
+     {
+      if(data.action == 'delete')
+      {
+       $('#'+data.id_utilisateur).remove();
+      }
+     }
+    });
+});
 /*--------------------------- SORT & FILTER TABLES --------------------------*/
 setSortTable('editable_table');
 OURJQUERYFN.setFilterTable("#rechercher_grp_user","#editable_table tbody tr")
 
 setSortTable('tableau_user');
 OURJQUERYFN.setFilterTable("#rechercher_user","#tableau_user tbody tr")
+
+setSortTable('table_app_user');
+OURJQUERYFN.setFilterTable("#rechercher_app_utilisateur","#table_app_user tbody tr")
 /*----------------------------- CHARGEMENT DES ONGLETS ----------------------------*/
 selection_onglet(project_card,grp_user_card,apps_card,bdd_card,tableau_de_bord_projet)
 selection_onglet(grp_user_card,project_card,apps_card,bdd_card,tableau_de_bord_grp_user)
@@ -65,6 +87,21 @@ $.ajax({
         var grp_user_JSON = JSON.parse(resultat);
         lenght_grp_user = grp_user_JSON.length;
         grp_user = lenght_grp_user;
+    },
+    error: function (erreur) {
+        alert('ERROR :' + erreur);
+    }
+});
+
+/*-------------------------- CHARGEMENT DES UTILISATEURS  -------------------------*/
+$.ajax({
+    url: 'content/php/accueil/selection_json_user.php',
+    type: 'POST',
+    dataType: 'html',
+    success: function (resultat) {
+        var user_JSON = JSON.parse(resultat);
+        lenght_user = user_JSON.length;
+        app = lenght_user;
     },
     error: function (erreur) {
         alert('ERROR :' + erreur);
@@ -147,7 +184,7 @@ $.ajax({
           
             prj = lenght_projet;  
             grp_user = lenght_grp_user; 
-            app = 10;
+            app = lenght_user;
             bdd = 10;
             sleep(100).then(() => {compteur_anim();});
         }

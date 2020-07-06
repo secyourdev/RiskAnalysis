@@ -1164,7 +1164,7 @@ h6 {
     background-color: var(--card-divider) !important;
 }
 
-.test{
+.fondu{
     animation: fadein 2s;
     -moz-animation: fadein 2s; /* Firefox */
     -webkit-animation: fadein 2s; /* Safari and Chrome */
