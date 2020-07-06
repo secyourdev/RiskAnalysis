@@ -1,7 +1,7 @@
 <?php
 $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v13");
 $query1 =
-"SELECT 
+    "SELECT 
 mission.id_mission,
 mission.nom_mission,
 mis.nom as respo_mis_nom,
@@ -11,12 +11,14 @@ valeur_metier.nom_valeur_metier,
 val.nom as respo_val_nom,
 bien_support.nom_bien_support,
 bien.nom as respo_bien_nom
-from personne mis, personne val, personne bien, mission, valeur_metier, bien_support
+
+FROM personne mis, personne val, personne bien, mission, valeur_metier, bien_support
+
 WHERE mis.nom = (SELECT personne.nom FROM personne WHERE mission.id_personne = personne.id_personne)
 AND mis.nom = (SELECT personne.nom FROM personne WHERE mission.id_personne = personne.id_personne)
 AND mis.prenom = (SELECT personne.prenom FROM personne WHERE mission.id_personne = personne.id_personne)
 AND valeur_metier.id_mission = mission.id_mission
-AND val.poste = (SELECT personne.poste FROM personne WHERE valeur_metier.id_personne = personne.id_personne)
+AND val.nom  = (SELECT personne.nom FROM personne where personne.id_personne = valeur_metier.id_personne)
 AND bien_support.id_valeur_metier = valeur_metier.id_valeur_metier
 AND bien.nom = (SELECT personne.nom FROM personne WHERE bien_support.id_personne = personne.id_personne)
 ORDER BY mission.id_mission ASC
@@ -36,30 +38,23 @@ bien_support.description_bien_support
 FROM bien_support
 ORDER BY bien_support.id_bien_support ASC";
 
-$querymission = "SELECT nom_mission FROM mission";
-$querynomresponsablemission = "SELECT nom FROM personne";
-$queryprenomresponsablemission = "SELECT prenom FROM personne";
-$queryposteresponsablemission = "SELECT poste FROM personne";
 $queryvm = "SELECT nom_valeur_metier FROM valeur_metier";
+$queryposteresponsablevm = "SELECT poste FROM personne";
+// $queryprenomresponsablevm = "SELECT prenom FROM personne";
 
-
+$querybien = "SELECT nom_bien_support FROM bien_support";
+$queryposteresponsablebien = "SELECT poste FROM personne";
+// $queryprenomresponsablebien = "SELECT prenom FROM personne";
 
 
 $result1 = mysqli_query($connect, $query1);
 $result2 = mysqli_query($connect, $query2);
 $result3 = mysqli_query($connect, $query3);
-$resultnomresponsablemission = mysqli_query($connect, $querynomresponsablemission);
-$resultprenomresponsablemission = mysqli_query($connect, $queryprenomresponsablemission);
-$resultposteresponsablemission = mysqli_query($connect, $queryposteresponsablemission);
-$resultvm = mysqli_query($connect, $queryvm);
-$resultmission = mysqli_query($connect, $querymission);
-?>
 
-<!-- 
-SELECT
-mission.id_personne,
-valeur_metier.id_personne,
-bien_support.id_personne
-FROM
-mission JOIN valeur_metier ON mission.id_mission = valeur_metier.id_mission
-JOIN bien_support on bien_support.id_valeur_metier = valeur_metier.id_valeur_metier -->
+$resultvm = mysqli_query($connect, $queryvm);
+$resultposteresponsablevm = mysqli_query($connect, $queryposteresponsablevm);
+// $resultprenomresponsablevm = mysqli_query($connect, $queryprenomresponsablevm);
+
+$resultbien = mysqli_query($connect, $querybien);
+$resultposteresponsablebien = mysqli_query($connect, $queryposteresponsablebien);
+// $resultprenomresponsablebien = mysqli_query($connect, $queryprenomresponsablebien);

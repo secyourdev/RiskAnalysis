@@ -21,11 +21,7 @@ $results["message"] = [];
 $nomvm = $_POST['nomvm'];
 $nature = $_POST['nature'];
 $descriptionvm = $_POST['descriptionvm'];
-// $nomresponsablevm=$_POST['nomresponsablevm'];
-// $prenomresponsablevm=$_POST['prenomresponsablevm'];
-// $posteresponsablevm=$_POST['posteresponsablevm'];
-// $id_personne = "id_personne";
-// $adresse_mail = NULL;
+
 $id_valeur_metier = "valeur_metier";
 $id_atelier = "1.b";
 $id_projet = "99";
