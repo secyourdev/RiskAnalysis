@@ -216,6 +216,7 @@ function get_database_project_info(){
         dataType : 'html',
         success: function (resultat) {
             var projet_info = JSON.parse(resultat);
+            console.log(projet_info)
             sessionIdProjet=sessionIdProjet-1
             nom_etude.value = projet_info[sessionIdProjet][1]
             objectif_atteindre.value = projet_info[sessionIdProjet][2]
@@ -227,7 +228,7 @@ function get_database_project_info(){
             else 
                 respo_acceptation_risque.options.selectedIndex=3
          
-            cadre_temporel.value = projet_info[sessionIdProjet][5]
+            cadre_temporel.value = projet_info[sessionIdProjet][4]
 
             verify_input(nom_etude.value,regex_nom_etude,nom_etude)
             verify_textarea(objectif_atteindre.value,regex_objectif_atteindre,objectif_atteindre)

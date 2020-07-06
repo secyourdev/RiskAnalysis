@@ -536,6 +536,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
         <!-- Our JS -->
         <script src="content/js/modules/dark_mode.js"></script>
+        <script src="content/js/modules/realtime.js"></script>
         <script src="content/js/modules/set_filter_sort_table.js"></script>
         <script src='content/js/accueil/index.js'> </script>
         <script src="content/js/modules/sort_table.js"></script>

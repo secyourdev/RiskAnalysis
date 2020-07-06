@@ -149,7 +149,7 @@ $.ajax({
             grp_user = lenght_grp_user; 
             app = 10;
             bdd = 10;
-            compteur_anim();
+            sleep(100).then(() => {compteur_anim();});
         }
     },
     error: function (erreur) {
