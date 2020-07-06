@@ -563,9 +563,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <tr>
                           <th>ID</th>
                           <th>Nom du scénario strategique</th>
-                          <th>Source de risque : objectif visé</th>
+                          <th>Source de risque  objectif visé</th>
                           <th>Nom de l'événement redouté</th>
-                          <th>Nom de la partie prenante</th>
                           <th>niveau de gravite</th>
                         </tr>
                       </thead>
@@ -576,9 +575,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <tr>
                         <td>' . $row["id_scenario_strategique"] . '</td>
                         <td>' . $row["nom_scenario_strategique"] . '</td>
-                        <td>' . $row["description_source_de_risque"] . ' : ' . $row["objectif_vise"] . '</td>
+                        <td>' . $row["description_source_de_risque"] . '  ' . $row["objectif_vise"] . '</td>
                         <td>' . $row["nom_evenement_redoute"] . '</td>
-                        <td>' . $row["nom_partie_prenante"] . '</td>
                         <td>' . $row["niveau_de_gravite"] . '</td>
                         </tr>
                         ';
@@ -624,7 +622,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <tr>
                         <td>' . $row["id_chemin_d_attaque_strategique"] . '</td>
                         <td>' . $row["id_risque"] . '</td>
-                        <td>' . $row["chemin_d_attaque_strategique"] . '</td>
+                        <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
                         <td>' . $row["nom_scenario_strategique"] . '</td>
                         </tr>
                         ';
@@ -716,21 +714,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                   {
                     echo '
                         <option id="id_evenement_redoute" value="' . $row["id_evenement_redoute"] . '">' . $row["nom_evenement_redoute"] . '</option>
-                        ';
-                  }
-                  ?>
-                </select>
-              </div>
-
-              <div class="form-group col-12">
-                <label for="Select_partie_prenante">ID de la partie prenante</label>
-                <select class="form-control" name="id_partie_prenante" id="Select_partie_prenante">
-                  <option value="" selected>...</option>
-                  <?php
-                  while ($row = mysqli_fetch_array($result_id_partie_prenante)) //selection.php
-                  {
-                    echo '
-                        <option id="id_partie_prenante" value="' . $row["id_partie_prenante"] . '">' . $row["nom_partie_prenante"] . '</option>
                         ';
                   }
                   ?>

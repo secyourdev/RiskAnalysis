@@ -457,7 +457,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                   <h6 class="m-0">Echelle</h6>
                 </div>
                 <!-- Card Body -->
-                <div class="card-body row perso_card_body_row">
+                <div class="card-body">
                   <!--tableau-->
                   <div class="table-responsive">
                     <input type="text" class="rechercher_input" id="rechercher_echelle" placeholder="Rechercher">
@@ -605,7 +605,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                           <th id="id_evenement_redoutes">ID</th>
                           <th id="nom_valeur_metier">Valeur métier</th>
                           <th id="nom_evenement_redoutes">Nom de l'événement redouté</th>
-                          <th id="description_evenement_redoutes">Événement redouté</th>
+                          <th id="description_evenement_redoutes">Description événement redouté</th>
                           <th id="impact">Impacts</th>
                           <th id="confidentialite">C</th>
                           <th id="integrite">I</th>

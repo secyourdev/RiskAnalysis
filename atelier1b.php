@@ -625,51 +625,49 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
       <i class="fas fa-angle-up"></i>
     </a>
 
-
     <!-- -------------------------------------------------------------------------------------------------------------- 
---------------------------------------- modal ajout de mission ----------------------------------------------
+--------------------------------------- modal ajout de bien support ----------------------------------------------
 --------------------------------------------------------------------------------------------------------------  -->
-    <div class="modal fade" id="ajout_mission" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="ajout_bien_support" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ajout d'une mission</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Ajout d'un bien support</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body perso_modal_body">
-            <form method="post" action="content/php/atelier1b/ajoutmission.php" class="user" id="formMission">
+            <form method="post" action="content/php/atelier1b/ajoutbs.php" class="user" id="formBienSupportPop">
               <fieldset>
+
                 <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="mission" id="InputNomMission" placeholder="Mission" required>
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="biensupport" id="InputBienSupportPop" placeholder="Dénomination du bien support" required>
                 </div>
 
                 <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomresponsable" id="nomresponsable" placeholder="Nom du responsable" required>
+                  <label for="DescriptionBienPop">Description</label>
+                  <textarea class="form-control perso_text_area" name="descriptionbs" id="DescriptionBienPop" rows="3"></textarea>
                 </div>
 
+                <!-- <div class="form-group">
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomresponsablebs" id="InputNomResponsablebs" placeholder="Nom du responsable" required>
+                </div>
 
                 <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsable" id="prenomresponsable" placeholder="Prenom du responsable" required>
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsablebs" id="InputPrenomResponsablebs" placeholder="Prénom du responsable" required>
                 </div>
 
                 <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="poste" id="poste" placeholder="Poste du responsable" required>
-                </div>
-
-
-
+                  <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="PostesBienPop" name="posteresponsablebs" placeholder="Poste" required>
+                </div> -->
                 <!-- bouton Ajouter -->
                 <div class="modal-footer perso_middle_modal_footer">
-                  <input type="submit" name="validermission" value="Ajouter" class="btn perso_btn shadow-none"></input>
+                  <input type="submit" name="validerbs" value="Ajouter" class="btn perso_btn shadow-none"></input>
                 </div>
               </fieldset>
-
-
             </form>
           </div>
-
 
         </div>
       </div>
@@ -691,19 +689,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             <form method="post" action="content/php/atelier1b/ajoutvm.php" class="user" id="formValeurMetierPop">
               <fieldset>
 
-                <!-- <div class="form-group">
-                  <label for="SelectNaturePop">Mission</label>
-                  <select class="form-control" name="nommission" id="SelectMission">
-                    <option value="" selected>...</option>
-                    <?php
-                    while ($row = mysqli_fetch_array($resultmission)) {
-                      echo '
-                        <option value="' . $row["nom_mission"] . '">' . $row["nom_mission"] . '</option>
-                        ';
-                    }
-                    ?>
-                  </select>
-                </div> -->
                 <div class="form-group">
                   <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomvm" id="InputValeurMetierPop" placeholder="Dénomination de la valeur métier" required>
                 </div>
@@ -747,28 +732,40 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
 
     <!-- -------------------------------------------------------------------------------------------------------------- 
---------------------------------------- modal ajout de bien support ----------------------------------------------
+--------------------------------------- modal ajout de mission ----------------------------------------------
 --------------------------------------------------------------------------------------------------------------  -->
-    <div class="modal fade" id="ajout_bien_support" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="ajout_mission" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ajout d'un bien support</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Ajout d'une mission</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body perso_modal_body">
-            <form method="post" action="content/php/atelier1b/ajoutbs.php" class="user" id="formBienSupportPop">
+            <form method="post" action="content/php/atelier1b/ajoutmission.php" class="user" id="formMission">
               <fieldset>
-
                 <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="biensupport" id="InputBienSupportPop" placeholder="Dénomination du bien support" required>
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_mission" id="InputNomMission" placeholder="Mission" required>
                 </div>
 
-                <!-- <div class="form-group">
-                  <label for="SelectValeurMetierPop">Valeur métier</label>
-                  <select class="form-control" name="vm" id="SelectValeurMetierPop">
+                <div class="form-group">
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomresponsable" id="nomresponsable" placeholder="Nom du responsable" required>
+                </div>
+
+
+                <div class="form-group">
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsable" id="prenomresponsable" placeholder="Prenom du responsable" required>
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="poste" id="poste" placeholder="Poste du responsable" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="Selectnom_valeur_metier">Valeur métier</label>
+                  <select class="form-control" name="nom_valeur_metier" id="Selectnom_valeur_metier">
                     <option value="" selected>...</option>
                     <?php
                     while ($row = mysqli_fetch_array($resultvm)) {
@@ -778,35 +775,68 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     }
                     ?>
                   </select>
-                </div> -->
-
-                <div class="form-group">
-                  <label for="DescriptionBienPop">Description</label>
-                  <textarea class="form-control perso_text_area" name="descriptionbs" id="DescriptionBienPop" rows="3"></textarea>
-                </div>
-
-                <!-- <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomresponsablebs" id="InputNomResponsablebs" placeholder="Nom du responsable" required>
                 </div>
 
                 <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="prenomresponsablebs" id="InputPrenomResponsablebs" placeholder="Prénom du responsable" required>
+                  <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="posteresponsablevm" name="posteresponsablevm" placeholder="Responsable" required>
+                  <datalist id="posteresponsablevm">
+                    <?php
+                    while ($row = mysqli_fetch_array($resultposteresponsablevm)) {
+                      echo '
+                        <option value="' . $row["poste"] . '">' . $row["poste"] . '</option>
+                        ';
+                    }
+                    ?>
+                  </datalist>
                 </div>
 
                 <div class="form-group">
-                  <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="PostesBienPop" name="posteresponsablebs" placeholder="Poste" required>
-                </div> -->
+                  <label for="Selectnom_bien_support">Bien support</label>
+                  <select class="form-control" name="nom_bien_support" id="Selectnom_bien_support">
+                    <option value="" selected>...</option>
+                    <?php
+                    while ($row = mysqli_fetch_array($resultbien)) {
+                      echo '
+                        <option value="' . $row["nom_bien_support"] . '">' . $row["nom_bien_support"] . '</option>
+                        ';
+                    }
+                    ?>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="posteresponsablebien" name="posteresponsablebien" placeholder="Responsable" required>
+                  <datalist id="posteresponsablebien">
+                    <?php
+                    while ($row = mysqli_fetch_array($resultposteresponsablebien)) {
+                      echo '
+                        <option value="' . $row["poste"] . '">' . $row["poste"] . '</option>
+                        ';
+                    }
+                    ?>
+                  </datalist>
+                </div>
+
+
+
                 <!-- bouton Ajouter -->
                 <div class="modal-footer perso_middle_modal_footer">
-                  <input type="submit" name="validerbs" value="Ajouter" class="btn perso_btn shadow-none"></input>
+                  <input type="submit" name="validermission" value="Ajouter" class="btn perso_btn shadow-none"></input>
                 </div>
               </fieldset>
+
+
             </form>
           </div>
+
 
         </div>
       </div>
     </div>
+
+
+
+
 
 
     <!-- Logout Modal-->
