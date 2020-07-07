@@ -13,8 +13,12 @@ $("#file_submit").click(function () {
         success: function (data) {
               console.log(data);
             // document.getElementById('ecrire_socle').innerHTML = data;
-            $('#editable_table_socle tbody').append("<tr>"  + data + "</tr>");
+            $('#editable_table_socle tbody').append(data);
             // document.getElementById('ecrire_socle').appendChild(data);
+            // $(this).fadeOut(800, function () {
+            //     $(this).append(data).fadeIn().delay(2000);
+
+            // });
 
             $(document).ready(function () {
                 $('#editable_table_socle').Tabledit({

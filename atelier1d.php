@@ -461,9 +461,15 @@
                     </table>
                   </div>
 
-                  <!-- bouton Ajouter une nouvelle ligne -->
-                  <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite">Ajouter un nouveau référentiel de sécurité</button>
+                  <div class="row">
+                    <!-- bouton Ajouter une nouvelle ligne -->
+                    <div class="text-center col-lg-6">
+                      <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite">Ajouter un nouveau référentiel de sécurité à l'aide d'un fichier</button>
+                    </div>
+                    <!-- bouton Ajouter une nouvelle ligne -->
+                    <div class="text-center col-lg-6">
+                      <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite_main">Ajouter un nouveau référentiel de sécurité à la main</button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -563,19 +569,19 @@
             </button>
           </div>
           <div class="modal-body perso_modal_body">
-            <!-- <form enctype="multipart/form-data" action="content/php/atelier1d/parser_regles.php" method="post" class="user" id="formajoutsocle">
+            <!-- <form enctype="multipart/form-data" action="content/php/atelier1d/ajout_solce.php" method="post" class="user" id="formajoutsocle">
               <fieldset> -->
 
-                <div class="custom-file">
-                  <input name="userfile" id="fileToUpload" class="custom-file-input" type="file">
-                  <label class="custom-file-label" for="fileToUpload">Choisir un fichier</label>
-                </div>
+            <div class="custom-file">
+              <input name="userfile" id="fileToUpload" class="custom-file-input" type="file">
+              <label class="custom-file-label" for="fileToUpload">Choisir un fichier au format JSON</label>
+            </div>
 
-                <!-- bouton Ajouter -->
-                <div class="modal-footer perso_middle_modal_footer">
-                  <input type="submit" id="file_submit" name="file_submit" value="Ajouter un fichier" class="btn perso_btn_primary shadow-none"></input>
-                </div>
-              <!-- </fieldset>
+            <!-- bouton Ajouter -->
+            <div class="modal-footer perso_middle_modal_footer">
+              <input type="submit" id="file_submit" name="file_submit" value="Ajouter un fichier" class="btn perso_btn_primary shadow-none"></input>
+            </div>
+            <!-- </fieldset>
             </form> -->
           </div>
         </div>
@@ -583,9 +589,9 @@
     </div>
 
     <!-- -------------------------------------------------------------------------------------------------------------- 
---------------------------------------- modal créer socle de sécurité ----------------------------------------------
+--------------------------------------- modal créer socle de sécurité main ----------------------------------------------
 --------------------------------------------------------------------------------------------------------------  -->
-    <!-- <div class="modal fade" id="ajout_socle_de_securite" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="ajout_socle_de_securite_main" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -598,12 +604,6 @@
             <form method="post" action="content/php/atelier1d/ajout_socle.php" class="user" id="formSoclePop">
               <fieldset>
 
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" name="fileToUpload" id="fileToUpload">
-                  <label class="custom-file-label" for="fileToUpload">Choisir un fichier</label>
-                  <input type="submit" value="Upload File" id="file_submit" name="file_submit">
-                </div>
-
                 <div class="form-group">
                   <input type="text" class="perso_form shadow-none form-control form-control-user" name="type_referenciel" placeholder="Type de référentiel" required>
                 </div>
@@ -614,7 +614,16 @@
                   <input type="text" class="perso_form shadow-none form-control form-control-user" name="etat_d_application" placeholder="État d'application" required>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="etat_de_la_conformite" placeholder="État de la conformité" required>
+                  <label for="Select_etat_d_application">Règle non respectée</label>
+                  <select class="form-control" name="etat_d_application" id="Select_etat_d_application">
+                    <option value="" selected>...</option>
+                    <option value="Non appliqué">Non appliqué</option>
+                    <option value="Appliqué sans restriction">Appliqué sans restriction</option>
+                    <option value="Appliqué avec restriction">Appliqué avec restriction</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="commentaire" placeholder="Commentaire" required>
                 </div>
 
                 <div class="modal-footer perso_middle_modal_footer">
@@ -625,7 +634,7 @@
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
 
     <!-- -------------------------------------------------------------------------------------------------------------- 
   --------------------------------------- modal Ajout d'une règle ----------------------------------------------
@@ -644,33 +653,40 @@
               <fieldset>
 
                 <div class="form-group">
-                  <label for="Select_regle">Règle non respectée</label>
-                  <select class="form-control" name="titre" id="Select_regle">
+                  <label for="nomreferentiel">Nom du référentiel de sécurité</label>
+                  <select class="form-control" name="nomreferentiel" id="nomreferentiel">
                     <option value="" selected>...</option>
                     <?php
-                    while ($row = mysqli_fetch_array($result_titre_regle)) //selection.php
+                    while ($row = mysqli_fetch_array($result_nom_referentiel2)) //selection.php
                     {
                       echo '
-                        <option value="' . $row['titre'] . '">' . $row['titre'] . '</option>
+                        <option id="socle_securite" value="' . $row['nom_referentiel'] . '">' . $row['nom_referentiel'] . '</option>
                         ';
                     }
                     ?>
                   </select>
                 </div>
-                <!-- 
+
+                <div class="form-group">
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_regle" placeholder="ID de la règle" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="titre_regle">titre de la règle</label>
+                  <textarea class="form-control perso_text_area" name="titre_regle" id="titre_regle" rows="3"></textarea>
+                </div>
+
                 <div class="form-group">
                   <label for="etat_de_la_regle">État de la règle</label>
                   <select class="form-control" name="etat_de_la_regle" id="etat_de_la_regle">
                     <option value="" selected>...</option>
                     <option value="Conforme">Conforme</option>
-                    <option value="Non traité">Non traitée</option>
+                    <option value="Partiellement conforme">Partiellement conforme</option>
+                    <option value="Non traité">Non traité</option>
+                    <option value="Non conforme">Non conforme</option>
+                    <option value="Non applicable">Non applicable</option>
                   </select>
-                </div> -->
-
-                <!-- <div class="form-group">
-                  <label for="description_ecarts_pop">Description des écarts</label>
-                  <textarea class="form-control perso_text_area" id="description_ecarts_pop" rows="3"></textarea>
-                </div> -->
+                </div>
 
                 <div class="form-group">
                   <label for="justification_ecart">Justification des écarts</label>
@@ -678,7 +694,7 @@
                 </div>
 
                 <div class="form-group">
-                  <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="responsable_pop" name="nom" placeholder="Responsable" required>
+                  <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="responsable_pop" name="nom_responsable_regle" placeholder="Responsable" required>
                   <datalist id="responsable_pop">
                     <?php
                     while ($row = mysqli_fetch_array($resultprenomresponsable)) {

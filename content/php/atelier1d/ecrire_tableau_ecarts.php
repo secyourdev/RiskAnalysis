@@ -2,7 +2,7 @@
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v13;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v14;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -38,6 +38,7 @@ $query_vide = $bdd->prepare(
 
 if (isset($_POST['nom_referentiel'])) {
   $nom_referentiel = $_POST['nom_referentiel'];
+  // echo 'nom_referentiel ' . $nom_referentiel ;
   $recupere_id_socle = $bdd->prepare("SELECT id_socle_securite FROM socle_de_securite WHERE nom_referentiel = ?");
   $recupere_id_socle->bindParam(1, $nom_referentiel);
   $recupere_id_socle->execute();
@@ -62,6 +63,7 @@ if (isset($_POST['nom_referentiel'])) {
   // var_dump($resultat_final == false);
   // print '</br>';
   if ($resultat_final == false){
+    // print 'je suis dans false';
     $query_vide->bindParam(1, $resultat_id_socle[0]);
     $query_vide->execute();
 
@@ -91,7 +93,28 @@ if (isset($_POST['nom_referentiel'])) {
     }
   }
   else {
-    while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+    $query = $bdd->prepare(
+      "SELECT 
+  ecarts.id_ecarts, 
+  regle.id_regle, 
+  regle.titre, 
+  regle.etat_de_la_regle, 
+  ecarts.justification_ecart, 
+  personne.nom, 
+  dates.date 
+  FROM regle, ecarts, personne, dates 
+  WHERE ecarts.id_regle = regle.id_regle 
+  AND ecarts.id_date = dates.id_date 
+  AND ecarts.id_personne = personne.id_personne 
+  AND regle.id_socle_securite = ?"
+    );
+    $query->bindParam(1, $resultat_id_socle[0]);
+    // print 'query: ';
+    // print_r($query);
+    // print '</br>';
+    $query->execute();
+    // print 'je suis dans else';
+    while ($row = $query->fetch()) {
       echo '
       <tr>
       <td>' . $row["id_ecarts"] . '</td>
