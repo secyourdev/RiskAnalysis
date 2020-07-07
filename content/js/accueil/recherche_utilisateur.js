@@ -27,7 +27,10 @@ nomgrpuser.addEventListener('change', (event) => {
       });
     }
   })
-  button_add_user_in_grp.style.display='inline'
+  if(nomgrpuser.options[nomgrpuser.options.selectedIndex].value!="")
+    button_add_user_in_grp.style.display='inline'
+  else
+    button_add_user_in_grp.style.display='none'
 });
 
 

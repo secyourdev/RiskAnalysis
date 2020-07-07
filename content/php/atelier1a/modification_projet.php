@@ -54,12 +54,17 @@ if(isset($_POST['cadre_temporel'])){
     }
 }
 
-if(isset($_POST['id_grp_utilisateur'])){//NE MARCHE PAS POUR L'INSTANT ! => PB CONSTRAINT
-  $id_grp_utilisateur = $_POST['id_grp_utilisateur'];
+if(isset($_POST['nom_grp_utilisateur'])){
+  $nom_grp_utilisateur = $_POST['nom_grp_utilisateur'];
+  echo $nom_grp_utilisateur;
+  $search_id_grp_utilisateur = $bdd->prepare("SELECT `id_grp_utilisateur` FROM `grp_utilisateur` WHERE `nom_grp_utilisateur`=?");
+  $search_id_grp_utilisateur->bindParam(1, $nom_grp_utilisateur);
+  $search_id_grp_utilisateur->execute();
+  $resultat = $search_id_grp_utilisateur->fetch();
   $update_projet = $bdd->prepare("UPDATE `projet` SET `id_grp_utilisateur` = ? WHERE `projet`.`id_projet`=?");
-  $update_projet->bindParam(1, $id_grp_utilisateur);
+  $update_projet->bindParam(1, $resultat[0]);
   $update_projet->bindParam(2, $getid_projet);
-  if(!preg_match("/^[0-9\s-]{1,100}$/", $id_grp_utilisateur)){
+  if(preg_match("/^[0-9\s-]{1,100}$/", $resultat[0])){
     $update_projet->execute();
   }
 }

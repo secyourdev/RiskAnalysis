@@ -17,8 +17,15 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $requser->execute(array($getid));
     $userinfo = $requser->fetch();
 
-    $reqdroit = $bdd->prepare('SELECT * FROM disposer NATURAL JOIN avoir WHERE id_utilisateur = ? AND id_atelier="1.a"');
-    $reqdroit->execute(array($getid));
+    $getidproject = intval($_GET['id_projet']);
+    $reqproject = $bdd->prepare('SELECT nom_projet FROM projet WHERE id_projet = ?');
+    $reqproject->execute(array($getidproject));
+    $projectinfo = $reqproject->fetch();
+
+    $reqdroit = $bdd->prepare('SELECT * FROM RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.a"');
+    $reqdroit->bindParam(1, $getid);
+    $reqdroit->bindParam(2, $getidproject);
+    $reqdroit->execute();
     $userdroit = $reqdroit->fetch();
 ?>
 
@@ -50,6 +57,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
 <?php 
 if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur'])
 {
+  if(isset($userdroit['ecriture'])){
 ?>
 
 <body id="page-top">
@@ -383,7 +391,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             <i class="fa fa-bars"></i>
           </button>
 
-          <div id="top_bar_1" class="top_bar_name_1">Fabrication de vacccin</div>
+          <div id="top_bar_1" class="top_bar_name_1"><?php echo $projectinfo['nom_projet'];?></div>
           <div id="top_bar_2" class="top_bar_name_2">Atelier 3</div>
           <div id="top_bar_3" class="top_bar_name_3">Activité 3.b - Élaborer des scénarios stratégiques</div>
 
@@ -827,6 +835,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   <script src="content/js/modules/sort_table.js"></script>
 </body>
 <?php
+  }
 }
 else{
   header('Location: connexion');

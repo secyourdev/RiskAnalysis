@@ -3,14 +3,12 @@ var nom_etude = document.getElementById('nom_etude');
 var objectif_atteindre = document.getElementById('objectif_atteindre');
 var cadre_temporel = document.getElementById('cadre_temporel');
 
-
 var label_nom_etude = document.getElementById('nom_etude').previousSibling.previousSibling
 var label_cadre_temporel = document.getElementById('cadre_temporel').previousSibling.previousSibling
 var raci = document.getElementById('raci')
 var acteur_id_raci = document.getElementById('acteur_id_raci')
-var radio_gravite4 = document.getElementById('radio_gravite4')
-var radio_gravite5 = document.getElementById('radio_gravite5')
 var respo_acceptation_risque = document.getElementById('respo_acceptation_risque')
+var grp_user_1a = document.getElementById('grp_user_1a')
 var find_acteur_id;
 var find_atelier_num;
 var find_raci_value;
@@ -70,7 +68,7 @@ function get_database_raci(){
             var starter=0
             for(let j=1;j<nombre_acteur;j++){
                 for(let i=0;i<(nombre_atelier-2);i++){
-                    raci.tBodies[0].children[i].children[j].children[0].innerText=raci_JSON[starter][2]
+                    raci.tBodies[0].children[i].children[j].children[0].innerText=raci_JSON[starter][3]
                         starter++
                 }
             }
@@ -88,22 +86,22 @@ function get_database_project_info(){
         dataType : 'html',
         success: function (resultat) {
             var projet_info = JSON.parse(resultat);
-            nom_etude.innerText = projet_info[0][1]
-            objectif_atteindre.innerText = projet_info[0][2]
+            console.log(projet_info)
+            sessionIdProjet=sessionIdProjet-1
 
-            if(projet_info[0][3]=="Directeur")
+            nom_etude.innerText = projet_info[sessionIdProjet][1]
+            objectif_atteindre.innerText = projet_info[sessionIdProjet][2]
+
+            if(projet_info[sessionIdProjet][3]=="Directeur")
                 respo_acceptation_risque.innerText="Directeur"
-            else if(projet_info[0][3]=="RSSI")
+            else if(projet_info[sessionIdProjet][3]=="RSSI")
                 respo_acceptation_risque.innerText="RSSI"
             else 
                 respo_acceptation_risque.innerText="Responsable Informatique"
-            
-            if(projet_info[0][4]==4)
-                radio_gravite4.innerText="Gravité sur 4"
-            else 
-                radio_gravite4.innerText="Gravité sur 5"
-           
-            cadre_temporel.innerText = projet_info[0][5]
+                      
+            cadre_temporel.innerText = projet_info[sessionIdProjet][4]
+
+            grp_user_1a.innerText=projet_info[sessionIdProjet][6]
             
             activate_label(nom_etude.innerText,label_nom_etude)
             activate_label(cadre_temporel.innerText,label_cadre_temporel)

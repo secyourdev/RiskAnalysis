@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+$getid_utilisateur = $_SESSION['id_utilisateur'];
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
@@ -12,7 +13,8 @@ try {
   die('Erreur :' . $e->getMessage());
 }
 
-$search_projet = $bdd->prepare("SELECT * FROM projet");//WHERE raci = ANTHONY
+$search_projet = $bdd->prepare("SELECT DISTINCT id_projet,nom_projet,objectif_projet,cadre_temporel FROM RACI NATURAL JOIN projet WHERE id_utilisateur=?");//WHERE raci = ANTHONY
+$search_projet->bindParam(1, $getid_utilisateur);
 $search_projet->execute();
 
 $array = array();
