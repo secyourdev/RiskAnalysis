@@ -12,12 +12,12 @@ $(document).ready(function () {
         columns: {
             identifier: [0, 'id_evenement_redoutes'],
             editable: [],
-            checkboxeditable: [
-                [5, 'confidentialite'],
-                [6, 'integrite'],
-                [7, 'disponibilite'],
-                [8, 'tracabilite']
-            ]
+            // checkboxeditable: [
+            //     [5, 'confidentialite'],
+            //     [6, 'integrite'],
+            //     [7, 'disponibilite'],
+            //     [8, 'tracabilite']
+            // ]
         },
         eventType: 'none',
         restoreButton: false,
@@ -57,8 +57,8 @@ $(document).ready(function () {
             identifier: [0, 'id_scenario_strategique'],
             editable: [
                 [1, 'nom_scenario_strategique'],
-                [2, 'id_source_de_risque'],
-                [3, 'id_evenement_redoute'],
+                // [2, 'id_source_de_risque'],
+                // [3, 'id_evenement_redoute'],
             ],
             checkboxeditable: []
         },
@@ -79,6 +79,7 @@ $(document).ready(function () {
             editable: [
                 [2, 'chemin_d_attaque_strategique'],
                 [3, 'nom_scenario_strategique'],
+                [4, 'partie_prenante']
             ],
             checkboxeditable: []
         },
@@ -105,14 +106,14 @@ OURJQUERYFN.setFilterTable("#rechercher_chemin_d_attaque","#editable_table_chemi
 sleep(100).then(() => {
     for(let i=0;i<editable_table_scenario_strategique.rows.length-1;i++){
         j=i+1;
-        button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table_scenario_strategique'+','+'6'+')')
+        button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table_scenario_strategique'+','+'5'+')')
     }
 });
 
 sleep(100).then(() => {
     for(let i=editable_table_scenario_strategique.rows.length-1;i<editable_table_scenario_strategique.rows.length+editable_table_chemin_d_attaque.rows.length-2;i++){
         k++;
-        button[i].setAttribute('onclick','tableau_verification('+k+','+'editable_table_SROV'+','+'4'+')')
+        button[i].setAttribute('onclick','tableau_verification('+k+','+'editable_table_SROV'+','+'5'+')')
     }
 });
 

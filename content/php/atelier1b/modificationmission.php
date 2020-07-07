@@ -1,6 +1,6 @@
 <?php
 //action.php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v9");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v14");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -21,7 +21,7 @@ $results["error"] = false;
 $results["message"] = [];
 
 $id_atelier = "1.b";
-$id_projet = "99";
+$id_projet = "1";
 
 // Verification de la mission
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_mission)) {
