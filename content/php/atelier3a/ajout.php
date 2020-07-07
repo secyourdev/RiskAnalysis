@@ -5,7 +5,7 @@ header('Location: ../../../atelier-3a');
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v9;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v14;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -27,6 +27,7 @@ $maturite_partie_prenante = $_POST['maturite_partie_prenante'];
 $confiance_partie_prenante = $_POST['confiance_partie_prenante'];
 $niveau_de_menace_partie_prenante = ($dependance_partie_prenante* $penetration_partie_prenante)/ ($maturite_partie_prenante* $confiance_partie_prenante);
 $id_atelier = '3.a';
+$id_projet ='1';
 
 $recupere = $bdd->prepare("SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = ?");
 
@@ -41,9 +42,10 @@ $insere = $bdd->prepare(
     maturite_partie_prenante, 
     confiance_partie_prenante, 
     niveau_de_menace_partie_prenante,
-    id_atelier
+    id_atelier,
+    id_projet
     ) 
-    VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )'
+    VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
     );
 
 
@@ -69,6 +71,7 @@ if ($results["error"] === false && isset($_POST['validerpartie'])) {
   $insere->bindParam(8, $confiance_partie_prenante);
   $insere->bindParam(9, $niveau_de_menace_partie_prenante);
   $insere->bindParam(10, $id_atelier);
+  $insere->bindParam(11, $id_projet);
   $insere->execute();
 ?>
   <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>

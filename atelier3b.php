@@ -20,7 +20,7 @@
 
   <!-- JS -->
   <script src="content/vendor/jquery/jquery.js"></script>
-  <script src="content/vendor/jquery-tabledit/jquery.tabledit1.c.js"></script>
+  <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
 </head>
 
 <body id="page-top">
@@ -582,8 +582,9 @@
                         <tr>
                           <th>ID</th>
                           <th>ID du risque</th>
-                          <th>Chemin d'attaque stratégique</th>
                           <th>nom du scénario stratégique</th>
+                          <th>Chemin d'attaque stratégique</th>
+                          <th>Partie prenante</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -593,8 +594,9 @@
                         <tr>
                         <td>' . $row["id_chemin_d_attaque_strategique"] . '</td>
                         <td>' . $row["id_risque"] . '</td>
-                        <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
                         <td>' . $row["nom_scenario_strategique"] . '</td>
+                        <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
+                        <td>' . $row["nom_partie_prenante"] . '</td>
                         </tr>
                         ';
                         }
@@ -732,7 +734,7 @@
               </div>
 
               <div class="form-group col-12">
-                <label for="Select_nom_scenario_strategique">ID scénario stratégique</label>
+                <label for="Select_nom_scenario_strategique">Scénario stratégique</label>
                 <select class="form-control" name="nom_scenario_strategique" id="Select_nom_scenario_strategique">
                   <option value="" selected>...</option>
                   <?php
@@ -740,6 +742,21 @@
                   {
                     echo '
                         <option id="nom_scenario_strategique" value="' . $row["nom_scenario_strategique"] . '">' . $row["nom_scenario_strategique"] . '</option>
+                        ';
+                  }
+                  ?>
+                </select>
+              </div>
+
+              <div class="form-group col-12">
+                <label for="Select_nom_scenario_strategique">Partie prenante</label>
+                <select class="form-control" name="nom_partie_prenante" id="nom_partie_prenante">
+                  <option value="" selected>...</option>
+                  <?php
+                  while ($row = mysqli_fetch_array($result_id_partie_prenante)) //selection.php
+                  {
+                    echo '
+                        <option id="partie_prenante" value="' . $row["nom_partie_prenante"] . '">' . $row["nom_partie_prenante"] . '</option>
                         ';
                   }
                   ?>
