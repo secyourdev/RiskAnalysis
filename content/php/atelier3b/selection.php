@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v13");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v14");
 
 //affichage tableau de rappel
 $query_evenement_redoutes = "SELECT * FROM evenement_redoute INNER JOIN valeur_metier on evenement_redoute.id_valeur_metier = valeur_metier.id_valeur_metier";
@@ -12,15 +12,12 @@ scenario_strategique.id_scenario_strategique,
 nom_scenario_strategique, 
 scenario_strategique.id_source_de_risque, 
 scenario_strategique.id_evenement_redoute, 
-scenario_strategique.id_partie_prenante, 
 nom_evenement_redoute, 
 niveau_de_gravite, 
-nom_partie_prenante, 
 SROV.description_source_de_risque, 
 objectif_vise 
-FROM scenario_strategique, evenement_redoute, partie_prenante, SROV 
+FROM scenario_strategique, evenement_redoute, SROV 
 WHERE scenario_strategique.id_evenement_redoute = evenement_redoute.id_evenement_redoute 
-AND scenario_strategique.id_partie_prenante = partie_prenante.id_partie_prenante 
 AND scenario_strategique.id_source_de_risque = SROV.id_source_de_risque 
 ORDER BY id_scenario_strategique ASC";
 
@@ -29,10 +26,13 @@ $query_chemin_d_attaque =
 chemin_d_attaque_strategique.id_risque, 
 chemin_d_attaque_strategique.nom_chemin_d_attaque_strategique, 
 chemin_d_attaque_strategique.id_scenario_strategique, 
-scenario_strategique.nom_scenario_strategique 
-FROM scenario_strategique, chemin_d_attaque_strategique 
+scenario_strategique.nom_scenario_strategique, 
+nom_partie_prenante
+FROM scenario_strategique, chemin_d_attaque_strategique, partie_prenante
 WHERE chemin_d_attaque_strategique.id_scenario_strategique = scenario_strategique.id_scenario_strategique 
+AND chemin_d_attaque_strategique.id_partie_prenante = partie_prenante.id_partie_prenante
 ORDER BY id_chemin_d_attaque_strategique ASC";
+
 
 
 $result_evenement_redoutes = mysqli_query($connect, $query_evenement_redoutes);
@@ -40,8 +40,7 @@ $result_SROV = mysqli_query($connect, $query_SROV);
 
 $result_scenario_strategique = mysqli_query($connect, $query_scenario_strategique);
 $result_chemin_d_attaque = mysqli_query($connect, $query_chemin_d_attaque);
-
-
+ 
 
 
 

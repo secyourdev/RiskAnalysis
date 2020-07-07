@@ -22,7 +22,7 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
     $('#editable_table_ecart').Tabledit({
-        url: 'content/php/atelier1d/modification_ecart.php',
+        url: 'content/php/atelier1d/modification_regle.php',
         sortable: true,
         columns: {
             identifier: [0, 'id_ecarts'],

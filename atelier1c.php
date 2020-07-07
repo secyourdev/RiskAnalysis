@@ -615,10 +615,10 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                           <th id="nom_evenement_redoutes">Nom de l'événement redouté</th>
                           <th id="description_evenement_redoutes">Description événement redouté</th>
                           <th id="impact">Impacts</th>
-                          <th id="confidentialite">C</th>
-                          <th id="integrite">I</th>
-                          <th id="disponibilite">D</th>
-                          <th id="tracabilite">T</th>
+                          <th id="confidentialite">Confidentialité</th>
+                          <th id="integrite">Integrité</th>
+                          <th id="disponibilite">Disponibilité</th>
+                          <th id="tracabilite">Traçabilité</th>
                           <th id="niveau_de_gravite">Gravité</th>
                         </tr>
                       </thead>

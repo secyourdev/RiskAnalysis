@@ -7,7 +7,7 @@
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v13;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v14;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -28,7 +28,7 @@ $descriptionbs = $_POST['descriptionbs'];
 // $posteresponsablebs = $_POST['posteresponsablebs'];
 $id_bien_support = "id_bien_support";
 $id_atelier = "1.b";
-$id_projet = "99";
+$id_projet = "1";
 
 // $recuperepersonne = $bdd->prepare('SELECT id_personne FROM personne WHERE nom = ? AND prenom = ? AND poste = ?');
 // $recuperevm = $bdd->prepare('SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = ?');

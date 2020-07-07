@@ -472,7 +472,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                   <!--text-->
                   <div class="table-responsive">
                     <input type="text" class="rechercher_input" id="rechercher_partie_prenante" placeholder="Rechercher">
-                    <table id="editable_table_partie_prenante" class="table table-bordered table-striped">
+                    <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
                           <th>ID</th>
@@ -518,10 +518,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       <thead>
                         <tr>
                           <th>ID</th>
-                          <th>nom_scenario_strategique</th>
-                          <th>id_source_de_risque</th>
-                          <th>id_evenement_redoute</th>
-                          <th>id_partie_prenante</th>
+                          <th>Scénario stratégique</th>
+                          <th>Source de risque : Objectif visé</th>
+                          <th>Evénement redouté</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -533,7 +532,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <td>' . $row["nom_scenario_strategique"] . '</td>
                         <td>' . $row["description_source_de_risque"] . ' : ' . $row["objectif_vise"] . '</td>
                         <td>' . $row["nom_evenement_redoute"] . '</td>
-                        <td>' . $row["nom_partie_prenante"] . '</td>
                         </tr>
                         ';
                         }
