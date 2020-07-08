@@ -18,7 +18,7 @@ selectsocle.addEventListener('change', (event) => {
                 deleteButton: false,
                 url: 'content/php/atelier1b/modification_regle.php',
                 columns: {
-                    identifier: [0, "id_ecarts"],
+                    identifier: [0, "id_regle"],
                     editable: [
                         // [1, 'id_regle'],
                         // [2, 'titre'],

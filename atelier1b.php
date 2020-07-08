@@ -437,7 +437,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <!-- Begin Page Content -->
         <div class="container-fluid">
           <!-- Content Row -->
-          <div class="row">
+          <div class="row fondu">
             <!-- Area Card -->
             <!-- Objectif -->
             <div class="col-xl-12 col-lg-12">
