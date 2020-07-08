@@ -1202,3 +1202,45 @@ h6 {
         opacity: 1;
     }
 }
+
+/*Paramètres*/
+.user_photo{
+    height: 200px;
+    width: 200px;
+    margin-right: 50px;
+}
+
+.div_photo_user{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;  
+}
+
+.div_info_user{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#nom_user_parametre{
+    font-size: 1.2em;
+    font-weight: 800;
+}
+
+@media (max-width: 992px) {
+    .user_photo{
+        height: 200px;
+        width: 200px;
+        margin-right: 0px;
+    }
+
+    .div_photo_user{
+        display: flex;
+        align-items: center;
+        justify-content: center;  
+    }
+    
+    .div_info_user{
+        text-align: center;
+    }
+}

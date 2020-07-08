@@ -415,11 +415,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-              <a class="dropdown-item" href="#">
-                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                Profile
-              </a>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="parametres&<?php echo $_SESSION['id_utilisateur'];?>">
                 <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
                 Paramètres
               </a>

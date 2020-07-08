@@ -13,7 +13,7 @@ try {
   die('Erreur :' . $e->getMessage());
 }
 
-$search_projet = $bdd->prepare("SELECT DISTINCT id_projet,nom_projet,objectif_projet,cadre_temporel FROM RACI NATURAL JOIN projet WHERE id_utilisateur=?");//WHERE raci = ANTHONY
+$search_projet = $bdd->prepare("SELECT DISTINCT id_projet,nom_projet,objectif_projet,cadre_temporel FROM RACI NATURAL JOIN projet WHERE id_utilisateur=?");
 $search_projet->bindParam(1, $getid_utilisateur);
 $search_projet->execute();
 
