@@ -52,6 +52,8 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
   <!-- JS -->
   <script src="content/vendor/jquery/jquery.js"></script>
   <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
+  <!-- chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 
 <?php 
@@ -515,6 +517,29 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </div>    
               </div>
             </div>
+            <!-- Area Card -->
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="row perso_no_margin">
+                  <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <h6>Événements redoutés</h6>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                <canvas id="myChart_srov"></canvas>
+                  <!-- <div class="row perso_no_margin">
+
+                    <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                      <canvas id="myChart_srov"></canvas>
+                    </div>
+
+
+                  </div> -->
+                </div>
+              </div>
+            </div>
           </div>         
         </div>
       </div>
@@ -579,6 +604,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   <script src="content/js/modules/set_filter_sort_table.js"></script>
   <script src="content/js/atelier/atelier2c.js"></script>
   <script src="content/js/modules/sort_table.js"></script>
+  <script src="content/js/modules/2c_carto.js"></script>
 </body>
 <?php
   }
