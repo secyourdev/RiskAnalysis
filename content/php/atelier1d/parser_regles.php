@@ -1,4 +1,7 @@
 <?php
+session_start();
+$getid_projet = $_SESSION['id_projet'];
+
 // header('Location: ../../../atelier-1d');
 
 //Connexion à la base de donnee
@@ -88,7 +91,7 @@ $data = json_decode($json, true);
 // // print '<br />';
 
 
-$recupere_id_socle_securite = $bdd->prepare("SELECT id_socle_securite FROM socle_de_securite WHERE nom_referentiel = ? AND id_atelier = '1.d' AND id_projet = '1'");
+$recupere_id_socle_securite = $bdd->prepare("SELECT id_socle_securite FROM socle_de_securite WHERE nom_referentiel = ? AND id_atelier = '1.d' AND id_projet = $getid_projet");
 
 
 
@@ -99,7 +102,7 @@ $exigence = $data[$type_referentiel]['Exigence'];
 // print '<br />';
 
 //recupere l'id du socle pour savoir s'il existe deja
-$recupere_exist_socle = $bdd->prepare("SELECT * FROM socle_de_securite WHERE nom_referentiel = ? AND id_atelier = '1.d' AND id_projet = '1'");
+$recupere_exist_socle = $bdd->prepare("SELECT * FROM socle_de_securite WHERE nom_referentiel = ? AND id_atelier = '1.d' AND id_projet = $getid_projet");
 $recupere_exist_socle->bindParam(1, $nom_referentiel);
 $recupere_exist_socle->execute();
 $exist_socle = $recupere_exist_socle->fetch();
@@ -121,12 +124,13 @@ if ($exist_socle == false) {
             id_atelier,
             id_projet
           ) 
-          VALUES (?, ?, ?, NULL, NULL, "1.d", "1")'
+          VALUES (?, ?, ?, NULL, NULL, "1.d", ?)'
   );
   //insere le socle
   $insere_socle->bindParam(1, $id_socle_securite);
   $insere_socle->bindParam(2, $type_referentiel);
   $insere_socle->bindParam(3, $nom_referentiel);
+  $insere_socle->bindParam(4, $getid_projet);
   $insere_socle->execute();
 
   // print '<br />';
@@ -162,12 +166,9 @@ foreach ($exigence as $regle => $parametres) {
   $recupere_exist_regle->execute();
   $exist_regle = $recupere_exist_regle->fetch();
 
-
-  // // print '// print $exist_regle; ';
-  // // var_dump($exist_regle);
-  // // print '<br />';
   //si la regle n'existe pas ecore
   if ($exist_regle == false) {
+    
     //insère les régles avec les paramètres groupés
     $insere_regle = $bdd->prepare(
       "INSERT INTO regle(
@@ -178,14 +179,16 @@ foreach ($exigence as $regle => $parametres) {
     regle.id_socle_securite) 
     VALUES (?, ?, ?, NULL, ?)"
     );
-
     $insere_regle->bindParam(1, $new_id_regle);
     $insere_regle->bindParam(2, $key_id_titre_desc['Titre']);
     $insere_regle->bindParam(3, $key_id_titre_desc['Description']);
-
     $insere_regle->bindParam(4, $id_socle_securite[0]);
     $insere_regle->execute();
-    // print '<br />';
+    
+    //insère aussi des écarts vides pour pouvoir les modifier par la suite 
+    $insere_ecarts = $bdd->prepare( "INSERT INTO ecarts(id_ecarts, id_regle) VALUES ('', ?)" );
+    $insere_ecarts->bindParam(1, $new_id_regle);
+    $insere_ecarts->execute();
   }
 }
 $recupere_tableau = $bdd->prepare(

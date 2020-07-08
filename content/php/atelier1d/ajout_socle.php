@@ -1,5 +1,7 @@
 <?php
-header('Location: ../../../atelier-1d');
+session_start();
+$getid_projet = $_SESSION['id_projet'];
+header('Location: ../../../atelier-1d&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet']);
 
 
 //Connexion à la base de donnee
@@ -24,7 +26,6 @@ $etat_de_la_conformite = $_POST['commentaire'];
 
 $id_socle_securite = "id_socle_securite";
 $id_atelier = "1.d";
-$id_projet  = "1";
 
 $insere = $bdd->prepare("INSERT INTO socle_de_securite(id_socle_securite, type_referentiel, nom_referentiel, etat_d_application, etat_de_la_conformite, id_atelier, id_projet) VALUES (?,?,?,?,?,?,?)");
 
@@ -48,7 +49,7 @@ if ($results["error"] === false && isset($_POST['validersocle'])) {
   $insere->bindParam(4, $etat_d_application);
   $insere->bindParam(5, $etat_de_la_conformite);
   $insere->bindParam(6, $id_atelier);
-  $insere->bindParam(7, $id_projet);
+  $insere->bindParam(7, $getid_projet);
   // print '<br />';
   // $insere->debugDumpParams();
   // print '<br />';

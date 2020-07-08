@@ -1,5 +1,7 @@
 <?php
-header('Location: ../../../atelier-1d');
+session_start();
+$getid_projet = $_SESSION['id_projet'];
+header('Location: ../../../atelier-1d&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet']);
 
 
 //Connexion à la base de donnee
@@ -27,7 +29,7 @@ $justification_ecart = $_POST['justification_ecart'];
 $nom = $_POST['nom_responsable_regle'];
 $date = $_POST['date'];
 
-$recupere_id_socle = $bdd->prepare("SELECT id_socle_securite FROM socle_de_securite WHERE socle_de_securite.nom_referentiel = ? AND id_atelier = '1.d' AND id_projet = '1'");
+$recupere_id_socle = $bdd->prepare("SELECT id_socle_securite FROM socle_de_securite WHERE socle_de_securite.nom_referentiel = ? AND id_atelier = '1.d' AND id_projet = $getid_projet");
 
 $insere_regle = $bdd->prepare("INSERT INTO regle(id_regle, titre, regle.description, etat_de_la_regle, id_socle_securite) VALUES (?,?,'',?,?)");
 $recupere_id_regle = $bdd->prepare("SELECT id_regle FROM regle WHERE titre = ?, id_socle_securite = ?");

@@ -6,7 +6,7 @@ var j=0;
 
 $(document).ready(function () {
     $('#editable_table').Tabledit({
-        url: 'content/php/atelier2b/modification.php',
+        url: 'content/php/atelier2c/modification.php',
         deleteButton: false,
         columns: {
             identifier: [0, 'id_source_de_risque'],
@@ -15,14 +15,15 @@ $(document).ready(function () {
                 // [2, 'description_source_de_risque'], 
                 // [3, 'objectif_vise'],
                 // [4, 'description_objectif_vise'],
-                [5, 'motivation', '{"..." : "...", "1": "1", "2": "2", "3": "3"}'],
-                [6, 'ressources', '{"..." : "...", "1": "1", "2": "2", "3": "3"}'],
-                [7, 'activite', '{"..." : "...", "1": "1", "2": "2", "3": "3"}'],
-                [8, 'mode_operatoire'],
-                [9, 'secteur_d_activite'],
-                [10, 'arsenal_d_attaque'],
-                [11, 'faits_d_armes'],
-                [12, 'pertinence', '{"Auto" : "Auto", "Faible": "Faible", "Moyen": "Moyen", "Elevé": "Elevé"}'],
+                // [5, 'motivation', '{"..." : "...", "1": "1", "2": "2", "3": "3"}'],
+                // [6, 'ressources', '{"..." : "...", "1": "1", "2": "2", "3": "3"}'],
+                // [7, 'activite', '{"..." : "...", "1": "1", "2": "2", "3": "3"}'],
+                // [8, 'mode_operatoire'],
+                // [9, 'secteur_d_activite'],
+                // [10, 'arsenal_d_attaque'],
+                // [11, 'faits_d_armes'],
+                // [12, 'pertinence', '{"Auto" : "Auto", "Faible": "Faible", "Moyen": "Moyen", "Elevé": "Elevé"}'],
+                [13, 'choix_source_de_risque', '{"..." : "...", "P1": "P1", "P2": "P2"}']
             ],
         },
         restoreButton: false,

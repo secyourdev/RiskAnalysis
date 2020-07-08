@@ -62,7 +62,7 @@ if (isset($_POST['nom_referentiel'])) {
   // print '$resultat_final == false: ';
   // var_dump($resultat_final == false);
   // print '</br>';
-  if ($resultat_final == false){
+  if ($resultat_final == false) {
     // print 'je suis dans false';
     $query_vide->bindParam(1, $resultat_id_socle[0]);
     $query_vide->execute();
@@ -81,7 +81,7 @@ if (isset($_POST['nom_referentiel'])) {
       // print_r($row["id_regle"]);
       echo '
       <tr>
-      <td></td>
+      <td>' . $row['id_regle'] . '</td>
       <td>' . $row['id_regle'] . '</td>
       <td>' . $row['titre'] . '</td>
       <td></td>
@@ -91,8 +91,7 @@ if (isset($_POST['nom_referentiel'])) {
       </tr>
       ';
     }
-  }
-  else {
+  } else {
     $query = $bdd->prepare(
       "SELECT 
   ecarts.id_ecarts, 
@@ -106,7 +105,8 @@ if (isset($_POST['nom_referentiel'])) {
   WHERE ecarts.id_regle = regle.id_regle 
   AND ecarts.id_date = dates.id_date 
   AND ecarts.id_personne = personne.id_personne 
-  AND regle.id_socle_securite = ?"
+  AND regle.id_socle_securite = ?
+  ORDER BY regle.id_regle"
     );
     $query->bindParam(1, $resultat_id_socle[0]);
     // print 'query: ';
@@ -117,7 +117,7 @@ if (isset($_POST['nom_referentiel'])) {
     while ($row = $query->fetch()) {
       echo '
       <tr>
-      <td>' . $row["id_ecarts"] . '</td>
+      <td>' . $row["id_regle"] . '</td>
       <td>' . $row["id_regle"] . '</td>
       <td>' . $row["titre"] . '</td>
       <td>' . $row["etat_de_la_regle"] . '</td>
@@ -128,6 +128,4 @@ if (isset($_POST['nom_referentiel'])) {
       ';
     }
   }
-
-
 }

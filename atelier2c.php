@@ -29,7 +29,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $userdroit = $reqdroit->fetch();
 ?>
 
-<?php include("content/php/atelier2a/selection.php");?>
+<?php include("content/php/atelier2c/selection.php");?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -39,7 +39,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
   <meta name="description" content="CyberRiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>CyberRiskManager | Atelier 2.a</title>
+  <title>CyberRiskManager | Atelier 2.c</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -52,6 +52,8 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
   <!-- JS -->
   <script src="content/vendor/jquery/jquery.js"></script>
   <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
+  <!-- chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 
 <?php 
@@ -372,7 +374,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
           <div id="top_bar_1" class="top_bar_name_1"><?php echo $projectinfo['nom_projet'];?></div>
           <div id="top_bar_2" class="top_bar_name_2">Atelier 2</div>
-          <div id="top_bar_3" class="top_bar_name_3">Activité 2.a - Identifier les sources de risques et les objectifs</div>
+          <div id="top_bar_3" class="top_bar_name_3">Activité 2.c - Sélectionner les couples SR/OV retenus pour la suite de l'analyse</div>
           
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -393,7 +395,11 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="parametres&<?php echo $_SESSION['id_utilisateur'];?>">
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <a class="dropdown-item" href="#">
                   <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
                   Paramètres
                 </a>
@@ -410,7 +416,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-          <!-- Page Heading -->
           <!-- Content Row -->
           <div class="row">
             <!-- Area Card -->
@@ -437,7 +442,25 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Sources de risque et objectifs visés</h6>
+                  <h6 class="m-0">Choix des sources de risque</h6>
+                  
+
+                  <!-- pour avoir le menu 3-points -->
+                  <!-- <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div> -->
+
+
+
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -447,12 +470,20 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th id="id_srov">ID SROV</th>
-                          <th id="type_attaquant">Type d'attaquant</th>
+                          <th id=id_srov>ID SROV</th>
                           <th id="profil_attaquant">Profil d'attaquant</th>
                           <th id="description_source_risque">Description source de risque</th>
                           <th id="objectif vise">Objectif visé</th>
                           <th id="description_objectif">Description de l'objectif</th>
+                          <th id="motivation">Motivation</th>
+                          <th id="ressources">Ressources</th>
+                          <th id="activite">Activité</th>
+                          <th id="mode_operatoire">Mode opératoire</th>
+                          <th id="secteur_activite">Secteur d'activité</th>
+                          <th id="arsenal_attque">Arsenal d'attaque</th>
+                          <th id="faits_armes">Faits d'armes</th>
+                          <th id="pertinence">Pertinence</th>
+                          <th id="choix">Choix P1/P2</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -462,11 +493,19 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         echo '
                         <tr>
                         <td>'.$row["id_source_de_risque"].'</td>
-                        <td>'.$row["type_d_attaquant_source_de_risque"].'</td>
                         <td>'.$row["profil_de_l_attaquant_source_de_risque"].'</td>
                         <td>'.$row["description_source_de_risque"].'</td>
                         <td>'.$row["objectif_vise"].'</td>
                         <td>'.$row["description_objectif_vise"].'</td>
+                        <td>'.$row["motivation"].'</td>
+                        <td>'.$row["ressources"].'</td>
+                        <td>'.$row["activite"].'</td>
+                        <td>'.$row["mode_operatoire"].'</td>
+                        <td>'.$row["secteur_d_activite"].'</td>
+                        <td>'.$row["arsenal_d_attaque"].'</td>
+                        <td>'.$row["faits_d_armes"].'</td>
+                        <td>'.$row["pertinence"].'</td>
+                        <td>'.$row["choix_source_de_risque"].'</td>
                         </tr>
                         ';
                       }
@@ -474,14 +513,35 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       </tbody>
                     </table>
                   </div> 
-                  <!-- bouton Ajouter une nouvelle ligne -->
-                  <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_sr">Ajouter une nouvelle ligne</button>
-                  </div>   
+                   
+                </div>    
+              </div>
+            </div>
+            <!-- Area Card -->
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="row perso_no_margin">
+                  <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <h6>Événements redoutés</h6>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                <canvas id="myChart_srov"></canvas>
+                  <!-- <div class="row perso_no_margin">
+
+                    <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                      <canvas id="myChart_srov"></canvas>
+                    </div>
+
+
+                  </div> -->
                 </div>
               </div>
-            </div>          
-          </div>
+            </div>
+          </div>         
+        </div>
       </div>
       <!-- End of Main Content -->
 
@@ -494,8 +554,10 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         </div>
       </footer>
       <!-- End of Footer -->
+
     </div>
     <!-- End of Content Wrapper -->
+
   </div>
   <!-- End of Page Wrapper -->
 
@@ -504,84 +566,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <i class="fas fa-angle-up"></i>
   </a>
 
-
-<!-- -------------------------------------------------------------------------------------------------------------- 
------------------------------------------ modal ajout de ligne ----------------------------------------------------
---------------------------------------------------------------------------------------------------------------- -->
-<div class="modal fade" id="ajout_ligne_sr" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog modal-lg" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Ajout d'une source de risque</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body perso_modal_body">
-      <form method="post" action="content/php/atelier2a/ajout.php" class="user" id="formsrov">
-        <fieldset>
-          <div class="row">
-            <div class="col-6">
-            <label for="type_attaquant">Type d'attaquant</label>
-            <select class="form-control" name="type_attaquant" id="type_attaquant">
-                <option value="" selected>...</option>
-                <option value="Organisation structurée">Organisation structurée</option>
-                <option value="Organisation idéologique">Organisation idéologique</option>
-                <option value="Individu isolé">Individu isolé</option>
-              </select>
-            
-              <div class="form-group form-colonne">
-                <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Profil d'attaquant" name="profil_attaquant" placeholder="Profil d'attaquant" required>
-                <datalist id="Profil d'attaquant">
-                  <option value="Etatique">
-                  <option value="Crime organisé">
-                  <option value="Terroriste">
-                  <option value="Activiste idéologique">
-                  <option value="Officine spécialisée">
-                  <option value="Amateur">
-                  <option value="Vengeur">
-                  <option value="Malveillant pathologique">
-                </datalist>
-              </div>
-            </div>
-
-            <div class="form-group col-6">
-              <label for="Description de la source de risque">Description de la source de risque</label>
-              <textarea class="form-control perso_text_area" id="Description de la source de risque" name="description_sr"rows="5"></textarea>
-            </div>
-          </div>
-          <div class="row">
-            <!-- <div class="form-group col-12">
-              <input type="search" class="perso_form shadow-none form-control form-control-user" id="objectif_vise" name="objectif_vise"
-                placeholder="Objectif visé" required>
-            </div> -->
-            <div class="form-group form-colonne col-12">
-                <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Objectif visé" name="objectif_vise" placeholder="Objectif visé" required>
-                <datalist id="Objectif visé">
-                  <option value="Espionnage">
-                  <option value="Prépositionnement stratégique">
-                  <option value="Influence">
-                  <option value="Entrave au fonctionnement">
-                  <option value="Lucratif">
-                  <option value="Défi, amusement">
-                </datalist>
-              </div>
-
-            <div class="form-group col-12">
-              <label for="Description de l'objectif visé">Description de l'objectif visé</label>
-              <textarea class="form-control perso_text_area" id="Description de l'objectif visé" name="description_objectif_vise" rows="3"></textarea>
-            </div>
-          </div>
-          <!-- bouton Ajouter -->
-          <div class="modal-footer perso_middle_modal_footer">
-            <input type="submit" name="validersrov" value="Ajouter" class="btn perso_btn shadow-none"></input>
-          </div>
-        </fieldset>
-      </form>
-    </div>    
-</div>
-</div>
+ 
 
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -617,8 +602,9 @@ aria-hidden="true">
   <script src="content/js/modules/side_bar.js"></script>
   <script src="content/js/modules/realtime.js"></script>
   <script src="content/js/modules/set_filter_sort_table.js"></script>
-  <script src="content/js/atelier/atelier2a.js"></script>
+  <script src="content/js/atelier/atelier2c.js"></script>
   <script src="content/js/modules/sort_table.js"></script>
+  <script src="content/js/modules/2c_carto.js"></script>
 </body>
 <?php
   }
