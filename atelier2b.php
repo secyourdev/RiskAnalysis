@@ -192,6 +192,17 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               </i>
               <span id="nom_sous_atelier_6" title="Évaluer les couples sources de risque/objectifs visés">Évaluer les couples sources de risque/objectifs visés</span>
             </a>
+            <a class="collapse-item" href="atelier-2c&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+              <i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                <g transform="translate(-124 -292)">
+                  <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
+                  <text class="number_sub_activity_text" data-name="2.c" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">2.c</tspan></text>
+                </g>
+              </svg>
+              </i>
+              <span id="nom_sous_atelier_15" title="Sélectionner les couples SR/OV retenus pour la suite de l'analyse">Sélectionner les couples SR/OV retenus pour la suite de l'analyse</span>
+            </a>
           </div>
         </div>
       </li>
@@ -470,7 +481,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                           <th id="arsenal_attque">Arsenal d'attaque</th>
                           <th id="faits_armes">Faits d'armes</th>
                           <th id="pertinence">Pertinence</th>
-                          <th id="choix">Choix</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -492,7 +502,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <td>'.$row["arsenal_d_attaque"].'</td>
                         <td>'.$row["faits_d_armes"].'</td>
                         <td>'.$row["pertinence"].'</td>
-                        <td>'.$row["choix_source_de_risque"].'</td>
                         </tr>
                         ';
                       }

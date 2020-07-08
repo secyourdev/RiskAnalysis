@@ -29,7 +29,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $userdroit = $reqdroit->fetch();
 ?>
 
-<?php include("content/php/atelier4a/selection.php");?>
+<?php include("content/php/atelier2c/selection.php");?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -39,7 +39,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
   <meta name="description" content="CyberRiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>CyberRiskManager | Atelier 4.a</title>
+  <title>CyberRiskManager | Atelier 2.c</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -52,6 +52,8 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
   <!-- JS -->
   <script src="content/vendor/jquery/jquery.js"></script>
   <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
+  <!-- chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 
 <?php 
@@ -155,13 +157,13 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
           </div>
         </div>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier2" aria-expanded="true"
           aria-controls="Atelier2">
           <i>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
               <g transform="translate(-1230 -689)">
-                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
+                <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
                 <text class="number_activity_text" data-name="2" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-3.432" y="0">2</tspan></text>
               </g>
             </svg>
@@ -219,7 +221,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
           </i>
           <span>Scénarios stratégiques</span>
         </a>
-        
         <div id="Atelier3" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="atelier-3a&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
@@ -258,18 +259,18 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
           </div>
         </div>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier4" aria-expanded="true"
           aria-controls="Atelier4">
           <i>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
               <g transform="translate(-1230 -689)">
-                <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
+                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
                 <text class="number_activity_text" data-name="4" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-3.432" y="0">4</tspan></text>
               </g>
             </svg>
           </i>
-          <span class="nom_atelier2">Scénarios opérationnels</span>
+          <span>Scénarios opérationnels</span>
         </a>
         <div id="Atelier4" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -365,14 +366,15 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
       <div id="content">
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
 
           <div id="top_bar_1" class="top_bar_name_1"><?php echo $projectinfo['nom_projet'];?></div>
-          <div id="top_bar_2" class="top_bar_name_2">Atelier 4</div>
-          <div id="top_bar_3" class="top_bar_name_3">Activité 4.a - Élaborer les scénarios opérationnels</div>
+          <div id="top_bar_2" class="top_bar_name_2">Atelier 2</div>
+          <div id="top_bar_3" class="top_bar_name_3">Activité 2.c - Sélectionner les couples SR/OV retenus pour la suite de l'analyse</div>
           
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -414,7 +416,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-         <!-- Content Row -->
+          <!-- Content Row -->
           <div class="row">
             <!-- Area Card -->
             <div class="col-xl col-lg">
@@ -422,13 +424,11 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0">Objectif</h6>
-                  
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <p>Le but de l'atelier 4 est de construire des scénarios techniques reprenant les modes opératoires susceptibles d'être utilisés par les sources de risque pour réaliser les scénarios stratégiues.
-                      Cet atelier adopte ue démarche similaire à celle de l'atelier précédent mais se concentre sur les biens supports critiques. Vous évaluez ensuite le niveau de vraisemblance des scénarios opérationnels obtenus.
-                  </p>
+                  <p> Le but de l'atelier 2 est d'identifier les sources de risques (SR) et leurs objectifs visés (OV), en lien avec le contexte particulier de l'étude. 
+                    L'atelier vise à répondre à la question suivante : qui ou quoi pourrait porter atteint aux missions et valeurs métier identifiées dans l'atelier 1, et dans quels buts ?</p>
                   <!--text-->
                 </div>
               </div>
@@ -436,185 +436,112 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
           </div>
 
           <div class="row">
+
             <!-- Area Card -->
             <div class="col-xl col-lg">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Liste des scénarios stratégiques établis lors de l'atelier 3</h6>
+                  <h6 class="m-0">Choix des sources de risque</h6>
+                  
+
+                  <!-- pour avoir le menu 3-points -->
+                  <!-- <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div> -->
+
+
+
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <!--text-->
                   <div class="table-responsive">
-                  <input type="text" class="rechercher_input" id="rechercher_chemin" placeholder="Rechercher">
+                    <input type="text" class="rechercher_input" id="rechercher_srov" placeholder="Rechercher">
                     <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th id="id_scenario_strategique">ID scénario stratégique</th>
-                          <th id="nom_scenario_strategique">Nom du scénario stratégique</th>
+                          <th id=id_srov>ID SROV</th>
+                          <th id="profil_attaquant">Profil d'attaquant</th>
                           <th id="description_source_risque">Description source de risque</th>
-                          <th id="objectif_vise">Objectifs visés</th>
-                          <th id="evenement_redoute">Événements redoutés</th>
-                          <th id="numero_risque">N° Risque</th>
-                          <th id="chemin_attaque_strategiqu">Chemin d'attaques stratégiques</th>
-                          <th id="gravite">Gravité</th>
-                          
+                          <th id="objectif vise">Objectif visé</th>
+                          <th id="description_objectif">Description de l'objectif</th>
+                          <th id="motivation">Motivation</th>
+                          <th id="ressources">Ressources</th>
+                          <th id="activite">Activité</th>
+                          <th id="mode_operatoire">Mode opératoire</th>
+                          <th id="secteur_activite">Secteur d'activité</th>
+                          <th id="arsenal_attque">Arsenal d'attaque</th>
+                          <th id="faits_armes">Faits d'armes</th>
+                          <th id="pertinence">Pertinence</th>
+                          <th id="choix">Choix P1/P2</th>
                         </tr>
                       </thead>
-                        
                       <tbody>
                       <?php
-                      while($row = mysqli_fetch_array($result1))
+                      while($row = mysqli_fetch_array($result))
                       {
                         echo '
                         <tr>
-                        <td>'.$row["id_scenario_strategique"].'</td>
-                        <td>'.$row["nom_scenario_strategique"].'</td>
+                        <td>'.$row["id_source_de_risque"].'</td>
+                        <td>'.$row["profil_de_l_attaquant_source_de_risque"].'</td>
                         <td>'.$row["description_source_de_risque"].'</td>
                         <td>'.$row["objectif_vise"].'</td>
-                        <td>'.$row["nom_evenement_redoute"].'</td>
-                        <td>'.$row["id_risque"].'</td>
-                        <td>'.$row["nom_scenario_strategique"].'</td>
-                        <td>'.$row["niveau_de_gravite"].'</td>
+                        <td>'.$row["description_objectif_vise"].'</td>
+                        <td>'.$row["motivation"].'</td>
+                        <td>'.$row["ressources"].'</td>
+                        <td>'.$row["activite"].'</td>
+                        <td>'.$row["mode_operatoire"].'</td>
+                        <td>'.$row["secteur_d_activite"].'</td>
+                        <td>'.$row["arsenal_d_attaque"].'</td>
+                        <td>'.$row["faits_d_armes"].'</td>
+                        <td>'.$row["pertinence"].'</td>
+                        <td>'.$row["choix_source_de_risque"].'</td>
                         </tr>
                         ';
                       }
                       ?>
                       </tbody>
                     </table>
-                  </div>
-    
-
-                </div>   
-
-                </div>
+                  </div> 
+                   
+                </div>    
               </div>
-            
-              <!-- Area Card -->
-              <div class="col-xl-12 col-lg-12">
-                <div class="card shadow mb-4">
-                  <!-- Card Header - Dropdown -->
-                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0">Ajouter un scénario opérationnel</h6>
-                    
-                  </div>
-                  <!-- Card Body -->
-                  <div class="card-body">
-                    <!--text-->
-                    <div class="table-responsive">
-                      <input type="text" class="rechercher_input" id="rechercher_ope" placeholder="Rechercher">
-                      <table id="tableau_ope" class="table table-bordered table-striped">
-                        <thead>
-                          <tr>
-                            <th id="id_chemin_attaque_strategique">ID chemin d'attaque strategique</th>
-                            <th id="numero_risque">N° Risque</th>
-                            <th id="chemin_attaque_strategique">Chemin d'attaque stratégique</th>
-                            <th id="scenario_operationnel">Scénario opérationnel</th>
-                            
-                          </tr>
-                        </thead>
-                          
-                          <tbody>
-                          <?php
-                            while($row = mysqli_fetch_array($result2))
-                            {
-                              echo '
-                              <tr>
-                              <td>'.$row["id_scenario_operationnel"].'</td>
-                              <td>'.$row["id_risque"].'</td>
-                              <td>'.$row["chemin_d_attaque_strategique"].'</td>
-                              <td>'.$row["description_scenario_operationnel"].'</td>
-                              </tr>
-                              ';
-                            }
-                          ?>
-                          </tbody>
-                      </table>
-                    </div> 
+            </div>
+            <!-- Area Card -->
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="row perso_no_margin">
+                  <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <h6>Événements redoutés</h6>
                   </div>
                 </div>
-              </div>
-              <!-- Area Card -->
-              <div class="col-xl-12 col-lg-12">
-                <div class="card shadow mb-4">
-                  <!-- Card Header - Dropdown -->
-                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0">Ajouter un mode opératoire</h6>
-                    
-                  </div>
-                  <!-- Card Body -->
-                  <div class="card-body">
-                    <!--text-->
-                    <form method="post" action="content/php/atelier4a/ajout.php" class="user" id="formValeurMetierPop">
-                      <fieldset>
-                        <div class="form-group">
-                          <label for="nomscenar">Choix du scénario opérationnel</label>
-                          <select class="form-control" name="nomscenar" id="nomscenar">
-                            <option value="" selected>...</option>
-                            <?php
-                                while($row = mysqli_fetch_array($result3))
-                                {
-                                  echo '
-                                  <option value="'.$row["description_scenario_operationnel"].'">'.$row["description_scenario_operationnel"].'</option>
-                                  ';
-                                }
-                            ?>
-                          </select>
-                        </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                <canvas id="myChart_srov"></canvas>
+                  <!-- <div class="row perso_no_margin">
 
-                        <div class="form-group">
-                          <label for="modeope">Mode opératoire</label>
-                          <textarea class="form-control perso_text_area" name="modeope" id="modeope" rows="3"></textarea>
-                        </div>
-                        
-                        <!-- bouton Ajouter une nouvelle ligne -->
-                        <div class="modal-footer perso_middle_modal_footer">
-                          <input type="submit" name="validerope" value="Ajouter" class="btn perso_btn shadow-none"></input>
-                        </div> 
-                      </fieldset>
-                    </form>
-
-                    <div class="table-responsive">
-                      <input type="text" class="rechercher_input" id="rechercher_mode_ope" placeholder="Rechercher">
-                      <table id="tableau_mode_ope" class="table table-bordered table-striped">
-                        <thead>
-                          <tr>
-                            <th id="id_mode_operatoire">ID scénario opérationnel</th>
-                            <th id="scenario_operationnel">Scénario opérationnel</th>
-                            <th id="mode_operatoire">Mode opératoire</th>
-                            
-                          </tr>
-                        </thead>
-                          
-                          <tbody>
-                          <?php
-                            while($row = mysqli_fetch_array($result4))
-                            {
-                              echo '
-                              <tr>
-                              <td>'.$row["id_mode_operatoire"].'</td>
-                              <td>'.$row["description_scenario_operationnel"].'</td>
-                              <td>'.$row["mode_operatoire"].'</td>
-                              </tr>
-                              ';
-                            }
-                          ?>
-                          </tbody>
-                      </table>
+                    <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                      <canvas id="myChart_srov"></canvas>
                     </div>
-                    
-                  </div>
+
+
+                  </div> -->
                 </div>
               </div>
             </div>
-
-
-           
-          </div>
-
-
-
+          </div>         
+        </div>
       </div>
       <!-- End of Main Content -->
 
@@ -639,7 +566,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <i class="fas fa-angle-up"></i>
   </a>
 
-
+ 
 
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -675,8 +602,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   <script src="content/js/modules/side_bar.js"></script>
   <script src="content/js/modules/realtime.js"></script>
   <script src="content/js/modules/set_filter_sort_table.js"></script>
-  <script src="content/js/atelier/atelier4a.js"></script>
+  <script src="content/js/atelier/atelier2c.js"></script>
   <script src="content/js/modules/sort_table.js"></script>
+  <script src="content/js/modules/2c_carto.js"></script>
 </body>
 <?php
   }

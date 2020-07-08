@@ -79,6 +79,7 @@ if ($input["action"] === 'delete') {
     DELETE FROM evenement_redoute 
     WHERE id_evenement_redoute = '".$input["id_evenement_redoute"]."'
     ";
+    echo $query;
     mysqli_query($connect, $query);
 }
 
