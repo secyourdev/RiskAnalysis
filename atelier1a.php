@@ -774,6 +774,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                         <button type="button" id='ajouter_user' name="ajouter_user" class="btn perso_btn shadow-none">Ajouter</button>
                                                     </fieldset>
                                                 </form>
+                                                </br>
                                     <?php
                                             }
                                             else { 
@@ -804,6 +805,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                     <button type="button" id='ajouter_user' name="ajouter_user" class="btn perso_btn shadow-none">Ajouter</button>
                                                 </fieldset>
                                             </form>
+                                            </br>
                                     <?php
                                         }
                                     ?>   

@@ -145,7 +145,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         <h6 class="m-0">Paramètres</h6>
                                     </div>
                                     <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                        <button type="button" data-toggle="modal" data-target="#modifier_user" class="btn perso_btn perso_btn_RACI shadow-none">Modifier</button>
+                                        <button type="button" class="btn perso_btn perso_btn_parametre_mdp shadow-none">Modifier le mot de passe</button>
+                                        <button type="button" data-toggle="modal" data-target="#modifier_user" class="btn perso_btn perso_btn_parametre shadow-none">Modifier le profil</button>
                                     </div>
                                     <div class="card-header div_photo_user col-12 col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                         <img class="img-profile rounded-circle user_photo" src="content/img/undraw_profile_pic.svg">
@@ -201,8 +202,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         </button>
                     </div>
                     <div class="modal-body perso_modal_body">
-                        <p>EN COURS DE REALISATION</p>
-                        <form method="post" action="">
+                        <form method="post" action="content/php/parametres/modification_user.php">
                             <fieldset>
                                 <!--NOM-->
                                 <div class="form-group">

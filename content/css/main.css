@@ -485,8 +485,21 @@ h6 {
     background-color: var(--card-content-color);
 }
 
-.perso_btn_RACI {
-    width: 10rem;
+.perso_btn_parametre,.perso_btn_parametre_mdp {
+    width: 14rem;
+    margin-left: 5px;
+}
+
+.perso_btn_parametre_mdp {
+    color: var(--reverse-font-color);
+    background-color: #b10505; /*Couleur à revoir*/
+    border-color: #b10505;
+}
+
+.perso_btn_parametre_mdp:hover {
+    color: var(--reverse-font-color);
+    background-color: #790505;
+    border-color: #790505;
 }
 
 .perso_border {
