@@ -8,29 +8,40 @@ $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bs
 // $querymission = "SELECT nom_mission FROM mission WHERE id_projet = $getid_projet";
 // $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v13");
 
-$query1 =
-    "SELECT 
-mission.id_mission,
-mission.nom_mission,
-mis.nom as respo_mis_nom,
-mis.prenom as respo_mis_prenom,
-mis.poste as respo_mis_poste,
-valeur_metier.nom_valeur_metier,
-val.nom as respo_val_nom,
-bien_support.nom_bien_support,
-bien.nom as respo_bien_nom
+// $query1 =
+//     "SELECT 
+// mission.id_mission,
+// mission.nom_mission,
+// mis.nom as respo_mis_nom,
+// mis.prenom as respo_mis_prenom,
+// mis.poste as respo_mis_poste,
+// valeur_metier.nom_valeur_metier,
+// val.nom as respo_val_nom,
+// bien_support.nom_bien_support,
+// bien.nom as respo_bien_nom
 
-FROM personne mis, personne val, personne bien, mission, valeur_metier, bien_support
+// FROM personne mis, personne val, personne bien, mission, valeur_metier, bien_support
 
-WHERE mis.nom = (SELECT personne.nom FROM personne WHERE mission.id_personne = personne.id_personne)
-AND mis.nom = (SELECT personne.nom FROM personne WHERE mission.id_personne = personne.id_personne)
-AND mis.prenom = (SELECT personne.prenom FROM personne WHERE mission.id_personne = personne.id_personne)
-AND valeur_metier.id_mission = mission.id_mission
-AND val.nom  = (SELECT personne.nom FROM personne where personne.id_personne = valeur_metier.id_personne)
-AND bien_support.id_valeur_metier = valeur_metier.id_valeur_metier
-AND bien.nom = (SELECT personne.nom FROM personne WHERE bien_support.id_personne = personne.id_personne)
-ORDER BY mission.id_mission ASC
+// WHERE mis.nom = (SELECT personne.nom FROM personne WHERE mission.id_personne = personne.id_personne)
+// AND mis.nom = (SELECT personne.nom FROM personne WHERE mission.id_personne = personne.id_personne)
+// AND mis.prenom = (SELECT personne.prenom FROM personne WHERE mission.id_personne = personne.id_personne)
+// AND valeur_metier.id_mission = mission.id_mission
+// AND val.nom  = (SELECT personne.nom FROM personne where personne.id_personne = valeur_metier.id_personne)
+// AND bien_support.id_valeur_metier = valeur_metier.id_valeur_metier
+// AND bien.nom = (SELECT personne.nom FROM personne WHERE bien_support.id_personne = personne.id_personne)
+// ORDER BY mission.id_mission ASC
+// ";
+
+$query1 = "SELECT mission.id_mission, nom_mission, personne.nom as nom_respo_mission, personne.prenom as prenom_mission, personne.poste as poste_mission, 
+nom_valeur_metier, vm.nom as respo_vm, 
+nom_bien_support, bs.nom as respo_bs 
+FROM mission INNER JOIN personne ON mission.id_personne = personne.id_personne
+INNER JOIN (SELECT * FROM valeur_metier NATURAL JOIN personne) vm
+ON mission.id_mission = vm.id_mission
+INNER JOIN (SELECT * FROM bien_support NATURAL JOIN personne) bs
+ON vm.id_valeur_metier = bs.id_valeur_metier
 ";
+
 $query2 = "SELECT 
 valeur_metier.id_valeur_metier,
 valeur_metier.nom_valeur_metier, 

@@ -2,12 +2,7 @@
   session_start();
   $getid_projet = $_SESSION['id_projet'];
 
-/*   header('Location: ../../../atelier-1b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
-  //Connexion à la base de donnee
-  try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v9;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-  } */
+  header('Location: ../../../atelier-1b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
@@ -40,6 +35,8 @@ $id_atelier = "1.b";
 $id_projet = "1";
 
 $inserepersonne = $bdd->prepare('INSERT INTO personne(id_personne, nom, prenom, poste) VALUES (?,?,?,?)');
+$inserepersonnevm = $bdd->prepare('INSERT INTO personne(id_personne, nom, prenom, poste) VALUES (?,?,?,?)');
+$inserepersonnebs = $bdd->prepare('INSERT INTO personne(id_personne, nom, prenom, poste) VALUES (?,?,?,?)');
 $recupere = $bdd->prepare('SELECT id_personne FROM personne WHERE nom = ? AND prenom = ? AND poste = ?');
 $insere = $bdd->prepare('INSERT INTO mission(id_mission, nom_mission, id_atelier, id_personne, id_projet) VALUES (?,?,?,?,?)');
 
@@ -127,16 +124,19 @@ WHERE nom_bien_support = ?");
 
 
 if ($results["error"] === false && isset($_POST['validermission'])) {
+  // insere le respo de la mission
   $inserepersonne->bindParam(1, $id_personne);
   $inserepersonne->bindParam(2, $nomresponsable);
   $inserepersonne->bindParam(3, $prenomresponsable);
   $inserepersonne->bindParam(4, $poste);
   $inserepersonne->execute();
+  // recupere l'id du respo de la mission
   $recupere->bindParam(1, $nomresponsable);
   $recupere->bindParam(2, $prenomresponsable);
   $recupere->bindParam(3, $poste);
   $recupere->execute();
   $id_personne = $recupere->fetch();
+  // insere la mission
   $insere->bindParam(1, $id_mission);
   $insere->bindParam(2, $nom_mission);
   $insere->bindParam(3, $id_atelier);
@@ -145,39 +145,49 @@ if ($results["error"] === false && isset($_POST['validermission'])) {
   // var_dump($insere);
   $insere->execute();
 
+  // recupere l'id de la mission
   $recupereid_mission->bindParam(1, $nom_mission);
   $recupereid_mission->bindParam(2, $id_atelier);
   $recupereid_mission->bindParam(3, $id_projet);
   $recupereid_mission->execute();
   $id_mission = $recupereid_mission->fetch();
-  $inserepersonne->bindParam(1, $posteresponsablevm);
-  $inserepersonne->bindParam(2, $posteresponsablevm);
-  $inserepersonne->bindParam(3, $posteresponsablevm);
-  $inserepersonne->bindParam(4, $posteresponsablevm);
+  // insere le respo de la vm
+  $inserepersonnevm->bindParam(1, $posteresponsablevm);
+  $inserepersonnevm->bindParam(2, $posteresponsablevm);
+  $inserepersonnevm->bindParam(3, $posteresponsablevm);
+  $inserepersonnevm->bindParam(4, $posteresponsablevm);
+  $inserepersonnevm->execute();
+  // recupere l'id du respo de la vm -> a priori marche pas
   $recupere->bindParam(1, $posteresponsablevm);
   $recupere->bindParam(2, $posteresponsablevm);
   $recupere->bindParam(3, $posteresponsablevm);
   $recupere->execute();
   $id_personne = $recupere->fetch();
+  // mets a jour la vm
   $updatevaleur->bindParam(1, $id_personne[0]);
   $updatevaleur->bindParam(2, $id_mission[0]);
   $updatevaleur->bindParam(3, $nom_valeur_metier);
   $updatevaleur->execute();
   
+  // recupere l'id du bs
   $recupereid_valeur_metier->bindParam(1, $nom_valeur_metier);
   $recupereid_valeur_metier->bindParam(2, $id_atelier);
   $recupereid_valeur_metier->bindParam(3, $id_projet);
   $recupereid_valeur_metier->execute();
   $id_valeur_metier = $recupereid_valeur_metier->fetch();
-  $inserepersonne->bindParam(1, $posteresponsablebien);
-  $inserepersonne->bindParam(2, $posteresponsablebien);
-  $inserepersonne->bindParam(3, $posteresponsablebien);
-  $inserepersonne->bindParam(4, $posteresponsablebien);
+  // insere le respo du bs
+  $inserepersonnebs->bindParam(1, $posteresponsablebien);
+  $inserepersonnebs->bindParam(2, $posteresponsablebien);
+  $inserepersonnebs->bindParam(3, $posteresponsablebien);
+  $inserepersonnebs->bindParam(4, $posteresponsablebien);
+  $inserepersonnebs->execute();
+  // recupere l'id du respo du bs
   $recupere->bindParam(1, $posteresponsablebien);
   $recupere->bindParam(2, $posteresponsablebien);
   $recupere->bindParam(3, $posteresponsablebien);
   $recupere->execute();
   $id_personne = $recupere->fetch();
+  // mets a jour le bs
   $updatebien->bindParam(1, $id_valeur_metier[0]);
   $updatebien->bindParam(2, $id_personne[0]);
   $updatebien->bindParam(3, $nom_bien_support);

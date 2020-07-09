@@ -595,13 +595,13 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <tr>
                         <td>' . $row["id_mission"] . '</td>
                         <td>' . $row["nom_mission"] . '</td>
-                        <td>' . $row["respo_mis_nom"] . '</td>
-                        <td>' . $row["respo_mis_prenom"] . '</td>
-                        <td>' . $row["respo_mis_poste"] . '</td>
+                        <td>' . $row["nom_respo_mission"] . '</td>
+                        <td>' . $row["prenom_mission"] . '</td>
+                        <td>' . $row["poste_mission"] . '</td>
                         <td>' . $row["nom_valeur_metier"] . '</td>
-                        <td>' . $row["respo_val_nom"] . '</td>
+                        <td>' . $row["respo_vm"] . '</td>
                         <td>' . $row["nom_bien_support"] . '</td>
-                        <td>' . $row["respo_bien_nom"] . '</td>
+                        <td>' . $row["respo_bs"] . '</td>
                         </tr>
                         ';
                         }
