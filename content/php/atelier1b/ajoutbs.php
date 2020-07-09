@@ -1,6 +1,5 @@
 <?php
   session_start();
-  $getid_projet = $_SESSION['id_projet'];
 
   header('Location: ../../../atelier-1b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
 
@@ -28,7 +27,7 @@ $descriptionbs = $_POST['descriptionbs'];
 // $posteresponsablebs = $_POST['posteresponsablebs'];
 $id_bien_support = "id_bien_support";
 $id_atelier = "1.b";
-$id_projet = "1";
+$id_projet = $_SESSION['id_projet'];;
 
 // $recuperepersonne = $bdd->prepare('SELECT id_personne FROM personne WHERE nom = ? AND prenom = ? AND poste = ?');
 // $recuperevm = $bdd->prepare('SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = ?');

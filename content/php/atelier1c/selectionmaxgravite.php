@@ -1,5 +1,5 @@
 <?php
-
+// session_start();
 try {
     $bdd = new PDO(
         'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v14;charset=utf8',
@@ -13,7 +13,7 @@ try {
 $results["error"] = false;
 $results["message"] = [];
 $recupere = $bdd->prepare("SELECT echelle_gravite FROM projet NATURAL JOIN echelle WHERE id_projet = ?");
-$id_projet = "1";
+$id_projet = $_SESSION['id_projet'];
 
 
 if ($results["error"] === false) {

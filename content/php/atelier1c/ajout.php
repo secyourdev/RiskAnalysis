@@ -28,7 +28,7 @@ $disponibilite = $_POST['disponibilite'];
 $tracabilite = $_POST['tracabilite'];
 $niveau_de_gravite = $_POST['niveau_de_gravite'];
 $id_atelier = '1.c';
-$id_projet = '1';
+$id_projet = $_SESSION['id_projet'];
 
 
 $recupere = $bdd->prepare("SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = ?");

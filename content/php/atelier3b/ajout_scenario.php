@@ -1,5 +1,6 @@
 <?php
-header('Location: ../../../atelier-3b');
+session_start();
+header('Location: ../../../atelier-3b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
 
 
 //Connexion à la base de donnee
@@ -23,7 +24,7 @@ $id_source_de_risque = $_POST['id_source_de_risque'];
 $id_evenement_redoute = $_POST['id_evenement_redoute'];
 $id_partie_prenante = NULL;
 $id_atelier = '3.b';
-$id_projet = '1';
+$id_projet = $_SESSION['id_projet'];
 $id_scenario = 'id_scenario';
 
 $insere = $bdd->prepare(

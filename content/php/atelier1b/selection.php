@@ -1,5 +1,5 @@
 <?php
-//$getid_projet = intval($_GET['id_projet']);
+$getid_projet = intval($_GET['id_projet']);
 
 $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v14");
 // $query1 = "SELECT * FROM mission NATURAL JOIN personne WHERE id_projet = $getid_projet ORDER BY id_mission ASC";
@@ -40,6 +40,7 @@ INNER JOIN (SELECT * FROM valeur_metier NATURAL JOIN personne) vm
 ON mission.id_mission = vm.id_mission
 INNER JOIN (SELECT * FROM bien_support NATURAL JOIN personne) bs
 ON vm.id_valeur_metier = bs.id_valeur_metier
+WHERE mission.id_projet = $getid_projet
 ";
 
 $query2 = "SELECT 
@@ -48,6 +49,7 @@ valeur_metier.nom_valeur_metier,
 valeur_metier.nature_valeur_metier, 
 valeur_metier.description_valeur_metier 
 FROM valeur_metier
+WHERE id_projet = $getid_projet
 ORDER BY valeur_metier.id_valeur_metier ASC";
 
 $query3 = "SELECT 
@@ -55,13 +57,14 @@ bien_support.id_bien_support,
 bien_support.nom_bien_support,
 bien_support.description_bien_support
 FROM bien_support
+WHERE id_projet = $getid_projet
 ORDER BY bien_support.id_bien_support ASC";
 
-$queryvm = "SELECT nom_valeur_metier FROM valeur_metier";
+$queryvm = "SELECT nom_valeur_metier FROM valeur_metier WHERE id_projet = $getid_projet";
 $queryposteresponsablevm = "SELECT poste FROM personne";
 // $queryprenomresponsablevm = "SELECT prenom FROM personne";
 
-$querybien = "SELECT nom_bien_support FROM bien_support";
+$querybien = "SELECT nom_bien_support FROM bien_support WHERE id_projet = $getid_projet";
 $queryposteresponsablebien = "SELECT poste FROM personne";
 // $queryprenomresponsablebien = "SELECT prenom FROM personne";
 

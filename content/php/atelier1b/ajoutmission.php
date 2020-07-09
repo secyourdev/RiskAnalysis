@@ -1,6 +1,5 @@
 <?php
   session_start();
-  $getid_projet = $_SESSION['id_projet'];
 
   header('Location: ../../../atelier-1b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
 //Connexion à la base de donnee
@@ -32,7 +31,7 @@ $posteresponsablebien = $_POST['posteresponsablebien'];
 $id_personne = "id_personne";
 
 $id_atelier = "1.b";
-$id_projet = "1";
+$id_projet = $_SESSION['id_projet'];;
 
 $inserepersonne = $bdd->prepare('INSERT INTO personne(id_personne, nom, prenom, poste) VALUES (?,?,?,?)');
 $inserepersonnevm = $bdd->prepare('INSERT INTO personne(id_personne, nom, prenom, poste) VALUES (?,?,?,?)');

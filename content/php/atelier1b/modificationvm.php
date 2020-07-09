@@ -1,5 +1,6 @@
 <?php  
 //action.php
+session_start();
 $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v14");
 
 $input = filter_input_array(INPUT_POST);
@@ -18,7 +19,7 @@ $results["message"] = [];
 
 
 $id_atelier = "1.b";
-$id_projet = "1";
+$id_projet = $_SESSION['id_projet'];;
 
 
 /* // Verification du nom de la valeur metier

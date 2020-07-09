@@ -1,5 +1,6 @@
 <?php
-header('Location: ../../../atelier-3a');
+session_start();
+header('Location: ../../../atelier-3a&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
 
 
 //Connexion à la base de donnee
@@ -27,7 +28,7 @@ $maturite_partie_prenante = $_POST['maturite_partie_prenante'];
 $confiance_partie_prenante = $_POST['confiance_partie_prenante'];
 $niveau_de_menace_partie_prenante = ($dependance_partie_prenante* $penetration_partie_prenante)/ ($maturite_partie_prenante* $confiance_partie_prenante);
 $id_atelier = '3.a';
-$id_projet ='1';
+$id_projet =$_SESSION['id_projet'];
 
 $recupere = $bdd->prepare("SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = ?");
 

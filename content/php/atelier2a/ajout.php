@@ -35,7 +35,7 @@ $faits_armes = NULL;
 $pertinence = NULL;
 $choix_sr = NULL;
 $id_atelier = "2.a";
-$id_projet = "1";
+$id_projet = $_SESSION['id_projet'];
 
 
 $recupere = $bdd->prepare("SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = ?");

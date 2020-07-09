@@ -25,7 +25,7 @@ $descriptionvm = $_POST['descriptionvm'];
 
 $id_valeur_metier = "valeur_metier";
 $id_atelier = "1.b";
-$id_projet = "1";
+$id_projet = $_SESSION['id_projet'];;
 // $nommission=$_POST['nommission'];
 
 // $recuperepersonne = $bdd->prepare('SELECT id_personne FROM personne WHERE nom = ? AND prenom = ? AND poste = ?');

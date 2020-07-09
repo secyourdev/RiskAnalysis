@@ -1,5 +1,6 @@
 <?php
 //action.php
+session_start();
 $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v14");
 
 $input = filter_input_array(INPUT_POST);
@@ -21,7 +22,7 @@ $results["error"] = false;
 $results["message"] = [];
 
 $id_atelier = "1.b";
-$id_projet = "1";
+$id_projet = $_SESSION['id_projet'];;
 
 // Verification de la mission
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_mission)) {
@@ -64,9 +65,9 @@ if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $respo_mis_poste))
 if ($input["action"] === 'edit' && $results["error"] === false) {
     $queryp = 
     "UPDATE personne
-    SET nom = '" . $nom . "',
-    prenom = '" . $prenom . "',
-    poste = '" . $poste . "'
+    SET nom = '" . $respo_mis_nom . "',
+    prenom = '" . $respo_mis_prenom . "',
+    poste = '" . $respo_mis_poste . "'
     WHERE id_personne = (SELECT id_personne FROM mission WHERE id_mission = '" . $input["id_mission"] . "')
     ";
 

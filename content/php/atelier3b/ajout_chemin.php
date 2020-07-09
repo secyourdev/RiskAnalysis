@@ -1,5 +1,5 @@
 <?php
-header('Location: ../../../atelier-3b');
+header('Location: ../../../atelier-3b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
 
 
 //Connexion à la base de donnee

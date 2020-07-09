@@ -610,6 +610,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       Echelle choisie : 
                       <?php 
                         $echelle_projet = mysqli_fetch_array($resultprojet);
+                        // $echelle_projet = $queryprojet->fetch();
                         echo $echelle_projet[0];
                       ?>
                     </div>

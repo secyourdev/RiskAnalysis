@@ -1,9 +1,10 @@
 <?php
+$getid_projet = intval($_GET['id_projet']);
 $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v14");
 
 //affichage tableau de rappel
-$query_evenement_redoutes = "SELECT * FROM evenement_redoute INNER JOIN valeur_metier on evenement_redoute.id_valeur_metier = valeur_metier.id_valeur_metier";
-$query_SROV = "SELECT id_source_de_risque, type_d_attaquant_source_de_risque,profil_de_l_attaquant_source_de_risque, description_source_de_risque, objectif_vise, description_objectif_vise FROM SROV ORDER BY id_source_de_risque";
+$query_evenement_redoutes = "SELECT * FROM evenement_redoute INNER JOIN valeur_metier on evenement_redoute.id_valeur_metier = valeur_metier.id_valeur_metier WHERE valeur_metier.id_projet = $getid_projet";
+$query_SROV = "SELECT id_source_de_risque, type_d_attaquant_source_de_risque,profil_de_l_attaquant_source_de_risque, description_source_de_risque, objectif_vise, description_objectif_vise FROM SROV WHERE id_projet = $getid_projet ORDER BY id_source_de_risque";
 
 //affichage tableau modifiable
 $query_scenario_strategique =
@@ -18,7 +19,8 @@ SROV.description_source_de_risque,
 objectif_vise 
 FROM scenario_strategique, evenement_redoute, SROV 
 WHERE scenario_strategique.id_evenement_redoute = evenement_redoute.id_evenement_redoute 
-AND scenario_strategique.id_source_de_risque = SROV.id_source_de_risque 
+AND scenario_strategique.id_source_de_risque = SROV.id_source_de_risque, 
+AND SROV.id_projet = $getid_projet
 ORDER BY id_scenario_strategique ASC";
 
 $query_chemin_d_attaque = 
@@ -30,7 +32,8 @@ scenario_strategique.nom_scenario_strategique,
 nom_partie_prenante
 FROM scenario_strategique, chemin_d_attaque_strategique, partie_prenante
 WHERE chemin_d_attaque_strategique.id_scenario_strategique = scenario_strategique.id_scenario_strategique 
-AND chemin_d_attaque_strategique.id_partie_prenante = partie_prenante.id_partie_prenante
+AND chemin_d_attaque_strategique.id_partie_prenante = partie_prenante.id_partie_prenante,
+AND partie_prenante.id_projet = $getid_projet
 ORDER BY id_chemin_d_attaque_strategique ASC";
 
 
