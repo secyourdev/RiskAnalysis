@@ -5,7 +5,7 @@ selectsocle.addEventListener('change', (event) => {
     //   const result = document.querySelector('.result');
     //   console.log(`Valeur  ${selectsocle.value}`);
     $.ajax({
-        url: 'content/php/atelier1d/ecrire_tableau_ecarts.php',
+        url: 'content/php/atelier1d/ecrire_tableau_regle.php',
         type: 'POST',
         data: {
             nom_referentiel: selectsocle.value
@@ -20,12 +20,12 @@ selectsocle.addEventListener('change', (event) => {
                 columns: {
                     identifier: [0, "id_regle"],
                     editable: [
-                        // [1, 'id_regle'],
+                        // [1, 'id_regle_affichage'],
                         // [2, 'titre'],
                         [3, 'etat_de_la_regle', '{"Non traité" : "Non traité" , "Conforme" : "Conforme" , "Partiellement conforme" : "Partiellement conforme" ,  "Non conforme" : "Non conforme", "Non applicable" : "Non applicable"}'],
                         [4, 'justification_ecart'],
-                        [5, 'nom'],
-                        [6, 'date']
+                        [5, 'responsable'],
+                        [6, 'dates']
                     ]
                 },
                 restoreButton: false,
