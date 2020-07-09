@@ -1,7 +1,6 @@
 <?php
-  session_start(); 
-  $getid_projet = $_SESSION['id_projet'];
-
+session_start();
+$getid_utilisateur = $_SESSION['id_utilisateur'];
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
@@ -14,15 +13,17 @@ try {
   die('Erreur :' . $e->getMessage());
 }
 
-$search_raci = $bdd->prepare("SELECT * FROM RACI where id_projet=?");
-$search_raci->bindParam(1, $getid_projet);
-$search_raci->execute();
+$search_projet = $bdd->prepare("SELECT DISTINCT id_projet,nom_projet,objectif_projet,cadre_temporel FROM projet");
+$search_projet->execute();
 
 $array = array();
 
-while($ecriture = $search_raci->fetch()){
+while($ecriture = $search_projet->fetch()){
     array_push($array,$ecriture);
 }
 
 echo json_encode($array)
+
 ?>
+
+

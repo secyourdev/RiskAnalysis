@@ -1,5 +1,5 @@
 <?php
-header('Location: ../../../compte.php');
+session_start();
 
   //Connexion à la base de donnee
   try{
@@ -119,6 +119,7 @@ header('Location: ../../../compte.php');
 
         $insertutilisateur->execute();
 
+        header('Location: ../../../index&'.$_SESSION['id_utilisateur']);
         ?>
         <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
         <?php

@@ -12,12 +12,12 @@ try {
   die('Erreur :' . $e->getMessage());
 }
 
-$search_grp_user = $bdd->prepare("SELECT * FROM utilisateur");//WHERE raci = ANTHONY
-$search_grp_user->execute();
+$search_user = $bdd->prepare("SELECT * FROM utilisateur");
+$search_user->execute();
 
 $array = array();
 
-while($ecriture = $search_grp_user->fetch()){
+while($ecriture = $search_user->fetch()){
     array_push($array,$ecriture);
 }
 

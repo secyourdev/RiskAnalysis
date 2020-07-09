@@ -21,6 +21,10 @@
   <!-- JS -->
   <script src="content/vendor/jquery/jquery.js"></script>
   <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
+	<link rel="icon" href="content/img/logo_cyber_risk_manager.png" type="image/png">
 </head>
 
 <body id="page-top">
@@ -345,11 +349,7 @@
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-              <a class="dropdown-item" href="#">
-                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                Profile
-              </a>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="parametres&<?php echo $_SESSION['id_utilisateur'];?>">
                 <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                 Paramètres
               </a>

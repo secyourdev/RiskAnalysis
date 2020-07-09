@@ -43,9 +43,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
 
     <!-- Fonts-->
     <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- CSS -->
     <link href="content/css/bootstrap.css" rel="stylesheet">
@@ -55,12 +53,15 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     <script src="content/vendor/jquery/jquery.js"></script>
     <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
+	<link rel="icon" href="content/img/logo_cyber_risk_manager.png" type="image/png">
 </head>
 
 <?php 
 if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur'])
 {
-  if(isset($userdroit['ecriture'])){
+  if(isset($userdroit['ecriture'])||$userinfo['type_compte']=='Administrateur Logiciel'){
 ?>
 
 <body id="page-top">
@@ -530,7 +531,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="parametres.php">
+                                <a class="dropdown-item" href="parametres&<?php echo $_SESSION['id_utilisateur'];?>">
                                     <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Paramètres
                                 </a>
@@ -584,302 +585,381 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         <!--NOM ETUDE-->
                                         <div class="form-group">
                                             <label class="titre_input" for="nom_etude">Nom</label>
-                                            <?php if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){
+                                            <?php if(isset($userdroit['ecriture'])){
+                                                    if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'){
                                             ?>
-                                            <input type="text"
-                                                class="perso_form shadow-none form-control form-control-user"
-                                                id="nom_etude" placeholder="Nom" required></input>
+                                                        <input type="text"
+                                                            class="perso_form shadow-none form-control form-control-user"
+                                                            id="nom_etude" placeholder="Nom" required>
+                                                        </input>
                                         </div>
-                                        <?php
-                                            }
-                                          else { 
-                                        ?>
-                                        <br/>
-                                        <label id="nom_etude" class="no_modification"></input>
+                                            <?php
+                                                    }
+                                                    else { 
+                                            ?>
+                                                        </br>
+                                                        <label id="nom_etude" class="no_modification"></input>
+                                        </div>
+                                            <?php
+                                                    }
+                                                }
+                                                else if($userinfo['type_compte']=='Administrateur Logiciel'){ 
+                                            ?>        
+                                                    <input type="text"
+                                                        class="perso_form shadow-none form-control form-control-user"
+                                                        id="nom_etude" placeholder="Nom" required>
+                                                    </input>
+                                        </div>
+                                            <?php
+                                                }
+                                            ?>
+
+                                        <!--OBJECTIF ETUDE-->
+                                        <div class="form-group">
+                                            <label class="titre_textarea" for="objectif_atteindre">Objectif à atteindre</label>
+                                            <?php if(isset($userdroit['ecriture'])){
+                                                    if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'){
+                                            ?>
+                                                        <textarea class="form-control perso_text_area" id="objectif_atteindre" rows="3"></textarea>
+                                        </div>
+                                            <?php
+                                                    }
+                                                    else { 
+                                            ?>
+                                                        </br>
+                                                        <label id="objectif_atteindre" class="no_modification"></input>
+                                        </div>
+                                            <?php
+                                                    }
+                                                }
+                                                else if($userinfo['type_compte']=='Administrateur Logiciel'){         
+                                            ?>
+                                                <textarea class="form-control perso_text_area" id="objectif_atteindre" rows="3"></textarea>
+                                        </div>
+                                            <?php
+                                                }
+                                            ?>                    
+                                        <!--CADRE TEMPOREL ETUDE-->
+                                        <div class="form-group">
+                                            <label class="titre_input" for="cadre_temporel">Cadre Temporel</label>
+                                            <?php if(isset($userdroit['ecriture'])){
+                                                    if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'){
+                                            ?>
+                                                        <input type="date" class="perso_form shadow-none form-control form-control-user"
+                                                        id="cadre_temporel" placeholder="Cadre temporel" required>
+                                        </div>
+                                            <?php
+                                                    }
+                                                    else { 
+                                            ?>
+                                                        </br>
+                                                        <label id="cadre_temporel" class="no_modification"></input>
+                                        </div>
+                                            <?php
+                                                    }
+                                                }
+                                                else if($userinfo['type_compte']=='Administrateur Logiciel'){       
+                                            ?>
+                                                <input type="date" class="perso_form shadow-none form-control form-control-user"
+                                                id="cadre_temporel" placeholder="Cadre temporel" required>
+                                        </div>
+                                            <?php
+                                                }
+                                            ?>  
+                                        <!--RISQUE ETUDE-->
+                                        <div class="form-group">
+                                            <label class="titre_input" for="respo_acceptation_risque">Personne responsable d'accepter
+                                                les risques résiduels au terme de l'étude</label>
+                                            <?php if(isset($userdroit['ecriture'])){
+                                                    if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'){
+                                            ?>
+                                                        <select class="form-control" id="respo_acceptation_risque">
+                                                            <option selected>...</option>
+                                                            <option>Directeur</option>
+                                                            <option>RSSI</option>
+                                                            <option>Responsable Informatique</option>
+                                                        </select>
+                                        </div>
+                                            <?php
+                                                    }
+                                                    else { 
+                                            ?>
+                                                    </br>
+                                                    <label id="respo_acceptation_risque" class="no_modification"></input>
+                                        </div>
+                                            <?php
+                                                    }
+                                                }
+                                                else if($userinfo['type_compte']=='Administrateur Logiciel'){       
+                                            ?>
+                                            <select class="form-control" id="respo_acceptation_risque">
+                                                <option selected>...</option>
+                                                <option>Directeur</option>
+                                                <option>RSSI</option>
+                                                <option>Responsable Informatique</option>
+                                            </select>
+                                        </div>
+                                            <?php
+                                                }
+                                            ?>  
+                                        <!--GROUPE D'UTILISATEUR-->
+                                        <div class="form-group">
+                                            <label class="titre_input" for="grp_user_1a">Groupe d'utilisateur</label>
+                                            <?php if(isset($userdroit['ecriture'])){
+                                                    if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'){
+                                            ?>
+                                                        <select class="form-control" name="nom_grp_utilisateur" id="grp_user_1a">
+                                                            <option value="" selected>...</option>
+                                                            <?php
+                                                            while($row = mysqli_fetch_array($result_grp_user))
+                                                                {
+                                                                    echo '
+                                                                    <option value="'.$row["nom_grp_utilisateur"].'">'.$row["nom_grp_utilisateur"].'</option>
+                                                                    ';
+                                                                }
+                                                            ?>
+                                                        </select>
+                                        </div>
+                                            <?php
+                                                    }
+                                                    else { 
+                                            ?>
+                                                        </br>
+                                                        <label id="grp_user_1a" class="no_modification"></input>
+                                        </div>
+                                            <?php
+                                                    }
+                                                }
+                                                else if($userinfo['type_compte']=='Administrateur Logiciel'){ 
+                                            ?>
+                                            <select class="form-control" name="nom_grp_utilisateur" id="grp_user_1a">
+                                                <option value="" selected>...</option>
+                                                <?php
+                                                while($row = mysqli_fetch_array($result_grp_user))
+                                                    {
+                                                        echo '
+                                                        <option value="'.$row["nom_grp_utilisateur"].'">'.$row["nom_grp_utilisateur"].'</option>
+                                                        ';
+                                                    }
+                                                ?>
+                                            </select>
+                                        </div>
+                                            <?php
+                                                }
+                                            ?>  
+                                    </form>
+                                    <img src="content/img/task.svg" class="img-fluid perso_img">
+
                                 </div>
-                                        <?php
-                                            }
-                                        ?>
-                                <!--OBJECTIF ETUDE-->
-                                <div class="form-group">
-                                    <label class="titre_textarea" for="objectif_atteindre">Objectif à atteindre</label>
-                                    <?php if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){
+                            </div>
+
+                            <!-- Area Card -->
+                            <!-- Acteurs -->
+                            <div class="card shadow mb-4 perso_card_half_screen" id=acteurs>
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0">Acteurs</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <?php if(isset($userdroit['ecriture'])){
+                                            if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'){
                                     ?>
-                                    <textarea class="form-control perso_text_area" id="objectif_atteindre"
-                                        rows="3"></textarea>
+                                                <form>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <label class="titre_input" for="user_1a">Utilisateur</label>
+                                                                <select class="form-control" name="nom_utilisateur" id="user_1a">
+                                                                    <option value="" selected>...</option>
+                                                                    <?php
+                                                                    while($row = mysqli_fetch_array($result_RACI_user))
+                                                                    {
+                                                                        echo '
+                                                                        <option value="'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'">'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'</option>
+                                                                        ';
+                                                                    }
+                                                                    ?>
+                                                                </select>
+                                                        </div>
+                                                        
+                                                        <div>
+                                                        <button type="button" id='ajouter_user' name="ajouter_user" class="btn perso_btn shadow-none">Ajouter</button>
+                                                    </fieldset>
+                                                </form>
+                                                </br>
+                                    <?php
+                                            }
+                                            else { 
+                                    ?>
+                                    <?php
+                                        }
+                                    }
+                                        else if($userinfo['type_compte']=='Administrateur Logiciel'){                                     
+                                    ?>
+                                            <form>
+                                                <fieldset>
+                                                    <div class="form-group">
+                                                        <label class="titre_input" for="user_1a">Utilisateur</label>
+                                                            <select class="form-control" name="nom_utilisateur" id="user_1a">
+                                                                <option value="" selected>...</option>
+                                                                <?php
+                                                                while($row = mysqli_fetch_array($result_RACI_user))
+                                                                {
+                                                                    echo '
+                                                                    <option value="'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'">'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'</option>
+                                                                    ';
+                                                                }
+                                                                ?>
+                                                            </select>
+                                                    </div>
+                                                    
+                                                    <div>
+                                                    <button type="button" id='ajouter_user' name="ajouter_user" class="btn perso_btn shadow-none">Ajouter</button>
+                                                </fieldset>
+                                            </form>
+                                            </br>
+                                    <?php
+                                        }
+                                    ?>   
+
+                                    <!--tableau-->
+                                    <div class="table-responsive">
+                                        <input type="text" class="rechercher_input" id="rechercher_acteur" placeholder="Rechercher">
+                                        <table id="editable_table" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Nom</th>
+                                                    <th>Prénom</th>
+                                                    <th>Poste</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                while($row = mysqli_fetch_array($acteur_choisi))
+                                                {
+                                                    echo '
+                                                    <tr>
+                                                    <td>'.$row["id_utilisateur"].'</td>
+                                                    <td>'.$row["nom"].'</td>
+                                                    <td>'.$row["prenom"].'</td>
+                                                    <td>'.$row["poste"].'</td>
+                                                    </tr>
+                                                    ';
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                                <?php
-                                    }
-                                  else { 
-                                ?>
-                                </br>
-                                <label id="objectif_atteindre" class="no_modification"></input>
                             </div>
-                                <?php
-                                    }
-                                ?>
-                            <!--CADRE TEMPOREL ETUDE-->
-                            <div class="form-group">
-                                <label class="titre_input" for="cadre_temporel">Cadre Temporel</label>
-                                <?php if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){
-                                ?>
-                                <input type="date" class="perso_form shadow-none form-control form-control-user"
-                                    id="cadre_temporel" placeholder="Cadre temporel" required>
+                        </div>
+
+
+                        <!-- Area Card -->
+                        <!-- RACI -->
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="row perso_no_margin">
+                                    <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                        <h6>RACI</h6>
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+
+                                    <div class="table-responsive">
+                                        <table id="raci" class="table table-bordered">
+                                            <thead>
+                                                <tr id='acteur_id_raci'>
+                                                    <th scope="col">#</th>
+                                                    <?php
+                                                    while($row = mysqli_fetch_array($RACI_id_user))
+                                                    {
+                                                        echo '
+                                                        <th scope="col">
+                                                            <div class="perso_vertical">'.$row["id_utilisateur"].'</div>
+                                                        </th>
+                                                        ';
+                                                    }
+                                                    ?>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <?php
+                                                    while($row = mysqli_fetch_array($RACI_user))
+                                                    {
+                                                        echo '
+                                                        <th scope="col">
+                                                            <div class="perso_vertical">'.$row["nom"].' <br> '.$row["prenom"].'</div>
+                                                        </th>
+                                                        ';
+                                                    }
+                                                    ?>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody class="raci_th">
+                                                <tr>
+                                                    <th name="1.a" scope="row">Activité 1.a - Cadrer l’étude</th>
+                                                </tr>
+                                                <tr>
+                                                    <th name="1.b" scope="row">Activité 1.b - Biens primordiaux/support</th>
+                                                </tr>
+                                                <tr>
+                                                    <th name="1.c" scope="row">Activité 1.c - Événement redoutés</th>
+                                                </tr>
+                                                <tr>
+                                                    <th name="1.d" scope="row">Activité 1.d - Les socles de sécurité</th>
+                                                </tr>
+                                                <tr>
+                                                    <th name="2.a" scope="row">Activité 2.a - Identifier les sources de risques et les
+                                                        objectifs</th>
+                                                </tr>
+                                                <tr>
+                                                    <th name="2.b" scope="row">Activité 2.b - Évaluer les couples sources de
+                                                        risque/objectifs visés</th>
+                                                </tr>
+                                                <tr>
+                                                    <th name="3.a" scope="row">Activité 3.a - Construire la cartographie des menaces
+                                                        numériques de l'écosystème et sélectionner les parties prenantes critiques</th>
+                                                </tr>
+                                                <tr>
+                                                    <th name="3.b" scope="row">Activité 3.b - Élaborer des scénarios stratégiques</th>
+                                                </tr>
+                                                <tr>
+                                                    <th name="3.c" scope="row">Activité 3.c - Définir des mesures de sécurité sur
+                                                        l'écosystème</th>
+                                                </tr>
+                                                <tr>
+                                                    <th name="4.a" scope="row">Activité 4.a - Élaborer les scénarios
+                                                        opérationnels</th>
+                                                </tr>
+                                                <tr>
+                                                    <th name="4.b" scope="row">Activité 4.b - Évaluer la vraisemblance des scénarios
+                                                        opérationnels</th>
+                                                </tr>
+                                                <tr>
+                                                    <th name="5.a" scope="row">Activité 5.a - Réaliser une synthèse des scénarios de
+                                                        risque</th>
+                                                </tr>
+                                                <tr>
+                                                    <th name="5.b" scope="row">Activité 5.b - Décider de la stratégie de traitement du
+                                                        risque et définir les mesures de sécurité</th>
+                                                </tr>
+                                                <tr>
+                                                    <th name="5.c" scope="row">Activité 5.c - Évaluer et documenter les risques
+                                                        résiduels</th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
-                                <?php
-                                    }
-                                  else { 
-                                ?>
-                            <br />
-                            <label id="cadre_temporel" class="no_modification"></input>
                         </div>
-                                <?php
-                                  }
-                                ?>
-                        <!--RISQUE ETUDE-->
-                        <div class="form-group">
-                            <label class="titre_input" for="respo_acceptation_risque">Personne responsable d'accepter
-                                les risques résiduels au terme de l'étude</label>
-                            <?php if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){
-                            ?>
-                            <select class="form-control" id="respo_acceptation_risque">
-                                <option selected>...</option>
-                                <option>Directeur</option>
-                                <option>RSSI</option>
-                                <option>Responsable Informatique</option>
-                            </select>
-                        </div>
-                            <?php
-                              }
-                              else { 
-                            ?>
-                        <br />
-                        <label id="respo_acceptation_risque" class="no_modification"></input>
                     </div>
-                            <?php
-                              }
-                            ?>
-                    <!--GROUPE D'UTILISATEUR-->
-                    <div class="form-group">
-                        <label class="titre_input" for="grp_user_1a">Groupe d'utilisateur</label>
-                        <?php if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){
-                        ?>
-                        <select class="form-control" name="nom_grp_utilisateur" id="grp_user_1a">
-                            <option value="" selected>...</option>
-                            <?php
-                              while($row = mysqli_fetch_array($result_grp_user))
-                                  {
-                                      echo '
-                                      <option value="'.$row["nom_grp_utilisateur"].'">'.$row["nom_grp_utilisateur"].'</option>
-                                      ';
-                                  }
-                            ?>
-                        </select>
-                    </div>
-                        <?php
-                            }
-                          else { 
-                        ?>
-                    <br />
-                    <label id="grp_user_1a" class="no_modification"></input>
                 </div>
-                        <?php
-                            }
-                        ?>
-                </form>
-                <img src="content/img/task.svg" class="img-fluid perso_img">
-
-            </div>
-        </div>
-
-        <!-- Area Card -->
-        <!-- Acteurs -->
-        <div class="card shadow mb-4 perso_card_half_screen" id=acteurs>
-            <!-- Card Header - Dropdown -->
-            <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0">Acteurs</h6>
-            </div>
-            <!-- Card Body -->
-            <div class="card-body">
-                <?php if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){
-                ?>
-                <form>
-                    <fieldset>
-                        <div class="form-group">
-                            <label class="titre_input" for="user_1a">Utilisateur</label>
-                            <?php if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){
-                            ?>
-                            <select class="form-control" name="nom_utilisateur" id="user_1a">
-                                <option value="" selected>...</option>
-                                <?php
-                                  while($row = mysqli_fetch_array($result_RACI_user))
-                                  {
-                                    echo '
-                                    <option value="'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'">'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'</option>
-                                    ';
-                                  }
-                                ?>
-                            </select>
-                        </div>
-                        <div>
-                          <button type="button" id='ajouter_user' name="ajouter_user" class="btn perso_btn shadow-none">Ajouter</button>
-                        </div>
-                            <?php
-                                }
-                              else { 
-                            ?>
-                        <br />
-                        <label id="user_1a" class="no_modification"></input>
-                      </div>
-                            <?php
-                                }
-                            ?>
-                    </fieldset>
-                </form>
-                </br>
-                            <?php
-                                }
-                            ?>
-
-            <!--tableau-->
-            <div class="table-responsive">
-                <input type="text" class="rechercher_input" id="rechercher_acteur" placeholder="Rechercher">
-                <table id="editable_table" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nom</th>
-                            <th>Prénom</th>
-                            <th>Poste</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                          while($row = mysqli_fetch_array($acteur_choisi))
-                          {
-                            echo '
-                            <tr>
-                            <td>'.$row["id_utilisateur"].'</td>
-                            <td>'.$row["nom"].'</td>
-                            <td>'.$row["prenom"].'</td>
-                            <td>'.$row["poste"].'</td>
-                            </tr>
-                            ';
-                          }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    </div>
-
-
-    <!-- Area Card -->
-    <!-- RACI -->
-    <div class="col-xl-12 col-lg-12">
-        <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown -->
-            <div class="row perso_no_margin">
-                <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <h6>RACI</h6>
-                </div>
-            </div>
-            <!-- Card Body -->
-            <div class="card-body">
-
-                <div class="table-responsive">
-                    <table id="raci" class="table table-bordered">
-                        <thead>
-                            <tr id='acteur_id_raci'>
-                                <th scope="col">#</th>
-                                <?php
-                                  while($row = mysqli_fetch_array($RACI_id_user))
-                                  {
-                                    echo '
-                                      <th scope="col">
-                                        <div class="perso_vertical">'.$row["id_utilisateur"].'</div>
-                                      </th>
-                                    ';
-                                  }
-                                ?>
-                            </tr>
-                            <tr>
-                                <th scope="col">#</th>
-                                <?php
-                                  while($row = mysqli_fetch_array($RACI_user))
-                                  {
-                                    echo '
-                                      <th scope="col">
-                                        <div class="perso_vertical">'.$row["nom"].' <br> '.$row["prenom"].'</div>
-                                      </th>
-                                    ';
-                                  }
-                                ?>
-                            </tr>
-                        </thead>
-
-                        <tbody class="raci_th">
-                            <tr>
-                                <th name="1.a" scope="row">Activité 1.a - Cadrer l’étude</th>
-                            </tr>
-                            <tr>
-                                <th name="1.b" scope="row">Activité 1.b - Biens primordiaux/support</th>
-                            </tr>
-                            <tr>
-                                <th name="1.c" scope="row">Activité 1.c - Événement redoutés</th>
-                            </tr>
-                            <tr>
-                                <th name="1.d" scope="row">Activité 1.d - Les socles de sécurité</th>
-                            </tr>
-                            <tr>
-                                <th name="2.a" scope="row">Activité 2.a - Identifier les sources de risques et les
-                                    objectifs</th>
-                            </tr>
-                            <tr>
-                                <th name="2.b" scope="row">Activité 2.b - Évaluer les couples sources de
-                                    risque/objectifs visés</th>
-                            </tr>
-                            <tr>
-                                <th name="3.a" scope="row">Activité 3.a - Construire la cartographie des menaces
-                                    numériques de l'écosystème et sélectionner les parties prenantes critiques</th>
-                            </tr>
-                            <tr>
-                                <th name="3.b" scope="row">Activité 3.b - Élaborer des scénarios stratégiques</th>
-                            </tr>
-                            <tr>
-                                <th name="3.c" scope="row">Activité 3.c - Définir des mesures de sécurité sur
-                                    l'écosystème</th>
-                            </tr>
-                            <tr>
-                                <th name="4.a" scope="row">Activité 4.a - Élaborer les scénarios
-                                    opérationnels</th>
-                            </tr>
-                            <tr>
-                                <th name="4.b" scope="row">Activité 4.b - Évaluer la vraisemblance des scénarios
-                                    opérationnels</th>
-                            </tr>
-                            <tr>
-                                <th name="5.a" scope="row">Activité 5.a - Réaliser une synthèse des scénarios de
-                                    risque</th>
-                            </tr>
-                            <tr>
-                                <th name="5.b" scope="row">Activité 5.b - Décider de la stratégie de traitement du
-                                    risque et définir les mesures de sécurité</th>
-                            </tr>
-                            <tr>
-                                <th name="5.c" scope="row">Activité 5.c - Évaluer et documenter les risques
-                                    résiduels</th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
     <!-- End of Main Content -->
 
     <!-- Footer -->
@@ -944,16 +1024,24 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <script src="content/js/modules/realtime.js"></script>
     <script src="content/js/modules/set_filter_sort_table.js"></script>
     <script> var sessionIdProjet = <?php echo $_SESSION['id_projet'];?>; </script>
-    <?php if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){?>
-    <script src="content/js/atelier/atelier1a.js"></script>
+    <?php if(isset($userdroit['ecriture'])){
+            if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'){
+    ?>
+                <script src="content/js/atelier/atelier1a.js"></script>
     <?php 
-  }
-  else{
-  ?>
-    <script src="content/js/atelier/atelier1a_no_modification.js"></script>
+            }
+            else{
+    ?>
+                <script src="content/js/atelier/atelier1a_no_modification.js"></script>
     <?php
-  }
-  ?>
+            }
+        }
+        else if($userinfo['type_compte']=='Administrateur Logiciel'){    
+    ?>
+        <script src="content/js/atelier/atelier1a.js"></script>
+    <?php
+        }
+    ?>
     <script src="content/js/modules/sort_table.js"></script>
 </body>
 <?php

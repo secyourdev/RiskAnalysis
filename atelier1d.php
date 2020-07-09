@@ -52,6 +52,10 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
   <!-- JS -->
   <script src="content/vendor/jquery/jquery.js"></script>
   <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
+	<link rel="icon" href="content/img/logo_cyber_risk_manager.png" type="image/png">
 </head>
 
 <?php 
@@ -424,11 +428,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="parametres&<?php echo $_SESSION['id_utilisateur'];?>">
                   <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
                   Paramètres
                 </a>
@@ -756,7 +756,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
                 <div class="form-group">
                   <label for="date-input">Date limite de la mise en application</label>
-                  <input class="form-control" type="date" name="date" id="date-input">
+                  <input class="form-control" type="date" name="dates" id="date-input">
                 </div>
                 <!-- bouton Ajouter -->
                 <div class="modal-footer perso_middle_modal_footer">
@@ -809,7 +809,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <script src="content/js/modules/set_filter_sort_table.js"></script>
     <script src="content/js/atelier/atelier1d.js"></script>
     <script src="content/js/modules/sort_table.js"></script>
-    <script src="content/js/modules/socle_pour_ecart.js"></script>
+    <script src="content/js/modules/socle_pour_regle.js"></script>
     <script src="content/js/modules/browse.js"></script>
     <script src="content/js/modules/parser.js"></script>
 </body>

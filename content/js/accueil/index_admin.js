@@ -110,7 +110,7 @@ $.ajax({
 
 /*----------------------------- CHARGEMENT DES PROJETS ----------------------------*/
 $.ajax({
-    url: 'content/php/accueil/selection_projet.php',
+    url: 'content/php/accueil/selection_projet_admin.php',
     type: 'POST',
     dataType: 'html',
     success: function (resultat) {
@@ -243,11 +243,7 @@ ajouter_user.addEventListener('click', (event) => {
             nom_grp_utilisateur: nomgrpuser.value
       },
       success: function (data) {
-        $('.modal-content').html('');
-        $('#ajout_user').on('hidden.bs.modal', function () {
-        });
-        $('#ajout_user').modal('hide');
-        console.log(data)
+          location.reload();
       }
     })
   });

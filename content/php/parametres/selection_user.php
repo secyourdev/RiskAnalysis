@@ -1,6 +1,6 @@
 <?php
-  session_start(); 
-  $getid_projet = $_SESSION['id_projet'];
+session_start(); 
+$getid_utilisateur = $_SESSION['id_utilisateur'];
 
 //Connexion à la base de donnee
 try {
@@ -14,13 +14,13 @@ try {
   die('Erreur :' . $e->getMessage());
 }
 
-$search_raci = $bdd->prepare("SELECT * FROM RACI where id_projet=?");
-$search_raci->bindParam(1, $getid_projet);
-$search_raci->execute();
+$search_user = $bdd->prepare("SELECT nom,prenom,poste,email,type_compte FROM utilisateur WHERE id_utilisateur=?");
+$search_user->bindParam(1, $getid_utilisateur);
+$search_user->execute();
 
 $array = array();
 
-while($ecriture = $search_raci->fetch()){
+while($ecriture = $search_user->fetch()){
     array_push($array,$ecriture);
 }
 
