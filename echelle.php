@@ -21,6 +21,10 @@
   <!-- JS -->
   <script src="content/vendor/jquery/jquery.js"></script>
   <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
+	<link rel="icon" href="content/img/logo_cyber_risk_manager.png" type="image/png">
 </head>
 
 <body id="page-top">

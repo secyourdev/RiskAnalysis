@@ -34,9 +34,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
 
     <!-- Fonts-->
     <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- CSS -->
     <link href="content/css/bootstrap.css" rel="stylesheet">
@@ -46,6 +44,9 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     <script src="content/vendor/jquery/jquery.js"></script>
     <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
+	<link rel="icon" href="content/img/logo_cyber_risk_manager.png" type="image/png">
 </head>
 
 <?php 

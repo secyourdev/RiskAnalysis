@@ -41,12 +41,20 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
   <title>CyberRiskManager | Atelier 5.b</title>
 
   <!-- Fonts-->
-  <link href="content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template-->
+  <!-- CSS -->
   <link href="content/css/bootstrap.css" rel="stylesheet">
   <link href="content/css/main.css" rel="stylesheet">
+
+  <!-- JS -->
+  <script src="content/vendor/jquery/jquery.js"></script>
+  <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
+	<link rel="icon" href="content/img/logo_cyber_risk_manager.png" type="image/png">
 </head>
 
 <?php 
