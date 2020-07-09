@@ -1,4 +1,6 @@
 <?php
+session_start();
+
   //Connexion à la base de donnee
   try{
     $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v14;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
@@ -117,6 +119,7 @@
 
         $insertutilisateur->execute();
 
+        header('Location: ../../../index&'.$_SESSION['id_utilisateur']);
         ?>
         <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
         <?php

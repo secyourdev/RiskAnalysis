@@ -243,7 +243,11 @@ ajouter_user.addEventListener('click', (event) => {
             nom_grp_utilisateur: nomgrpuser.value
       },
       success: function (data) {
-          location.reload();
+        $('.modal-content').html('');
+        $('#ajout_user').on('hidden.bs.modal', function () {
+        });
+        $('#ajout_user').modal('hide');
+        console.log(data)
       }
     })
   });
