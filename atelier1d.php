@@ -756,7 +756,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
                 <div class="form-group">
                   <label for="date-input">Date limite de la mise en application</label>
-                  <input class="form-control" type="date" name="date" id="date-input">
+                  <input class="form-control" type="date" name="dates" id="date-input">
                 </div>
                 <!-- bouton Ajouter -->
                 <div class="modal-footer perso_middle_modal_footer">
@@ -809,7 +809,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <script src="content/js/modules/set_filter_sort_table.js"></script>
     <script src="content/js/atelier/atelier1d.js"></script>
     <script src="content/js/modules/sort_table.js"></script>
-    <script src="content/js/modules/socle_pour_ecart.js"></script>
+    <script src="content/js/modules/socle_pour_regle.js"></script>
     <script src="content/js/modules/browse.js"></script>
     <script src="content/js/modules/parser.js"></script>
 </body>
