@@ -1,6 +1,7 @@
 <?php
 session_start();
-header('Location: ../../../atelier-3b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
+$get_id_projet = $_SESSION['id_projet'];
+// header('Location: ../../../atelier-3b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
 
 
 //Connexion à la base de donnee
@@ -27,12 +28,12 @@ $id_chemin_d_attaque = "id_chemin";
 
 
 $recupere = $bdd->prepare("SELECT scenario_strategique.id_scenario_strategique FROM scenario_strategique  WHERE scenario_strategique.nom_scenario_strategique = ?");
-$recuperepp = $bdd->prepare("SELECT id_partie_prenante FROM partie_prenante WHERE nom_partie_prenante = ?");
+$recuperepp = $bdd->prepare("SELECT id_partie_prenante FROM partie_prenante WHERE nom_partie_prenante = ? AND id_projet = ?");
 
 $insere = $bdd->prepare(
   'INSERT INTO 
   chemin_d_attaque_strategique 
-  (id_chemin_d_attaque_strategique,id_risque,nom_chemin_d_attaque_strategique,dependance_residuelle, penetration_residuelle, maturite_residuelle,confiance_residuelle, niveau_de_menance_residuelle, id_scenario_strategique, id_partie_prenante) 
+  (id_chemin_d_attaque_strategique,id_risque,nom_chemin_d_attaque_strategique,dependance_residuelle, penetration_residuelle, maturite_residuelle,confiance_residuelle, niveau_de_menace_residuelle, id_scenario_strategique, id_partie_prenante) 
   VALUES 
   (?, ?, ?, NULL, NULL, NULL, NULL, NULL, ? ,?)'
 );
@@ -55,8 +56,10 @@ if ($results["error"] === false && isset($_POST['validerchemin'])) {
   $id_scenario_strategique = $recupere->fetch();
 
   $recuperepp->bindParam(1, $nom_partie_prenante);
+  $recuperepp->bindParam(2, $get_id_projet);
   $recuperepp->execute();
   $id_partie_prenante = $recuperepp->fetch();
+  print $id_partie_prenante[0];
 
   $insere->bindParam(1, $id_chemin_d_attaque);
   $insere->bindParam(2, $id_risque);

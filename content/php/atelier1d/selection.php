@@ -4,7 +4,7 @@ $getid_projet = $_SESSION['id_projet'];
 
 $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v18");
 
-$query_socle = "SELECT * FROM socle_de_securite ORDER BY id_socle_securite ";//WHERE id_projet = $getid_projet
+$query_socle = "SELECT * FROM socle_de_securite WHERE id_projet = $getid_projet ORDER BY id_socle_securite ";
 
 // $query_regle =
 // "SELECT * FROM regle ORDER BY id_regle ASC";

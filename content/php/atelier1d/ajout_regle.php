@@ -1,7 +1,7 @@
 <?php
 session_start();
 $getid_projet = $_SESSION['id_projet'];
-// header('Location: ../../../atelier-1d&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet']);
+header('Location: ../../../atelier-1d&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet']);
 
 
 //Connexion à la base de donnee
