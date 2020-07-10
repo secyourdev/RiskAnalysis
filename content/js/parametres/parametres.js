@@ -8,6 +8,8 @@ var prenom = document.getElementById('prenom')
 var poste = document.getElementById('poste')
 var email = document.getElementById('email')
 
+var email_modif_mdp = document.getElementById('email_modif_mdp')
+
 var lenght_user
 /*------------------------- CHARGEMENT DES INFORMATIONS UTILISATEUR  --------------------*/
 $.ajax({
@@ -26,6 +28,7 @@ $.ajax({
         prenom.value=user_JSON[0][1]
         poste.value=user_JSON[0][2]
         email.value=user_JSON[0][3]
+        email_modif_mdp.value=user_JSON[0][3]
     },
     error: function (erreur) {
         alert('ERROR :' + erreur);

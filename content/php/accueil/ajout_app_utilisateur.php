@@ -95,7 +95,7 @@ session_start();
         $expediteur = 'ebios-rm@alwaysdata.net';
         $objet = 'Bienvenue sur RiskManager !'; // Objet du message
         $headers  = 'MIME-Version: 1.0' . "\n"; // Version MIME
-        $headers .= 'Content-type: text/html; charset=ISO-8859-1'."\n"; // l'en-tete Content-type pour le format HTML
+        $headers .= 'Content-type: text/html; charset=UTF-8'."\n"; // l'en-tete Content-type pour le format HTML
         $headers .= 'Reply-To: '.$expediteur."\n"; // Mail de reponse
         $headers .= 'From: "RiskManager"<'.$expediteur.'>'."\n"; // Expediteur
         $headers .= 'Delivered-to: '.$email."\n"; // Destinataire

@@ -26,7 +26,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     <meta name="description" content="RiskManager">
     <meta name="author" content="SecYourDev">
 
-    <title>RiskManager | Tableau de bord</title>
+    <title>RiskManager | Paramètres</title>
 
     <!-- Fonts-->
     <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -146,7 +146,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         <h6 class="m-0">Paramètres</h6>
                                     </div>
                                     <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                        <button type="button" class="btn perso_btn perso_btn_parametre_mdp shadow-none">Modifier le mot de passe</button>
+                                        <button type="button" data-toggle="modal" data-target="#modifier_mdp_user" class="btn perso_btn perso_btn_parametre_mdp shadow-none">Modifier le mot de passe</button>
                                         <button type="button" data-toggle="modal" data-target="#modifier_user" class="btn perso_btn perso_btn_parametre shadow-none">Modifier le profil</button>
                                     </div>
                                     <div class="card-header div_photo_user col-12 col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
@@ -190,7 +190,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         </a>
         
         <!-------------------------------------------------------------------------------------------------------------- 
-        --------------------------------------- modal creation d'un projet ---------------------------------------------
+        ------------------------------------------- modal modification du profil ---------------------------------------
         ---------------------------------------------------------------------------------------------------------------->
         <div class="modal fade" id="modifier_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -244,7 +244,61 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             </fieldset>
                         </form>
                     </div>
+                </div>
+            </div>
+        </div>
 
+        <!-------------------------------------------------------------------------------------------------------------- 
+        ------------------------------------- modal modification du mot de passe ---------------------------------------
+        ---------------------------------------------------------------------------------------------------------------->
+        <div class="modal fade" id="modifier_mdp_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modification du mot de passe</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body perso_modal_body">
+                        <form method="post" action="content/php/parametres/modification_mdp_user.php">
+                            <fieldset>
+                                <!--EMAIL-->
+                                <div class="form-group">
+                                    <label class="titre_input" for="email_modif_mdp">E-mail</label>
+                                    <input type="text" class="perso_form shadow-none form-control form-control-user"
+                                        name="email_modif_mdp" id="email_modif_mdp" placeholder="E-mail" readonly></input>
+                                </div>
+
+                                <!--Ancien Mot de passe-->
+                                <div class="form-group">
+                                    <label class="titre_input" for="ancien_mdp">Ancien mot de passe</label>
+                                    <input type="password" class="perso_form shadow-none form-control form-control-user"
+                                        name="ancien_mdp" id="ancien_mdp" placeholder="Ancien mot de passe" required></input>
+                                </div>
+
+                                <!--Nouveau mot de passe-->
+                                <div class="form-group">
+                                    <label class="titre_input" for="nouveau_mdp">Nouveau mot de passe</label>
+                                    <input type="password" class="perso_form shadow-none form-control form-control-user"
+                                        name="nouveau_mdp" id="nouveau_mdp" placeholder="Nouveau mot de passe" required></input>
+                                </div>
+                                
+                                <!--Confirmation nouveau Mot de passe-->
+                                <div class="form-group">
+                                    <label class="titre_input" for="confirmation_nouveau_mdp">Confirmez votre nouveau mot de passe</label>
+                                    <input type="password" class="perso_form shadow-none form-control form-control-user"
+                                        name="confirmation_nouveau_mdp" id="confirmation_nouveau_mdp" placeholder="Confirmez votre nouveau mot de passe" required></input>
+                                </div>
+
+                                <div class="modal-footer perso_middle_modal_footer">
+                                    <input type="submit" name="modifier_mdp_user" value="Modifier"
+                                        class="btn perso_btn shadow-none"></input>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

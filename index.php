@@ -213,11 +213,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             </div>
                         </div>
                     </div>
-                    </br></br>
+                    
 
-                    <div id="project_card" class="fondu">
-                        <div class="row" id="projets"> </div>
-                        
+                    <div id="project_card" class="fondu">                       
                         <?php if($userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){
                         ?>
                             <div class="text-center">
@@ -227,6 +225,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <?php
                             }
                         ?>
+                    </br>
+                    <div class="row" id="projets"> </div>
                     </div>
 
 

@@ -116,7 +116,7 @@ $.ajax({
     success: function (resultat) {
         var projet_JSON = JSON.parse(resultat);
         lenght_projet = projet_JSON.length;
-        for (let i = 0; i < lenght_projet; i++) {
+        for (let i = lenght_projet-1; i >= 0; i--) {
             var projets = document.getElementById('projets');
 
             var div1 = document.createElement('div');
@@ -164,7 +164,10 @@ $.ajax({
             label.innerHTML = projet_JSON[i][2]
 
             var label2 = document.createElement('label')
-            label2.innerHTML = 'Date de fin du projet : A définir'
+            if(projet_JSON[i][3]==null)
+                label2.innerHTML = 'Date de fin du projet : A définir'
+            else 
+                label2.innerHTML = 'Date de fin du projet : ' + projet_JSON[i][3]
 
             var br = document.createElement('br')
 

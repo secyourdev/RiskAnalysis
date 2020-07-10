@@ -22,7 +22,8 @@ body {
     --reverse-font-color         : #fff;
     --shadow-color               : rgba(0, 0, 0, 0.2);
     --top-bar-color              : #394C7A;
-
+    --red                        : #B10505;
+    --red_hover                  : #790505;
     /* fff mais transparent avec un A à .4 */
     --reverse-font-color-fainted  : #ffffff66;
     /* fff mais transparent avec un A à .8*/
@@ -48,6 +49,8 @@ body {
     --reverse-font-color         : #EAF1EB;
     --shadow-color               : rgba(0, 0, 0, 0.2);
     --top-bar-color              : #fff;
+    --red                        : #FF6565; 
+    --red_hover                  : #fa9494; 
 
     /* fff mais transparent avec un A à .4 */
     --reverse-font-color-fainted  : #eaf1eb66;
@@ -503,14 +506,14 @@ h6 {
 
 .perso_btn_parametre_mdp {
     color: var(--reverse-font-color);
-    background-color: #b10505; /*Couleur à revoir*/
-    border-color: #b10505;
+    background-color: var(--red);
+    border-color: var(--red);
 }
 
 .perso_btn_parametre_mdp:hover {
     color: var(--reverse-font-color);
-    background-color: #790505;
-    border-color: #790505;
+    background-color: var(--red_hover);
+    border-color: var(--red_hover);
 }
 
 .perso_border {
