@@ -1,4 +1,5 @@
 <?php
+$getid_projet = intval($_GET['id_projet']);
 $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v18");
 //affichage tableau partie prenante
 $query = "SELECT * FROM partie_prenante";
