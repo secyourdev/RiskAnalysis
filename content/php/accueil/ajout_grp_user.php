@@ -3,7 +3,11 @@
 session_start();
   //Connexion à la base de donnee
   try{
+<<<<<<< HEAD
     $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+=======
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v17;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+>>>>>>> origin/Guillaume
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
   }
 

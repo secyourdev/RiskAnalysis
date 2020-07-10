@@ -3,7 +3,11 @@ session_start();
 
 //Connexion à la base de donnee
 try{
+<<<<<<< HEAD
     $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+=======
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v17;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+>>>>>>> origin/Guillaume
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 }
 
@@ -528,7 +532,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <!-- Card Header - Dropdown -->
                 <div class="row perso_no_margin">
                   <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <h6>Événements redoutés</h6>
+                    <h6>Cartographie des événements redoutés</h6>
                   </div>
                 </div>
                 <!-- Card Body -->

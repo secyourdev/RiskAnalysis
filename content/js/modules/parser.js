@@ -42,7 +42,7 @@ $("#file_submit").click(function () {
                     }
                 });
             });
-            location.reload();
+            // location.reload();
         }
     })
 });

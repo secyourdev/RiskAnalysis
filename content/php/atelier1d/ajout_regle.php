@@ -1,13 +1,13 @@
 <?php
 session_start();
 $getid_projet = $_SESSION['id_projet'];
-header('Location: ../../../atelier-1d&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet']);
+// header('Location: ../../../atelier-1d&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet']);
 
 
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v15;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -31,9 +31,10 @@ print '<br>';
 $etat_de_la_regle = $_POST['etat_de_la_regle'];
 $justification_ecart = $_POST['justification_ecart'];
 $responsable = $_POST['nom_responsable_regle'];
-$dates = $_POST['date'];
+$dates = $_POST['dates'];
+print $dates;
 
-$recupere_id_socle = $bdd->prepare("SELECT id_socle_securite FROM socle_de_securite WHERE socle_de_securite.nom_referentiel = ? AND id_atelier = '1' AND id_projet = $getid_projet");
+$recupere_id_socle = $bdd->prepare("SELECT id_socle_securite FROM socle_de_securite WHERE socle_de_securite.nom_referentiel = ? AND id_atelier = '1.d' AND id_projet = $getid_projet");
 
 // $insere_regle = $bdd->prepare("INSERT INTO regle(id_regle, titre, regle.description, etat_de_la_regle, id_socle_securite) VALUES (?,?,'',?,?)");
 // $recupere_id_regle = $bdd->prepare("SELECT id_regle FROM regle WHERE titre = ?, id_socle_securite = ?");

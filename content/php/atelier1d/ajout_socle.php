@@ -7,7 +7,7 @@ header('Location: ../../../atelier-1d&' . $_SESSION['id_utilisateur'] . '&' . $_
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v15;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -25,7 +25,7 @@ $etat_d_application = $_POST['etat_d_application'];
 $etat_de_la_conformite = $_POST['commentaire'];
 
 $id_socle_securite = "id_socle_securite";
-$id_atelier = "1";
+$id_atelier = "1.d";
 
 $insere = $bdd->prepare("INSERT INTO socle_de_securite(id_socle_securite, type_referentiel, nom_referentiel, etat_d_application, etat_de_la_conformite, id_atelier, id_projet) VALUES (?,?,?,?,?,?,?)");
 

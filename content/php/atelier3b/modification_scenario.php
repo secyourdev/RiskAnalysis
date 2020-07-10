@@ -35,7 +35,7 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
 }
 if ($input["action"] === 'delete') {
     $query = "
-    DELETE FROM partie_prenante 
+    DELETE FROM scenario_strategique 
     WHERE id_scenario_strategique = '".$input["id_scenario_strategique"]."'
     ";
     mysqli_query($connect, $query);

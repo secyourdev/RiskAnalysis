@@ -712,7 +712,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               </div>
 
               <div class="form-group col-12">
-                <label for="Select_source_de_risque">ID de la source de risque</label>
+                <label for="Select_source_de_risque">Source de risque</label>
                 <select class="form-control" name="id_source_de_risque" id="Select_source_de_risque">
                   <option value="" selected>...</option>
                   <?php
@@ -727,7 +727,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               </div>
 
               <div class="form-group col-12">
-                <label for="Select_evenement_redoute">ID événement redouté</label>
+                <label for="Select_evenement_redoute">Événement redouté</label>
                 <select class="form-control" name="id_evenement_redoute" id="Select_evenement_redoute">
                   <option value="" selected>...</option>
                   <?php
