@@ -1,5 +1,6 @@
 /*------------------------------- VARIABLES ----------------------------------*/
 var nom_etude = document.getElementById('nom_etude');
+var description_etude = document.getElementById('description_etude')
 var objectif_atteindre = document.getElementById('objectif_atteindre');
 var cadre_temporel = document.getElementById('cadre_temporel');
 
@@ -8,7 +9,6 @@ var label_cadre_temporel = document.getElementById('cadre_temporel').previousSib
 var raci = document.getElementById('raci')
 var acteur_id_raci = document.getElementById('acteur_id_raci')
 var respo_acceptation_risque = document.getElementById('respo_acceptation_risque')
-var grp_user_1a = document.getElementById('grp_user_1a')
 var find_acteur_id;
 var find_atelier_num;
 var find_raci_value;
@@ -90,18 +90,19 @@ function get_database_project_info(){
             sessionIdProjet=sessionIdProjet-1
 
             nom_etude.innerText = projet_info[sessionIdProjet][1]
-            objectif_atteindre.innerText = projet_info[sessionIdProjet][2]
+            description_etude.innerText = projet_info[sessionIdProjet][2]
+            objectif_atteindre.innerText = projet_info[sessionIdProjet][3]
 
-            if(projet_info[sessionIdProjet][3]=="Directeur")
+            if(projet_info[sessionIdProjet][4]=="Directeur")
                 respo_acceptation_risque.innerText="Directeur"
-            else if(projet_info[sessionIdProjet][3]=="RSSI")
+            else if(projet_info[sessionIdProjet][4]=="RSSI")
                 respo_acceptation_risque.innerText="RSSI"
-            else 
+            else if(projet_info[sessionIdProjet][4]=="Responsable Informatique")
                 respo_acceptation_risque.innerText="Responsable Informatique"
+            else 
+                respo_acceptation_risque.innerText="A définir"
                       
-            cadre_temporel.innerText = projet_info[sessionIdProjet][4]
-
-            grp_user_1a.innerText=projet_info[sessionIdProjet][6]
+            cadre_temporel.innerText = projet_info[sessionIdProjet][5]
             
             activate_label(nom_etude.innerText,label_nom_etude)
             activate_label(cadre_temporel.innerText,label_cadre_temporel)

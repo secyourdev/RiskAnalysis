@@ -13,7 +13,7 @@ try {
   die('Erreur :' . $e->getMessage());
 }
 
-$search_projet = $bdd->prepare("SELECT DISTINCT id_projet,nom_projet,objectif_projet,cadre_temporel FROM projet");
+$search_projet = $bdd->prepare("SELECT DISTINCT id_projet,nom_projet,description_projet,cadre_temporel FROM projet");
 $search_projet->execute();
 
 $array = array();

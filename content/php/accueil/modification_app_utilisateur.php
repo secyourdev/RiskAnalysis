@@ -3,16 +3,18 @@
 $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v14");
 
 $input = filter_input_array(INPUT_POST);
+
+$results["error"] = false;
+$results["message"] = [];
+
+
 if($input["action"] === 'edit' && $results["error"] === false){
     $nom = mysqli_real_escape_string($connect, $input["nom"]);
     $prenom = mysqli_real_escape_string($connect, $input["prenom"]);
     $poste = mysqli_real_escape_string($connect, $input["poste"]);
     $email = mysqli_real_escape_string($connect, $input["email"]);
     $type_compte = mysqli_real_escape_string($connect, $input["type_compte"]);
-
-    $results["error"] = false;
-    $results["message"] = [];
-
+    
     // Verification du nom
     if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom)){
         $results["error"] = true;
@@ -70,7 +72,7 @@ if($input["action"] === 'edit' && $results["error"] === false){
         ";
 
         mysqli_query($connect, $query);
-    }
+}
 
 if($input["action"] === 'delete'){
     $query = "

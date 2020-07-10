@@ -614,6 +614,32 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                 }
                                             ?>
 
+                                        <!--DESCRIPTION ETUDE-->
+                                        <div class="form-group">
+                                            <label class="titre_textarea" for="description_etude">Description</label>
+                                            <?php if(isset($userdroit['ecriture'])){
+                                                    if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'){
+                                            ?>
+                                                        <textarea class="form-control perso_text_area" id="description_etude" rows="3"></textarea>
+                                        </div>
+                                            <?php
+                                                    }
+                                                    else { 
+                                            ?>
+                                                        </br>
+                                                        <label id="description_etude" class="no_modification"></input>
+                                        </div>
+                                            <?php
+                                                    }
+                                                }
+                                                else if($userinfo['type_compte']=='Administrateur Logiciel'){         
+                                            ?>
+                                                <textarea class="form-control perso_text_area" id="description_etude" rows="3"></textarea>
+                                        </div>
+                                            <?php
+                                                }
+                                            ?>                            
+
                                         <!--OBJECTIF ETUDE-->
                                         <div class="form-group">
                                             <label class="titre_textarea" for="objectif_atteindre">Objectif à atteindre</label>
@@ -697,51 +723,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                 <option>Directeur</option>
                                                 <option>RSSI</option>
                                                 <option>Responsable Informatique</option>
-                                            </select>
-                                        </div>
-                                            <?php
-                                                }
-                                            ?>  
-                                        <!--GROUPE D'UTILISATEUR-->
-                                        <div class="form-group">
-                                            <label class="titre_input" for="grp_user_1a">Groupe d'utilisateur</label>
-                                            <?php if(isset($userdroit['ecriture'])){
-                                                    if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'){
-                                            ?>
-                                                        <select class="form-control" name="nom_grp_utilisateur" id="grp_user_1a">
-                                                            <option value="" selected>...</option>
-                                                            <?php
-                                                            while($row = mysqli_fetch_array($result_grp_user))
-                                                                {
-                                                                    echo '
-                                                                    <option value="'.$row["nom_grp_utilisateur"].'">'.$row["nom_grp_utilisateur"].'</option>
-                                                                    ';
-                                                                }
-                                                            ?>
-                                                        </select>
-                                        </div>
-                                            <?php
-                                                    }
-                                                    else { 
-                                            ?>
-                                                        </br>
-                                                        <label id="grp_user_1a" class="no_modification"></input>
-                                        </div>
-                                            <?php
-                                                    }
-                                                }
-                                                else if($userinfo['type_compte']=='Administrateur Logiciel'){ 
-                                            ?>
-                                            <select class="form-control" name="nom_grp_utilisateur" id="grp_user_1a">
-                                                <option value="" selected>...</option>
-                                                <?php
-                                                while($row = mysqli_fetch_array($result_grp_user))
-                                                    {
-                                                        echo '
-                                                        <option value="'.$row["nom_grp_utilisateur"].'">'.$row["nom_grp_utilisateur"].'</option>
-                                                        ';
-                                                    }
-                                                ?>
                                             </select>
                                         </div>
                                             <?php

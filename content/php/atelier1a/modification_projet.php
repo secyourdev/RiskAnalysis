@@ -24,6 +24,17 @@ if(isset($_POST['nom_etude'])){
     }
 }
 
+if(isset($_POST['description_etude'])){
+  $description_etude = $_POST['description_etude'];
+  $update_projet = $bdd->prepare("UPDATE projet SET description_projet = ? WHERE id_projet=?");
+  $update_projet->bindParam(1, $description_etude);
+  $update_projet->bindParam(2, $getid_projet);
+  if(preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $description_etude)){
+    $update_projet->execute();
+  }
+}
+
+
 if(isset($_POST['objectif_atteindre'])){
     $objectif_atteindre = $_POST['objectif_atteindre'];
     $update_projet = $bdd->prepare("UPDATE projet SET objectif_projet = ? WHERE id_projet=?");

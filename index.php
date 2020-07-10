@@ -426,32 +426,11 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         name="nom_etude" id="nom_etude" placeholder="Nom" required></input>
                                 </div>
 
-                                <!--OBJECTIF ETUDE-->
+                                <!--DESCRIPTION ETUDE-->
                                 <div class="form-group">
-                                    <label class="titre_textarea" for="objectif_atteindre">Objectif à atteindre</label>
-                                    <textarea class="form-control perso_text_area" name="objectif_atteindre"
-                                        id="objectif_atteindre" rows="3"></textarea>
-                                </div>
-
-                                <!--CADRE TEMPOREL ETUDE-->
-                                <div class="form-group">
-                                    <label class="titre_input" for="cadre_temporel">Cadre Temporel</label>
-                                    <input type="date" class="perso_form shadow-none form-control form-control-user"
-                                        name="cadre_temporel" id="cadre_temporel" placeholder="Cadre temporel" required>
-                                </div>
-
-                                <!--RISQUE ETUDE-->
-                                <div class="form-group">
-                                    <label class="titre_input" for="respo_acceptation_risque">Personne responsable
-                                        d'accepter les risques résiduels au terme de l'étude</label>
-                                    <input type="text" class="perso_arrow perso_form shadow-none form-control"
-                                        list="liste_respo_acceptation_risque" name="respo_acceptation_risque"
-                                        placeholder="..." required>
-                                    <datalist id="liste_respo_acceptation_risque">
-                                        <option>Directeur</option>
-                                        <option>RSSI</option>
-                                        <option>Responsable Informatique</option>
-                                    </datalist>
+                                    <label class="titre_textarea" for="description_etude">Description</label>
+                                    <textarea class="form-control perso_text_area" name="description_etude"
+                                        id="description_etude" rows="3"></textarea>
                                 </div>
 
                                 <!--GROUPE UTILISATEUR-->
