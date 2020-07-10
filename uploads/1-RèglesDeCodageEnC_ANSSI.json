@@ -23,8 +23,8 @@
         "Description": "Les options utilisées pour la compilation doivent être précisément définies pour l’ensemble des sources d’un logiciel. Ces options doivent notamment fixer précisément :\n- la version du standard C utilisée (par exemple C99 ou encore C90) ;\n- le nom et la version du compilateur utilisé ;"
       },
       {
-        "id": "RÈGLE — Utiliser des options de durcissement",
-        "Titre": "5",
+        "id": "5",
+        "Titre": "RÈGLE — Utiliser des options de durcissement",
         "Description": "L’utilisation d’options de durcissement est obligatoire que ce soit pour imposer la génération d’exécutables relocalisables, une randomization d’adresses efficace ou la protection contre le dépassement de pile entre autres."
       },
       {

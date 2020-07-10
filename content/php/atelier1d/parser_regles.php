@@ -10,7 +10,7 @@ use function PHPSTORM_META\type;
 
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v15;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -75,7 +75,7 @@ if ($fileType != "json") {
 
 
 
-  $recupere_id_socle_securite = $bdd->prepare("SELECT id_socle_securite FROM socle_de_securite WHERE nom_referentiel = ? AND id_atelier = '1' AND id_projet = $getid_projet");
+  $recupere_id_socle_securite = $bdd->prepare("SELECT id_socle_securite FROM socle_de_securite WHERE nom_referentiel = ? AND id_atelier = '1.d' AND id_projet = $getid_projet");
 
   //trouve le socle
   $type_referentiel = array_key_first($data);
@@ -84,7 +84,7 @@ if ($fileType != "json") {
   // print '<br />';
 
   //recupere l'id du socle pour savoir s'il existe deja
-  $recupere_exist_socle = $bdd->prepare("SELECT * FROM socle_de_securite WHERE nom_referentiel = ? AND id_atelier = '1' AND id_projet = $getid_projet");
+  $recupere_exist_socle = $bdd->prepare("SELECT * FROM socle_de_securite WHERE nom_referentiel = ? AND id_atelier = '1.d' AND id_projet = $getid_projet");
   $recupere_exist_socle->bindParam(1, $nom_referentiel);
   $recupere_exist_socle->execute();
   $exist_socle = $recupere_exist_socle->fetch();
@@ -103,7 +103,7 @@ if ($fileType != "json") {
             id_atelier,
             id_projet
           ) 
-          VALUES (?, ?, ?, NULL, NULL, "1", ?)'
+          VALUES (?, ?, ?, NULL, NULL, "1.d", ?)'
     );
     //insere le socle
     $insere_socle->bindParam(1, $id_socle_securite);

@@ -452,7 +452,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
               <!-- Begin Page Content -->
               <div class="container-fluid">
                 <!-- Content Row -->
-                <div class="row">
+                <div class="row fondu">
                   <!-- Area Card -->
                   <div class="col-xl col-lg">
                     <div class="card shadow mb-4">
@@ -471,9 +471,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div class="row">
+
 
                   <!-- Area Card -->
                   <div class="col-xl-12 col-lg-12">
@@ -563,7 +562,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               }
                               ?>
 
-                            
+
 
 
 
@@ -590,7 +589,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       </div>
                     </div>
                   </div>
-
 
                 </div>
 
