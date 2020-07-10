@@ -1,6 +1,6 @@
 <?php
 //action.php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v14");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v17");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -25,8 +25,7 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
     $query = "
     UPDATE chemin_d_attaque_strategique 
     SET 
-    chemin_d_attaque_strategique = '" . $chemin_d_attaque_strategique . "',
-    id_scenario_strategique = (SELECT scenario_strategique.id_scenario_strategique FROM scenario_strategique  WHERE scenario_strategique.nom_scenario_strategique ='" . $input['nom_scenario_strategique'] . "')
+    nom_chemin_d_attaque_strategique = '" . $chemin_d_attaque_strategique . "'
     WHERE id_chemin_d_attaque_strategique = '" . $input["id_chemin_d_attaque_strategique"] . "'
     ";
     echo $query;
