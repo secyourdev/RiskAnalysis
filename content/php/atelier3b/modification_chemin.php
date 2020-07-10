@@ -35,7 +35,7 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
 }
 if ($input["action"] === 'delete') {
     $query = "
-    DELETE FROM partie_prenante 
+    DELETE FROM chemin_d_attaque_strategique 
     WHERE id_chemin_d_attaque_strategique = '" . $input["id_chemin_d_attaque_strategique"] . "'
     ";
     mysqli_query($connect, $query);

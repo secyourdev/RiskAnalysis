@@ -1,6 +1,6 @@
 <?php
-// session_start();
-$getid_projet = intval($_GET['id_projet']);
+session_start();
+$getid_projet = $_SESSION['id_projet'];
 header('Content-Type: application/json');
 
 $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v14");
@@ -11,7 +11,7 @@ $result_SROV = mysqli_query($connect, $query_SROV);
 
 $data_SROV = array();
 foreach ($result_SROV as $row) {
-  $SROV = ($row['description_source_de_risque'] . "/" . $row['objectif_vise']);
+  $SROV = ($row['description_source_de_risque'] . " / " . $row['objectif_vise']);
   if ($row['pertinence'] === "Faible"){
     $pertinence = "1";
   }

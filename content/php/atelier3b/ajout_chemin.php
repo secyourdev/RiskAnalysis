@@ -1,4 +1,5 @@
 <?php
+session_start();
 header('Location: ../../../atelier-3b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
 
 

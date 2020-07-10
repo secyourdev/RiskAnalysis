@@ -22,7 +22,9 @@ $results["message"] = [];
 $nom_scenario_strategique = $_POST['nom_scenario_strategique'];
 $id_source_de_risque = $_POST['id_source_de_risque'];
 $id_evenement_redoute = $_POST['id_evenement_redoute'];
+// A ENLEVER DANS LES PROCHAINES VERSIONS DE LA BDD
 $id_partie_prenante = NULL;
+
 $id_atelier = '3.b';
 $id_projet = $_SESSION['id_projet'];
 $id_scenario = 'id_scenario';
