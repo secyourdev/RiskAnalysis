@@ -16,6 +16,8 @@ var projets = document.getElementById('projets')
 var button_add_user_in_grp = document.getElementById('button_add_user_in_grp')
 var ajouter_user = document.getElementById('ajouter_user')
 
+//var reinitialiser_mdp = document.getElementById('reinitialiser_mdp')
+
 button_add_user_in_grp.style.display='none'
 grp_user_card.style.display="none"
 apps_card.style.display="none"
@@ -250,3 +252,22 @@ ajouter_user.addEventListener('click', (event) => {
       }
     })
   });
+
+var lenght_reinitialiser_mdp = reinitialiser_mdp.length;
+console.log(lenght_reinitialiser_mdp)
+for(let i=0;i<lenght_reinitialiser_mdp;i++){
+  reinitialiser_mdp[i].addEventListener('click',function(){
+    console.log(reinitialiser_mdp[i].parentNode.parentNode.id);
+
+    $.ajax({
+        url: 'content/php/accueil/reinitialiser_mdp.php',
+        type: 'POST',
+        data: {
+              id_utilisateur: reinitialiser_mdp[i].parentNode.parentNode.id
+        },
+        success: function (data) {
+            location.reload();
+        }
+      })
+  });
+}
