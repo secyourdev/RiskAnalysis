@@ -603,15 +603,15 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       </thead>
                       <tbody>
                         <?php
-                        while ($row = mysqli_fetch_array($result)) {
+                        while ($row = mysqli_fetch_array($result_mesure)) {
                           echo '
                         <tr>
                         <td>' . $row["id_chemin_d_attaque_strategique"] . '</td>
                         <td>' . $row["nom_partie_prenante"] . '</td>
-                        <td>' . $row["chemin_d_attaque_strategique"] . '</td>
-                        <td>' . $row["regles"] . '</td>
+                        <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
+                        <td>' . $row["description"] . '</td>
                         <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
-                        <td>' . $row["niveau_de_menance_residuelle"] . '</td>
+                        <td>' . $row["niveau_de_menace_residuelle"] . '</td>
                         </tr>
                         ';
                         }
@@ -689,7 +689,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </div>
                 <div class="form-group col-6">
                   <label for="chemins">Chemin d'attaque stratégique</label>
-                  <select class="form-control" id="chemins" nom="chemins">
+                  <select class="form-control" id="chemins" name="chemins">
                     <option value="" selected>Choisissez une partie prenante</option>
                   </select>
                 </div>
@@ -710,8 +710,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                   <script src="content/js/modules/regles.js"></script>
                 </div>
                 <div class="form-group col-6">
-                  <label for="chemins">Mesure de sécurité</label>
-                  <select class="form-control" id="mesure" nom="mesure">
+                  <label for="mesure">Mesure de sécurité</label>
+                  <select class="form-control" id="mesure" name="mesure">
                     <option value="" selected>Choisissez un référentiel</option>
                   </select>
                 </div>
@@ -746,16 +746,16 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     <div>
                       <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Ressources">
                         <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="penetration" autocomplete="off"> 1
+                          <input type="radio" name="penetration" autocomplete="off" value="1"> 1
                         </label>
                         <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="penetration" autocomplete="off"> 2
+                          <input type="radio" name="penetration" autocomplete="off" value="2"> 2
                         </label>
                         <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="penetration" autocomplete="off"> 3
+                          <input type="radio" name="penetration" autocomplete="off" value="3"> 3
                         </label>
                         <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="penetration" autocomplete="off"> 4
+                          <input type="radio" name="penetration" autocomplete="off" value="4"> 4
                         </label>
                       </div>
                     </div>
@@ -768,16 +768,16 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
                       <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Activité">
                         <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="maturite" autocomplete="off"> 1
+                          <input type="radio" name="maturite" autocomplete="off" value="1"> 1
                         </label>
                         <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="maturite" autocomplete="off"> 2
+                          <input type="radio" name="maturite" autocomplete="off" value="2"> 2
                         </label>
                         <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="maturite" autocomplete="off"> 3
+                          <input type="radio" name="maturite" autocomplete="off" value="3"> 3
                         </label>
                         <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="maturite" autocomplete="off"> 4
+                          <input type="radio" name="maturite" autocomplete="off" value="4"> 4
                         </label>
                       </div>
                     </div>
@@ -787,16 +787,16 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     <div>
                       <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Choix">
                         <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="confiance" autocomplete="off"> 1
+                          <input type="radio" name="confiance" autocomplete="off" value="1"> 1
                         </label>
                         <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="confiance" autocomplete="off"> 2
+                          <input type="radio" name="confiance" autocomplete="off" value="2"> 2
                         </label>
                         <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="confiance" autocomplete="off"> 3
+                          <input type="radio" name="confiance" autocomplete="off" value="3"> 3
                         </label>
                         <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" name="confiance" autocomplete="off"> 4
+                          <input type="radio" name="confiance" autocomplete="off" value="4"> 4
                         </label>
                       </div>
                     </div>

@@ -32,16 +32,20 @@ $result_scenario_strategique = mysqli_query($connect, $query_scenario_strategiqu
 //tableau mesures
 $query_mesure =
 "SELECT 
-chemin_d_attaque_strategique.id_chemin_d_attaque_strategique, 
-partie_prenante.nom_partie_prenante, 
-chemin_d_attaque_strategique.chemin_d_attaque_strategique, 
-referentiel.regles, 
-partie_prenante.niveau_de_menace_partie_prenante, 
-chemin_d_attaque_strategique.niveau_de_menance_residuelle 
-FROM partie_prenante, chemin_d_attaque_strategique, referentiel, scenario_strategique 
-WHERE chemin_d_attaque_strategique.id_scenario_strategique = scenario_strategique.id_scenario_strategique 
-AND scenario_strategique.id_partie_prenante = partie_prenante.id_partie_prenante 
-ORDER BY id_chemin_d_attaque_strategique ASC";
+chemin_d_attaque_strategique.id_chemin_d_attaque_strategique,
+nom_partie_prenante, 
+nom_chemin_d_attaque_strategique,
+regle.description, 
+niveau_de_menace_partie_prenante,
+niveau_de_menace_residuelle
+FROM chemin_d_attaque_strategique
+INNER JOIN comporter_3
+ON chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = comporter_3.id_chemin_d_attaque_strategique
+INNER JOIN regle
+ON regle.id_regle = comporter_3.id_regle
+INNER JOIN partie_prenante
+ON chemin_d_attaque_strategique.id_partie_prenante = partie_prenante.id_partie_prenante
+WHERE id_projet = $getid_projet";
 
 $result_mesure = mysqli_query($connect, $query_mesure);
 

@@ -26,6 +26,10 @@ $dependance = $_POST['dependance'];
 $penetration = $_POST['penetration'];
 $maturite = $_POST['maturite'];
 $confiance = $_POST['confiance'];
+echo $dependance;
+echo $penetration;
+echo $maturite;
+echo $confiance;
 $id_atelier = '3.c';
 
 $recupere_regle = $bdd->prepare("SELECT id_regle_affichage FROM regle WHERE id_regle = ?");
@@ -33,7 +37,7 @@ $recupere_regle = $bdd->prepare("SELECT id_regle_affichage FROM regle WHERE id_r
 $recupere_risque = $bdd->prepare("SELECT id_risque FROM chemin_d_attaque_strategique WHERE id_chemin_d_attaque_strategique = ?");
 
 $inserecomporte = $bdd->prepare(
-  'INSERT INTO comporter3 (
+  'INSERT INTO comporter_3 (
     id_regle, 
     id_regle_affichage, 
     id_chemin_d_attaque_strategique, 
@@ -73,15 +77,16 @@ if ($results["error"] === false && isset($_POST['validermesure'])) {
   $recupere_risque->execute();
   $id_risque = $recupere_risque->fetch();
   $inserecomporte->bindParam(1, $id_mesure);
-  $inserecomporte->bindParam(2, $id_regle_affichage);
+  $inserecomporte->bindParam(2, $id_regle_affichage[0]);
   $inserecomporte->bindParam(3, $chemin);
-  $inserecomporte->bindParam(4, $id_risque);
-  $insere->execute();
+  $inserecomporte->bindParam(4, $id_risque[0]);
+  $inserecomporte->execute();
   $updatechemin->bindParam(1, $dependance);
   $updatechemin->bindParam(2, $penetration);
   $updatechemin->bindParam(3, $maturite);
   $updatechemin->bindParam(4, $confiance);
   $updatechemin->bindParam(5, $chemin);
+  $updatechemin->execute();
 ?>
   <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
 <?php
