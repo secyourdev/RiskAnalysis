@@ -44,7 +44,7 @@ $.post("content/php/atelier2c/chart.php", function (data) {
                 data: pertinence, //valeur de menace - pronfondeur en axe y
                 // data_exposition: exposition, //taille du points
                 data_choix: choix, //couleur points
-                label: 'Evénements redoutés',
+                label: 'Sources de risque / Objectifs visés',
                 responsive: true,
                 backgroundColor: 'rgb(255, 99, 132)',
                 fill: false,

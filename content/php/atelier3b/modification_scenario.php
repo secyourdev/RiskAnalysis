@@ -1,6 +1,6 @@
 <?php
 //action.php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v14");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v17");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -35,7 +35,7 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
 }
 if ($input["action"] === 'delete') {
     $query = "
-    DELETE FROM partie_prenante 
+    DELETE FROM scenario_strategique 
     WHERE id_scenario_strategique = '".$input["id_scenario_strategique"]."'
     ";
     mysqli_query($connect, $query);

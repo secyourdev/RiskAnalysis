@@ -52,7 +52,8 @@ $insere = $bdd->prepare(
     niveau_de_menace_partie_prenante,
     id_seuil,
     id_atelier,
-    id_projet
+    id_projet,
+    id_seuil
     ) 
     VALUES ( '', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 

@@ -1,11 +1,11 @@
 <?php
-header('Location: ../../../atelier-3a');
+// header('Location: ../../../atelier-3a&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
 
 
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v14;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v17;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -18,33 +18,39 @@ $results["error"] = false;
 $results["message"] = [];
 
 
-$categorie_partie_prenante = $_POST['categorie_partie_prenante'];
-$nom_partie_prenante = $_POST['nom_partie_prenante'];
-$type = $_POST['type'];
-$dependance_partie_prenante = $_POST['dependance_partie_prenante'];
-$penetration_partie_prenante = $_POST['penetration_partie_prenante'];
-$maturite_partie_prenante = $_POST['maturite_partie_prenante'];
-$confiance_partie_prenante = $_POST['confiance_partie_prenante'];
-$niveau_de_menace_partie_prenante = ($dependance_partie_prenante* $penetration_partie_prenante)/ ($maturite_partie_prenante* $confiance_partie_prenante);
-$id_atelier = '3.a';
+$id_partie_prenante = $_POST['partieprenante'];
+$chemin = $_POST['chemins'];
+$referentiel = $_POST['referentiel'];
+$id_mesure = $_POST['mesure'];
+$dependance = $_POST['dependance'];
+$penetration = $_POST['penetration'];
+$maturite = $_POST['maturite'];
+$confiance = $_POST['confiance'];
+$id_atelier = '3.c';
 
-$recupere = $bdd->prepare("SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = ?");
+$recupere_regle = $bdd->prepare("SELECT id_regle_affichage FROM regle WHERE id_regle = ?");
 
-$insere = $bdd->prepare(
-  'INSERT INTO partie_prenante (
-    id_partie_prenante, 
-    categorie_partie_prenante, 
-    nom_partie_prenante, 
-    type, 
-    dependance_partie_prenante, 
-    penetration_partie_prenante,
-    maturite_partie_prenante, 
-    confiance_partie_prenante, 
-    niveau_de_menace_partie_prenante,
-    id_atelier
+$recupere_risque = $bdd->prepare("SELECT id_risque FROM chemin_d_attaque_strategique WHERE id_chemin_d_attaque_strategique = ?");
+
+$inserecomporte = $bdd->prepare(
+  'INSERT INTO comporter3 (
+    id_regle, 
+    id_regle_affichage, 
+    id_chemin_d_attaque_strategique, 
+    id_risque
     ) 
-    VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )'
+    VALUES (?, ?, ?, ?)'
     );
+
+$updatechemin = $bdd->prepare(
+  'UPDATE chemin_d_attaque_strategique
+  SET dependance_residuelle = ?,
+  penetration_residuelle = ?,
+  maturite_residuelle = ?,
+  confiance_residuelle = ?
+  WHERE id_chemin_d_attaque_strategique = ?
+  '
+);
 
 
 /* // Verification du nom_valeur_metier
@@ -57,19 +63,25 @@ if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_valeur_metier
 } */
 
 
-if ($results["error"] === false && isset($_POST['validerpartie'])) {
+if ($results["error"] === false && isset($_POST['validermesure'])) {
   
-  $insere->bindParam(1, $id_partie_prenante);
-  $insere->bindParam(2, $categorie_partie_prenante);
-  $insere->bindParam(3, $nom_partie_prenante);
-  $insere->bindParam(4, $type);
-  $insere->bindParam(5, $dependance_partie_prenante);
-  $insere->bindParam(6, $penetration_partie_prenante);
-  $insere->bindParam(7, $maturite_partie_prenante);
-  $insere->bindParam(8, $confiance_partie_prenante);
-  $insere->bindParam(9, $niveau_de_menace_partie_prenante);
-  $insere->bindParam(10, $id_atelier);
+  $recupere_regle->bindParam(1, $id_mesure);
+  $recupere_regle->execute();
+  $id_regle_affichage = $recupere_regle->fetch();
+
+  $recupere_risque->bindParam(1, $chemin);
+  $recupere_risque->execute();
+  $id_risque = $recupere_risque->fetch();
+  $inserecomporte->bindParam(1, $id_mesure);
+  $inserecomporte->bindParam(2, $id_regle_affichage);
+  $inserecomporte->bindParam(3, $chemin);
+  $inserecomporte->bindParam(4, $id_risque);
   $insere->execute();
+  $updatechemin->bindParam(1, $dependance);
+  $updatechemin->bindParam(2, $penetration);
+  $updatechemin->bindParam(3, $maturite);
+  $updatechemin->bindParam(4, $confiance);
+  $updatechemin->bindParam(5, $chemin);
 ?>
   <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
 <?php

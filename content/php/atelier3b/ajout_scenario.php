@@ -6,7 +6,7 @@ header('Location: ../../../atelier-3b&'.$_SESSION['id_utilisateur'].'&'.$_SESSIO
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v14;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v17;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -22,16 +22,17 @@ $results["message"] = [];
 $nom_scenario_strategique = $_POST['nom_scenario_strategique'];
 $id_source_de_risque = $_POST['id_source_de_risque'];
 $id_evenement_redoute = $_POST['id_evenement_redoute'];
-$id_partie_prenante = NULL;
+
+
 $id_atelier = '3.b';
 $id_projet = $_SESSION['id_projet'];
 $id_scenario = 'id_scenario';
 
 $insere = $bdd->prepare(
   'INSERT INTO scenario_strategique 
-  (id_scenario_strategique, nom_scenario_strategique, id_atelier, id_source_de_risque, id_evenement_redoute, id_partie_prenante, id_projet)
+  (id_scenario_strategique, nom_scenario_strategique, id_atelier, id_source_de_risque, id_evenement_redoute, id_projet)
    VALUES 
-   ( ?, ?, ?, ?, ?, ?, ? )'
+   ( ?, ?, ?, ?, ?, ?)'
 );
 
 // Verification du nom_scenario_strategique
@@ -51,8 +52,7 @@ if ($results["error"] === false && isset($_POST['validerscenario'])) {
   $insere->bindParam(3, $id_atelier);
   $insere->bindParam(4, $id_source_de_risque);
   $insere->bindParam(5, $id_evenement_redoute);
-  $insere->bindParam(6, $id_partie_prenante);
-  $insere->bindParam(7, $id_projet);
+  $insere->bindParam(6, $id_projet);
 
   $insere->execute();
 ?>

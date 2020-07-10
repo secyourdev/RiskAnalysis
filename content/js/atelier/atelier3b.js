@@ -77,8 +77,8 @@ $(document).ready(function () {
         columns: {
             identifier: [0, 'id_chemin_d_attaque_strategique'],
             editable: [
-                [2, 'chemin_d_attaque_strategique'],
-                [3, 'nom_scenario_strategique'],
+                [2, 'nom_scenario_strategique'],
+                [3, 'chemin_d_attaque_strategique'],
                 [4, 'partie_prenante']
             ],
             checkboxeditable: []

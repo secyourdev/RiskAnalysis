@@ -1,5 +1,6 @@
 <?php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v14");
+$getid_projet = intval($_GET['id_projet']);
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v17");
 //affichage tableau partie prenante
 $query = "SELECT * FROM partie_prenante";
 $query_categorie_partie_prenante = "SELECT categorie_partie_prenante FROM partie_prenante";
@@ -43,3 +44,10 @@ AND scenario_strategique.id_partie_prenante = partie_prenante.id_partie_prenante
 ORDER BY id_chemin_d_attaque_strategique ASC";
 
 $result_mesure = mysqli_query($connect, $query_mesure);
+
+
+$query_partie_prenante = "SELECT * FROM partie_prenante WHERE id_projet = $getid_projet";
+$result_partie_prenante = mysqli_query($connect, $query_partie_prenante);
+
+$query_referentiel = "SELECT * FROM socle_de_securite WHERE id_projet = $getid_projet";
+$result_referentiel = mysqli_query($connect, $query_referentiel);
