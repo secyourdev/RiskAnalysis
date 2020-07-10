@@ -16,7 +16,7 @@ var projets = document.getElementById('projets')
 var button_add_user_in_grp = document.getElementById('button_add_user_in_grp')
 var ajouter_user = document.getElementById('ajouter_user')
 
-//var reinitialiser_mdp = document.getElementById('reinitialiser_mdp')
+var lenght_reinitialiser_mdp = reinitialiser_mdp.length;
 
 button_add_user_in_grp.style.display='none'
 grp_user_card.style.display="none"
@@ -253,8 +253,7 @@ ajouter_user.addEventListener('click', (event) => {
     })
   });
 
-var lenght_reinitialiser_mdp = reinitialiser_mdp.length;
-console.log(lenght_reinitialiser_mdp)
+/*-------------------------- REINISTIALISER LE MOT DE PASSE ------------------------*/  
 for(let i=0;i<lenght_reinitialiser_mdp;i++){
   reinitialiser_mdp[i].addEventListener('click',function(){
     console.log(reinitialiser_mdp[i].parentNode.parentNode.id);
