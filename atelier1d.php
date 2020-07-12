@@ -3,7 +3,7 @@ session_start();
 
 //Connexion à la base de donnee
 try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v14;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 }
 
@@ -17,8 +17,15 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $requser->execute(array($getid));
     $userinfo = $requser->fetch();
 
-    $reqdroit = $bdd->prepare('SELECT * FROM disposer NATURAL JOIN avoir WHERE id_utilisateur = ? AND id_atelier="1.a"');
-    $reqdroit->execute(array($getid));
+    $getidproject = intval($_GET['id_projet']);
+    $reqproject = $bdd->prepare('SELECT nom_projet FROM projet WHERE id_projet = ?');
+    $reqproject->execute(array($getidproject));
+    $projectinfo = $reqproject->fetch();
+
+    $reqdroit = $bdd->prepare('SELECT * FROM RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.a"');
+    $reqdroit->bindParam(1, $getid);
+    $reqdroit->bindParam(2, $getidproject);
+    $reqdroit->execute();
     $userdroit = $reqdroit->fetch();
 ?>
 
@@ -45,11 +52,16 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
   <!-- JS -->
   <script src="content/vendor/jquery/jquery.js"></script>
   <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
+	<link rel="icon" href="content/img/logo_cyber_risk_manager.png" type="image/png">
 </head>
 
 <?php 
 if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur'])
 {
+  if(isset($userdroit['ecriture'])){
 ?>
 
 <body id="page-top">
@@ -197,6 +209,17 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </svg>
               </i>
               <span id="nom_sous_atelier_6" title="Évaluer les couples sources de risque/objectifs visés">Évaluer les couples sources de risque/objectifs visés</span>
+            </a>
+            <a class="collapse-item" href="atelier-2c&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+              <i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                <g transform="translate(-124 -292)">
+                  <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
+                  <text class="number_sub_activity_text" data-name="2.c" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">2.c</tspan></text>
+                </g>
+              </svg>
+              </i>
+              <span id="nom_sous_atelier_15" title="Sélectionner les couples SR/OV retenus pour la suite de l'analyse">Sélectionner les couples SR/OV retenus pour la suite de l'analyse</span>
             </a>
           </div>
         </div>
@@ -383,7 +406,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             <i class="fa fa-bars"></i>
           </button>
 
-          <div id="top_bar_1" class="top_bar_name_1">Fabrication de vacccin</div>
+          <div id="top_bar_1" class="top_bar_name_1"><?php echo $projectinfo['nom_projet'];?></div>
           <div id="top_bar_2" class="top_bar_name_2">Atelier 1</div>
           <div id="top_bar_3" class="top_bar_name_3">Activité 1.d - Le socle de sécurité</div>
 
@@ -405,11 +428,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="parametres&<?php echo $_SESSION['id_utilisateur'];?>">
                   <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
                   Paramètres
                 </a>
@@ -427,7 +446,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <!-- Begin Page Content -->
         <div class="container-fluid">
           <!-- Content Row -->
-          <div class="row">
+          <div class="row fondu">
             <!-- Area Card -->
             <!-- Objectif -->
             <div class="col-xl-12 col-lg-12">
@@ -490,9 +509,15 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     </table>
                   </div>
 
-                  <!-- bouton Ajouter une nouvelle ligne -->
-                  <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite">Ajouter un nouveau référentiel de sécurité</button>
+                  <div class="row">
+                    <!-- bouton Ajouter une nouvelle ligne -->
+                    <div class="text-center col-lg-6">
+                      <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite">Ajouter un nouveau référentiel de sécurité à l'aide d'un fichier</button>
+                    </div>
+                    <!-- bouton Ajouter une nouvelle ligne -->
+                    <div class="text-center col-lg-6">
+                      <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite_main">Ajouter un nouveau référentiel de sécurité à la main</button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -592,19 +617,19 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             </button>
           </div>
           <div class="modal-body perso_modal_body">
-            <!-- <form enctype="multipart/form-data" action="content/php/atelier1d/parser_regles.php" method="post" class="user" id="formajoutsocle">
+            <!-- <form enctype="multipart/form-data" action="content/php/atelier1d/ajout_solce.php" method="post" class="user" id="formajoutsocle">
               <fieldset> -->
 
-                <div class="custom-file">
-                  <input name="userfile" id="fileToUpload" class="custom-file-input" type="file">
-                  <label class="custom-file-label" for="fileToUpload">Choisir un fichier</label>
-                </div>
+            <div class="custom-file">
+              <input name="userfile" id="fileToUpload" class="custom-file-input" type="file">
+              <label class="custom-file-label" for="fileToUpload">Choisir un fichier au format JSON</label>
+            </div>
 
-                <!-- bouton Ajouter -->
-                <div class="modal-footer perso_middle_modal_footer">
-                  <input type="submit" id="file_submit" name="file_submit" value="Ajouter un fichier" class="btn perso_btn_primary shadow-none"></input>
-                </div>
-              <!-- </fieldset>
+            <!-- bouton Ajouter -->
+            <div class="modal-footer perso_middle_modal_footer">
+              <input type="submit" id="file_submit" name="file_submit" value="Ajouter un fichier" class="btn perso_btn_primary shadow-none"></input>
+            </div>
+            <!-- </fieldset>
             </form> -->
           </div>
         </div>
@@ -612,9 +637,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     </div>
 
     <!-- -------------------------------------------------------------------------------------------------------------- 
---------------------------------------- modal créer socle de sécurité ----------------------------------------------
+--------------------------------------- modal créer socle de sécurité main ----------------------------------------------
 --------------------------------------------------------------------------------------------------------------  -->
-    <!-- <div class="modal fade" id="ajout_socle_de_securite" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="ajout_socle_de_securite_main" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -627,12 +652,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             <form method="post" action="content/php/atelier1d/ajout_socle.php" class="user" id="formSoclePop">
               <fieldset>
 
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" name="fileToUpload" id="fileToUpload">
-                  <label class="custom-file-label" for="fileToUpload">Choisir un fichier</label>
-                  <input type="submit" value="Upload File" id="file_submit" name="file_submit">
-                </div>
-
                 <div class="form-group">
                   <input type="text" class="perso_form shadow-none form-control form-control-user" name="type_referenciel" placeholder="Type de référentiel" required>
                 </div>
@@ -643,7 +662,16 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                   <input type="text" class="perso_form shadow-none form-control form-control-user" name="etat_d_application" placeholder="État d'application" required>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="etat_de_la_conformite" placeholder="État de la conformité" required>
+                  <label for="Select_etat_d_application">Règle non respectée</label>
+                  <select class="form-control" name="etat_d_application" id="Select_etat_d_application">
+                    <option value="" selected>...</option>
+                    <option value="Non appliqué">Non appliqué</option>
+                    <option value="Appliqué sans restriction">Appliqué sans restriction</option>
+                    <option value="Appliqué avec restriction">Appliqué avec restriction</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="commentaire" placeholder="Commentaire" required>
                 </div>
 
                 <div class="modal-footer perso_middle_modal_footer">
@@ -654,7 +682,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
 
     <!-- -------------------------------------------------------------------------------------------------------------- 
   --------------------------------------- modal Ajout d'une règle ----------------------------------------------
@@ -673,33 +701,40 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               <fieldset>
 
                 <div class="form-group">
-                  <label for="Select_regle">Règle non respectée</label>
-                  <select class="form-control" name="titre" id="Select_regle">
+                  <label for="nomreferentiel">Nom du référentiel de sécurité</label>
+                  <select class="form-control" name="nomreferentiel" id="nomreferentiel">
                     <option value="" selected>...</option>
                     <?php
-                    while ($row = mysqli_fetch_array($result_titre_regle)) //selection.php
+                    while ($row = mysqli_fetch_array($result_nom_referentiel2)) //selection.php
                     {
                       echo '
-                        <option value="' . $row['titre'] . '">' . $row['titre'] . '</option>
+                        <option id="socle_securite" value="' . $row['nom_referentiel'] . '">' . $row['nom_referentiel'] . '</option>
                         ';
                     }
                     ?>
                   </select>
                 </div>
-                <!-- 
+
+                <div class="form-group">
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_regle" placeholder="ID de la règle" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="titre_regle">titre de la règle</label>
+                  <textarea class="form-control perso_text_area" name="titre_regle" id="titre_regle" rows="3"></textarea>
+                </div>
+
                 <div class="form-group">
                   <label for="etat_de_la_regle">État de la règle</label>
                   <select class="form-control" name="etat_de_la_regle" id="etat_de_la_regle">
                     <option value="" selected>...</option>
                     <option value="Conforme">Conforme</option>
-                    <option value="Non traité">Non traitée</option>
+                    <option value="Partiellement conforme">Partiellement conforme</option>
+                    <option value="Non traité">Non traité</option>
+                    <option value="Non conforme">Non conforme</option>
+                    <option value="Non applicable">Non applicable</option>
                   </select>
-                </div> -->
-
-                <!-- <div class="form-group">
-                  <label for="description_ecarts_pop">Description des écarts</label>
-                  <textarea class="form-control perso_text_area" id="description_ecarts_pop" rows="3"></textarea>
-                </div> -->
+                </div>
 
                 <div class="form-group">
                   <label for="justification_ecart">Justification des écarts</label>
@@ -707,7 +742,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </div>
 
                 <div class="form-group">
-                  <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="responsable_pop" name="nom" placeholder="Responsable" required>
+                  <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="responsable_pop" name="nom_responsable_regle" placeholder="Responsable" required>
                   <datalist id="responsable_pop">
                     <?php
                     while ($row = mysqli_fetch_array($resultprenomresponsable)) {
@@ -721,7 +756,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
                 <div class="form-group">
                   <label for="date-input">Date limite de la mise en application</label>
-                  <input class="form-control" type="date" name="date" id="date-input">
+                  <input class="form-control" type="date" name="dates" id="date-input">
                 </div>
                 <!-- bouton Ajouter -->
                 <div class="modal-footer perso_middle_modal_footer">
@@ -774,11 +809,12 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <script src="content/js/modules/set_filter_sort_table.js"></script>
     <script src="content/js/atelier/atelier1d.js"></script>
     <script src="content/js/modules/sort_table.js"></script>
-    <script src="content/js/modules/socle_pour_ecart.js"></script>
+    <script src="content/js/modules/socle_pour_regle.js"></script>
     <script src="content/js/modules/browse.js"></script>
     <script src="content/js/modules/parser.js"></script>
 </body>
 <?php
+  }
 }
 else{
   header('Location: connexion');

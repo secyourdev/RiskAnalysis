@@ -1,11 +1,12 @@
 <?php
-header('Location: ../../../atelier-1c');
+session_start();
+header('Location: ../../../atelier-1c&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
 
 
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v13;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -27,11 +28,11 @@ $disponibilite = $_POST['disponibilite'];
 $tracabilite = $_POST['tracabilite'];
 $niveau_de_gravite = $_POST['niveau_de_gravite'];
 $id_atelier = '1.c';
-$id_projet = '99';
+$id_projet = $_SESSION['id_projet'];
 
 
 $recupere = $bdd->prepare("SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = ?");
-$insere = $bdd->prepare('INSERT INTO `evenement_redoute`(`id_evenement_redoute`, `nom_evenement_redoute`, `description_evenement_redoute`, `confidentialite`, `integrite`, `disponibilite`, `tracabilite`, `impact`, `niveau_de_gravite`, `id_valeur_metier`, `id_atelier`, `id_projet`, `id_echelle`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,1)');
+$insere = $bdd->prepare('INSERT INTO `evenement_redoute`(`id_evenement_redoute`, `nom_evenement_redoute`, `description_evenement_redoute`, `confidentialite`, `integrite`, `disponibilite`, `tracabilite`, `impact`, `niveau_de_gravite`, `id_valeur_metier`, `id_atelier`, `id_projet`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)');
 
 
 

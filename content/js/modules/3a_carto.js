@@ -6,7 +6,7 @@ $.post("content/php/atelier3a/chart.php", function (data) {
     var taille_point_hover = [];
     var fiabilite = [];
     var labels = [];
-
+    console.log(data);
     for (var i in data['data_interne']) {
         menace.push(data['data_interne'][i].menace); //valeur de menace - pronfondeur en axe y
         exposition.push(data['data_interne'][i].exposition); //taille du points

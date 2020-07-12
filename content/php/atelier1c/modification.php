@@ -1,6 +1,6 @@
 <?php
 //action.php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v13");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v18");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -79,6 +79,7 @@ if ($input["action"] === 'delete') {
     DELETE FROM evenement_redoute 
     WHERE id_evenement_redoute = '".$input["id_evenement_redoute"]."'
     ";
+    echo $query;
     mysqli_query($connect, $query);
 }
 

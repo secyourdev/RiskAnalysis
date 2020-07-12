@@ -1,8 +1,8 @@
 <?php
-
+session_start();
 try {
     $bdd = new PDO(
-        'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v13;charset=utf8',
+        'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8',
         'ebios-rm',
         'hLLFL\bsF|&[8=m8q-$j',
         array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -15,7 +15,7 @@ $update = $bdd->prepare("UPDATE projet SET id_echelle = ? WHERE id_projet = ?");
 $get_id = $bdd->prepare("SELECT id_echelle FROM echelle WHERE nom_echelle = ?");
 $get_gravite = $bdd->prepare("SELECT echelle_gravite FROM echelle WHERE id_echelle = ?");
 $updateer = $bdd->prepare("UPDATE evenement_redoute SET niveau_de_gravite = 4 WHERE niveau_de_gravite = 5");
-$id_projet = 99;
+$id_projet = $_SESSION['id_projet'];
 
 
 if(isset($_POST['nom_echelle'])){

@@ -3,7 +3,7 @@ session_start();
 
 //Connexion à la base de donnee
 try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v14;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 }
 
@@ -34,9 +34,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
 
     <!-- Fonts-->
     <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- CSS -->
     <link href="content/css/bootstrap.css" rel="stylesheet">
@@ -46,6 +44,9 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     <script src="content/vendor/jquery/jquery.js"></script>
     <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
+	<link rel="icon" href="content/img/logo_cyber_risk_manager.png" type="image/png">
 </head>
 
 <?php 
@@ -122,11 +123,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="parametres&<?php echo $_SESSION['id_utilisateur'];?>">
                                     <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Paramètres
                                 </a>
@@ -216,15 +213,20 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             </div>
                         </div>
                     </div>
-                    </br></br>
+                    
 
-                    <div id="project_card" class="fondu">
-                        <div class="row" id="projets"> </div>
-
-                        <div class="text-center">
-                            <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none"
-                                data-toggle="modal" data-target="#ajout_projet">Créer un nouveau projet</button>
-                        </div>
+                    <div id="project_card" class="fondu">                       
+                        <?php if($userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){
+                        ?>
+                            <div class="text-center">
+                                <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none"
+                                    data-toggle="modal" data-target="#ajout_projet">Créer un nouveau projet</button>
+                            </div>
+                        <?php
+                            }
+                        ?>
+                    </br>
+                    <div class="row" id="projets"> </div>
                     </div>
 
 
@@ -344,6 +346,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                 <th>Poste</th>
                                                 <th>E-mail</th>
                                                 <th>Type de compte</th>
+                                                <th>Mot de passe</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -358,6 +361,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                     <td>'.$row["poste"].'</td>
                                                     <td>'.$row["email"].'</td>
                                                     <td>'.$row["type_compte"].'</td>
+                                                    <td> <button id="reinitialiser_mdp" type="button" class="btn perso_btn_primary width_RACI shadow-none">Réinitialiser</button> </td>
                                                 </tr>
                                                 ';
                                             }
@@ -424,32 +428,11 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         name="nom_etude" id="nom_etude" placeholder="Nom" required></input>
                                 </div>
 
-                                <!--OBJECTIF ETUDE-->
+                                <!--DESCRIPTION ETUDE-->
                                 <div class="form-group">
-                                    <label class="titre_textarea" for="objectif_atteindre">Objectif à atteindre</label>
-                                    <textarea class="form-control perso_text_area" name="objectif_atteindre"
-                                        id="objectif_atteindre" rows="3"></textarea>
-                                </div>
-
-                                <!--CADRE TEMPOREL ETUDE-->
-                                <div class="form-group">
-                                    <label class="titre_input" for="cadre_temporel">Cadre Temporel</label>
-                                    <input type="date" class="perso_form shadow-none form-control form-control-user"
-                                        name="cadre_temporel" id="cadre_temporel" placeholder="Cadre temporel" required>
-                                </div>
-
-                                <!--RISQUE ETUDE-->
-                                <div class="form-group">
-                                    <label class="titre_input" for="respo_acceptation_risque">Personne responsable
-                                        d'accepter les risques résiduels au terme de l'étude</label>
-                                    <input type="text" class="perso_arrow perso_form shadow-none form-control"
-                                        list="liste_respo_acceptation_risque" name="respo_acceptation_risque"
-                                        placeholder="..." required>
-                                    <datalist id="liste_respo_acceptation_risque">
-                                        <option>Directeur</option>
-                                        <option>RSSI</option>
-                                        <option>Responsable Informatique</option>
-                                    </datalist>
+                                    <label class="titre_textarea" for="description_etude">Description</label>
+                                    <textarea class="form-control perso_text_area" name="description_etude"
+                                        id="description_etude" rows="3"></textarea>
                                 </div>
 
                                 <!--GROUPE UTILISATEUR-->
@@ -579,7 +562,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         id="prenom_utilisateur" name="prenom" placeholder="Prénom" required>
                                 </div>
                                 <div class="form-group">
-                                    <label class="titre_input" for="poste_acteur">Poste</label>
                                     <input type="text" class="perso_arrow perso_form shadow-none form-control"
                                         list="Postes" id="poste_utilisateur" name="poste" placeholder="Poste" required>
                                     <datalist id="Postes">
@@ -595,7 +577,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         id="email_utilisateur" name="email" placeholder="E-mail" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="select_type_compte_pop">Type de compte</label>
                                     <input type="text" class="perso_arrow perso_form shadow-none form-control"
                                         list="Type_Compte" id="type_compte_utilisateur" name="type_compte"
                                         placeholder="Type de compte" required>
@@ -657,7 +638,17 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <script src="content/js/modules/dark_mode.js"></script>
         <script src="content/js/modules/realtime.js"></script>
         <script src="content/js/modules/set_filter_sort_table.js"></script>
-        <script src='content/js/accueil/index.js'> </script>
+        <?php if($userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Utilisateur'){
+        ?>
+                <script src="content/js/accueil/index.js"></script>
+        <?php 
+            }
+              else if($userinfo['type_compte']=='Administrateur Logiciel'){    
+        ?>
+                <script src="content/js/accueil/index_admin.js"></script>
+        <?php
+            }
+        ?>
         <script src="content/js/modules/sort_table.js"></script>
 </body>
 <?php

@@ -3,7 +3,7 @@ session_start();
 
 //Connexion à la base de donnee
 try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v14;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 }
 
@@ -17,10 +17,18 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $requser->execute(array($getid));
     $userinfo = $requser->fetch();
 
-    $reqdroit = $bdd->prepare('SELECT * FROM disposer NATURAL JOIN avoir WHERE id_utilisateur = ? AND id_atelier="1.a"');
-    $reqdroit->execute(array($getid));
+    $getidproject = intval($_GET['id_projet']);
+    $reqproject = $bdd->prepare('SELECT nom_projet FROM projet WHERE id_projet = ?');
+    $reqproject->execute(array($getidproject));
+    $projectinfo = $reqproject->fetch();
+
+    $reqdroit = $bdd->prepare('SELECT * FROM RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.a"');
+    $reqdroit->bindParam(1, $getid);
+    $reqdroit->bindParam(2, $getidproject);
+    $reqdroit->execute();
     $userdroit = $reqdroit->fetch();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -34,17 +42,26 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
   <title>CyberRiskManager | Atelier 5.c</title>
 
   <!-- Fonts-->
-  <link href="content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template-->
+  <!-- CSS -->
   <link href="content/css/bootstrap.css" rel="stylesheet">
   <link href="content/css/main.css" rel="stylesheet">
+
+  <!-- JS -->
+  <script src="content/vendor/jquery/jquery.js"></script>
+  <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
+	<link rel="icon" href="content/img/logo_cyber_risk_manager.png" type="image/png">
 </head>
 
 <?php 
 if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur'])
 {
+  if(isset($userdroit['ecriture'])){
 ?>
 
 <body id="page-top">
@@ -178,6 +195,17 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               </svg>
               </i>
               <span id="nom_sous_atelier_6" title="Évaluer les couples sources de risque/objectifs visés">Évaluer les couples sources de risque/objectifs visés</span>
+            </a>
+            <a class="collapse-item" href="atelier-2c&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+              <i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                <g transform="translate(-124 -292)">
+                  <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
+                  <text class="number_sub_activity_text" data-name="2.c" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">2.c</tspan></text>
+                </g>
+              </svg>
+              </i>
+              <span id="nom_sous_atelier_15" title="Sélectionner les couples SR/OV retenus pour la suite de l'analyse">Sélectionner les couples SR/OV retenus pour la suite de l'analyse</span>
             </a>
           </div>
         </div>
@@ -345,7 +373,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             <i class="fa fa-bars"></i>
           </button>
 
-          <div id="top_bar_1" class="top_bar_name_1">Fabrication de vacccin</div>
+          <div id="top_bar_1" class="top_bar_name_1"><?php echo $projectinfo['nom_projet'];?></div>
           <div id="top_bar_2" class="top_bar_name_2">Atelier 5</div>
           <div id="top_bar_3" class="top_bar_name_3">Activité 5.c -  Évaluer et documenter les risques résiduels</div>
           
@@ -368,11 +396,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="parametres&<?php echo $_SESSION['id_utilisateur'];?>">
                   <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
                   Paramètres
                 </a>
@@ -390,7 +414,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <!-- Begin Page Content -->
         <div class="container-fluid">
           <!-- Content Row -->
-          <div class="row">
+          <div class="row fondu">
             <!-- Area Card -->
             <div class="col-xl col-lg">
               <div class="card shadow mb-4">
@@ -680,6 +704,7 @@ aria-hidden="true">
   <script src="content/js/modules/side_bar.js"></script>
 </body>
 <?php
+  }
 }
 else{
   header('Location: connexion');

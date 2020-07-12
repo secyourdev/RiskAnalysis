@@ -1,6 +1,7 @@
 <?php
 //action.php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v9");
+session_start();
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v18");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -9,6 +10,7 @@ $profil_attaquant = mysqli_real_escape_string($connect, $input['profil_de_l_atta
 $description_source_risque = mysqli_real_escape_string($connect, $input['description_source_de_risque']);
 $objectif_vise = mysqli_real_escape_string($connect, $input['objectif_vise']);
 $description_objectif_vise = mysqli_real_escape_string($connect, $input['description_objectif_vise']);
+$id_projet =  $_SESSION['id_projet'];
 
 
 $results["error"] = false;
@@ -72,6 +74,7 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
     objectif_vise = '".$objectif_vise."',
     description_objectif_vise = '".$description_objectif_vise."'
     WHERE id_source_de_risque = '".$input["id_source_de_risque"]."'
+    AND id_projet = '".$id_projet."'
     ";
     mysqli_query($connect, $query);
 }

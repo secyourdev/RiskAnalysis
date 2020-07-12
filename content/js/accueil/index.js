@@ -72,7 +72,7 @@ selection_onglet(bdd_card,project_card,grp_user_card,apps_card,tableau_de_bord_b
 
 function selection_onglet(onglet1,onglet2,onglet3,onglet4,button){
     button.addEventListener('click',function(){
-        onglet1.style.display='table'
+        onglet1.style.display='inherit'
         onglet2.style.display="none"
         onglet3.style.display="none"
         onglet4.style.display="none"
@@ -116,7 +116,7 @@ $.ajax({
     success: function (resultat) {
         var projet_JSON = JSON.parse(resultat);
         lenght_projet = projet_JSON.length;
-        for (let i = 0; i < lenght_projet; i++) {
+        for (let i = lenght_projet-1; i >= 0; i--) {
             var projets = document.getElementById('projets');
 
             var div1 = document.createElement('div');
@@ -164,7 +164,10 @@ $.ajax({
             label.innerHTML = projet_JSON[i][2]
 
             var label2 = document.createElement('label')
-            label2.innerHTML = 'Date de fin du projet : ' + projet_JSON[i][4]
+            if(projet_JSON[i][3]==null)
+                label2.innerHTML = 'Date de fin du projet : A définir'
+            else 
+                label2.innerHTML = 'Date de fin du projet : ' + projet_JSON[i][3]
 
             var br = document.createElement('br')
 
@@ -243,7 +246,12 @@ ajouter_user.addEventListener('click', (event) => {
             nom_grp_utilisateur: nomgrpuser.value
       },
       success: function (data) {
-          location.reload();
+        $('.modal-content').html('');
+        $('#ajout_user').on('hidden.bs.modal', function () {
+        });
+        $('#ajout_user').modal('hide');
+        console.log(data)
       }
     })
   });
+

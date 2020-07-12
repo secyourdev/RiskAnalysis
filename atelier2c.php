@@ -3,7 +3,7 @@ session_start();
 
 //Connexion à la base de donnee
 try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v14;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 }
 
@@ -17,18 +17,29 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $requser->execute(array($getid));
     $userinfo = $requser->fetch();
 
+    $getidproject = intval($_GET['id_projet']);
+    $reqproject = $bdd->prepare('SELECT nom_projet FROM projet WHERE id_projet = ?');
+    $reqproject->execute(array($getidproject));
+    $projectinfo = $reqproject->fetch();
+
+    $reqdroit = $bdd->prepare('SELECT * FROM RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.a"');
+    $reqdroit->bindParam(1, $getid);
+    $reqdroit->bindParam(2, $getidproject);
+    $reqdroit->execute();
+    $userdroit = $reqdroit->fetch();
 ?>
-<?php include("content/php/compte/selection.php");?>
+
+<?php include("content/php/atelier2c/selection.php");?>
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="RiskManager">
+  <meta name="description" content="CyberRiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>RiskManager | Gestion des comptes</title>
+  <title>CyberRiskManager | Atelier 2.c</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -42,15 +53,25 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
   <script src="content/vendor/jquery/jquery.js"></script>
   <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
 
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
+	<link rel="icon" href="content/img/logo_cyber_risk_manager.png" type="image/png">
+
+  <!-- chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
+
 <?php 
 if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur'])
 {
+  if(isset($userdroit['ecriture'])){
 ?>
+
 <body id="page-top">
 
   <!-- Page Wrapper -->
   <div id="wrapper">
+
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
       <!-- Sidebar - Brand -->
@@ -59,7 +80,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-shield-alt"></i>
         </div>
-        <div class="sidebar-brand-text mx-2">RISK MANAGER</div>
+        <div class="sidebar-brand-text mx-2">CYBER RISK MANAGER</div>
       </a>
 
       <!-- Divider -->
@@ -141,13 +162,13 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
           </div>
         </div>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier2" aria-expanded="true"
           aria-controls="Atelier2">
           <i>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
               <g transform="translate(-1230 -689)">
-                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
+                <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
                 <text class="number_activity_text" data-name="2" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-3.432" y="0">2</tspan></text>
               </g>
             </svg>
@@ -177,6 +198,17 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               </svg>
               </i>
               <span id="nom_sous_atelier_6" title="Évaluer les couples sources de risque/objectifs visés">Évaluer les couples sources de risque/objectifs visés</span>
+            </a>
+            <a class="collapse-item" href="atelier-2c&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+              <i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                <g transform="translate(-124 -292)">
+                  <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
+                  <text class="number_sub_activity_text" data-name="2.c" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">2.c</tspan></text>
+                </g>
+              </svg>
+              </i>
+              <span id="nom_sous_atelier_15" title="Sélectionner les couples SR/OV retenus pour la suite de l'analyse">Sélectionner les couples SR/OV retenus pour la suite de l'analyse</span>
             </a>
           </div>
         </div>
@@ -330,7 +362,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
       <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
       </div>
-
     </ul>
     <!-- End of Sidebar -->
 
@@ -340,14 +371,15 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
       <div id="content">
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
 
-          <div id="top_bar_1" class="top_bar_name_1">Paramètres</div>
-          <div id="top_bar_2" class="top_bar_name_2">Comptes</div>
-          <div id="top_bar_3" class="top_bar_name_3">Gestion des comptes utilisateurs</div>
+          <div id="top_bar_1" class="top_bar_name_1"><?php echo $projectinfo['nom_projet'];?></div>
+          <div id="top_bar_2" class="top_bar_name_2">Atelier 2</div>
+          <div id="top_bar_3" class="top_bar_name_3">Activité 2.c - Sélectionner les couples SR/OV retenus pour la suite de l'analyse</div>
           
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -390,59 +422,128 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <!-- Begin Page Content -->
         <div class="container-fluid">
           <!-- Content Row -->
-          <div class="row">
+          <div class="row fondu">
             <!-- Area Card -->
-            <div class="col-xl-12 col-lg-12">
+            <div class="col-xl col-lg">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
-                <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Compte utilisateur</h6>
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0">Objectif</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <div class="table-responsive">
-                  <input type="text" class="rechercher_input" id="rechercher_utilisateur" placeholder="Rechercher">
-                  <table id="editable_table" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
-                        <th>ID</th>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Poste</th>
-                        <th>E-mail</th>
-                        <th>Type de compte</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                      while($row = mysqli_fetch_array($result))
-                      {
-                        echo '
-                        <tr>
-                        <td>'.$row["id_utilisateur"].'</td>
-                        <td>'.$row["nom"].'</td>
-                        <td>'.$row["prenom"].'</td>
-                        <td>'.$row["poste"].'</td>
-                        <td>'.$row["email"].'</td>
-                        <td>'.$row["type_compte"].'</td>
-                        </tr>
-                        ';
-                      }
-                      ?>
-                    </tbody>
-                  </table>
-                  </div>
-
-                  <!-- bouton Ajouter un nouvel utilisateur -->
-                  <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_compte">Ajouter un nouvel utilisateur</button>
-                  </div>
+                  <p> Le but de l'atelier 2 est d'identifier les sources de risques (SR) et leurs objectifs visés (OV), en lien avec le contexte particulier de l'étude. 
+                    L'atelier vise à répondre à la question suivante : qui ou quoi pourrait porter atteint aux missions et valeurs métier identifiées dans l'atelier 1, et dans quels buts ?</p>
+                  <!--text-->
                 </div>
               </div>
             </div>
 
+            <!-- Area Card -->
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0">Choix des sources de risque</h6>
+                  
 
-          </div>
+                  <!-- pour avoir le menu 3-points -->
+                  <!-- <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div> -->
+
+
+
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <!--text-->
+                  <div class="table-responsive">
+                    <input type="text" class="rechercher_input" id="rechercher_srov" placeholder="Rechercher">
+                    <table id="editable_table" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th id=id_srov>ID SROV</th>
+                          <th id="profil_attaquant">Profil d'attaquant</th>
+                          <th id="description_source_risque">Description source de risque</th>
+                          <th id="objectif vise">Objectif visé</th>
+                          <th id="description_objectif">Description de l'objectif</th>
+                          <th id="motivation">Motivation</th>
+                          <th id="ressources">Ressources</th>
+                          <th id="activite">Activité</th>
+                          <th id="mode_operatoire">Mode opératoire</th>
+                          <th id="secteur_activite">Secteur d'activité</th>
+                          <th id="arsenal_attque">Arsenal d'attaque</th>
+                          <th id="faits_armes">Faits d'armes</th>
+                          <th id="pertinence">Pertinence</th>
+                          <th id="choix">Choix P1/P2</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <?php
+                      while($row = mysqli_fetch_array($result))
+                      {
+                        echo '
+                        <tr>
+                        <td>'.$row["id_source_de_risque"].'</td>
+                        <td>'.$row["profil_de_l_attaquant_source_de_risque"].'</td>
+                        <td>'.$row["description_source_de_risque"].'</td>
+                        <td>'.$row["objectif_vise"].'</td>
+                        <td>'.$row["description_objectif_vise"].'</td>
+                        <td>'.$row["motivation"].'</td>
+                        <td>'.$row["ressources"].'</td>
+                        <td>'.$row["activite"].'</td>
+                        <td>'.$row["mode_operatoire"].'</td>
+                        <td>'.$row["secteur_d_activite"].'</td>
+                        <td>'.$row["arsenal_d_attaque"].'</td>
+                        <td>'.$row["faits_d_armes"].'</td>
+                        <td>'.$row["pertinence"].'</td>
+                        <td>'.$row["choix_source_de_risque"].'</td>
+                        </tr>
+                        ';
+                      }
+                      ?>
+                      </tbody>
+                    </table>
+                  </div> 
+                   
+                </div>    
+              </div>
+            </div>
+            <!-- Area Card -->
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="row perso_no_margin">
+                  <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <h6>Cartographie des événements redoutés</h6>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                <canvas id="myChart_srov"></canvas>
+                  <!-- <div class="row perso_no_margin">
+
+                    <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                      <canvas id="myChart_srov"></canvas>
+                    </div>
+
+
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>         
+        </div>
       </div>
       <!-- End of Main Content -->
 
@@ -450,13 +551,15 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; RISK MANAGER 2020</span>
+            <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
           </div>
         </div>
       </footer>
       <!-- End of Footer -->
+
     </div>
     <!-- End of Content Wrapper -->
+
   </div>
   <!-- End of Page Wrapper -->
 
@@ -465,111 +568,48 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <i class="fas fa-angle-up"></i>
   </a>
 
-<!-- -------------------------------------------------------------------------------------------------------------- 
------------------------------------------ modal ajout de compte ---------------------------------------------------
---------------------------------------------------------------------------------------------------------------  -->
-<div class="modal fade" id="ajout_compte" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ajout de compte utilisateur</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body perso_modal_body">
-        <form method="post" action="content/php/compte/ajout.php" class="user" id="formUtilisateur">
-        <fieldset>
-          <div class="form-group">
-            <input type="text" class="perso_form shadow-none form-control form-control-user" id="nom_utilisateur" name="nom"
-              placeholder="Nom" required>
-          </div>
-          <div class="form-group">
-            <input type="text" class="perso_form shadow-none form-control form-control-user" id="prenom_utilisateur" name="prenom"
-              placeholder="Prénom" required>
-          </div>
-          <div class="form-group">
-            <label class="titre_input" for="poste_acteur">Poste</label>
-            <input type="text" class="perso_arrow perso_form shadow-none form-control" list="Postes" id="poste_utilisateur" name="poste" placeholder="Poste" required>
-            <datalist id="Postes">
-              <option value="Internet Explorer">
-              <option value="Firefox">
-              <option value="Chrome">
-              <option value="Opera">
-              <option value="Safari">
-            </datalist>
-          </div>
-          <div class="form-group">
-            <input type="email" class="perso_form shadow-none form-control form-control-user" id="email_utilisateur" name="email"
-              placeholder="E-mail" required>
-          </div>
-          <div class="form-group">
-            <label for="select_type_compte_pop">Type de compte</label>
-            <input type="text" class="perso_arrow perso_form shadow-none form-control" list="Type_Compte" id="type_compte_utilisateur" name="type_compte" placeholder="Type de compte" required>
-            <datalist id="Type_Compte">
-              <option value="" selected>...</option>
-              <option>Administrateur Logiciel</option>
-              <option>Chef de Projet</option>
-              <option>Utilisateur</option>
-            </datalist>
-          </div>
-          <div>
-            <input type="submit" name="valider" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
-          </div>
-          </fieldset>
-        </form>
-      </div>
-      <!-- bouton Ajouter -->
-      
-    </div>
-  </div>
-</div>
-
+ 
 
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Êtes-vous prêt à quitter l'application ?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à terminer votre session en cours.</div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
-          <form method="post" action="content/php/deconnexion/logs.php">
-            <fieldset>
-              <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
-              <input type="submit" name="deconnexion" value="Déconnexion" class="btn btn-primary"></input>
-            <fieldset>
-          </form>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="content/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="content/vendor/jquery-easing/jquery.easing.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="content/js/bootstrap.js"></script>
 
-  <!-- JS pour Dark Mode -->
+  <!-- Our JS -->
   <script src="content/js/modules/dark_mode.js"></script>
   <script src="content/js/modules/top_bar.js"></script>
   <script src="content/js/modules/side_bar.js"></script>
   <script src="content/js/modules/realtime.js"></script>
   <script src="content/js/modules/set_filter_sort_table.js"></script>
-  <script src="content/js/compte/gestion_compte.js"></script>  
-  <script src="content/js/modules/sort_table.js"></script>  
-
+  <script src="content/js/atelier/atelier2c.js"></script>
+  <script src="content/js/modules/sort_table.js"></script>
+  <script src="content/js/modules/2c_carto.js"></script>
 </body>
 <?php
+  }
 }
 else{
   header('Location: connexion');

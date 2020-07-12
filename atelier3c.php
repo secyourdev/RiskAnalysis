@@ -3,7 +3,7 @@ session_start();
 
 //Connexion à la base de donnee
 try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v14;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 }
 
@@ -17,11 +17,17 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $requser->execute(array($getid));
     $userinfo = $requser->fetch();
 
-    $reqdroit = $bdd->prepare('SELECT * FROM disposer NATURAL JOIN avoir WHERE id_utilisateur = ? AND id_atelier="1.a"');
-    $reqdroit->execute(array($getid));
+    $getidproject = intval($_GET['id_projet']);
+    $reqproject = $bdd->prepare('SELECT nom_projet FROM projet WHERE id_projet = ?');
+    $reqproject->execute(array($getidproject));
+    $projectinfo = $reqproject->fetch();
+
+    $reqdroit = $bdd->prepare('SELECT * FROM RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.a"');
+    $reqdroit->bindParam(1, $getid);
+    $reqdroit->bindParam(2, $getidproject);
+    $reqdroit->execute();
     $userdroit = $reqdroit->fetch();
 ?>
-
 
 <?php include("content/php/atelier3c/selection.php"); ?>
 <!DOCTYPE html>
@@ -46,11 +52,16 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
   <!-- JS -->
   <script src="content/vendor/jquery/jquery.js"></script>
   <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
+	<link rel="icon" href="content/img/logo_cyber_risk_manager.png" type="image/png">
 </head>
 
 <?php 
 if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur'])
 {
+  if(isset($userdroit['ecriture'])){
 ?>
 
 <body id="page-top">
@@ -198,6 +209,17 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </svg>
               </i>
               <span id="nom_sous_atelier_6" title="Évaluer les couples sources de risque/objectifs visés">Évaluer les couples sources de risque/objectifs visés</span>
+            </a>
+            <a class="collapse-item" href="atelier-2c&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+              <i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                <g transform="translate(-124 -292)">
+                  <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a"/>
+                  <text class="number_sub_activity_text" data-name="2.c" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-7.5" y="-1.5">2.c</tspan></text>
+                </g>
+              </svg>
+              </i>
+              <span id="nom_sous_atelier_15" title="Sélectionner les couples SR/OV retenus pour la suite de l'analyse">Sélectionner les couples SR/OV retenus pour la suite de l'analyse</span>
             </a>
           </div>
         </div>
@@ -384,7 +406,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             <i class="fa fa-bars"></i>
           </button>
 
-          <div id="top_bar_1" class="top_bar_name_1">Fabrication de vacccin</div>
+          <div id="top_bar_1" class="top_bar_name_1"><?php echo $projectinfo['nom_projet'];?></div>
           <div id="top_bar_2" class="top_bar_name_2">Atelier 3</div>
           <div id="top_bar_3" class="top_bar_name_3">Activité 3.c - Définir des mesures de sécurité sur l’écosystème</div>
 
@@ -407,11 +429,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="parametres&<?php echo $_SESSION['id_utilisateur'];?>">
                   <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
                   Paramètres
                 </a>
@@ -429,7 +447,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <!-- Begin Page Content -->
         <div class="container-fluid">
           <!-- Content Row -->
-          <div class="row">
+          <div class="row fondu">
             <!-- Area Card -->
             <div class="col-xl col-lg">
               <div class="card shadow mb-4">
@@ -448,12 +466,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="row">
 
             <!-- Area Card -->
-            <div class="col-xl col-lg">
+            <div class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -465,7 +480,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                   <!--text-->
                   <div class="table-responsive">
                     <input type="text" class="rechercher_input" id="rechercher_partie_prenante" placeholder="Rechercher">
-                    <table id="editable_table_partie_prenante" class="table table-bordered table-striped">
+                    <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
                           <th>ID</th>
@@ -511,10 +526,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       <thead>
                         <tr>
                           <th>ID</th>
-                          <th>nom_scenario_strategique</th>
-                          <th>id_source_de_risque</th>
-                          <th>id_evenement_redoute</th>
-                          <th>id_partie_prenante</th>
+                          <th>Scénario stratégique</th>
+                          <th>Source de risque : Objectif visé</th>
+                          <th>Evénement redouté</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -526,7 +540,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <td>' . $row["nom_scenario_strategique"] . '</td>
                         <td>' . $row["description_source_de_risque"] . ' : ' . $row["objectif_vise"] . '</td>
                         <td>' . $row["nom_evenement_redoute"] . '</td>
-                        <td>' . $row["nom_partie_prenante"] . '</td>
                         </tr>
                         ';
                         }
@@ -562,7 +575,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             </div> -->
 
             <!-- Area Card -->
-            <div class="col-xl col-lg">
+            <div class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -587,15 +600,15 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       </thead>
                       <tbody>
                         <?php
-                        while ($row = mysqli_fetch_array($result)) {
+                        while ($row = mysqli_fetch_array($result_mesure)) {
                           echo '
                         <tr>
                         <td>' . $row["id_chemin_d_attaque_strategique"] . '</td>
                         <td>' . $row["nom_partie_prenante"] . '</td>
-                        <td>' . $row["chemin_d_attaque_strategique"] . '</td>
-                        <td>' . $row["regles"] . '</td>
+                        <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
+                        <td>' . $row["description"] . '</td>
                         <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
-                        <td>' . $row["niveau_de_menance_residuelle"] . '</td>
+                        <td>' . $row["niveau_de_menace_residuelle"] . '</td>
                         </tr>
                         ';
                         }
@@ -653,122 +666,145 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
           </button>
         </div>
         <div class="modal-body perso_modal_body">
-          <form class="user" id="formpp">
-            <div class="row">
-              <div class="form-group col-6">
-                <label for="SelectPP">Partie prenante</label>
-                <select class="form-control" id="SelectPP">
-                  <option value="" selected>...</option>
-                  <option value="1">F2 - Fournisseurs de matériel</option>
-                  <option value="2">F3 - Prestataire informatique</option>
-                  <option value="3">P3 - Laboratoires</option>
-                </select>
+          <form method="post" action="content/php/atelier3c/ajout.php"class="user" id="formpp">
+            <fieldset>
+              <div class="row">
+                <div class="form-group col-6">
+                  <label for="partieprenante">Partie prenante</label>
+                  <select class="form-control" id="partieprenante", name="partieprenante">
+                    <option value="" selected>...</option>
+                    <?php
+                    while ($row = mysqli_fetch_array($result_partie_prenante)) //selection.php
+                    {
+                      echo '
+                          <option id="nom_partie_prenante" value="' . $row["id_partie_prenante"] . '">' . $row["nom_partie_prenante"] . '</option>
+                          ';
+                    }
+                    ?>
+                  </select>
+                  <script src="content/js/modules/chemins.js"></script>
+                </div>
+                <div class="form-group col-6">
+                  <label for="chemins">Chemin d'attaque stratégique</label>
+                  <select class="form-control" id="chemins" name="chemins">
+                    <option value="" selected>Choisissez une partie prenante</option>
+                  </select>
+                </div>
+
+                <div class="form-group col-6">
+                  <label for="referentiel">Référentiel de sécurité</label>
+                  <select class="form-control" id="referentiel", name="referentiel">
+                    <option value="" selected>...</option>
+                    <?php
+                    while ($row = mysqli_fetch_array($result_referentiel)) //selection.php
+                    {
+                      echo '
+                          <option id="id_socle" value="' . $row["id_socle_securite"] . '">' . $row["nom_referentiel"] . '</option>
+                          ';
+                    }
+                    ?>
+                  </select>
+                  <script src="content/js/modules/regles.js"></script>
+                </div>
+                <div class="form-group col-6">
+                  <label for="mesure">Mesure de sécurité</label>
+                  <select class="form-control" id="mesure" name="mesure">
+                    <option value="" selected>Choisissez un référentiel</option>
+                  </select>
+                </div>
+                
               </div>
-              <div class="form-group col-6">
-                <label for="SelectChemin">Chemin d'attaque stratégique</label>
-                <select class="form-control" id="SelectTypeComptePop">
-                  <option value="" selected>...</option>
-                  <option value="1">Arrêt de production de l'équipement</option>
-                  <option value="2">Vol d'information en passant par le prestataire informatique</option>
-                  <option value="3">Vol d'informations sur le système d'information du laboratoire</option>
-                </select>
-              </div>
-              <div class="form-group col-12">
-                <label for="Mesures de sécurité">Mesures de sécurité</label>
-                <textarea class="form-control perso_text_area" id="Mesures de sécurité" rows="5"></textarea>
-              </div>
-            </div>
-            <div class="row">
-              <div class=" col-6">
-                <div class="choix-valeur">
-                  <div>Dépendance</div>
-                  <div>
-                    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Motivation">
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" autocomplete="off"> 1
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" autocomplete="off"> 2
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" autocomplete="off"> 3
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" id="option4" autocomplete="off"> 4
-                      </label>
+              <div class="row">
+                <div class=" col-6">
+                  <div class="choix-valeur">
+                    <div>Dépendance</div>
+                    <div>
+                      <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Motivation">
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="dependance" autocomplete="off" value="1"> 1
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="dependance" autocomplete="off" value="2"> 2
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="dependance" autocomplete="off" value="3"> 3
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="dependance" autocomplete="off" value="4"> 4
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <div class="choix-valeur">
+                    <div>Penetration</div>
+                    <div>
+                      <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Ressources">
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="penetration" autocomplete="off" value="1"> 1
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="penetration" autocomplete="off" value="2"> 2
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="penetration" autocomplete="off" value="3"> 3
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="penetration" autocomplete="off" value="4"> 4
+                        </label>
+                      </div>
                     </div>
                   </div>
                 </div>
+                <div class=" col-6">
+                  <div class="choix-valeur">
+                    <div>Maturité</div>
+                    <div>
 
-
-
-                <div class="choix-valeur">
-                  <div>Ressources</div>
-                  <div>
-                    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Ressources">
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" autocomplete="off"> 1
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" autocomplete="off"> 2
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" autocomplete="off"> 3
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" autocomplete="off"> 4
-                      </label>
+                      <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Activité">
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="maturite" autocomplete="off" value="1"> 1
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="maturite" autocomplete="off" value="2"> 2
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="maturite" autocomplete="off" value="3"> 3
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="maturite" autocomplete="off" value="4"> 4
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="choix-valeur">
+                    <div>Confiance</div>
+                    <div>
+                      <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Choix">
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="confiance" autocomplete="off" value="1"> 1
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="confiance" autocomplete="off" value="2"> 2
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="confiance" autocomplete="off" value="3"> 3
+                        </label>
+                        <label class="btn perso_checkbox shadow-none">
+                          <input type="radio" name="confiance" autocomplete="off" value="4"> 4
+                        </label>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class=" col-6">
-                <div class="choix-valeur">
-                  <div>Activité</div>
-                  <div>
-
-                    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Activité">
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" autocomplete="off"> 1
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" autocomplete="off"> 2
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" autocomplete="off"> 3
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" autocomplete="off"> 4
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="choix-valeur">
-                  <div>Choix</div>
-                  <div>
-                    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Choix">
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" autocomplete="off"> 1
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" autocomplete="off"> 2
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" autocomplete="off"> 3
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="options" autocomplete="off"> 4
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+            </fieldset>
         </div>
         <!-- bouton Ajouter -->
         <div class="modal-footer perso_middle_modal_footer">
-          <button type="button" class="btn perso_btn_primary shadow-none">Ajouter</button>
+          <input type="submit" name="validermesure" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
         </div>
         </form>
 
@@ -819,6 +855,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   <script src="content/js/modules/parser.js"></script>
 </body>
 <?php
+  }
 }
 else{
   header('Location: connexion');

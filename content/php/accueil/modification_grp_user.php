@@ -1,23 +1,21 @@
 <?php  
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v14");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v18");
 
 $input = filter_input_array(INPUT_POST);
-
-$nom_grp_utilisateur = mysqli_real_escape_string($connect, $input["nom_grp_utilisateur"]);
 
 $results["error"] = false;
 $results["message"] = [];
 
-// Verification du nom
-if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_grp_utilisateur)){
-    $results["error"] = true;
-    $results["message"]["nom"] = "Nom du groupe d'utilisateur invalide";
-    ?>
-    <strong style="color:#FF6565;">Nom du groupe d'utilisateur invalide </br></strong>
-    <?php
-}
-
 if($input["action"] === 'edit' && $results["error"] === false){
+    $nom_grp_utilisateur = mysqli_real_escape_string($connect, $input["nom_grp_utilisateur"]);
+    // Verification du nom
+    if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_grp_utilisateur)){
+        $results["error"] = true;
+        $results["message"]["nom"] = "Nom du groupe d'utilisateur invalide";
+        ?>
+        <strong style="color:#FF6565;">Nom du groupe d'utilisateur invalide </br></strong>
+        <?php
+    }
     $query = "
     UPDATE grp_utilisateur 
     SET nom_grp_utilisateur = '".$nom_grp_utilisateur."'

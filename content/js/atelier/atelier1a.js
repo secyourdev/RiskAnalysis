@@ -1,5 +1,6 @@
 /*------------------------------- VARIABLES ----------------------------------*/
 var nom_etude = document.getElementById('nom_etude');
+var description_etude = document.getElementById('description_etude')
 var objectif_atteindre = document.getElementById('objectif_atteindre');
 var cadre_temporel = document.getElementById('cadre_temporel');
 var nom_acteur = document.getElementById('nom_acteur');
@@ -10,40 +11,45 @@ var save_button = document.getElementsByClassName('tabledit-save-button')
 var valider_acteur = document.getElementsByName('valider')[0]
 var label_nom_etude = document.getElementById('nom_etude').previousSibling.previousSibling
 var label_cadre_temporel = document.getElementById('cadre_temporel').previousSibling.previousSibling
-/* var label_nom_acteur = document.getElementById('nom_acteur').previousSibling.previousSibling
-var label_prenom_acteur = document.getElementById('prenom_acteur').previousSibling.previousSibling
-var label_poste_acteur = document.getElementById('poste_acteur').previousSibling.previousSibling */
 var raci = document.getElementById('raci')
 var acteur_id_raci = document.getElementById('acteur_id_raci')
 var radio_gravite4 = document.getElementById('radio_gravite4')
 var radio_gravite5 = document.getElementById('radio_gravite5')
 var respo_acceptation_risque = document.getElementById('respo_acceptation_risque')
-var grp_user_1a = document.getElementById('grp_user_1a')
 var find_acteur_id;
 var find_atelier_num;
 var find_raci_value;
 
 var nombre_atelier = raci.rows.length
 
-var bool_nom_etude = false
-var bool_objectif_atteindre = false
-var bool_cadre_temporel = false
-var bool_nom_acteur = false
-var bool_prenom_acteur = false
-var bool_poste_acteur = false
-
-
 var regex_nom_etude = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
+var regex_description_etude = /^[a-zA-Z0-9éèàêâùïüëç\s-.]{1,1000}$/
 var regex_objectif_atteindre = /^[a-zA-Z0-9éèàêâùïüëç\s-.]{1,1000}$/
 var regex_cadre_temporel = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
-var regex_nom_acteur = /^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/
-var regex_prenom_acteur = /^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/
-var regex_poste_acteur = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
+
+/*----------------------------- SELECTION UTILISATEUR -----------------------*/
+var user_1a = document.getElementById('user_1a')
+var ajouter_user = document.getElementById('ajouter_user')
+
+ajouter_user.addEventListener('click', (event) => {
+    $.ajax({
+      url: 'content/php/atelier1a/ajout.php',
+      type: 'POST',
+      data: {
+            id_utilisateur: user_1a.options[user_1a.selectedIndex].value.substring(0,user_1a.options[user_1a.selectedIndex].value.indexOf("-",0)),
+      },
+      success: function (data) {
+        location.reload();
+      }
+    })
+  });
 
 /*--------------------------------- TABLES JS -------------------------------*/
 $(document).ready(function(){  
     $('#editable_table').Tabledit({
      url:'content/php/atelier1a/modification.php',
+     deleteButton: true,
+     editButton:false,
      columns:{
       identifier:[0, "id_utilisateur"],
       editable:[]
@@ -62,18 +68,8 @@ $(document).ready(function(){
 setSortTable('editable_table');
 OURJQUERYFN.setFilterTable("#rechercher_acteur","#editable_table tbody tr")
 /*------------------------------ LABELS CACHES ------------------------------*/
-//label_nom_etude.style.display="none"
+label_nom_etude.style.display="none"
 label_cadre_temporel.style.display="none"
-//label_nom_acteur.style.display="none"
-//label_prenom_acteur.style.display="none"
-//label_poste_acteur.style.display="none"
-/*------------------ AJOUT DE LA VERIFICATION DES TABLEAUX ------------------*/
-sleep(1500).then(() => {
-    for(let i=0;i<editable_table.rows.length-1;i++){
-        j=i+1;
-        button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table'+','+'4'+')')
-    }
-});
 /*-------------------------- INITIALISATION RACI --------------------------- */
 for(let i=2;i<nombre_atelier;i++){
     var nombre_acteur = raci.rows[0].children.length-1
@@ -106,19 +102,17 @@ get_database_raci()
 update_database_raci()
 /*------------------------ RECUPERATION & MODIFICATION ----------------------*/
 get_database_project_info()
-/*------------------------- CHARGEMENT DES COOKIES ---------------------------*/
-nom_etude.value = sessionStorage.getItem('nom_etude');
-objectif_atteindre.value = sessionStorage.getItem('objectif_atteindre');
-cadre_temporel.value = sessionStorage.getItem('cadre_temporel');
-
-//acteur_verification()
-
 /*----------------------- ENREGISTREMENT DES COOKIES ------------------------*/
 nom_etude.addEventListener('keyup',function(event){
     verify_input(nom_etude.value,regex_nom_etude,nom_etude)
     activate_label(nom_etude.value,label_nom_etude)
     update_database_nom_etude(nom_etude.value)
 }) 
+
+description_etude.addEventListener('keyup',function(event){
+    verify_textarea(description_etude.value,regex_description_etude,description_etude)
+    update_database_description_etude(description_etude.value)
+})
 
 objectif_atteindre.addEventListener('keyup',function(event){
     verify_textarea(objectif_atteindre.value,regex_objectif_atteindre,objectif_atteindre)
@@ -136,32 +130,6 @@ respo_acceptation_risque.addEventListener('change',function(event){
     update_database_respo_acceptation_risque(respo_acceptation_risque.options[respo_acceptation_risque.selectedIndex].value)
 })
 
-grp_user_1a.addEventListener('change',function(event){
-    verify_select(grp_user_1a)
-    update_database_grp_user_1a(grp_user_1a.options[grp_user_1a.selectedIndex].value)
-})
-
-// nom_acteur.addEventListener('keyup',function(event){
-//     bool_nom_acteur = regex_nom_acteur.test(nom_acteur.value)
-//     verify_input(nom_acteur.value,regex_nom_acteur,nom_acteur)
-//     acteur_verification()
-//     activate_label(nom_acteur.value,label_nom_acteur)
-// })
-
-// prenom_acteur.addEventListener('keyup',function(event){
-//     bool_prenom_acteur = regex_prenom_acteur.test(prenom_acteur.value)
-//     verify_input(prenom_acteur.value,regex_prenom_acteur,prenom_acteur)
-//     acteur_verification()
-//     activate_label(prenom_acteur.value,label_prenom_acteur)
-// })
-
-// poste_acteur.addEventListener('keyup',function(event){
-//     bool_poste_acteur = regex_poste_acteur.test(poste_acteur.value)
-//     verify_input(poste_acteur.value,regex_poste_acteur,poste_acteur)
-//     acteur_verification()
-//     activate_label(poste_acteur.value,label_poste_acteur)
-// })
-
 /*-------------------------------- FONCTIONS --------------------------------*/
 function get_database_raci(){
     $.ajax({
@@ -174,11 +142,11 @@ function get_database_raci(){
             var starter=0
             for(let j=1;j<nombre_acteur;j++){
                 for(let i=0;i<(nombre_atelier-2);i++){
-                        if(raci_JSON[starter][2]=='Réalisation')
+                        if(raci_JSON[starter][3]=='Réalisation')
                             raci.tBodies[0].children[i].children[j].children[0].selectedIndex=0
-                        else if(raci_JSON[starter][2]=='Approbation')
+                        else if(raci_JSON[starter][3]=='Approbation')
                             raci.tBodies[0].children[i].children[j].children[0].selectedIndex=1
-                        else if(raci_JSON[starter][2]=='Consultation')
+                        else if(raci_JSON[starter][3]=='Consultation')
                             raci.tBodies[0].children[i].children[j].children[0].selectedIndex=2
                         else
                             raci.tBodies[0].children[i].children[j].children[0].selectedIndex=3
@@ -221,27 +189,27 @@ function get_database_project_info(){
         dataType : 'html',
         success: function (resultat) {
             var projet_info = JSON.parse(resultat);
-            console.log(projet_info)
             sessionIdProjet=sessionIdProjet-1
             nom_etude.value = projet_info[sessionIdProjet][1]
-            objectif_atteindre.value = projet_info[sessionIdProjet][2]
+            description_etude.value = projet_info[sessionIdProjet][2]
+            objectif_atteindre.value = projet_info[sessionIdProjet][3]
 
-            if(projet_info[sessionIdProjet][3]=="Directeur")
+            if(projet_info[sessionIdProjet][4]=="Directeur")
                 respo_acceptation_risque.options.selectedIndex=1
-            else if(projet_info[sessionIdProjet][3]=="RSSI")
+            else if(projet_info[sessionIdProjet][4]=="RSSI")
                 respo_acceptation_risque.options.selectedIndex=2
-            else 
+            else if(projet_info[sessionIdProjet][4]=="Responsable Informatique")
                 respo_acceptation_risque.options.selectedIndex=3
+            else 
+                respo_acceptation_risque.options.selectedIndex=0
          
-            cadre_temporel.value = projet_info[sessionIdProjet][4]
-
-            grp_user_1a.options.selectedIndex=projet_info[sessionIdProjet][6]
+            cadre_temporel.value = projet_info[sessionIdProjet][5]
 
             verify_input(nom_etude.value,regex_nom_etude,nom_etude)
+            verify_textarea(description_etude.value,regex_description_etude,description_etude)
             verify_textarea(objectif_atteindre.value,regex_objectif_atteindre,objectif_atteindre)
             verify_input(cadre_temporel.value,regex_cadre_temporel,cadre_temporel)
             verify_select(respo_acceptation_risque)
-            verify_select(grp_user_1a)
             activate_label(nom_etude.value,label_nom_etude)
             activate_label(cadre_temporel.value,label_cadre_temporel)
         },
@@ -257,6 +225,16 @@ function update_database_nom_etude(nom_etude){
         type: 'POST',
         data: {
             nom_etude: nom_etude
+        },
+    }); 
+}
+
+function update_database_description_etude(description_etude){
+    $.ajax({
+        url: 'content/php/atelier1a/modification_projet.php',
+        type: 'POST',
+        data: {
+            description_etude: description_etude
         },
     }); 
 }
@@ -291,12 +269,12 @@ function update_database_cadre_temporel(cadre_temporel){
     }); 
 }
 
-function update_database_grp_user_1a(id_grp_utilisateur){
+function update_database_grp_user_1a(nom_grp_utilisateur){
     $.ajax({
         url: 'content/php/atelier1a/modification_projet.php',
         type: 'POST',
         data: {
-            id_grp_utilisateur: id_grp_utilisateur
+            nom_grp_utilisateur: nom_grp_utilisateur
         },
     }); 
 }

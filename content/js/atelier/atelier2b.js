@@ -23,7 +23,6 @@ $(document).ready(function () {
                 [10, 'arsenal_d_attaque'],
                 [11, 'faits_d_armes'],
                 [12, 'pertinence', '{"Auto" : "Auto", "Faible": "Faible", "Moyen": "Moyen", "Elevé": "Elevé"}'],
-                [13, 'choix_source_de_risque', '{"..." : "...", "P1": "P1", "P2": "P2"}']
             ],
         },
         restoreButton: false,
