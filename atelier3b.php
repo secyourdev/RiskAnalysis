@@ -473,7 +473,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0">Liste des évènements redoutés établis lors de l'atelier 1</h6>
-
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -486,7 +485,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                           <th>ID</th>
                           <th>Valeur métier</th>
                           <th>Nom de l'événement redouté</th>
-                          <th>événement redouté</th>
+                          <th>Description événement redouté</th>
                           <th>Impacts</th>
                           <th>C</th>
                           <th>I</th>
@@ -517,12 +516,16 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       </tbody>
                     </table>
                   </div>
-
+                </div> 
+              </div>
+            </div>
+            <!-- Area Card -->
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0">Liste des couples sources de risques / objectifs visés établis lors de l'atelier 2</h6>
-
                   </div>
-
                   <div class="table-responsive">
                     <input type="text" class="rechercher_input" id="rechercher_srov" placeholder="Rechercher">
                     <table id="editable_table_SROV" class="table table-bordered table-striped">
@@ -555,9 +558,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       </tbody>
                     </table>
                   </div>
-
-                </div>
-
               </div>
             </div>
 
@@ -579,7 +579,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <tr>
                           <th>ID</th>
                           <th>Nom du scénario strategique</th>
-                          <th>Source de risque  objectif visé</th>
+                          <th>Source de risque / Objectif visé</th>
                           <th>Nom de l'événement redouté</th>
                           <th>niveau de gravite</th>
                         </tr>
@@ -591,7 +591,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <tr>
                         <td>' . $row["id_scenario_strategique"] . '</td>
                         <td>' . $row["nom_scenario_strategique"] . '</td>
-                        <td>' . $row["description_source_de_risque"] . '  ' . $row["objectif_vise"] . '</td>
+                        <td>' . $row["description_source_de_risque"] . ' / ' . $row["objectif_vise"] . '</td>
                         <td>' . $row["nom_evenement_redoute"] . '</td>
                         <td>' . $row["niveau_de_gravite"] . '</td>
                         </tr>
@@ -603,7 +603,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                   </div>
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_scenario_strategique">Ajouter une nouvelle ligne</button>
+                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_scenario_strategique">Ajouter un scénario stratégique</button>
                   </div>
                 </div>
               </div>
@@ -614,7 +614,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Liste des chemin d'attaque</h6>
+                  <h6 class="m-0">Liste des chemins d'attaque</h6>
 
                 </div>
                 <!-- Card Body -->
@@ -651,7 +651,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                   </div>
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_chemin_attaque">Ajouter une nouvelle ligne</button>
+                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_chemin_attaque">Ajouter un chemin d'attaque</button>
                   </div>
                 </div>
               </div>
