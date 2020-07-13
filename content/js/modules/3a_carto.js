@@ -1,4 +1,36 @@
+
+    console.log( '3a_carto.js');
+
 $.post("content/php/atelier3a/chart.php", function (data) {
+
+    var seuil_danger = [];
+    var seuil_controle = [];
+    var seuil_veille = [];
+    console.log(data);
+    for (var i in data['data_seuil']) {
+        seuil_danger.push(data['data_seuil'][i].seuil_danger); //valeur de seuil_danger - zone rouge
+        seuil_controle.push(data['data_seuil'][i].seuil_controle); //valeur de seuil_danger - zone verte
+        seuil_veille.push(data['data_seuil'][i].seuil_veille); //valeur de seuil_danger - zone bleue
+    }
+    console.log('seuil : ');
+    console.log(seuil_danger);
+    console.log(seuil_controle);
+    console.log(seuil_veille);
+
+    color_zone = ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)']
+    if (seuil_danger[0] !== -1) {
+        color_zone[16-seuil_danger[0]-1] = "#FF6565";
+    }
+    if (seuil_controle[0] !== -1) {
+        color_zone[16-seuil_controle[0]-1] = "#4AD991";
+    }
+    if (seuil_veille[0] !== -1) {
+        color_zone[16-seuil_veille[0]-1] = "#3B86FF";
+    }
+    console.log(color_zone);
+    // color_actuel = ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#FF6565", 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#4AD991", 'rgba(0, 0, 0, 0.1)', "#3B86FF"]
+    // console.log(color_actuel);
+    
 
     var menace = [];
     var exposition = [];
@@ -18,13 +50,18 @@ $.post("content/php/atelier3a/chart.php", function (data) {
         labels.push('R' + i);
     }
 
-    // console.log(menace);
+    console.log('interne : ');
+    console.log(menace);
     // console.log(exposition);
     // console.log(taille_point_hover);
     // console.log(taille_point);
     // console.log(fiabilite);
 
-    var maxmenace = Math.max(...menace) + 1.99999;
+    var maxmenace = Math.max(...menace) + 0.5;
+    console.log("maxmenace : ");
+    console.log(maxmenace);
+    
+    
 
     var chartdata_interne = {
         labels: labels,
@@ -65,12 +102,13 @@ $.post("content/php/atelier3a/chart.php", function (data) {
         scale: {
             gridLines: {
                 circular: true,
-                color: ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#FF6565", 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#4AD991", 'rgba(0, 0, 0, 0.1)', "#3B86FF"]
+                color: color_zone
             },
             ticks: {
                 beginAtZero: true,
                 reverse: true,
-                stepSize: maxmenace / 9
+                suggestedMax: 16,
+                stepSize: 1
             }
         },
         tooltips: {
@@ -115,7 +153,17 @@ $.post("content/php/atelier3a/chart.php", function (data) {
         labels.push('R' + i);
     }
 
-    var maxmenace = Math.max(...menace) + 1.99999;
+    console.log('externe : ');
+    console.log(menace);
+    // console.log(exposition);
+    // console.log(taille_point_hover);
+    // console.log(taille_point);
+    // console.log(fiabilite);
+
+    var maxmenace = Math.max(...menace) + 0.5;
+    console.log("maxmenace : ");
+    console.log(maxmenace);
+    
 
     var chartdata_externe = {
         labels: labels,
@@ -155,12 +203,13 @@ $.post("content/php/atelier3a/chart.php", function (data) {
         scale: {
             gridLines: {
                 circular: true,
-                color: ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#FF6565", 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#4AD991", 'rgba(0, 0, 0, 0.1)', "#3B86FF"]
+                color: color_zone
             },
             ticks: {
                 beginAtZero: true,
                 reverse: true,
-                stepSize: maxmenace / 9
+                suggestedMax: 16,
+                stepSize: 1
             }
         },
         tooltips: {

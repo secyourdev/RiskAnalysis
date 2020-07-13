@@ -22,11 +22,14 @@ selectsocle.addEventListener('change', (event) => {
                     editable: [
                         // [1, 'id_regle_affichage'],
                         // [2, 'titre'],
-                        [3, 'etat_de_la_regle', '{"Non traité" : "Non traité" , "Conforme" : "Conforme" , "Partiellement conforme" : "Partiellement conforme" ,  "Non conforme" : "Non conforme", "Non applicable" : "Non applicable"}'],
-                        [4, 'justification_ecart'],
-                        [5, 'responsable'],
-                        [6, 'dates']
-                    ]
+                        // [3, 'description'],
+                        [4, 'etat_de_la_regle', '{"Non traité" : "Non traité" , "Conforme" : "Conforme" , "Partiellement conforme" : "Partiellement conforme" ,  "Non conforme" : "Non conforme", "Non applicable" : "Non applicable"}'],
+                        [5, 'justification_ecart'],
+                        [6, 'responsable'],
+                        // [7, 'dates']
+                        
+                    ],
+                    dateeditable: [[7, 'dates']]
                 },
                 restoreButton: false,
                 onSuccess: function (data, textStatus, jqXHR) {
