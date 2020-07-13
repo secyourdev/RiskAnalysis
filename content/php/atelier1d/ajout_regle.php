@@ -20,20 +20,17 @@ $results["error"] = false;
 $results["message"] = [];
 
 $nom_referentiel = $_POST['nomreferentiel'];
-print 'nom referentiel: ';
-print $nom_referentiel;
-print '<br>';
 $id_regle_affichage = $_POST['id_regle'];
 $titre = $_POST['titre_regle'];
-print 'titre regle ';
-print $titre;
-print '<br>';
 $description = $_POST['description'];
-$etat_de_la_regle = $_POST['etat_de_la_regle'];
-$justification_ecart = $_POST['justification_ecart'];
-$responsable = $_POST['nom_responsable_regle'];
-$dates = $_POST['dates'];
-print $dates;
+$etat_de_la_regle = '';
+$justification_ecart = '';
+$responsable = '';
+$dates = '';
+// $etat_de_la_regle = $_POST['etat_de_la_regle'];
+// $justification_ecart = $_POST['justification_ecart'];
+// $responsable = $_POST['nom_responsable_regle'];
+// $dates = $_POST['dates'];
 
 $recupere_id_socle = $bdd->prepare("SELECT id_socle_securite FROM socle_de_securite WHERE socle_de_securite.nom_referentiel = ? AND id_atelier = '1.d' AND id_projet = $getid_projet");
 

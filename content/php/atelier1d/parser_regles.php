@@ -134,7 +134,7 @@ if ($fileType != "json") {
       $key_id_titre_desc[$key] = $value;
     }
 
-    $new_id_regle = ($id_socle_securite[0] . $key_id_titre_desc['id']);
+    $new_id_regle = (/* $id_socle_securite[0] . */ $key_id_titre_desc['id']);
 
     //recupere l'id de la regle pour savoir si elle existe deja
     $recupere_exist_regle = $bdd->prepare("SELECT * FROM regle WHERE id_socle_securite = ? AND id_regle = ?");
