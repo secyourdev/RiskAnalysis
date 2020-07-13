@@ -28,6 +28,7 @@ $titre = $_POST['titre_regle'];
 print 'titre regle ';
 print $titre;
 print '<br>';
+$description = $_POST['description'];
 $etat_de_la_regle = $_POST['etat_de_la_regle'];
 $justification_ecart = $_POST['justification_ecart'];
 $responsable = $_POST['nom_responsable_regle'];
@@ -74,7 +75,7 @@ if ($results["error"] === false && isset($_POST['validerecart'])) {
   // $insere_regle->bindParam(1, $id_regle);
   $insere_regle->bindParam(1, $id_regle_affichage);
   $insere_regle->bindParam(2, $titre);
-  // $insere_regle->bindParam(4, $description);
+  $insere_regle->bindParam(4, $description);
   $insere_regle->bindParam(3, $etat_de_la_regle);
   $insere_regle->bindParam(4, $justification_ecart);
   $insere_regle->bindParam(5, $dates);

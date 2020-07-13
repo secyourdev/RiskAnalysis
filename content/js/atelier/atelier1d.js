@@ -10,7 +10,8 @@ $(document).ready(function () {
                 [3, 'etat_d_application', '{"Non appliqué" : "Non appliqué" , "Appliqué sans restriction" : "Appliqué sans restriction" , "Appliqué avec restriction" : "Appliqué avec restriction"}'],
                 [4, 'etat_de_la_conformite']
             ],
-            checkboxeditable: []
+            // checkboxeditable: [],
+            dateeditable: []
         },
         restoreButton: false,
         onSuccess: function (data, textStatus, jqXHR) {
@@ -33,8 +34,10 @@ $(document).ready(function () {
                 [4, 'etat_de_la_regle', '{"Non traité" : "Non traité" , "Conforme" : "Conforme" , "Partiellement conforme" : "Partiellement conforme" ,  "Non conforme" : "Non conforme", "Non applicable" : "Non applicable"}'],
                 [5, 'justification_ecart'],
                 [6, 'nom'],
-                [7, 'date']
-            ]
+                // [7, 'date']
+            ],
+            
+            dateeditable: [[7, 'date']]
         },
         restoreButton: false,
         onSuccess: function (data, textStatus, jqXHR) {
