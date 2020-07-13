@@ -2,6 +2,8 @@ var fixed_page = document.getElementById('fixed_page');
 var accordionSidebar = document.getElementById("accordionSidebar");
 var sidebarToggle = document.getElementById("sidebarToggle");
 var barre_info = document.getElementById("barre_info")
+var footer = document.getElementById("footer")
+
 
 fixed()
 sidebarToggleTop.addEventListener('click', fixed,false);
@@ -17,17 +19,21 @@ function fixed(){
     if(hyp1==true){
         fixed_page.style.paddingLeft='1.5rem'
         barre_info.style.marginLeft='0rem'
+        footer.style.marginLeft='0rem'
     }
     else if(hyp2==true){
         fixed_page.style.paddingLeft='8rem'
         barre_info.style.marginLeft='6.5rem'
+        footer.style.marginLeft='6.5rem'
     }
     else if(hyp3==true){
         fixed_page.style.paddingLeft='8rem'
         barre_info.style.marginLeft='6.5rem'
+        footer.style.marginLeft='6.5rem'
     }
     else if(hyp4==true){
         fixed_page.style.paddingLeft='15.5rem'
         barre_info.style.marginLeft='14rem'
+        footer.style.marginLeft='14rem'
     }
 }
