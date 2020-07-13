@@ -512,11 +512,11 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                   <div class="row">
                     <!-- bouton Ajouter une nouvelle ligne -->
                     <div class="text-center col-lg-6">
-                      <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite">Ajouter un nouveau référentiel de sécurité à l'aide d'un fichier</button>
+                      <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite">Importer un nouveau référentiel de sécurité</button>
                     </div>
                     <!-- bouton Ajouter une nouvelle ligne -->
                     <div class="text-center col-lg-6">
-                      <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite_main">Ajouter un nouveau référentiel de sécurité à la main</button>
+                      <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite_main">Créer un nouveau référentiel de sécurité</button>
                     </div>
                   </div>
                 </div>

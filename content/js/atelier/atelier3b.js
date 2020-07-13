@@ -75,9 +75,11 @@ $(document).ready(function () {
         url: 'content/php/atelier3b/modification_chemin.php',
         sortable: true,
         columns: {
-            identifier: [0, 'id_chemin_d_attaque_strategique'],
+            identifier: [
+                [0, 'id_chemin_d_attaque_strategique'],
+                [2, 'nom_scenario_strategique']
+            ],
             editable: [
-                [2, 'nom_scenario_strategique'],
                 [3, 'chemin_d_attaque_strategique'],
                 [4, 'partie_prenante']
             ],
