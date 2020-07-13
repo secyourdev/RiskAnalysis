@@ -17,15 +17,15 @@ $.post("content/php/atelier3a/chart.php", function (data) {
     console.log(seuil_controle);
     console.log(seuil_veille);
 
-    color_zone = ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)']
+    color_zone = ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)']
     if (seuil_danger[0] !== -1) {
-        color_zone[seuil_danger[0]-1] = "#FF6565";
+        color_zone[16-seuil_danger[0]-1] = "#FF6565";
     }
     if (seuil_controle[0] !== -1) {
-        color_zone[seuil_controle[0]-1] = "#4AD991";
+        color_zone[16-seuil_controle[0]-1] = "#4AD991";
     }
     if (seuil_veille[0] !== -1) {
-        color_zone[seuil_veille[0]-1] = "#3B86FF";
+        color_zone[16-seuil_veille[0]-1] = "#3B86FF";
     }
     console.log(color_zone);
     // color_actuel = ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#FF6565", 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#4AD991", 'rgba(0, 0, 0, 0.1)', "#3B86FF"]
@@ -107,8 +107,8 @@ $.post("content/php/atelier3a/chart.php", function (data) {
             ticks: {
                 beginAtZero: true,
                 reverse: true,
-                suggestedMax: maxmenace,
-                stepSize: maxmenace / 9
+                suggestedMax: 16,
+                stepSize: 1
             }
         },
         tooltips: {
@@ -208,8 +208,8 @@ $.post("content/php/atelier3a/chart.php", function (data) {
             ticks: {
                 beginAtZero: true,
                 reverse: true,
-                suggestedMax: maxmenace,
-                stepSize: maxmenace / 9 
+                suggestedMax: 16,
+                stepSize: 1
             }
         },
         tooltips: {
