@@ -59,7 +59,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <!-- Logo -->
@@ -95,7 +95,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             <!-- Main Content -->
             <div id="content">
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top fixed-top shadow" id="barre_info">
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
@@ -139,7 +139,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div id="fixed_page" class="container-fluid">
                     <!-- Content Row -->
                     <h5>TABLEAU DE BORD</h5></br>
                     <div class="row">
@@ -636,6 +636,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
         <!-- Our JS -->
         <script src="content/js/modules/dark_mode.js"></script>
+        <script src="content/js/modules/fixed_page.js"></script>
         <script src="content/js/modules/realtime.js"></script>
         <script src="content/js/modules/set_filter_sort_table.js"></script>
         <?php if($userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Utilisateur'){
