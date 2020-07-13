@@ -582,7 +582,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
                         <!-- bouton Ajouter une nouvelle ligne -->
                         <div class="text-center">
-                          <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_partie_prenante">Ajouter une nouvelle ligne</button>
+                          <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_partie_prenante">Ajouter une partie prenante</button>
                         </div>
                       </div>
                     </div>

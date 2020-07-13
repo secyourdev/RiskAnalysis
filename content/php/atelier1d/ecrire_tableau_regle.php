@@ -109,6 +109,7 @@ if (isset($_POST['nom_referentiel'])) {
       <td>' . $row["id_regle"] . '</td>
       <td>' . $row["id_regle_affichage"] . '</td>
       <td>' . $row["titre"] . '</td>
+      <td>' . $row["description"] . '</td>
       <td>' . $row["etat_de_la_regle"] . '</td>
       <td>' . $row["justification_ecart"] . '</td>
       <td>' . $row["responsable"] . '</td>
