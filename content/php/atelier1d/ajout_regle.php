@@ -20,19 +20,17 @@ $results["error"] = false;
 $results["message"] = [];
 
 $nom_referentiel = $_POST['nomreferentiel'];
-print 'nom referentiel: ';
-print $nom_referentiel;
-print '<br>';
 $id_regle_affichage = $_POST['id_regle'];
 $titre = $_POST['titre_regle'];
-print 'titre regle ';
-print $titre;
-print '<br>';
-$etat_de_la_regle = $_POST['etat_de_la_regle'];
-$justification_ecart = $_POST['justification_ecart'];
-$responsable = $_POST['nom_responsable_regle'];
-$dates = $_POST['dates'];
-print $dates;
+$description = $_POST['description'];
+$etat_de_la_regle = '';
+$justification_ecart = '';
+$responsable = '';
+$dates = '';
+// $etat_de_la_regle = $_POST['etat_de_la_regle'];
+// $justification_ecart = $_POST['justification_ecart'];
+// $responsable = $_POST['nom_responsable_regle'];
+// $dates = $_POST['dates'];
 
 $recupere_id_socle = $bdd->prepare("SELECT id_socle_securite FROM socle_de_securite WHERE socle_de_securite.nom_referentiel = ? AND id_atelier = '1.d' AND id_projet = $getid_projet");
 
@@ -74,7 +72,7 @@ if ($results["error"] === false && isset($_POST['validerecart'])) {
   // $insere_regle->bindParam(1, $id_regle);
   $insere_regle->bindParam(1, $id_regle_affichage);
   $insere_regle->bindParam(2, $titre);
-  // $insere_regle->bindParam(4, $description);
+  $insere_regle->bindParam(4, $description);
   $insere_regle->bindParam(3, $etat_de_la_regle);
   $insere_regle->bindParam(4, $justification_ecart);
   $insere_regle->bindParam(5, $dates);
