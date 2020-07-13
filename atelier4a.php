@@ -475,7 +475,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <td>'.$row["objectif_vise"].'</td>
                         <td>'.$row["nom_evenement_redoute"].'</td>
                         <td>'.$row["id_risque"].'</td>
-                        <td>'.$row["nom_scenario_strategique"].'</td>
+                        <td>'.$row["nom_chemin_d_attaque_strategique"].'</td>
                         <td>'.$row["niveau_de_gravite"].'</td>
                         </tr>
                         ';
@@ -523,7 +523,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                               <tr>
                               <td>'.$row["id_scenario_operationnel"].'</td>
                               <td>'.$row["id_risque"].'</td>
-                              <td>'.$row["chemin_d_attaque_strategique"].'</td>
+                              <td>'.$row["nom_chemin_d_attaque_strategique"].'</td>
                               <td>'.$row["description_scenario_operationnel"].'</td>
                               </tr>
                               ';
@@ -531,7 +531,24 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                           ?>
                           </tbody>
                       </table>
-                    </div> 
+                    </div>
+                    <div class="form-group">
+                    <label for="SelectNaturePop">Choix de la vraisemblance maximale d'un scénario opérationnel</label>
+                    <select class="form-control" name="valeurvraisemblance" id="valeurvraisemblance">
+                      <option value="0" selected>...</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                    <div id="vraisemblance_choisie">
+                      Valeur de vraisemblance choisie : 
+                      <?php 
+                        $vraisemblance_projet = mysqli_fetch_array($resultprojet);
+                        // $echelle_projet = $queryprojet->fetch();
+                        echo $vraisemblance_projet[0];
+                      ?>
+                    </div>
+                  </div> 
+                  <script src="content/js/modules/vraisemblance.js"></script>
                   </div>
                 </div>
               </div>
@@ -556,7 +573,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                 while($row = mysqli_fetch_array($result3))
                                 {
                                   echo '
-                                  <option value="'.$row["description_scenario_operationnel"].'">'.$row["description_scenario_operationnel"].'</option>
+                                  <option value="'.$row["id_scenario_operationnel"].'">'.$row["description_scenario_operationnel"].'</option>
                                   ';
                                 }
                             ?>
@@ -574,7 +591,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         </div> 
                       </fieldset>
                     </form>
-
+                    <script src="content/js/modules/modeope.js"></script>
                     <div class="table-responsive">
                       <input type="text" class="rechercher_input" id="rechercher_mode_ope" placeholder="Rechercher">
                       <table id="tableau_mode_ope" class="table table-bordered table-striped">
@@ -587,18 +604,18 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                           </tr>
                         </thead>
                           
-                          <tbody>
+                          <tbody id="ecrire_mode">
                           <?php
-                            while($row = mysqli_fetch_array($result4))
-                            {
-                              echo '
-                              <tr>
-                              <td>'.$row["id_mode_operatoire"].'</td>
-                              <td>'.$row["description_scenario_operationnel"].'</td>
-                              <td>'.$row["mode_operatoire"].'</td>
-                              </tr>
-                              ';
-                            }
+                            // while($row = mysqli_fetch_array($result4))
+                            // {
+                            //   echo '
+                            //   <tr>
+                            //   <td>'.$row["id_mode_operatoire"].'</td>
+                            //   <td>'.$row["description_scenario_operationnel"].'</td>
+                            //   <td>'.$row["mode_operatoire"].'</td>
+                            //   </tr>
+                            //   ';
+                            // }
                           ?>
                           </tbody>
                       </table>

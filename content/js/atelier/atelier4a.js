@@ -36,7 +36,7 @@ $(document).ready(function(){
      url:'content/php/atelier4a/modificationmodeope.php',
      columns:{
       identifier:[0, "id_mode_operatoire"],
-      editable:[[1, 'scenario_operationnel'], [2, 'mode_operatoire']]
+      editable:[ [2, 'mode_operatoire']]
      },
      restoreButton:false,
      onSuccess:function(data, textStatus, jqXHR)
