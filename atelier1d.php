@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 //Connexion à la base de donnee
 try{
     $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
@@ -558,7 +557,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <tr>
                           <th>ID</th>
                           <th>ID de la règle</th>
-                          <th>Titre de la règle</th>
                           <th>Description de la règle</th>
                           <th>État de la règle</th>
                           <th>Justification des écarts</th>

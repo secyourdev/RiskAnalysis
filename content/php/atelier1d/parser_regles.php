@@ -123,12 +123,12 @@ if ($fileType != "json") {
   //trouve les parametres pour chaques regles
   $key_id_titre_desc = array();
   foreach ($exigence as $regle => $parametres) {
-     print 'règle ' . $regle . ' à les paramètres suivant:';
-     print '<br />';
-     print '<br />';
+    //  print 'règle ' . $regle . ' à les paramètres suivant:';
+    //  print '<br />';
+    //  print '<br />';
     foreach ($parametres as $key => $value) {
-     print $key . ' : ' . $value;
-     print '<br />';
+    //  print $key . ' : ' . $value;
+    //  print '<br />';
 
       //pour chaque parametre d'une regle, les rentre dans une array qui les groupe
       $key_id_titre_desc[$key] = $value;
