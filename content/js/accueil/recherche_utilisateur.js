@@ -1,7 +1,16 @@
 const nomgrpuser = document.getElementById('nomgrpuser');
 var button_add_user_in_grp = document.getElementById('button_add_user_in_grp')
 
-nomgrpuser.addEventListener('change', (event) => {
+nomgrpuser.selectedIndex = sessionStorage.getItem('nomgrpuser')
+rechercher_utilisateur(nomgrpuser.value);
+
+nomgrpuser.addEventListener('change', function(){
+  sessionStorage.setItem('nomgrpuser',nomgrpuser.selectedIndex);
+  rechercher_utilisateur(nomgrpuser.options[nomgrpuser.options.selectedIndex].value);
+});
+
+
+function rechercher_utilisateur(selected_value){
   $.ajax({
     url: 'content/php/accueil/selection_utilisateur.php',
     type: 'POST',
@@ -27,10 +36,9 @@ nomgrpuser.addEventListener('change', (event) => {
       });
     }
   })
-  if(nomgrpuser.options[nomgrpuser.options.selectedIndex].value!="")
+
+  if(selected_value!="")
     button_add_user_in_grp.style.display='inline'
   else
     button_add_user_in_grp.style.display='none'
-});
-
-
+}

@@ -67,18 +67,40 @@ OURJQUERYFN.setFilterTable("#rechercher_user","#tableau_user tbody tr")
 setSortTable('table_app_user');
 OURJQUERYFN.setFilterTable("#rechercher_app_utilisateur","#table_app_user tbody tr")
 /*----------------------------- CHARGEMENT DES ONGLETS ----------------------------*/
-selection_onglet(project_card,grp_user_card,apps_card,bdd_card,tableau_de_bord_projet)
-selection_onglet(grp_user_card,project_card,apps_card,bdd_card,tableau_de_bord_grp_user)
-selection_onglet(apps_card,project_card,grp_user_card,bdd_card,tableau_de_bord_app)
-selection_onglet(bdd_card,project_card,grp_user_card,apps_card,tableau_de_bord_bdd)
+switch (sessionStorage.getItem('button')){
+    case 'project_card':
+        chargement_onglet(project_card,grp_user_card,apps_card,bdd_card);
+        break;
+    case 'grp_user_card':
+        chargement_onglet(grp_user_card,project_card,apps_card,bdd_card);
+        break;
+    case 'apps_card':
+        chargement_onglet(apps_card,project_card,grp_user_card,bdd_card);
+        break;
+    case 'bdd_card':
+        chargement_onglet(bdd_card,project_card,grp_user_card,apps_card);
+        break;
+    default :
+        chargement_onglet(project_card,grp_user_card,apps_card,bdd_card);
+}
 
-function selection_onglet(onglet1,onglet2,onglet3,onglet4,button){
+selection_onglet(project_card,grp_user_card,apps_card,bdd_card,tableau_de_bord_projet,'project_card')
+selection_onglet(grp_user_card,project_card,apps_card,bdd_card,tableau_de_bord_grp_user,'grp_user_card')
+selection_onglet(apps_card,project_card,grp_user_card,bdd_card,tableau_de_bord_app,'apps_card')
+selection_onglet(bdd_card,project_card,grp_user_card,apps_card,tableau_de_bord_bdd,'bdd_card')
+
+function selection_onglet(onglet1,onglet2,onglet3,onglet4,button,cookies_value){
     button.addEventListener('click',function(){
+        sessionStorage.setItem('button',cookies_value);
+        chargement_onglet(onglet1,onglet2,onglet3,onglet4)
+    })
+}
+
+function chargement_onglet(onglet1,onglet2,onglet3,onglet4){
         onglet1.style.display='inherit'
         onglet2.style.display="none"
         onglet3.style.display="none"
         onglet4.style.display="none"
-    })
 }
 /*------------------------ CHARGEMENT DES GRP UTILISATEURS  ------------------------*/
 $.ajax({
