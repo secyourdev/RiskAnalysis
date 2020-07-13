@@ -59,6 +59,9 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
     <link rel="icon" href="content/img/logo_cyber_risk_manager.png" type="image/png">
+
+    <!-- chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   </head>
 
   <?php
@@ -587,6 +590,36 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       </div>
                     </div>
                   </div>
+
+                  <!-- Area Card -->
+                  <div class="col-xl-12 col-lg-12">
+                    <div class="card shadow mb-4">
+                      <!-- Card Header - Dropdown -->
+                      <div class="row perso_no_margin">
+                        <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                          <h6>Événements redoutés</h6>
+                        </div>
+                      </div>
+                      <!-- Card Body -->
+                      <div class="card-body">
+                        <div class="row perso_no_margin">
+
+                          <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <h6>Parties prenantes internes</h6>
+                            <canvas height="450" width="480" id="myChart_interne"></canvas>
+                          </div>
+
+                          <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <h6>Parties prenantes externes</h6>
+                            <canvas height="450" width="480" id="myChart_externe"></canvas>
+                          </div>
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
               <!-- End of Main Content -->
@@ -777,6 +810,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <script src="content/js/modules/set_filter_sort_table.js"></script>
           <script src="content/js/atelier/atelier3a.js"></script>
           <script src="content/js/modules/sort_table.js"></script>
+          <script src="content/js/modules/3a_carto.js"></script>
       </body>
   <?php
     }
