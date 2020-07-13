@@ -139,6 +139,10 @@ body {
     margin-left: 14rem;
 }
 
+#footer{
+    margin-left: 14rem;
+}
+
 #wrapper #content-wrapper {
     background-color: var(--bg-color) !important;
 }

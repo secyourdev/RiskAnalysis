@@ -296,7 +296,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                     </select>
                                 </div>
                                 <!--tableau-->
-                                <script src="content/js/accueil/recherche_utilisateur.js"></script>
                                 <div class="table-responsive">
                                     <input type="text" class="rechercher_input" id="rechercher_user"
                                         placeholder="Rechercher">
@@ -387,7 +386,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <!-- End of Main Content -->
                 </br>
                 <!-- Footer -->
-                <footer class="sticky-footer bg-white">
+                <footer id="footer" class="sticky-footer bg-white">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
                             <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
@@ -639,6 +638,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <script src="content/js/modules/fixed_page.js"></script>
         <script src="content/js/modules/realtime.js"></script>
         <script src="content/js/modules/set_filter_sort_table.js"></script>
+        <script src="content/js/accueil/recherche_utilisateur.js"></script>
         <?php if($userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Utilisateur'){
         ?>
                 <script src="content/js/accueil/index.js"></script>

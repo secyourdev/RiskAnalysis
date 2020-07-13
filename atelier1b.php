@@ -29,7 +29,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $userdroit = $reqdroit->fetch();
 ?>
 
-<?php include("content/php/atelier1b/selection.php"); ?>
+<?php include("content/php/atelier1b/selectionbis.php"); ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -471,6 +471,53 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
             <!-- Area Card -->
             <div class="col-xl-12 col-lg-12">
+              <!-- Mission -->
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0">Mission</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <!--tableau-->
+                  <div class="table-responsive">
+                    <input type="text" class="rechercher_input" id="rechercher_mission" placeholder="Rechercher">
+                    <table id="editable_table" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th id="id_mission">ID_mission</th>
+                          <th id="nom_mission">Nom de la mission</th>
+                          <th id="nom">Responsable</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                        while ($row = mysqli_fetch_array($result1)) {
+                          echo '
+                        <tr>
+                        <td>' . $row["id_mission"] . '</td>
+                        <td>' . $row["nom_mission"] . '</td>
+                        <td>' . $row["responsable"] . '</td>
+                        </tr>
+                        ';
+                        }
+                        ?>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- bouton Ajouter une nouvelle ligne -->
+                  <div class="text-center">
+                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_mission">Ajouter une mission</button>
+                  </div>
+                  <div class="text-center">
+                    <img src="content/img/files.svg" class="img-fluid perso_img_full_screen_div" alt="Responsive image">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Area Card -->
+            <div class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header d-flex flex-row align-items-center justify-content-between">
@@ -491,7 +538,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       </thead>
                       <tbody>
                         <?php
-                        while ($row = mysqli_fetch_array($result3)) {
+                        while ($row = mysqli_fetch_array($result2)) {
                           echo '
                         <tr>
                         <td>' . $row["id_bien_support"] . '</td>
@@ -537,7 +584,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       </thead>
                       <tbody>
                         <?php
-                        while ($row = mysqli_fetch_array($result2)) {
+                        while ($row = mysqli_fetch_array($result3)) {
                           echo '
                         <tr>
                         <td>' . $row["id_valeur_metier"] . '</td>
@@ -561,71 +608,12 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               </div>
             </div>
 
-            <!-- Area Card -->
-            <div class="col-xl-12 col-lg-12">
-              <!-- Mission -->
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Mission</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <!--tableau-->
-                  <div class="table-responsive">
-                    <input type="text" class="rechercher_input" id="rechercher_mission" placeholder="Rechercher">
-                    <table id="editable_table" class="table table-bordered table-striped">
-                      <thead>
-                        <tr>
-                          <th id="id_mission">ID_mission</th>
-                          <th id="nom_mission">Nom de la mission</th>
-                          <th id="nom">Nom responsable</th>
-                          <th id="prenom">Prénom responsable</th>
-                          <th id="poste">Poste responsable</th>
-                          <th id="id_mission">Valeur Métier</th>
-                          <th id="id_mission">Nom responsable de la valeur métier</th>
-                          <th id="id_mission">Bien support</th>
-                          <th id="id_mission">Nom responsable du bien support</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php
-                        while ($row = mysqli_fetch_array($result1)) {
-                          echo '
-                        <tr>
-                        <td>' . $row["id_mission"] . '</td>
-                        <td>' . $row["nom_mission"] . '</td>
-                        <td>' . $row["nom_respo_mission"] . '</td>
-                        <td>' . $row["prenom_mission"] . '</td>
-                        <td>' . $row["poste_mission"] . '</td>
-                        <td>' . $row["nom_valeur_metier"] . '</td>
-                        <td>' . $row["respo_vm"] . '</td>
-                        <td>' . $row["nom_bien_support"] . '</td>
-                        <td>' . $row["respo_bs"] . '</td>
-                        </tr>
-                        ';
-                        }
-                        ?>
-                      </tbody>
-                    </table>
-                  </div>
-                  <!-- bouton Ajouter une nouvelle ligne -->
-                  <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_mission">Ajouter une mission</button>
-                  </div>
-                  <div class="text-center">
-                    <img src="content/img/files.svg" class="img-fluid perso_img_full_screen_div" alt="Responsive image">
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
         <!-- End of Main Content -->
 
         <!-- Footer -->
-        <footer class="sticky-footer bg-white">
+        <footer id="footer" class="sticky-footer bg-white">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
               <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
