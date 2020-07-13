@@ -450,7 +450,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
               <!-- End of Topbar -->
 
               <!-- Begin Page Content -->
-              <div class="container-fluid">
+              <div id="fixed_page" class="container-fluid">
                 <!-- Content Row -->
                 <div class="row fondu">
                   <!-- Area Card -->
