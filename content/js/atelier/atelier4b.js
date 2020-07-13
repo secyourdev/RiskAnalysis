@@ -22,7 +22,7 @@ $(document).ready(function(){
                 url:'content/php/atelier4b/modification.php',
              columns:{
               identifier:[0, 'id_scenario_operationnel'],
-              editable:[[1, 'id_risque'], [2, "chemin_d_attaque_strategique"], [3, "description_scenario_operationnel"], [4, "vraisemblance", valeurs]]
+              editable:[[4, "vraisemblance", valeurs]]
              },
              restoreButton:false,
              deleteButton: false

@@ -4,8 +4,8 @@ $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bs
 
 $input = filter_input_array(INPUT_POST);
 
-$id_risque = mysqli_real_escape_string($connect, $input['id_risque']);
-$chemin_d_attaque_strategique = mysqli_real_escape_string($connect, $input['chemin_d_attaque_strategique']);
+// $id_risque = mysqli_real_escape_string($connect, $input['id_risque']);
+// $chemin_d_attaque_strategique = mysqli_real_escape_string($connect, $input['chemin_d_attaque_strategique']);
 $description_scenario_operationnel = mysqli_real_escape_string($connect, $input['description_scenario_operationnel']);
 
 

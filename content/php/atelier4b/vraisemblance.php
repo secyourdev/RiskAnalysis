@@ -11,7 +11,7 @@ try {
 } catch (PDOException $e) {
     die('Erreur :' . $e->getMessage());
 }
-$get_gravite = $bdd->prepare("SELECT echelle_vraisemblance FROM echelle NATURAL JOIN projet WHERE id_projet = ?");
+$get_vraisemblance = $bdd->prepare("SELECT echelle_vraisemblance FROM echelle NATURAL JOIN projet WHERE id_projet = ?");
 
 
 $get_vraisemblance->bindParam(1, $getid_projet);
