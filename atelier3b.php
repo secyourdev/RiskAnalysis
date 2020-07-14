@@ -533,9 +533,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <tr>
                           <th>ID</th>
                           <th>Type d'attaquant</th>
-                          <th>Profile d'attaquant</th>
+                          <th>Profil d'attaquant</th>
                           <th>Description source de risque</th>
-                          <th>Objectifs visés</th>
+                          <th>Objectif visé</th>
                           <th>Description de l'objectif</th>
                         </tr>
                       </thead>
@@ -581,7 +581,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                           <th>Nom du scénario strategique</th>
                           <th>Source de risque / Objectif visé</th>
                           <th>Nom de l'événement redouté</th>
-                          <th>niveau de gravite</th>
+                          <th>Niveau de gravite</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -627,7 +627,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <tr>
                           <th>ID</th>
                           <th>ID du risque</th>
-                          <th>nom du scénario stratégique</th>
+                          <th>Nom du scénario stratégique</th>
                           <th>Chemin d'attaque stratégique</th>
                           <th>Partie prenante</th>
                         </tr>
