@@ -1,7 +1,8 @@
 <?php  
 //action.php
 session_start();
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v18");
+
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v19");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -16,7 +17,7 @@ $id_atelier = "1.b";
 $id_projet = $_SESSION['id_projet'];;
 
 
-/* // Verification du nom du bien support
+// Verification du nom du bien support
 if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_bien_support)){
     $results["error"] = true;
     $results["message"]["nom"] = "Nom invalide";
@@ -32,7 +33,7 @@ if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_bien_s
     ?>
     <strong style="color:#FF6565;">Description invalide </br></strong>
     <?php
-} */
+}
 
 
 if($input["action"] === 'edit' && $results["error"] === false){
@@ -45,7 +46,6 @@ if($input["action"] === 'edit' && $results["error"] === false){
     AND id_atelier = '" . $id_atelier . "'
     AND id_projet = " . $id_projet . "
     ";
-    // echo $querybs;
     mysqli_query($connect, $querybs);
 }
 

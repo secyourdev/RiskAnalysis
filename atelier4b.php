@@ -466,9 +466,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       {
                         echo '
                         <tr>
-                        <td>'.$row["id_scenario_strategique"].'</td>
+                        <td>'.$row["id_scenario_operationnel"].'</td>
                         <td>'.$row["id_risque"].'</td>
-                        <td>'.$row["chemin_d_attaque_strategique"].'</td>
+                        <td>'.$row["nom_chemin_d_attaque_strategique"].'</td>
                         <td>'.$row["description_scenario_operationnel"].'</td>
                         <td>'.$row["vraisemblance"].'</td>
                         </tr>

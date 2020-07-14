@@ -1,11 +1,11 @@
 <?php
 //action.php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v9");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v18");
 
 $input = filter_input_array(INPUT_POST);
 
-$id_risque = mysqli_real_escape_string($connect, $input['id_risque']);
-$chemin_d_attaque_strategique = mysqli_real_escape_string($connect, $input['chemin_d_attaque_strategique']);
+// $id_risque = mysqli_real_escape_string($connect, $input['id_risque']);
+// $chemin_d_attaque_strategique = mysqli_real_escape_string($connect, $input['chemin_d_attaque_strategique']);
 $description_scenario_operationnel = mysqli_real_escape_string($connect, $input['description_scenario_operationnel']);
 
 
@@ -39,8 +39,8 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
 }
 if ($input["action"] === 'delete') {
     $query = "
-    DELETE FROM SROV 
-    WHERE id_source_de_risque = '".$input["id_source_de_risque"]."'
+    DELETE FROM scenario_operationnel 
+    WHERE id_scenario_operationnel = '".$input["id_scenario_operationnel"]."'
     ";
     mysqli_query($connect, $query);
 }
