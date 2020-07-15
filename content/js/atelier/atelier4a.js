@@ -9,7 +9,7 @@ $(document).ready(function(){
     $('#editable_table').Tabledit({
      columns:{
       identifier:[0, 'id_scenario_strategique'],
-      editable:[[1, 'nom_scenario_strategique'], [2, "description_source_risque"], [3, "objectif_vise"], [4, "evenement_redoute"], [5, "numero_risque"], [6, "chemin_attaque_strategique"], [7, "gravite"]]
+    //   editable:[[1, 'nom_scenario_strategique'], [2, "description_source_risque"], [3, "objectif_vise"], [4, "evenement_redoute"], [5, "numero_risque"], [6, "chemin_attaque_strategique"], [7, "gravite"]]
      },
      restoreButton:false,
      editButton: false,

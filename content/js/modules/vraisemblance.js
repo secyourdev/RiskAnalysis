@@ -5,7 +5,7 @@ vraisemblance.addEventListener('change', (event) => {
   //   const result = document.querySelector('.result');
   //   console.log(`Valeur  ${selectechelle.value}`);
   $.ajax({
-    url: 'content/php/atelier4a/update_vraisemblance.php',
+    url: 'content/php/atelier4b/update_vraisemblance.php',
     type: 'POST',
     data: {
       vraisemblance: vraisemblance.value

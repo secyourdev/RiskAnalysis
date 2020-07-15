@@ -446,6 +446,23 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <!-- Card Body -->
                 <div class="card-body">
                   <!--text-->
+                  <div class="form-group">
+                    <label for="SelectNaturePop">Choix de la vraisemblance maximale d'un scénario opérationnel</label>
+                    <select class="form-control" name="valeurvraisemblance" id="valeurvraisemblance">
+                      <option value="0" selected>...</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                      <div id="vraisemblance_choisie">
+                        Valeur de vraisemblance choisie : 
+                        <?php 
+                          $vraisemblance_projet = mysqli_fetch_array($resultprojet);
+                          // $echelle_projet = $queryprojet->fetch();
+                          echo $vraisemblance_projet[0];
+                        ?>
+                      </div>
+                  </div> 
+                  <script src="content/js/modules/vraisemblance.js"></script>
                   <div class="table-responsive">
                   <input type="text" class="rechercher_input" id="rechercher_chemin" placeholder="Rechercher">
                     <table id="editable_table" class="table table-bordered table-striped">
