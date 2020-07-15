@@ -2,12 +2,12 @@
   session_start();
   $getid_projet = $_SESSION['id_projet'];
 
-  header('Location: ../../../atelier-1b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
+  header('Location: ../../../atelier-1b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#bien_support');
 
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v19;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -50,7 +50,7 @@ if ($results["error"] === false && isset($_POST['validerbs'])) {
   $inserebs->bindParam(2, $biensupport);
   $inserebs->bindParam(3, $descriptionbs);
   $inserebs->bindParam(4, $id_atelier);
-  $inserebs->bindParam(5, $id_projet);
+  $inserebs->bindParam(5, $getid_projet);
   $inserebs->execute();
 ?>
   <strong style="color:#4AD991;">Le bien support a bien été ajouté !</br></strong>

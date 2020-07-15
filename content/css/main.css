@@ -1315,3 +1315,16 @@ h6 {
         text-align: center;
     }
 }
+
+/*Message erreur*/
+.message_success{
+    text-align: center;
+    font-weight: 800;
+    color:#4AD991;
+}
+
+.message_error{
+    text-align: center;
+    font-weight: 800;
+    color:#FF6565;
+}

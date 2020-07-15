@@ -1,4 +1,7 @@
 /*------------------------------- VARIABLES ----------------------------------*/
+var accordionSidebar = document.getElementById("accordionSidebar");
+var sidebarToggle = document.getElementById("sidebarToggle");
+
 var nom_etude = document.getElementById('nom_etude');
 var description_etude = document.getElementById('description_etude')
 var objectif_atteindre = document.getElementById('objectif_atteindre');
@@ -25,9 +28,20 @@ var nombre_atelier = raci.rows.length
 var regex_nom_etude = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
 var regex_description_etude = /^[a-zA-Z0-9éèàêâùïüëç\s-.]{1,1000}$/
 var regex_objectif_atteindre = /^[a-zA-Z0-9éèàêâùïüëç\s-.]{1,1000}$/
-var regex_cadre_temporel = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
+var regex_cadre_temporel = /^[0-9\s-]{1,100}$/
 
-/*----------------------------- SELECTION UTILISATEUR -----------------------*/
+/*------------------------------- SIDEBAR ----------------------------------*/
+show_sub_content()
+sidebarToggleTop.addEventListener('click', show_sub_content,false);
+sidebarToggle.addEventListener('click',show_sub_content,false);
+window.addEventListener('resize', show_sub_content, false);
+function show_sub_content(){
+    var Atelier1 = document.getElementById('Atelier1');
+    if(!accordionSidebar.classList.contains('toggled')&&(window.matchMedia("(min-width: 768px)").matches)){
+        Atelier1.classList.add('show')
+    }
+}
+/*------------------------- SELECTION UTILISATEUR --------------------------*/
 var user_1a = document.getElementById('user_1a')
 var ajouter_user = document.getElementById('ajouter_user')
 

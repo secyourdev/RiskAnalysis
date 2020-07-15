@@ -6,7 +6,7 @@ $input = filter_input_array(INPUT_POST);
 $results["error"] = false;
 $results["message"] = [];
 
-if($input["action"] === 'edit' && $results["error"] === false){
+if($input["action"] === 'edit'){
     $nom_grp_utilisateur = mysqli_real_escape_string($connect, $input["nom_grp_utilisateur"]);
     // Verification du nom
     if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_grp_utilisateur)){
@@ -16,6 +16,7 @@ if($input["action"] === 'edit' && $results["error"] === false){
         <strong style="color:#FF6565;">Nom du groupe d'utilisateur invalide </br></strong>
         <?php
     }
+    if($results["error"] === false){
     $query = "
     UPDATE grp_utilisateur 
     SET nom_grp_utilisateur = '".$nom_grp_utilisateur."'
@@ -23,6 +24,7 @@ if($input["action"] === 'edit' && $results["error"] === false){
     ";
 
     mysqli_query($connect, $query);
+    }
 }
 
 if($input["action"] === 'delete'){

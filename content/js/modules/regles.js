@@ -1,6 +1,5 @@
 
 const selectref = document.getElementById('referentiel');
-console.log(selectref.value);
 selectref.addEventListener('change', (event) => {
   //   const result = document.querySelector('.result');
   //   console.log(`Valeur  ${selectechelle.value}`);
