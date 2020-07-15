@@ -29,7 +29,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $userdroit = $reqdroit->fetch();
 ?>
 
-<?php include("content/php/atelier1b/selection.php"); ?>
+<?php include("content/php/atelier1b/selectionbis.php"); ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -43,7 +43,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="content/fonts/nunito.css" rel="stylesheet">
 
   <!-- CSS -->
   <link href="content/css/bootstrap.css" rel="stylesheet">
@@ -70,7 +70,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion" id="accordionSidebar">
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <!-- Logo -->
@@ -401,7 +401,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
       <!-- Main Content -->
       <div id="content">
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top fixed-top shadow" id="barre_info">
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
@@ -446,7 +446,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        <div id="fixed_page" class="container-fluid">
           <!-- Content Row -->
           <div class="row fondu">
             <!-- Area Card -->
@@ -465,6 +465,53 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     risques.
                     La période à considérer pour cet atelier est celle du cycle stratégique.</p>
                   <!--text-->
+                </div>
+              </div>
+            </div>
+
+            <!-- Area Card -->
+            <div class="col-xl-12 col-lg-12">
+              <!-- Mission -->
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0">Mission</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <!--tableau-->
+                  <div class="table-responsive">
+                    <input type="text" class="rechercher_input" id="rechercher_mission" placeholder="Rechercher">
+                    <table id="editable_table" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th id="id_mission">ID_mission</th>
+                          <th id="nom_mission">Nom de la mission</th>
+                          <th id="nom">Responsable</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                        while ($row = mysqli_fetch_array($result1)) {
+                          echo '
+                        <tr>
+                        <td>' . $row["id_mission"] . '</td>
+                        <td>' . $row["nom_mission"] . '</td>
+                        <td>' . $row["responsable"] . '</td>
+                        </tr>
+                        ';
+                        }
+                        ?>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- bouton Ajouter une nouvelle ligne -->
+                  <div class="text-center">
+                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_mission">Ajouter une mission</button>
+                  </div>
+                  <div class="text-center">
+                    <img src="content/img/files.svg" class="img-fluid perso_img_full_screen_div" alt="Responsive image">
+                  </div>
                 </div>
               </div>
             </div>
@@ -491,7 +538,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       </thead>
                       <tbody>
                         <?php
-                        while ($row = mysqli_fetch_array($result3)) {
+                        while ($row = mysqli_fetch_array($result2)) {
                           echo '
                         <tr>
                         <td>' . $row["id_bien_support"] . '</td>
@@ -537,7 +584,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       </thead>
                       <tbody>
                         <?php
-                        while ($row = mysqli_fetch_array($result2)) {
+                        while ($row = mysqli_fetch_array($result3)) {
                           echo '
                         <tr>
                         <td>' . $row["id_valeur_metier"] . '</td>
@@ -561,71 +608,12 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               </div>
             </div>
 
-            <!-- Area Card -->
-            <div class="col-xl-12 col-lg-12">
-              <!-- Mission -->
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Mission</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <!--tableau-->
-                  <div class="table-responsive">
-                    <input type="text" class="rechercher_input" id="rechercher_mission" placeholder="Rechercher">
-                    <table id="editable_table" class="table table-bordered table-striped">
-                      <thead>
-                        <tr>
-                          <th id="id_mission">ID_mission</th>
-                          <th id="nom_mission">Nom de la mission</th>
-                          <th id="nom">Nom responsable</th>
-                          <th id="prenom">Prénom responsable</th>
-                          <th id="poste">Poste responsable</th>
-                          <th id="id_mission">Valeur Métier</th>
-                          <th id="id_mission">Nom responsable de la valeur métier</th>
-                          <th id="id_mission">Bien support</th>
-                          <th id="id_mission">Nom responsable du bien support</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php
-                        while ($row = mysqli_fetch_array($result1)) {
-                          echo '
-                        <tr>
-                        <td>' . $row["id_mission"] . '</td>
-                        <td>' . $row["nom_mission"] . '</td>
-                        <td>' . $row["nom_respo_mission"] . '</td>
-                        <td>' . $row["prenom_mission"] . '</td>
-                        <td>' . $row["poste_mission"] . '</td>
-                        <td>' . $row["nom_valeur_metier"] . '</td>
-                        <td>' . $row["respo_vm"] . '</td>
-                        <td>' . $row["nom_bien_support"] . '</td>
-                        <td>' . $row["respo_bs"] . '</td>
-                        </tr>
-                        ';
-                        }
-                        ?>
-                      </tbody>
-                    </table>
-                  </div>
-                  <!-- bouton Ajouter une nouvelle ligne -->
-                  <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_mission">Ajouter une mission</button>
-                  </div>
-                  <div class="text-center">
-                    <img src="content/img/files.svg" class="img-fluid perso_img_full_screen_div" alt="Responsive image">
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
         <!-- End of Main Content -->
 
         <!-- Footer -->
-        <footer class="sticky-footer bg-white">
+        <footer id="footer" class="sticky-footer bg-white">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
               <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
@@ -859,22 +847,28 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
-          </div>
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Êtes-vous prêt à quitter l'application ?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à terminer votre session
+                    en cours.</div>
+                <div class="modal-footer">
+                    <form method="post" action="content/php/deconnexion/logs.php">
+                        <fieldset>
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                            <input type="submit" name="deconnexion" value="Déconnexion" class="btn btn-primary"></input>
+                            <fieldset>
+                    </form>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->
@@ -890,6 +884,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <script src="content/js/modules/dark_mode.js"></script>
     <script src="content/js/modules/top_bar.js"></script>
     <script src="content/js/modules/side_bar.js"></script>
+    <script src="content/js/modules/fixed_page.js"></script>
     <script src="content/js/modules/realtime.js"></script>
     <script src="content/js/modules/set_filter_sort_table.js"></script>
     <script src="content/js/atelier/atelier1b.js"></script>

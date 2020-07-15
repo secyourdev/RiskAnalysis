@@ -43,7 +43,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="content/fonts/nunito.css" rel="stylesheet">
 
   <!-- CSS -->
   <link href="content/css/bootstrap.css" rel="stylesheet">
@@ -70,7 +70,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion" id="accordionSidebar">
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">      
         <!-- Logo -->
@@ -367,7 +367,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
       <!-- Main Content -->
       <div id="content">
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top fixed-top shadow" id="barre_info">
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -413,7 +413,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        <div id="fixed_page" class="container-fluid">
           <!-- Page Heading -->
           <!-- Content Row -->
           <div class="row fondu">
@@ -488,7 +488,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+      <footer id="footer" class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
@@ -512,97 +512,98 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 --------------------------------------------------------------------------------------------------------------- -->
 <div class="modal fade" id="ajout_ligne_sr" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 aria-hidden="true">
-<div class="modal-dialog modal-lg" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Ajout d'une source de risque</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajout d'une source de risque</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body perso_modal_body">
+        <form method="post" action="content/php/atelier2a/ajout.php" class="user" id="formsrov">
+          <fieldset>
+            <div class="row">
+              <div class="col-6">
+              <label for="type_attaquant">Type d'attaquant</label>
+              <select class="form-control" name="type_attaquant" id="type_attaquant">
+                  <option value="" selected>...</option>
+                  <option value="Organisation structurée">Organisation structurée</option>
+                  <option value="Organisation idéologique">Organisation idéologique</option>
+                  <option value="Individu isolé">Individu isolé</option>
+                </select>
+              
+                <div class="form-group form-colonne">
+                  <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Profil d'attaquant" name="profil_attaquant" placeholder="Profil d'attaquant" required>
+                  <datalist id="Profil d'attaquant">
+                    <option value="Etatique">
+                    <option value="Crime organisé">
+                    <option value="Terroriste">
+                    <option value="Activiste idéologique">
+                    <option value="Officine spécialisée">
+                    <option value="Amateur">
+                    <option value="Vengeur">
+                    <option value="Malveillant pathologique">
+                  </datalist>
+                </div>
+              </div>
+
+              <div class="form-group col-6">
+                <label for="Description de la source de risque">Description de la source de risque</label>
+                <textarea class="form-control perso_text_area" id="Description de la source de risque" name="description_sr"rows="5"></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <!-- <div class="form-group col-12">
+                <input type="search" class="perso_form shadow-none form-control form-control-user" id="objectif_vise" name="objectif_vise"
+                  placeholder="Objectif visé" required>
+              </div> -->
+              <div class="form-group form-colonne col-12">
+                  <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Objectif visé" name="objectif_vise" placeholder="Objectif visé" required>
+                  <datalist id="Objectif visé">
+                    <option value="Espionnage">
+                    <option value="Prépositionnement stratégique">
+                    <option value="Influence">
+                    <option value="Entrave au fonctionnement">
+                    <option value="Lucratif">
+                    <option value="Défi, amusement">
+                  </datalist>
+                </div>
+
+              <div class="form-group col-12">
+                <label for="Description de l'objectif visé">Description de l'objectif visé</label>
+                <textarea class="form-control perso_text_area" id="Description de l'objectif visé" name="description_objectif_vise" rows="3"></textarea>
+              </div>
+            </div>
+            <!-- bouton Ajouter -->
+            <div class="modal-footer perso_middle_modal_footer">
+              <input type="submit" name="validersrov" value="Ajouter" class="btn perso_btn shadow-none"></input>
+            </div>
+          </fieldset>
+        </form>
+      </div>    
     </div>
-    <div class="modal-body perso_modal_body">
-      <form method="post" action="content/php/atelier2a/ajout.php" class="user" id="formsrov">
-        <fieldset>
-          <div class="row">
-            <div class="col-6">
-            <label for="type_attaquant">Type d'attaquant</label>
-            <select class="form-control" name="type_attaquant" id="type_attaquant">
-                <option value="" selected>...</option>
-                <option value="Organisation structurée">Organisation structurée</option>
-                <option value="Organisation idéologique">Organisation idéologique</option>
-                <option value="Individu isolé">Individu isolé</option>
-              </select>
-            
-              <div class="form-group form-colonne">
-                <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Profil d'attaquant" name="profil_attaquant" placeholder="Profil d'attaquant" required>
-                <datalist id="Profil d'attaquant">
-                  <option value="Etatique">
-                  <option value="Crime organisé">
-                  <option value="Terroriste">
-                  <option value="Activiste idéologique">
-                  <option value="Officine spécialisée">
-                  <option value="Amateur">
-                  <option value="Vengeur">
-                  <option value="Malveillant pathologique">
-                </datalist>
-              </div>
-            </div>
-
-            <div class="form-group col-6">
-              <label for="Description de la source de risque">Description de la source de risque</label>
-              <textarea class="form-control perso_text_area" id="Description de la source de risque" name="description_sr"rows="5"></textarea>
-            </div>
-          </div>
-          <div class="row">
-            <!-- <div class="form-group col-12">
-              <input type="search" class="perso_form shadow-none form-control form-control-user" id="objectif_vise" name="objectif_vise"
-                placeholder="Objectif visé" required>
-            </div> -->
-            <div class="form-group form-colonne col-12">
-                <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Objectif visé" name="objectif_vise" placeholder="Objectif visé" required>
-                <datalist id="Objectif visé">
-                  <option value="Espionnage">
-                  <option value="Prépositionnement stratégique">
-                  <option value="Influence">
-                  <option value="Entrave au fonctionnement">
-                  <option value="Lucratif">
-                  <option value="Défi, amusement">
-                </datalist>
-              </div>
-
-            <div class="form-group col-12">
-              <label for="Description de l'objectif visé">Description de l'objectif visé</label>
-              <textarea class="form-control perso_text_area" id="Description de l'objectif visé" name="description_objectif_vise" rows="3"></textarea>
-            </div>
-          </div>
-          <!-- bouton Ajouter -->
-          <div class="modal-footer perso_middle_modal_footer">
-            <input type="submit" name="validersrov" value="Ajouter" class="btn perso_btn shadow-none"></input>
-          </div>
-        </fieldset>
-      </form>
-    </div>    
-</div>
+  </div>
 </div>
 
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <a class="btn btn-primary" href="login.html">Logout</a>
       </div>
     </div>
   </div>
+</div>
 
   <!-- Bootstrap core JavaScript-->
   <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
@@ -617,6 +618,7 @@ aria-hidden="true">
   <script src="content/js/modules/dark_mode.js"></script>
   <script src="content/js/modules/top_bar.js"></script>
   <script src="content/js/modules/side_bar.js"></script>
+  <script src="content/js/modules/fixed_page.js"></script>
   <script src="content/js/modules/realtime.js"></script>
   <script src="content/js/modules/set_filter_sort_table.js"></script>
   <script src="content/js/atelier/atelier2a.js"></script>

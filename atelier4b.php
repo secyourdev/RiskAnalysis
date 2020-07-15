@@ -43,7 +43,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="content/fonts/nunito.css" rel="stylesheet">
 
   <!-- CSS -->
   <link href="content/css/bootstrap.css" rel="stylesheet">
@@ -70,7 +70,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion" id="accordionSidebar">
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">      
         <!-- Logo -->
@@ -367,7 +367,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
       <!-- Main Content -->
       <div id="content">
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top fixed-top shadow" id="barre_info">
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
@@ -412,7 +412,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        <div id="fixed_page" class="container-fluid">
           <!-- Content Row -->
           <div class="row fondu">
             <!-- Area Card -->
@@ -446,6 +446,23 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <!-- Card Body -->
                 <div class="card-body">
                   <!--text-->
+                  <div class="form-group">
+                    <label for="SelectNaturePop">Choix de la vraisemblance maximale d'un scénario opérationnel</label>
+                    <select class="form-control" name="valeurvraisemblance" id="valeurvraisemblance">
+                      <option value="0" selected>...</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                      <div id="vraisemblance_choisie">
+                        Valeur de vraisemblance choisie : 
+                        <?php 
+                          $vraisemblance_projet = mysqli_fetch_array($resultprojet);
+                          // $echelle_projet = $queryprojet->fetch();
+                          echo $vraisemblance_projet[0];
+                        ?>
+                      </div>
+                  </div> 
+                  <script src="content/js/modules/vraisemblance.js"></script>
                   <div class="table-responsive">
                   <input type="text" class="rechercher_input" id="rechercher_chemin" placeholder="Rechercher">
                     <table id="editable_table" class="table table-bordered table-striped">
@@ -466,9 +483,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       {
                         echo '
                         <tr>
-                        <td>'.$row["id_scenario_strategique"].'</td>
+                        <td>'.$row["id_scenario_operationnel"].'</td>
                         <td>'.$row["id_risque"].'</td>
-                        <td>'.$row["chemin_d_attaque_strategique"].'</td>
+                        <td>'.$row["nom_chemin_d_attaque_strategique"].'</td>
                         <td>'.$row["description_scenario_operationnel"].'</td>
                         <td>'.$row["vraisemblance"].'</td>
                         </tr>
@@ -491,7 +508,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+      <footer id="footer" class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
@@ -513,23 +530,29 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Êtes-vous prêt à quitter l'application ?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à terminer votre session
+                    en cours.</div>
+                <div class="modal-footer">
+                    <form method="post" action="content/php/deconnexion/logs.php">
+                        <fieldset>
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                            <input type="submit" name="deconnexion" value="Déconnexion" class="btn btn-primary"></input>
+                            <fieldset>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
     </div>
-  </div>
 
   <!-- Bootstrap core JavaScript-->
   <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
@@ -544,6 +567,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   <script src="content/js/modules/dark_mode.js"></script>
   <script src="content/js/modules/top_bar.js"></script>
   <script src="content/js/modules/side_bar.js"></script>
+  <script src="content/js/modules/fixed_page.js"></script>
   <script src="content/js/modules/realtime.js"></script>
   <script src="content/js/modules/set_filter_sort_table.js"></script>
   <script src="content/js/atelier/atelier4b.js"></script>

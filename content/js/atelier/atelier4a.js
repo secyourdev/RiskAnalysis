@@ -9,7 +9,7 @@ $(document).ready(function(){
     $('#editable_table').Tabledit({
      columns:{
       identifier:[0, 'id_scenario_strategique'],
-      editable:[[1, 'nom_scenario_strategique'], [2, "description_source_risque"], [3, "objectif_vise"], [4, "evenement_redoute"], [5, "numero_risque"], [6, "chemin_attaque_strategique"], [7, "gravite"]]
+    //   editable:[[1, 'nom_scenario_strategique'], [2, "description_source_risque"], [3, "objectif_vise"], [4, "evenement_redoute"], [5, "numero_risque"], [6, "chemin_attaque_strategique"], [7, "gravite"]]
      },
      restoreButton:false,
      editButton: false,
@@ -21,7 +21,7 @@ $(document).ready(function(){
      deleteButton: false,
      columns:{
       identifier:[0, "id_scenario_operationnel"],
-      editable:[[1, 'id_risque'], [2, 'chemin_d_attaque_strategique'], [3, 'description_scenario_operationnel']]
+      editable:[ [3, 'description_scenario_operationnel']]
      },
      restoreButton:false,
      onSuccess:function(data, textStatus, jqXHR)
@@ -36,7 +36,7 @@ $(document).ready(function(){
      url:'content/php/atelier4a/modificationmodeope.php',
      columns:{
       identifier:[0, "id_mode_operatoire"],
-      editable:[[1, 'scenario_operationnel'], [2, 'mode_operatoire']]
+      editable:[ [2, 'mode_operatoire']]
      },
      restoreButton:false,
      onSuccess:function(data, textStatus, jqXHR)
