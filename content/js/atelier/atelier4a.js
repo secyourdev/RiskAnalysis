@@ -1,15 +1,31 @@
+/*------------------------------- VARIABLES ----------------------------------*/
+var accordionSidebar = document.getElementById("accordionSidebar");
+var sidebarToggle = document.getElementById("sidebarToggle");
+
 var button = document.getElementsByClassName('tabledit-edit-button')
 var save_button = document.getElementsByClassName('tabledit-save-button')
 var j=0;
 var k=0;
 var l=0;
+
+/*------------------------------- SIDEBAR ----------------------------------*/
+show_sub_content()
+sidebarToggleTop.addEventListener('click', show_sub_content,false);
+sidebarToggle.addEventListener('click',show_sub_content,false);
+window.addEventListener('resize', show_sub_content, false);
+function show_sub_content(){
+    var Atelier1 = document.getElementById('Atelier4');
+    if(!accordionSidebar.classList.contains('toggled')&&(window.matchMedia("(min-width: 768px)").matches)){
+        Atelier1.classList.add('show')
+    }
+}
 /*--------------------------------- TABLES JS -------------------------------*/
 $(document).ready(function(){  
     
     $('#editable_table').Tabledit({
      columns:{
       identifier:[0, 'id_scenario_strategique'],
-      editable:[[1, 'nom_scenario_strategique'], [2, "description_source_risque"], [3, "objectif_vise"], [4, "evenement_redoute"], [5, "numero_risque"], [6, "chemin_attaque_strategique"], [7, "gravite"]]
+    //   editable:[[1, 'nom_scenario_strategique'], [2, "description_source_risque"], [3, "objectif_vise"], [4, "evenement_redoute"], [5, "numero_risque"], [6, "chemin_attaque_strategique"], [7, "gravite"]]
      },
      restoreButton:false,
      editButton: false,

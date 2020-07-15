@@ -29,7 +29,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $userdroit = $reqdroit->fetch();
 ?>
 
-<?php include("content/php/atelier4b/selection.php");?>
+<?php include("content/php/atelier5btableau/selection.php");?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -39,7 +39,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
   <meta name="description" content="CyberRiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>CyberRiskManager | Atelier 4.b</title>
+  <title>CyberRiskManager | Atelier 5.b</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -367,7 +367,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
       <!-- Main Content -->
       <div id="content">
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top fixed-top shadow" id="barre_info">
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top fixed-top shadow" id='barre_info'> 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
@@ -375,7 +375,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
           <div id="top_bar_1" class="top_bar_name_1"><?php echo $projectinfo['nom_projet'];?></div>
           <div id="top_bar_2" class="top_bar_name_2">Atelier 4</div>
-          <div id="top_bar_3" class="top_bar_name_3">Activité 4.b - Évaluer la vraisemblance des scénarios opérationnels</div>
+          <div id="top_bar_3" class="top_bar_name_3">Activité 4.a - Élaborer les scénarios opérationnels</div>
           
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -397,7 +397,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="parametres&<?php echo $_SESSION['id_utilisateur'];?>">
-                  <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                   Paramètres
                 </a>
                 <div class="dropdown-divider"></div>
@@ -425,8 +425,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <p>Le but de l'atelier 4 est de construire des scénarios techniques reprenant les modes opératoires susceptibles d'être utilisés par les sources de risque pour réaliser les scénarios stratégiues.
-                    Cet atelier adopte ue démarche similaire à celle de l'atelier précédent mais se concentre sur les biens supports critiques. Vous évaluez ensuite le niveau de vraisemblance des scénarios opérationnels obtenus.
+                  <p>Le but de cet atelier est de réaliser une synthèse des scénarios de risque identifiés et de définir une stratégie de traitement du risque. Cette stratégie aboutit à la définition de mesures de 
+                    sécuriité, recensées dans un plan d'amélioration continue de la sécurité (PACS). Les risques résiduels sont ensuite identifiés ainsi que le cadre de suivi de ces risques.
                   </p>
                   <!--text-->
                 </div>
@@ -435,66 +435,86 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
           </div>
 
           <div class="row">
+
             <!-- Area Card -->
             <div class="col-xl col-lg">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Évaluation de la vraisemblance</h6>
-          
+                  <h6 class="m-0"></h6>
+                  
+
+              
+
+
+
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <!--text-->
-                  <div class="form-group">
-                    <label for="SelectNaturePop">Choix de la vraisemblance maximale d'un scénario opérationnel</label>
-                    <select class="form-control" name="valeurvraisemblance" id="valeurvraisemblance">
-                      <option value="0" selected>...</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                    </select>
-                      <div id="vraisemblance_choisie">
-                        Valeur de vraisemblance choisie : 
-                        <?php 
-                          $vraisemblance_projet = mysqli_fetch_array($resultprojet);
-                          // $echelle_projet = $queryprojet->fetch();
-                          echo $vraisemblance_projet[0];
-                        ?>
-                      </div>
-                  </div> 
-                  <script src="content/js/modules/vraisemblance.js"></script>
                   <div class="table-responsive">
                   <input type="text" class="rechercher_input" id="rechercher_chemin" placeholder="Rechercher">
                     <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th id="id_scenario_ope">ID scénario operationnel</th>
-                          <th id="numero_risque">Numéro du risque</th>
+                          <th id="id">ID</th>
+                          <th id="valeur_metier">Valeur Métier</th>
+                          <th id="evenement_redoute">Événement redouté</th>
+                          <th id="impact">Impact</th>
+                          <th id="gravite">Gravité</th>
+                          <th id="source_de_risque">Source de risque</th>
+                          <th id="objectif_vise">Objectif visé</th>
+                          <th id="pertinence">Pertinence</th>
+                          <th id="numero_risque">N° Risque</th>
                           <th id="chemin_attaque_strategique">Chemin d'attaque stratégique</th>
-                          <th id="scenario_operationnel">Scénario opérationnel</th>
+                          <th id="partie_prenante">Partie prenante</th>
+                          <th id="menace">Niveau de menace</th>
+                          <th id="menace_residuelle">Niveau de menace résiduel</th>
+                          <th id="scenario_operationnel">Scenario opérationnel</th>
                           <th id="vraisemblance">Vraisemblance</th>
+                          <th id="risque">Risque</th>
+                          <th id="regle">Règle</th>
                           
                         </tr>
                       </thead>
                         
                       <tbody>
                       <?php
-                      while($row = mysqli_fetch_array($result1))
+                      while($row = mysqli_fetch_array($result))
                       {
+                        $risque = $row["niveau_de_gravite"] * $row["vraisemblance"];
                         echo '
                         <tr>
-                        <td>'.$row["id_scenario_operationnel"].'</td>
+                        <td>'.$row["id_chemin_d_attaque_strategique"].'</td>
+                        <td>'.$row["nom_valeur_metier"].'</td>
+                        <td>'.$row["nom_evenement_redoute"].'</td>
+                        <td>'.$row["impact"].'</td>
+                        <td>'.$row["niveau_de_gravite"].'</td>
+                        <td>'.$row["description_source_de_risque"].'</td>
+                        <td>'.$row["objectif_vise"].'</td>
+                        <td>'.$row["pertinence"].'</td>
                         <td>'.$row["id_risque"].'</td>
                         <td>'.$row["nom_chemin_d_attaque_strategique"].'</td>
+                        <td>'.$row["nom_partie_prenante"].'</td>
+                        <td>'.$row["niveau_de_menace_partie_prenante"].'</td>
+                        <td>'.$row["niveau_de_menace_residuelle"].'</td>
                         <td>'.$row["description_scenario_operationnel"].'</td>
                         <td>'.$row["vraisemblance"].'</td>
+                        <td>'.$risque.'</td>
+                        <td>'.$row["titre"].'</td>
                         </tr>
                         ';
                       }
                       ?>
                       </tbody>
                     </table>
+                  </div>    
+                  <!-- bouton Ajouter une nouvelle ligne -->
+                  <div class="text-center">
+                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_tableau">Ajouter une nouvelle ligne</button>
                   </div> 
+
+
                 </div>
               </div>
             </div>
@@ -508,7 +528,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer id="footer" class="sticky-footer bg-white">
+      <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
@@ -527,32 +547,90 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
+<!-- -------------------------------------------------------------------------------------------------------------- 
+----------------------------------------- modal ajout de ligne ----------------------------------------------------
+--------------------------------------------------------------------------------------------------------------- -->
+<div class="modal fade" id="ajout_ligne_tableau" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modification des mesures de sécurité</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body perso_modal_body">
+        <form method="post" action="content/php/atelier5btableau/ajout.php" class="user" id="formecartPop">
+          <fieldset>
+            <div class="row">
+            <div class="form-group col-12">
+              <label for="chemin">Chemin d'attaque stratégique</label>
+              <select class="form-control" id="chemin", name="chemin">
+                <option value="" selected>...</option>
+                <?php
+                while ($row = mysqli_fetch_array($resultchemin)) //selection.php
+                {
+                  echo '
+                      <option id="id_chemin" value="' . $row["id_chemin_d_attaque_strategique"] . '">' . $row["nom_chemin_d_attaque_strategique"] . '</option>
+                      ';
+                }
+                ?>
+              </select>
+              <script src="content/js/modules/regles.js"></script>
+            </div>
 
+              <div class="form-group col-12">
+                <label for="referentiel">Référentiel de sécurité</label>
+                <select class="form-control" id="referentiel", name="referentiel">
+                  <option value="" selected>...</option>
+                  <?php
+                  while ($row = mysqli_fetch_array($result_referentiel)) //selection.php
+                  {
+                    echo '
+                        <option id="id_socle" value="' . $row["id_socle_securite"] . '">' . $row["nom_referentiel"] . '</option>
+                        ';
+                  }
+                  ?>
+                </select>
+                <script src="content/js/modules/regles.js"></script>
+              </div>
+              <div class="form-group col-12">
+                <label for="mesure">Mesure de sécurité</label>
+                <select class="form-control" id="mesure" name="mesure">
+                  <option value="" selected>Choisissez un référentiel</option>
+                </select>
+              </div> 
+            </div>
+            <!-- bouton Valider -->
+            <div class="modal-footer perso_middle_modal_footer">
+              <input type="submit" name="ajouterregle" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Êtes-vous prêt à quitter l'application ?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à terminer votre session
-                    en cours.</div>
-                <div class="modal-footer">
-                    <form method="post" action="content/php/deconnexion/logs.php">
-                        <fieldset>
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
-                            <input type="submit" name="deconnexion" value="Déconnexion" class="btn btn-primary"></input>
-                            <fieldset>
-                    </form>
-                </div>
-            </div>
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
         </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
+        </div>
+      </div>
     </div>
+  </div>
 
   <!-- Bootstrap core JavaScript-->
   <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
@@ -570,7 +648,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   <script src="content/js/modules/fixed_page.js"></script>
   <script src="content/js/modules/realtime.js"></script>
   <script src="content/js/modules/set_filter_sort_table.js"></script>
-  <script src="content/js/atelier/atelier4b.js"></script>
+  <script src="content/js/atelier/atelier5bpacs.js"></script>
   <script src="content/js/modules/sort_table.js"></script>
 </body>
 <?php
