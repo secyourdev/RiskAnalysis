@@ -811,7 +811,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             <tr>
                               <th>ID</th>
                               <th>Type d'attaquant</th>
-                              <th>Profile d'attaquant</th>
+                              <th>Profil d'attaquant</th>
                               <th>Description source de risque</th>
                               <th>Objectifs visés</th>
                               <th>Description de l'objectif</th>
@@ -859,7 +859,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <th>Nom du scénario strategique</th>
                                 <th>Source de risque / Objectif visé</th>
                                 <th>Nom de l'événement redouté</th>
-                                <th>niveau de gravite</th>
+                                <th>Niveau de gravite</th>
                               </tr>
                             </thead>
                             <tbody>
