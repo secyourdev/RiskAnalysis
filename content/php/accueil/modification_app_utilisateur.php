@@ -8,7 +8,7 @@ $results["error"] = false;
 $results["message"] = [];
 
 
-if($input["action"] === 'edit' && $results["error"] === false){
+if($input["action"] === 'edit'){
     $nom = mysqli_real_escape_string($connect, $input["nom"]);
     $prenom = mysqli_real_escape_string($connect, $input["prenom"]);
     $poste = mysqli_real_escape_string($connect, $input["poste"]);
@@ -60,7 +60,7 @@ if($input["action"] === 'edit' && $results["error"] === false){
         <?php
     }
 
-
+    if($results["error"] === false){
         $query = "
         UPDATE utilisateur 
         SET nom = '".$nom."', 
@@ -72,6 +72,7 @@ if($input["action"] === 'edit' && $results["error"] === false){
         ";
 
         mysqli_query($connect, $query);
+    }
 }
 
 if($input["action"] === 'delete'){

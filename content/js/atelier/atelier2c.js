@@ -1,9 +1,24 @@
+/*------------------------------- VARIABLES ----------------------------------*/
+var accordionSidebar = document.getElementById("accordionSidebar");
+var sidebarToggle = document.getElementById("sidebarToggle");
+
 var button = document.getElementsByClassName('tabledit-edit-button')
 var save_button = document.getElementsByClassName('tabledit-save-button')
 var j=0;
 
-/*--------------------------------- TABLES JS -------------------------------*/
+/*------------------------------- SIDEBAR ----------------------------------*/
+show_sub_content()
+sidebarToggleTop.addEventListener('click', show_sub_content,false);
+sidebarToggle.addEventListener('click',show_sub_content,false);
+window.addEventListener('resize', show_sub_content, false);
+function show_sub_content(){
+    var Atelier1 = document.getElementById('Atelier2');
+    if(!accordionSidebar.classList.contains('toggled')&&(window.matchMedia("(min-width: 768px)").matches)){
+        Atelier1.classList.add('show')
+    }
+}
 
+/*--------------------------------- TABLES JS -------------------------------*/
 $(document).ready(function () {
     $('#editable_table').Tabledit({
         url: 'content/php/atelier2c/modification.php',

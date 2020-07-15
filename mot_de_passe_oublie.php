@@ -21,7 +21,7 @@ catch(PDOException $e){
   <meta name="description" content="CyberRiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>CyberRiskManager | Connexion</title>
+  <title>CyberRiskManager | Mot de passe oublié</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -64,40 +64,18 @@ else{
           <div class="text-center">
             <h1 class="h4 text-gray-900 mb-5 perso_risk_manager">CYBER RISK MANAGER</h1>
           </div>
-          <form method="post" action="content/php/connexion/logs.php" class="user" id="formConnexion">
+          <form method="post" action="content/php/mot_de_passe_oublie/reinitialiser_mdp.php" class="user" id="formConnexion">
            <fieldset>
-            <div class='message_success'>
-              <?php 
-                if(isset($_SESSION['message_success'])){
-                  echo $_SESSION['message_success'];
-                  unset($_SESSION['message_success']);
-                }
-              ?>
-              </div> 
-              <div class='message_error'>
-              <?php                
-                if(isset($_SESSION['message_error'])){
-                    echo $_SESSION['message_error'];
-                    unset($_SESSION['message_error']);
-                }
-              ?>
-            </div>
             <div class="form-group">
-              <input type="email" class="perso_form shadow-none form-control form-control-user" id="exampleInputEmail" name="email" aria-describedby="emailHelp"
+              <input type="email" class="perso_form shadow-none form-control form-control-user" id="exampleInputEmail" name="email_utilisateur" aria-describedby="emailHelp"
                 placeholder="Entrer une adresse email" required>
             </div>
-            <div class="form-group">
-              <input type="password" class="perso_form shadow-none form-control form-control-user" id="exampleInputPassword" name="mot_de_passe" placeholder="Mot de passe" required>
-            </div>
-            <div class="perso_motdepass_center">
-              <a class="perso_color_dark_blue" href="mot_de_passe_oublie.php">Mot de passe oublié?</a>
-            </div>
+            </br>
             <div class="text-center">
-              <input type="submit" name="connexion" value="Connexion" class="btn btn-primary perso_btn_primary"></input>
+              <input type="submit" name="envoyer" value="Envoyer" class="btn btn-primary perso_btn_primary"></input>
             </div>
            <fieldset>
           </form>
-
           <div class="perso_condition_center">
             <a class="perso_color_dark_blue" href="">Condition d'utilisation | Politique de confidentialité</a>
           </div>
