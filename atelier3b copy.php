@@ -633,34 +633,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                           <span class="image-preview__default-text">Image Preview</span>
                         </div>
 
-
-<!-- 
-                        <div class="form-group">
-                          <label for="select_scenario_operationnel">Nom du référentiel de sécurité</label>
-                          <select class="form-control" name="select_scenario_operationnel" id="select_scenario_operationnel">
-                            <option value="" selected>...</option>
-                            <?php
-                            // while ($row = mysqli_fetch_array($result_scenario_op)) //selection.php
-                            // {
-                            //   echo '<option id="scenario_operationnel" value="' . $row['id_scenario_operationnel'] . '">' . $row['nom_scenario_operationnel'] . '</option>';
-                            // }
-                            ?>
-                          </select>
-                        </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                       </div>
                     </div>
                   </div>
