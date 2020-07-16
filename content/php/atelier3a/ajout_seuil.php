@@ -1,7 +1,5 @@
 <?php
 session_start();
-header('Location: ../../../atelier-3a&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
-
 
 //Connexion à la base de donnee
 try {
@@ -78,5 +76,5 @@ if ($results["error"] === false && isset($_POST['validerseuil'])) {
   <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
 <?php
 }
-
+header('Location: ../../../atelier-3a&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#chemin_dattaque');
 ?>

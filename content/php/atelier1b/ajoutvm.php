@@ -2,7 +2,6 @@
   session_start();
   $getid_projet = $_SESSION['id_projet'];
 
-  header('Location: ../../../atelier-1b&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet']);
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
@@ -56,4 +55,5 @@ if ($results["error"] === false && isset($_POST['validervm'])) {
 
   $_SESSION['message_success_2'] = "La valeur métier a bien été ajoutée !";
 }
+header('Location: ../../../atelier-1b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#valeur_metier');
 ?>

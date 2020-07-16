@@ -470,7 +470,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             </div>
 
             <!-- Area Card -->
-            <div class="col-xl-12 col-lg-12">
+            <div id="mission" class="col-xl-12 col-lg-12">
               <!-- Mission -->
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
@@ -540,7 +540,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             </div>
 
             <!-- Area Card -->
-            <div class="col-xl-12 col-lg-12">
+            <div id="valeur_metier" class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header d-flex flex-row align-items-center justify-content-between">

@@ -476,7 +476,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
                   <!-- Area Card -->
                   <!-- Socle de sécurité -->
-                  <div class="col-xl-12 col-lg-12">
+                  <div id="socle" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header d-flex flex-row align-items-center justify-content-between">
@@ -548,7 +548,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
                   <!-- Area Card -->
                   <!-- Écarts -->
-                  <div class="col-xl-12 col-lg-12">
+                  <div id="regles" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header d-flex flex-row align-items-center justify-content-between">

@@ -1,7 +1,5 @@
 <?php
 session_start();
-header('Location: ../../../atelier-1c&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
-
 
 //Connexion à la base de donnee
 try {
@@ -70,4 +68,6 @@ if ($results["error"] === false && isset($_POST['validerevenementredoute'])) {
   $insere->execute();
   $_SESSION['message_success_2'] = "L'événement redouté a été ajouté !";
 }
+
+header('Location: ../../../atelier-1c&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#evenements_redoutes');
 ?>

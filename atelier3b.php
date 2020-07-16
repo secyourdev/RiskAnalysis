@@ -565,7 +565,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   </div>
 
                   <!-- Area Card -->
-                  <div class="col-xl-12 col-lg-12">
+                  <div id="scenario_strategique" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -638,7 +638,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   </div>
 
                   <!-- Area Card -->
-                  <div class="col-xl-12 col-lg-12">
+                  <div id="chemin_dattaque" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">

@@ -1,8 +1,6 @@
 <?php
 session_start();
 $getid_projet = $_SESSION['id_projet'];
-header('Location: ../../../atelier-1d&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet']);
-
 
 //Connexion à la base de donnee
 try {
@@ -76,4 +74,5 @@ if ($results["error"] === false && isset($_POST['validerecart'])) {
   $_SESSION['message_success_2'] = "La règle a bien été ajoutée !";
 }
 
+header('Location: ../../../atelier-1d&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet'].'#regles');
 ?>
