@@ -9,13 +9,12 @@ nomgrpuser.addEventListener('change', function(){
   rechercher_utilisateur(nomgrpuser.options[nomgrpuser.options.selectedIndex].value);
 });
 
-
 function rechercher_utilisateur(selected_value){
   $.ajax({
     url: 'content/php/accueil/selection_utilisateur.php',
     type: 'POST',
     data: {
-        nom_grp_utilisateur: nomgrpuser.value
+        nom_grp_utilisateur: selected_value
     },
     success: function (data) {
       document.getElementById('ecrire_user').innerHTML = data;
@@ -36,9 +35,10 @@ function rechercher_utilisateur(selected_value){
       });
     }
   })
-
-  if(selected_value!="")
-    button_add_user_in_grp.style.display='inline'
-  else
-    button_add_user_in_grp.style.display='none'
+  sleep(100).then(() => {
+    if(selected_value!="")
+      button_add_user_in_grp.style.display='inline'
+    else
+      button_add_user_in_grp.style.display='none'
+  });
 }

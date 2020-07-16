@@ -1,6 +1,6 @@
 <?php
 $getid_projet = intval($_GET['id_projet']);
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v18");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
 $query1 = "SELECT scenario_strategique.id_scenario_strategique, nom_scenario_strategique, description_source_de_risque, objectif_vise, nom_evenement_redoute, id_risque, nom_chemin_d_attaque_strategique, niveau_de_gravite FROM scenario_strategique 
 INNER JOIN SROV ON scenario_strategique.id_source_de_risque = SROV.id_source_de_risque 
 INNER JOIN evenement_redoute ON scenario_strategique.id_evenement_redoute = evenement_redoute.id_evenement_redoute

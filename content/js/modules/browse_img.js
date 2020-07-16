@@ -1,9 +1,9 @@
-// $('.custom-file-input').on('change', function () {
-//     var fileName_path = $(this).val()
-//     var fileName = fileName_path.substring(fileName_path.lastIndexOf('\\') + 1)
+$('.custom-file-input').on('change', function () {
+    var fileName_path = $(this).val()
+    var fileName = fileName_path.substring(fileName_path.lastIndexOf('\\') + 1)
     
-//     $(this).next('.custom-file-label').addClass("selected").html(fileName)
-// })
+    $(this).next('.custom-file-label').addClass("selected").html(fileName)
+})
 
 
 const inpFile = document.getElementById("inpFile");
@@ -23,7 +23,7 @@ inpFile.addEventListener("change", function () {
 
         reader.addEventListener("load", function () {
            console.log(this);
-           previewImage.setAttribute("src", this.result);
+            previewImage.setAttribute("src", this.result);
         });
         
         reader.readAsDataURL(file);

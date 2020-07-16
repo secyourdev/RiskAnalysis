@@ -1,13 +1,11 @@
 <?php
 session_start();
 $getid_projet = $_SESSION['id_projet'];
-header('Location: ../../../atelier-1d&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet']);
-
 
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -29,17 +27,29 @@ $id_atelier = "1.d";
 
 $insere = $bdd->prepare("INSERT INTO socle_de_securite(id_socle_securite, type_referentiel, nom_referentiel, etat_d_application, etat_de_la_conformite, id_atelier, id_projet) VALUES (?,?,?,?,?,?,?)");
 
-/* // Verification du nom_evenement_redoutes
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_evenement_redoutes)) {
+// Verification du type_referenciel
+if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $type_referenciel)) {
   $results["error"] = true;
-  $results["message"]["nom_evenement_redoutes"] = "nom_evenement_redoutes invalide";
-?>
-  <strong style="color:#FF6565;">nom_evenement_redoutes invalide </br></strong>
-<?php
-} */
+  $_SESSION['message_error'] = "Type du référenciel invalide";
+}
 
-var_dump($insere);
+// Verification du nom_referentiel
+if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_referentiel)) {
+  $results["error"] = true;
+  $_SESSION['message_error'] = "Nom invalide";
+}
 
+// Verification du etat_d_application
+if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $etat_d_application)) {
+  $results["error"] = true;
+  $_SESSION['message_error'] = "État de l'application invalide";
+}
+
+// Verification du etat_de_la_conformite
+if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $etat_de_la_conformite)) {
+  $results["error"] = true;
+  $_SESSION['message_error'] = "Commentaire invalide";
+}
 
 if ($results["error"] === false && isset($_POST['validersocle'])) {
   $insere->bindParam(1, $id_socle_securite);
@@ -49,14 +59,9 @@ if ($results["error"] === false && isset($_POST['validersocle'])) {
   $insere->bindParam(5, $etat_de_la_conformite);
   $insere->bindParam(6, $id_atelier);
   $insere->bindParam(7, $getid_projet);
-  // print '<br />';
-  // $insere->debugDumpParams();
-  // print '<br />';
   $insere->execute();
 
-?>
-  <strong style="color:#4AD991;">Le socle a bien été ajoutée !</br></strong>
-<?php
+  $_SESSION['message_success'] = "Le socle de sécurité a bien été ajouté !";
 }
 
-?>
+header('Location: ../../../atelier-1d&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet'].'#socle');

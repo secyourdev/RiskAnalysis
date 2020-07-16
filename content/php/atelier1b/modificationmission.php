@@ -1,12 +1,11 @@
 <?php
-//action.php
+
 session_start();
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v19");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
 
 $input = filter_input_array(INPUT_POST);
 
 $results["error"] = false;
-$results["message"] = [];
 
 $id_atelier = "1.b";
 $id_projet = $_SESSION['id_projet'];;
@@ -21,37 +20,21 @@ if ($input["action"] === 'edit') {
     // Verification de la mission
     if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_mission)) {
         $results["error"] = true;
-        $results["message"]["mission"] = "Mission invalide";
-    ?>
-        <strong style="color:#FF6565;">Mission invalide </br></strong>
-    <?php
     }
 
     // Verification du responsable de la mission
     if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $responsable)) {
         $results["error"] = true;
-        $results["message"]["responsable"] = "Responsable invalide";
-    ?>
-        <strong style="color:#FF6565;">Responsable invalide </br></strong>
-    <?php
     }
 
     // Verification du responsable de la valeur métier
     if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_responsable_vm)) {
         $results["error"] = true;
-        $results["message"]["responsable_vm"] = "Responsable Valeur Métier invalide";
-    ?>
-        <strong style="color:#FF6565;">Responsable Valeur Métier invalide </br></strong>
-    <?php
     }
 
     // Verification du responsable du bien support
     if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_responsable_bs)) {
         $results["error"] = true;
-        $results["message"]["responsable_bs"] = "Responsable Bien Support invalide";
-    ?>
-        <strong style="color:#FF6565;">Responsable Bien Support invalide </br></strong>
-    <?php
     }
 
     if($results["error"] === false){

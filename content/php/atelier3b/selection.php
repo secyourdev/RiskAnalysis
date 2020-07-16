@@ -1,6 +1,6 @@
 <?php
 $getid_projet = intval($_GET['id_projet']);
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v18");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
 
 //affichage tableau de rappel
 $query_evenement_redoutes = "SELECT * FROM evenement_redoute INNER JOIN valeur_metier on evenement_redoute.id_valeur_metier = valeur_metier.id_valeur_metier WHERE valeur_metier.id_projet = $getid_projet";
@@ -61,3 +61,19 @@ $result_id_partie_prenante = mysqli_query($connect, $query_id_partie_prenante);
 $query_id_scenario_strategique = "SELECT id_scenario_strategique, nom_scenario_strategique FROM scenario_strategique WHERE id_projet = $getid_projet ORDER BY id_scenario_strategique ASC";
 
 $result_id_scenario_strategique = mysqli_query($connect, $query_id_scenario_strategique);
+
+
+
+
+
+
+
+// browse image
+$query = "SELECT * FROM scenario_strategique WHERE id_projet = $getid_projet";
+// print $query;
+$result = mysqli_query($connect, $query);
+// var_dump($result);
+$query_scenario_op = "SELECT id_scenario_strategique, nom_scenario_strategique FROM scenario_strategique WHERE id_projet = $getid_projet AND id_atelier = '3.b'";
+// print $query_scenario_op;
+$result_scenario_op = mysqli_query($connect, $query_scenario_op);
+// print_r($result_scenario_op);

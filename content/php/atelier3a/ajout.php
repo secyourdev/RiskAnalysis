@@ -1,12 +1,10 @@
 <?php
 session_start();
-header('Location: ../../../atelier-3a&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
-
 
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -58,25 +56,13 @@ $insere = $bdd->prepare(
 
 
 
-
-/* // Verification du nom_valeur_metier
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_valeur_metier)) {
-  $results["error"] = true;
-  $results["message"]["nom_valeur_metier"] = "nom_valeur_metier invalide";
-?>
-  <strong style="color:#FF6565;">nom_valeur_metier invalide </br></strong>
-<?php
-} */
-
-
 if ($results["error"] === false && isset($_POST['validerpartie'])) {
   
   $recupere_id_seuil->bindParam(1, $id_atelier);
   $recupere_id_seuil->bindParam(2, $id_projet);
   $recupere_id_seuil->execute();
   $id_seuil = $recupere_id_seuil->fetch();
-  print_r($id_seuil);
-  // $insere->bindParam(1, $id_partie_prenante);
+
   $insere->bindParam(1, $categorie_partie_prenante);
   $insere->bindParam(2, $nom_partie_prenante);
   $insere->bindParam(3, $type);
@@ -93,5 +79,5 @@ if ($results["error"] === false && isset($_POST['validerpartie'])) {
   <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
 <?php
 }
-
+header('Location: ../../../atelier-3a&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#partie_prenante');
 ?>

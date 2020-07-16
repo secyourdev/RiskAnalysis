@@ -3,7 +3,7 @@ session_start();
 
 //Connexion à la base de donnee
 try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 }
 
@@ -467,7 +467,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </div>
               </div>
             </div>
-            <div class="col-xl-12 col-lg-12">
+            <div id="echelle" class="col-xl-12 col-lg-12">
               <!-- Area Card -->
               <!-- Mission -->
               <div class="card shadow mb-4">
@@ -504,6 +504,24 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       </tbody>
                     </table>
                   </div>
+
+                  <div class='message_success'>
+                  <?php 
+                      if(isset($_SESSION['message_success'])){
+                        echo $_SESSION['message_success'];
+                        unset($_SESSION['message_success']);
+                      }
+                  ?>
+                  </div> 
+                  <div class='message_error'>
+                  <?php                
+                      if(isset($_SESSION['message_error'])){
+                          echo $_SESSION['message_error'];
+                          unset($_SESSION['message_error']);
+                      }
+                  ?>
+                  </div>
+
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
                     <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_mission">Ajouter une nouvelle échelle de gravité</button>
@@ -513,7 +531,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             </div>
 
             <!-- Area Card -->
-            <div class="col-xl-12 col-lg-12">
+            <div id="niveau" class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header d-flex flex-row align-items-center justify-content-between">
@@ -536,7 +554,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     </select>
                   </div>
                   <!--tableau-->
-                  <script src="content/js/modules/niveau_echelle.js"></script>
                   <div class="table-responsive">
                     <input type="text" class="rechercher_input" id="rechercher_niveau" placeholder="Rechercher">
                     <table id="tableau_niveau" class="table table-bordered table-striped">
@@ -548,20 +565,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         </tr>
                       </thead>
                       
-                      
                       <tbody id="ecrire_niveau">
-                      <?php
-                      // while($row = $query->fetch(PDO::FETCH_ASSOC))
-                      // {
-                      //   echo '
-                      //   <tr>
-                      //   <td>'.$row["id_niveau"].'</td>
-                      //   <td>'.$row["valeur_niveau"].'</td>
-                      //   <td>'.$row["description_niveau"].'</td>
-                      //   </tr>
-                      //   ';
-                      // }
-                      ?> 
                       </tbody>
                     </table>
                   </div> 
@@ -569,27 +573,13 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               </div>
             </div>
             <!-- Area Card -->
-            <div class="col-xl-12 col-lg-12">
+            <div id="evenements_redoutes" class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="row perso_no_margin">
                   <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <h6>Événements redoutés</h6>
                   </div>
-                  <!-- bouton icon helper -->
-                  <!-- <div class="card-header perso_header_right float-right col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <button class="perso_icon_btn custom-control-inline" data-container="body" data-trigger="hover focus" data-toggle="popover" data-placement="bottom" data-content="Ce choix engendre automatiquement le même barème sur vraisemblance ! ">
-                      <i class="fas fa-info-circle"></i>
-                    </button>
-                    <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="radio_gravite5" name="radio_gravite" class="custom-control-input" value="5">
-                      <label class="custom-control-label" for="radio_gravite5">Gravité sur 5</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="radio_gravite4" name="radio_gravite" class="custom-control-input" value="4">
-                      <label class="custom-control-label" for="radio_gravite4">Gravité sur 4</label>
-                    </div>
-                  </div> -->
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -601,19 +591,11 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                           while($row = mysqli_fetch_array($resultechelle2))
                           {
                             echo '
-                            <option value="'.$row["nom_echelle"].'">'.$row["nom_echelle"].'</option>
+                            <option value="'.$row["id_echelle"].'">'.$row["nom_echelle"].'</option>
                             ';
                           }  
                       ?>
                     </select>
-                    <div id="echelle_choisie">
-                      Echelle choisie : 
-                      <?php 
-                        $echelle_projet = mysqli_fetch_array($resultprojet);
-                        // $echelle_projet = $queryprojet->fetch();
-                        echo $echelle_projet[0];
-                      ?>
-                    </div>
                   </div>
                   <script src="content/js/modules/echelle_projet.js"></script>
                   <!--tableau-->
@@ -657,6 +639,23 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     </table>
                   </div>
 
+                  <div class='message_success'>
+                  <?php 
+                      if(isset($_SESSION['message_success_2'])){
+                        echo $_SESSION['message_success_2'];
+                        unset($_SESSION['message_success_2']);
+                      }
+                  ?>
+                  </div> 
+                  <div class='message_error'>
+                  <?php                
+                      if(isset($_SESSION['message_error_2'])){
+                          echo $_SESSION['message_error_2'];
+                          unset($_SESSION['message_error_2']);
+                      }
+                  ?>
+                  </div>
+                  
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
                     <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_evenement_redoute">Ajouter un nouvel énénement redouté</button>
@@ -930,6 +929,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <!-- <script src="content/js/modules/gravite.js"></script> -->
     <script src="content/js/modules/realtime.js"></script>
     <script src="content/js/modules/set_filter_sort_table.js"></script>
+    <script src="content/js/modules/niveau_echelle.js"></script>
     <script src="content/js/atelier/atelier1c.js"></script>
     <script src="content/js/modules/sort_table.js"></script>
 

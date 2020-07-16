@@ -1,6 +1,5 @@
 <?php
-//action.php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v18");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -10,7 +9,6 @@ echo "modeope : ";
 echo $modeope;
 
 $results["error"] = false;
-$results["message"] = [];
 
 echo $results["error"];
 echo "\n";
@@ -20,16 +18,9 @@ echo "\n";
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $modeope)) {
     $results["error"] = true;
     print $results["error"];
-    $results["message"]["type_attaquant"] = "Mode opératoire invalide";
-    ?>
-    <strong style="color:#FF6565;">Mode opératoire invalide </br></strong>
-    <?php
 }
 
-
-
 if ($input["action"] === 'edit' && $results["error"] === false) {
-    echo "lol";
     $query = "
     UPDATE mode_operatoire 
     SET mode_operatoire = '".$modeope."'

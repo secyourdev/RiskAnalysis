@@ -1,9 +1,9 @@
 <?php
-//header('Location: ../../../index.php');
+
 session_start();
   //Connexion à la base de donnee
   try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
   }
 
@@ -12,7 +12,6 @@ session_start();
   }
 
   $results["error"] = false;
-  $results["message"] = [];
 
   $nom_etude=$_POST['nom_etude'];
   $description_etude=$_POST['description_etude'];
@@ -24,28 +23,19 @@ session_start();
   // Verification du nom du projet
     if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_etude)){
       $results["error"] = true;
-      $results["message"]["nom"] = "Nom invalide";
-      ?>
-<strong style="color:#FF6565;">Nom invalide </br></strong>
-<?php
+      $_SESSION['message_error'] = "Nom invalide";
     }
 
     // Verification de l'description du projet
     if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $description_etude)){
       $results["error"] = true;
-      $results["message"]["description"] = "Description invalide";
-      ?>
-<strong style="color:#FF6565;">Description invalide </br></strong>
-<?php
+      $_SESSION['message_error'] = "Description invalide";
     }
 
     // Verification du nom du responsable du projet
     if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_grp_utilisateur)){
       $results["error"] = true;
-      $results["message"]["groupe_utilisateur"] = "Groupe d'utilisateur invalide";
-      ?>
-<strong style="color:#FF6565;">Groupe d'utilisateur invalide </br></strong>
-<?php
+      $_SESSION['message_error'] = "Groupe d'utilisateur invalide";
     }
 
     if ($results["error"] === false && isset($_POST['ajouter_projet'])){
@@ -169,12 +159,9 @@ session_start();
       $insertutilisateur->bindParam(4, $droit);
       $insertutilisateur->execute();      
 
-
-      header('Location: ../../../index&'.$_SESSION['id_utilisateur']);
-    ?>
-<strong style="color:#4AD991;">Le projet a bien été crée !</br></strong>
-<?php
+      $_SESSION['message_success'] = "Le projet a bien été crée !";
     }
-
+    
+    header('Location: ../../../index&'.$_SESSION['id_utilisateur']);
 
 ?>
