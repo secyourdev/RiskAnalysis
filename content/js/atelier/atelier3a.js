@@ -73,14 +73,16 @@ function get_database_seuil() {
         type: 'POST',
         dataType: 'html',
         success: function (resultat) {
-            console.log(resultat);
+            // console.log(resultat);
             
             var seuil = JSON.parse(resultat);
-            sessionIdProjet = sessionIdProjet - 1
-            console.log(sessionIdProjet);
-            seuil_danger.value = seuil[sessionIdProjet][1]
-            seuil_controle.value = seuil[sessionIdProjet][2]
-            seuil_veille.value = seuil[sessionIdProjet][3]
+            console.log('seuil');
+            
+            console.log(seuil);
+            
+            seuil_danger.value = seuil[0]["seuil_danger"]
+            seuil_controle.value = seuil[0]["seuil_controle"]
+            seuil_veille.value = seuil[0]["seuil_veille"]
 
         },
         error: function (erreur) {

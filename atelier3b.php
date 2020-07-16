@@ -617,21 +617,56 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Schéma des scénarios stratégiques</h6>
+                        <h6 class="m-0">Schéma des scénarios opérationnels</h6>
 
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
                         <!--text-->
 
-                        <div class="custom-file">
-                          <input class="custom-file-input" type="file" name="inpFile" id="inpFile">
-                          <label class="custom-file-label" for="inpFile">Choisir une image</label>
-                        </div>
-                        <div class="image-preview" id="imagePreview">
-                          <img src="" alt="Image Preview" class="image-preview__image">
-                          <span class="image-preview__default-text">Image Preview</span>
-                        </div>
+
+
+
+                        <span id="success_message"></span>
+                        <form method="POST" id="sample_form" action="content\php\atelier3b\insert_image.php" enctype="multipart/form-data">
+
+                          <label for="nom_scenario_strategique">Nom du scénario opérationnel</label>
+                          <select class="form-control" name="nom_scenario_strategique" id="nom_scenario_strategique">
+                            <option value="" selected>...</option>
+                            <?php
+                            // print 'bonjour';
+                            // print_r($result_scenario_op);
+                            while ($row = mysqli_fetch_array($result_scenario_op)) //selection.php
+                            {
+                              // print_r($row);
+                              echo '<option id="scenario_strategique" value="' . $row['id_scenario_strategique'] . '">' . $row['nom_scenario_strategique'] . '</option>';
+                            }
+                            ?>
+                          </select>
+
+                          <br>
+
+                          <div class="custom-file">
+                            <input name="inpFile" id="inpFile" class="custom-file-input" type="file">
+                            <label class="custom-file-label" for="inpFile">Choisir un fichier au format image</label>
+                          </div>
+
+                          <div class="form-group" align="center">
+                            <input type="submit" name="file_submit" id="file_submit" class="btn perso_btn_primary shadow-none" value="Ajouter une image" />
+                          </div>
+                        </form>
+
+
+                          <div class='image-preview' id='imagePreview'>
+                          <img class='image-preview__image' src='image/'>
+                          <span class='image-preview__default-text'>Image Preview</span>
+                          <!-- <p>".$row['image_text']."</p> -->
+                          </div>
+
+
+
+
+
 
                       </div>
                     </div>
@@ -887,6 +922,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <script src="content/js/atelier/atelier3b.js"></script>
         <script src="content/js/modules/sort_table.js"></script>
         <script src="content/js/modules/browse_img.js"></script>
+        <script src="content\js\modules\ajax_pour_image.js"></script>
+        <!-- <script src="ajax-browse-image.js"></script> -->
       </body>
   <?php
     }

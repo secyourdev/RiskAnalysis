@@ -4,11 +4,7 @@ session_start();
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-<<<<<<< HEAD
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
-=======
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v20;charset=utf8',
->>>>>>> origin/Guillaume
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -35,8 +31,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
   $userdroit = $reqdroit->fetch();
 ?>
 
-
-  <?php include("content/php/atelier3a/selection.php"); ?>
+  <?php include("content/php/atelier3b/selection.php"); ?>
   <!DOCTYPE html>
   <html lang="fr">
 
@@ -46,11 +41,11 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <meta name="description" content="CyberRiskManager">
     <meta name="author" content="SecYourDev">
 
-    <title>CyberRiskManager | Atelier 3.a</title>
+    <title>CyberRiskManager | Atelier 3.b</title>
 
     <!-- Fonts-->
     <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
-    <link href="content/fonts/nunito.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- CSS -->
     <link href="content/css/bootstrap.css" rel="stylesheet">
@@ -63,9 +58,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
     <link rel="icon" href="content/img/logo_cyber_risk_manager.png" type="image/png">
-
-    <!-- CHART.JS -->
-    <script src="content\vendor\chart.js\chart.min.js"></script>
   </head>
 
   <?php
@@ -79,7 +71,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <div id="wrapper">
 
           <!-- Sidebar -->
-          <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion" id="accordionSidebar">
+          <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
               <!-- Logo -->
@@ -411,8 +403,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             <!-- Main Content -->
             <div id="content">
               <!-- Topbar -->
-              <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top fixed-top shadow" id="barre_info">
-
+              <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                   <i class="fa fa-bars"></i>
@@ -420,7 +411,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
                 <div id="top_bar_1" class="top_bar_name_1"><?php echo $projectinfo['nom_projet']; ?></div>
                 <div id="top_bar_2" class="top_bar_name_2">Atelier 3</div>
-                <div id="top_bar_3" class="top_bar_name_3">Activité 3.a - Construire la cartographie des menaces numériques de l'écosystème et sélectionner les parties prenantes critiques</div>
+                <div id="top_bar_3" class="top_bar_name_3">Activité 3.b - Élaborer des scénarios stratégiques</div>
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -457,7 +448,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
               <!-- End of Topbar -->
 
               <!-- Begin Page Content -->
-              <div id="fixed_page" class="container-fluid">
+              <div class="container-fluid">
                 <!-- Content Row -->
                 <div class="row fondu">
                   <!-- Area Card -->
@@ -484,115 +475,138 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Création des seuils</h6>
+                        <h6 class="m-0">Liste des évènements redoutés établis lors de l'atelier 1</h6>
                       </div>
-
                       <!-- Card Body -->
                       <div class="card-body">
-
-                        <form method="post" action="content/php/atelier3a/ajout_seuil.php" class="user" id="formeseuil">
-                          <fieldset>
-                            <div class="form-group">
-                              <label class="titre_input" for="seuil_danger">Seuil de danger</label>
-                              <input type="text" class="perso_form shadow-none form-control form-control-user" name="seuil_danger" id="seuil_danger" placeholder="Seuil de danger" required>
-                            </div>
-                            <div class="form-group">
-                              <label class="titre_input" for="seuil_controle">Seuil de contrôle</label>
-                              <input type="text" class="perso_form shadow-none form-control form-control-user" name="seuil_controle" id="seuil_controle" placeholder="Seuil de contrôle" required>
-                            </div>
-                            <div class="form-group">
-                              <label class="titre_input" for="seuil_veille">Seuil de veille</label>
-                              <input type="text" class="perso_form shadow-none form-control form-control-user" name="seuil_veille" id="seuil_veille" placeholder="Seuil de veille" required>
-                            </div>
-                            <!-- bouton Ajouter -->
-                            <!-- bouton Ajouter une nouvelle ligne -->
-                            <div class="text-center">
-                              <button type="submit" name="validerseuil" class="btn perso_btn_primary perso_btn_spacing shadow-none">Valider le seuil</button>
-                            </div>
-                          </fieldset>
-                        </form>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Area Card -->
-                  <div id="partie_prenante" class="col-xl-12 col-lg-12">
-                    <div class="card shadow mb-4">
-                      <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Ajouter une partie prenante</h6>
-                      </div>
-
-                      <!-- Card Body -->
-                      <div class="card-body">
-                        <!--tableau-->
+                        <!--text-->
                         <div class="table-responsive">
                           <input type="text" class="rechercher_input" id="rechercher_evenement_redoute" placeholder="Rechercher">
                           <table id="editable_table" class="table table-bordered table-striped">
                             <thead>
                               <tr>
                                 <th>ID</th>
-                                <th>Catégorie</th>
-                                <th>Partie prenante</th>
-                                <th>Type</th>
-                                <th>Dépendance</th>
-                                <th>Facteur de pondération dépendance</th>
-                                <th>Pénétration</th>
-                                <th>Facteur de pondération pénétration</th>
-                                <th>Maturité</th>
-                                <th>Facteur de pondération maturité</th>
-                                <th>Confiance</th>
-                                <th>Facteur de pondération confiance</th>
-                                <th>Niveau de menace</th>
+                                <th>Valeur métier</th>
+                                <th>Nom de l'événement redouté</th>
+                                <th>Description événement redouté</th>
+                                <th>Impacts</th>
+                                <th>C</th>
+                                <th>I</th>
+                                <th>D</th>
+                                <th>T</th>
+                                <th>Gravité</th>
                               </tr>
                             </thead>
                             <tbody>
                               <?php
-                              while ($row = mysqli_fetch_array($result)) {
+                              while ($row = mysqli_fetch_array($result_evenement_redoutes)) {
                                 echo '
                         <tr>
-                        <td>' . $row["id_partie_prenante"] . '</td>
-                        <td>' . $row["categorie_partie_prenante"] . '</td>
-                        <td>' . $row["nom_partie_prenante"] . '</td>
-                        <td>' . $row["type"] . '</td>
-                        <td>' . $row["dependance_partie_prenante"] . '</td>
-                        <td style="color:red;">' . $row["ponderation_dependance"] . '</td>
-                        <td>' . $row["penetration_partie_prenante"] . '</td>
-                        <td style="color:red;">' . $row["ponderation_penetration"] . '</td>
-                        <td>' . $row["maturite_partie_prenante"] . '</td>
-                        <td style="color:red;">' . $row["ponderation_maturite"] . '</td>
-                        <td>' . $row["confiance_partie_prenante"] . '</td>
-                        <td style="color:red;">' . $row["ponderation_confiance"] . '</td>
-                        <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
+                        <td>' . $row["id_evenement_redoute"] . '</td>
+                        <td>' . $row["nom_valeur_metier"] . '</td>
+                        <td>' . $row["nom_evenement_redoute"] . '</td>
+                        <td>' . $row["description_evenement_redoute"] . '</td>
+                        <td>' . $row["impact"] . '</td>
+                        <td>' . $row["confidentialite"] . '</td>
+                        <td>' . $row["integrite"] . '</td>
+                        <td>' . $row["disponibilite"] . '</td>
+                        <td>' . $row["tracabilite"] . '</td>
+                        <td>' . $row["niveau_de_gravite"] . '</td>
                         </tr>
                         ';
                               }
                               ?>
-
-
-
-
-
-                              <!-- <tr>
-                        <td>' . $row["id_partie_prenante"] . '</td>
-                        <td>' . $row["categorie_partie_prenante"] . '</td>
-                        <td>' . $row["nom_partie_prenante"] . '</td>
-                        <td>' . $row["type"] . '</td>
-                        <td>' . $row["dependance_partie_prenante"] . '</td>
-                        <td>' . $row["penetration_partie_prenante"] . '</td>
-                        <td>' . $row["maturite_partie_prenante"] . '</td>
-                        <td>' . $row["confiance_partie_prenante"] . '</td>
-                        <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
-                        </tr> -->
-
                             </tbody>
                           </table>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Area Card -->
+                  <div class="col-xl-12 col-lg-12">
+                    <div class="card shadow mb-4">
+                      <!-- Card Header - Dropdown -->
+                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0">Liste des couples sources de risques / objectifs visés établis lors de l'atelier 2</h6>
+                      </div>
+                      <div class="table-responsive">
+                        <input type="text" class="rechercher_input" id="rechercher_srov" placeholder="Rechercher">
+                        <table id="editable_table_SROV" class="table table-bordered table-striped">
+                          <thead>
+                            <tr>
+                              <th>ID</th>
+                              <th>Type d'attaquant</th>
+                              <th>Profile d'attaquant</th>
+                              <th>Description source de risque</th>
+                              <th>Objectifs visés</th>
+                              <th>Description de l'objectif</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <?php
+                            while ($row = mysqli_fetch_array($result_SROV)) {
+                              echo '
+                        <tr>
+                        <td>' . $row["id_source_de_risque"] . '</td>
+                        <td>' . $row["type_d_attaquant_source_de_risque"] . '</td>
+                        <td>' . $row["profil_de_l_attaquant_source_de_risque"] . '</td>
+                        <td>' . $row["description_source_de_risque"] . '</td>
+                        <td>' . $row["objectif_vise"] . '</td>
+                        <td>' . $row["description_objectif_vise"] . '</td>
 
+                        </tr>
+                        ';
+                            }
+                            ?>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Area Card -->
+                  <div class="col-xl-12 col-lg-12">
+                    <div class="card shadow mb-4">
+                      <!-- Card Header - Dropdown -->
+                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0">Liste des scénarios stratégiques</h6>
+
+                      </div>
+                      <!-- Card Body -->
+                      <div class="card-body">
+                        <!--text-->
+                        <div class="table-responsive">
+                          <input type="text" class="rechercher_input" id="rechercher_scenario_strategique" placeholder="Rechercher">
+                          <table id="editable_table_scenario_strategique" class="table table-bordered table-striped">
+                            <thead>
+                              <tr>
+                                <th>ID</th>
+                                <th>Nom du scénario strategique</th>
+                                <th>Source de risque / Objectif visé</th>
+                                <th>Nom de l'événement redouté</th>
+                                <th>niveau de gravite</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <?php
+                              while ($row = mysqli_fetch_array($result_scenario_strategique)) {
+                                echo '
+                        <tr>
+                        <td>' . $row["id_scenario_strategique"] . '</td>
+                        <td>' . $row["nom_scenario_strategique"] . '</td>
+                        <td>' . $row["description_source_de_risque"] . ' / ' . $row["objectif_vise"] . '</td>
+                        <td>' . $row["nom_evenement_redoute"] . '</td>
+                        <td>' . $row["niveau_de_gravite"] . '</td>
+                        </tr>
+                        ';
+                              }
+                              ?>
+                            </tbody>
+                          </table>
+                        </div>
                         <!-- bouton Ajouter une nouvelle ligne -->
                         <div class="text-center">
-                          <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_partie_prenante">Ajouter une partie prenante</button>
+                          <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_scenario_strategique">Ajouter un scénario stratégique</button>
                         </div>
                       </div>
                     </div>
@@ -602,228 +616,277 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   <div class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
-                      <div class="row perso_no_margin">
-                        <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                          <h6>Événements redoutés</h6>
-                        </div>
+                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0">Schéma des scénarios stratégiques</h6>
+
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
-                        <div class="row perso_no_margin">
+                        <!--text-->
 
-                          <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                            <h6>Parties prenantes internes</h6>
-                            <canvas height="450" width="480" id="myChart_interne"></canvas>
-                          </div>
+                        <div class="custom-file">
+                          <input class="custom-file-input" type="file" name="inpFile" id="inpFile">
+                          <label class="custom-file-label" for="inpFile">Choisir une image</label>
+                        </div>
+                        <div class="image-preview" id="imagePreview">
+                          <img src="" alt="Image Preview" class="image-preview__image">
+                          <span class="image-preview__default-text">Image Preview</span>
+                        </div>
 
-                          <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                            <h6>Parties prenantes externes</h6>
-                            <canvas height="450" width="480" id="myChart_externe"></canvas>
-                          </div>
+                      </div>
+                    </div>
+                  </div>
 
+                  <!-- Area Card -->
+                  <div class="col-xl-12 col-lg-12">
+                    <div class="card shadow mb-4">
+                      <!-- Card Header - Dropdown -->
+                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0">Liste des chemins d'attaque</h6>
 
+                      </div>
+                      <!-- Card Body -->
+                      <div class="card-body">
+                        <!--text-->
+                        <div class="table-responsive">
+                          <input type="text" class="rechercher_input" id="rechercher_chemin_d_attaque" placeholder="Rechercher">
+                          <table id="editable_table_chemin_d_attaque" class="table table-bordered table-striped">
+                            <thead>
+                              <tr>
+                                <th>ID</th>
+                                <th>ID du risque</th>
+                                <th>nom du scénario stratégique</th>
+                                <th>Chemin d'attaque stratégique</th>
+                                <th>Partie prenante</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <?php
+                              while ($row = mysqli_fetch_array($result_chemin_d_attaque)) {
+                                echo '
+                        <tr>
+                        <td>' . $row["id_chemin_d_attaque_strategique"] . '</td>
+                        <td>' . $row["id_risque"] . '</td>
+                        <td>' . $row["nom_scenario_strategique"] . '</td>
+                        <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
+                        <td>' . $row["nom_partie_prenante"] . '</td>
+                        </tr>
+                        ';
+                              }
+                              ?>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- bouton Ajouter une nouvelle ligne -->
+                        <div class="text-center">
+                          <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_chemin_attaque">Ajouter un chemin d'attaque</button>
                         </div>
                       </div>
                     </div>
                   </div>
 
                 </div>
-              </div>
-              <!-- End of Main Content -->
 
-              <!-- Footer -->
-              <footer id="footer" class="sticky-footer bg-white">
-                <div class="container my-auto">
-                  <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
-                  </div>
-                </div>
-              </footer>
-              <!-- End of Footer -->
+
+              </div>
+
+
 
             </div>
-            <!-- End of Content Wrapper -->
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+              <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                  <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
+                </div>
+              </div>
+            </footer>
+            <!-- End of Footer -->
 
           </div>
-          <!-- End of Page Wrapper -->
+          <!-- End of Content Wrapper -->
 
-          <!-- Scroll to Top Button-->
-          <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-          </a>
-          <!-- -------------------------------------------------------------------------------------------------------------- 
+        </div>
+        <!-- End of Page Wrapper -->
+
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+          <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- -------------------------------------------------------------------------------------------------------------- 
 ----------------------------------------- modal ajout de ligne ----------------------------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
-          <div class="modal fade" id="ajout_partie_prenante" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Ajout d'une partie prenante</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body perso_modal_body">
-                  <form method="post" action="content/php/atelier3a/ajout.php" class="user" id="formecartPop">
-                    <fieldset>
-                      <div class="row">
-                        <div class="col-12">
+        <div class="modal fade" id="ajout_ligne_scenario_strategique" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ajout d'un scénario stratégique</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body perso_modal_body">
+                <form method="post" action="content/php/atelier3b/ajout_scenario.php" class="user" id="form_scenario_strategique">
+                  <fieldset>
 
-                          <div class="form-group">
-                            <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="categorie_pop" name="categorie_partie_prenante" placeholder="Catégorie" required>
-                            <datalist id="categorie_pop">
-                              <?php
-                              while ($row = mysqli_fetch_array($result_categorie_partie_prenante)) {
-                                echo '
-                        <option value="' . $row["categorie_partie_prenante"] . '">' . $row["categorie_partie_prenante"] . '</option>
+                    <div class=" form-group col-12">
+                      <input type="search" class="perso_form shadow-none form-control form-control-user" name="nom_scenario_strategique" id="nom_scenario_strategique" placeholder="Nom du scénario stratégique" required>
+                    </div>
+
+                    <div class="form-group col-12">
+                      <label for="Select_source_de_risque">Source de risque</label>
+                      <select class="form-control" name="id_source_de_risque" id="Select_source_de_risque">
+                        <option value="" selected>...</option>
+                        <?php
+                        while ($row = mysqli_fetch_array($result_id_source_de_risque)) //selection.php
+                        {
+                          echo '
+                        <option id="id_source_de_risque" value="' . $row["id_source_de_risque"] . '">' . $row["description_source_de_risque"] . ' | ' . $row["objectif_vise"] . '</option>
                         ';
-                              }
-                              ?>
-                            </datalist>
-                          </div>
+                        }
+                        ?>
+                      </select>
+                    </div>
 
-                          <div class="form-group">
-                            <label for="SelectType">Type</label>
-                            <select class="form-control" name="type" id="SelectType">
-                              <option value="" selected>...</option>
-                              <option value="Interne">Interne</option>
-                              <option value="Externe">Externe</option>
-                            </select>
-                          </div>
-
-                          <div class="form-group">
-                            <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_partie_prenante" id="Nom de la partie prenante" placeholder="Nom de la partie prenante" required>
-                          </div>
-
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class=" col-6">
-                          <div class="choix-valeur">
-                            <div>Dépendance</div>
-                            <div class="btn-group btn-group-toggle form-group" data-toggle="buttons">
-                              <?php
-                              for ($i = 1; $i <= 4; $i++) //selection.php
-                              {
-                                echo '
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" id="dependance' . $i . '" autocomplete="off" name="dependance_partie_prenante" value="' . $i . '"> ' . $i . '
-                        </label>';
-                              }
-                              ?>
-                            </div>
-                          </div>
+                    <div class="form-group col-12">
+                      <label for="Select_evenement_redoute">Événement redouté</label>
+                      <select class="form-control" name="id_evenement_redoute" id="Select_evenement_redoute">
+                        <option value="" selected>...</option>
+                        <?php
+                        while ($row = mysqli_fetch_array($result_id_evenement_redoute)) //selection.php
+                        {
+                          echo '
+                        <option id="id_evenement_redoute" value="' . $row["id_evenement_redoute"] . '">' . $row["nom_evenement_redoute"] . '</option>
+                        ';
+                        }
+                        ?>
+                      </select>
+                    </div>
 
 
-                          <div class="choix-valeur">
-                            <div>Pénétration</div>
-                            <div class="btn-group btn-group-toggle form-group" data-toggle="buttons">
-                              <?php
-                              for ($i = 1; $i <= 4; $i++) //selection.php
-                              {
-                                echo '
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" id="penetration' . $i . '" autocomplete="off" name="penetration_partie_prenante" value="' . $i . '"> ' . $i . '
-                        </label>';
-                              }
-                              ?>
-                            </div>
-                          </div>
-
-                        </div>
-                        <div class=" col-6">
-
-                          <div class="choix-valeur">
-                            <div>Maturité</div>
-                            <div class="btn-group btn-group-toggle form-group" data-toggle="buttons">
-                              <?php
-                              for ($i = 1; $i <= 4; $i++) //selection.php
-                              {
-                                echo '
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" id="maturite' . $i . '" autocomplete="off" name="maturite_partie_prenante" value="' . $i . '"> ' . $i . '
-                        </label>';
-                              }
-                              ?>
-                            </div>
-                          </div>
-
-                          <div class="choix-valeur">
-                            <div>Confiance</div>
-                            <div class="btn-group btn-group-toggle form-group" data-toggle="buttons">
-                              <?php
-                              for ($i = 1; $i <= 4; $i++) //selection.php
-                              {
-                                echo '
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" id="confiance' . $i . '" autocomplete="off" name="confiance_partie_prenante" value="' . $i . '"> ' . $i . '
-                        </label>';
-                              }
-                              ?>
-                            </div>
-                          </div>
-
-                        </div>
-                      </div>
-                      <!-- bouton Ajouter -->
-                      <div class="modal-footer perso_middle_modal_footer">
-                        <input type="submit" name="validerpartie" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
-                      </div>
-                    </fieldset>
-                  </form>
-                </div>
+                    <!-- bouton Ajouter -->
+                    <div class="modal-footer perso_middle_modal_footer">
+                      <input type="submit" name="validerscenario" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
 
 
+            </div>
+          </div>
+        </div>
+
+
+        <!-- -------------------------------------------------------------------------------------------------------------- 
+----------------------------------------- modal ajout de ligne ----------------------------------------------------
+--------------------------------------------------------------------------------------------------------------- -->
+        <div class="modal fade" id="ajout_ligne_chemin_attaque" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ajout d'un chemin d'attaque stratégique</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body perso_modal_body">
+                <form method="post" action="content/php/atelier3b/ajout_chemin.php" class="user" id="form_chemin_attaque">
+                  <fieldset>
+
+                    <div class=" form-group col-12">
+                      <input type="search" class="perso_form shadow-none form-control form-control-user" name="id_risque" id="id_risque" placeholder="ID du risque" required>
+                    </div>
+
+                    <div class="form-group col-12">
+                      <label for="Chemin d'attaque stratégique">Chemin d'attaque stratégique</label>
+                      <textarea class="form-control perso_text_area" name="chemin_d_attaque_strategique" id="chemin_d_attaque_strategique" rows="5"></textarea>
+                    </div>
+
+                    <div class="form-group col-12">
+                      <label for="Select_nom_scenario_strategique">Scénario stratégique</label>
+                      <select class="form-control" name="nom_scenario_strategique" id="Select_nom_scenario_strategique">
+                        <option value="" selected>...</option>
+                        <?php
+                        while ($row = mysqli_fetch_array($result_id_scenario_strategique)) //selection.php
+                        {
+                          echo '
+                        <option id="nom_scenario_strategique" value="' . $row["nom_scenario_strategique"] . '">' . $row["nom_scenario_strategique"] . '</option>
+                        ';
+                        }
+                        ?>
+                      </select>
+                    </div>
+
+                    <div class="form-group col-12">
+                      <label for="Select_nom_scenario_strategique">Partie prenante</label>
+                      <select class="form-control" name="nom_partie_prenante" id="nom_partie_prenante">
+                        <option value="" selected>...</option>
+                        <?php
+                        while ($row = mysqli_fetch_array($result_id_partie_prenante)) //selection.php
+                        {
+                          echo '
+                        <option id="partie_prenante" value="' . $row["nom_partie_prenante"] . '">' . $row["nom_partie_prenante"] . '</option>
+                        ';
+                        }
+                        ?>
+                      </select>
+                    </div>
+
+                    <!-- bouton Ajouter -->
+                    <div class="modal-footer perso_middle_modal_footer">
+                      <input type="submit" name="validerchemin" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="login.html">Logout</a>
               </div>
             </div>
           </div>
+        </div>
 
+        <!-- Bootstrap core JavaScript-->
+        <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
-          <!-- Logout Modal-->
-          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Êtes-vous prêt à quitter l'application ?</h5>
-                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                  </button>
-                </div>
-                <div class="modal-body">Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à terminer votre session
-                  en cours.</div>
-                <div class="modal-footer">
-                  <form method="post" action="content/php/deconnexion/logs.php">
-                    <fieldset>
-                      <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
-                      <input type="submit" name="deconnexion" value="Déconnexion" class="btn btn-primary"></input>
-                      <fieldset>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
+        <!-- Core plugin JavaScript-->
+        <script src="content/vendor/jquery-easing/jquery.easing.js"></script>
 
-          <!-- Bootstrap core JavaScript-->
-          <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="content/js/bootstrap.js"></script>
 
-          <!-- Core plugin JavaScript-->
-          <script src="content/vendor/jquery-easing/jquery.easing.js"></script>
-
-          <!-- Custom scripts for all pages-->
-          <script src="content/js/bootstrap.js"></script>
-
-          <!-- Our JS -->
-          <script src="content/js/modules/dark_mode.js"></script>
-          <script src="content/js/modules/top_bar.js"></script>
-          <script src="content/js/modules/side_bar.js"></script>
-          <script src="content/js/modules/fixed_page.js"></script>
-          <script src="content/js/modules/help_button.js"></script>
-          <script src="content/js/modules/gravite.js"></script>
-          <script src="content/js/modules/realtime.js"></script>
-          <script src="content/js/modules/set_filter_sort_table.js"></script>
-          <script src="content/js/atelier/atelier3a.js"></script>
-          <script src="content/js/modules/sort_table.js"></script>
-          <script src="content/js/modules/3a_carto.js"></script>
+        <!-- Our JS -->
+        <script src="content/js/modules/dark_mode.js"></script>
+        <script src="content/js/modules/top_bar.js"></script>
+        <script src="content/js/modules/side_bar.js"></script>
+        <script src="content/js/modules/help_button.js"></script>
+        <script src="content/js/modules/gravite.js"></script>
+        <script src="content/js/modules/realtime.js"></script>
+        <script src="content/js/modules/set_filter_sort_table.js"></script>
+        <script src="content/js/atelier/atelier3b.js"></script>
+        <script src="content/js/modules/sort_table.js"></script>
+        <script src="content/js/modules/browse_img.js"></script>
       </body>
   <?php
     }
