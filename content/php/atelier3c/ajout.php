@@ -5,7 +5,7 @@ header('Location: ../../../atelier-3a&'.$_SESSION['id_utilisateur'].'&'.$_SESSIO
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v20;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -20,8 +20,12 @@ $results["message"] = [];
 
 $id_partie_prenante = $_POST['partieprenante'];
 $chemin = $_POST['chemins'];
-$referentiel = $_POST['referentiel'];
-$id_mesure = $_POST['mesure'];
+
+// Pour les régles du référentiel
+// $referentiel = $_POST['referentiel'];
+// $id_mesure = $_POST['mesure'];
+$nom_mesure = $_POST['nommesure'];
+$description_mesure = $_POST['descriptionmesure'];
 $dependance = $_POST['dependance'];
 $penetration = $_POST['penetration'];
 $maturite = $_POST['maturite'];
@@ -32,29 +36,34 @@ echo $maturite;
 echo $confiance;
 $id_atelier = '3.c';
 
-$recupere_regle = $bdd->prepare("SELECT id_regle_affichage FROM regle WHERE id_regle = ?");
+// Pour les règles du référentiel
 
-$recupere_risque = $bdd->prepare("SELECT id_risque FROM chemin_d_attaque_strategique WHERE id_chemin_d_attaque_strategique = ?");
+// $recupere_regle = $bdd->prepare("SELECT id_regle_affichage FROM regle WHERE id_regle = ?");
 
-$inserecomporte = $bdd->prepare(
-  'INSERT INTO comporter_3 (
-    id_regle, 
-    id_regle_affichage, 
-    id_chemin_d_attaque_strategique, 
-    id_risque
-    ) 
-    VALUES (?, ?, ?, ?)'
-    );
+// $recupere_risque = $bdd->prepare("SELECT id_risque FROM chemin_d_attaque_strategique WHERE id_chemin_d_attaque_strategique = ?");
 
-$updatechemin = $bdd->prepare(
-  'UPDATE chemin_d_attaque_strategique
-  SET dependance_residuelle = ?,
-  penetration_residuelle = ?,
-  maturite_residuelle = ?,
-  confiance_residuelle = ?
-  WHERE id_chemin_d_attaque_strategique = ?
-  '
-);
+// $inserecomporte = $bdd->prepare(
+//   'INSERT INTO comporter_3 (
+//     id_regle, 
+//     id_regle_affichage, 
+//     id_chemin_d_attaque_strategique, 
+//     id_risque
+//     ) 
+//     VALUES (?, ?, ?, ?)'
+//     );
+
+// $updatechemin = $bdd->prepare(
+//   'UPDATE chemin_d_attaque_strategique
+//   SET dependance_residuelle = ?,
+//   penetration_residuelle = ?,
+//   maturite_residuelle = ?,
+//   confiance_residuelle = ?
+//   WHERE id_chemin_d_attaque_strategique = ?
+//   '
+// );
+
+
+$insere_mesure = $bdd->prepare("INSERT INTO mesure")
 
 
 /* // Verification du nom_valeur_metier
