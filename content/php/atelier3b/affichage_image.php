@@ -19,7 +19,7 @@ try {
 
 $id_scenario = $_POST['id_scenario'];
 
-$query = $bdd->prepare("SELECT image FROM scenario_stategique WHERE id_projet = ? AND id_scenario_stategique = ?");
+$query = $bdd->prepare("SELECT image FROM scenario_strategique WHERE id_projet = ? AND id_scenario_strategique = ?");
 $query->bindParam(1, $getid_projet);
 $query->bindParam(2, $id_scenario);
 $query->execute();
