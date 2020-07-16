@@ -3,7 +3,7 @@ session_start();
 
 //Connexion à la base de donnee
 try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v20;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 }
 
@@ -496,7 +496,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       </thead>
                       <tbody>
                         <?php
-                        while ($row = mysqli_fetch_array($result)) {
+                        while ($row = mysqli_fetch_array($result_partie_prenante)) {
                           echo '
                         <tr>
                         <td>' . $row["id_partie_prenante"] . '</td>
@@ -593,7 +593,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                           <th>ID</th>
                           <th>Partie prenante</th>
                           <th>Chemin d'attaque stratégique</th>
-                          <th>Mesure de sécurité</th>
+                          <th>Nom mesure de sécurité</th>
+                          <th>Description mesure de sécurité</th>
                           <th>Menace initiale</th>
                           <th>menace résiduelle</th>
                         </tr>
@@ -606,7 +607,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <td>' . $row["id_chemin_d_attaque_strategique"] . '</td>
                         <td>' . $row["nom_partie_prenante"] . '</td>
                         <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
-                        <td>' . $row["description"] . '</td>
+                        <td>' . $row["nom_mesure"] . '</td>
+                        <td>' . $row["description_mesure"] . '</td>
                         <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
                         <td>' . $row["niveau_de_menace_residuelle"] . '</td>
                         </tr>
@@ -691,17 +693,19 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                   </select>
                 </div>
 
-                <div class="form-group col-6">
+                <!-- Menus déroulants pour les règles des mesures de sécurité -->
+
+                <!-- <div class="form-group col-6">
                   <label for="referentiel">Référentiel de sécurité</label>
                   <select class="form-control" id="referentiel", name="referentiel">
                     <option value="" selected>...</option>
                     <?php
-                    while ($row = mysqli_fetch_array($result_referentiel)) //selection.php
-                    {
-                      echo '
-                          <option id="id_socle" value="' . $row["id_socle_securite"] . '">' . $row["nom_referentiel"] . '</option>
-                          ';
-                    }
+                    // while ($row = mysqli_fetch_array($result_referentiel)) //selection.php
+                    // {
+                    //   echo '
+                    //       <option id="id_socle" value="' . $row["id_socle_securite"] . '">' . $row["nom_referentiel"] . '</option>
+                    //       ';
+                    // }
                     ?>
                   </select>
                   <script src="content/js/modules/regles.js"></script>
@@ -711,8 +715,16 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                   <select class="form-control" id="mesure" name="mesure">
                     <option value="" selected>Choisissez un référentiel</option>
                   </select>
-                </div>
+                </div> -->
                 
+                <div class="form-group col-6">
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="nommesure" id="nommesure" placeholder="Nom de la mesure de sécurité" required>
+                </div>
+
+                <div class="form-group col-6">
+                  <label for="descriptionmesure">Description de la mesure de sécurité</label>
+                  <textarea class="form-control perso_text_area" name="descriptionmesure" id="descriptionmesure" rows="3"></textarea>
+                </div>
               </div>
               <div class="row">
                 <div class=" col-6">
