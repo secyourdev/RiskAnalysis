@@ -17,10 +17,8 @@ try {
 }
 
 $results["error"] = false;
-$results["message"] = [];
 
 $nom_referentiel = $_POST['nomreferentiel'];
-// print $nom_referentiel;
 $id_regle_affichage = $_POST['id_regle'];
 $titre = $_POST['titre_regle'];
 $description = $_POST['description'];
@@ -36,14 +34,35 @@ $insere_regle = $bdd->prepare(
 VALUES ('',?,?,?,?,?,?,?,?)"
 );
 
+// Verification du nom_referentiel
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $nom_referentiel)) {
+  $results["error"] = true;
+  $_SESSION['message_error_2'] = "Nom du référenciel invalide";
+}
+
+// Verification du id_regle_affichage
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/", $id_regle_affichage)) {
+  $results["error"] = true;
+  $_SESSION['message_error_2'] = "ID de la règle invalide";
+}
+
+// Verification du titre
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-]{1,1000}$/", $titre)) {
+  $results["error"] = true;
+  $_SESSION['message_error_2'] = "Titre de la règle invalide";
+}
+
+// Verification du description
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-]{1,1000}$/", $description)) {
+  $results["error"] = true;
+  $_SESSION['message_error_2'] = "Description invalide";
+}
+
 if ($results["error"] === false && isset($_POST['validerecart'])) {
 
   $recupere_id_socle->bindParam(1, $nom_referentiel);
   $recupere_id_socle->execute();
   $id_socle_securite = $recupere_id_socle->fetch();
-  // print('id_socle:  ');
-  // print_r($id_socle_securite);
-  // print '<br>';
 
   $insere_regle->bindParam(1, $id_regle_affichage);
   $insere_regle->bindParam(2, $titre);
@@ -54,9 +73,7 @@ if ($results["error"] === false && isset($_POST['validerecart'])) {
   $insere_regle->bindParam(7, $responsable);
   $insere_regle->bindParam(8, $id_socle_securite[0]);
   $insere_regle->execute();
-?>
-  <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
-<?php
+  $_SESSION['message_success_2'] = "La règle a bien été ajoutée !";
 }
 
 ?>

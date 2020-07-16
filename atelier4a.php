@@ -586,7 +586,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <?php
                                 while ($row = mysqli_fetch_array($result3)) {
                                   echo '
-                                  <option value="' . $row["description_scenario_operationnel"] . '">' . $row["description_scenario_operationnel"] . '</option>
+                                  <option value="' . $row["id_scenario_operationnel"] . '">' . $row["description_scenario_operationnel"] . '</option>
                                   ';
                                 }
                                 ?>

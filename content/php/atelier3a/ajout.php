@@ -58,25 +58,13 @@ $insere = $bdd->prepare(
 
 
 
-
-/* // Verification du nom_valeur_metier
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_valeur_metier)) {
-  $results["error"] = true;
-  $results["message"]["nom_valeur_metier"] = "nom_valeur_metier invalide";
-?>
-  <strong style="color:#FF6565;">nom_valeur_metier invalide </br></strong>
-<?php
-} */
-
-
 if ($results["error"] === false && isset($_POST['validerpartie'])) {
   
   $recupere_id_seuil->bindParam(1, $id_atelier);
   $recupere_id_seuil->bindParam(2, $id_projet);
   $recupere_id_seuil->execute();
   $id_seuil = $recupere_id_seuil->fetch();
-  print_r($id_seuil);
-  // $insere->bindParam(1, $id_partie_prenante);
+
   $insere->bindParam(1, $categorie_partie_prenante);
   $insere->bindParam(2, $nom_partie_prenante);
   $insere->bindParam(3, $type);

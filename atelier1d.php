@@ -595,17 +595,17 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
                         <div class='message_success'>
                         <?php 
-                            if(isset($_SESSION['message_success'])){
-                              echo $_SESSION['message_success'];
-                              unset($_SESSION['message_success']);
+                            if(isset($_SESSION['message_success_2'])){
+                              echo $_SESSION['message_success_2'];
+                              unset($_SESSION['message_success_2']);
                             }
                         ?>
                         </div> 
                         <div class='message_error'>
                         <?php                
-                            if(isset($_SESSION['message_error'])){
-                                echo $_SESSION['message_error'];
-                                unset($_SESSION['message_error']);
+                            if(isset($_SESSION['message_error_2'])){
+                                echo $_SESSION['message_error_2'];
+                                unset($_SESSION['message_error_2']);
                             }
                         ?>
                         </div>
@@ -709,10 +709,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_referentiel" placeholder="Nom du référentiel" required>
                       </div>
                       <div class="form-group">
-                        <input type="text" class="perso_form shadow-none form-control form-control-user" name="etat_d_application" placeholder="État d'application" required>
-                      </div>
-                      <div class="form-group">
-                        <label for="Select_etat_d_application">Règle non respectée</label>
+                        <label for="Select_etat_d_application">État d'application</label>
                         <select class="form-control" name="etat_d_application" id="Select_etat_d_application">
                           <option value="" selected>...</option>
                           <option value="Non appliqué">Non appliqué</option>

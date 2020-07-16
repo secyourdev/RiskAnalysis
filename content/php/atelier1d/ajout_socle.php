@@ -28,6 +28,30 @@ $id_atelier = "1.d";
 
 $insere = $bdd->prepare("INSERT INTO socle_de_securite(id_socle_securite, type_referentiel, nom_referentiel, etat_d_application, etat_de_la_conformite, id_atelier, id_projet) VALUES (?,?,?,?,?,?,?)");
 
+// Verification du type_referenciel
+if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $type_referenciel)) {
+  $results["error"] = true;
+  $_SESSION['message_error'] = "Type du référenciel invalide";
+}
+
+// Verification du nom_referentiel
+if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_referentiel)) {
+  $results["error"] = true;
+  $_SESSION['message_error'] = "Nom invalide";
+}
+
+// Verification du etat_d_application
+if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $etat_d_application)) {
+  $results["error"] = true;
+  $_SESSION['message_error'] = "État de l'application invalide";
+}
+
+// Verification du etat_de_la_conformite
+if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $etat_de_la_conformite)) {
+  $results["error"] = true;
+  $_SESSION['message_error'] = "Commentaire invalide";
+}
+
 if ($results["error"] === false && isset($_POST['validersocle'])) {
   $insere->bindParam(1, $id_socle_securite);
   $insere->bindParam(2, $type_referenciel);

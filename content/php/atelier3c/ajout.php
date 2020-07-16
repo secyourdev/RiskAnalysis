@@ -56,17 +56,6 @@ $updatechemin = $bdd->prepare(
   '
 );
 
-
-/* // Verification du nom_valeur_metier
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_valeur_metier)) {
-  $results["error"] = true;
-  $results["message"]["nom_valeur_metier"] = "nom_valeur_metier invalide";
-?>
-  <strong style="color:#FF6565;">nom_valeur_metier invalide </br></strong>
-<?php
-} */
-
-
 if ($results["error"] === false && isset($_POST['validermesure'])) {
   
   $recupere_regle->bindParam(1, $id_mesure);
