@@ -4,7 +4,7 @@ session_start();
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v20;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -778,7 +778,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <label for="description">Description</label>
                         <textarea class="form-control perso_text_area" name="description" id="description" rows="3"></textarea>
                       </div>
-                      
+
                       <div class="modal-footer perso_middle_modal_footer">
                         <input type="submit" name="validerecart" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
                       </div>

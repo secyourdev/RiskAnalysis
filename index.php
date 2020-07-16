@@ -242,7 +242,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             }
                         ?>
                     </br>
-                    <div class="row" id="projets"> </div>
+                        <div class="row" id="projets"> </div>
                     </div>
 
 
@@ -344,7 +344,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class='message_success'>
                         
                                 <!-- bouton Ajouter une nouvelle ligne -->
                                 <div class="text-center">
