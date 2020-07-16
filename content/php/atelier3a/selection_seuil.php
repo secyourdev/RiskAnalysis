@@ -2,7 +2,7 @@
 session_start();
 $id_atelier = '3.a';
 $id_projet = $_SESSION['id_projet'];
-print $id_projet;
+// print $id_projet;
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(

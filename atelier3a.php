@@ -489,13 +489,16 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <form method="post" action="content/php/atelier3a/ajout_seuil.php" class="user" id="formeseuil">
                           <fieldset>
                             <div class="form-group">
-                              <input type="text" class="perso_form shadow-none form-control form-control-user" name="seuil_danger" id="seuil_danger" placeholder="seuil_danger" required>
+                              <label class="titre_input" for="seuil_danger">Seuil de danger</label>
+                              <input type="text" class="perso_form shadow-none form-control form-control-user" name="seuil_danger" id="seuil_danger" placeholder="Seuil de danger" required>
                             </div>
                             <div class="form-group">
-                              <input type="text" class="perso_form shadow-none form-control form-control-user" name="seuil_controle" id="seuil_controle" placeholder="seuil_controle" required>
+                              <label class="titre_input" for="seuil_controle">Seuil de contrôle</label>
+                              <input type="text" class="perso_form shadow-none form-control form-control-user" name="seuil_controle" id="seuil_controle" placeholder="Seuil de contrôle" required>
                             </div>
                             <div class="form-group">
-                              <input type="text" class="perso_form shadow-none form-control form-control-user" name="seuil_veille" id="seuil_veille" placeholder="seuil_veille" required>
+                              <label class="titre_input" for="seuil_veille">Seuil de veille</label>
+                              <input type="text" class="perso_form shadow-none form-control form-control-user" name="seuil_veille" id="seuil_veille" placeholder="Seuil de veille" required>
                             </div>
                             <!-- bouton Ajouter -->
                             <!-- bouton Ajouter une nouvelle ligne -->
@@ -773,28 +776,27 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
 
           <!-- Logout Modal-->
-          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-              aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Êtes-vous prêt à quitter l'application ?</h5>
-                          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">×</span>
-                          </button>
-                      </div>
-                      <div class="modal-body">Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à terminer votre session
-                          en cours.</div>
-                      <div class="modal-footer">
-                          <form method="post" action="content/php/deconnexion/logs.php">
-                              <fieldset>
-                                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
-                                  <input type="submit" name="deconnexion" value="Déconnexion" class="btn btn-primary"></input>
-                                  <fieldset>
-                          </form>
-                      </div>
-                  </div>
+          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Êtes-vous prêt à quitter l'application ?</h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div class="modal-body">Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à terminer votre session
+                  en cours.</div>
+                <div class="modal-footer">
+                  <form method="post" action="content/php/deconnexion/logs.php">
+                    <fieldset>
+                      <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                      <input type="submit" name="deconnexion" value="Déconnexion" class="btn btn-primary"></input>
+                      <fieldset>
+                  </form>
+                </div>
               </div>
+            </div>
           </div>
 
           <!-- Bootstrap core JavaScript-->
