@@ -272,7 +272,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               </g>
             </svg>
           </i>
-          <span class="nom_atelier2">Scénarios opérationnels</span>
+          <span>Scénarios opérationnels</span>
         </a>
         <div id="Atelier4" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">

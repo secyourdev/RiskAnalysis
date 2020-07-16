@@ -30,12 +30,9 @@ foreach ($result_SROV as $row) {
   );
 }
 
-
-
 $data = array(
   'data_SROV' => $data_SROV,
 );
 
 mysqli_close($connect);
-// print_r($data);
 echo json_encode($data);

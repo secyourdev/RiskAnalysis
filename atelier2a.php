@@ -476,6 +476,24 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       </tbody>
                     </table>
                   </div> 
+
+                  <div class='message_success'>
+                  <?php 
+                      if(isset($_SESSION['message_success'])){
+                        echo $_SESSION['message_success'];
+                        unset($_SESSION['message_success']);
+                      }
+                  ?>
+                  </div> 
+                  <div class='message_error'>
+                  <?php                
+                      if(isset($_SESSION['message_error'])){
+                          echo $_SESSION['message_error'];
+                          unset($_SESSION['message_error']);
+                      }
+                  ?>
+                  </div>
+
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
                     <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_sr">Ajouter un couple Source de Menace / Objecif visé</button>

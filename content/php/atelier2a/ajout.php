@@ -16,7 +16,6 @@ try {
 }
 
 $results["error"] = false;
-$results["message"] = [];
 
 $type_attaquant = $_POST['type_attaquant'];
 $profil_attaquant = $_POST['profil_attaquant'];
@@ -45,45 +44,31 @@ $insere = $bdd->prepare('INSERT INTO `SROV`(`id_source_de_risque`, `type_d_attaq
 // Verification du type de l'attaquant
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $type_attaquant)) {
   $results["error"] = true;
-  $results["message"]["type_attaquant"] = "Type de l'attaquant invalide";
-  ?>
-  <strong style="color:#FF6565;">Type de l'attaquant invalide </br></strong>
-  <?php
+  $_SESSION['message_error'] = "Type de l'attaquant invalide";
 }
 
 // Verification du profil de l'attaquant
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $profil_attaquant)) {
   $results["error"] = true;
-  $results["message"]["Profil de l'attaquant"] = "Profil de l'attaquant invalide";
-  ?>
-  <strong style="color:#FF6565;">Profil de l'attaquant invalide </br></strong>
-  <?php
+  $_SESSION['message_error'] = "Profil de l'attaquant invalide";
 }
 
 // Verification de la description de l'attaquant
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_source_risque)) {
   $results["error"] = true;
-  $results["message"]["impact"] = "Description de l'attaquant invalide";
-  ?>
-  <strong style="color:#FF6565;">Description de l'attaquant invalide </br></strong>
-  <?php
+  $_SESSION['message_error'] = "Description de l'attaquant invalide";
 }
+
 // Verification de l'objectif visé
 if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/", $objectif_vise)) {
   $results["error"] = true;
-  $results["message"]["objectif vise"] = "Objectif vise invalide";
-  ?>
-  <strong style="color:#FF6565;">Objectif visé invalide </br></strong>
-  <?php
+  $_SESSION['message_error'] = "Objectif vise invalide";
 }
 
 // Verification de la description de l'objectif visé
 if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/", $description_objectif_vise)) {
   $results["error"] = true;
-  $results["message"]["description objectif vise"] = "Description objectif vise invalide";
-  ?>
-  <strong style="color:#FF6565;">Descrition objectif visé invalide </br></strong>
-  <?php
+  $_SESSION['message_error'] = "Description objectif vise invalide";
 }
 
 if ($results["error"] === false && isset($_POST['validersrov'])) {
@@ -108,9 +93,8 @@ if ($results["error"] === false && isset($_POST['validersrov'])) {
   $insere->bindParam(16, $id_atelier);
   $insere->bindParam(17, $id_projet);
   $insere->execute();
-?>
-  <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
-<?php
+
+  $_SESSION['message_success'] = "Le couple source de risque/objectif visé a bien été ajouté !";
 }
 
 ?>

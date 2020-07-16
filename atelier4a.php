@@ -298,7 +298,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     </g>
                   </svg>
                 </i>
-                <span class="nom_atelier2">Scénarios opérationnels</span>
+                <span>Scénarios opérationnels</span>
               </a>
               <div id="Atelier4" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
@@ -519,10 +519,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </tbody>
                           </table>
                         </div>
-
-
                       </div>
-
                     </div>
                   </div>
 
@@ -599,6 +596,23 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             <div class="form-group">
                               <label for="modeope">Mode opératoire</label>
                               <textarea class="form-control perso_text_area" name="modeope" id="modeope" rows="3"></textarea>
+                            </div>
+
+                            <div class='message_success'>
+                            <?php 
+                                if(isset($_SESSION['message_success'])){
+                                  echo $_SESSION['message_success'];
+                                  unset($_SESSION['message_success']);
+                                }
+                            ?>
+                            </div> 
+                            <div class='message_error'>
+                            <?php                
+                                if(isset($_SESSION['message_error'])){
+                                    echo $_SESSION['message_error'];
+                                    unset($_SESSION['message_error']);
+                                }
+                            ?>
                             </div>
 
                             <!-- bouton Ajouter une nouvelle ligne -->

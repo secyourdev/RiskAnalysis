@@ -15,8 +15,6 @@ $query = $bdd->prepare("SELECT * FROM mode_operatoire INNER JOIN scenario_operat
 ON mode_operatoire.id_scenario_operationnel = scenario_operationnel.id_scenario_operationnel
 WHERE scenario_operationnel.id_scenario_operationnel = ?");
 
-
-
 if(isset($_POST['id_scenar'])){
     $id_scenar = $_POST['id_scenar'];
     // echo $affiche_niveau;
