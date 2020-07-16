@@ -2,7 +2,7 @@
 // session_start();
 $getid_projet = $_SESSION['id_projet'];
 
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v18");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v20");
 
 $query_socle = "SELECT * FROM socle_de_securite WHERE id_projet = $getid_projet ORDER BY id_socle_securite ";
 
