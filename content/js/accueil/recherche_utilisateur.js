@@ -9,7 +9,6 @@ nomgrpuser.addEventListener('change', function(){
   rechercher_utilisateur(nomgrpuser.options[nomgrpuser.options.selectedIndex].value);
 });
 
-
 function rechercher_utilisateur(selected_value){
   $.ajax({
     url: 'content/php/accueil/selection_utilisateur.php',
