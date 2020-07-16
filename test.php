@@ -4,7 +4,7 @@ session_start();
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v20;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -31,7 +31,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
   $userdroit = $reqdroit->fetch();
 ?>
 
-  <?php include("content/php/atelier3b/selection.php"); ?>
+  <?php include("testimageselection.php"); ?>
   <!DOCTYPE html>
   <html lang="fr">
 
@@ -53,7 +53,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
     <!-- JS -->
     <script src="content/vendor/jquery/jquery.js"></script>
-    <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
+    <!-- <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script> -->
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
@@ -451,166 +451,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
               <div class="container-fluid">
                 <!-- Content Row -->
                 <div class="row fondu">
-                  <!-- Area Card -->
-                  <div class="col-xl col-lg">
-                    <div class="card shadow mb-4">
-                      <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Objectif</h6>
-                      </div>
-                      <!-- Card Body -->
-                      <div class="card-body">
-                        <p>L'objectif de l'atelier 3 est de disposer d'une vision claire de l'écosystème, afin d'en identifier
-                          les parties prenantes les plus vulnérables. Il s'agit ensuite de bâtir des scénarios de haut niveau,
-                          appelés scénarios stratégiques. Ces derniers sont autant de chemins d'attaque que pourrait emprunter une
-                          source de risque pour empruter une source de risque pour atteindre son objectif.
-                        </p>
-                        <!--text-->
-                      </div>
-                    </div>
-                  </div>
 
-                  <!-- Area Card -->
-                  <div class="col-xl-12 col-lg-12">
-                    <div class="card shadow mb-4">
-                      <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Liste des évènements redoutés établis lors de l'atelier 1</h6>
-                      </div>
-                      <!-- Card Body -->
-                      <div class="card-body">
-                        <!--text-->
-                        <div class="table-responsive">
-                          <input type="text" class="rechercher_input" id="rechercher_evenement_redoute" placeholder="Rechercher">
-                          <table id="editable_table" class="table table-bordered table-striped">
-                            <thead>
-                              <tr>
-                                <th>ID</th>
-                                <th>Valeur métier</th>
-                                <th>Nom de l'événement redouté</th>
-                                <th>Description événement redouté</th>
-                                <th>Impacts</th>
-                                <th>C</th>
-                                <th>I</th>
-                                <th>D</th>
-                                <th>T</th>
-                                <th>Gravité</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <?php
-                              while ($row = mysqli_fetch_array($result_evenement_redoutes)) {
-                                echo '
-                        <tr>
-                        <td>' . $row["id_evenement_redoute"] . '</td>
-                        <td>' . $row["nom_valeur_metier"] . '</td>
-                        <td>' . $row["nom_evenement_redoute"] . '</td>
-                        <td>' . $row["description_evenement_redoute"] . '</td>
-                        <td>' . $row["impact"] . '</td>
-                        <td>' . $row["confidentialite"] . '</td>
-                        <td>' . $row["integrite"] . '</td>
-                        <td>' . $row["disponibilite"] . '</td>
-                        <td>' . $row["tracabilite"] . '</td>
-                        <td>' . $row["niveau_de_gravite"] . '</td>
-                        </tr>
-                        ';
-                              }
-                              ?>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Area Card -->
-                  <div class="col-xl-12 col-lg-12">
-                    <div class="card shadow mb-4">
-                      <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Liste des couples sources de risques / objectifs visés établis lors de l'atelier 2</h6>
-                      </div>
-                      <div class="table-responsive">
-                        <input type="text" class="rechercher_input" id="rechercher_srov" placeholder="Rechercher">
-                        <table id="editable_table_SROV" class="table table-bordered table-striped">
-                          <thead>
-                            <tr>
-                              <th>ID</th>
-                              <th>Type d'attaquant</th>
-                              <th>Profile d'attaquant</th>
-                              <th>Description source de risque</th>
-                              <th>Objectifs visés</th>
-                              <th>Description de l'objectif</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php
-                            while ($row = mysqli_fetch_array($result_SROV)) {
-                              echo '
-                        <tr>
-                        <td>' . $row["id_source_de_risque"] . '</td>
-                        <td>' . $row["type_d_attaquant_source_de_risque"] . '</td>
-                        <td>' . $row["profil_de_l_attaquant_source_de_risque"] . '</td>
-                        <td>' . $row["description_source_de_risque"] . '</td>
-                        <td>' . $row["objectif_vise"] . '</td>
-                        <td>' . $row["description_objectif_vise"] . '</td>
-
-                        </tr>
-                        ';
-                            }
-                            ?>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Area Card -->
-                  <div class="col-xl-12 col-lg-12">
-                    <div class="card shadow mb-4">
-                      <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Liste des scénarios stratégiques</h6>
-
-                      </div>
-                      <!-- Card Body -->
-                      <div class="card-body">
-                        <!--text-->
-                        <div class="table-responsive">
-                          <input type="text" class="rechercher_input" id="rechercher_scenario_strategique" placeholder="Rechercher">
-                          <table id="editable_table_scenario_strategique" class="table table-bordered table-striped">
-                            <thead>
-                              <tr>
-                                <th>ID</th>
-                                <th>Nom du scénario strategique</th>
-                                <th>Source de risque / Objectif visé</th>
-                                <th>Nom de l'événement redouté</th>
-                                <th>niveau de gravite</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <?php
-                              while ($row = mysqli_fetch_array($result_scenario_strategique)) {
-                                echo '
-                        <tr>
-                        <td>' . $row["id_scenario_strategique"] . '</td>
-                        <td>' . $row["nom_scenario_strategique"] . '</td>
-                        <td>' . $row["description_source_de_risque"] . ' / ' . $row["objectif_vise"] . '</td>
-                        <td>' . $row["nom_evenement_redoute"] . '</td>
-                        <td>' . $row["niveau_de_gravite"] . '</td>
-                        </tr>
-                        ';
-                              }
-                              ?>
-                            </tbody>
-                          </table>
-                        </div>
-                        <!-- bouton Ajouter une nouvelle ligne -->
-                        <div class="text-center">
-                          <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_scenario_strategique">Ajouter un scénario stratégique</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
                   <!-- Area Card -->
                   <div class="col-xl-12 col-lg-12">
@@ -618,17 +459,14 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0">Schéma des scénarios stratégiques</h6>
-
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
                         <!--text-->
 
 
-
-
                         <span id="success_message"></span>
-                        <form method="POST" id="sample_form" action="content\php\atelier3b\insert_image.php" enctype="multipart/form-data">
+                        <form method="POST" id="sample_form" action="testimagephp.php" enctype="multipart/form-data">
 
                           <label for="nom_scenario_operationnel">Nom du scénario opérationnel</label>
                           <select class="form-control" name="nom_scenario_operationnel" id="nom_scenario_operationnel">
@@ -670,62 +508,10 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
 
 
-
                       </div>
                     </div>
                   </div>
-
-                  <!-- Area Card -->
-                  <div class="col-xl-12 col-lg-12">
-                    <div class="card shadow mb-4">
-                      <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Liste des chemins d'attaque</h6>
-
-                      </div>
-                      <!-- Card Body -->
-                      <div class="card-body">
-                        <!--text-->
-                        <div class="table-responsive">
-                          <input type="text" class="rechercher_input" id="rechercher_chemin_d_attaque" placeholder="Rechercher">
-                          <table id="editable_table_chemin_d_attaque" class="table table-bordered table-striped">
-                            <thead>
-                              <tr>
-                                <th>ID</th>
-                                <th>ID du risque</th>
-                                <th>nom du scénario stratégique</th>
-                                <th>Chemin d'attaque stratégique</th>
-                                <th>Partie prenante</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <?php
-                              while ($row = mysqli_fetch_array($result_chemin_d_attaque)) {
-                                echo '
-                        <tr>
-                        <td>' . $row["id_chemin_d_attaque_strategique"] . '</td>
-                        <td>' . $row["id_risque"] . '</td>
-                        <td>' . $row["nom_scenario_strategique"] . '</td>
-                        <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
-                        <td>' . $row["nom_partie_prenante"] . '</td>
-                        </tr>
-                        ';
-                              }
-                              ?>
-                            </tbody>
-                          </table>
-                        </div>
-                        <!-- bouton Ajouter une nouvelle ligne -->
-                        <div class="text-center">
-                          <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_chemin_attaque">Ajouter un chemin d'attaque</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
                 </div>
-
-
               </div>
 
 
@@ -918,15 +704,14 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <script src="content/js/modules/dark_mode.js"></script>
         <script src="content/js/modules/top_bar.js"></script>
         <script src="content/js/modules/side_bar.js"></script>
-        <script src="content/js/modules/help_button.js"></script>
-        <script src="content/js/modules/gravite.js"></script>
-        <script src="content/js/modules/realtime.js"></script>
-        <script src="content/js/modules/set_filter_sort_table.js"></script>
-        <script src="content/js/atelier/atelier3b.js"></script>
-        <script src="content/js/modules/sort_table.js"></script>
+        <!-- <script src="content/js/modules/help_button.js"></script> -->
+        <!-- <script src="content/js/modules/gravite.js"></script> -->
+        <!-- <script src="content/js/modules/realtime.js"></script> -->
+        <!-- <script src="content/js/modules/set_filter_sort_table.js"></script> -->
+        <!-- <script src="content/js/atelier/atelier3b.js"></script> -->
+        <!-- <script src="content/js/modules/sort_table.js"></script> -->
         <script src="content/js/modules/browse_img.js"></script>
-        <script src="content\js\modules\ajax_pour_image.js"></script>
-        <!-- <script src="ajax-browse-image.js"></script> -->
+        <script src="test.js"></script>
       </body>
   <?php
     }
