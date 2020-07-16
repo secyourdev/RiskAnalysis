@@ -604,7 +604,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         while ($row = mysqli_fetch_array($result_mesure)) {
                           echo '
                         <tr>
-                        <td>' . $row["id_chemin_d_attaque_strategique"] . '</td>
+                        <td>' . $row["id_mesure"] . '</td>
                         <td>' . $row["nom_partie_prenante"] . '</td>
                         <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
                         <td>' . $row["nom_mesure"] . '</td>
@@ -676,7 +676,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                   <select class="form-control" id="partieprenante", name="partieprenante">
                     <option value="" selected>...</option>
                     <?php
-                    while ($row = mysqli_fetch_array($result_partie_prenante)) //selection.php
+                    while ($row = mysqli_fetch_array($result_partie_prenante2)) //selection.php
                     {
                       echo '
                           <option id="nom_partie_prenante" value="' . $row["id_partie_prenante"] . '">' . $row["nom_partie_prenante"] . '</option>
