@@ -64,3 +64,28 @@ OURJQUERYFN.setFilterTable("#rechercher_evenement_redoute","#editable_table tbod
 //         button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table'+','+'15'+')')
 //     }
 // });
+
+
+
+function get_database_seuil() {
+    $.ajax({
+        url: 'content/php/atelier3a/selection_seuil.php',
+        type: 'POST',
+        dataType: 'html',
+        success: function (resultat) {
+            console.log(resultat);
+            
+            var seuil = JSON.parse(resultat);
+            sessionIdProjet = sessionIdProjet - 1
+            console.log(sessionIdProjet);
+            seuil_danger.value = seuil[sessionIdProjet][1]
+            seuil_controle.value = seuil[sessionIdProjet][2]
+            seuil_veille.value = seuil[sessionIdProjet][3]
+
+        },
+        error: function (erreur) {
+            alert('ERROR :' + erreur);
+        }
+    });
+}
+get_database_seuil()

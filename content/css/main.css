@@ -7,23 +7,23 @@ body {
 /* ----------------------------------------- CHARTE GRAPHIQUE---------------------------------------------------- */
 /* -------------------------------------------------------------------------------------------------------------- */
 :root {
-    --bg-color                   : #f0f0f0;
+    --bg-color                    : #f0f0f0;
     /*  var(--bg-color)     */
-    --card-content-color         : #fff;
-    --card-header-color          : #f7f7f7;
-    --card-divider               : #D7E3EA;
-    --nav-top-and-copyright-color: #fff;
-    --side-nav-color             : #394C7A;
-    --button-color               : #394C7A;
-    --button-color-hover         : #222E49;
-    --placeholder-idle           : #64789A;
-    --placeholder-focus          : #9BB8CA;
-    --font-color                 : #2A3859;
-    --reverse-font-color         : #fff;
-    --shadow-color               : rgba(0, 0, 0, 0.2);
-    --top-bar-color              : #394C7A;
-    --red                        : #B10505;
-    --red_hover                  : #790505;
+    --card-content-color          : #fff;
+    --card-header-color           : #f7f7f7;
+    --card-divider                : #D7E3EA;
+    --nav-top-and-copyright-color : #fff;
+    --side-nav-color              : #394C7A;
+    --button-color                : #394C7A;
+    --button-color-hover          : #222E49;
+    --placeholder-idle            : #64789A;
+    --placeholder-focus           : #9BB8CA;
+    --font-color                  : #2A3859;
+    --reverse-font-color          : #fff;
+    --shadow-color                : rgba(0, 0, 0, 0.2);
+    --top-bar-color               : #394C7A;
+    --red                         : #B10505;
+    --red_hover                   : #790505;
     /* fff mais transparent avec un A à .4 */
     --reverse-font-color-fainted  : #ffffff66;
     /* fff mais transparent avec un A à .8*/
@@ -49,8 +49,8 @@ body {
     --reverse-font-color         : #EAF1EB;
     --shadow-color               : rgba(0, 0, 0, 0.2);
     --top-bar-color              : #fff;
-    --red                        : #FF6565; 
-    --red_hover                  : #fa9494; 
+    --red                        : #FF6565;
+    --red_hover                  : #fa9494;
 
     /* fff mais transparent avec un A à .4 */
     --reverse-font-color-fainted  : #eaf1eb66;
@@ -268,6 +268,10 @@ h6 {
     color           : var(--font-color);
 }
 
+.custom-file-label {
+    background-color: var(--card-content-color);
+}
+
 .custom-file-label::after {
     background-color: var(--button-color);
     color           : var(--reverse-font-color);
@@ -278,15 +282,15 @@ h6 {
 /* -------------------------------------------------------------------------------------------------------------- */
 /*---------------------------------------------- Page login-------------------------------------------------------*/
 /* -------------------------------------------------------------------------------------------------------------- */
-.logo{
+.logo {
     height: 75px;
-    width: 75px;
+    width : 75px;
 }
 
-.logo_div{
-    display: flex;
-    align-items: center;
-    justify-content: center;  
+.logo_div {
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
 }
 
 .perso_card {
@@ -460,14 +464,15 @@ h6 {
     background-color: var(--button-color);
     border-color    : var(--button-color);
 }
-.perso_btn:disabled{
-    width: 8rem;
-    color: var(--reverse-font-color);
+
+.perso_btn:disabled {
+    width           : 8rem;
+    color           : var(--reverse-font-color);
     background-color: var(--button-color);
-    border-color: var(--button-color);
+    border-color    : var(--button-color);
 }
 
-.perso_tableau{
+.perso_tableau {
     margin-top: 3rem;
 }
 
@@ -475,10 +480,11 @@ h6 {
     padding: 1rem 2rem;
 }
 
-.perso_img_full_screen_div{
+.perso_img_full_screen_div {
     /* padding: 1rem 2rem; */
     max-width: 50%;
 }
+
 .card-columns {
     padding-right: .75rem;
     padding-left : .75rem;
@@ -513,21 +519,22 @@ h6 {
     background-color: var(--card-content-color);
 }
 
-.perso_btn_parametre,.perso_btn_parametre_mdp {
-    width: 14rem;
+.perso_btn_parametre,
+.perso_btn_parametre_mdp {
+    width      : 14rem;
     margin-left: 5px;
 }
 
 .perso_btn_parametre_mdp {
-    color: var(--reverse-font-color);
+    color           : var(--reverse-font-color);
     background-color: var(--red);
-    border-color: var(--red);
+    border-color    : var(--red);
 }
 
 .perso_btn_parametre_mdp:hover {
-    color: var(--reverse-font-color);
+    color           : var(--reverse-font-color);
     background-color: var(--red_hover);
-    border-color: var(--red_hover);
+    border-color    : var(--red_hover);
 }
 
 .perso_border {
@@ -596,18 +603,20 @@ h6 {
     color: var(--font-color);
 }
 
-.titre_input,.titre_textarea{
-    font-size: 0.9em;
+.titre_input,
+.titre_textarea {
+    font-size   : 0.9em;
     padding-left: 5px;
 }
 
-.titre_input{
-    margin-bottom : 0px;
+.titre_input {
+    margin-bottom: 0px;
 }
 
-.titre_textarea{
-    margin-bottom : 5px;
+.titre_textarea {
+    margin-bottom: 5px;
 }
+
 .image-preview {
     width     : 100%;
     min-height: 100px;
@@ -680,10 +689,11 @@ h6 {
         padding: 1rem 2rem;
     }
 
-    .perso_img_full_screen_div{
-    /* padding: 1rem 2rem; */
-    max-width: 70%;
+    .perso_img_full_screen_div {
+        /* padding: 1rem 2rem; */
+        max-width: 70%;
     }
+
     .card-columns {
         -moz-column-count: 1;
         column-count     : 1;
@@ -744,10 +754,11 @@ h6 {
         padding: 1rem 1rem;
     }
 
-    .perso_img_full_screen_div{
-    /* padding: 1rem 4rem; */
-    max-width: 50%;
+    .perso_img_full_screen_div {
+        /* padding: 1rem 4rem; */
+        max-width: 50%;
     }
+
     .card-columns {
         -moz-column-count: 2;
         column-count     : 2;
@@ -1127,45 +1138,46 @@ h6 {
     background-repeat  : no-repeat;
     background-size    : 0.7rem;
 }
-.rechercher_input{
-    margin-bottom: 5px;
-    border-radius: 5px;
-    outline: none;
-    box-shadow: none;
-    border: solid 1px var(--placeholder-focus);
+
+.rechercher_input {
+    margin-bottom   : 5px;
+    border-radius   : 5px;
+    outline         : none;
+    box-shadow      : none;
+    border          : solid 1px var(--placeholder-focus);
     background-color: var(--card-header-color);
-    color: var(--button-color);
-    font-size: 0.9em;
-    padding: 0.15rem 0.475rem!important;
+    color           : var(--button-color);
+    font-size       : 0.9em;
+    padding         : 0.15rem 0.475rem !important;
 }
 
 .raci_th th {
-    width: 20%;
-    text-align: initial ;
+    width     : 20%;
+    text-align: initial;
 }
 
-.width_RACI{
+.width_RACI {
     width: -webkit-fill-available;
 }
 
-.gravite{
-    display:contents;
+.gravite {
+    display: contents;
 }
 
-.no_modification{
-    border: none !important;
-    font-size: 0.9em;
-    margin-left: 10px;
+.no_modification {
+    border       : none !important;
+    font-size    : 0.9em;
+    margin-left  : 10px;
     margin-bottom: 0px;
-    margin-top: 3px;
+    margin-top   : 3px;
 }
 
 /*Tableau de Bord*/
-.tableau_de_bord_card{
+.tableau_de_bord_card {
     height: 117px;
 }
 
-.tableau_de_bord_table{
+.tableau_de_bord_table {
     width: 100%;
 }
 
@@ -1175,113 +1187,131 @@ h6 {
 
 .tableau_de_bord_table th {
     text-align: left;
-    font-size: 1.3em;
+    font-size : 1.3em;
 }
 
 #prj {
-    color: #4AD991;
+    color    : #4AD991;
     font-size: 2em;
 }
 
 #grp_user {
-    color: #FF6565;
+    color    : #FF6565;
     font-size: 2em;
 }
 
 #app {
-    color: #FFCA83;
+    color    : #FFCA83;
     font-size: 2em;
 }
 
 #bdd {
-    color: #A0C0FF;
+    color    : #A0C0FF;
     font-size: 2em;
 }
-.tableau_de_bord_card{
+
+.tableau_de_bord_card {
     cursor: pointer;
 }
 
-.tableau_de_bord_card:hover{
+.tableau_de_bord_card:hover {
     background-color: var(--card-divider) !important;
 }
 
-.fondu{
-    animation: fadein 2s;
-    -moz-animation: fadein 2s; /* Firefox */
-    -webkit-animation: fadein 2s; /* Safari and Chrome */
-    -o-animation: fadein 2s; /* Opera */
+.fondu {
+    animation        : fadein 2s;
+    -moz-animation   : fadein 2s;
+    /* Firefox */
+    -webkit-animation: fadein 2s;
+    /* Safari and Chrome */
+    -o-animation     : fadein 2s;
+    /* Opera */
 }
+
 @keyframes fadein {
     from {
-        opacity:0;
+        opacity: 0;
     }
+
     to {
-        opacity:1;
+        opacity: 1;
     }
 }
-@-moz-keyframes fadein { /* Firefox */
+
+@-moz-keyframes fadein {
+
+    /* Firefox */
     from {
-        opacity:0;
+        opacity: 0;
     }
+
     to {
-        opacity:1;
+        opacity: 1;
     }
 }
-@-webkit-keyframes fadein { /* Safari and Chrome */
+
+@-webkit-keyframes fadein {
+
+    /* Safari and Chrome */
     from {
-        opacity:0;
+        opacity: 0;
     }
+
     to {
-        opacity:1;
+        opacity: 1;
     }
 }
-@-o-keyframes fadein { /* Opera */
+
+@-o-keyframes fadein {
+
+    /* Opera */
     from {
-        opacity:0;
+        opacity: 0;
     }
+
     to {
         opacity: 1;
     }
 }
 
 /*Paramètres*/
-.user_photo{
-    height: 200px;
-    width: 200px;
+.user_photo {
+    height      : 200px;
+    width       : 200px;
     margin-right: 50px;
 }
 
-.div_photo_user{
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;  
+.div_photo_user {
+    display        : flex;
+    align-items    : flex-end;
+    justify-content: flex-end;
 }
 
-.div_info_user{
-    display: flex;
-    flex-direction: column;
+.div_info_user {
+    display        : flex;
+    flex-direction : column;
     justify-content: center;
 }
 
-#nom_user_parametre{
-    font-size: 1.2em;
+#nom_user_parametre {
+    font-size  : 1.2em;
     font-weight: 800;
 }
 
 @media (max-width: 992px) {
-    .user_photo{
-        height: 200px;
-        width: 200px;
+    .user_photo {
+        height      : 200px;
+        width       : 200px;
         margin-right: 0px;
     }
 
-    .div_photo_user{
-        display: flex;
-        align-items: center;
-        justify-content: center;  
+    .div_photo_user {
+        display        : flex;
+        align-items    : center;
+        justify-content: center;
     }
-    
-    .div_info_user{
+
+    .div_info_user {
         text-align: center;
     }
 }

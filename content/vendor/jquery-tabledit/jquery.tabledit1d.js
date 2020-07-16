@@ -69,7 +69,7 @@ if (typeof jQuery === 'undefined') {
               onDraw: function () { return; },
               onSuccess: function () { return; },
               onFail: function() { return; },
-              onAlways: function() {location.reload();  return;},
+              onAlways: function() {/* location.reload();  */ return;},
               onAjax: function() { return; }
           };
   
@@ -108,9 +108,9 @@ if (typeof jQuery === 'undefined') {
                       });
                   },
                   editable: function () {
-                      console.log(settings.columns.editable);
+                      // console.log(settings.columns.editable);
                       for (var i = 0; i < settings.columns.editable.length; i++) {
-                          console.log(settings.columns.editable[i][0]);
+                          // console.log(settings.columns.editable[i][0]);
                           var $td = $table.find('tbody td:nth-child(' + (parseInt(settings.columns.editable[i][0]) + 1) + ')');
 
                           $td.each(function () {
@@ -157,10 +157,10 @@ if (typeof jQuery === 'undefined') {
                   },
                   dateeditable: function () {
                       
-                      console.log(settings.columns.dateeditable);
+                      // console.log(settings.columns.dateeditable);
                       for (var i = 0; i < settings.columns.dateeditable.length; i++) {
-                          console.log(settings.columns.dateeditable[i][0]);
-                        //   console.log($table.find('tbody td:nth-child(' + (parseInt(settings.columns.dateeditable[i][0]) + 1) + ')'));
+                          // console.log(settings.columns.dateeditable[i][0]);
+                        //   // console.log($table.find('tbody td:nth-child(' + (parseInt(settings.columns.dateeditable[i][0]) + 1) + ')'));
                           
                           var $td = $table.find('tbody td:nth-child(' + (parseInt(settings.columns.dateeditable[i][0]) + 1) + ')');
                         //   var $td = $('#editable_table_ecart tbody td:nth-child(8)');
@@ -250,7 +250,7 @@ if (typeof jQuery === 'undefined') {
   
                           // Add toolbar column cells.
                           $table.find('tr:gt(0)').append('<td style="white-space: nowrap; width: 1%;">' + toolbar + '</td>');
-                          //console.log($table[0].rows)
+                          //// console.log($table[0].rows)
                       }
                   }
               }
@@ -284,7 +284,7 @@ if (typeof jQuery === 'undefined') {
                   Delete.reset(td);
                   // Get table row.
                   var $tr = $(td).parent('tr');
-                  //var rows_length = $tr[0]; console.log(rows_length)
+                  //var rows_length = $tr[0]; // console.log(rows_length)
                   // Enable identifier.
                   $tr.find('.tabledit-input.tabledit-identifier').prop('disabled', false);
                   // Hide span element.

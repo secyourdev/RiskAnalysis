@@ -4,7 +4,7 @@ session_start();
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v20;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -658,14 +658,29 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   </button>
                 </div>
                 <div class="modal-body perso_modal_body">
-                  <div class="custom-file">
-                    <input name="userfile" id="fileToUpload" class="custom-file-input" type="file">
-                    <label class="custom-file-label" for="fileToUpload">Choisir un fichier au format JSON</label>
-                  </div>
 
-                  <!-- bouton Ajouter -->
-                  <div class="modal-footer perso_middle_modal_footer">
-                    <input type="submit" id="file_submit" name="file_submit" value="Ajouter un fichier" class="btn perso_btn_primary shadow-none"></input>
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">Enter Data</h3>
+                    </div>
+                    <div class="panel-body">
+                      <span id="success_message"></span>
+                      <form method="post" id="sample_form">
+
+                        <div class="custom-file">
+                          <input name="userfile" id="fileToUpload" class="custom-file-input" type="file">
+                          <label class="custom-file-label" for="fileToUpload">Choisir un fichier au format JSON</label>
+                        </div>
+
+                        <div class="form-group" align="center">
+                          <input type="submit" name="file_submit" id="file_submit" class="btn perso_btn_primary shadow-none" value="Ajouter un fichier" />
+                        </div>
+
+                        <div class="form-group" align="center">
+                          <img id="ajax-loader" src="content/img/ajax-loader.gif" style="display: none">
+                        </div>
+                      </form>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -763,8 +778,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <label for="description">Description</label>
                         <textarea class="form-control perso_text_area" name="description" id="description" rows="3"></textarea>
                       </div>
-
-                      <!-- bouton Ajouter -->
+                      
                       <div class="modal-footer perso_middle_modal_footer">
                         <input type="submit" name="validerecart" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
                       </div>

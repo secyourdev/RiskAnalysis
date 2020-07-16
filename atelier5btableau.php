@@ -3,7 +3,7 @@ session_start();
 
 //Connexion à la base de donnee
 try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v20;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 }
 
@@ -29,7 +29,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $userdroit = $reqdroit->fetch();
 ?>
 
-<?php include("content/php/atelier2a/selection.php");?>
+<?php include("content/php/atelier5btableau/selection.php");?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -39,7 +39,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
   <meta name="description" content="CyberRiskManager">
   <meta name="author" content="SecYourDev">
 
-  <title>CyberRiskManager | Atelier 2.a</title>
+  <title>CyberRiskManager | Atelier 5.b</title>
 
   <!-- Fonts-->
   <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -159,13 +159,13 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
           </div>
         </div>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier2" aria-expanded="true"
           aria-controls="Atelier2">
           <i>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
               <g transform="translate(-1230 -689)">
-                <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
+                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
                 <text class="number_activity_text" data-name="2" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-3.432" y="0">2</tspan></text>
               </g>
             </svg>
@@ -261,18 +261,18 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
           </div>
         </div>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier4" aria-expanded="true"
           aria-controls="Atelier4">
           <i>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
               <g transform="translate(-1230 -689)">
-                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
+                <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc"/>
                 <text class="number_activity_text" data-name="4" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-3.432" y="0">4</tspan></text>
               </g>
             </svg>
           </i>
-          <span>Scénarios opérationnels</span>
+          <span class="nom_atelier2">Scénarios opérationnels</span>
         </a>
         <div id="Atelier4" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -367,16 +367,15 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
       <!-- Main Content -->
       <div id="content">
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top fixed-top shadow" id="barre_info">
-
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top fixed-top shadow" id='barre_info'> 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
 
           <div id="top_bar_1" class="top_bar_name_1"><?php echo $projectinfo['nom_projet'];?></div>
-          <div id="top_bar_2" class="top_bar_name_2">Atelier 2</div>
-          <div id="top_bar_3" class="top_bar_name_3">Activité 2.a - Identifier les sources de risques et les objectifs</div>
+          <div id="top_bar_2" class="top_bar_name_2">Atelier 4</div>
+          <div id="top_bar_3" class="top_bar_name_3">Activité 4.a - Élaborer les scénarios opérationnels</div>
           
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -398,7 +397,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="parametres&<?php echo $_SESSION['id_utilisateur'];?>">
-                  <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                   Paramètres
                 </a>
                 <div class="dropdown-divider"></div>
@@ -414,7 +413,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
         <!-- Begin Page Content -->
         <div id="fixed_page" class="container-fluid">
-          <!-- Page Heading -->
           <!-- Content Row -->
           <div class="row fondu">
             <!-- Area Card -->
@@ -423,72 +421,114 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0">Objectif</h6>
+                  
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <p> Le but de l'atelier 2 est d'identifier les sources de risques (SR) et leurs objectifs visés (OV), en lien avec le contexte particulier de l'étude. 
-                    L'atelier vise à répondre à la question suivante : qui ou quoi pourrait porter atteint aux missions et valeurs métier identifiées dans l'atelier 1, et dans quels buts ?</p>
+                  <p>Le but de cet atelier est de réaliser une synthèse des scénarios de risque identifiés et de définir une stratégie de traitement du risque. Cette stratégie aboutit à la définition de mesures de 
+                    sécuriité, recensées dans un plan d'amélioration continue de la sécurité (PACS). Les risques résiduels sont ensuite identifiés ainsi que le cadre de suivi de ces risques.
+                  </p>
                   <!--text-->
                 </div>
               </div>
             </div>
-          
+          </div>
+
+          <div class="row">
 
             <!-- Area Card -->
-            <div class="col-xl-12 col-lg-12">
+            <div class="col-xl col-lg">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Sources de risque et objectifs visés</h6>
+                  <h6 class="m-0"></h6>
+                  
+
+              
+
+
+
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <!--text-->
                   <div class="table-responsive">
-                    <input type="text" class="rechercher_input" id="rechercher_srov" placeholder="Rechercher">
+                  <input type="text" class="rechercher_input" id="rechercher_chemin" placeholder="Rechercher">
                     <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th id="id_srov">ID SROV</th>
-                          <th id="type_attaquant">Type d'attaquant</th>
-                          <th id="profil_attaquant">Profil d'attaquant</th>
-                          <th id="description_source_risque">Description source de risque</th>
-                          <th id="objectif vise">Objectif visé</th>
-                          <th id="description_objectif">Description de l'objectif</th>
+                          <th id="id">ID</th>
+                          <th id="valeur_metier">Valeur Métier</th>
+                          <th id="evenement_redoute">Événement redouté</th>
+                          <th id="impact">Impact</th>
+                          <th id="gravite">Gravité</th>
+                          <th id="source_de_risque">Source de risque</th>
+                          <th id="objectif_vise">Objectif visé</th>
+                          <th id="pertinence">Pertinence</th>
+                          <th id="numero_risque">N° Risque</th>
+                          <th id="chemin_attaque_strategique">Chemin d'attaque stratégique</th>
+                          <th id="partie_prenante">Partie prenante</th>
+                          <th id="menace">Niveau de menace</th>
+                          <th id="menace_residuelle">Niveau de menace résiduel</th>
+                          <th id="scenario_operationnel">Scenario opérationnel</th>
+                          <th id="vraisemblance">Vraisemblance</th>
+                          <th id="risque">Risque</th>
+                          <th id="regle">Règle</th>
+                          
                         </tr>
                       </thead>
+                        
                       <tbody>
                       <?php
                       while($row = mysqli_fetch_array($result))
                       {
+                        $risque = $row["niveau_de_gravite"] * $row["vraisemblance"];
                         echo '
                         <tr>
-                        <td>'.$row["id_source_de_risque"].'</td>
-                        <td>'.$row["type_d_attaquant_source_de_risque"].'</td>
-                        <td>'.$row["profil_de_l_attaquant_source_de_risque"].'</td>
+                        <td>'.$row["id_chemin_d_attaque_strategique"].'</td>
+                        <td>'.$row["nom_valeur_metier"].'</td>
+                        <td>'.$row["nom_evenement_redoute"].'</td>
+                        <td>'.$row["impact"].'</td>
+                        <td>'.$row["niveau_de_gravite"].'</td>
                         <td>'.$row["description_source_de_risque"].'</td>
                         <td>'.$row["objectif_vise"].'</td>
-                        <td>'.$row["description_objectif_vise"].'</td>
+                        <td>'.$row["pertinence"].'</td>
+                        <td>'.$row["id_risque"].'</td>
+                        <td>'.$row["nom_chemin_d_attaque_strategique"].'</td>
+                        <td>'.$row["nom_partie_prenante"].'</td>
+                        <td>'.$row["niveau_de_menace_partie_prenante"].'</td>
+                        <td>'.$row["niveau_de_menace_residuelle"].'</td>
+                        <td>'.$row["description_scenario_operationnel"].'</td>
+                        <td>'.$row["vraisemblance"].'</td>
+                        <td>'.$risque.'</td>
+                        <td>'.$row["titre"].'</td>
                         </tr>
                         ';
                       }
                       ?>
                       </tbody>
                     </table>
-                  </div> 
+                  </div>    
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_sr">Ajouter un couple Source de Menace / Objecif visé</button>
-                  </div>   
+                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_tableau">Ajouter une nouvelle ligne</button>
+                  </div> 
+
+
                 </div>
               </div>
-            </div>          
+            </div>
+
+           
           </div>
+
+
+
       </div>
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer id="footer" class="sticky-footer bg-white">
+      <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
@@ -496,8 +536,10 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         </div>
       </footer>
       <!-- End of Footer -->
+
     </div>
     <!-- End of Content Wrapper -->
+
   </div>
   <!-- End of Page Wrapper -->
 
@@ -505,105 +547,90 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
-
-
 <!-- -------------------------------------------------------------------------------------------------------------- 
 ----------------------------------------- modal ajout de ligne ----------------------------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
-<div class="modal fade" id="ajout_ligne_sr" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="ajout_ligne_tableau" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ajout d'une source de risque</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Modification des mesures de sécurité</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body perso_modal_body">
-        <form method="post" action="content/php/atelier2a/ajout.php" class="user" id="formsrov">
+        <form method="post" action="content/php/atelier5btableau/ajout.php" class="user" id="formecartPop">
           <fieldset>
             <div class="row">
-              <div class="col-6">
-              <label for="type_attaquant">Type d'attaquant</label>
-              <select class="form-control" name="type_attaquant" id="type_attaquant">
-                  <option value="" selected>...</option>
-                  <option value="Organisation structurée">Organisation structurée</option>
-                  <option value="Organisation idéologique">Organisation idéologique</option>
-                  <option value="Individu isolé">Individu isolé</option>
-                </select>
-              
-                <div class="form-group form-colonne">
-                  <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Profil d'attaquant" name="profil_attaquant" placeholder="Profil d'attaquant" required>
-                  <datalist id="Profil d'attaquant">
-                    <option value="Etatique">
-                    <option value="Crime organisé">
-                    <option value="Terroriste">
-                    <option value="Activiste idéologique">
-                    <option value="Officine spécialisée">
-                    <option value="Amateur">
-                    <option value="Vengeur">
-                    <option value="Malveillant pathologique">
-                  </datalist>
-                </div>
-              </div>
-
-              <div class="form-group col-6">
-                <label for="Description de la source de risque">Description de la source de risque</label>
-                <textarea class="form-control perso_text_area" id="Description de la source de risque" name="description_sr"rows="5"></textarea>
-              </div>
+            <div class="form-group col-12">
+              <label for="chemin">Chemin d'attaque stratégique</label>
+              <select class="form-control" id="chemin", name="chemin">
+                <option value="" selected>...</option>
+                <?php
+                while ($row = mysqli_fetch_array($resultchemin)) //selection.php
+                {
+                  echo '
+                      <option id="id_chemin" value="' . $row["id_chemin_d_attaque_strategique"] . '">' . $row["nom_chemin_d_attaque_strategique"] . '</option>
+                      ';
+                }
+                ?>
+              </select>
+              <script src="content/js/modules/regles.js"></script>
             </div>
-            <div class="row">
-              <!-- <div class="form-group col-12">
-                <input type="search" class="perso_form shadow-none form-control form-control-user" id="objectif_vise" name="objectif_vise"
-                  placeholder="Objectif visé" required>
-              </div> -->
-              <div class="form-group form-colonne col-12">
-                  <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Objectif visé" name="objectif_vise" placeholder="Objectif visé" required>
-                  <datalist id="Objectif visé">
-                    <option value="Espionnage">
-                    <option value="Prépositionnement stratégique">
-                    <option value="Influence">
-                    <option value="Entrave au fonctionnement">
-                    <option value="Lucratif">
-                    <option value="Défi, amusement">
-                  </datalist>
-                </div>
 
               <div class="form-group col-12">
-                <label for="Description de l'objectif visé">Description de l'objectif visé</label>
-                <textarea class="form-control perso_text_area" id="Description de l'objectif visé" name="description_objectif_vise" rows="3"></textarea>
+                <label for="referentiel">Référentiel de sécurité</label>
+                <select class="form-control" id="referentiel", name="referentiel">
+                  <option value="" selected>...</option>
+                  <?php
+                  while ($row = mysqli_fetch_array($result_referentiel)) //selection.php
+                  {
+                    echo '
+                        <option id="id_socle" value="' . $row["id_socle_securite"] . '">' . $row["nom_referentiel"] . '</option>
+                        ';
+                  }
+                  ?>
+                </select>
+                <script src="content/js/modules/regles.js"></script>
               </div>
+              <div class="form-group col-12">
+                <label for="mesure">Mesure de sécurité</label>
+                <select class="form-control" id="mesure" name="mesure">
+                  <option value="" selected>Choisissez un référentiel</option>
+                </select>
+              </div> 
             </div>
-            <!-- bouton Ajouter -->
+            <!-- bouton Valider -->
             <div class="modal-footer perso_middle_modal_footer">
-              <input type="submit" name="validersrov" value="Ajouter" class="btn perso_btn shadow-none"></input>
+              <input type="submit" name="ajouterregle" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
             </div>
           </fieldset>
         </form>
-      </div>    
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-        <a class="btn btn-primary" href="login.html">Logout</a>
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
   <!-- Bootstrap core JavaScript-->
   <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
@@ -621,7 +648,7 @@ aria-hidden="true">
   <script src="content/js/modules/fixed_page.js"></script>
   <script src="content/js/modules/realtime.js"></script>
   <script src="content/js/modules/set_filter_sort_table.js"></script>
-  <script src="content/js/atelier/atelier2a.js"></script>
+  <script src="content/js/atelier/atelier5bpacs.js"></script>
   <script src="content/js/modules/sort_table.js"></script>
 </body>
 <?php

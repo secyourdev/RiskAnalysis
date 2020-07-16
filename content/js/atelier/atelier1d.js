@@ -32,7 +32,7 @@ $(document).ready(function () {
         restoreButton: false,
         onSuccess: function (data, textStatus, jqXHR) {
             if (data.action == 'delete') {
-                $('#' + data.id_evenement_redoutes).remove();
+                $('#' + data.id_socle_securite).remove();
             }
         }
     });
@@ -58,7 +58,7 @@ $(document).ready(function () {
         restoreButton: false,
         onSuccess: function (data, textStatus, jqXHR) {
             if (data.action == 'delete') {
-                $('#' + data.id_evenement_redoutes).remove();
+                $('#' + data.id_ecarts).remove();
             }
         }
     });

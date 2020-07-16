@@ -13,7 +13,7 @@ try {
 }
 
 
-$queryregles = $bdd->prepare("SELECT id_regle, description FROM regle WHERE id_socle_securite = ?");
+$queryregles = $bdd->prepare("SELECT id_regle, titre FROM regle WHERE id_socle_securite = ?");
 
 
 
@@ -30,7 +30,7 @@ if(isset($_POST['ref'])){
     while($row = $queryregles->fetch(PDO::FETCH_ASSOC))
     {
       echo '
-      <option value="'.$row["id_regle"].'">'.$row["description"].'</option>
+      <option value="'.$row["id_regle"].'">'.$row["titre"].'</option>
       ';
     }
 }
