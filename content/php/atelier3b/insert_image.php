@@ -4,7 +4,7 @@ session_start();
 $getid_projet = $_SESSION['id_projet'];
 
 //Connexion à la base de donnee
-$bdd = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v20");
+$bdd = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
 
 // Initialize message variable
 $msg = "";
