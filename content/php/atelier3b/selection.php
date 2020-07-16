@@ -69,11 +69,11 @@ $result_id_scenario_strategique = mysqli_query($connect, $query_id_scenario_stra
 
 
 // browse image
-$query = "SELECT * FROM scenario_operationnel WHERE id_projet = $getid_projet";
+$query = "SELECT * FROM scenario_strategique WHERE id_projet = $getid_projet";
 // print $query;
 $result = mysqli_query($connect, $query);
 // var_dump($result);
-$query_scenario_op = "SELECT id_scenario_operationnel, nom_scenario_operationnel FROM scenario_operationnel WHERE id_projet = $getid_projet AND id_atelier = '3.b'";
+$query_scenario_op = "SELECT id_scenario_strategique, nom_scenario_strategique FROM scenario_strategique WHERE id_projet = $getid_projet AND id_atelier = '3.b'";
 // print $query_scenario_op;
 $result_scenario_op = mysqli_query($connect, $query_scenario_op);
 // print_r($result_scenario_op);

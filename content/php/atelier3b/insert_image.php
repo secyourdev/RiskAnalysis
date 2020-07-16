@@ -16,10 +16,10 @@ print_r($_POST);
 
 
 // If upload button is clicked ...
-if (isset($_POST['nom_scenario_operationnel'])) {
-    print 'nom_scenario_operationnel séléctionné, id: ';
-    $id_scenario_operationnel = $_POST['nom_scenario_operationnel'];
-    print $id_scenario_operationnel;
+if (isset($_POST['nom_scenario_strategique'])) {
+    print 'nom_scenario_strategique séléctionné, id: ';
+    $id_scenario_strategique = $_POST['nom_scenario_strategique'];
+    print $id_scenario_strategique;
 
 
     if (isset($_POST['file_submit'])) {
@@ -32,7 +32,7 @@ if (isset($_POST['nom_scenario_operationnel'])) {
         // image file directory
         $target = "../../../image/" . basename($image);
 
-        $sql = "UPDATE scenario_operationnel SET image = '$image' WHERE id_projet = $getid_projet AND id_atelier = '3.b' AND id_scenario_operationnel = $id_scenario_operationnel";
+        $sql = "UPDATE scenario_stratéquique SET image = '$image' WHERE id_projet = $getid_projet AND id_atelier = '3.b' AND id_scenario_strategique = $id_scenario_strategique";
         print $sql;
         // execute query
         mysqli_query($bdd, $sql);

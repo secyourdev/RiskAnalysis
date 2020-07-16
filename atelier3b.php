@@ -617,7 +617,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Schéma des scénarios stratégiques</h6>
+                        <h6 class="m-0">Schéma des scénarios opérationnels</h6>
 
                       </div>
                       <!-- Card Body -->
@@ -630,8 +630,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <span id="success_message"></span>
                         <form method="POST" id="sample_form" action="content\php\atelier3b\insert_image.php" enctype="multipart/form-data">
 
-                          <label for="nom_scenario_operationnel">Nom du scénario opérationnel</label>
-                          <select class="form-control" name="nom_scenario_operationnel" id="nom_scenario_operationnel">
+                          <label for="nom_scenario_strategique">Nom du scénario opérationnel</label>
+                          <select class="form-control" name="nom_scenario_strategique" id="nom_scenario_strategique">
                             <option value="" selected>...</option>
                             <?php
                             // print 'bonjour';
@@ -639,7 +639,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             while ($row = mysqli_fetch_array($result_scenario_op)) //selection.php
                             {
                               // print_r($row);
-                              echo '<option id="scenario_operationnel" value="' . $row['id_scenario_operationnel'] . '">' . $row['nom_scenario_operationnel'] . '</option>';
+                              echo '<option id="scenario_strategique" value="' . $row['id_scenario_strategique'] . '">' . $row['nom_scenario_strategique'] . '</option>';
                             }
                             ?>
                           </select>
@@ -656,16 +656,13 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                           </div>
                         </form>
 
-                        <?php
-                        // print_r($result);
-                        while ($row = mysqli_fetch_array($result)) {
-                          echo "<div class='image-preview' id='imagePreview'>";
-                          echo "<img class='image-preview__image' src='image/" . $row['image'] . "' >";
-                          echo "<span class='image-preview__default-text'>Image Preview</span>";
-                          // echo "<p>".$row['image_text']."</p>";
-                          echo "</div>";
-                        }
-                        ?>
+
+                          <div class='image-preview' id='imagePreview'>
+                          <img class='image-preview__image' src='image/'>
+                          <span class='image-preview__default-text'>Image Preview</span>
+                          <!-- <p>".$row['image_text']."</p> -->
+                          </div>
+
 
 
 
