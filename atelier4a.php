@@ -4,7 +4,7 @@ session_start();
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -554,7 +554,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <tr>
                               <td>' . $row["id_scenario_operationnel"] . '</td>
                               <td>' . $row["id_risque"] . '</td>
-                              <td>' . $row["chemin_d_attaque_strategique"] . '</td>
+                              <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
                               <td>' . $row["description_scenario_operationnel"] . '</td>
                               </tr>
                               ';

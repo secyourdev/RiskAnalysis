@@ -1,6 +1,6 @@
 <?php
 $getid_projet = intval($_GET['id_projet']);
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v18");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
 
 $query1 = "SELECT mission.id_mission,mission.nom_mission,mission.responsable,valeur_metier.nom_valeur_metier,couple_VMBS.nom_responsable_vm,bien_support.nom_bien_support,couple_VMBS.nom_responsable_bs FROM `couple_VMBS` NATURAL JOIN mission NATURAL JOIN valeur_metier NATURAL JOIN bien_support WHERE mission.id_projet=$getid_projet ORDER BY mission.id_mission ASC";
 $result1 = mysqli_query($connect, $query1);
