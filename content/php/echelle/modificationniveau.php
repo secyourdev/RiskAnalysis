@@ -4,27 +4,14 @@ $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bs
 
 $input = filter_input_array(INPUT_POST);
 
-
-
 $description_niveau = mysqli_real_escape_string($connect, $input["description_niveau"]);
 
-
-
-
 $results["error"] = false;
-$results["message"] = [];
-
 
 // Verification de la description
 if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_niveau)){
     $results["error"] = true;
-    $results["message"]["prenom"] = "Description invalide";
-    ?>
-    <strong style="color:#FF6565;">Description invalide </br></strong>
-    <?php
 }
-
-
 
 if($input["action"] === 'edit' && $results["error"] === false){
     $query = "

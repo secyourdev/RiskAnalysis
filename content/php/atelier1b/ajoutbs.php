@@ -17,8 +17,6 @@ try {
 }
 
 $results["error"] = false;
-$results["message"] = [];
-
 
 $biensupport = $_POST['biensupport'];
 $descriptionbs = $_POST['descriptionbs'];
@@ -31,20 +29,15 @@ $inserebs = $bdd->prepare('INSERT INTO bien_support(id_bien_support, nom_bien_su
 // Verification du nom du bien support
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $biensupport)) {
   $results["error"] = true;
-  $results["message"]["nom"] = "Nom invalide";
-?>
-  <strong style="color:#FF6565;">Nom invalide </br></strong>
-<?php
+  $_SESSION['message_error_3'] = "Nom invalide";
 }
 
 // Verification de la description du bien support
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $descriptionbs)) {
   $results["error"] = true;
-  $results["message"]["nom"] = "Description invalide";
-?>
-  <strong style="color:#FF6565;">Description invalide </br></strong>
-<?php
+  $_SESSION['message_error_3'] = "Description invalide";
 }
+
 if ($results["error"] === false && isset($_POST['validerbs'])) {
   $inserebs->bindParam(1, $id_bien_support);
   $inserebs->bindParam(2, $biensupport);
@@ -52,9 +45,7 @@ if ($results["error"] === false && isset($_POST['validerbs'])) {
   $inserebs->bindParam(4, $id_atelier);
   $inserebs->bindParam(5, $getid_projet);
   $inserebs->execute();
-?>
-  <strong style="color:#4AD991;">Le bien support a bien été ajouté !</br></strong>
-<?php
-}
 
+  $_SESSION['message_success_3'] = "Le bien support a bien été ajouté !";
+}
 ?>

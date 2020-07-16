@@ -5,8 +5,6 @@ $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bs
 $input = filter_input_array(INPUT_POST);
 
 $results["error"] = false;
-$results["message"] = [];
-
 
 if($input["action"] === 'edit'){
     $nom = mysqli_real_escape_string($connect, $input["nom"]);
@@ -18,46 +16,26 @@ if($input["action"] === 'edit'){
     // Verification du nom
     if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom)){
         $results["error"] = true;
-        $results["message"]["nom"] = "Nom invalide";
-        ?>
-        <strong style="color:#FF6565;">Nom invalide </br></strong>
-        <?php
     }
 
     // Verification du prenom
     if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $prenom)){
         $results["error"] = true;
-        $results["message"]["prenom"] = "Prenom invalide";
-        ?>
-        <strong style="color:#FF6565;">Prénom invalide </br></strong>
-        <?php
     }
 
     // Verification du poste
     if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $poste)){
         $results["error"] = true;
-        $results["message"]["poste"] = "Poste invalide";
-        ?>
-        <strong style="color:#FF6565;">Poste invalide </br></strong>
-        <?php
     }
 
     // Verification du email
     if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s.,-@]{1,100}$/", $email)){
         $results["error"] = true;
-        $results["message"]["email"] = "E-mail invalide";
-        ?>
-        <strong style="color:#FF6565;">E-mail invalide </br></strong>
-        <?php
     }
 
     // Verification du type de compte
     if(!preg_match("/^[a-zA-Zéèàêâùïüëç@\s-]{1,100}$/", $type_compte)){
         $results["error"] = true;
-        $results["message"]["type_compte"] = "Type de compte invalide";
-        ?>
-        <strong style="color:#FF6565;">Type de compte invalide </br></strong>
-        <?php
     }
 
     if($results["error"] === false){
@@ -72,6 +50,7 @@ if($input["action"] === 'edit'){
         ";
 
         mysqli_query($connect, $query);
+
     }
 }
 
@@ -81,6 +60,7 @@ if($input["action"] === 'delete'){
     WHERE id_utilisateur = '".$input["id_utilisateur"]."'
     ";
     mysqli_query($connect, $query);
+
 }
 
 echo json_encode($input);

@@ -23,4 +23,5 @@ session_start();
     $insereuser->bindParam(1, $resultat[0]);
     $insereuser->bindParam(2, $id_utilisateur);
     $insereuser->execute();
+
 ?>

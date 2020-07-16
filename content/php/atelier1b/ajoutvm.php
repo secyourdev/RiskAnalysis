@@ -16,7 +16,6 @@ try {
 }
 
 $results["error"] = false;
-$results["message"] = [];
 
 $nomvm = $_POST['nomvm'];
 $nature = $_POST['nature'];
@@ -31,28 +30,19 @@ $inserevm = $bdd->prepare('INSERT INTO valeur_metier(id_valeur_metier, nom_valeu
 // Verification du nom de la valeur métier
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nomvm)) {
   $results["error"] = true;
-  $results["message"]["nom"] = "Nom invalide";
-?>
-  <strong style="color:#FF6565;">Nom invalide </br></strong>
-<?php
+  $_SESSION['message_error_2'] = "Nom invalide";
 }
 
 // Verification de la description de la valeur métier
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $descriptionvm)) {
   $results["error"] = true;
-  $results["message"]["description"] = "Description invalide";
-?>
-  <strong style="color:#FF6565;">Description invalide </br></strong>
-<?php
+  $_SESSION['message_error_2'] = "Description invalide";
 }
 
 // Verification de la nature de la valeur métier
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nature)) {
   $results["error"] = true;
-  $results["message"]["nature"] = "Nature invalide";
-?>
-  <strong style="color:#FF6565;">Nature invalide </br></strong>
-<?php
+  $_SESSION['message_error_2'] = "Nature invalide";
 }
 
 if ($results["error"] === false && isset($_POST['validervm'])) {
@@ -63,8 +53,7 @@ if ($results["error"] === false && isset($_POST['validervm'])) {
   $inserevm->bindParam(5, $id_atelier);
   $inserevm->bindParam(6, $getid_projet);
   $inserevm->execute();
-?>
-  <strong style="color:#4AD991;">La valeur métier a bien été ajoutée !</br></strong>
-<?php
+
+  $_SESSION['message_success_2'] = "La valeur métier a bien été ajoutée !";
 }
 ?>

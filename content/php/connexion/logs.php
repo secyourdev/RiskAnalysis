@@ -24,7 +24,8 @@ if (isset($_POST['connexion'])){
     if($row){
       if(password_verify($mot_de_passe, $row["mot_de_passe"])){
         $results["error"] = false;
-        $results["message"] = "Connexion accepte";
+        $results["message"] = "Connexion accepté";
+        $_SESSION['message_success'] = "Connexion accepté";
         $_SESSION['id_utilisateur'] = $row['id_utilisateur'];
         $_SESSION['nom'] = $row['nom'];
         $_SESSION['prenom'] = $row['prenom'];
@@ -34,12 +35,14 @@ if (isset($_POST['connexion'])){
       else{
         $results["error"] = true;
         $results["message"] = "Email ou mot de passe incorect";
+        $_SESSION['message_error'] = "Email ou mot de passe incorect";
         header('Location: ../../../connexion.php?erreur=1');
       }
     }
     else{
       $results["error"] = true;
       $results["message"] = "Email ou mot de passe incorect";
+      $_SESSION['message_error'] = "Email ou mot de passe incorect";
       header('Location: ../../../connexion.php?erreur=1');
     }
   echo json_encode($results);

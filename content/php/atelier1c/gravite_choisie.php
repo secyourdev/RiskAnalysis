@@ -11,12 +11,9 @@ try {
     die('Erreur :' . $e->getMessage());
 }
 
-
 $get_gravite = $bdd->prepare("SELECT echelle_gravite FROM echelle NATURAL JOIN projet WHERE id_projet = ?");
 
 $id_projet = $_SESSION['id_projet'];
-
-
 
 $get_gravite->bindParam(1, $id_projet);
 $get_gravite->execute();

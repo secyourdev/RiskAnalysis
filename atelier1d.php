@@ -501,18 +501,35 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <?php
                               while ($row = mysqli_fetch_array($result_socle)) {
                                 echo '
-                        <tr>
-                        <td>' . $row["id_socle_securite"] . '</td>
-                        <td>' . $row["type_referentiel"] . '</td>
-                        <td>' . $row["nom_referentiel"] . '</td>
-                        <td>' . $row["etat_d_application"] . '</td>
-                        <td>' . $row["etat_de_la_conformite"] . '</td>
-                        </tr>
-                        ';
+                                <tr>
+                                <td>' . $row["id_socle_securite"] . '</td>
+                                <td>' . $row["type_referentiel"] . '</td>
+                                <td>' . $row["nom_referentiel"] . '</td>
+                                <td>' . $row["etat_d_application"] . '</td>
+                                <td>' . $row["etat_de_la_conformite"] . '</td>
+                                </tr>
+                                ';
                               }
                               ?>
                             </tbody>
                           </table>
+                        </div>
+
+                        <div class='message_success'>
+                        <?php 
+                            if(isset($_SESSION['message_success'])){
+                              echo $_SESSION['message_success'];
+                              unset($_SESSION['message_success']);
+                            }
+                        ?>
+                        </div> 
+                        <div class='message_error'>
+                        <?php                
+                            if(isset($_SESSION['message_error'])){
+                                echo $_SESSION['message_error'];
+                                unset($_SESSION['message_error']);
+                            }
+                        ?>
                         </div>
 
                         <div class="row">
@@ -576,6 +593,23 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                           </table>
                         </div>
 
+                        <div class='message_success'>
+                        <?php 
+                            if(isset($_SESSION['message_success'])){
+                              echo $_SESSION['message_success'];
+                              unset($_SESSION['message_success']);
+                            }
+                        ?>
+                        </div> 
+                        <div class='message_error'>
+                        <?php                
+                            if(isset($_SESSION['message_error'])){
+                                echo $_SESSION['message_error'];
+                                unset($_SESSION['message_error']);
+                            }
+                        ?>
+                        </div>
+
                         <!-- bouton Ajouter une nouvelle ligne -->
                         <div class="text-center">
                           <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_ecart">Ajouter une nouvelle règle</button>
@@ -611,9 +645,9 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
 
 
-          <!-- -------------------------------------------------------------------------------------------------------------- 
+<!------------------------------------------------------------------------------------------------------------------ 
 --------------------------------------- modal ajout socle de sécurité ----------------------------------------------
---------------------------------------------------------------------------------------------------------------  -->
+-------------------------------------------------------------------------------------------------------------------->
           <div class="modal fade" id="ajout_socle_de_securite" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
@@ -624,9 +658,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   </button>
                 </div>
                 <div class="modal-body perso_modal_body">
-                  <!-- <form enctype="multipart/form-data" action="content/php/atelier1d/ajout_solce.php" method="post" class="user" id="formajoutsocle">
-              <fieldset> -->
-
                   <div class="custom-file">
                     <input name="userfile" id="fileToUpload" class="custom-file-input" type="file">
                     <label class="custom-file-label" for="fileToUpload">Choisir un fichier au format JSON</label>
@@ -636,16 +667,13 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   <div class="modal-footer perso_middle_modal_footer">
                     <input type="submit" id="file_submit" name="file_submit" value="Ajouter un fichier" class="btn perso_btn_primary shadow-none"></input>
                   </div>
-                  <!-- </fieldset>
-            </form> -->
                 </div>
               </div>
             </div>
           </div>
-
-          <!-- -------------------------------------------------------------------------------------------------------------- 
+<!----------------------------------------------------------------------------------------------------------------------- 
 --------------------------------------- modal créer socle de sécurité main ----------------------------------------------
---------------------------------------------------------------------------------------------------------------  -->
+------------------------------------------------------------------------------------------------------------------------->
           <div class="modal fade" id="ajout_socle_de_securite_main" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
@@ -691,9 +719,9 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             </div>
           </div>
 
-          <!-- -------------------------------------------------------------------------------------------------------------- 
-  --------------------------------------- modal Ajout d'une règle ----------------------------------------------
-  --------------------------------------------------------------------------------------------------------------  -->
+  <!---------------------------------------------------------------------------------------------------------------- 
+  --------------------------------------- modal Ajout d'une règle --------------------------------------------------
+  ----------------------------------------------------------------------------------------------------------------->
           <div class="modal fade" id="ajout_ecart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
@@ -727,7 +755,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       </div>
 
                       <div class="form-group">
-                        <label for="titre_regle">titre de la règle</label>
+                        <label for="titre_regle">Titre de la règle</label>
                         <textarea class="form-control perso_text_area" name="titre_regle" id="titre_regle" rows="3"></textarea>
                       </div>
 
@@ -736,40 +764,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <textarea class="form-control perso_text_area" name="description" id="description" rows="3"></textarea>
                       </div>
 
-                      <!-- <div class="form-group">
-                        <label for="etat_de_la_regle">État de la règle</label>
-                        <select class="form-control" name="etat_de_la_regle" id="etat_de_la_regle">
-                          <option value="" selected>...</option>
-                          <option value="Conforme">Conforme</option>
-                          <option value="Partiellement conforme">Partiellement conforme</option>
-                          <option value="Non traité">Non traité</option>
-                          <option value="Non conforme">Non conforme</option>
-                          <option value="Non applicable">Non applicable</option>
-                        </select>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="justification_ecart">Justification des écarts</label>
-                        <textarea class="form-control perso_text_area" name="justification_ecart" id="justification_ecart" rows="3"></textarea>
-                      </div> -->
-
-                      <!-- <div class="form-group">
-                        <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="responsable_pop" name="nom_responsable_regle" placeholder="Responsable" required>
-                        <datalist id="responsable_pop"> -->
-                          <?php
-                        //   while ($row = mysqli_fetch_array($resultprenomresponsable)) {
-                        //     echo '
-                        // <option value="' . $row["nom"] . '">' . $row["nom"] . '</option>
-                        // ';
-                        //   }
-                          ?>
-                        <!-- </datalist>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="date-input">Date limite de la mise en application</label>
-                        <input class="form-control" type="date" name="dates" id="date-input">
-                      </div> -->
                       <!-- bouton Ajouter -->
                       <div class="modal-footer perso_middle_modal_footer">
                         <input type="submit" name="validerecart" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>

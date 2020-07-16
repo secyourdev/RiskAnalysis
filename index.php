@@ -218,6 +218,22 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     <div id="project_card" class="fondu">                       
                         <?php if($userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){
                         ?>
+                            <div class='message_success'>
+                            <?php 
+                                if(isset($_SESSION['message_success'])){
+                                echo $_SESSION['message_success'];
+                                unset($_SESSION['message_success']);
+                                }
+                            ?>
+                            </div> 
+                            <div class='message_error'>
+                            <?php                
+                                if(isset($_SESSION['message_error'])){
+                                    echo $_SESSION['message_error'];
+                                    unset($_SESSION['message_error']);
+                                }
+                            ?>
+                            </div>
                             <div class="text-center">
                                 <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none"
                                     data-toggle="modal" data-target="#ajout_projet">Créer un nouveau projet</button>
@@ -264,7 +280,22 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         </tbody>
                                     </table>
                                 </div>
-
+                                <div class='message_success'>
+                                <?php 
+                                    if(isset($_SESSION['message_success_2'])){
+                                    echo $_SESSION['message_success_2'];
+                                    unset($_SESSION['message_success_2']);
+                                    }
+                                ?>
+                                </div> 
+                                <div class='message_error'>
+                                <?php                
+                                    if(isset($_SESSION['message_error_2'])){
+                                        echo $_SESSION['message_error_2'];
+                                        unset($_SESSION['message_error_2']);
+                                    }
+                                ?>
+                                </div>
                                 <!-- bouton Ajouter une nouvelle ligne -->
                                 <div class="text-center">
                                     <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none"
@@ -313,6 +344,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         </tbody>
                                     </table>
                                 </div>
+                                <div class='message_success'>
+                        
                                 <!-- bouton Ajouter une nouvelle ligne -->
                                 <div class="text-center">
                                     <button id='button_add_user_in_grp' type="button"
@@ -360,7 +393,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                     <td>'.$row["poste"].'</td>
                                                     <td>'.$row["email"].'</td>
                                                     <td>'.$row["type_compte"].'</td>
-                                                    <td> <button id="reinitialiser_mdp" type="button" class="btn perso_btn_primary width_RACI shadow-none">Réinitialiser</button> </td>
+                                                    <td> <button id="reinitialiser_mdp" type="button" data-toggle="modal" data-target="#modifier_mdp_user" class="btn perso_btn_primary width_RACI shadow-none">Réinitialiser</button> </td>
                                                 </tr>
                                                 ';
                                             }
@@ -368,7 +401,22 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         </tbody>
                                     </table>
                                 </div>
-
+                                <div class='message_success'>
+                                <?php 
+                                    if(isset($_SESSION['message_success_4'])){
+                                    echo $_SESSION['message_success_4'];
+                                    unset($_SESSION['message_success_4']);
+                                    }
+                                ?>
+                                </div> 
+                                <div class='message_error'>
+                                <?php                
+                                    if(isset($_SESSION['message_error_4'])){
+                                        echo $_SESSION['message_error_4'];
+                                        unset($_SESSION['message_error_4']);
+                                    }
+                                ?>
+                                </div>
                                 <!-- bouton Ajouter une nouvelle ligne -->
                                 <div class="text-center">
                                     <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none"
@@ -454,10 +502,10 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                     <input type="submit" name="ajouter_projet" value="Ajouter"
                                         class="btn perso_btn shadow-none"></input>
                                 </div>
+
                             </fieldset>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -553,38 +601,33 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <form method="post" action="content/php/accueil/ajout_app_utilisateur.php" class="user" id="formUtilisateur">
                             <fieldset>
                                 <div class="form-group">
+                                    <label class="titre_input" for="nom_utilisateur">Nom</label>
                                     <input type="text" class="perso_form shadow-none form-control form-control-user"
                                         id="nom_utilisateur" name="nom" placeholder="Nom" required>
                                 </div>
                                 <div class="form-group">
+                                    <label class="titre_input" for="prenom_utilisateur">Prénom</label>
                                     <input type="text" class="perso_form shadow-none form-control form-control-user"
                                         id="prenom_utilisateur" name="prenom" placeholder="Prénom" required>
                                 </div>
                                 <div class="form-group">
+                                    <label class="titre_input" for="poste_utilisateur">Poste</label>
                                     <input type="text" class="perso_arrow perso_form shadow-none form-control"
-                                        list="Postes" id="poste_utilisateur" name="poste" placeholder="Poste" required>
-                                    <datalist id="Postes">
-                                        <option value="Internet Explorer">
-                                        <option value="Firefox">
-                                        <option value="Chrome">
-                                        <option value="Opera">
-                                        <option value="Safari">
-                                    </datalist>
+                                        id="poste_utilisateur" name="poste" placeholder="Poste" required>
                                 </div>
                                 <div class="form-group">
+                                    <label class="titre_input" for="email_utilisateur">E-mail</label>
                                     <input type="email" class="perso_form shadow-none form-control form-control-user"
                                         id="email_utilisateur" name="email" placeholder="E-mail" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="perso_arrow perso_form shadow-none form-control"
-                                        list="Type_Compte" id="type_compte_utilisateur" name="type_compte"
-                                        placeholder="Type de compte" required>
-                                    <datalist id="Type_Compte">
+                                    <label class="titre_input" for="type_compte_utilisateur">Type de compte</label>
+                                    <select class="form-control" id="type_compte_utilisateur" name="type_compte" placeholder="Type de compte" required>
                                         <option value="" selected>...</option>
                                         <option>Administrateur Logiciel</option>
                                         <option>Chef de Projet</option>
                                         <option>Utilisateur</option>
-                                    </datalist>
+                                    </select>
                                 </div>
                                 <div>
                                     <input type="submit" name="valider" value="Ajouter"
@@ -597,6 +640,53 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             </div>
         </div>
 
+        <!-------------------------------------------------------------------------------------------------------------- 
+        ------------------------------------- modal modification du mot de passe ---------------------------------------
+        ---------------------------------------------------------------------------------------------------------------->
+        <div class="modal fade" id="modifier_mdp_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modification du mot de passe</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body perso_modal_body">
+                        <form method="post" action="...">
+                            <fieldset>
+                                <!--EMAIL-->
+                                <div class="form-group">
+                                    <label class="titre_input" for="email_modif_mdp">E-mail</label>
+                                    <input type="text" class="perso_form shadow-none form-control form-control-user"
+                                        name="email_modif_mdp" id="email_modif_mdp" placeholder="E-mail" readonly></input>
+                                </div>
+
+                                <!--Nouveau mot de passe-->
+                                <div class="form-group">
+                                    <label class="titre_input" for="nouveau_mdp">Nouveau mot de passe</label>
+                                    <input type="password" class="perso_form shadow-none form-control form-control-user"
+                                        name="nouveau_mdp" id="nouveau_mdp" placeholder="Nouveau mot de passe" required></input>
+                                </div>
+                                
+                                <!--Confirmation nouveau Mot de passe-->
+                                <div class="form-group">
+                                    <label class="titre_input" for="confirmation_nouveau_mdp">Confirmez votre nouveau mot de passe</label>
+                                    <input type="password" class="perso_form shadow-none form-control form-control-user"
+                                        name="confirmation_nouveau_mdp" id="confirmation_nouveau_mdp" placeholder="Confirmez votre nouveau mot de passe" required></input>
+                                </div>
+
+                                <div class="modal-footer perso_middle_modal_footer">
+                                    <input type="submit" name="modifier_mdp_user" value="Modifier"
+                                        class="btn perso_btn shadow-none"></input>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Logout Modal-->
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
