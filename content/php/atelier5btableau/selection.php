@@ -1,6 +1,6 @@
 <?php
 $getid_projet = intval($_GET['id_projet']);
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v18");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
 $query = "SELECT valeur_metier.nom_valeur_metier,
 evenement_redoute.nom_evenement_redoute,
 evenement_redoute.impact,
