@@ -3,7 +3,6 @@ var accordionSidebar = document.getElementById("accordionSidebar");
 var sidebarToggle = document.getElementById("sidebarToggle");
 
 var nom_etude = document.getElementById('nom_etude');
-var description_etude = document.getElementById('description_etude')
 var objectif_atteindre = document.getElementById('objectif_atteindre');
 var cadre_temporel = document.getElementById('cadre_temporel');
 
@@ -103,7 +102,6 @@ function get_database_project_info(){
             sessionIdProjet=sessionIdProjet-1
 
             nom_etude.innerText = projet_info[sessionIdProjet][1]
-            description_etude.innerText = projet_info[sessionIdProjet][2]
             objectif_atteindre.innerText = projet_info[sessionIdProjet][3]
             respo_acceptation_risque.value=projet_info[sessionIdProjet][4]   
             cadre_temporel.innerText = projet_info[sessionIdProjet][5]

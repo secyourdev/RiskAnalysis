@@ -701,8 +701,14 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         </button>
                     </div>
                     <div class="modal-body perso_modal_body">
-                        <form method="post" action="content/php/accueil/">
+                        <form method="post" action="content/php/accueil/modification_projet.php">
                             <fieldset>
+                                <!-- ID PROJET -->
+                                <div class="form-group">
+                                    <input type="text" class="perso_form shadow-none form-control form-control-user"
+                                        name="id_etude_modif" id="id_etude_modif" placeholder="ID" hidden></input>
+                                </div>
+
                                 <!--NOM PROJET-->
                                 <div class="form-group">
                                     <label class="titre_input" for="nom_etude_modif">Nom</label>
@@ -719,8 +725,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
                                 <!--GROUPE UTILISATEUR-->
                                 <div class="form-group">
-                                    <label for="nom_grp_utilisateur_modif">Groupe d'utilisateur</label>
-                                    <select class="form-control" name="nom_grp_utilisateur_modif" id="nom_grp_utilisateur_modif">
+                                    <label for="id_grp_utilisateur_modif">Groupe d'utilisateur</label>
+                                    <select class="form-control" name="id_grp_utilisateur_modif" id="id_grp_utilisateur_modif">
                                         <option value="" selected>...</option>
                                         <?php
                                         while($row = mysqli_fetch_array($result_grp_user_modification))
@@ -758,12 +764,25 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         </button>
                     </div>
                     <div class="modal-body perso_modal_body">
-                        <form method="post" action="content/php/accueil/">
+                        <div class="modal-body" id="msg_suppression_projet">Sélectionnez "Supprimer" ci-dessous si vous êtes prêt à supprimer
+                        le projet choisit.</div>
+                        <form method="post" action="content/php/accueil/suppression_projet.php">
                             <fieldset>
-                                
+                                <!-- ID PROJET -->
+                                <div class="form-group">
+                                    <input type="text" class="perso_form shadow-none form-control form-control-user"
+                                        name="id_etude_suppr" id="id_etude_suppr" placeholder="ID" hidden></input>
+                                </div>
+
+                                <!--NOM PROJET-->
+                                <div class="form-group">
+                                    <label class="titre_input" for="nom_etude_suppr">Nom</label>
+                                    <input type="text" class="perso_form shadow-none form-control form-control-user"
+                                        name="nom_etude_suppr" id="nom_etude_suppr" placeholder="Nom" readonly></input>
+                                </div>
 
                                 <div class="modal-footer perso_middle_modal_footer">
-                                    <input type="submit" name="Supprimer_projet" value="Supprimer"
+                                    <input type="submit" name="supprimer_projet" value="Supprimer"
                                         class="btn perso_btn shadow-none"></input>
                                 </div>
                             </fieldset>

@@ -15,7 +15,7 @@ try {
 
 $id_projet = $_POST['id_projet'];
 
-$search_projet = $bdd->prepare("SELECT id_projet,nom_projet,description_projet,id_grp_utilisateur FROM projet WHERE id_projet=?");
+$search_projet = $bdd->prepare("SELECT id_projet,nom_projet FROM projet WHERE id_projet=?");
 $search_projet->bindParam(1,$id_projet);
 $search_projet->execute();
 

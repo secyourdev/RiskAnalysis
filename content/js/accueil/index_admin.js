@@ -194,6 +194,7 @@ $.ajax({
             pen.setAttribute('data-target','#modif_projet')
 
             var trash = document.createElement('i')
+            trash.setAttribute('id','suppr_icon')
             trash.setAttribute('class','poubelle fas fa-trash-alt')
             trash.setAttribute('data-toggle','modal')
             trash.setAttribute('data-target','#suppr_projet')
@@ -234,6 +235,8 @@ $.ajax({
             app = lenght_user;
             bdd = 10;
             sleep(100).then(() => {compteur_anim();});
+            modification_projet();
+            suppression_projet();
         }
     },
     error: function (erreur) {
@@ -318,11 +321,13 @@ for(let i=0;i<lenght_reinitialiser_mdp;i++){
       })
   });
 }
-sleep(1000).then(() => {
+
+function modification_projet(){
     var lenght_modif_icon = modif_icon.length;
+    var id_etude_modif = document.getElementById('id_etude_modif')
     var nom_etude_modif = document.getElementById('nom_etude_modif')
     var description_etude_modif = document.getElementById('description_etude_modif')
-    var nom_grp_utilisateur_modif = document.getElementById('nom_grp_utilisateur_modif')
+    var id_grp_utilisateur_modif = document.getElementById('id_grp_utilisateur_modif')
     /*------------------------- MODIFICATION & SUPPRESSION PROJET ----------------------*/
     for(let i=0;i<lenght_modif_icon;i++){
         modif_icon[i].addEventListener('click',function(){
@@ -335,11 +340,35 @@ sleep(1000).then(() => {
                 dataType: 'html',
                 success: function (resultat) {
                     var projet_JSON = JSON.parse(resultat);
-                    nom_etude_modif.value = projet_JSON[0][0]
-                    description_etude_modif.value = projet_JSON[0][1]
-                    nom_grp_utilisateur_modif.value = projet_JSON[0][2]
+                    id_etude_modif.value = projet_JSON[0][0]
+                    nom_etude_modif.value = projet_JSON[0][1]
+                    description_etude_modif.value = projet_JSON[0][2]
+                    id_grp_utilisateur_modif.value = projet_JSON[0][3]
                 }
               })
         })    
     }
-})
+}
+
+function suppression_projet(){
+    var lenght_suppr_icon = suppr_icon.length;
+    var id_etude_suppr = document.getElementById('id_etude_suppr')
+    var nom_etude_suppr = document.getElementById('nom_etude_suppr')
+    for(let i=0;i<lenght_suppr_icon;i++){
+        suppr_icon[i].addEventListener('click',function(){
+            $.ajax({
+                url: 'content/php/accueil/selection_projet_admin_suppression_icon.php',
+                type: 'POST',
+                data: {
+                      id_projet: suppr_icon[i].parentNode.previousSibling.id
+                },
+                dataType: 'html',
+                success: function (resultat) {
+                    var projet_JSON = JSON.parse(resultat);
+                    id_etude_suppr.value = projet_JSON[0][0]
+                    nom_etude_suppr.value = projet_JSON[0][1]
+                }
+              })
+        })
+    }
+}
