@@ -1,11 +1,10 @@
 <?php
 $getid_projet = intval($_GET['id_projet']);
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v20");
 //affichage tableau partie prenante
 
 $query_partie_prenante = "SELECT * FROM partie_prenante WHERE id_projet = $getid_projet";
 $result_partie_prenante = mysqli_query($connect, $query_partie_prenante);
-$result_partie_prenante2 = mysqli_query($connect, $query_partie_prenante);
 
 $query_categorie_partie_prenante = "SELECT categorie_partie_prenante FROM partie_prenante";
 $result_categorie_partie_prenante = mysqli_query($connect, $query_categorie_partie_prenante);
@@ -17,7 +16,7 @@ $result_chemin_d_attaque = mysqli_query($connect, $query_chemin_d_attaque);
 //tableau scénario stratégique
 $query_scenario_strategique =
 "SELECT 
-scenario_strategique.id_scenario_strategique,
+scenario_strategique.id_scenario_strategique, 
 nom_scenario_strategique, 
 scenario_strategique.id_source_de_risque, 
 scenario_strategique.id_evenement_redoute, 
@@ -54,7 +53,7 @@ $result_scenario_strategique = mysqli_query($connect, $query_scenario_strategiqu
 // WHERE id_projet = $getid_projet";
 
 $query_mesure = "SELECT
-mesure.id_mesure,
+chemin_d_attaque_strategique.id_chemin_d_attaque_strategique,
 nom_partie_prenante, 
 nom_chemin_d_attaque_strategique,
 mesure.nom_mesure,
@@ -62,10 +61,10 @@ mesure.description_mesure,
 niveau_de_menace_partie_prenante,
 niveau_de_menace_residuelle
 FROM chemin_d_attaque_strategique
-INNER JOIN comporter_2
-ON chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = comporter_2.id_chemin_d_attaque_strategique
+INNER JOIN comporter_4
+ON chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = comporter_4.id_chemin_d_attaque_strategique
 INNER JOIN mesure
-ON mesure.id_mesure = comporter_2.id_mesure
+ON mesure.id_mesure = comporter_4.id_mesure
 INNER JOIN partie_prenante
 ON chemin_d_attaque_strategique.id_partie_prenante = partie_prenante.id_partie_prenante
 WHERE id_projet = $getid_projet

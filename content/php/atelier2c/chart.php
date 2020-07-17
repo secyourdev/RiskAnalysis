@@ -3,7 +3,7 @@ session_start();
 $getid_projet = $_SESSION['id_projet'];
 header('Content-Type: application/json');
 
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v20");
 
 $query_SROV = "SELECT description_source_de_risque, objectif_vise, pertinence, choix_source_de_risque FROM SROV WHERE id_projet = $getid_projet ORDER BY id_source_de_risque";
 
@@ -30,9 +30,12 @@ foreach ($result_SROV as $row) {
   );
 }
 
+
+
 $data = array(
   'data_SROV' => $data_SROV,
 );
 
 mysqli_close($connect);
+// print_r($data);
 echo json_encode($data);

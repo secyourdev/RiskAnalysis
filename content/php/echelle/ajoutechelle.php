@@ -1,9 +1,11 @@
 <?php
 session_start();
+header('Location: ../../../atelier-1c&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
 
-//Connexion à la base de donnee
+
+  //Connexion à la base de donnee
   try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
   }
 
@@ -12,6 +14,8 @@ session_start();
   }
 
   $results["error"] = false;
+  $results["message"] = [];
+
 
   $nom_echelle=$_POST['nom_echelle'];
   $echelle_gravite=$_POST['echelle_gravite'];
@@ -29,7 +33,10 @@ session_start();
     // Verification du nom de l'echelle
     if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_echelle)){
       $results["error"] = true;
-      $_SESSION['message_error'] = "Nom de l'échelle invalide";
+      $results["message"]["nom"] = "Nom de l'échelle invalide";
+      ?>
+      <strong style="color:#FF6565;">Nom de l'échelle invalide </br></strong>
+      <?php
     }
 
     if ($results["error"] === false && isset($_POST['validerechelle'])){
@@ -53,9 +60,9 @@ session_start();
         $insere_niveau_5->bindParam(1, $id_echelle[0]);
         $insere_niveau_5->execute();
       }
-      $_SESSION['message_success'] = "L'échelle a bien été ajoutée !";
+      ?>
+      <strong style="color:#4AD991;">L'échelle a bien été ajoutée !</br></strong>
+      <?php
     }
-
-    header('Location: ../../../atelier-1c&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#echelle');
 
 ?>

@@ -1,17 +1,27 @@
 <?php  
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
+//action.php
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v18");
 
 $input = filter_input_array(INPUT_POST);
 
 $nom_echelle = mysqli_real_escape_string($connect, $input["nom_echelle"]);
 $echelle_gravite = mysqli_real_escape_string($connect, $input["echelle_gravite"]);
 
+
 $results["error"] = false;
+$results["message"] = [];
 
 // Verification du nom de l'échelle
 if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_echelle)){
     $results["error"] = true;
+    $results["message"]["nom"] = "Nom de l'échelle invalide";
+    ?>
+    <strong style="color:#FF6565;">Nom de l'échelle invalide </br></strong>
+    <?php
 }
+
+
+
 
 if($input["action"] === 'edit' && $results["error"] === false){
     $query = "

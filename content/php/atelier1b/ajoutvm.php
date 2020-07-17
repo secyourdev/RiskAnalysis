@@ -2,10 +2,11 @@
   session_start();
   $getid_projet = $_SESSION['id_projet'];
 
+  header('Location: ../../../atelier-1b&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet']);
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v20;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -15,6 +16,7 @@ try {
 }
 
 $results["error"] = false;
+$results["message"] = [];
 
 $nomvm = $_POST['nomvm'];
 $nature = $_POST['nature'];
@@ -29,19 +31,28 @@ $inserevm = $bdd->prepare('INSERT INTO valeur_metier(id_valeur_metier, nom_valeu
 // Verification du nom de la valeur métier
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nomvm)) {
   $results["error"] = true;
-  $_SESSION['message_error_2'] = "Nom invalide";
+  $results["message"]["nom"] = "Nom invalide";
+?>
+  <strong style="color:#FF6565;">Nom invalide </br></strong>
+<?php
 }
 
 // Verification de la description de la valeur métier
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $descriptionvm)) {
   $results["error"] = true;
-  $_SESSION['message_error_2'] = "Description invalide";
+  $results["message"]["description"] = "Description invalide";
+?>
+  <strong style="color:#FF6565;">Description invalide </br></strong>
+<?php
 }
 
 // Verification de la nature de la valeur métier
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nature)) {
   $results["error"] = true;
-  $_SESSION['message_error_2'] = "Nature invalide";
+  $results["message"]["nature"] = "Nature invalide";
+?>
+  <strong style="color:#FF6565;">Nature invalide </br></strong>
+<?php
 }
 
 if ($results["error"] === false && isset($_POST['validervm'])) {
@@ -52,8 +63,8 @@ if ($results["error"] === false && isset($_POST['validervm'])) {
   $inserevm->bindParam(5, $id_atelier);
   $inserevm->bindParam(6, $getid_projet);
   $inserevm->execute();
-
-  $_SESSION['message_success_2'] = "La valeur métier a bien été ajoutée !";
+?>
+  <strong style="color:#4AD991;">La valeur métier a bien été ajoutée !</br></strong>
+<?php
 }
-header('Location: ../../../atelier-1b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#valeur_metier');
 ?>

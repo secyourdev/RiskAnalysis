@@ -3,7 +3,7 @@ session_start();
 
   //Connexion à la base de donnee
   try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
   }
 
@@ -24,8 +24,7 @@ if (isset($_POST['connexion'])){
     if($row){
       if(password_verify($mot_de_passe, $row["mot_de_passe"])){
         $results["error"] = false;
-        $results["message"] = "Connexion accepté";
-        $_SESSION['message_success'] = "Connexion accepté";
+        $results["message"] = "Connexion accepte";
         $_SESSION['id_utilisateur'] = $row['id_utilisateur'];
         $_SESSION['nom'] = $row['nom'];
         $_SESSION['prenom'] = $row['prenom'];
@@ -35,14 +34,12 @@ if (isset($_POST['connexion'])){
       else{
         $results["error"] = true;
         $results["message"] = "Email ou mot de passe incorect";
-        $_SESSION['message_error'] = "Email ou mot de passe incorect";
         header('Location: ../../../connexion.php?erreur=1');
       }
     }
     else{
       $results["error"] = true;
       $results["message"] = "Email ou mot de passe incorect";
-      $_SESSION['message_error'] = "Email ou mot de passe incorect";
       header('Location: ../../../connexion.php?erreur=1');
     }
   echo json_encode($results);

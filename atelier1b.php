@@ -3,7 +3,7 @@ session_start();
 
 //Connexion à la base de donnee
 try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
+    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v20;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 }
 
@@ -470,7 +470,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             </div>
 
             <!-- Area Card -->
-            <div id="mission" class="col-xl-12 col-lg-12">
+            <div class="col-xl-12 col-lg-12">
               <!-- Mission -->
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
@@ -513,24 +513,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       </tbody>
                     </table>
                   </div>
-
-                  <div class='message_success'>
-                  <?php 
-                      if(isset($_SESSION['message_success'])){
-                        echo $_SESSION['message_success'];
-                        unset($_SESSION['message_success']);
-                      }
-                  ?>
-                  </div> 
-                  <div class='message_error'>
-                  <?php                
-                      if(isset($_SESSION['message_error'])){
-                          echo $_SESSION['message_error'];
-                          unset($_SESSION['message_error']);
-                      }
-                  ?>
-                  </div>
-
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
                     <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_mission">Ajouter une mission</button>
@@ -540,7 +522,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             </div>
 
             <!-- Area Card -->
-            <div id="valeur_metier" class="col-xl-12 col-lg-12">
+            <div class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header d-flex flex-row align-items-center justify-content-between">
@@ -577,22 +559,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     </table>
                   </div>
 
-                  <div class='message_success'>
-                  <?php 
-                      if(isset($_SESSION['message_success_2'])){
-                        echo $_SESSION['message_success_2'];
-                        unset($_SESSION['message_success_2']);
-                      }
-                  ?>
-                  </div> 
-                  <div class='message_error'>
-                  <?php                
-                      if(isset($_SESSION['message_error_2'])){
-                          echo $_SESSION['message_error_2'];
-                          unset($_SESSION['message_error_2']);
-                      }
-                  ?>
-                  </div>
 
                   <!-- bouton Ajouter une nouvelle ligne -->
                   <div class="text-center">
@@ -636,23 +602,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         ?>
                       </tbody>
                     </table>
-                  </div>
-
-                  <div class='message_success'>
-                  <?php 
-                      if(isset($_SESSION['message_success_3'])){
-                        echo $_SESSION['message_success_3'];
-                        unset($_SESSION['message_success_3']);
-                      }
-                  ?>
-                  </div> 
-                  <div class='message_error'>
-                  <?php                
-                      if(isset($_SESSION['message_error_3'])){
-                          echo $_SESSION['message_error_3'];
-                          unset($_SESSION['message_error_3']);
-                      }
-                  ?>
                   </div>
 
                   <!-- bouton Ajouter une nouvelle ligne -->

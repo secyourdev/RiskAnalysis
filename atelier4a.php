@@ -4,7 +4,7 @@ session_start();
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v18;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -298,7 +298,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     </g>
                   </svg>
                 </i>
-                <span>Scénarios opérationnels</span>
+                <span class="nom_atelier2">Scénarios opérationnels</span>
               </a>
               <div id="Atelier4" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
@@ -519,7 +519,10 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </tbody>
                           </table>
                         </div>
+
+
                       </div>
+
                     </div>
                   </div>
 
@@ -554,7 +557,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <tr>
                               <td>' . $row["id_scenario_operationnel"] . '</td>
                               <td>' . $row["id_risque"] . '</td>
-                              <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
+                              <td>' . $row["chemin_d_attaque_strategique"] . '</td>
                               <td>' . $row["description_scenario_operationnel"] . '</td>
                               </tr>
                               ';
@@ -586,7 +589,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <?php
                                 while ($row = mysqli_fetch_array($result3)) {
                                   echo '
-                                  <option value="' . $row["id_scenario_operationnel"] . '">' . $row["description_scenario_operationnel"] . '</option>
+                                  <option value="' . $row["description_scenario_operationnel"] . '">' . $row["description_scenario_operationnel"] . '</option>
                                   ';
                                 }
                                 ?>
@@ -596,23 +599,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             <div class="form-group">
                               <label for="modeope">Mode opératoire</label>
                               <textarea class="form-control perso_text_area" name="modeope" id="modeope" rows="3"></textarea>
-                            </div>
-
-                            <div class='message_success'>
-                            <?php 
-                                if(isset($_SESSION['message_success'])){
-                                  echo $_SESSION['message_success'];
-                                  unset($_SESSION['message_success']);
-                                }
-                            ?>
-                            </div> 
-                            <div class='message_error'>
-                            <?php                
-                                if(isset($_SESSION['message_error'])){
-                                    echo $_SESSION['message_error'];
-                                    unset($_SESSION['message_error']);
-                                }
-                            ?>
                             </div>
 
                             <!-- bouton Ajouter une nouvelle ligne -->

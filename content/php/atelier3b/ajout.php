@@ -91,5 +91,5 @@ if ($results["error"] === false && isset($_POST['validerpartie'])) {
   <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
 <?php
 }
-header('Location: ../../../atelier-3b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#scenario_strategique');
+
 ?>

@@ -1,12 +1,13 @@
 <?php  
-
+//action.php
 session_start();
 
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v20");
 
 $input = filter_input_array(INPUT_POST);
 
 $results["error"] = false;
+$results["message"] = [];
 
 $id_atelier = "1.b";
 $id_projet = $_SESSION['id_projet'];;
@@ -18,11 +19,19 @@ if($input["action"] === 'edit'){
     // Verification du nom du bien support
     if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_bien_support)){
         $results["error"] = true;
+        $results["message"]["nom"] = "Nom invalide";
+        ?>
+        <strong style="color:#FF6565;">Nom invalide </br></strong>
+        <?php
     }
 
     // Verification de la description
     if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_bien_support)){
         $results["error"] = true;
+        $results["message"]["prenom"] = "Description invalide";
+        ?>
+        <strong style="color:#FF6565;">Description invalide </br></strong>
+        <?php
     }
 
     if($results["error"] === false){
