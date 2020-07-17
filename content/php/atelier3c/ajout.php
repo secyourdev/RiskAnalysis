@@ -140,7 +140,7 @@ if ($results["error"] === false && isset($_POST['validermesure'])) {
   $insere_comporte->execute();
   // update le chemin
   echo "lol5";
-  //calcule menace residuelle
+  //calcul menace residuelle
   $recupere_pp->bindParam(1, $id_partie_prenante);
   $recupere_pp->execute();
   $result_pp = $recupere_pp->fetch();
