@@ -105,16 +105,7 @@ function get_database_project_info(){
             nom_etude.innerText = projet_info[sessionIdProjet][1]
             description_etude.innerText = projet_info[sessionIdProjet][2]
             objectif_atteindre.innerText = projet_info[sessionIdProjet][3]
-
-            if(projet_info[sessionIdProjet][4]=="Directeur")
-                respo_acceptation_risque.innerText="Directeur"
-            else if(projet_info[sessionIdProjet][4]=="RSSI")
-                respo_acceptation_risque.innerText="RSSI"
-            else if(projet_info[sessionIdProjet][4]=="Responsable Informatique")
-                respo_acceptation_risque.innerText="Responsable Informatique"
-            else 
-                respo_acceptation_risque.innerText="A définir"
-                      
+            respo_acceptation_risque.value=projet_info[sessionIdProjet][4]   
             cadre_temporel.innerText = projet_info[sessionIdProjet][5]
             
             activate_label(nom_etude.innerText,label_nom_etude)

@@ -700,10 +700,15 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                     if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'){
                                             ?>
                                                         <select class="form-control" id="respo_acceptation_risque">
-                                                            <option selected>...</option>
-                                                            <option>Directeur</option>
-                                                            <option>RSSI</option>
-                                                            <option>Responsable Informatique</option>
+                                                        <option value="" selected>...</option>
+                                                            <?php
+                                                            while($row = mysqli_fetch_array($result_RACI_user))
+                                                            {
+                                                                echo '
+                                                                <option value="'.$row["id_utilisateur"].'">'.$row["nom"].' '.$row["prenom"].'</option>
+                                                                ';
+                                                            }
+                                                            ?>
                                                         </select>
                                         </div>
                                             <?php
@@ -719,10 +724,15 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                 else if($userinfo['type_compte']=='Administrateur Logiciel'){       
                                             ?>
                                             <select class="form-control" id="respo_acceptation_risque">
-                                                <option selected>...</option>
-                                                <option>Directeur</option>
-                                                <option>RSSI</option>
-                                                <option>Responsable Informatique</option>
+                                                <option value="" selected>...</option>
+                                                    <?php
+                                                    while($row = mysqli_fetch_array($result_RACI_user))
+                                                    {
+                                                        echo '
+                                                        <option value="'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'">'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'</option>
+                                                        ';
+                                                    }
+                                                    ?>
                                             </select>
                                         </div>
                                             <?php

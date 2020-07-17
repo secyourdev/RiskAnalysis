@@ -206,17 +206,8 @@ function get_database_project_info(){
             sessionIdProjet=sessionIdProjet-1
             nom_etude.value = projet_info[sessionIdProjet][1]
             description_etude.value = projet_info[sessionIdProjet][2]
-            objectif_atteindre.value = projet_info[sessionIdProjet][3]
-
-            if(projet_info[sessionIdProjet][4]=="Directeur")
-                respo_acceptation_risque.options.selectedIndex=1
-            else if(projet_info[sessionIdProjet][4]=="RSSI")
-                respo_acceptation_risque.options.selectedIndex=2
-            else if(projet_info[sessionIdProjet][4]=="Responsable Informatique")
-                respo_acceptation_risque.options.selectedIndex=3
-            else 
-                respo_acceptation_risque.options.selectedIndex=0
-         
+            objectif_atteindre.value = projet_info[sessionIdProjet][3]        
+            respo_acceptation_risque.value=projet_info[sessionIdProjet][4]        
             cadre_temporel.value = projet_info[sessionIdProjet][5]
 
             verify_input(nom_etude.value,regex_nom_etude,nom_etude)

@@ -16,6 +16,7 @@ body {
     --side-nav-color              : #394C7A;
     --button-color                : #394C7A;
     --button-color-hover          : #222E49;
+    --icon-color-hover            : #B0B7CA;
     --placeholder-idle            : #64789A;
     --placeholder-focus           : #9BB8CA;
     --font-color                  : #2A3859;
@@ -43,6 +44,7 @@ body {
     --side-nav-color             : #394C7A;
     --button-color               : #6769C7;
     --button-color-hover         : #B0B7CA;
+    --icon-color-hover           : #B0B7CA;
     --placeholder-idle           : #64789A;
     --placeholder-focus          : #999BB0;
     --font-color                 : #EAF1EB;
@@ -900,6 +902,7 @@ h6 {
     width  : 2rem;
     height : 2rem;
     padding: 5px 5px 5px 5px;
+    cursor: pointer;
 }
 
 .modification {
@@ -907,7 +910,7 @@ h6 {
 }
 
 .fas:hover {
-    color: var(--button-color-hover) !important;
+    color: var(--icon-color-hover) !important;
 }
 
 /*------------------------------------------------------------------------------ */

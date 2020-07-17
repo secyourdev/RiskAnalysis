@@ -653,7 +653,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         </button>
                     </div>
                     <div class="modal-body perso_modal_body">
-                        <form method="post" action="...">
+                        <form method="post" action="content/php/accueil/reinitialiser_mdp.php">
                             <fieldset>
                                 <!--EMAIL-->
                                 <div class="form-group">
@@ -678,6 +678,92 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
                                 <div class="modal-footer perso_middle_modal_footer">
                                     <input type="submit" name="modifier_mdp_user" value="Modifier"
+                                        class="btn perso_btn shadow-none"></input>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-------------------------------------------------------------------------------------------------------------- 
+        ------------------------------------------- modal modification du projet ---------------------------------------
+        ---------------------------------------------------------------------------------------------------------------->
+        <div class="modal fade" id="modif_projet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modification du projet</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body perso_modal_body">
+                        <form method="post" action="content/php/accueil/">
+                            <fieldset>
+                                <!--NOM PROJET-->
+                                <div class="form-group">
+                                    <label class="titre_input" for="nom_etude_modif">Nom</label>
+                                    <input type="text" class="perso_form shadow-none form-control form-control-user"
+                                        name="nom_etude_modif" id="nom_etude_modif" placeholder="Nom" required></input>
+                                </div>
+
+                                <!--DESCRIPTION PROJET-->
+                                <div class="form-group">
+                                    <label class="titre_input" for="description_etude_modif">Description</label>
+                                    <textarea class="form-control perso_text_area" name="description_etude_modif"
+                                        id="description_etude_modif" rows="3" required></textarea>
+                                </div>
+
+                                <!--GROUPE UTILISATEUR-->
+                                <div class="form-group">
+                                    <label for="nom_grp_utilisateur_modif">Groupe d'utilisateur</label>
+                                    <select class="form-control" name="nom_grp_utilisateur_modif" id="nom_grp_utilisateur_modif">
+                                        <option value="" selected>...</option>
+                                        <?php
+                                        while($row = mysqli_fetch_array($result_grp_user_modification))
+                                            {
+                                                echo '
+                                                <option value="'.$row["id_grp_utilisateur"].'">'.$row["nom_grp_utilisateur"].'</option>
+                                                ';
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="modal-footer perso_middle_modal_footer">
+                                    <input type="submit" name="modifier_projet" value="Modifier"
+                                        class="btn perso_btn shadow-none"></input>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-------------------------------------------------------------------------------------------------------------- 
+        -------------------------------------------- modal suppression du projet ---------------------------------------
+        ---------------------------------------------------------------------------------------------------------------->
+        <div class="modal fade" id="suppr_projet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Suppression du projet</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body perso_modal_body">
+                        <form method="post" action="content/php/accueil/">
+                            <fieldset>
+                                
+
+                                <div class="modal-footer perso_middle_modal_footer">
+                                    <input type="submit" name="Supprimer_projet" value="Supprimer"
                                         class="btn perso_btn shadow-none"></input>
                                 </div>
                             </fieldset>

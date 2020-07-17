@@ -34,7 +34,6 @@ if(isset($_POST['envoyer'])){
     $email = $email_utilisateur;
 
     if($resultat){
-
         $expediteur = 'ebios-rm@alwaysdata.net';
         $objet = 'Voici votre nouveau mot de passe !'; // Objet du message
         $headers  = 'MIME-Version: 1.0' . "\n"; // Version MIME
@@ -45,7 +44,6 @@ if(isset($_POST['envoyer'])){
         $message = '<div style="width: 100%; text-align: center; font-weight: bold">Bonjour, '.$prenom.' ! </br> Votre identifiant est : '.$email.' </br> Votre nouveau mot de passe est : '.$mot_de_passe." </br> Si vous n'êtes pas responsable de cette modification, veuillez contacter votre Administrateur Logiciel !</div>";
 
         if (mail($email, $objet, $message, $headers)) {
-            $message_error = "Email envoyé avec succès à $email ...";
             $_SESSION['message_success'] = "Email de réinitialisation de mot de passe envoyé avec succès à $email !";
         } 
 

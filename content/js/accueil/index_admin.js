@@ -18,6 +18,8 @@ var ajouter_user = document.getElementById('ajouter_user')
 
 var lenght_reinitialiser_mdp = reinitialiser_mdp.length;
 
+var email_modif_mdp = document.getElementById('email_modif_mdp')
+
 button_add_user_in_grp.style.display='none'
 grp_user_card.style.display="none"
 apps_card.style.display="none"
@@ -178,8 +180,23 @@ $.ajax({
                 'card-header d-flex flex-row align-items-center justify-content-between')
 
             var h6 = document.createElement('h6')
+            h6.setAttribute('id', projet_JSON[i][0])
             h6.setAttribute('class', 'm-0')
             h6.innerHTML = 'Projet #' + projet_JSON[i][0] + " : " + projet_JSON[i][1]
+
+            var div_modif = document.createElement('div')
+            div_modif.setAttribute('class', 'modification')
+
+            var pen = document.createElement('i')
+            pen.setAttribute('id','modif_icon')
+            pen.setAttribute('class','crayon fas fa-pen')
+            pen.setAttribute('data-toggle','modal')
+            pen.setAttribute('data-target','#modif_projet')
+
+            var trash = document.createElement('i')
+            trash.setAttribute('class','poubelle fas fa-trash-alt')
+            trash.setAttribute('data-toggle','modal')
+            trash.setAttribute('data-target','#suppr_projet')
 
             var div4 = document.createElement('div')
             div4.setAttribute('class', 'card-body')
@@ -199,6 +216,9 @@ $.ajax({
             div4.appendChild(br)
             div4.appendChild(label2)
             div3.appendChild(h6)
+            div_modif.appendChild(pen)
+            div_modif.appendChild(trash)
+            div3.appendChild(div_modif)
             form.appendChild(fieldset)
             fieldset.appendChild(div3)
             fieldset.appendChild(div4)
@@ -279,20 +299,47 @@ ajouter_user.addEventListener('click', (event) => {
     })
   });
 
-/*-------------------------- REINISTIALISER LE MOT DE PASSE ------------------------*/  
-// for(let i=0;i<lenght_reinitialiser_mdp;i++){
-//   reinitialiser_mdp[i].addEventListener('click',function(){
-//     console.log(reinitialiser_mdp[i].parentNode.parentNode.id);
 
-//     $.ajax({
-//         url: 'content/php/accueil/reinitialiser_mdp.php',
-//         type: 'POST',
-//         data: {
-//               id_utilisateur: reinitialiser_mdp[i].parentNode.parentNode.id
-//         },
-//         success: function (data) {
-//             location.reload();
-//         }
-//       })
-//   });
-// }
+/*-------------------------- REINISTIALISER LE MOT DE PASSE ------------------------*/  
+for(let i=0;i<lenght_reinitialiser_mdp;i++){
+  reinitialiser_mdp[i].addEventListener('click',function(){
+
+    $.ajax({
+        url: 'content/php/accueil/selection_user_modif_mdp.php',
+        type: 'POST',
+        data: {
+              id_utilisateur: reinitialiser_mdp[i].parentNode.parentNode.id
+        },
+        dataType: 'html',
+        success: function (resultat) {
+            var user_JSON = JSON.parse(resultat);
+            email_modif_mdp.value = user_JSON[0][0]
+        }
+      })
+  });
+}
+sleep(1000).then(() => {
+    var lenght_modif_icon = modif_icon.length;
+    var nom_etude_modif = document.getElementById('nom_etude_modif')
+    var description_etude_modif = document.getElementById('description_etude_modif')
+    var nom_grp_utilisateur_modif = document.getElementById('nom_grp_utilisateur_modif')
+    /*------------------------- MODIFICATION & SUPPRESSION PROJET ----------------------*/
+    for(let i=0;i<lenght_modif_icon;i++){
+        modif_icon[i].addEventListener('click',function(){
+            $.ajax({
+                url: 'content/php/accueil/selection_projet_admin_modification_icon.php',
+                type: 'POST',
+                data: {
+                      id_projet: modif_icon[i].parentNode.previousSibling.id
+                },
+                dataType: 'html',
+                success: function (resultat) {
+                    var projet_JSON = JSON.parse(resultat);
+                    nom_etude_modif.value = projet_JSON[0][0]
+                    description_etude_modif.value = projet_JSON[0][1]
+                    nom_grp_utilisateur_modif.value = projet_JSON[0][2]
+                }
+              })
+        })    
+    }
+})

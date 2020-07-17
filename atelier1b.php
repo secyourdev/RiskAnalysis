@@ -814,7 +814,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
                 <!-- RESPONSABLE VALEUR METIER -->
                 <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="responsable_vm" id="responsable_vm" placeholder="Responsable de la valeur métier" required>
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="responsable_vm" id="responsable_vm" placeholder="Responsable de la valeur métier">
                 </div>
 
                 <!-- BIEN SUPPORT -->
@@ -834,7 +834,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
                 <!-- RESPONSABLE BIEN SUPPORT -->
                 <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="responsable_bs" id="responsable_bs" placeholder="Responsable du bien support" required>
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="responsable_bs" id="responsable_bs" placeholder="Responsable du bien support">
                 </div>
 
                 <!-- Bouton Ajouter -->
