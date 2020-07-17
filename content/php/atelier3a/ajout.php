@@ -16,10 +16,6 @@ try {
 $results["error"] = false;
 $results["message"] = [];
 
-// $seuil_danger = $_POST['seuil_danger'];
-// $seuil_controle = $_POST['seuil_controle'];
-// $seuil_veille = $_POST['seuil_veille'];
-
 $categorie_partie_prenante = $_POST['categorie_partie_prenante'];
 $nom_partie_prenante = $_POST['nom_partie_prenante'];
 $type = $_POST['type'];
@@ -28,11 +24,10 @@ $penetration_partie_prenante = $_POST['penetration_partie_prenante'];
 $maturite_partie_prenante = $_POST['maturite_partie_prenante'];
 $confiance_partie_prenante = $_POST['confiance_partie_prenante'];
 $niveau_de_menace_partie_prenante = ($dependance_partie_prenante* $penetration_partie_prenante)/ ($maturite_partie_prenante* $confiance_partie_prenante);
-// $id_seuil = 1;
+
 $id_atelier = '3.a';
 $id_projet =$_SESSION['id_projet'];
 
-// $recupere = $bdd->prepare("SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = ?");
 $recupere_id_seuil = $bdd->prepare(
   "SELECT id_seuil FROM seuil WHERE id_atelier = ? AND id_projet = ?"
 );
@@ -79,5 +74,6 @@ if ($results["error"] === false && isset($_POST['validerpartie'])) {
   <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
 <?php
 }
+
 header('Location: ../../../atelier-3a&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#partie_prenante');
 ?>

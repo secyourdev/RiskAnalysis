@@ -51,16 +51,6 @@ $insereope = $bdd->prepare(
 );
 
 
-// Verification du chemin_d_attaque_strategique
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $chemin_d_attaque_strategique)) {
-  $results["error"] = true;
-  $results["message"]["chemin_d_attaque_strategique"] = "chemin_d_attaque_strategique invalide";
-?>
-  <strong style="color:#FF6565;">chemin_d_attaque_strategique invalide </br></strong>
-<?php
-}
-
-
 if ($results["error"] === false && isset($_POST['validerchemin'])) {
   $recupere->bindParam(1, $nom_scenario_strategique);
   $recupere->execute();
@@ -70,7 +60,6 @@ if ($results["error"] === false && isset($_POST['validerchemin'])) {
   $recuperepp->bindParam(2, $get_id_projet);
   $recuperepp->execute();
   $id_partie_prenante = $recuperepp->fetch();
-  // print $id_partie_prenante[0];
 
   $insere->bindParam(1, $id_chemin_d_attaque);
   $insere->bindParam(2, $id_risque);
@@ -83,7 +72,6 @@ if ($results["error"] === false && isset($_POST['validerchemin'])) {
   $recuperechemin->bindParam(2, $id_risque);
   $recuperechemin->execute();
   $resultchemin = $recuperechemin->fetch();
-  // print_r($resultchemin);
 
   $insereope->bindParam(1, $id_scenar);
   $insereope->bindParam(2, $id_atelier);

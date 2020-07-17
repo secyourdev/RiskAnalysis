@@ -71,7 +71,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <div id="wrapper">
 
           <!-- Sidebar -->
-          <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+          <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
               <!-- Logo -->
@@ -403,7 +403,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             <!-- Main Content -->
             <div id="content">
               <!-- Topbar -->
-              <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+              <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top fixed-top shadow" id="barre_info">
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                   <i class="fa fa-bars"></i>
@@ -448,7 +448,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
               <!-- End of Topbar -->
 
               <!-- Begin Page Content -->
-              <div class="container-fluid">
+              <div id="fixed_page" class="container-fluid">
                 <!-- Content Row -->
                 <div class="row fondu">
                   <!-- Area Card -->
@@ -501,19 +501,19 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <?php
                               while ($row = mysqli_fetch_array($result_evenement_redoutes)) {
                                 echo '
-                        <tr>
-                        <td>' . $row["id_evenement_redoute"] . '</td>
-                        <td>' . $row["nom_valeur_metier"] . '</td>
-                        <td>' . $row["nom_evenement_redoute"] . '</td>
-                        <td>' . $row["description_evenement_redoute"] . '</td>
-                        <td>' . $row["impact"] . '</td>
-                        <td>' . $row["confidentialite"] . '</td>
-                        <td>' . $row["integrite"] . '</td>
-                        <td>' . $row["disponibilite"] . '</td>
-                        <td>' . $row["tracabilite"] . '</td>
-                        <td>' . $row["niveau_de_gravite"] . '</td>
-                        </tr>
-                        ';
+                                <tr>
+                                <td>' . $row["id_evenement_redoute"] . '</td>
+                                <td>' . $row["nom_valeur_metier"] . '</td>
+                                <td>' . $row["nom_evenement_redoute"] . '</td>
+                                <td>' . $row["description_evenement_redoute"] . '</td>
+                                <td>' . $row["impact"] . '</td>
+                                <td>' . $row["confidentialite"] . '</td>
+                                <td>' . $row["integrite"] . '</td>
+                                <td>' . $row["disponibilite"] . '</td>
+                                <td>' . $row["tracabilite"] . '</td>
+                                <td>' . $row["niveau_de_gravite"] . '</td>
+                                </tr>
+                                ';
                               }
                               ?>
                             </tbody>
@@ -529,37 +529,40 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0">Liste des couples sources de risques / objectifs visés établis lors de l'atelier 2</h6>
                       </div>
-                      <div class="table-responsive">
-                        <input type="text" class="rechercher_input" id="rechercher_srov" placeholder="Rechercher">
-                        <table id="editable_table_SROV" class="table table-bordered table-striped">
-                          <thead>
-                            <tr>
-                              <th>ID</th>
-                              <th>Type d'attaquant</th>
-                              <th>Profile d'attaquant</th>
-                              <th>Description source de risque</th>
-                              <th>Objectifs visés</th>
-                              <th>Description de l'objectif</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php
-                            while ($row = mysqli_fetch_array($result_SROV)) {
-                              echo '
-                        <tr>
-                        <td>' . $row["id_source_de_risque"] . '</td>
-                        <td>' . $row["type_d_attaquant_source_de_risque"] . '</td>
-                        <td>' . $row["profil_de_l_attaquant_source_de_risque"] . '</td>
-                        <td>' . $row["description_source_de_risque"] . '</td>
-                        <td>' . $row["objectif_vise"] . '</td>
-                        <td>' . $row["description_objectif_vise"] . '</td>
+                      <!-- Card Body -->
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <input type="text" class="rechercher_input" id="rechercher_srov" placeholder="Rechercher">
+                          <table id="editable_table_SROV" class="table table-bordered table-striped">
+                            <thead>
+                              <tr>
+                                <th>ID</th>
+                                <th>Type d'attaquant</th>
+                                <th>Profile d'attaquant</th>
+                                <th>Description source de risque</th>
+                                <th>Objectifs visés</th>
+                                <th>Description de l'objectif</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <?php
+                              while ($row = mysqli_fetch_array($result_SROV)) {
+                                echo '
+                          <tr>
+                          <td>' . $row["id_source_de_risque"] . '</td>
+                          <td>' . $row["type_d_attaquant_source_de_risque"] . '</td>
+                          <td>' . $row["profil_de_l_attaquant_source_de_risque"] . '</td>
+                          <td>' . $row["description_source_de_risque"] . '</td>
+                          <td>' . $row["objectif_vise"] . '</td>
+                          <td>' . $row["description_objectif_vise"] . '</td>
 
-                        </tr>
-                        ';
-                            }
-                            ?>
-                          </tbody>
-                        </table>
+                          </tr>
+                          ';
+                              }
+                              ?>
+                            </tbody>
+                          </table>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -663,11 +666,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                           <!-- <p>".$row['image_text']."</p> -->
                           </div>
 
-
-
-
-
-
                       </div>
                     </div>
                   </div>
@@ -699,14 +697,14 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <?php
                               while ($row = mysqli_fetch_array($result_chemin_d_attaque)) {
                                 echo '
-                        <tr>
-                        <td>' . $row["id_chemin_d_attaque_strategique"] . '</td>
-                        <td>' . $row["id_risque"] . '</td>
-                        <td>' . $row["nom_scenario_strategique"] . '</td>
-                        <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
-                        <td>' . $row["nom_partie_prenante"] . '</td>
-                        </tr>
-                        ';
+                                <tr>
+                                <td>' . $row["id_chemin_d_attaque_strategique"] . '</td>
+                                <td>' . $row["id_risque"] . '</td>
+                                <td>' . $row["nom_scenario_strategique"] . '</td>
+                                <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
+                                <td>' . $row["nom_partie_prenante"] . '</td>
+                                </tr>
+                                ';
                               }
                               ?>
                             </tbody>
@@ -731,7 +729,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            <footer id="footer" class="sticky-footer bg-white">
               <div class="container my-auto">
                 <div class="copyright text-center my-auto">
                   <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
@@ -915,6 +913,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <script src="content/js/modules/dark_mode.js"></script>
         <script src="content/js/modules/top_bar.js"></script>
         <script src="content/js/modules/side_bar.js"></script>
+        <script src="content/js/modules/fixed_page.js"></script>
         <script src="content/js/modules/help_button.js"></script>
         <script src="content/js/modules/gravite.js"></script>
         <script src="content/js/modules/realtime.js"></script>

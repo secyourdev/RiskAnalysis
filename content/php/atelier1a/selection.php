@@ -22,4 +22,5 @@ $id_grp_utilisateur = $result_fetch["id_grp_utilisateur"];
 
 $query_RACI_user = "SELECT id_utilisateur,nom,prenom FROM impliquer NATURAL JOIN utilisateur WHERE id_grp_utilisateur=$id_grp_utilisateur";
 $result_RACI_user  = mysqli_query($connect, $query_RACI_user);
+$result_risques_residuels  = mysqli_query($connect, $query_RACI_user);
 ?>

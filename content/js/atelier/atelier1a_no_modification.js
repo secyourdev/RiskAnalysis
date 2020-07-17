@@ -98,12 +98,11 @@ function get_database_project_info(){
         dataType : 'html',
         success: function (resultat) {
             var projet_info = JSON.parse(resultat);
-            console.log(projet_info)
             sessionIdProjet=sessionIdProjet-1
 
             nom_etude.innerText = projet_info[sessionIdProjet][1]
             objectif_atteindre.innerText = projet_info[sessionIdProjet][3]
-            respo_acceptation_risque.value=projet_info[sessionIdProjet][4]   
+            respo_acceptation_risque.innerText=projet_info[sessionIdProjet][4]   
             cadre_temporel.innerText = projet_info[sessionIdProjet][5]
             
             activate_label(nom_etude.innerText,label_nom_etude)

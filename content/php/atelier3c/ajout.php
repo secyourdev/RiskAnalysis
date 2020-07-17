@@ -79,16 +79,6 @@ $updatechemin = $bdd->prepare(
   '
 );
 
- // Verification du nom de la mesure
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_mesure)) {
-  $results["error"] = true;
-  $results["message"]["nom_valeur_metier"] = "nom de la mesure invalide";
-?>
-  <strong style="color:#FF6565;">Nom de la mesure invalide </br></strong>
-<?php
-} 
-
-
 // if ($results["error"] === false && isset($_POST['validermesure'])) {
   
 //   $recupere_regle->bindParam(1, $id_mesure);
@@ -116,30 +106,25 @@ if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_mesure)) {
 
 if ($results["error"] === false && isset($_POST['validermesure'])) {
   // insere mesure
-  echo "lol";
   $insere_mesure->bindParam(1, $nom_mesure);
   $insere_mesure->bindParam(2, $nom_mesure);
   $insere_mesure->bindParam(3, $description_mesure);
   $insere_mesure->execute();
   // recupere l'id de la mesure
-  echo "lol2";
   $recupere_mesure->bindParam(1, $nom_mesure);
   $recupere_mesure->bindParam(2, $description_mesure);
   $recupere_mesure->execute();
   $id_mesure = $recupere_mesure->fetch();
   // recupere l'ID du risque
-  echo "lol3";
   $recupere_risque->bindParam(1, $chemin);
   $recupere_risque->execute();
   $id_risque = $recupere_risque->fetch();
   // insere dans comporte4
-  echo "lol4";
   $insere_comporte->bindParam(1, $id_mesure[0]);
   $insere_comporte->bindParam(2, $chemin);
   $insere_comporte->bindParam(3, $id_risque[0]);
   $insere_comporte->execute();
   // update le chemin
-  echo "lol5";
   //calcule menace residuelle
   $recupere_pp->bindParam(1, $id_partie_prenante);
   $recupere_pp->execute();

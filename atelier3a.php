@@ -547,41 +547,24 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <?php
                               while ($row = mysqli_fetch_array($result)) {
                                 echo '
-                        <tr>
-                        <td>' . $row["id_partie_prenante"] . '</td>
-                        <td>' . $row["categorie_partie_prenante"] . '</td>
-                        <td>' . $row["nom_partie_prenante"] . '</td>
-                        <td>' . $row["type"] . '</td>
-                        <td>' . $row["dependance_partie_prenante"] . '</td>
-                        <td style="color:red;">' . $row["ponderation_dependance"] . '</td>
-                        <td>' . $row["penetration_partie_prenante"] . '</td>
-                        <td style="color:red;">' . $row["ponderation_penetration"] . '</td>
-                        <td>' . $row["maturite_partie_prenante"] . '</td>
-                        <td style="color:red;">' . $row["ponderation_maturite"] . '</td>
-                        <td>' . $row["confiance_partie_prenante"] . '</td>
-                        <td style="color:red;">' . $row["ponderation_confiance"] . '</td>
-                        <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
-                        </tr>
-                        ';
-                              }
+                                <tr>
+                                <td>' . $row["id_partie_prenante"] . '</td>
+                                <td>' . $row["categorie_partie_prenante"] . '</td>
+                                <td>' . $row["nom_partie_prenante"] . '</td>
+                                <td>' . $row["type"] . '</td>
+                                <td>' . $row["dependance_partie_prenante"] . '</td>
+                                <td style="color:red;">' . $row["ponderation_dependance"] . '</td>
+                                <td>' . $row["penetration_partie_prenante"] . '</td>
+                                <td style="color:red;">' . $row["ponderation_penetration"] . '</td>
+                                <td>' . $row["maturite_partie_prenante"] . '</td>
+                                <td style="color:red;">' . $row["ponderation_maturite"] . '</td>
+                                <td>' . $row["confiance_partie_prenante"] . '</td>
+                                <td style="color:red;">' . $row["ponderation_confiance"] . '</td>
+                                <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
+                                </tr>
+                                ';
+                                      }
                               ?>
-
-
-
-
-
-                              <!-- <tr>
-                        <td>' . $row["id_partie_prenante"] . '</td>
-                        <td>' . $row["categorie_partie_prenante"] . '</td>
-                        <td>' . $row["nom_partie_prenante"] . '</td>
-                        <td>' . $row["type"] . '</td>
-                        <td>' . $row["dependance_partie_prenante"] . '</td>
-                        <td>' . $row["penetration_partie_prenante"] . '</td>
-                        <td>' . $row["maturite_partie_prenante"] . '</td>
-                        <td>' . $row["confiance_partie_prenante"] . '</td>
-                        <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
-                        </tr> -->
-
                             </tbody>
                           </table>
                         </div>

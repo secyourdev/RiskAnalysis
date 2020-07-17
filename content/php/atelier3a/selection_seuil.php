@@ -1,8 +1,7 @@
 <?php
 session_start();
-$id_atelier = '3.a';
 $id_projet = $_SESSION['id_projet'];
-// print $id_projet;
+
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
@@ -15,7 +14,7 @@ try {
   die('Erreur :' . $e->getMessage());
 }
 
-$recupere_seuil = $bdd->prepare("SELECT * FROM seuil WHERE id_atelier = '$id_atelier' AND id_projet = $id_projet");
+$recupere_seuil = $bdd->prepare("SELECT * FROM seuil WHERE id_projet = $id_projet");
 $recupere_seuil->execute();
 
 $array = array();

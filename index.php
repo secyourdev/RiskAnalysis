@@ -427,7 +427,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     </div>
 
 
-                    <div id="bdd_card"> TEST3</div>
+                    <div id="bdd_card"> 
+                        <a href="content/php/sauvegarde_bdd/sauvegarde.php">Sauvegarder la base de données</a>       
+                    </div>
 
                 </div>
                 <!-- End of Main Content -->
