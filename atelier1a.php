@@ -612,33 +612,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         </div>
                                             <?php
                                                 }
-                                            ?>
-
-                                        <!--DESCRIPTION ETUDE-->
-                                        <div class="form-group">
-                                            <label class="titre_textarea" for="description_etude">Description</label>
-                                            <?php if(isset($userdroit['ecriture'])){
-                                                    if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'){
-                                            ?>
-                                                        <textarea class="form-control perso_text_area" id="description_etude" rows="3"></textarea>
-                                        </div>
-                                            <?php
-                                                    }
-                                                    else { 
-                                            ?>
-                                                        </br>
-                                                        <label id="description_etude" class="no_modification"></input>
-                                        </div>
-                                            <?php
-                                                    }
-                                                }
-                                                else if($userinfo['type_compte']=='Administrateur Logiciel'){         
-                                            ?>
-                                                <textarea class="form-control perso_text_area" id="description_etude" rows="3"></textarea>
-                                        </div>
-                                            <?php
-                                                }
-                                            ?>                            
+                                            ?>                   
 
                                         <!--OBJECTIF ETUDE-->
                                         <div class="form-group">
@@ -700,10 +674,15 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                     if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'){
                                             ?>
                                                         <select class="form-control" id="respo_acceptation_risque">
-                                                            <option selected>...</option>
-                                                            <option>Directeur</option>
-                                                            <option>RSSI</option>
-                                                            <option>Responsable Informatique</option>
+                                                        <option value="" selected>...</option>
+                                                            <?php
+                                                            while($row = mysqli_fetch_array($result_risques_residuels))
+                                                            {
+                                                                echo '
+                                                                <option value="'.$row["id_utilisateur"].'">'.$row["nom"].' '.$row["prenom"].'</option>
+                                                                ';
+                                                            }
+                                                            ?>
                                                         </select>
                                         </div>
                                             <?php
@@ -719,10 +698,15 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                 else if($userinfo['type_compte']=='Administrateur Logiciel'){       
                                             ?>
                                             <select class="form-control" id="respo_acceptation_risque">
-                                                <option selected>...</option>
-                                                <option>Directeur</option>
-                                                <option>RSSI</option>
-                                                <option>Responsable Informatique</option>
+                                                <option value="" selected>...</option>
+                                                    <?php
+                                                    while($row = mysqli_fetch_array($result_RACI_user))
+                                                    {
+                                                        echo '
+                                                        <option value="'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'">'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'</option>
+                                                        ';
+                                                    }
+                                                    ?>
                                             </select>
                                         </div>
                                             <?php

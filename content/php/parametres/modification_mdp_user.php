@@ -51,12 +51,14 @@ if (isset($_POST['modifier_mdp_user'])){
                 echo "Échec de l'envoi de l'email...";
             }
 
-            header('Location: ../../../parametres&'.$_SESSION['id_utilisateur']);
+            $_SESSION['message_success'] = 'Mot de passe modifié !';
         }
         else 
-            echo 'La confirmation de votre mot de passe est erroné !';
+            $_SESSION['message_error'] =  'La confirmation de votre mot de passe est erroné !';
     }
     else
-        echo 'Votre ancien mot de passe est erroné !';
+        $_SESSION['message_error'] =  'Votre ancien mot de passe est erroné !';
+        
+    header('Location: ../../../parametres&'.$_SESSION['id_utilisateur']);
 }
 ?>

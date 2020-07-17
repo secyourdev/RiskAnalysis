@@ -3,7 +3,6 @@ var accordionSidebar = document.getElementById("accordionSidebar");
 var sidebarToggle = document.getElementById("sidebarToggle");
 
 var nom_etude = document.getElementById('nom_etude');
-var description_etude = document.getElementById('description_etude')
 var objectif_atteindre = document.getElementById('objectif_atteindre');
 var cadre_temporel = document.getElementById('cadre_temporel');
 var nom_acteur = document.getElementById('nom_acteur');
@@ -123,11 +122,6 @@ nom_etude.addEventListener('keyup',function(event){
     update_database_nom_etude(nom_etude.value)
 }) 
 
-description_etude.addEventListener('keyup',function(event){
-    verify_textarea(description_etude.value,regex_description_etude,description_etude)
-    update_database_description_etude(description_etude.value)
-})
-
 objectif_atteindre.addEventListener('keyup',function(event){
     verify_textarea(objectif_atteindre.value,regex_objectif_atteindre,objectif_atteindre)
     update_database_objectif_atteindre(objectif_atteindre.value)
@@ -205,22 +199,11 @@ function get_database_project_info(){
             var projet_info = JSON.parse(resultat);
             sessionIdProjet=sessionIdProjet-1
             nom_etude.value = projet_info[sessionIdProjet][1]
-            description_etude.value = projet_info[sessionIdProjet][2]
-            objectif_atteindre.value = projet_info[sessionIdProjet][3]
-
-            if(projet_info[sessionIdProjet][4]=="Directeur")
-                respo_acceptation_risque.options.selectedIndex=1
-            else if(projet_info[sessionIdProjet][4]=="RSSI")
-                respo_acceptation_risque.options.selectedIndex=2
-            else if(projet_info[sessionIdProjet][4]=="Responsable Informatique")
-                respo_acceptation_risque.options.selectedIndex=3
-            else 
-                respo_acceptation_risque.options.selectedIndex=0
-         
+            objectif_atteindre.value = projet_info[sessionIdProjet][3]        
+            respo_acceptation_risque.value=projet_info[sessionIdProjet][4]        
             cadre_temporel.value = projet_info[sessionIdProjet][5]
 
             verify_input(nom_etude.value,regex_nom_etude,nom_etude)
-            verify_textarea(description_etude.value,regex_description_etude,description_etude)
             verify_textarea(objectif_atteindre.value,regex_objectif_atteindre,objectif_atteindre)
             verify_input(cadre_temporel.value,regex_cadre_temporel,cadre_temporel)
             verify_select(respo_acceptation_risque)

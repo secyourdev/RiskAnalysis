@@ -159,6 +159,18 @@ session_start();
       $insertutilisateur->bindParam(4, $droit);
       $insertutilisateur->execute();      
 
+
+      $seuil_danger = 6;
+      $seuil_controle = 4;
+      $seuil_veille = 2;
+      $insereseuil = $bdd->prepare("INSERT INTO seuil (seuil_danger, seuil_controle, seuil_veille, id_projet, id_atelier) VALUES (?,?,?,?,?)");
+      $insereseuil->bindParam(1, $seuil_danger);
+      $insereseuil->bindParam(2, $seuil_controle);
+      $insereseuil->bindParam(3, $seuil_veille);
+      $insereseuil->bindParam(4, $id_projet);
+      $insereseuil->bindParam(5, $atelier3a);
+      $insereseuil->execute();      
+
       $_SESSION['message_success'] = "Le projet a bien été crée !";
     }
     

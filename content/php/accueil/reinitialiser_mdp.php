@@ -1,7 +1,8 @@
 <?php
 session_start();
+$getid_utilisateur = $_SESSION['id_utilisateur'];
 
-//Connexion à la base de donnee
+  //Connexion à la base de donnee
   try{
     $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
@@ -11,51 +12,50 @@ session_start();
     die('Erreur :'.$e->getMessage());
   }
 
-$id_utilisateur=$_POST['id_utilisateur'];
+$results["error"] = false;
+$results["message"] = [];
 
-function passgen1($nbChar) {
-    $chaine ="mnoTUzS5678kVvwxy9WXYZRNCDEFrslq41GtuaHIJKpOPQA23LcdefghiBMbj0";
-    srand((double)microtime()*1000000);
-    $pass = '';
-    for($i=0; $i<$nbChar; $i++){
-        $pass .= $chaine[rand()%strlen($chaine)];
-        }
-    return $pass;
+$email_modif_mdp = $_POST['email_modif_mdp'];
+$nouveau_mdp=$_POST['nouveau_mdp'];
+$confirmation_nouveau_mdp=$_POST['confirmation_nouveau_mdp'];
+
+if (isset($_POST['modifier_mdp_user'])){
+    $verification_mdp = $bdd->prepare("SELECT * FROM utilisateur where email=?");
+    $verification_mdp->bindParam(1, $email_modif_mdp);
+    $verification_mdp->execute();
+    $resultat = $verification_mdp->fetch();
+
+  if($nouveau_mdp==$confirmation_nouveau_mdp){
+      $mot_de_passe = password_hash($confirmation_nouveau_mdp, PASSWORD_BCRYPT);
+      $update_mdp = $bdd->prepare("UPDATE utilisateur SET mot_de_passe = ? WHERE email=?");
+      $update_mdp->bindParam(1, $mot_de_passe);
+      $update_mdp->bindParam(2, $email_modif_mdp);
+      $update_mdp->execute();
+      
+      $prenom = $resultat["prenom"];
+      $email = $resultat["email"];
+      $expediteur = 'ebios-rm@alwaysdata.net';
+      $objet = "Votre mot de passe Cyber Risk Manager vient d'être modifié !"; // Objet du message
+      $headers  = 'MIME-Version: 1.0' . "\n"; // Version MIME
+      $headers .= 'Content-type: text/html; charset=UTF-8'."\n"; // l'en-tete Content-type pour le format HTML
+      $headers .= 'Reply-To: '.$expediteur."\n"; // Mail de reponse
+      $headers .= 'From: "RiskManager"<'.$expediteur.'>'."\n"; // Expediteur
+      $headers .= 'Delivered-to: '.$email."\n"; // Destinataire
+      
+      $message = '<div style="width: 100%; text-align: center; font-weight: bold">Bonjour '.$prenom.", </br> Votre mot de passe vient d'être modifié. </br> Si vous n'êtes pas responsable de cette modification, veuillez contacter votre Administrateur Logiciel !</div>";
+      
+      if (mail($email, $objet, $message, $headers)) {
+          echo "Email envoyé avec succès à $email ...";
+      } else {
+          echo "Échec de l'envoi de l'email...";
+      }
+
+      $_SESSION['message_success_4'] = 'Mot de passe modifié !';
+      
+  }
+  else 
+      $_SESSION['message_error_4'] =  'La confirmation de votre mot de passe est erroné !';
+
+header('Location: ../../../index&'.$_SESSION['id_utilisateur']);
 }
-
-$mot_de_passe = passgen1(20);
-
-$user_info = $bdd->prepare("SELECT prenom,email FROM utilisateur where id_utilisateur=?");
-$user_info->bindParam(1, $id_utilisateur);
-$user_info->execute();
-$resultat = $user_info->fetch();
-$prenom = $resultat["prenom"];
-$email = $resultat["email"];
-
-$expediteur = 'ebios-rm@alwaysdata.net';
-$objet = 'Voici votre nouveau mot de passe !'; // Objet du message
-$headers  = 'MIME-Version: 1.0' . "\n"; // Version MIME
-$headers .= 'Content-type: text/html; charset=UTF-8'."\n"; // l'en-tete Content-type pour le format HTML
-$headers .= 'Reply-To: '.$expediteur."\n"; // Mail de reponse
-$headers .= 'From: "RiskManager"<'.$expediteur.'>'."\n"; // Expediteur
-$headers .= 'Delivered-to: '.$email."\n"; // Destinataire
-$message = '<div style="width: 100%; text-align: center; font-weight: bold">Bonjour, '.$prenom.' ! </br> Votre identifiant est : '.$email.' </br> Votre nouveau mot de passe est : '.$mot_de_passe.' </div>';
-
-if (mail($email, $objet, $message, $headers)) {
-    echo "Email envoyé avec succès à $email ...";
-} else {
-    echo "Échec de l'envoi de l'email...";
-}
-
-$mot_de_passe = password_hash($mot_de_passe, PASSWORD_BCRYPT);
-
-
-$update_mdp = $bdd->prepare("UPDATE utilisateur SET mot_de_passe = ? WHERE id_utilisateur=?");
-$update_mdp->bindParam(1, $mot_de_passe);
-$update_mdp->bindParam(2, $id_utilisateur);
-$update_mdp->execute();
-echo 'Mot de passe modifié !';
-
-//header('Location: ../../../index&'.$_SESSION['id_utilisateur']);
-        
 ?>
