@@ -553,13 +553,13 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <td>' . $row["nom_partie_prenante"] . '</td>
                         <td>' . $row["type"] . '</td>
                         <td>' . $row["dependance_partie_prenante"] . '</td>
-                        <td style="color:red;">' . $row["ponderation_dependance"] . '</td>
+                        <td>' . $row["ponderation_dependance"] . '</td>
                         <td>' . $row["penetration_partie_prenante"] . '</td>
-                        <td style="color:red;">' . $row["ponderation_penetration"] . '</td>
+                        <td>' . $row["ponderation_penetration"] . '</td>
                         <td>' . $row["maturite_partie_prenante"] . '</td>
-                        <td style="color:red;">' . $row["ponderation_maturite"] . '</td>
+                        <td>' . $row["ponderation_maturite"] . '</td>
                         <td>' . $row["confiance_partie_prenante"] . '</td>
-                        <td style="color:red;">' . $row["ponderation_confiance"] . '</td>
+                        <td>' . $row["ponderation_confiance"] . '</td>
                         <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
                         </tr>
                         ';

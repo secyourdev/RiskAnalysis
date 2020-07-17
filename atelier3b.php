@@ -617,7 +617,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Schéma des scénarios opérationnels</h6>
+                        <h6 class="m-0">Schéma des scénarios stratégiques</h6>
 
                       </div>
                       <!-- Card Body -->
@@ -630,8 +630,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <span id="success_message"></span>
                         <form method="POST" id="sample_form" action="content\php\atelier3b\insert_image.php" enctype="multipart/form-data">
 
-                          <label for="nom_scenario_strategique">Nom du scénario opérationnel</label>
-                          <select class="form-control" name="nom_scenario_strategique" id="nom_scenario_strategique">
+                          <label for="select_nom_scenario_strategique">Nom du scénario stratégiques</label>
+                          <select class="form-control" name="select_nom_scenario_strategique" id="select_nom_scenario_strategique">
                             <option value="" selected>...</option>
                             <?php
                             // print 'bonjour';
