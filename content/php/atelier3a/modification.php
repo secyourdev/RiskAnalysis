@@ -1,8 +1,7 @@
 <?php
 session_start();
 $getid_projet = $_SESSION['id_projet'];
-//action.php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v20");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -24,19 +23,6 @@ $niveau_de_menace_partie_prenante = ($dependance_partie_prenante*$ponderation_de
 $id_atelier = '3.a';
 
 $results["error"] = false;
-$results["message"] = [];
-
-
-/* 
-// Verification du nom_evenement_redoutes
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_evenement_redoutes)) {
-    $results["error"] = true;
-    $results["message"]["nom_evenement_redoutes"] = "Nom de l'évenement redouté invalide";
-    ?>
-    <strong style="color:#FF6565;">nom_evenement_redoutes invalide </br></strong>
-    <?php
-} */
-
 
 if ($input["action"] === 'edit' && $results["error"] === false) {
     $query =
@@ -58,7 +44,6 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
     AND id_projet = $getid_projet
     AND id_atelier = '$id_atelier'
     ";
-    // print $query;
 
     mysqli_query($connect, $query);
 }

@@ -1,20 +1,26 @@
 
 const selectechelle = document.getElementById('nomechelle');
 
+selectechelle.selectedIndex = sessionStorage.getItem('selectechelle')
+selectEchelle(selectechelle.value);
+
 selectechelle.addEventListener('change', (event) => {
-  //   const result = document.querySelector('.result');
-  //   console.log(`Valeur  ${selectechelle.value}`);
+  sessionStorage.setItem('selectechelle',selectechelle.selectedIndex);
+  selectEchelle(selectechelle.options[selectechelle.options.selectedIndex].value);
+});
+
+function selectEchelle(selected_value){
   $.ajax({
     url: 'content/php/echelle/niveau.php',
     type: 'POST',
     data: {
-      nom_echelle: selectechelle.value
+      nom_echelle: selected_value
     },
     success: function (data) {
-      //   console.log(data);
       document.getElementById('ecrire_niveau').innerHTML = data;
       $('#tableau_niveau').Tabledit({
         deleteButton: false,
+        editButton:true,
         url: 'content/php/echelle/modificationniveau.php',
         columns: {
           identifier: [0, "id_niveau"],
@@ -23,12 +29,10 @@ selectechelle.addEventListener('change', (event) => {
         restoreButton: false,
         onSuccess: function (data, textStatus, jqXHR) {
           if (data.action == 'delete') {
-            $('#' + data.id_valeur_metier).remove();
+            $('#' + data.id_niveau).remove();
           }
         }
       });
     }
   })
-
-
-});
+}

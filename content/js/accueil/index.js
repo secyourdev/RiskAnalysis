@@ -271,8 +271,8 @@ ajouter_user.addEventListener('click', (event) => {
         $('.modal-content').html('');
         $('#ajout_user').on('hidden.bs.modal', function () {
         });
+        location.reload();
         $('#ajout_user').modal('hide');
-        console.log(data)
       }
     })
   });

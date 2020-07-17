@@ -1,6 +1,5 @@
 <?php
-//action.php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v18");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -8,24 +7,12 @@ $input = filter_input_array(INPUT_POST);
 // $chemin_d_attaque_strategique = mysqli_real_escape_string($connect, $input['chemin_d_attaque_strategique']);
 $description_scenario_operationnel = mysqli_real_escape_string($connect, $input['description_scenario_operationnel']);
 
-
 $results["error"] = false;
-$results["message"] = [];
-
-
-
-
 
 // Verification du type de l'attaquant
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_scenario_operationnel)) {
     $results["error"] = true;
-    $results["message"]["type_attaquant"] = "Description du scénario opérationnel invalide";
-    ?>
-    <strong style="color:#FF6565;">Description du scénario opérationnel invalide </br></strong>
-    <?php
 }
-
-
 
 if ($input["action"] === 'edit' && $results["error"] === false) {
     

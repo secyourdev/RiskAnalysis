@@ -270,25 +270,29 @@ ajouter_user.addEventListener('click', (event) => {
             nom_grp_utilisateur: nomgrpuser.value
       },
       success: function (data) {
-          location.reload();
+        $('.modal-content').html('');
+        $('#ajout_user').on('hidden.bs.modal', function () {
+        });
+        location.reload();
+        $('#ajout_user').modal('hide');
       }
     })
   });
 
 /*-------------------------- REINISTIALISER LE MOT DE PASSE ------------------------*/  
-for(let i=0;i<lenght_reinitialiser_mdp;i++){
-  reinitialiser_mdp[i].addEventListener('click',function(){
-    console.log(reinitialiser_mdp[i].parentNode.parentNode.id);
+// for(let i=0;i<lenght_reinitialiser_mdp;i++){
+//   reinitialiser_mdp[i].addEventListener('click',function(){
+//     console.log(reinitialiser_mdp[i].parentNode.parentNode.id);
 
-    $.ajax({
-        url: 'content/php/accueil/reinitialiser_mdp.php',
-        type: 'POST',
-        data: {
-              id_utilisateur: reinitialiser_mdp[i].parentNode.parentNode.id
-        },
-        success: function (data) {
-            location.reload();
-        }
-      })
-  });
-}
+//     $.ajax({
+//         url: 'content/php/accueil/reinitialiser_mdp.php',
+//         type: 'POST',
+//         data: {
+//               id_utilisateur: reinitialiser_mdp[i].parentNode.parentNode.id
+//         },
+//         success: function (data) {
+//             location.reload();
+//         }
+//       })
+//   });
+// }

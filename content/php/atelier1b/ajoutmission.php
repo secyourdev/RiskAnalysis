@@ -2,11 +2,10 @@
   session_start();
   $getid_projet = $_SESSION['id_projet'];
 
-  header('Location: ../../../atelier-1b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v20;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -34,21 +33,14 @@ $inseremission = $bdd->prepare('INSERT INTO mission(id_mission, nom_mission, res
 // Verification du nom de la mission
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_mission)) {
     $results["error"] = true;
-    $results["message"]["nom"] = "Nom invalide";
-  ?>
-    <strong style="color:#FF6565;">Nom invalide </br></strong>
-  <?php
+    $_SESSION['message_error'] = "Nom invalide";
   }
   
-  // Verification du responsable de la mission
-  if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $responsable)) {
-    $results["error"] = true;
-    $results["message"]["responsable"] = "Responsable invalide";
-  ?>
-    <strong style="color:#FF6565;">Responsable invalide </br></strong>
-  <?php
-  }
-
+// Verification du responsable de la mission
+if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $responsable)) {
+  $results["error"] = true;
+  $_SESSION['message_error'] = "Responsable invalide";
+}
 
 if ($results["error"] === false && isset($_POST['validermission'])) {
     $inseremission->bindParam(1, $id_mission);
@@ -57,9 +49,7 @@ if ($results["error"] === false && isset($_POST['validermission'])) {
     $inseremission->bindParam(4, $id_atelier);
     $inseremission->bindParam(5, $getid_projet);
     $inseremission->execute();
-?>
-  <strong style="color:#4AD991;">La mission a bien été ajoutée !</br></strong>
-<?php
+
     $recuperemission = $bdd->prepare('SELECT id_mission FROM mission WHERE nom_mission=? AND responsable=? AND id_projet=?');
     $recuperemission->bindParam(1, $nom_mission);
     $recuperemission->bindParam(2, $responsable);
@@ -74,5 +64,9 @@ if ($results["error"] === false && isset($_POST['validermission'])) {
     $inserecoupleVMBS->bindParam(4, $responsable_vm);
     $inserecoupleVMBS->bindParam(5, $responsable_bs);
     $inserecoupleVMBS->execute();
+
+    $_SESSION['message_success'] = "La mission a bien été ajoutée !";
 }
+
+header('Location: ../../../atelier-1b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#mission');
 ?>

@@ -6,7 +6,7 @@ $id_atelier = '3.b';
 //Connexion à la base de donnee
 try {
     $bdd = new PDO(
-        'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v20;charset=utf8',
+        'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
         'ebios-rm',
         'hLLFL\bsF|&[8=m8q-$j',
         array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -19,7 +19,7 @@ try {
 
 $id_scenario = $_POST['id_scenario'];
 
-$query = $bdd->prepare("SELECT image FROM scenario_operationnel WHERE id_projet = ? AND id_scenario_operationnel = ?");
+$query = $bdd->prepare("SELECT image FROM scenario_strategique WHERE id_projet = ? AND id_scenario_strategique = ?");
 $query->bindParam(1, $getid_projet);
 $query->bindParam(2, $id_scenario);
 $query->execute();

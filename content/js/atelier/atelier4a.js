@@ -25,7 +25,7 @@ $(document).ready(function(){
     $('#editable_table').Tabledit({
      columns:{
       identifier:[0, 'id_scenario_strategique'],
-    //   editable:[[1, 'nom_scenario_strategique'], [2, "description_source_risque"], [3, "objectif_vise"], [4, "evenement_redoute"], [5, "numero_risque"], [6, "chemin_attaque_strategique"], [7, "gravite"]]
+      editable:[]
      },
      restoreButton:false,
      editButton: false,
@@ -74,20 +74,19 @@ setSortTable('tableau_mode_ope');
 OURJQUERYFN.setFilterTable("#rechercher_mode_ope","#tableau_mode_ope tbody tr")
 
 /*------------------ AJOUT DE LA VERIFICATION DES TABLEAUX ------------------*/
-sleep(100).then(() => {
-    for(let i=0;i<tableau_ope.rows.length-1;i++){
-        j=i+1;
-        button[i].setAttribute('onclick','tableau_verification('+j+','+'tableau_ope'+','+'4'+')')
-    }
-});
+// sleep(100).then(() => {
+//     for(let i=0;i<tableau_ope.rows.length-1;i++){
+//         j=i+1;
+//         button[i].setAttribute('onclick','tableau_verification('+j+','+'tableau_ope'+','+'4'+')')
+//     }
+// });
 
-sleep(100).then(() => {
-    for(let i=tableau_ope.rows.length-1;i<tableau_mode_ope.rows.length+tableau_ope.rows.length-2;i++){
-        k++;
-        button[i].setAttribute('onclick','tableau_verification('+k+','+'tableau_mode_ope'+','+'3'+')')
-    }
-});
-
+// sleep(100).then(() => {
+//     for(let i=tableau_ope.rows.length-1;i<tableau_mode_ope.rows.length+tableau_ope.rows.length-2;i++){
+//         k++;
+//         button[i].setAttribute('onclick','tableau_verification('+k+','+'tableau_mode_ope'+','+'3'+')')
+//     }
+// });
 // sleep(100).then(() => {
 //     for(let i=editable_table.rows.length+tableau_vm.rows.length-2;i<editable_table.rows.length+tableau_vm.rows.length+tableau_bs.rows.length-3;i++){
 //         l++;
