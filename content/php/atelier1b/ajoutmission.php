@@ -57,13 +57,15 @@ if ($results["error"] === false && isset($_POST['validermission'])) {
     $recuperemission->execute();
     $resultat = $recuperemission->fetch();
 
-    $inserecoupleVMBS = $bdd->prepare('INSERT INTO couple_VMBS(id_valeur_metier, id_bien_support, id_mission, nom_responsable_vm, nom_responsable_bs) VALUES (?,?,?,?,?)');
-    $inserecoupleVMBS->bindParam(1, $id_valeur_metier);
-    $inserecoupleVMBS->bindParam(2, $id_bien_support);
-    $inserecoupleVMBS->bindParam(3, $resultat['id_mission']);
-    $inserecoupleVMBS->bindParam(4, $responsable_vm);
-    $inserecoupleVMBS->bindParam(5, $responsable_bs);
-    $inserecoupleVMBS->execute();
+    if($id_valeur_metier!="" && $id_bien_support!=""){
+      $inserecoupleVMBS = $bdd->prepare('INSERT INTO couple_VMBS(id_valeur_metier, id_bien_support, id_mission, nom_responsable_vm, nom_responsable_bs) VALUES (?,?,?,?,?)');
+      $inserecoupleVMBS->bindParam(1, $id_valeur_metier);
+      $inserecoupleVMBS->bindParam(2, $id_bien_support);
+      $inserecoupleVMBS->bindParam(3, $resultat['id_mission']);
+      $inserecoupleVMBS->bindParam(4, $responsable_vm);
+      $inserecoupleVMBS->bindParam(5, $responsable_bs);
+      $inserecoupleVMBS->execute();
+    }
 
     $_SESSION['message_success'] = "La mission a bien été ajoutée !";
 }

@@ -1,6 +1,4 @@
 <?php
-session_start();
-$id_projet = $_SESSION['id_projet'];
 
 //Connexion à la base de donnee
 try {
@@ -14,14 +12,18 @@ try {
   die('Erreur :' . $e->getMessage());
 }
 
-$recupere_seuil = $bdd->prepare("SELECT * FROM seuil WHERE id_projet = $id_projet");
-$recupere_seuil->execute();
+$id_utilisateur=$_POST['id_utilisateur'];
+
+$search_user = $bdd->prepare("SELECT email FROM utilisateur WHERE id_utilisateur=?");
+$search_user->bindParam(1,$id_utilisateur);
+$search_user->execute();
 
 $array = array();
 
-while($seuil = $recupere_seuil->fetch()){
-    array_push($array, $seuil);
+while($ecriture = $search_user->fetch()){
+    array_push($array,$ecriture);
 }
 
 echo json_encode($array)
+
 ?>

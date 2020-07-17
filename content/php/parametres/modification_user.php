@@ -13,7 +13,6 @@
   }
 
   $results["error"] = false;
-  $results["message"] = [];
 
   $poste=$_POST['poste'];
   $email=$_POST['email'];
@@ -23,19 +22,13 @@
     // Verification du poste
     if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $poste)){
       $results["error"] = true;
-      $results["message"]["poste"] = "Poste invalide";
-      ?>
-      <strong style="color:#FF6565;">Poste invalide </br></strong>
-      <?php
+      $_SESSION['message_error'] = "Poste invalide";
     }
 
     // Verification du email
     if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s.,-@]{1,100}$/", $email)){
         $results["error"] = true;
-        $results["message"]["email"] = "E-mail invalide";
-        ?>
-        <strong style="color:#FF6565;">E-mail invalide </br></strong>
-        <?php
+        $_SESSION['message_error'] = "E-mail invalide";
     }
 
     if ($results["error"] === false && isset($_POST['modifier_user'])){
@@ -43,10 +36,8 @@
         $updateutilisateur->bindParam(2, $email);
         $updateutilisateur->bindParam(3, $getid_utilisateur);
         $updateutilisateur->execute();
-
-        header('Location: ../../../parametres&'.$_SESSION['id_utilisateur']);
-        ?>
-        <strong style="color:#4AD991;">La personne a bien été modifiée !</br></strong>
-        <?php
+        $_SESSION['message_success'] = "Le profil a été bien modifié";
     }  
+
+    header('Location: ../../../parametres&'.$_SESSION['id_utilisateur']);
 ?>

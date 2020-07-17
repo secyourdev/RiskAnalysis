@@ -23,19 +23,8 @@ $seuil_veille = $_POST['seuil_veille'];
 $id_atelier = '3.a';
 $id_projet = $_SESSION['id_projet'];
 
-
-
 $insere = $bdd->prepare(
-  "INSERT INTO seuil (id_seuil, seuil_danger, seuil_controle, seuil_veille, id_projet, id_atelier)
-VALUES (1,?,?,?,?,?)
-ON DUPLICATE KEY UPDATE 
-id_seuil = VALUES(id_seuil), 
-seuil_danger = VALUES(seuil_danger), 
-seuil_controle = VALUES(seuil_controle), 
-seuil_veille = VALUES(seuil_veille), 
-id_projet = VALUES(id_projet), 
-id_atelier = VALUES(id_atelier)"
-);
+  "UPDATE seuil SET seuil_danger=?,seuil_controle=?,seuil_veille=? WHERE id_projet=?");
 
 // Verification du seuil_danger
 if (!preg_match("/^[1-9][0-9]?$|^100$/", $seuil_danger)) {
@@ -62,18 +51,16 @@ if (!preg_match("/^[1-9][0-9]?$|^100$/", $seuil_veille)) {
 <?php
 }
 
-
 if ($results["error"] === false && isset($_POST['validerseuil'])) {
 
   $insere->bindParam(1, $seuil_danger);
   $insere->bindParam(2, $seuil_controle);
   $insere->bindParam(3, $seuil_veille);
   $insere->bindParam(4, $id_projet);
-  $insere->bindParam(5, $id_atelier);
   $insere->execute();
 
 ?>
-  <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
+  <strong style="color:#4AD991;">Le seuil a bien été ajoutée !</br></strong>
 <?php
 }
 header('Location: ../../../atelier-3a&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#chemin_dattaque');

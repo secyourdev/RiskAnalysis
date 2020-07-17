@@ -50,7 +50,7 @@ if(isset($_POST['respo_acceptation_risque'])){
     $update_projet = $bdd->prepare("UPDATE projet SET responsable_risque_residuel = ? WHERE id_projet=?");
     $update_projet->bindParam(1, $respo_acceptation_risque);
     $update_projet->bindParam(2, $getid_projet);
-    if(preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $respo_acceptation_risque)){
+    if(preg_match("/^[0-9\s-]{1,100}$/", $respo_acceptation_risque)){
       $update_projet->execute();
     }
 }

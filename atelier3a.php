@@ -565,23 +565,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         ';
                               }
                               ?>
-
-
-
-
-
-                              <!-- <tr>
-                        <td>' . $row["id_partie_prenante"] . '</td>
-                        <td>' . $row["categorie_partie_prenante"] . '</td>
-                        <td>' . $row["nom_partie_prenante"] . '</td>
-                        <td>' . $row["type"] . '</td>
-                        <td>' . $row["dependance_partie_prenante"] . '</td>
-                        <td>' . $row["penetration_partie_prenante"] . '</td>
-                        <td>' . $row["maturite_partie_prenante"] . '</td>
-                        <td>' . $row["confiance_partie_prenante"] . '</td>
-                        <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
-                        </tr> -->
-
                             </tbody>
                           </table>
                         </div>

@@ -70,7 +70,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion fixed-top" id="accordionSidebar">
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">      
         <!-- Logo -->
@@ -367,7 +367,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
       <!-- Main Content -->
       <div id="content">
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow fixed-top" id='barre_info'>
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
@@ -412,7 +412,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        <div id="fixed_page" class="container-fluid">
           <!-- Content Row -->
           <div class="row fondu">
             <!-- Area Card -->
@@ -445,6 +445,15 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
+                  <div class="form-group">
+                    <label for="SelectNaturePop">Choix de la vraisemblance à utiliser pour le projet</label>
+                    <select class="form-control" name="valeurvraisemblance" id="valeurvraisemblance">
+                      <option value="" selected>...</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                  <script src="content/js/modules/vraisemblance.js"></script>
                   <!--text-->
                   <div class="table-responsive">
                   <input type="text" class="rechercher_input" id="rechercher_chemin" placeholder="Rechercher">
@@ -466,7 +475,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       {
                         echo '
                         <tr>
-                        <td>'.$row["id_scenario_strategique"].'</td>
+                        <td>'.$row["id_scenario_operationnel"].'</td>
                         <td>'.$row["id_risque"].'</td>
                         <td>'.$row["nom_chemin_d_attaque_strategique"].'</td>
                         <td>'.$row["description_scenario_operationnel"].'</td>
@@ -491,7 +500,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+      <footer id='footer' class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
@@ -544,6 +553,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   <script src="content/js/modules/dark_mode.js"></script>
   <script src="content/js/modules/top_bar.js"></script>
   <script src="content/js/modules/side_bar.js"></script>
+  <script src="content/js/modules/fixed_page.js"></script>
   <script src="content/js/modules/realtime.js"></script>
   <script src="content/js/modules/set_filter_sort_table.js"></script>
   <script src="content/js/atelier/atelier4b.js"></script>
