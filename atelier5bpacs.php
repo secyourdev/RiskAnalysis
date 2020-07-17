@@ -453,8 +453,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       <thead>
                         <tr>
                           <th id="id_traitement_de_securite">ID traitement de sécurité</th>
-                          <th id="principe">Principe de sécurité</th>
+                          <th id="mesure">Mesure de sécurité</th>
                           <th id="scenario_risques_associes">Scénario des risques associés</th>
+                          <th id="principe">Principe de sécurité</th>
                           <th id="responsable">Responsable</th>
                           <th id="freins_et_difficulte">Frein et difficultés de mise en oeuvre</th>
                           <th id="cout">Coût</th>
@@ -471,9 +472,10 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         echo '
                         <tr>
                         <td>'.$row["id_traitement_de_securite"].'</td>
+                        <td>'.$row["nom_mesure"].'</td>
+                        <td>'.$row["id_risque"].'</td>
                         <td>'.$row["principe_de_securite"].'</td>
-                        <td></td>
-                        <td></td>
+                        <td>'.$row["responsable"].'</td>
                         <td>'.$row["difficulte_traitement_de_securite"].'</td>
                         <td>'.$row["cout_traitement_de_securite"].'</td>
                         <td>'.$row["date_traitement_de_securite"].'</td>

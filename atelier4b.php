@@ -445,6 +445,15 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
+                  <div class="form-group">
+                    <label for="SelectNaturePop">Choix de la vraisemblance à utiliser pour le projet</label>
+                    <select class="form-control" name="valeurvraisemblance" id="valeurvraisemblance">
+                      <option value="" selected>...</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                  <script src="content/js/modules/vraisemblance.js"></script>
                   <!--text-->
                   <div class="table-responsive">
                   <input type="text" class="rechercher_input" id="rechercher_chemin" placeholder="Rechercher">
@@ -466,7 +475,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       {
                         echo '
                         <tr>
-                        <td>'.$row["id_scenario_strategique"].'</td>
+                        <td>'.$row["id_scenario_operationnel"].'</td>
                         <td>'.$row["id_risque"].'</td>
                         <td>'.$row["nom_chemin_d_attaque_strategique"].'</td>
                         <td>'.$row["description_scenario_operationnel"].'</td>
