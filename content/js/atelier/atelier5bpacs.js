@@ -26,13 +26,12 @@ $(document).ready(function(){
         url:'content/php/atelier5bpacs/modification.php',
      columns:{
       identifier:[0, 'id_traitement_de_securite'],
-      editable:[[1, 'principe_de_securite', '{"Gouvernance" : "Gouvernance", "Protection" : "Protection", "Defense" : "Defense", "Resilience" : "Resilience"}'], 
-      [2, "difficulte_traitement_de_securite"], 
-      [3, "scenario_risques_associes"], 
+      editable:[[3, 'principe_de_securite', '{"Gouvernance" : "Gouvernance", "Protection" : "Protection", "Defense" : "Defense", "Resilience" : "Resilience"}'], 
       [4, "responsable"], 
-      [5, "cout_traitement_de_securite", '{"+" : "+", "++" : "++", "+++" : "+++"}'], 
-      [6, "date_traitement_de_securite"], 
-      [7, "statut", '{"A lancer" : "A lancer", "En cours" : "En cours", "Terminé" : "Terminé"}']]
+      [5, "difficulte_traitement_de_securite"], 
+      [6, "cout_traitement_de_securite", '{"+" : "+", "++" : "++", "+++" : "+++"}'], 
+      [7, "date_traitement_de_securite"], 
+      [8, "statut", '{"A lancer" : "A lancer", "En cours" : "En cours", "Terminé" : "Terminé"}']]
     // editable:[[4, "vraisemblance", '{"1" : "1 (Invraisemblable)", "2" : "2 (Peu vraisemblable)", "3" : "3 (Vraisemblable)", "4" : "4 (Très vraisemblable)", "5" : "5 (Quasi certain)"}']]
      },
      restoreButton:false,
