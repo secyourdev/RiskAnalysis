@@ -488,9 +488,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     </table>
                   </div>    
                   <!-- bouton Ajouter une nouvelle ligne -->
-                  <div class="text-center">
+                  <!-- <div class="text-center">
                     <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_pacs">Ajouter une nouvelle ligne</button>
-                  </div> 
+                  </div>  -->
 
 
                 </div>
@@ -525,10 +525,11 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
+
 <!-- -------------------------------------------------------------------------------------------------------------- 
 ----------------------------------------- modal ajout de ligne ----------------------------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
-<div class="modal fade" id="ajout_ligne_pacs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<!-- <div class="modal fade" id="ajout_ligne_pacs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 aria-hidden="true">
 <div class="modal-dialog modal-lg" role="document">
   <div class="modal-content">
@@ -603,7 +604,7 @@ aria-hidden="true">
               
             </div>
           </div>
-          <!-- bouton Ajouter -->
+           bouton Ajouter 
           <div class="modal-footer perso_middle_modal_footer">
             <input type="submit" name="validerpacs" value="Ajouter" class="btn perso_btn shadow-none"></input>
           </div>
@@ -613,7 +614,7 @@ aria-hidden="true">
     
     </div>
 </div>
-</div>
+</div> -->
 
 
   <!-- Logout Modal-->
