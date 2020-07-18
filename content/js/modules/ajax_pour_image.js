@@ -1,6 +1,15 @@
-
-const select_scenar = document.getElementById('nom_scenario_strategique');
-
+var select_scenar = '';
+if (document.getElementById('select_nom_scenario_operationnel')!=null){
+    console.log('select_nom_scenario_operationnel');
+    select_scenar = document.getElementById('select_nom_scenario_operationnel');
+}
+    
+if (document.getElementById('select_nom_scenario_strategique')!=null){
+    console.log('select_nom_scenario_strategique');
+    
+    select_scenar = document.getElementById('select_nom_scenario_strategique');
+}
+    
 select_scenar.addEventListener('change', (event) => {
     //   const result = document.querySelector('.result');
     //   console.log(`Valeur  ${select_scenar.value}`);
@@ -11,21 +20,29 @@ select_scenar.addEventListener('change', (event) => {
             id_scenario: select_scenar.value
         },
         success: function (data) {
-              console.log("je suis le ajax");
+            console.log("je suis le ajax");
+            console.log('data: ' + data);
+            console.log((data != null));
+
             // document.getElementById('ecrire_ecart').innerHTML = data;
             // $('#editable_table_ecart tbody').append(data);
-            
-            
-            const inpFile = document.getElementById("inpFile");
-            const previewContainer = document.getElementById("imagePreview");
-            const previewImage = previewContainer.querySelector(".image-preview__image");
-            const previewDefaultText = previewContainer.querySelector(".image-preview__default-text");
+            if (data != null) {
+                const inpFile = document.getElementById("inpFile");
+                const previewContainer = document.getElementById("imagePreview");
+                const previewImage = previewContainer.querySelector(".image-preview__image");
+                const previewDefaultText = previewContainer.querySelector(".image-preview__default-text");
 
-            previewDefaultText.style.display = "none";
-            previewImage.style.display = "block";
-            previewContainer.style.border = "none";
+                previewDefaultText.style.display = "none";
+                previewImage.style.display = "block";
+                previewContainer.style.border = "none";
 
-            previewImage.setAttribute("src", 'image/' + data);
+                previewImage.setAttribute("src", 'image/' + data);
+
+            } else {
+                console.log("nope");
+
+            }
+
 
             // if (data.length()>0) {
             //     // const reader = new FileReader();

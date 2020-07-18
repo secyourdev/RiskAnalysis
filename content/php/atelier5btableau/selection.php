@@ -16,9 +16,10 @@ partie_prenante.nom_partie_prenante,
 partie_prenante.niveau_de_menace_partie_prenante,
 scenario_operationnel.description_scenario_operationnel,
 scenario_operationnel.vraisemblance,
-regle.titre
-FROM regle
-NATURAL JOIN comporter_3
+mesure.nom_mesure,
+mesure.id_mesure
+FROM mesure
+NATURAL JOIN comporter_2
 NATURAL JOIN chemin_d_attaque_strategique
 INNER JOIN scenario_strategique ON chemin_d_attaque_strategique.id_scenario_strategique = scenario_strategique.id_scenario_strategique
 INNER JOIN partie_prenante ON chemin_d_attaque_strategique.id_partie_prenante = partie_prenante.id_partie_prenante
@@ -26,6 +27,7 @@ INNER JOIN SROV ON scenario_strategique.id_source_de_risque = SROV.id_source_de_
 INNER JOIN evenement_redoute ON scenario_strategique.id_evenement_redoute = evenement_redoute.id_evenement_redoute
 INNER JOIN valeur_metier ON evenement_redoute.id_valeur_metier = valeur_metier.id_valeur_metier
 INNER JOIN scenario_operationnel ON scenario_operationnel.id_chemin_d_attaque_strategique = chemin_d_attaque_strategique.id_chemin_d_attaque_strategique
+WHERE partie_prenante.id_projet = $getid_projet
 ";
 
 $querychemin = "SELECT * FROM chemin_d_attaque_strategique NATURAL JOIN scenario_strategique WHERE id_projet = $getid_projet";

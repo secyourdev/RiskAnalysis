@@ -6,33 +6,54 @@ $input = filter_input_array(INPUT_POST);
 $motivation = mysqli_real_escape_string($connect, $input['motivation']);
 $ressources = mysqli_real_escape_string($connect, $input['ressources']);
 $activite = mysqli_real_escape_string($connect, $input['activite']);
-$mode_operatoire = mysqli_real_escape_string($connect, $input['mode_operatoire']);
-$secteur_activite = mysqli_real_escape_string($connect, $input['secteur_d_activite']);
-$arsenal_attaque = mysqli_real_escape_string($connect, $input['arsenal_d_attaque']);
-$faits_armes = mysqli_real_escape_string($connect, $input['faits_d_armes']);
+if ($input['mode_operatoire'] !== null){
+    $mode_operatoire = mysqli_real_escape_string($connect, $input['mode_operatoire']);
+}else{
+    $mode_operatoire = '';
+}
+if ($input['secteur_d_activite'] !== null) {
+    $secteur_activite = mysqli_real_escape_string($connect, $input['secteur_d_activite']);
+}else{
+     $secteur_activite = '';
+}
+if ($input['arsenal_d_attaque'] !== null) {
+    $arsenal_attaque = mysqli_real_escape_string($connect, $input['arsenal_d_attaque']);
+}else{
+    $arsenal_attaque = '';
+}
+if ($input['faits_d_armes'] !== null) {
+    $faits_armes = mysqli_real_escape_string($connect, $input['faits_d_armes']);
+}else{
+    $faits_armes = '';
+}
+
 $pertinence = mysqli_real_escape_string($connect, $input['pertinence']);
 $choix_sr = NULL;
 
 $results["error"] = false;
 
 // Verification du mode opératoire
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/", $mode_operatoire)) {
+if (!preg_match("/^$|^[a-zA-Z0-9éèàêâôùïüëç'\s-]{1,100}$/", $mode_operatoire)) {
     $results["error"] = true;
+    print "error";
 }
 
 // Verification du secteur d'activité
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/", $secteur_activite)) {
+if (!preg_match("/^$|^[a-zA-Z0-9éèàêâôùïüëç'\s-]{1,100}$/", $secteur_activite)) {
     $results["error"] = true;
+    print "error";
 }
 
 // Verification de l'arsenal d'attaque'
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/", $arsenal_attaque)) {
+if (!preg_match("/^$|^[a-zA-Z0-9éèàêâôùïüëç'\s-]{1,100}$/", $arsenal_attaque)) {
     $results["error"] = true;
+    print "error";
 }
 
 // Verification des afaits d'armes
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/", $faits_armes)) {
+if (!preg_match("/^$|^[a-zA-Z0-9éèàêâôùïüëç'\s-]{1,100}$/", $faits_armes)) {
     $results["error"] = true;
+    print "error";
 }
 
 if ($input["action"] === 'edit' && $results["error"] === false) {

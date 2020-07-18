@@ -9,18 +9,6 @@ $nom_scenario_strategique = mysqli_real_escape_string($connect, $input['nom_scen
 $results["error"] = false;
 $results["message"] = [];
 
-
-/*
-// Verification du nom_evenement_redoutes
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_evenement_redoutes)) {
-    $results["error"] = true;
-    $results["message"]["nom_evenement_redoutes"] = "Nom de l'évenement redouté invalide";
-    ?>
-    <strong style="color:#FF6565;">nom_evenement_redoutes invalide </br></strong>
-    <?php
-} */
-
-
 if ($input["action"] === 'edit' && $results["error"] === false) {
     $query = "
     UPDATE scenario_strategique 

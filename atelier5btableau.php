@@ -473,7 +473,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                           <th id="scenario_operationnel">Scenario opérationnel</th>
                           <th id="vraisemblance">Vraisemblance</th>
                           <th id="risque">Risque</th>
-                          <th id="regle">Règle</th>
+                          <th id="mesure">Mesure de sécurité</th>
                           
                         </tr>
                       </thead>
@@ -485,7 +485,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         $risque = $row["niveau_de_gravite"] * $row["vraisemblance"];
                         echo '
                         <tr>
-                        <td>'.$row["id_chemin_d_attaque_strategique"].'</td>
+                        <td>'.$row["id_mesure"].'</td>
                         <td>'.$row["nom_valeur_metier"].'</td>
                         <td>'.$row["nom_evenement_redoute"].'</td>
                         <td>'.$row["impact"].'</td>
@@ -501,7 +501,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <td>'.$row["description_scenario_operationnel"].'</td>
                         <td>'.$row["vraisemblance"].'</td>
                         <td>'.$risque.'</td>
-                        <td>'.$row["titre"].'</td>
+                        <td>'.$row["nom_mesure"].'</td>
                         </tr>
                         ';
                       }
@@ -564,43 +564,115 @@ aria-hidden="true">
         <form method="post" action="content/php/atelier5btableau/ajout.php" class="user" id="formecartPop">
           <fieldset>
             <div class="row">
-            <div class="form-group col-12">
-              <label for="chemin">Chemin d'attaque stratégique</label>
-              <select class="form-control" id="chemin", name="chemin">
-                <option value="" selected>...</option>
-                <?php
-                while ($row = mysqli_fetch_array($resultchemin)) //selection.php
-                {
-                  echo '
-                      <option id="id_chemin" value="' . $row["id_chemin_d_attaque_strategique"] . '">' . $row["nom_chemin_d_attaque_strategique"] . '</option>
-                      ';
-                }
-                ?>
-              </select>
-              <script src="content/js/modules/regles.js"></script>
-            </div>
-
               <div class="form-group col-12">
-                <label for="referentiel">Référentiel de sécurité</label>
-                <select class="form-control" id="referentiel", name="referentiel">
+                <label for="chemin">Chemin d'attaque stratégique</label>
+                <select class="form-control" id="chemin", name="chemin">
                   <option value="" selected>...</option>
                   <?php
-                  while ($row = mysqli_fetch_array($result_referentiel)) //selection.php
+                  while ($row = mysqli_fetch_array($resultchemin)) //selection.php
                   {
                     echo '
-                        <option id="id_socle" value="' . $row["id_socle_securite"] . '">' . $row["nom_referentiel"] . '</option>
+                        <option id="id_chemin" value="' . $row["id_chemin_d_attaque_strategique"] . '">' . $row["nom_chemin_d_attaque_strategique"] . '</option>
                         ';
                   }
                   ?>
                 </select>
-                <script src="content/js/modules/regles.js"></script>
               </div>
               <div class="form-group col-12">
-                <label for="mesure">Mesure de sécurité</label>
-                <select class="form-control" id="mesure" name="mesure">
-                  <option value="" selected>Choisissez un référentiel</option>
-                </select>
-              </div> 
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="nommesure" id="nommesure" placeholder="Nom de la mesure de sécurité" required>
+              </div>
+
+              <div class="form-group col-12">
+                <label for="descriptionmesure">Description de la mesure de sécurité</label>
+                <textarea class="form-control perso_text_area" name="descriptionmesure" id="descriptionmesure" rows="3"></textarea>
+              </div>
+              
+            </div>
+            <div class="row">
+              <div class=" col-6">
+                <div class="choix-valeur">
+                  <div>Dépendance</div>
+                  <div>
+                    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Motivation">
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="dependance" autocomplete="off" value="1"> 1
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="dependance" autocomplete="off" value="2"> 2
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="dependance" autocomplete="off" value="3"> 3
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="dependance" autocomplete="off" value="4"> 4
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <div class="choix-valeur">
+                  <div>Penetration</div>
+                  <div>
+                    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Ressources">
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="penetration" autocomplete="off" value="1"> 1
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="penetration" autocomplete="off" value="2"> 2
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="penetration" autocomplete="off" value="3"> 3
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="penetration" autocomplete="off" value="4"> 4
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class=" col-6">
+                <div class="choix-valeur">
+                  <div>Maturité</div>
+                  <div>
+
+                    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Activité">
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="maturite" autocomplete="off" value="1"> 1
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="maturite" autocomplete="off" value="2"> 2
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="maturite" autocomplete="off" value="3"> 3
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="maturite" autocomplete="off" value="4"> 4
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="choix-valeur">
+                  <div>Confiance</div>
+                  <div>
+                    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Choix">
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="confiance" autocomplete="off" value="1"> 1
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="confiance" autocomplete="off" value="2"> 2
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="confiance" autocomplete="off" value="3"> 3
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="confiance" autocomplete="off" value="4"> 4
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <!-- bouton Valider -->
             <div class="modal-footer perso_middle_modal_footer">
@@ -648,7 +720,7 @@ aria-hidden="true">
   <script src="content/js/modules/fixed_page.js"></script>
   <script src="content/js/modules/realtime.js"></script>
   <script src="content/js/modules/set_filter_sort_table.js"></script>
-  <script src="content/js/atelier/atelier5bpacs.js"></script>
+  <script src="content/js/atelier/atelier5btableau.js"></script>
   <script src="content/js/modules/sort_table.js"></script>
 </body>
 <?php

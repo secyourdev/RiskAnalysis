@@ -35,16 +35,6 @@ $insere = $bdd->prepare(
    ( ?, ?, ?, ?, ?, ?)'
 );
 
-// Verification du nom_scenario_strategique
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_scenario_strategique)) {
-  $results["error"] = true;
-  $results["message"]["nom_scenario_strategique"] = "nom_scenario_strategique invalide";
-?>
-  <strong style="color:#FF6565;">nom_scenario_strategique invalide </br></strong>
-<?php
-}
-
-
 if ($results["error"] === false && isset($_POST['validerscenario'])) {
 
   $insere->bindParam(1, $id_scenario);

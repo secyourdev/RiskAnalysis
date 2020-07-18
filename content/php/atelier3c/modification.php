@@ -17,18 +17,21 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
     UPDATE mesure 
     SET 
     nom_mesure = '" . $nom_mesure_securite . "',
-    description_mesure = '" . $description_mesure_securite . "',
+    description_mesure = '" . $description_mesure_securite . "'
     WHERE id_mesure = '" . $input["id_mesure"] . "'
     ";
-
     mysqli_query($connect, $query);
 }
 if ($input["action"] === 'delete') {
     $query = "
-    DELETE FROM partie_prenante 
-    WHERE id_partie_prenante = '".$input["id_partie_prenante"]."'
+    DELETE FROM comporter_2 
+    WHERE id_mesure = '".$input["id_mesure"]."'
     ";
-    mysqli_query($connect, $query);
+    $query2 = "
+    DELETE FROM mesure 
+    WHERE id_mesure = '".$input["id_mesure"]."'
+    ";
+    mysqli_query($connect, $query2);
 }
 
 

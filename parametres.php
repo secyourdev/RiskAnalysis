@@ -149,6 +149,22 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         <button type="button" data-toggle="modal" data-target="#modifier_mdp_user" class="btn perso_btn perso_btn_parametre_mdp shadow-none">Modifier le mot de passe</button>
                                         <button type="button" data-toggle="modal" data-target="#modifier_user" class="btn perso_btn perso_btn_parametre shadow-none">Modifier le profil</button>
                                     </div>
+                                    <div class='message_success col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12'>
+                                    <?php 
+                                        if(isset($_SESSION['message_success'])){
+                                        echo $_SESSION['message_success'];
+                                        unset($_SESSION['message_success']);
+                                        }
+                                    ?>
+                                    </div> 
+                                    <div class='message_error col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12'>
+                                    <?php                
+                                        if(isset($_SESSION['message_error'])){
+                                            echo $_SESSION['message_error'];
+                                            unset($_SESSION['message_error']);
+                                        }
+                                    ?>
+                                    </div>
                                     <div class="card-header div_photo_user col-12 col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                         <img class="img-profile rounded-circle user_photo" src="content/img/undraw_profile_pic.svg">
                                     </div>
@@ -221,14 +237,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                 <div class="form-group">
                                     <label class="titre_input" for="poste">Poste</label>
                                     <input type="text" class="perso_form shadow-none form-control form-control-user"
-                                        name="poste" list="Postes" id="poste" placeholder="Poste" required></input>
-                                    <datalist id="Postes">
-                                        <option value="Internet Explorer">
-                                        <option value="Firefox">
-                                        <option value="Chrome">
-                                        <option value="Opera">
-                                        <option value="Safari">
-                                    </datalist>
+                                        name="poste" id="poste" placeholder="Poste" required></input>
                                 </div>
                                 <!--EMAIL-->
                                 <div class="form-group">

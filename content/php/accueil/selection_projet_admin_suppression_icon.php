@@ -1,7 +1,6 @@
 <?php
 session_start();
-$id_projet = $_SESSION['id_projet'];
-
+$getid_utilisateur = $_SESSION['id_utilisateur'];
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
@@ -14,14 +13,20 @@ try {
   die('Erreur :' . $e->getMessage());
 }
 
-$recupere_seuil = $bdd->prepare("SELECT * FROM seuil WHERE id_projet = $id_projet");
-$recupere_seuil->execute();
+$id_projet = $_POST['id_projet'];
+
+$search_projet = $bdd->prepare("SELECT id_projet,nom_projet FROM projet WHERE id_projet=?");
+$search_projet->bindParam(1,$id_projet);
+$search_projet->execute();
 
 $array = array();
 
-while($seuil = $recupere_seuil->fetch()){
-    array_push($array, $seuil);
+while($ecriture = $search_projet->fetch()){
+    array_push($array,$ecriture);
 }
 
 echo json_encode($array)
+
 ?>
+
+
