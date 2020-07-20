@@ -98,12 +98,10 @@ function get_database_project_info(){
         dataType : 'html',
         success: function (resultat) {
             var projet_info = JSON.parse(resultat);
-            sessionIdProjet=sessionIdProjet-1
-
-            nom_etude.innerText = projet_info[sessionIdProjet][1]
-            objectif_atteindre.innerText = projet_info[sessionIdProjet][3]
-            respo_acceptation_risque.innerText=projet_info[sessionIdProjet][4]   
-            cadre_temporel.innerText = projet_info[sessionIdProjet][5]
+            nom_etude.innerText = projet_info[0][1]
+            objectif_atteindre.innerText = projet_info[0][3]
+            respo_acceptation_risque.innerText=projet_info[0][4]   
+            cadre_temporel.innerText = projet_info[0][5]
             
             activate_label(nom_etude.innerText,label_nom_etude)
             activate_label(cadre_temporel.innerText,label_cadre_temporel)

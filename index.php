@@ -378,6 +378,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                 <th>E-mail</th>
                                                 <th>Type de compte</th>
                                                 <th>Mot de passe</th>
+                                                <th>Mot de passe</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -393,6 +394,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                     <td>'.$row["email"].'</td>
                                                     <td>'.$row["type_compte"].'</td>
                                                     <td> <button id="reinitialiser_mdp" type="button" data-toggle="modal" data-target="#modifier_mdp_user" class="btn perso_btn_primary width_RACI shadow-none">Réinitialiser</button> </td>
+                                                    <td> <button id="generer_mdp" type="button" class="btn perso_btn_primary width_RACI shadow-none">Générer</button> </td>
                                                 </tr>
                                                 ';
                                             }
