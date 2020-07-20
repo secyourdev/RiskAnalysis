@@ -322,13 +322,30 @@ for(let i=0;i<lenght_reinitialiser_mdp;i++){
   });
 }
 
+/*----------------------------- GENERER LE MOT DE PASSE --------------------------*/  
+for(let i=0;i<lenght_reinitialiser_mdp;i++){
+    generer_mdp[i].addEventListener('click',function(){
+    console.log(generer_mdp[i].parentNode.parentNode.id);
+
+    $.ajax({
+        url: 'content/php/accueil/generer_mdp.php',
+        type: 'POST',
+        data: {
+              id_utilisateur: generer_mdp[i].parentNode.parentNode.id
+        },
+        success: function (data) {
+            location.reload();
+        }
+      })
+  });
+}
+/*------------------------- MODIFICATION & SUPPRESSION PROJET ----------------------*/
 function modification_projet(){
     var lenght_modif_icon = modif_icon.length;
     var id_etude_modif = document.getElementById('id_etude_modif')
     var nom_etude_modif = document.getElementById('nom_etude_modif')
     var description_etude_modif = document.getElementById('description_etude_modif')
     var id_grp_utilisateur_modif = document.getElementById('id_grp_utilisateur_modif')
-    /*------------------------- MODIFICATION & SUPPRESSION PROJET ----------------------*/
     for(let i=0;i<lenght_modif_icon;i++){
         modif_icon[i].addEventListener('click',function(){
             $.ajax({

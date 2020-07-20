@@ -1161,6 +1161,7 @@ h6 {
 
 .width_RACI {
     width: -webkit-fill-available;
+    width: -moz-available;
 }
 
 .gravite {

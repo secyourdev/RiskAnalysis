@@ -1,4 +1,6 @@
 <?php
+session_start();
+$getid_projet = $_SESSION['id_projet'];
 
 //Connexion à la base de donnee
 try {
@@ -12,7 +14,8 @@ try {
   die('Erreur :' . $e->getMessage());
 }
 
-$search_projet = $bdd->prepare("SELECT * FROM projet");
+$search_projet = $bdd->prepare("SELECT * FROM projet WHERE id_projet=?");
+$search_projet->bindParam(1,$getid_projet);
 $search_projet->execute();
 
 $array = array();

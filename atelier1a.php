@@ -703,7 +703,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                     while($row = mysqli_fetch_array($result_RACI_user))
                                                     {
                                                         echo '
-                                                        <option value="'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'">'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'</option>
+                                                        <option value="'.$row["id_utilisateur"].'">'.$row["nom"].' '.$row["prenom"].'</option>
                                                         ';
                                                     }
                                                     ?>
@@ -989,7 +989,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <script src="content/js/modules/gravite.js"></script>
     <script src="content/js/modules/realtime.js"></script>
     <script src="content/js/modules/set_filter_sort_table.js"></script>
-    <script> var sessionIdProjet = <?php echo $_SESSION['id_projet'];?>; </script>
     <?php if(isset($userdroit['ecriture'])){
             if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'){
     ?>
