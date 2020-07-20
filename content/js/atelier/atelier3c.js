@@ -58,7 +58,11 @@ $(document).ready(function () {
             identifier: [0, 'id_mesure'],
             editable: [
                 [3, 'nom_mesure_securite'],
-                [4, 'description_mesure_securite']
+                [4, 'description_mesure_securite'],
+                [6, 'dependance_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
+                [7, 'penetration_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
+                [8, 'maturite_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
+                [9, 'confiance_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}']
             ]
         },
         restoreButton: false,
@@ -86,6 +90,6 @@ OURJQUERYFN.setFilterTable("#rechercher_mesure", "#editable_table_mesure tbody t
 sleep(100).then(() => {
     for(let i=0;i<editable_table_mesure.rows.length-1;i++){
         j=i+1;
-        button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table_mesure'+','+'7'+')')
+        button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table_mesure'+','+'11'+')')
     }
 });

@@ -767,7 +767,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         while ($row = mysqli_fetch_array($result_id_source_de_risque)) //selection.php
                         {
                           echo '
-                        <option id="id_source_de_risque" value="' . $row["id_source_de_risque"] . '">' . $row["description_source_de_risque"] . ' | ' . $row["objectif_vise"] . '</option>
+                        <option id="id_source_de_risque" value="' . $row["id_source_de_risque"] . '">' . $row["profil_de_l_attaquant_source_de_risque"] . ' | ' . $row["objectif_vise"] . '</option>
                         ';
                         }
                         ?>
