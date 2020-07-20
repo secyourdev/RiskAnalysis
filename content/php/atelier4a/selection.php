@@ -10,9 +10,10 @@ WHERE scenario_strategique.id_projet = $getid_projet
 ";
 
 $query2 = "SELECT * FROM chemin_d_attaque_strategique NATURAL JOIN scenario_operationnel WHERE id_projet = $getid_projet";
-$query3 = "SELECT * FROM scenario_operationnel";
+$query3 = "SELECT * FROM scenario_operationnel WHERE id_projet = $getid_projet";
 $query4 = "SELECT * FROM mode_operatoire INNER JOIN scenario_operationnel
-ON mode_operatoire.id_scenario_operationnel = scenario_operationnel.id_scenario_operationnel";
+ON mode_operatoire.id_scenario_operationnel = scenario_operationnel.id_scenario_operationnel
+WHERE id_projet = $getid_projet";
 $queryprojet = "SELECT echelle_vraisemblance FROM projet NATURAL JOIN echelle WHERE id_projet = $getid_projet";
 
 $result1 = mysqli_query($connect, $query1);

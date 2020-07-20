@@ -58,7 +58,11 @@ mesure.id_mesure,
 nom_partie_prenante, 
 nom_chemin_d_attaque_strategique,
 mesure.nom_mesure,
-mesure.description_mesure, 
+mesure.description_mesure,
+dependance_residuelle,
+penetration_residuelle,
+maturite_residuelle,
+confiance_residuelle, 
 niveau_de_menace_partie_prenante,
 niveau_de_menace_residuelle
 FROM chemin_d_attaque_strategique
