@@ -528,6 +528,18 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
                   </div> -->
                 </div>
+                <div>
+                  <div class="cercle-noir"></div>
+                  Choix non effectué
+                </div>
+                <div>
+                  <div class="cercle-vert"></div>
+                  Couple SROV non retenu
+                </div>
+                <div>
+                  <div class="cercle-rouge"></div>
+                  Couple SROV retenu
+                </div>
               </div>
             </div>
           </div>         

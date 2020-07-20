@@ -589,20 +589,20 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </div>
 
                             <div class='message_success'>
-                            <?php 
-                                if(isset($_SESSION['message_success'])){
-                                  echo $_SESSION['message_success'];
-                                  unset($_SESSION['message_success']);
-                                }
-                            ?>
-                            </div> 
+                              <?php
+                              if (isset($_SESSION['message_success'])) {
+                                echo $_SESSION['message_success'];
+                                unset($_SESSION['message_success']);
+                              }
+                              ?>
+                            </div>
                             <div class='message_error'>
-                            <?php                
-                                if(isset($_SESSION['message_error'])){
-                                    echo $_SESSION['message_error'];
-                                    unset($_SESSION['message_error']);
-                                }
-                            ?>
+                              <?php
+                              if (isset($_SESSION['message_error'])) {
+                                echo $_SESSION['message_error'];
+                                unset($_SESSION['message_error']);
+                              }
+                              ?>
                             </div>
 
                             <!-- bouton Ajouter une nouvelle ligne -->
@@ -656,13 +656,40 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       <div class="card-body">
                         <!--text-->
 
-                        <div class="custom-file">
-                          <input class="custom-file-input" type="file" name="inpFile" id="inpFile">
-                          <label class="custom-file-label" for="inpFile">Choisir une image</label>
-                        </div>
-                        <div class="image-preview" id="imagePreview">
-                          <img src="" alt="Image Preview" class="image-preview__image">
-                          <span class="image-preview__default-text">Image Preview</span>
+                        <span id="success_message"></span>
+                        <form method="POST" id="sample_form" action="content\php\atelier3b\insert_image.php" enctype="multipart/form-data">
+
+                          <label for="select_nom_scenario_operationnel">Nom du scénario opérationnel</label>
+                          <select class="form-control" name="select_nom_scenario_operationnel" id="select_nom_scenario_operationnel">
+                            <option value="" selected>...</option>
+                            <?php
+                            // print 'bonjour';
+                            // print_r($result_scenario_op);
+                            while ($row = mysqli_fetch_array($result_scenario_op)) //selection.php
+                            {
+                              // print_r($row);
+                              echo '<option id="scenario_operationnel" value="' . $row['id_scenario_operationnel'] . '">' . $row['description_scenario_operationnel'] . '</option>';
+                            }
+                            ?>
+                          </select>
+
+                          <br>
+
+                          <div class="custom-file">
+                            <input name="inpFile" id="inpFile" class="custom-file-input" type="file">
+                            <label class="custom-file-label" for="inpFile">Choisir un fichier au format image</label>
+                          </div>
+
+                          <div class="form-group" align="center">
+                            <input type="submit" name="file_submit" id="file_submit" class="btn perso_btn_primary shadow-none" value="Ajouter une image" />
+                          </div>
+                        </form>
+
+
+                        <div class='image-preview' id='imagePreview'>
+                          <img class='image-preview__image' src='image/'>
+                          <span class='image-preview__default-text'>Image Preview</span>
+                          <!-- <p>".$row['image_text']."</p> -->
                         </div>
 
                       </div>
@@ -741,6 +768,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <script src="content/js/atelier/atelier4a.js"></script>
         <script src="content/js/modules/sort_table.js"></script>
         <script src="content/js/modules/browse_img.js"></script>
+        <script src="content\js\modules\ajax_pour_image.js"></script>
       </body>
   <?php
     }

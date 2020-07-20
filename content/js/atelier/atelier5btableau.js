@@ -7,9 +7,8 @@ var j=0;
 $(document).ready(function () {
     $('#editable_table').Tabledit({
         url: 'content/php/atelier5btableau/modification.php',
-        deleteButton: false,
         columns: {
-            identifier: [0, 'id'],
+            identifier: [0, 'id_mesure'],
             editable: [],
         },
         restoreButton: false,

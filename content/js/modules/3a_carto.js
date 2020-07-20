@@ -107,7 +107,7 @@ $.post("content/php/atelier3a/chart.php", function (data) {
             ticks: {
                 beginAtZero: true,
                 reverse: true,
-                suggestedMax: 16,
+                suggestedMax: 16.5,
                 stepSize: 1
             }
         },
@@ -208,7 +208,7 @@ $.post("content/php/atelier3a/chart.php", function (data) {
             ticks: {
                 beginAtZero: true,
                 reverse: true,
-                suggestedMax: 16,
+                suggestedMax: 16.5,
                 stepSize: 1
             }
         },

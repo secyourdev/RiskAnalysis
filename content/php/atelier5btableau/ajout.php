@@ -1,58 +1,107 @@
 <?php
+session_start();
+header('Location: ../../../atelier5btableau.php?id_utilisateur='.$_SESSION['id_utilisateur'].'&id_projet='.$_SESSION['id_projet']);
 
 include("../bdd/connexion.php");
 
 $results["error"] = false;
 $results["message"] = [];
 
-$id_chemin = $_POST['principe_de_securite'];
-$id_regle = $_POST['difficulte_traitement_de_securite'];
-
-$id_traitement_securite = "id_traitement_de_scurite";
+$id_chemin = $_POST['chemin'];
+echo $id_chemin;
+$id_mesure = "id_mesure";
+$id_traitement = "id_traitement";
+$nom_mesure = $_POST['nommesure'];
+$description_mesure = $_POST['descriptionmesure'];
+$dependance = $_POST['dependance'];
+$penetration = $_POST['penetration'];
+$maturite = $_POST['maturite'];
+$confiance = $_POST['confiance'];
+$id_projet = $_SESSION['id_projet'];
+// echo $dependance;
+// echo $penetration;
+// echo $maturite;
+// echo $confiance;
 $id_atelier = "5.b";
+$insere_mesure = $bdd->prepare('INSERT INTO mesure (id_mesure, nom_mesure, description_mesure) VALUES (?, ?, ?)');
+$recupere_mesure = $bdd->prepare('SELECT id_mesure FROM mesure WHERE nom_mesure = ? AND description_mesure = ?');
+$recupere_risque = $bdd->prepare('SELECT id_risque FROM chemin_d_attaque_strategique WHERE id_chemin_d_attaque_strategique = ?');
+$insere2 = $bdd->prepare('INSERT INTO comporter_2 (id_mesure, id_chemin_d_attaque_strategique, id_risque) VALUES (?,?,?)');
+$recupere_id_pp = $bdd->prepare('SELECT id_partie_prenante FROM chemin_d_attaque_strategique WHERE id_chemin_d_attaque_strategique = ?');
+$recupere_pp = $bdd->prepare('SELECT ponderation_dependance, ponderation_penetration, ponderation_maturite, ponderation_confiance FROM partie_prenante WHERE id_partie_prenante = ?');
+$insere_traitement = $bdd->prepare('INSERT INTO traitement_de_securite (id_traitement_de_securite, id_atelier, id_projet, id_mesure) VALUES (?, ?, ?, ?)');
 
-
-
-
-$recupereregle = $bdd->prepare("SELECT id_regle_affichage FROM regle WHERE id_regle = ?");
-$recuperechemin = $bdd->prepare("SELECT id_risque FROM chemin_d_attaque_strategique WHERE id_chemin_d_attaque_stategique = ?");
-
-$insere2 = $bdd->prepare('INSERT INTO `comporter_2`(`id_regle`, `id_regle_affichage`, `id_traitement_de_securite`) VALUES (?,?,?)');
-$insere3 = $bdd->prepare('INSERT INTO `comporter_3`(`id_regle`, `id_regle_affichage`, `id_chemin_d_attaque_stategique`, `id_risque`) VALUES (?,?,?,?)');
-
-
+$updatechemin = $bdd->prepare(
+  'UPDATE chemin_d_attaque_strategique
+  SET dependance_residuelle = ?,
+  penetration_residuelle = ?,
+  maturite_residuelle = ?,
+  confiance_residuelle = ?,
+  niveau_de_menace_residuelle = ?
+  WHERE id_chemin_d_attaque_strategique = ?
+  '
+);
 
 
 if ($results["error"] === false && isset($_POST['ajouterregle'])) {
   // $recupere->bindParam(1, $nom_valeur_metier);
   // $recupere->execute();
   // $id_valeur_metier = $recupere->fetch();
-  $insere->bindParam(1, $id_traitement_securite);
-  $insere->bindParam(2, $principe_securite);
-  $insere->bindParam(3, $difficulte);
-  $insere->bindParam(4, $cout);
-  $insere->bindParam(5, $date);
-  $insere->bindParam(6, $statut);
-  $insere->bindParam(7, $id_atelier);
-  $insere->execute();
+  $insere_mesure->bindParam(1, $id_mesure);
+  $insere_mesure->bindParam(2, $nom_mesure);
+  $insere_mesure->bindParam(3, $description_mesure);
+  $insere_mesure->execute();
 
-  $recuperechemin->bindParam(1, $id_chemin);
-  $recuperechemin->execute();
-  $id_risque = $recuperechemin->fetch();
+  $recupere_mesure->bindParam(1, $nom_mesure);
+  $recupere_mesure->bindParam(2, $description_mesure);
+  $recupere_mesure->execute();
+  $id_mesure = $recupere_mesure->fetch();
+  // echo $id_mesure[0];
 
-  $recupereregle->bindParam(1, $id_regle);
-  $recupereregle->execute();
-  $regle_affichage = $recupereregle->fetch();
+  $recupere_risque->bindParam(1, $id_chemin);
+  // echo $id_chemin;
+  $recupere_risque->execute();
+  $id_risque = $recupere_risque->fetch();
+  // echo $id_risque[0];
 
-  $insere2->bindParam(1, $id_regle);
-  $insere2->bindParam(2, $regle_affichage);
-  $insere2->bindParam(3, NULL);
+  $insere2->bindParam(1, $id_mesure[0]);
+  $insere2->bindParam(2, $id_chemin);
+  $insere2->bindParam(3, $id_risque[0]);
   $insere2->execute();
 
-  $insere3->bindParam(1, $id_regle);
-  $insere3->bindParam(2, $regle_affichage[0]);
-  $insere3->bindParam(3, $id_chemin);
-  $insere3->bindParam(4, $id_risque[0]);
+  //calcul menace residuelle
+  $recupere_id_pp->bindParam(1, $id_chemin);
+  $recupere_id_pp->execute();
+  $id_pp = $recupere_id_pp->fetch();
+  print_r($id_pp);
+  $recupere_pp->bindParam(1, $id_pp[0]);
+  $recupere_pp->execute();
+  $result_pp = $recupere_pp->fetch();
+  
+  // print_r($result_pp);
+  $ponderation_dependance = $result_pp[0];
+  $ponderation_penetration = $result_pp[1];
+  $ponderation_maturite = $result_pp[2];
+  $ponderation_confiance = $result_pp[3];
+  print $ponderation_dependance;
+  print $ponderation_penetration;
+  print $ponderation_maturite;
+  print $ponderation_confiance;
+  
+  $menace_residuelle = ($dependance*$ponderation_dependance * $penetration*$ponderation_penetration) / ($maturite*$ponderation_maturite * $confiance*$ponderation_confiance);
+  $updatechemin->bindParam(1, $dependance);
+  $updatechemin->bindParam(2, $penetration);
+  $updatechemin->bindParam(3, $maturite);
+  $updatechemin->bindParam(4, $confiance);
+  $updatechemin->bindParam(5, $menace_residuelle);
+  $updatechemin->bindParam(6, $id_chemin);
+  $updatechemin->execute();
+
+  $insere_traitement->bindParam(1, $id_traitement);
+  $insere_traitement->bindParam(2, $id_atelier);
+  $insere_traitement->bindparam(3, $id_projet);
+  $insere_traitement->bindParam(4, $id_mesure[0]);
+  $insere_traitement->execute();
 ?>
   <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
 <?php

@@ -1063,6 +1063,27 @@ h6 {
     margin: 1rem;
 }
 
+
+.cercle-vert {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #4AD991;
+}
+
+.cercle-rouge {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #FF6565;
+}
+
+.cercle-noir {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #000000;
+}
 /*------------------------------------------------------------------------------ */
 /*---------------------------------- Popup atelier 3--------------------------------- */
 

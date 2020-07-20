@@ -82,7 +82,8 @@ $.post("content/php/atelier2c/chart.php", function (data) {
                 beginAtZero: false,
                 reverse: true,
                 stepSize: 1,
-                max: 4
+                max: 4,
+                min: 1
             }
         },
         tooltips: {
