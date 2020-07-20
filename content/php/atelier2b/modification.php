@@ -55,6 +55,21 @@ if (!preg_match("/^$|^[a-zA-Z0-9éèàêâôùïüëç'\s-]{1,100}$/", $faits_ar
     $results["error"] = true;
     print "error";
 }
+// Verification des afaits d'armes
+if (!preg_match("/^[1-3]$/", $motivation)) {
+    $results["error"] = true;
+    print "error";
+}
+// Verification des afaits d'armes
+if (!preg_match("/^[1-3]$/", $ressources)) {
+    $results["error"] = true;
+    print "error";
+}
+// Verification des afaits d'armes
+if (!preg_match("/^[1-3]$/", $activite)) {
+    $results["error"] = true;
+    print "error";
+}
 
 if ($input["action"] === 'edit' && $results["error"] === false) {
 
