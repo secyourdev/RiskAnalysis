@@ -233,7 +233,6 @@ $.ajax({
             prj = lenght_projet;  
             grp_user = lenght_grp_user; 
             app = lenght_user;
-            bdd = 10;
             sleep(100).then(() => {compteur_anim();});
             modification_projet();
             suppression_projet();

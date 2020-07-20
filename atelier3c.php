@@ -1,15 +1,7 @@
 <?php
 session_start();
 
-//Connexion à la base de donnee
-try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-}
-
-catch(PDOException $e){
-    die('Erreur :'.$e->getMessage());
-}
+include("content/php/bdd/connexion.php");
 
 if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $getid = intval($_GET['id_utilisateur']);
@@ -596,6 +588,10 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                           <th>Nom mesure de sécurité</th>
                           <th>Description mesure de sécurité</th>
                           <th>Menace initiale</th>
+                          <th>Dépendance résiduelle</th>
+                          <th>Pénétration résiduelle</th>
+                          <th>Maturité résiduelle</th>
+                          <th>Confiance résiduelle</th>
                           <th>menace résiduelle</th>
                         </tr>
                       </thead>
@@ -610,6 +606,10 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <td>' . $row["nom_mesure"] . '</td>
                         <td>' . $row["description_mesure"] . '</td>
                         <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
+                        <td>' . $row["dependance_residuelle"] . '</td>
+                        <td>' . $row["penetration_residuelle"] . '</td>
+                        <td>' . $row["maturite_residuelle"] . '</td>
+                        <td>' . $row["confiance_residuelle"] . '</td>
                         <td>' . $row["niveau_de_menace_residuelle"] . '</td>
                         </tr>
                         ';
@@ -729,7 +729,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               <div class="row">
                 <div class=" col-6">
                   <div class="choix-valeur">
-                    <div>Dépendance</div>
+                    <div>Dépendance résduelle</div>
                     <div>
                       <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Motivation">
                         <label class="btn perso_checkbox shadow-none">
@@ -751,7 +751,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
 
                   <div class="choix-valeur">
-                    <div>Penetration</div>
+                    <div>Penetration résiduelle</div>
                     <div>
                       <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Ressources">
                         <label class="btn perso_checkbox shadow-none">
@@ -772,7 +772,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </div>
                 <div class=" col-6">
                   <div class="choix-valeur">
-                    <div>Maturité</div>
+                    <div>Maturité résiduelle</div>
                     <div>
 
                       <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Activité">
@@ -792,7 +792,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     </div>
                   </div>
                   <div class="choix-valeur">
-                    <div>Confiance</div>
+                    <div>Confiance résiduelle</div>
                     <div>
                       <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Choix">
                         <label class="btn perso_checkbox shadow-none">

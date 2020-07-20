@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
+include("../bdd/connexion_sqli.php");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -52,6 +52,21 @@ if (!preg_match("/^$|^[a-zA-Z0-9éèàêâôùïüëç'\s-]{1,100}$/", $arsenal_
 
 // Verification des afaits d'armes
 if (!preg_match("/^$|^[a-zA-Z0-9éèàêâôùïüëç'\s-]{1,100}$/", $faits_armes)) {
+    $results["error"] = true;
+    print "error";
+}
+// Verification des afaits d'armes
+if (!preg_match("/^[1-3]$/", $motivation)) {
+    $results["error"] = true;
+    print "error";
+}
+// Verification des afaits d'armes
+if (!preg_match("/^[1-3]$/", $ressources)) {
+    $results["error"] = true;
+    print "error";
+}
+// Verification des afaits d'armes
+if (!preg_match("/^[1-3]$/", $activite)) {
     $results["error"] = true;
     print "error";
 }

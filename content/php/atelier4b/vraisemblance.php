@@ -1,16 +1,9 @@
 <?php
 session_start();
 $getid_projet = $_SESSION['id_projet'];
-try {
-    $bdd = new PDO(
-        'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
-        'ebios-rm',
-        'hLLFL\bsF|&[8=m8q-$j',
-        array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-    );
-} catch (PDOException $e) {
-    die('Erreur :' . $e->getMessage());
-}
+
+include("../bdd/connexion.php");
+
 $get_vraisemblance = $bdd->prepare("SELECT echelle_vraisemblance FROM echelle NATURAL JOIN projet WHERE id_projet = ?");
 
 

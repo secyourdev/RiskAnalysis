@@ -1,6 +1,6 @@
 <?php
 $getid_projet = intval($_GET['id_projet']);
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
+include("content/php/bdd/connexion_sqli.php");
 
 //affichage tableau de rappel
 $query_evenement_redoutes = "SELECT * FROM evenement_redoute INNER JOIN valeur_metier on evenement_redoute.id_valeur_metier = valeur_metier.id_valeur_metier WHERE valeur_metier.id_projet = $getid_projet";
@@ -48,7 +48,7 @@ $result_chemin_d_attaque = mysqli_query($connect, $query_chemin_d_attaque);
 
 
 //modal scenario strat
-$query_id_source_de_risque = "SELECT id_source_de_risque, description_source_de_risque, objectif_vise FROM SROV WHERE id_projet = $getid_projet ORDER BY id_source_de_risque ASC";
+$query_id_source_de_risque = "SELECT id_source_de_risque, profil_de_l_attaquant_source_de_risque, objectif_vise FROM SROV WHERE id_projet = $getid_projet ORDER BY id_source_de_risque ASC";
 $query_id_evenement_redoute = "SELECT id_evenement_redoute, nom_evenement_redoute FROM evenement_redoute WHERE id_projet = $getid_projet ORDER BY id_evenement_redoute ASC";
 $query_id_partie_prenante = "SELECT id_partie_prenante, nom_partie_prenante FROM partie_prenante WHERE id_projet = $getid_projet ORDER BY id_partie_prenante ASC";
 

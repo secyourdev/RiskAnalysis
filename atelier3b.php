@@ -1,17 +1,7 @@
 <?php
 session_start();
 
-//Connexion à la base de donnee
-try {
-  $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
-    'ebios-rm',
-    'hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-  );
-} catch (PDOException $e) {
-  die('Erreur :' . $e->getMessage());
-}
+include("content/php/bdd/connexion.php");
 
 if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
   $getid = intval($_GET['id_utilisateur']);
@@ -777,7 +767,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         while ($row = mysqli_fetch_array($result_id_source_de_risque)) //selection.php
                         {
                           echo '
-                        <option id="id_source_de_risque" value="' . $row["id_source_de_risque"] . '">' . $row["description_source_de_risque"] . ' | ' . $row["objectif_vise"] . '</option>
+                        <option id="id_source_de_risque" value="' . $row["id_source_de_risque"] . '">' . $row["profil_de_l_attaquant_source_de_risque"] . ' | ' . $row["objectif_vise"] . '</option>
                         ';
                         }
                         ?>

@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
+include("content/php/bdd/connexion_sqli.php");
 $query_user = "SELECT id_utilisateur,nom,prenom FROM utilisateur ORDER BY id_utilisateur ASC";
 $result_user = mysqli_query($connect, $query_user);
 

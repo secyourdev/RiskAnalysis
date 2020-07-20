@@ -1,17 +1,7 @@
 <?php
 session_start();
 
-//Connexion à la base de donnee
-try {
-  $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
-    'ebios-rm',
-    'hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-  );
-} catch (PDOException $e) {
-  die('Erreur :' . $e->getMessage());
-}
+include("content/php/bdd/connexion.php");
 
 if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
   $getid = intval($_GET['id_utilisateur']);
@@ -660,9 +650,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                 <div class="modal-body perso_modal_body">
 
                   <div class="panel panel-default">
-                    <div class="panel-heading">
-                      <h3 class="panel-title">Enter Data</h3>
-                    </div>
+
                     <div class="panel-body">
                       <span id="success_message"></span>
                       <form method="post" id="sample_form">

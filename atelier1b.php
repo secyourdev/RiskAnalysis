@@ -1,15 +1,7 @@
 <?php
 session_start();
 
-//Connexion à la base de donnee
-try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-}
-
-catch(PDOException $e){
-    die('Erreur :'.$e->getMessage());
-}
+include("content/php/bdd/connexion.php");
 
 if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $getid = intval($_GET['id_utilisateur']);
@@ -800,7 +792,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <!-- VALEUR METIER -->
                 <div class="form-group">
                   <label for="Selectnom_valeur_metier">Valeur métier</label>
-                  <select class="form-control" name="valeur_metier" id="Selectnom_valeur_metier">
+                  <select class="form-control" name="valeur_metier" id="Selectnom_valeur_metier" required>
                     <option value="" selected>...</option>
                     <?php
                     while ($row = mysqli_fetch_array($resultvm)) {
@@ -820,7 +812,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <!-- BIEN SUPPORT -->
                 <div class="form-group">
                   <label for="Selectnom_bien_support">Bien support</label>
-                  <select class="form-control" name="bien_support" id="Selectnom_bien_support">
+                  <select class="form-control" name="bien_support" id="Selectnom_bien_support" required>
                     <option value="" selected>...</option>
                     <?php
                     while ($row = mysqli_fetch_array($resultbien)) {
