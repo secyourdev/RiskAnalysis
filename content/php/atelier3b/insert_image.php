@@ -31,24 +31,26 @@ if (isset($_POST['file_submit'])) {
         // print $id_scenario;
         $sql = "UPDATE scenario_strategique SET image = '$image' WHERE id_projet = $getid_projet AND id_atelier = '3.b' AND id_scenario_strategique = $id_scenario";
         // print $sql;
+        $header = 'Location: ../../../atelier-3b&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet'];
     }
     if (isset($_POST['select_nom_scenario_operationnel'])) {
         // print 'select_nom_scenario_operationnel séléctionné, id: ';
         $id_scenario = $_POST['select_nom_scenario_operationnel'];
         // print $id_scenario;
-        $sql = "UPDATE scenario_strategique SET image = '$image' WHERE id_projet = $getid_projet AND id_atelier = '4.a' AND id_scenario_operationnel = $id_scenario";
-        // print $sql;
+        $sql = "UPDATE scenario_operationnel SET image = '$image' WHERE id_projet = $getid_projet AND id_atelier = '4.a' AND id_scenario_operationnel = $id_scenario";
+        $header = 'Location: ../../../atelier-4a&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet'];
+        print $sql;
     }
 
     //if selection du scénario a été faite
     if (isset($id_scenario)) {
 
-        // print $sql;
+        print $sql;
         // execute query
         mysqli_query($bdd, $sql);
 
         if (move_uploaded_file($_FILES['inpFile']['tmp_name'], $target)) {
-            header('Location: ../../../atelier-3b&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet']);
+            header($header);
             $msg = "Image uploadée avec succès";
             print $msg;
         } else {
