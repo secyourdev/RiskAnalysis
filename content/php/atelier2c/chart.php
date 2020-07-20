@@ -3,7 +3,7 @@ session_start();
 $getid_projet = $_SESSION['id_projet'];
 header('Content-Type: application/json');
 
-include("content/php/bdd/connexion_sqli.php");
+include("../bdd/connexion_sqli.php");
 
 $query_SROV = "SELECT description_source_de_risque, objectif_vise, pertinence, choix_source_de_risque FROM SROV WHERE id_projet = $getid_projet ORDER BY id_source_de_risque";
 

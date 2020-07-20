@@ -47,7 +47,7 @@ if (isset($_POST['file_submit'])) {
 
         print $sql;
         // execute query
-        mysqli_query($bdd, $sql);
+        mysqli_query($connect, $sql);
 
         if (move_uploaded_file($_FILES['inpFile']['tmp_name'], $target)) {
             header($header);
