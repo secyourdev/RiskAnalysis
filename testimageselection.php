@@ -3,7 +3,7 @@ $getid_projet = intval($_GET['id_projet']);
 $id_atelier = '3.b';
 
 //Connexion à la base de donnee
-$bdd = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
+include("content/php/bdd/connexion_sqli.php");
 
 $query = "SELECT * FROM scenario_operationnel WHERE id_projet = $getid_projet";
 print $query;

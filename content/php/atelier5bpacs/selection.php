@@ -1,7 +1,6 @@
 <?php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
+include("content/php/bdd/connexion_sqli.php");
 $query = "SELECT * FROM traitement_de_securite";
-
 
 $result = mysqli_query($connect, $query);
 

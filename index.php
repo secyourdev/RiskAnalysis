@@ -1,15 +1,7 @@
 <?php
 session_start();
 
-//Connexion à la base de donnee
-try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-}
-
-catch(PDOException $e){
-    die('Erreur :'.$e->getMessage());
-}
+include("content/php/bdd/connexion.php");
 
 if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $getid = intval($_GET['id_utilisateur']);
@@ -429,8 +421,19 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     </div>
 
 
-                    <div id="bdd_card"> 
-                        <a href="content/php/sauvegarde_bdd/sauvegarde.php">Sauvegarder la base de données</a>       
+                    <div id="bdd_card" class="text-center"> 
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0">Base de données</h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#config_bdd" >Configurer la base de données</button></br>
+                                <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none">Sauvegarder la base de données</button></br>
+                                <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none">Importer la base de données</button></br>  
+                            </div>
+                        </div>     
                     </div>
 
                 </div>
@@ -791,6 +794,28 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                 </div>
                             </fieldset>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-------------------------------------------------------------------------------------------------------------- 
+        ---------------------------------------------- modal config bdd ------------------------------------------------
+        ---------------------------------------------------------------------------------------------------------------->
+        <div class="modal fade" id="config_bdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Configuration de la base de données</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body perso_modal_body">
+                        <div class="modal-body" id="msg_config_bdd">
+                            Veuillez modifier les fichiers "content\php\bdd\connexion.php" et "content\php\bdd\connexion_sqli.php" avec votre adresse hôte MySQL, l'identifiant utilisateur, le mot de passe et le nom de la table !
+                        </div>
                     </div>
                 </div>
             </div>

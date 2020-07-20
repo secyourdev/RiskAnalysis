@@ -2,7 +2,7 @@
 
 header('Content-Type: application/json');
 
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v9");
+include("content/php/bdd/connexion_sqli.php");
 
 $query_interne3a = "SELECT id_partie_prenante,dependance_partie_prenante,penetration_partie_prenante,maturite_partie_prenante,confiance_partie_prenante FROM partie_prenante WHERE type = 'Interne3a' ORDER BY id_partie_prenante";
 $query_externe3a = "SELECT id_partie_prenante,dependance_partie_prenante,penetration_partie_prenante,maturite_partie_prenante,confiance_partie_prenante FROM partie_prenante WHERE type = 'Externe3a' ORDER BY id_partie_prenante";
