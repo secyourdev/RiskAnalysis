@@ -8,6 +8,8 @@ if (document.getElementById('select_nom_scenario_strategique')!=null){
     console.log('select_nom_scenario_strategique');
     
     select_scenar = document.getElementById('select_nom_scenario_strategique');
+    console.log(select_scenar.value);
+    
 }
     
 select_scenar.addEventListener('change', (event) => {
@@ -22,11 +24,11 @@ select_scenar.addEventListener('change', (event) => {
         success: function (data) {
             console.log("je suis le ajax");
             console.log('data: ' + data);
-            console.log((data != null));
+            console.log((data != ""));
 
             // document.getElementById('ecrire_ecart').innerHTML = data;
             // $('#editable_table_ecart tbody').append(data);
-            if (data != null) {
+            if (data != "") {
                 const inpFile = document.getElementById("inpFile");
                 const previewContainer = document.getElementById("imagePreview");
                 const previewImage = previewContainer.querySelector(".image-preview__image");
