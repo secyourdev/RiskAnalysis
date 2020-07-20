@@ -2,7 +2,7 @@
 session_start();
 $getid_projet = $_SESSION['id_projet'];
 
-include("content/php/bdd/connexion_sqli.php");
+include("../bdd/connexion_sqli.php");
 
 $input = filter_input_array(INPUT_POST);
 

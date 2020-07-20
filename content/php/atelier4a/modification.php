@@ -1,6 +1,5 @@
 <?php
-include("content/php/bdd/connexion_sqli.php");
-
+include("../bdd/connexion_sqli.php");
 $input = filter_input_array(INPUT_POST);
 
 // $id_risque = mysqli_real_escape_string($connect, $input['id_risque']);

@@ -4,7 +4,7 @@ session_start();
 $getid_projet = $_SESSION['id_projet'];
 
 //Connexion à la base de donnee
-include("content/php/bdd/connexion_sqli.php");
+include("../bdd/connexion_sqli.php");
 
 // Initialize message variable
 $msg = "";

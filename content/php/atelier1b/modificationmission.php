@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include("content/php/bdd/connexion_sqli.php");
+include("../bdd/connexion_sqli.php");
 
 $input = filter_input_array(INPUT_POST);
 

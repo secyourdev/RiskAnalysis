@@ -2,6 +2,7 @@
 $getid_projet = intval($_GET['id_projet']);
 $id_atelier = '3.a';
 include("content/php/bdd/connexion_sqli.php");
+
 $query = "SELECT * FROM partie_prenante WHERE id_projet = $getid_projet AND id_atelier = '$id_atelier'";
 
 $query_categorie_partie_prenante = "SELECT categorie_partie_prenante FROM partie_prenante WHERE id_projet = $getid_projet";

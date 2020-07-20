@@ -121,19 +121,19 @@ setSortTable('editable_table_chemin_d_attaque');
 OURJQUERYFN.setFilterTable("#rechercher_chemin_d_attaque","#editable_table_chemin_d_attaque tbody tr")
 
 /*------------------ AJOUT DE LA VERIFICATION DES TABLEAUX ------------------*/
-sleep(100).then(() => {
-    for(let i=0;i<editable_table_scenario_strategique.rows.length-1;i++){
-        j=i+1;
-        button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table_scenario_strategique'+','+'5'+')')
-    }
-});
+// sleep(100).then(() => {
+//     for(let i=0;i<editable_table_scenario_strategique.rows.length-1;i++){
+//         j=i+1;
+//         button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table_scenario_strategique'+','+'5'+')')
+//     }
+// });
 
-sleep(100).then(() => {
-    for(let i=editable_table_scenario_strategique.rows.length-1;i<editable_table_scenario_strategique.rows.length+editable_table_chemin_d_attaque.rows.length-2;i++){
-        k++;
-        button[i].setAttribute('onclick','tableau_verification('+k+','+'editable_table_SROV'+','+'5'+')')
-    }
-});
+// sleep(100).then(() => {
+//     for(let i=editable_table_scenario_strategique.rows.length-1;i<editable_table_scenario_strategique.rows.length+editable_table_chemin_d_attaque.rows.length-2;i++){
+//         k++;
+//         button[i].setAttribute('onclick','tableau_verification('+k+','+'editable_table_SROV'+','+'5'+')')
+//     }
+// });
 
 // sleep(100).then(() => {
 //     for(let i=editable_table.rows.length+editable_table_SROV.rows.length-2;i<editable_table.rows.length+editable_table_SROV.rows.length+editable_table_scenario_strategique.rows.length-3;i++){

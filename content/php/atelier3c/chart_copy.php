@@ -2,7 +2,7 @@
 
 header('Content-Type: application/json');
 
-include("content/php/bdd/connexion_sqli.php");
+include("../bdd/connexion_sqli.php");
 
 $query_interne3a = "SELECT id_partie_prenante,dependance_partie_prenante,penetration_partie_prenante,maturite_partie_prenante,confiance_partie_prenante FROM partie_prenante WHERE type = 'Interne' ORDER BY id_partie_prenante";
 $query_externe3a = "SELECT id_partie_prenante,dependance_partie_prenante,penetration_partie_prenante,maturite_partie_prenante,confiance_partie_prenante FROM partie_prenante WHERE type = 'Externe' ORDER BY id_partie_prenante";
