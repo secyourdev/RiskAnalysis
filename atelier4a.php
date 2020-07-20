@@ -667,7 +667,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <!--text-->
 
                         <span id="success_message"></span>
-                        <form method="POST" id="sample_form" action="content\php\atelier4a\insert_image.php" enctype="multipart/form-data">
+                        <form method="POST" id="sample_form" action="content\php\atelier3b\insert_image.php" enctype="multipart/form-data">
 
                           <label for="select_nom_scenario_operationnel">Nom du scénario opérationnel</label>
                           <select class="form-control" name="select_nom_scenario_operationnel" id="select_nom_scenario_operationnel">
@@ -678,7 +678,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             while ($row = mysqli_fetch_array($result_scenario_op)) //selection.php
                             {
                               // print_r($row);
-                              echo '<option id="scenario_operationnel" value="' . $row['id_scenario_operationnel'] . '">' . $row['nom_scenario_operationnel'] . '</option>';
+                              echo '<option id="scenario_operationnel" value="' . $row['id_scenario_operationnel'] . '">' . $row['description_scenario_operationnel'] . '</option>';
                             }
                             ?>
                           </select>

@@ -1,28 +1,29 @@
 var select_scenar = '';
+
+if (document.getElementById('select_nom_scenario_strategique')!=null){
+    console.log('select_nom_scenario_strategique');
+    select_scenar = document.getElementById('select_nom_scenario_strategique');
+    $url = 'content/php/atelier3b/affichage_image.php';
+}
 if (document.getElementById('select_nom_scenario_operationnel')!=null){
     console.log('select_nom_scenario_operationnel');
     select_scenar = document.getElementById('select_nom_scenario_operationnel');
+    $url = 'content/php/atelier4a/affichage_image.php';
 }
-    
-if (document.getElementById('select_nom_scenario_strategique')!=null){
-    console.log('select_nom_scenario_strategique');
-    
-    select_scenar = document.getElementById('select_nom_scenario_strategique');
-    console.log(select_scenar.value);
-    
-}
-    
+
 select_scenar.addEventListener('change', (event) => {
     //   const result = document.querySelector('.result');
     //   console.log(`Valeur  ${select_scenar.value}`);
+    console.log($url);
     $.ajax({
-        url: 'content/php/atelier3b/affichage_image.php',
+        url: $url,
         type: 'POST',
         data: {
             id_scenario: select_scenar.value
         },
         success: function (data) {
             console.log("je suis le ajax");
+            console.log(select_scenar.value);
             console.log('data: ' + data);
             console.log((data != ""));
 
@@ -37,11 +38,14 @@ select_scenar.addEventListener('change', (event) => {
                 previewDefaultText.style.display = "none";
                 previewImage.style.display = "block";
                 previewContainer.style.border = "none";
-
                 previewImage.setAttribute("src", 'image/' + data);
 
             } else {
                 console.log("nope");
+                previewDefaultText.style.display = null;
+                previewImage.style.display = null;
+                previewContainer.style.border = null;
+                previewImage.setAttribute("src", "");
 
             }
 

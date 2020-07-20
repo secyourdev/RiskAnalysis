@@ -10,38 +10,53 @@ $bdd = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[
 $msg = "";
 
 
-// print "bonjour";
-// print_r($_POST);
+print "bonjour";
+print_r($_POST); //ce qui est reçu du ajax
 
-print($_POST['nom_scenario_strategique']);
 
 // If upload button is clicked ...
-if (isset($_POST['nom_scenario_strategique'])) {
-    print 'nom_scenario_strategique séléctionné, id: ';
-    $id_scenario_strategique = $_POST['nom_scenario_strategique'];
-    print $id_scenario_strategique;
+if (isset($_POST['file_submit'])) {
+    print 'le boutton file_submit a été pressé. ';
+
+    // Get image name
+    $image = $_FILES['inpFile']['name'];
+    // image file directory
+    $target = "../../../image/" . basename($image);
 
 
-    if (isset($_POST['file_submit'])) {
-        print 'le boutton file_submit a été pressé. ';
+    //if selection d'un scénario stratégique ou operationnel
+    if (isset($_POST['select_nom_scenario_strategique'])) {
+        // print 'select_nom_scenario_strategique séléctionné, id: ';
+        $id_scenario = $_POST['select_nom_scenario_strategique'];
+        // print $id_scenario;
+        $sql = "UPDATE scenario_strategique SET image = '$image' WHERE id_projet = $getid_projet AND id_atelier = '3.b' AND id_scenario_strategique = $id_scenario";
+        // print $sql;
+    }
+    if (isset($_POST['select_nom_scenario_operationnel'])) {
+        // print 'select_nom_scenario_operationnel séléctionné, id: ';
+        $id_scenario = $_POST['select_nom_scenario_operationnel'];
+        // print $id_scenario;
+        $sql = "UPDATE scenario_strategique SET image = '$image' WHERE id_projet = $getid_projet AND id_atelier = '4.a' AND id_scenario_operationnel = $id_scenario";
+        // print $sql;
+    }
 
+    //if selection du scénario a été faite
+    if (isset($id_scenario)) {
 
-
-        // Get image name
-        $image = $_FILES['inpFile']['name'];
-        // image file directory
-        $target = "../../../image/" . basename($image);
-
-        $sql = "UPDATE scenario_strategique SET image = '$image' WHERE id_projet = $getid_projet AND id_atelier = '3.b' AND id_scenario_strategique = $id_scenario_strategique";
-        print $sql;
+        // print $sql;
         // execute query
         mysqli_query($bdd, $sql);
 
         if (move_uploaded_file($_FILES['inpFile']['tmp_name'], $target)) {
             header('Location: ../../../atelier-3b&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet']);
-            $msg = "Image uploaded successfully";
+            $msg = "Image uploadée avec succès";
+            print $msg;
         } else {
-            $msg = "Failed to upload image";
+            $msg = "Erreur dans l'upload de l'image";
+            print $msg;
         }
+
+    }else {
+        print "erreur: aucun scénario n'a été choisi";
     }
 }

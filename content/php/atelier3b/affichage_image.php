@@ -24,7 +24,6 @@ $query->bindParam(1, $getid_projet);
 $query->bindParam(2, $id_scenario);
 $query->execute();
 $nomimage = $query->fetch();
-// print_r($nomimage);
 
 
 
