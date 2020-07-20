@@ -67,9 +67,9 @@ if (typeof jQuery === 'undefined') {
                   }
               },
               onDraw: function() { return; },
-              onSuccess: function () { return; },
+              onSuccess: function () { /* location.reload(); */ return; },
               onFail: function() { return; },
-              onAlways: function() {/*location.reload();*/  return;},
+              onAlways: function() {location.reload();  return;},
               onAjax: function() { return; }
           };
   

@@ -660,9 +660,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                 <div class="modal-body perso_modal_body">
 
                   <div class="panel panel-default">
-                    <div class="panel-heading">
-                      <h3 class="panel-title">Enter Data</h3>
-                    </div>
+
                     <div class="panel-body">
                       <span id="success_message"></span>
                       <form method="post" id="sample_form">

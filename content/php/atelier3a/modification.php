@@ -52,7 +52,7 @@ if ($input["action"] === 'delete') {
     "DELETE FROM partie_prenante 
     WHERE id_partie_prenante = '" . $input["id_partie_prenante"] . "'
     AND id_projet = $getid_projet
-    AND id_atelier = $id_atelier
+    AND id_atelier = '$id_atelier'
     ";
     mysqli_query($connect, $query);
 }

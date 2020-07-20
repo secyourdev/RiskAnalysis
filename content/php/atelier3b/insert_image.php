@@ -10,10 +10,10 @@ $bdd = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[
 $msg = "";
 
 
-print "bonjour";
-print_r($_POST);
+// print "bonjour";
+// print_r($_POST);
 
-
+print($_POST['nom_scenario_strategique']);
 
 // If upload button is clicked ...
 if (isset($_POST['nom_scenario_strategique'])) {
