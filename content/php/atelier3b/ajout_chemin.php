@@ -33,7 +33,7 @@ WHERE nom_chemin_d_attaque_strategique = ?
 AND  id_risque = ?');
 
 $insereope = $bdd->prepare(
-  'INSERT INTO V_scenario_operationnel
+  'INSERT INTO U_scenario_operationnel
   (id_scenario_operationnel, description_scenario_operationnel, vraisemblance, id_atelier, id_chemin_d_attaque_strategique, id_risque, id_projet)
   VALUES
   (?, NULL, NULL, ?, ?, ?, ?)'

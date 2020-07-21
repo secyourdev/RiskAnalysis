@@ -1,9 +1,9 @@
 <?php
 include("../bdd/connexion.php");
 
-$query = $bdd->prepare("SELECT * FROM W_mode_operatoire INNER JOIN V_scenario_operationnel
-ON W_mode_operatoire.id_scenario_operationnel = V_scenario_operationnel.id_scenario_operationnel
-WHERE V_scenario_operationnel.id_scenario_operationnel = ?");
+$query = $bdd->prepare("SELECT * FROM W_mode_operatoire INNER JOIN U_scenario_operationnel
+ON W_mode_operatoire.id_scenario_operationnel = U_scenario_operationnel.id_scenario_operationnel
+WHERE U_scenario_operationnel.id_scenario_operationnel = ?");
 
 if(isset($_POST['id_scenar'])){
     $id_scenar = $_POST['id_scenar'];
