@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 include("content/php/bdd/connexion.php");
+=======
+// include("../bdd/connexion.php");
+>>>>>>> origin/Anthony
 
 $results["error"] = false;
 $results["message"] = [];

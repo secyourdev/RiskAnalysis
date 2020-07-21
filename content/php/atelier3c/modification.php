@@ -47,7 +47,7 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
     $ponderation_maturite = $row["ponderation_maturite"];
     $ponderation_confiance = $row["ponderation_confiance"];
     
-    $menace_residuelle = ($dependance_residuelle*$ponderation_dependance * $penetration_residuelle*$ponderation_penetration) / ($maturite_residuelle*$ponderation_maturite * $confiance_residuelle*$ponderation_confiance);
+    $menace_residuelle = round(($dependance_residuelle*$ponderation_dependance * $penetration_residuelle*$ponderation_penetration) / ($maturite_residuelle*$ponderation_maturite * $confiance_residuelle*$ponderation_confiance), 2);
     
     //update les valeurs résiduelles du chemin
     $updatechemin = "

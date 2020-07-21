@@ -128,7 +128,7 @@ if ($results["error"] === false && isset($_POST['validermesure'])) {
   echo $ponderation_penetration;
   echo $ponderation_maturite;
   echo $ponderation_confiance;
-  $menace_residuelle = ($dependance*$ponderation_dependance * $penetration*$ponderation_penetration) / ($maturite*$ponderation_maturite * $confiance*$ponderation_confiance);
+  $menace_residuelle = round(($dependance*$ponderation_dependance * $penetration*$ponderation_penetration) / ($maturite*$ponderation_maturite * $confiance*$ponderation_confiance), 2);
   $updatechemin->bindParam(1, $dependance);
   $updatechemin->bindParam(2, $penetration);
   $updatechemin->bindParam(3, $maturite);
