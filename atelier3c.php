@@ -630,7 +630,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                           <th>Pénétration résiduelle</th>
                           <th>Maturité résiduelle</th>
                           <th>Confiance résiduelle</th>
-                          <th>menace résiduelle</th>
+                          <th>Menace résiduelle</th>
                         </tr>
                       </thead>
                       <tbody>

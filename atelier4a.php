@@ -288,7 +288,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     </g>
                   </svg>
                 </i>
-                <span>Scénarios opérationnels</span>
+                <span class="nom_atelier">Scénarios opérationnels</span>
               </a>
               <div id="Atelier4" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
@@ -497,11 +497,9 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div class="row fondu">
                   <!-- Area Card -->
-                  <div class="col-xl col-lg">
+                  <div class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">

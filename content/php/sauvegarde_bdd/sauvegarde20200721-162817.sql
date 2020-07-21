@@ -1,5 +1,5 @@
 --
--- sauvegarde20200721-154757.sql.gz
+-- sauvegarde20200721-162817.sql.gz
 
 
 DROP TABLE IF EXISTS `A_utilisateur`;
@@ -60,7 +60,7 @@ CREATE TABLE `D_echelle` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `D_echelle` VALUES ('1','Standard','5','5');
-INSERT INTO `D_echelle` VALUES ('2','CarlosEchelle','4','4');
+INSERT INTO `D_echelle` VALUES ('2','CarlosEchelle','5','4');
 
 
 DROP TABLE IF EXISTS `E_niveau`;
@@ -992,10 +992,10 @@ CREATE TABLE `V_scenario_operationnel` (
   CONSTRAINT `V_scenario_operationnel_T_chemin_d_attaque_strategique0_FK` FOREIGN KEY (`id_chemin_d_attaque_strategique`, `id_risque`) REFERENCES `T_chemin_d_attaque_strategique` (`id_chemin_d_attaque_strategique`, `id_risque`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `V_scenario_operationnel` VALUES ('16','','Scenarun','3','couchédesoleil.png','4.a','15','R1','1');
+INSERT INTO `V_scenario_operationnel` VALUES ('16','','Scenarun','1','couchédesoleil.png','4.a','15','R1','1');
 INSERT INTO `V_scenario_operationnel` VALUES ('17','','Scenardeux','4','Capture.PNG','4.a','16','R2','1');
 INSERT INTO `V_scenario_operationnel` VALUES ('21','','TotoSO',NULL,'hacker_cyber_crime-512.png','4.a','20','eee','13');
-INSERT INTO `V_scenario_operationnel` VALUES ('24','','Scenartrois','1',NULL,'4.a','23','R3','1');
+INSERT INTO `V_scenario_operationnel` VALUES ('24','','Scenartrois','1','Capture.PNG','4.a','23','R3','1');
 
 
 DROP TABLE IF EXISTS `W_mode_operatoire`;
@@ -1006,11 +1006,12 @@ CREATE TABLE `W_mode_operatoire` (
   PRIMARY KEY (`id_mode_operatoire`),
   KEY `W_mode_operatoire_V_scenario_operationnel_FK` (`id_scenario_operationnel`),
   CONSTRAINT `W_mode_operatoire_V_scenario_operationnel_FK` FOREIGN KEY (`id_scenario_operationnel`) REFERENCES `V_scenario_operationnel` (`id_scenario_operationnel`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `W_mode_operatoire` VALUES ('3','a','16');
 INSERT INTO `W_mode_operatoire` VALUES ('4','b','17');
 INSERT INTO `W_mode_operatoire` VALUES ('5','Sacréé scénario','21');
+INSERT INTO `W_mode_operatoire` VALUES ('6','c','24');
 
 
 DROP TABLE IF EXISTS `X_revaluation_du_risque`;

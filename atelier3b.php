@@ -615,7 +615,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <th>Nom du scénario strategique</th>
                                 <th>Source de risque / Objectif visé</th>
                                 <th>Nom de l'événement redouté</th>
-                                <th>niveau de gravite</th>
+                                <th>Niveau de gravite</th>
                               </tr>
                             </thead>
                             <tbody>
