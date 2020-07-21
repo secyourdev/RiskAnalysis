@@ -4,7 +4,8 @@
  *
  * @package	BackupMySQL
  * @author	Benoit Asselin <contact@ab-d.fr>
- * @version	backup.php, 2013/01/13
+ * @author 	Modified by SecYourDev 
+ * @version	backup.php, 2013/01/13, 21/07/2020
  * @link	http://www.ab-d.fr/
  *
  */
@@ -253,7 +254,7 @@ class BackupMySQL extends mysqli {
 new BackupMySQL(array(
 	'username' => 'ebios-rm',
 	'passwd' => 'hLLFL\bsF|&[8=m8q-$j',
-	'dbname' => 'ebios-rm_v21',
+	'dbname' => 'ebios-rm_v22',
 	'host' => 'mysql-ebios-rm.alwaysdata.net',
 	'nbr_fichiers' => 2,
 	'nom_fichier' => 'sauvegarde'
