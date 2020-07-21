@@ -17,7 +17,7 @@ function passgen1($nbChar) {
 
 $mot_de_passe = passgen1(20);
 
-$user_info = $bdd->prepare("SELECT prenom,email FROM utilisateur where id_utilisateur=?");
+$user_info = $bdd->prepare("SELECT prenom,email FROM A_utilisateur where id_utilisateur=?");
 $user_info->bindParam(1, $id_utilisateur);
 $user_info->execute();
 $resultat = $user_info->fetch();
@@ -42,7 +42,7 @@ if (mail($email, $objet, $message, $headers)) {
 $mot_de_passe = password_hash($mot_de_passe, PASSWORD_BCRYPT);
 
 
-$update_mdp = $bdd->prepare("UPDATE utilisateur SET mot_de_passe = ? WHERE id_utilisateur=?");
+$update_mdp = $bdd->prepare("UPDATE A_utilisateur SET mot_de_passe = ? WHERE id_utilisateur=?");
 $update_mdp->bindParam(1, $mot_de_passe);
 $update_mdp->bindParam(2, $id_utilisateur);
 $update_mdp->execute();

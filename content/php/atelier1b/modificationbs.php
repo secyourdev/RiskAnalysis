@@ -26,7 +26,7 @@ if($input["action"] === 'edit'){
 
     if($results["error"] === false){
         $querybs = 
-        "UPDATE bien_support 
+        "UPDATE K_bien_support 
         SET nom_bien_support = '".$nom_bien_support."', 
         description_bien_support = '".$description_bien_support."'
         WHERE id_bien_support = '".$input["id_bien_support"]. "'
@@ -39,7 +39,7 @@ if($input["action"] === 'edit'){
 
 if($input["action"] === 'delete'){
     $query = 
-    "DELETE FROM bien_support 
+    "DELETE FROM K_bien_support 
     WHERE id_bien_support = '".$input["id_bien_support"]. "'
     AND id_atelier = '" . $id_atelier . "'
     AND id_projet = " . $id_projet . "

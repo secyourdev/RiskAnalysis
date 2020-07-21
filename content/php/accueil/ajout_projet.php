@@ -10,7 +10,7 @@ include("../bdd/connexion.php");
   $echelle='1';
   $nom_grp_utilisateur=$_POST['nom_grp_utilisateur'];
 
-  $insereprojet = $bdd->prepare('INSERT INTO `projet`(`nom_projet`, `description_projet`, `id_echelle`, `id_grp_utilisateur`) VALUES (?,?,?,?)');
+  $insereprojet = $bdd->prepare('INSERT INTO `F_projet`(`nom_projet`, `description_projet`, `id_echelle`, `id_grp_utilisateur`) VALUES (?,?,?,?)');
 
   // Verification du nom du projet
     if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_etude)){
@@ -31,7 +31,7 @@ include("../bdd/connexion.php");
     }
 
     if ($results["error"] === false && isset($_POST['ajouter_projet'])){
-      $affiche_grp_user = $bdd->prepare("SELECT id_grp_utilisateur FROM grp_utilisateur WHERE nom_grp_utilisateur = ?");
+      $affiche_grp_user = $bdd->prepare("SELECT id_grp_utilisateur FROM B_grp_utilisateur WHERE nom_grp_utilisateur = ?");
       $affiche_grp_user->bindParam(1, $nom_grp_utilisateur);
       $affiche_grp_user->execute();
       $resultat = $affiche_grp_user->fetch();
@@ -42,7 +42,7 @@ include("../bdd/connexion.php");
       $insereprojet->bindParam(4, $resultat[0]);
       $insereprojet->execute();
 
-      $recupereprojet = $bdd->prepare("SELECT id_projet FROM projet WHERE nom_projet=? AND description_projet=?");
+      $recupereprojet = $bdd->prepare("SELECT id_projet FROM F_projet WHERE nom_projet=? AND description_projet=?");
       $recupereprojet->bindParam(1, $nom_etude);
       $recupereprojet->bindParam(2, $description_etude);
       $recupereprojet->execute();
@@ -65,7 +65,7 @@ include("../bdd/connexion.php");
       $atelier5b = '5.b';
       $atelier5c = '5.c';
       $droit = 'Réalisation';
-      $insertutilisateur = $bdd->prepare('INSERT INTO `RACI`(`id_projet`, `id_utilisateur`, `id_atelier`, `ecriture`) VALUES (?,?,?,?)');
+      $insertutilisateur = $bdd->prepare('INSERT INTO `H_RACI`(`id_projet`, `id_utilisateur`, `id_atelier`, `ecriture`) VALUES (?,?,?,?)');
 
       $insertutilisateur->bindParam(1, $id_projet);
       $insertutilisateur->bindParam(2, $id_utilisateur);
@@ -155,7 +155,7 @@ include("../bdd/connexion.php");
       $seuil_danger = 6;
       $seuil_controle = 4;
       $seuil_veille = 2;
-      $insereseuil = $bdd->prepare("INSERT INTO seuil (seuil_danger, seuil_controle, seuil_veille, id_projet, id_atelier) VALUES (?,?,?,?,?)");
+      $insereseuil = $bdd->prepare("INSERT INTO Q_seuil (seuil_danger, seuil_controle, seuil_veille, id_projet, id_atelier) VALUES (?,?,?,?,?)");
       $insereseuil->bindParam(1, $seuil_danger);
       $insereseuil->bindParam(2, $seuil_controle);
       $insereseuil->bindParam(3, $seuil_veille);

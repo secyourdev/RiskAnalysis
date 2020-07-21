@@ -12,14 +12,14 @@ $nouveau_mdp=$_POST['nouveau_mdp'];
 $confirmation_nouveau_mdp=$_POST['confirmation_nouveau_mdp'];
 
 if (isset($_POST['modifier_mdp_user'])){
-    $verification_mdp = $bdd->prepare("SELECT * FROM utilisateur where email=?");
+    $verification_mdp = $bdd->prepare("SELECT * FROM A_utilisateur where email=?");
     $verification_mdp->bindParam(1, $email_modif_mdp);
     $verification_mdp->execute();
     $resultat = $verification_mdp->fetch();
 
   if($nouveau_mdp==$confirmation_nouveau_mdp){
       $mot_de_passe = password_hash($confirmation_nouveau_mdp, PASSWORD_BCRYPT);
-      $update_mdp = $bdd->prepare("UPDATE utilisateur SET mot_de_passe = ? WHERE email=?");
+      $update_mdp = $bdd->prepare("UPDATE A_utilisateur SET mot_de_passe = ? WHERE email=?");
       $update_mdp->bindParam(1, $mot_de_passe);
       $update_mdp->bindParam(2, $email_modif_mdp);
       $update_mdp->execute();

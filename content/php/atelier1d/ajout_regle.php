@@ -15,10 +15,10 @@ $justification_ecart = '';
 $responsable = '';
 $dates = '';
 
-$recupere_id_socle = $bdd->prepare("SELECT id_socle_securite FROM socle_de_securite WHERE socle_de_securite.nom_referentiel = ? AND id_atelier = '1.d' AND id_projet = $getid_projet");
+$recupere_id_socle = $bdd->prepare("SELECT id_socle_securite FROM N_socle_de_securite WHERE N_socle_de_securite.nom_referentiel = ? AND id_atelier = '1.d' AND id_projet = $getid_projet");
 
 $insere_regle = $bdd->prepare(
-  "INSERT INTO regle(id_regle, id_regle_affichage, titre, description, etat_de_la_regle, justification_ecart, dates, responsable, id_socle_securite) 
+  "INSERT INTO O_regle(id_regle, id_regle_affichage, titre, description, etat_de_la_regle, justification_ecart, dates, responsable, id_socle_securite) 
 VALUES ('',?,?,?,?,?,?,?,?)"
 );
 

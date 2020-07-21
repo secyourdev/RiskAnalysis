@@ -40,7 +40,7 @@ if($input["action"] === 'edit'){
 
     if($results["error"] === false){
         $query = "
-        UPDATE utilisateur 
+        UPDATE A_utilisateur 
         SET nom = '".$nom."', 
         prenom = '".$prenom."',
         poste = '".$poste."',
@@ -56,7 +56,7 @@ if($input["action"] === 'edit'){
 
 if($input["action"] === 'delete'){
     $query = "
-    DELETE FROM utilisateur 
+    DELETE FROM A_utilisateur 
     WHERE id_utilisateur = '".$input["id_utilisateur"]."'
     ";
     mysqli_query($connect, $query);

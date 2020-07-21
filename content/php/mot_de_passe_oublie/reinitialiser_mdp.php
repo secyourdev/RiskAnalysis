@@ -18,7 +18,7 @@ if(isset($_POST['envoyer'])){
 
     $mot_de_passe = passgen1(20);
 
-    $user_info = $bdd->prepare("SELECT prenom FROM utilisateur where email=?");
+    $user_info = $bdd->prepare("SELECT prenom FROM A_utilisateur where email=?");
     $user_info->bindParam(1, $email_utilisateur);
     $user_info->execute();
     $resultat = $user_info->fetch();
@@ -42,7 +42,7 @@ if(isset($_POST['envoyer'])){
         $mot_de_passe = password_hash($mot_de_passe, PASSWORD_BCRYPT);
 
 
-        $update_mdp = $bdd->prepare("UPDATE utilisateur SET mot_de_passe = ? WHERE email=?");
+        $update_mdp = $bdd->prepare("UPDATE A_utilisateur SET mot_de_passe = ? WHERE email=?");
         $update_mdp->bindParam(1, $mot_de_passe);
         $update_mdp->bindParam(2, $email_utilisateur);
         $update_mdp->execute();

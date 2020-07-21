@@ -9,7 +9,7 @@
   $poste=$_POST['poste'];
   $email=$_POST['email'];
 
-  $updateutilisateur = $bdd->prepare('UPDATE utilisateur SET poste = ?, email = ? WHERE id_utilisateur = ?');
+  $updateutilisateur = $bdd->prepare('UPDATE A_utilisateur SET poste = ?, email = ? WHERE id_utilisateur = ?');
 
     // Verification du poste
     if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $poste)){

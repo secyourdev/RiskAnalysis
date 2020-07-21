@@ -13,7 +13,7 @@ $descriptionvm = $_POST['descriptionvm'];
 $id_valeur_metier = "valeur_metier";
 $id_atelier = "1.b";
 
-$inserevm = $bdd->prepare('INSERT INTO valeur_metier(id_valeur_metier, nom_valeur_metier, nature_valeur_metier, description_valeur_metier, id_atelier, id_projet) VALUES (?,?,?,?,?,?)');
+$inserevm = $bdd->prepare('INSERT INTO J_valeur_metier(id_valeur_metier, nom_valeur_metier, nature_valeur_metier, description_valeur_metier, id_atelier, id_projet) VALUES (?,?,?,?,?,?)');
 
 
 // Verification du nom de la valeur métier

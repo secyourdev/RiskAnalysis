@@ -4,10 +4,10 @@ header('Content-Type: application/json');
 
 include("../bdd/connexion_sqli.php");
 
-$query_interne3a = "SELECT id_partie_prenante,dependance_partie_prenante,penetration_partie_prenante,maturite_partie_prenante,confiance_partie_prenante FROM partie_prenante WHERE type = 'Interne3a' ORDER BY id_partie_prenante";
-$query_externe3a = "SELECT id_partie_prenante,dependance_partie_prenante,penetration_partie_prenante,maturite_partie_prenante,confiance_partie_prenante FROM partie_prenante WHERE type = 'Externe3a' ORDER BY id_partie_prenante";
-$query_interne3c = "SELECT dependance_residuelle,penetration_residuelle, maturite_residuelle, confiance_residuelle, dependance_partie_prenante,penetration_partie_prenante,maturite_partie_prenante,confiance_partie_prenante FROM chemin_d_attaque_strategique, scenario_strategique, partie_prenante WHERE chemin_d_attaque_strategique.id_scenario_strategique = scenario_strategique.id_scenario_strategique AND scenario_strategique.id_partie_prenante = partie_prenante.id_partie_prenante AND partie_prenante.type = 'Interne'";
-$query_externe3c = "SELECT id_partie_prenante,dependance_partie_prenante,penetration_partie_prenante,maturite_partie_prenante,confiance_partie_prenante FROM partie_prenante WHERE type = 'Externe3a' ORDER BY id_partie_prenante";
+$query_interne3a = "SELECT id_partie_prenante,dependance_partie_prenante,penetration_partie_prenante,maturite_partie_prenante,confiance_partie_prenante FROM R_partie_prenante WHERE type = 'Interne3a' ORDER BY id_partie_prenante";
+$query_externe3a = "SELECT id_partie_prenante,dependance_partie_prenante,penetration_partie_prenante,maturite_partie_prenante,confiance_partie_prenante FROM R_partie_prenante WHERE type = 'Externe3a' ORDER BY id_partie_prenante";
+$query_interne3c = "SELECT dependance_residuelle,penetration_residuelle, maturite_residuelle, confiance_residuelle, dependance_partie_prenante,penetration_partie_prenante,maturite_partie_prenante,confiance_partie_prenante FROM T_chemin_d_attaque_strategique, S_scenario_strategique, R_partie_prenante WHERE T_chemin_d_attaque_strategique.id_scenario_strategique = S_scenario_strategique.id_scenario_strategique AND S_scenario_strategique.id_partie_prenante = R_partie_prenante.id_partie_prenante AND R_partie_prenante.type = 'Interne'";
+$query_externe3c = "SELECT id_partie_prenante,dependance_partie_prenante,penetration_partie_prenante,maturite_partie_prenante,confiance_partie_prenante FROM R_partie_prenante WHERE type = 'Externe3a' ORDER BY id_partie_prenante";
 
 $result_interne3a = mysqli_query($connect, $query_interne3a);
 $result_externe3a = mysqli_query($connect, $query_externe3a);

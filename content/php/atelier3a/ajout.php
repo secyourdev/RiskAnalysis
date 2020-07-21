@@ -31,16 +31,16 @@ if (isset($_POST['confiance_partie_prenante'])) {
   $confiance_partie_prenante = 1;
 }
 
-$niveau_de_menace_partie_prenante = ($dependance_partie_prenante* $penetration_partie_prenante)/ ($maturite_partie_prenante* $confiance_partie_prenante);
+$niveau_de_menace_partie_prenante = round(($dependance_partie_prenante* $penetration_partie_prenante)/ ($maturite_partie_prenante* $confiance_partie_prenante), 2);
 
 $id_atelier = '3.a';
 $id_projet =$_SESSION['id_projet'];
 $recupere_id_seuil = $bdd->prepare(
-  "SELECT id_seuil FROM seuil WHERE id_atelier = ? AND id_projet = ?"
+  "SELECT id_seuil FROM Q_seuil WHERE id_atelier = ? AND id_projet = ?"
 );
 
 $insere = $bdd->prepare(
-  "INSERT INTO partie_prenante (
+  "INSERT INTO R_partie_prenante (
     id_partie_prenante, 
     categorie_partie_prenante, 
     nom_partie_prenante, 

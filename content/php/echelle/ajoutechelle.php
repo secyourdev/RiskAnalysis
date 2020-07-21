@@ -9,14 +9,14 @@ $nom_echelle=$_POST['nom_echelle'];
 $echelle_gravite=$_POST['echelle_gravite'];
 $id_echelle="id_echelle";
 
-$insere = $bdd->prepare('INSERT INTO `echelle`(`id_echelle`, `nom_echelle`, `echelle_gravite`, `echelle_vraisemblance`) VALUES (?,?,?,0)');
-$recupere = $bdd->prepare('SELECT id_echelle FROM echelle WHERE nom_echelle = ?');
+$insere = $bdd->prepare('INSERT INTO `D_echelle`(`id_echelle`, `nom_echelle`, `echelle_gravite`, `echelle_vraisemblance`) VALUES (?,?,?,0)');
+$recupere = $bdd->prepare('SELECT id_echelle FROM D_echelle WHERE nom_echelle = ?');
 
-$insere_niveau_1 = $bdd->prepare('INSERT INTO `niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`) VALUES (NULL, NULL, 1,?)');
-$insere_niveau_2 = $bdd->prepare('INSERT INTO `niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`) VALUES (NULL, NULL, 2,?)');
-$insere_niveau_3 = $bdd->prepare('INSERT INTO `niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`) VALUES (NULL, NULL, 3,?)');
-$insere_niveau_4 = $bdd->prepare('INSERT INTO `niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`) VALUES (NULL, NULL, 4,?)');
-$insere_niveau_5 = $bdd->prepare('INSERT INTO `niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`) VALUES (NULL, NULL, 5,?)');
+$insere_niveau_1 = $bdd->prepare('INSERT INTO `E_niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`) VALUES (NULL, NULL, 1,?)');
+$insere_niveau_2 = $bdd->prepare('INSERT INTO `E_niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`) VALUES (NULL, NULL, 2,?)');
+$insere_niveau_3 = $bdd->prepare('INSERT INTO `E_niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`) VALUES (NULL, NULL, 3,?)');
+$insere_niveau_4 = $bdd->prepare('INSERT INTO `E_niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`) VALUES (NULL, NULL, 4,?)');
+$insere_niveau_5 = $bdd->prepare('INSERT INTO `E_niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`) VALUES (NULL, NULL, 5,?)');
 
   // Verification du nom de l'echelle
   if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_echelle)){

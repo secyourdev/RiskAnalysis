@@ -5,9 +5,9 @@ header('Content-Type: application/json');
 
 include("../bdd/connexion_sqli.php");
 
-$query_interne = "SELECT id_partie_prenante,dependance_partie_prenante,penetration_partie_prenante,maturite_partie_prenante,confiance_partie_prenante FROM partie_prenante WHERE type = 'Interne' AND id_projet = $getid_projet ORDER BY id_partie_prenante";
-$query_externe = "SELECT id_partie_prenante,dependance_partie_prenante,penetration_partie_prenante,maturite_partie_prenante,confiance_partie_prenante FROM partie_prenante WHERE type = 'Externe' AND id_projet = $getid_projet ORDER BY id_partie_prenante";
-$query_seuil = "SELECT id_seuil, seuil_danger, seuil_controle, seuil_veille, id_projet, id_atelier FROM seuil WHERE id_projet = $getid_projet ORDER BY id_seuil";
+$query_interne = "SELECT id_partie_prenante,dependance_partie_prenante,penetration_partie_prenante,maturite_partie_prenante,confiance_partie_prenante FROM R_partie_prenante WHERE type = 'Interne' AND id_projet = $getid_projet ORDER BY id_partie_prenante";
+$query_externe = "SELECT id_partie_prenante,dependance_partie_prenante,penetration_partie_prenante,maturite_partie_prenante,confiance_partie_prenante FROM R_partie_prenante WHERE type = 'Externe' AND id_projet = $getid_projet ORDER BY id_partie_prenante";
+$query_seuil = "SELECT id_seuil, seuil_danger, seuil_controle, seuil_veille, id_projet, id_atelier FROM Q_seuil WHERE id_projet = $getid_projet ORDER BY id_seuil";
 
 $result_interne = mysqli_query($connect, $query_interne);
 $result_externe = mysqli_query($connect, $query_externe);

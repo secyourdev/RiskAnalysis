@@ -26,8 +26,8 @@ $id_atelier = "2.a";
 $id_projet = $_SESSION['id_projet'];
 
 
-$recupere = $bdd->prepare("SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = ?");
-$insere = $bdd->prepare('INSERT INTO `SROV`(`id_source_de_risque`, `type_d_attaquant_source_de_risque`, `profil_de_l_attaquant_source_de_risque`, `description_source_de_risque`, `objectif_vise`, `description_objectif_vise`, `motivation`, `ressources`, `activite`, `mode_operatoire`, `secteur_d_activite`,`arsenal_d_attaque`, `faits_d_armes`, `pertinence`, `choix_source_de_risque`, `id_atelier`, `id_projet`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+$recupere = $bdd->prepare("SELECT id_valeur_metier FROM J_valeur_metier WHERE nom_valeur_metier = ?");
+$insere = $bdd->prepare('INSERT INTO `P_SROV`(`id_source_de_risque`, `type_d_attaquant_source_de_risque`, `profil_de_l_attaquant_source_de_risque`, `description_source_de_risque`, `objectif_vise`, `description_objectif_vise`, `motivation`, `ressources`, `activite`, `mode_operatoire`, `secteur_d_activite`,`arsenal_d_attaque`, `faits_d_armes`, `pertinence`, `choix_source_de_risque`, `id_atelier`, `id_projet`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
 
 
 // Verification du type de l'attaquant

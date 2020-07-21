@@ -6,7 +6,7 @@ include("../bdd/connexion.php");
 $id_etude_suppr = $_POST['id_etude_suppr'];
 
 if(isset($_POST['supprimer_projet'])){
-    $update_projet = $bdd->prepare("DELETE FROM projet WHERE id_projet=?");
+    $update_projet = $bdd->prepare("DELETE FROM F_projet WHERE id_projet=?");
     $update_projet->bindParam(1, $id_etude_suppr);
     $update_projet->execute();
 

@@ -10,7 +10,7 @@ if (isset($_POST['connexion'])){
   $email = htmlspecialchars($_POST["email"]);
   $mot_de_passe = $_POST["mot_de_passe"];
 
-  $req = $bdd->prepare("SELECT * FROM utilisateur where email = :email");
+  $req = $bdd->prepare("SELECT * FROM A_utilisateur where email = :email");
   $req->execute([":email" => $email]);
   $row = $req->fetch();
     if($row){

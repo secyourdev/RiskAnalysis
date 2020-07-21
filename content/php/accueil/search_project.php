@@ -5,7 +5,7 @@ include("../bdd/connexion.php");
 
 $id_projet=htmlspecialchars($_POST['id_projet']);
 
-$req = $bdd->prepare("SELECT * FROM projet where id_projet = :id_projet");
+$req = $bdd->prepare("SELECT * FROM F_projet where id_projet = :id_projet");
 $req->execute([":id_projet" => $id_projet]);
 $row = $req->fetch();
 

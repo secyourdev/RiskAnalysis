@@ -8,7 +8,7 @@ $results["message"] = [];
 
 if($input["action"] === 'delete'){
     $query = "
-    DELETE FROM impliquer  
+    DELETE FROM C_impliquer  
     WHERE id_utilisateur = '".$input["id_utilisateur"]."'
     ";
     mysqli_query($connect, $query);

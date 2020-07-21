@@ -1,10 +1,10 @@
 <?php
 include("content/php/bdd/connexion_sqli.php");
 
-$query1 = "SELECT * FROM echelle";
-$query2 = "SELECT * FROM niveau NATURAL JOIN echelle";
-$queryechelle = "SELECT nom_echelle FROM echelle";
-$queryechelle2 = "SELECT nom_echelle FROM echelle";
+$query1 = "SELECT * FROM D_echelle";
+$query2 = "SELECT * FROM E_niveau NATURAL JOIN D_echelle";
+$queryechelle = "SELECT nom_echelle FROM D_echelle";
+$queryechelle2 = "SELECT nom_echelle FROM D_echelle";
 
 if(isset($_POST['nomechelle'])){
     $nom_echelle = $_POST['nomechelle'];

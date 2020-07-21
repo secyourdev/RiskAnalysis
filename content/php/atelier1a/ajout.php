@@ -23,7 +23,7 @@ include("../bdd/connexion.php");
   $atelier5b = '5.b';
   $atelier5c = '5.c';
   $droit = 'Information';
-  $insertutilisateur = $bdd->prepare('INSERT INTO `RACI`(`id_projet`, `id_utilisateur`, `id_atelier`, `ecriture`) VALUES (?,?,?,?)');
+  $insertutilisateur = $bdd->prepare('INSERT INTO `H_RACI`(`id_projet`, `id_utilisateur`, `id_atelier`, `ecriture`) VALUES (?,?,?,?)');
 
   $insertutilisateur->bindParam(1, $id_projet);
   $insertutilisateur->bindParam(2, $id_utilisateur);

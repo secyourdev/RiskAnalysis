@@ -18,7 +18,7 @@ $ponderation_dependance = mysqli_real_escape_string($connect, $input['ponderatio
 $ponderation_penetration = mysqli_real_escape_string($connect, $input['ponderation_penetration']);
 $ponderation_maturite = mysqli_real_escape_string($connect, $input['ponderation_maturite']);
 $ponderation_confiance = mysqli_real_escape_string($connect, $input['ponderation_confiance']);
-$niveau_de_menace_partie_prenante = ($dependance_partie_prenante*$ponderation_dependance * $penetration_partie_prenante*$ponderation_penetration) / ($maturite_partie_prenante*$ponderation_maturite * $confiance_partie_prenante*$ponderation_confiance);
+$niveau_de_menace_partie_prenante = round(($dependance_partie_prenante*$ponderation_dependance * $penetration_partie_prenante*$ponderation_penetration) / ($maturite_partie_prenante*$ponderation_maturite * $confiance_partie_prenante*$ponderation_confiance), 2);
 
 $id_atelier = '3.a';
 
@@ -26,7 +26,7 @@ $results["error"] = false;
 
 if ($input["action"] === 'edit' && $results["error"] === false) {
     $query =
-        "UPDATE partie_prenante 
+        "UPDATE R_partie_prenante 
     SET 
     categorie_partie_prenante = '" . $categorie_partie_prenante . "',
     nom_partie_prenante = '" . $nom_partie_prenante . "',
@@ -49,7 +49,7 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
 }
 if ($input["action"] === 'delete') {
     $query = 
-    "DELETE FROM partie_prenante 
+    "DELETE FROM R_partie_prenante 
     WHERE id_partie_prenante = '" . $input["id_partie_prenante"] . "'
     AND id_projet = $getid_projet
     AND id_atelier = '$id_atelier'

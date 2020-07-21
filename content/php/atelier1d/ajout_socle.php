@@ -15,7 +15,7 @@ $etat_de_la_conformite = $_POST['commentaire'];
 $id_socle_securite = "id_socle_securite";
 $id_atelier = "1.d";
 
-$insere = $bdd->prepare("INSERT INTO socle_de_securite(id_socle_securite, type_referentiel, nom_referentiel, etat_d_application, etat_de_la_conformite, id_atelier, id_projet) VALUES (?,?,?,?,?,?,?)");
+$insere = $bdd->prepare("INSERT INTO N_socle_de_securite(id_socle_securite, type_referentiel, nom_referentiel, etat_d_application, etat_de_la_conformite, id_atelier, id_projet) VALUES (?,?,?,?,?,?,?)");
 
 // Verification du type_referenciel
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $type_referenciel)) {

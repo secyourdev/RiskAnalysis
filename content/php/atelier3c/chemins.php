@@ -2,8 +2,8 @@
 
 include("../bdd/connexion.php");
 
-$querypp = $bdd->prepare("SELECT id_partie_prenante FROM partie_prenante WHERE nom_partie_prenante = ?");
-$querychemin = $bdd->prepare("SELECT id_chemin_d_attaque_strategique, nom_chemin_d_attaque_strategique FROM chemin_d_attaque_strategique WHERE id_partie_prenante = ?");
+$querypp = $bdd->prepare("SELECT id_partie_prenante FROM R_partie_prenante WHERE nom_partie_prenante = ?");
+$querychemin = $bdd->prepare("SELECT id_chemin_d_attaque_strategique, nom_chemin_d_attaque_strategique FROM T_chemin_d_attaque_strategique WHERE id_partie_prenante = ?");
 
 
 

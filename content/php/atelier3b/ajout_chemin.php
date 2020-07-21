@@ -17,23 +17,23 @@ $id_chemin_d_attaque = "id_chemin";
 $id_scenar = "id_scenar";
 $id_atelier = "4.a";
 
-$recupere = $bdd->prepare("SELECT scenario_strategique.id_scenario_strategique FROM scenario_strategique  WHERE scenario_strategique.nom_scenario_strategique = ?");
-$recuperepp = $bdd->prepare("SELECT id_partie_prenante FROM partie_prenante WHERE nom_partie_prenante = ? AND id_projet = ?");
+$recupere = $bdd->prepare("SELECT S_scenario_strategique.id_scenario_strategique FROM S_scenario_strategique  WHERE S_scenario_strategique.nom_scenario_strategique = ?");
+$recuperepp = $bdd->prepare("SELECT id_partie_prenante FROM R_partie_prenante WHERE nom_partie_prenante = ? AND id_projet = ?");
 
 $insere = $bdd->prepare(
   'INSERT INTO 
-  chemin_d_attaque_strategique 
+  T_chemin_d_attaque_strategique 
   (id_chemin_d_attaque_strategique,id_risque,nom_chemin_d_attaque_strategique,dependance_residuelle, penetration_residuelle, maturite_residuelle,confiance_residuelle, niveau_de_menace_residuelle, id_scenario_strategique, id_partie_prenante) 
   VALUES 
   (?, ?, ?, NULL, NULL, NULL, NULL, NULL, ? ,?)'
 );
 
-$recuperechemin = $bdd->prepare('SELECT id_chemin_d_attaque_strategique, id_risque FROM chemin_d_attaque_strategique
+$recuperechemin = $bdd->prepare('SELECT id_chemin_d_attaque_strategique, id_risque FROM T_chemin_d_attaque_strategique
 WHERE nom_chemin_d_attaque_strategique = ?
 AND  id_risque = ?');
 
 $insereope = $bdd->prepare(
-  'INSERT INTO scenario_operationnel
+  'INSERT INTO U_scenario_operationnel
   (id_scenario_operationnel, description_scenario_operationnel, vraisemblance, id_atelier, id_chemin_d_attaque_strategique, id_risque, id_projet)
   VALUES
   (?, NULL, NULL, ?, ?, ?, ?)'

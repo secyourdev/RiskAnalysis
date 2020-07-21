@@ -4,7 +4,7 @@ $id_projet = $_SESSION['id_projet'];
 
 include("../bdd/connexion.php");
 
-$recupere_seuil = $bdd->prepare("SELECT * FROM seuil WHERE id_projet = $id_projet");
+$recupere_seuil = $bdd->prepare("SELECT * FROM Q_seuil WHERE id_projet = $id_projet");
 $recupere_seuil->execute();
 
 $array = array();

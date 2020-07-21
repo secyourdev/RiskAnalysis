@@ -2,8 +2,8 @@
 
 include("../bdd/connexion.php");
 
-$querysrov = $bdd->prepare("SELECT id_source_de_risque, description_source_de_risque, description_objectif_vise FROM SROV");
-$queryer = $bdd->prepare("SELECT id_evenement_redoute, nom_evenement_redoute FROM evenement_redoute");
+$querysrov = $bdd->prepare("SELECT id_source_de_risque, description_source_de_risque, description_objectif_vise FROM P_SROV");
+$queryer = $bdd->prepare("SELECT id_evenement_redoute, nom_evenement_redoute FROM M_evenement_redoute");
 
 $querysrov->execute();
 $queryer->execute();

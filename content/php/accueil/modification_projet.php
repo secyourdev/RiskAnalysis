@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include("../bdd/connexion_sqli.php");
+include("../bdd/connexion.php");
 
 $results["error"] = false;
 
@@ -29,7 +29,7 @@ if(!preg_match("/^[0-9\s-]{1,100}$/", $id_grp_utilisateur_modif)){
 }
   
 if(isset($_POST['modifier_projet']) && $results["error"] === false ){
-    $update_projet = $bdd->prepare("UPDATE projet SET nom_projet = ?, description_projet=?, id_grp_utilisateur=? WHERE id_projet=?");
+    $update_projet = $bdd->prepare("UPDATE F_projet SET nom_projet = ?, description_projet=?, id_grp_utilisateur=? WHERE id_projet=?");
     $update_projet->bindParam(1, $nom_etude_modif);
     $update_projet->bindParam(2, $description_etude_modif);
     $update_projet->bindParam(3, $id_grp_utilisateur_modif);

@@ -7,7 +7,7 @@ include("../bdd/connexion.php");
 
   $nom_grp_user=$_POST['nom_grp_user'];
   
-  $inseregrpuser = $bdd->prepare('INSERT INTO `grp_utilisateur`(`nom_grp_utilisateur`) VALUES (?)');
+  $inseregrpuser = $bdd->prepare('INSERT INTO `B_grp_utilisateur`(`nom_grp_utilisateur`) VALUES (?)');
 
   // Verification du nom du groupe utilisateur
     if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_grp_user)){

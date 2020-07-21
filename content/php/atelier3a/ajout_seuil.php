@@ -14,7 +14,7 @@ $id_atelier = '3.a';
 $id_projet = $_SESSION['id_projet'];
 
 $insere = $bdd->prepare(
-  "UPDATE seuil SET seuil_danger=?,seuil_controle=?,seuil_veille=? WHERE id_projet=?");
+  "UPDATE Q_seuil SET seuil_danger=?,seuil_controle=?,seuil_veille=? WHERE id_projet=?");
 
 // Verification du seuil_danger
 if (!preg_match("/^[1-9][0-9]?$|^100$/", $seuil_danger)) {

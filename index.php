@@ -5,7 +5,7 @@ include("content/php/bdd/connexion.php");
 
 if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $getid = intval($_GET['id_utilisateur']);
-    $requser = $bdd->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = ?');
+    $requser = $bdd->prepare('SELECT * FROM A_utilisateur WHERE id_utilisateur = ?');
     $requser->execute(array($getid));
     $userinfo = $requser->fetch();
 ?>
@@ -430,7 +430,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             <!-- Card Body -->
                             <div class="card-body">
                                 <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#config_bdd" >Configurer la base de données</button></br>
-                                <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none">Sauvegarder la base de données</button></br>
+                                <a href="content/php/sauvegarde_bdd/sauvegarde.php" class="btn perso_btn_primary perso_btn_spacing shadow-none">Sauvegarder la base de données</a></br>
                                 <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none">Importer la base de données</button></br>  
                             </div>
                         </div>     
@@ -814,7 +814,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     </div>
                     <div class="modal-body perso_modal_body">
                         <div class="modal-body" id="msg_config_bdd">
-                            Veuillez modifier les fichiers "content\php\bdd\connexion.php" et "content\php\bdd\connexion_sqli.php" avec votre adresse hôte MySQL, l'identifiant utilisateur, le mot de passe et le nom de la table !
+                            Veuillez modifier les fichiers <b>"content\php\bdd\connexion.php"</b> et <b>"content\php\bdd\connexion_sqli.php"</b> avec votre adresse hôte MySQL, l'identifiant utilisateur, le mot de passe et le nom de la table !
                         </div>
                     </div>
                 </div>
