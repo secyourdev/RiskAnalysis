@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include("../bdd/connexion_sqli.php");
+include("../bdd/connexion.php");
 
 $results["error"] = false;
 
