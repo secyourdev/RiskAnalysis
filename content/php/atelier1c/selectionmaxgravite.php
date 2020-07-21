@@ -1,6 +1,6 @@
 <?php
 
-include("../bdd/connexion.php");
+// include("../bdd/connexion.php");
 
 $results["error"] = false;
 $results["message"] = [];

@@ -18,7 +18,7 @@ $ponderation_dependance = mysqli_real_escape_string($connect, $input['ponderatio
 $ponderation_penetration = mysqli_real_escape_string($connect, $input['ponderation_penetration']);
 $ponderation_maturite = mysqli_real_escape_string($connect, $input['ponderation_maturite']);
 $ponderation_confiance = mysqli_real_escape_string($connect, $input['ponderation_confiance']);
-$niveau_de_menace_partie_prenante = ($dependance_partie_prenante*$ponderation_dependance * $penetration_partie_prenante*$ponderation_penetration) / ($maturite_partie_prenante*$ponderation_maturite * $confiance_partie_prenante*$ponderation_confiance);
+$niveau_de_menace_partie_prenante = round(($dependance_partie_prenante*$ponderation_dependance * $penetration_partie_prenante*$ponderation_penetration) / ($maturite_partie_prenante*$ponderation_maturite * $confiance_partie_prenante*$ponderation_confiance), 2);
 
 $id_atelier = '3.a';
 

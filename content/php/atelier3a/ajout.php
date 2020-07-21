@@ -31,7 +31,7 @@ if (isset($_POST['confiance_partie_prenante'])) {
   $confiance_partie_prenante = 1;
 }
 
-$niveau_de_menace_partie_prenante = ($dependance_partie_prenante* $penetration_partie_prenante)/ ($maturite_partie_prenante* $confiance_partie_prenante);
+$niveau_de_menace_partie_prenante = round(($dependance_partie_prenante* $penetration_partie_prenante)/ ($maturite_partie_prenante* $confiance_partie_prenante), 2);
 
 $id_atelier = '3.a';
 $id_projet =$_SESSION['id_projet'];
