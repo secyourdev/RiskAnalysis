@@ -684,10 +684,17 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <?php
                               for ($i = 1; $i <= 4; $i++) //selection.php
                               {
-                                echo '
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" id="dependance' . $i . '" autocomplete="off" name="dependance_partie_prenante" value="' . $i . '"> ' . $i . '
-                        </label>';
+                                if ($i == 1) {
+                                  echo '
+                                  <label class="btn perso_checkbox shadow-none active">
+                                    <input type="radio" id="dependance' . $i . '" autocomplete="off" name="dependance_partie_prenante" value="' . $i . '" selected> ' . $i . '
+                                  </label>';
+                                } else {
+                                  echo '
+                                  <label class="btn perso_checkbox shadow-none">
+                                    <input type="radio" id="dependance' . $i . '" autocomplete="off" name="dependance_partie_prenante" value="' . $i . '"> ' . $i . '
+                                  </label>';
+                                }
                               }
                               ?>
                             </div>
@@ -700,10 +707,17 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <?php
                               for ($i = 1; $i <= 4; $i++) //selection.php
                               {
-                                echo '
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" id="penetration' . $i . '" autocomplete="off" name="penetration_partie_prenante" value="' . $i . '"> ' . $i . '
-                        </label>';
+                                if ($i == 1) {
+                                  echo '
+                                  <label class="btn perso_checkbox shadow-none active">
+                                    <input type="radio" id="penetration' . $i . '" autocomplete="off" name="penetration_partie_prenante" value="' . $i . '" selected> ' . $i . '
+                                  </label>';
+                                } else {
+                                  echo '
+                                  <label class="btn perso_checkbox shadow-none">
+                                    <input type="radio" id="penetration' . $i . '" autocomplete="off" name="penetration_partie_prenante" value="' . $i . '" > ' . $i . '
+                                  </label>';
+                                }
                               }
                               ?>
                             </div>
@@ -718,10 +732,17 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <?php
                               for ($i = 1; $i <= 4; $i++) //selection.php
                               {
-                                echo '
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" id="maturite' . $i . '" autocomplete="off" name="maturite_partie_prenante" value="' . $i . '"> ' . $i . '
-                        </label>';
+                                if ($i == 1) {
+                                  echo '
+                                  <label class="btn perso_checkbox shadow-none active">
+                                    <input type="radio" id="maturite' . $i . '" autocomplete="off" name="maturite_partie_prenante" value="' . $i . '" selected> ' . $i . '
+                                  </label>';
+                                } else {
+                                  echo '
+                                  <label class="btn perso_checkbox shadow-none">
+                                    <input type="radio" id="maturite' . $i . '" autocomplete="off" name="maturite_partie_prenante" value="' . $i . '"> ' . $i . '
+                                  </label>';
+                                }
                               }
                               ?>
                             </div>
@@ -733,10 +754,17 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <?php
                               for ($i = 1; $i <= 4; $i++) //selection.php
                               {
-                                echo '
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" id="confiance' . $i . '" autocomplete="off" name="confiance_partie_prenante" value="' . $i . '"> ' . $i . '
-                        </label>';
+                                if ($i == 1) {
+                                  echo '
+                                  <label class="btn perso_checkbox shadow-none active">
+                                    <input type="radio" id="confiance' . $i . '" autocomplete="off" name="confiance_partie_prenante" value="' . $i . '" selected> ' . $i . '
+                                  </label>';
+                                } else {
+                                  echo '
+                                  <label class="btn perso_checkbox shadow-none">
+                                    <input type="radio" id="confiance' . $i . '" autocomplete="off" name="confiance_partie_prenante" value="' . $i . '"> ' . $i . '
+                                  </label>';
+                                }
                               }
                               ?>
                             </div>
