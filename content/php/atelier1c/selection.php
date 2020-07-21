@@ -1,13 +1,13 @@
 <?php
 $getid_projet = intval($_GET['id_projet']);
 include("content/php/bdd/connexion_sqli.php");
-$query = "SELECT * FROM evenement_redoute INNER JOIN valeur_metier on evenement_redoute.id_valeur_metier = valeur_metier.id_valeur_metier WHERE valeur_metier.id_projet = $getid_projet";
-$queryvm = "SELECT nom_valeur_metier FROM valeur_metier WHERE id_projet = $getid_projet";
-$queryniveaugravite = "SELECT valeur_max_gravite FROM projet WHERE id_projet = $getid_projet";
-$query1 = "SELECT * FROM echelle";
-$query2 = "SELECT * FROM niveau NATURAL JOIN echelle";
-$queryechelle = "SELECT id_echelle,nom_echelle FROM echelle";
-// $queryprojet = "SELECT nom_echelle FROM projet NATURAL JOIN echelle WHERE id_projet = $getid_projet";
+$query = "SELECT * FROM M_evenement_redoute INNER JOIN J_valeur_metier on M_evenement_redoute.id_valeur_metier = J_valeur_metier.id_valeur_metier WHERE J_valeur_metier.id_projet = $getid_projet";
+$queryvm = "SELECT nom_valeur_metier FROM J_valeur_metier WHERE id_projet = $getid_projet";
+$queryniveaugravite = "SELECT valeur_max_gravite FROM F_projet WHERE id_projet = $getid_projet";
+$query1 = "SELECT * FROM D_echelle";
+$query2 = "SELECT * FROM E_niveau NATURAL JOIN D_echelle";
+$queryechelle = "SELECT id_echelle,nom_echelle FROM D_echelle";
+// $queryprojet = "SELECT nom_echelle FROM F_projet NATURAL JOIN D_echelle WHERE id_projet = $getid_projet";
 
 if(isset($_POST['nomechelle'])){
     $nom_echelle = $_POST['nomechelle'];

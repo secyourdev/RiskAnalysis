@@ -4,7 +4,7 @@ $getid_utilisateur = $_SESSION['id_utilisateur'];
 
 include("../bdd/connexion.php");
 
-$search_projet = $bdd->prepare("SELECT DISTINCT id_projet,nom_projet,description_projet,cadre_temporel FROM projet");
+$search_projet = $bdd->prepare("SELECT DISTINCT id_projet,nom_projet,description_projet,cadre_temporel FROM F_projet");
 $search_projet->execute();
 
 $array = array();

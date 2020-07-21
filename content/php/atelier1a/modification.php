@@ -8,7 +8,7 @@ $input = filter_input_array(INPUT_POST);
 
 if($input["action"] === 'delete'){
     $query = "
-    DELETE FROM RACI 
+    DELETE FROM H_RACI 
     WHERE id_utilisateur = '".$input["id_utilisateur"]."' 
     AND id_projet = $getid_projet
     ";

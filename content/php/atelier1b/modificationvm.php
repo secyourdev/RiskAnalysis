@@ -32,7 +32,7 @@ if($input["action"] === 'edit'){
 
     if($results["error"] === false){
       $queryvm = 
-      "UPDATE valeur_metier 
+      "UPDATE J_valeur_metier 
       SET nom_valeur_metier = '".$nom_valeur_metier."', 
       nature_valeur_metier = '".$nature_valeur_metier."',
       description_valeur_metier = '".$description_valeur_metier."'
@@ -47,7 +47,7 @@ if($input["action"] === 'edit'){
 
 if($input["action"] === 'delete'){
     $query = 
-    "DELETE FROM valeur_metier 
+    "DELETE FROM J_valeur_metier 
     WHERE id_valeur_metier = '".$input["id_valeur_metier"]. "'
     AND id_atelier = '" . $id_atelier . "'
     AND id_projet = " . $id_projet . "

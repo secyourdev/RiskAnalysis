@@ -3,7 +3,7 @@
 
 include("../bdd/connexion.php");
 
-$queryregles = $bdd->prepare("SELECT id_regle, titre FROM regle WHERE id_socle_securite = ?");
+$queryregles = $bdd->prepare("SELECT id_regle, titre FROM O_regle WHERE id_socle_securite = ?");
 
 if(isset($_POST['ref'])){
     $ref = $_POST['ref'];

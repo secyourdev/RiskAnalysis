@@ -16,7 +16,7 @@ if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_scena
 if ($input["action"] === 'edit' && $results["error"] === false) {
     
     $query = "
-    UPDATE scenario_operationnel 
+    UPDATE V_scenario_operationnel 
     SET description_scenario_operationnel = '".$description_scenario_operationnel."'
     WHERE id_scenario_operationnel = '".$input["id_scenario_operationnel"]."'
     ";
@@ -25,7 +25,7 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
 }
 if ($input["action"] === 'delete') {
     $query = "
-    DELETE FROM scenario_operationnel 
+    DELETE FROM V_scenario_operationnel 
     WHERE id_scenario_operationnel = '".$input["id_scenario_operationnel"]."'
     ";
     mysqli_query($connect, $query);

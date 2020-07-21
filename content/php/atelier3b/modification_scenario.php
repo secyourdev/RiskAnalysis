@@ -11,7 +11,7 @@ $results["message"] = [];
 
 if ($input["action"] === 'edit' && $results["error"] === false) {
     $query = "
-    UPDATE scenario_strategique 
+    UPDATE S_scenario_strategique 
     SET 
     nom_scenario_strategique = '" . $nom_scenario_strategique . "'
     WHERE id_scenario_strategique = '" . $input["id_scenario_strategique"] . "'
@@ -22,7 +22,7 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
 }
 if ($input["action"] === 'delete') {
     $query = "
-    DELETE FROM scenario_strategique 
+    DELETE FROM S_scenario_strategique 
     WHERE id_scenario_strategique = '".$input["id_scenario_strategique"]."'
     ";
     mysqli_query($connect, $query);

@@ -26,7 +26,7 @@ $results["error"] = false;
 
 if ($input["action"] === 'edit' && $results["error"] === false) {
     $query =
-        "UPDATE partie_prenante 
+        "UPDATE R_partie_prenante 
     SET 
     categorie_partie_prenante = '" . $categorie_partie_prenante . "',
     nom_partie_prenante = '" . $nom_partie_prenante . "',
@@ -49,7 +49,7 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
 }
 if ($input["action"] === 'delete') {
     $query = 
-    "DELETE FROM partie_prenante 
+    "DELETE FROM R_partie_prenante 
     WHERE id_partie_prenante = '" . $input["id_partie_prenante"] . "'
     AND id_projet = $getid_projet
     AND id_atelier = '$id_atelier'

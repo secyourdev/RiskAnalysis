@@ -15,7 +15,7 @@ if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_echelle)){
 
 if($input["action"] === 'edit' && $results["error"] === false){
     $query = "
-    UPDATE echelle
+    UPDATE D_echelle
     SET nom_echelle = '".$nom_echelle."',
     echelle_gravite = '".$echelle_gravite."'
     WHERE id_echelle = '".$input["id_echelle"]."'
@@ -24,20 +24,20 @@ if($input["action"] === 'edit' && $results["error"] === false){
 
     if ($echelle_gravite === "4"){
         $query4 = "
-        DELETE FROM niveau
+        DELETE FROM E_niveau
         WHERE id_echelle = '".$input["id_echelle"]."'
         AND valeur_niveau = '5'
         ";
         mysqli_query($connect, $query4);
     }
     else {
-        $querycount = "SELECT * FROM niveau
+        $querycount = "SELECT * FROM E_niveau
         WHERE id_echelle = '".$input["id_echelle"]."'
         ";
         $result = mysqli_query($connect, $querycount);
         if(mysqli_num_rows($result) === 4){
         $query5 = "
-            INSERT INTO niveau (id_niveau, description_niveau, valeur_niveau, id_echelle) 
+            INSERT INTO E_niveau (id_niveau, description_niveau, valeur_niveau, id_echelle) 
             VALUES (NULL, NULL, 5, '".$input["id_echelle"]."')
             ";
             echo $query5;
@@ -48,7 +48,7 @@ if($input["action"] === 'edit' && $results["error"] === false){
 
 if($input["action"] === 'delete'){
     $query = "
-    DELETE FROM echelle 
+    DELETE FROM D_echelle 
     WHERE id_echelle = '".$input["id_echelle"]."'
     ";
     mysqli_query($connect, $query);

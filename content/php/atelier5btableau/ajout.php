@@ -23,16 +23,16 @@ $id_projet = $_SESSION['id_projet'];
 // echo $maturite;
 // echo $confiance;
 $id_atelier = "5.b";
-$insere_mesure = $bdd->prepare('INSERT INTO mesure (id_mesure, nom_mesure, description_mesure) VALUES (?, ?, ?)');
-$recupere_mesure = $bdd->prepare('SELECT id_mesure FROM mesure WHERE nom_mesure = ? AND description_mesure = ?');
-$recupere_risque = $bdd->prepare('SELECT id_risque FROM chemin_d_attaque_strategique WHERE id_chemin_d_attaque_strategique = ?');
-$insere2 = $bdd->prepare('INSERT INTO comporter_2 (id_mesure, id_chemin_d_attaque_strategique, id_risque) VALUES (?,?,?)');
-$recupere_id_pp = $bdd->prepare('SELECT id_partie_prenante FROM chemin_d_attaque_strategique WHERE id_chemin_d_attaque_strategique = ?');
-$recupere_pp = $bdd->prepare('SELECT ponderation_dependance, ponderation_penetration, ponderation_maturite, ponderation_confiance FROM partie_prenante WHERE id_partie_prenante = ?');
-$insere_traitement = $bdd->prepare('INSERT INTO traitement_de_securite (id_traitement_de_securite, id_atelier, id_projet, id_mesure) VALUES (?, ?, ?, ?)');
+$insere_mesure = $bdd->prepare('INSERT INTO Y_mesure (id_mesure, nom_mesure, description_mesure) VALUES (?, ?, ?)');
+$recupere_mesure = $bdd->prepare('SELECT id_mesure FROM Y_mesure WHERE nom_mesure = ? AND description_mesure = ?');
+$recupere_risque = $bdd->prepare('SELECT id_risque FROM T_chemin_d_attaque_strategique WHERE id_chemin_d_attaque_strategique = ?');
+$insere2 = $bdd->prepare('INSERT INTO ZB_comporter_2 (id_mesure, id_chemin_d_attaque_strategique, id_risque) VALUES (?,?,?)');
+$recupere_id_pp = $bdd->prepare('SELECT id_partie_prenante FROM T_chemin_d_attaque_strategique WHERE id_chemin_d_attaque_strategique = ?');
+$recupere_pp = $bdd->prepare('SELECT ponderation_dependance, ponderation_penetration, ponderation_maturite, ponderation_confiance FROM R_partie_prenante WHERE id_partie_prenante = ?');
+$insere_traitement = $bdd->prepare('INSERT INTO ZA_traitement_de_securite (id_traitement_de_securite, id_atelier, id_projet, id_mesure) VALUES (?, ?, ?, ?)');
 
 $updatechemin = $bdd->prepare(
-  'UPDATE chemin_d_attaque_strategique
+  'UPDATE T_chemin_d_attaque_strategique
   SET dependance_residuelle = ?,
   penetration_residuelle = ?,
   maturite_residuelle = ?,

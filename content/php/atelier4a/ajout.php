@@ -11,7 +11,7 @@ $idscenar = $_POST['nomscenar'];
 $modeope = $_POST['modeope'];
 $id_mode_operatoire = "id_mode_operatoire";
 
-$insere = $bdd->prepare('INSERT INTO `mode_operatoire`(`id_mode_operatoire`, `mode_operatoire`, `id_scenario_operationnel`) VALUES (?,?,?)');
+$insere = $bdd->prepare('INSERT INTO `W_mode_operatoire`(`id_mode_operatoire`, `mode_operatoire`, `id_scenario_operationnel`) VALUES (?,?,?)');
 
 // Verification du mode operatoire
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $modeope)) {

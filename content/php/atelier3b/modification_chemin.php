@@ -12,9 +12,9 @@ $results["message"] = [];
 
 if ($input["action"] === 'edit' && $results["error"] === false) {
     $query = "
-    UPDATE chemin_d_attaque_strategique 
+    UPDATE T_chemin_d_attaque_strategique 
     SET 
-    nom_chemin_d_attaque_strategique = '" . $chemin_d_attaque_strategique . "'
+    nom_chemin_d_attaque_strategique = '" . $T_chemin_d_attaque_strategique . "'
     WHERE id_chemin_d_attaque_strategique = '" . $input["id_chemin_d_attaque_strategique"] . "'
     ";
     echo $query;
@@ -23,7 +23,7 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
 }
 if ($input["action"] === 'delete') {
     $query = "
-    DELETE FROM chemin_d_attaque_strategique 
+    DELETE FROM T_chemin_d_attaque_strategique 
     WHERE id_chemin_d_attaque_strategique = '" . $input["id_chemin_d_attaque_strategique"] . "'
     ";
     mysqli_query($connect, $query);

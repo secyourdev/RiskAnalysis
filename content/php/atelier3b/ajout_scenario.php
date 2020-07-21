@@ -18,7 +18,7 @@ $id_projet = $_SESSION['id_projet'];
 $id_scenario = 'id_scenario';
 
 $insere = $bdd->prepare(
-  'INSERT INTO scenario_strategique 
+  'INSERT INTO S_scenario_strategique 
   (id_scenario_strategique, nom_scenario_strategique, id_atelier, id_source_de_risque, id_evenement_redoute, id_projet)
    VALUES 
    ( ?, ?, ?, ?, ?, ?)'

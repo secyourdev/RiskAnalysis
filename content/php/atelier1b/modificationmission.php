@@ -39,7 +39,7 @@ if ($input["action"] === 'edit') {
 
     if($results["error"] === false){
     $query = 
-    "UPDATE mission 
+    "UPDATE I_mission 
     SET nom_mission = '" . $nom_mission . "',
     responsable = '".$responsable."'
     WHERE id_mission = '" . $input["id_mission"] . "'
@@ -50,7 +50,7 @@ if ($input["action"] === 'edit') {
     mysqli_query($connect, $query);
 
     $query_couple = 
-    "UPDATE couple_VMBS 
+    "UPDATE L_couple_VMBS 
     SET nom_responsable_vm = '" . $nom_responsable_vm . "',
     nom_responsable_bs = '".$nom_responsable_bs."'
     WHERE id_mission = '" . $input["id_mission"] . "'
@@ -62,7 +62,7 @@ if ($input["action"] === 'edit') {
 
 if ($input["action"] === 'delete') {
     $query = 
-    "DELETE FROM mission 
+    "DELETE FROM I_mission 
     WHERE id_mission = '" . $input["id_mission"] . "'
     AND id_atelier = '" . $id_atelier . "'
     AND id_projet = " . $id_projet . "

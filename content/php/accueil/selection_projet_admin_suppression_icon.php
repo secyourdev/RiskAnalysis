@@ -6,7 +6,7 @@ include("../bdd/connexion.php");
 
 $id_projet = $_POST['id_projet'];
 
-$search_projet = $bdd->prepare("SELECT id_projet,nom_projet FROM projet WHERE id_projet=?");
+$search_projet = $bdd->prepare("SELECT id_projet,nom_projet FROM F_projet WHERE id_projet=?");
 $search_projet->bindParam(1,$id_projet);
 $search_projet->execute();
 

@@ -13,7 +13,7 @@ $results["message"] = [];
 if ($input["action"] === 'edit' && $results["error"] === false) {
     
     $query = "
-    UPDATE scenario_operationnel 
+    UPDATE V_scenario_operationnel 
     SET vraisemblance = '".$vraisemblance."'
     WHERE id_scenario_operationnel = '".$input["id_scenario_operationnel"]."'
     ";

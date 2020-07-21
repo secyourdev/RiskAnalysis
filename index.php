@@ -5,7 +5,7 @@ include("content/php/bdd/connexion.php");
 
 if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $getid = intval($_GET['id_utilisateur']);
-    $requser = $bdd->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = ?');
+    $requser = $bdd->prepare('SELECT * FROM A_utilisateur WHERE id_utilisateur = ?');
     $requser->execute(array($getid));
     $userinfo = $requser->fetch();
 ?>

@@ -15,17 +15,17 @@ $id_risque = $_POST['id_risque'];
 $chemin_d_attaque_strategique = $_POST['chemin_d_attaque_strategique'];
 $niveau_de_gravite = $_POST['niveau_de_gravite'];
 
-$recupere = $bdd->prepare("SELECT id_chemin_d_attaque_strategique, nom_scenario_strategique,description_source_de_risque,objectif_vise,nom_evenement_redoute, id_risque, chemin_d_attaque_strategique, niveau_de_gravite FROM chemin_d_attaque_strategique, scenario_strategique, SROV , evenement_redoute WHERE chemin_d_attaque_strategique.id_scenario_strategique = scenario_strategique.id_scenario_strategique AND scenario_strategique.id_evenement_redoute = evenement_redoute.id_evenement_redoute AND scenario_strategique.id_source_de_risque = SROV.id_source_de_risque");
+$recupere = $bdd->prepare("SELECT id_chemin_d_attaque_strategique, nom_scenario_strategique,description_source_de_risque,objectif_vise,nom_evenement_redoute, id_risque, chemin_d_attaque_strategique, niveau_de_gravite FROM T_chemin_d_attaque_strategique, S_scenario_strategique, P_SROV , M_evenement_redoute WHERE T_chemin_d_attaque_strategique.id_scenario_strategique = S_scenario_strategique.id_scenario_strategique AND S_scenario_strategique.id_evenement_redoute = M_evenement_redoute.id_evenement_redoute AND S_scenario_strategique.id_source_de_risque = P_SROV.id_source_de_risque");
 
 $insere = $bdd->prepare(
-  'INSERT INTO chemin_d_attaque_strategique (
+  'INSERT INTO T_chemin_d_attaque_strategique (
     id_risque,
     chemin_d_attaque_strategique, 
     ) 
     VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? )'
 );
 $insere = $bdd->prepare(
-  'INSERT INTO scenario_strategique (
+  'INSERT INTO S_scenario_strategique (
     id_partie_prenante, 
     nom_scenario_strategique, 
     description_source_de_risque, 
@@ -39,7 +39,7 @@ $insere = $bdd->prepare(
     VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? )'
 );
 $insere = $bdd->prepare(
-  'INSERT INTO SROV  (
+  'INSERT INTO P_SROV  (
     id_partie_prenante, 
     nom_scenario_strategique, 
     description_source_de_risque, 

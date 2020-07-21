@@ -88,7 +88,7 @@ print '<br />';
 
 //preparation des requetes
 $insere_socle = $bdd->prepare(
-  'INSERT INTO socle_de_securite
+  'INSERT INTO N_socle_de_securite
   (
     id_socle_securite, 
     type_referentiel, 
@@ -101,8 +101,8 @@ $insere_socle = $bdd->prepare(
   VALUES (?, ?, ?, NULL, NULL, 1, 1)'
 );
 
-$recupere_id_socle_securite = $bdd->prepare("SELECT id_socle_securite FROM socle_de_securite WHERE nom_referentiel = ?");
-$recupere_exist_socle = $bdd->prepare("SELECT EXISTS(SELECT * FROM socle_de_securite WHERE nom_referentiel = ?)");
+$recupere_id_socle_securite = $bdd->prepare("SELECT id_socle_securite FROM N_socle_de_securite WHERE nom_referentiel = ?");
+$recupere_exist_socle = $bdd->prepare("SELECT EXISTS(SELECT * FROM N_socle_de_securite WHERE nom_referentiel = ?)");
 $recupere_exist_regle = $bdd->prepare("SELECT EXISTS(SELECT * FROM referentiel WHERE id_socle_securite = ? AND id_regle = ?)");
 
 $insere_regle = $bdd->prepare(

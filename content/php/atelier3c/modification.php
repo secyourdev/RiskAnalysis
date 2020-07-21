@@ -20,7 +20,7 @@ $results["message"] = [];
 if ($input["action"] === 'edit' && $results["error"] === false) {
     //update la mesure
     $query = "
-    UPDATE mesure 
+    UPDATE Y_mesure 
     SET 
     nom_mesure = '" . $nom_mesure_securite . "',
     description_mesure = '" . $description_mesure_securite . "'
@@ -29,17 +29,17 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
     mysqli_query($connect, $query);
 
     // recupere l'id du chemin d'attaque 
-    $recupere_chemin = "SELECT id_chemin_d_attaque_strategique FROM comporter_2 WHERE id_mesure = $id_mesure";
+    $recupere_chemin = "SELECT id_chemin_d_attaque_strategique FROM ZB_comporter_2 WHERE id_mesure = $id_mesure";
     $result_chemin = mysqli_query($connect, $recupere_chemin);
     $id_chemin = (mysqli_fetch_array($result_chemin))["id_chemin_d_attaque_strategique"];
 
     // recupere l'id de la pp
-    $recupere_pp = "SELECT id_partie_prenante FROM chemin_d_attaque_strategique WHERE id_chemin_d_attaque_strategique = $id_chemin";
+    $recupere_pp = "SELECT id_partie_prenante FROM T_chemin_d_attaque_strategique WHERE id_chemin_d_attaque_strategique = $id_chemin";
     $result_pp = mysqli_query($connect, $recupere_pp);
     $id_pp = (mysqli_fetch_array($result_pp))["id_partie_prenante"];
 
     // recupere les valeurs de ponderation
-    $recupere_ponderation = "SELECT ponderation_dependance, ponderation_penetration, ponderation_maturite, ponderation_confiance FROM partie_prenante WHERE id_partie_prenante = $id_pp";
+    $recupere_ponderation = "SELECT ponderation_dependance, ponderation_penetration, ponderation_maturite, ponderation_confiance FROM R_partie_prenante WHERE id_partie_prenante = $id_pp";
     $result_ponderation = mysqli_query($connect, $recupere_ponderation);
     $row = mysqli_fetch_array($result_ponderation);
     $ponderation_dependance = $row["ponderation_dependance"];
@@ -51,7 +51,7 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
     
     //update les valeurs résiduelles du chemin
     $updatechemin = "
-    UPDATE chemin_d_attaque_strategique
+    UPDATE T_chemin_d_attaque_strategique
     SET dependance_residuelle = '" . $dependance_residuelle . "',
     penetration_residuelle = '" . $penetration_residuelle . "',
     maturite_residuelle = '" . $maturite_residuelle . "',
@@ -65,11 +65,11 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
 }
 if ($input["action"] === 'delete') {
     $query = "
-    DELETE FROM comporter_2 
+    DELETE FROM ZB_comporter_2 
     WHERE id_mesure = '".$input["id_mesure"]."'
     ";
     $query2 = "
-    DELETE FROM mesure 
+    DELETE FROM Y_mesure 
     WHERE id_mesure = '".$input["id_mesure"]."'
     ";
     mysqli_query($connect, $query2);

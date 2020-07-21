@@ -12,7 +12,7 @@ $descriptionbs = $_POST['descriptionbs'];
 $id_bien_support = "id_bien_support";
 $id_atelier = "1.b";
 
-$inserebs = $bdd->prepare('INSERT INTO bien_support(id_bien_support, nom_bien_support, description_bien_support, id_atelier, id_projet) VALUES (?,?,?,?,?)');
+$inserebs = $bdd->prepare('INSERT INTO K_bien_support(id_bien_support, nom_bien_support, description_bien_support, id_atelier, id_projet) VALUES (?,?,?,?,?)');
 
 // Verification du nom du bien support
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $biensupport)) {

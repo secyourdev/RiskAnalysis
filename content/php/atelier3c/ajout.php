@@ -23,7 +23,7 @@ $id_atelier = '3.c';
 
 // Pour les règles du référentiel
 
-// $recupere_regle = $bdd->prepare("SELECT id_regle_affichage FROM regle WHERE id_regle = ?");
+// $recupere_regle = $bdd->prepare("SELECT id_regle_affichage FROM O_regle WHERE id_regle = ?");
 
 // $recupere_risque = $bdd->prepare("SELECT id_risque FROM chemin_d_attaque_strategique WHERE id_chemin_d_attaque_strategique = ?");
 
@@ -48,18 +48,18 @@ $id_atelier = '3.c';
 // );
 
 
-$insere_mesure = $bdd->prepare("INSERT INTO mesure (id_mesure, nom_mesure, description_mesure) VALUES (?,?,?)");
+$insere_mesure = $bdd->prepare("INSERT INTO Y_mesure (id_mesure, nom_mesure, description_mesure) VALUES (?,?,?)");
 
-$recupere_mesure = $bdd->prepare("SELECT id_mesure FROM mesure WHERE nom_mesure = ? AND description_mesure = ?");
+$recupere_mesure = $bdd->prepare("SELECT id_mesure FROM Y_mesure WHERE nom_mesure = ? AND description_mesure = ?");
 
-$recupere_risque = $bdd->prepare("SELECT id_risque FROM chemin_d_attaque_strategique WHERE id_chemin_d_attaque_strategique = ?");
+$recupere_risque = $bdd->prepare("SELECT id_risque FROM T_chemin_d_attaque_strategique WHERE id_chemin_d_attaque_strategique = ?");
 
-$insere_comporte = $bdd->prepare("INSERT INTO comporter_2 (id_mesure, id_chemin_d_attaque_strategique, id_risque) VALUES (?,?,?)");
+$insere_comporte = $bdd->prepare("INSERT INTO ZB_comporter_2 (id_mesure, id_chemin_d_attaque_strategique, id_risque) VALUES (?,?,?)");
 
-$recupere_pp = $bdd->prepare("SELECT ponderation_dependance, ponderation_penetration, ponderation_maturite, ponderation_confiance FROM partie_prenante WHERE id_partie_prenante = ?");
+$recupere_pp = $bdd->prepare("SELECT ponderation_dependance, ponderation_penetration, ponderation_maturite, ponderation_confiance FROM R_partie_prenante WHERE id_partie_prenante = ?");
 
 $updatechemin = $bdd->prepare(
-  'UPDATE chemin_d_attaque_strategique
+  'UPDATE T_chemin_d_attaque_strategique
   SET dependance_residuelle = ?,
   penetration_residuelle = ?,
   maturite_residuelle = ?,
