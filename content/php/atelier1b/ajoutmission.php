@@ -1,18 +1,8 @@
 <?php
-  session_start();
-  $getid_projet = $_SESSION['id_projet'];
+session_start();
+$getid_projet = $_SESSION['id_projet'];
 
-//Connexion à la base de donnee
-try {
-  $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
-    'ebios-rm',
-    'hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-  );
-} catch (PDOException $e) {
-  die('Erreur :' . $e->getMessage());
-}
+include("../bdd/connexion.php");
 
 $results["error"] = false;
 $results["message"] = [];
@@ -28,7 +18,7 @@ $responsable_bs = $_POST['responsable_bs'];
 $id_mission = "id_mission";
 $id_atelier = "1.b";
 
-$inseremission = $bdd->prepare('INSERT INTO mission(id_mission, nom_mission, responsable, id_atelier, id_projet) VALUES (?,?,?,?,?)');
+$inseremission = $bdd->prepare('INSERT INTO I_mission(id_mission, nom_mission, responsable, id_atelier, id_projet) VALUES (?,?,?,?,?)');
 
 // Verification du nom de la mission
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_mission)) {
@@ -50,7 +40,7 @@ if ($results["error"] === false && isset($_POST['validermission'])) {
     $inseremission->bindParam(5, $getid_projet);
     $inseremission->execute();
 
-    $recuperemission = $bdd->prepare('SELECT id_mission FROM mission WHERE nom_mission=? AND responsable=? AND id_projet=?');
+    $recuperemission = $bdd->prepare('SELECT id_mission FROM I_mission WHERE nom_mission=? AND responsable=? AND id_projet=?');
     $recuperemission->bindParam(1, $nom_mission);
     $recuperemission->bindParam(2, $responsable);
     $recuperemission->bindParam(3, $getid_projet);
@@ -58,7 +48,7 @@ if ($results["error"] === false && isset($_POST['validermission'])) {
     $resultat = $recuperemission->fetch();
 
     if($id_valeur_metier!="" && $id_bien_support!=""){
-      $inserecoupleVMBS = $bdd->prepare('INSERT INTO couple_VMBS(id_valeur_metier, id_bien_support, id_mission, nom_responsable_vm, nom_responsable_bs) VALUES (?,?,?,?,?)');
+      $inserecoupleVMBS = $bdd->prepare('INSERT INTO L_couple_VMBS(id_valeur_metier, id_bien_support, id_mission, nom_responsable_vm, nom_responsable_bs) VALUES (?,?,?,?,?)');
       $inserecoupleVMBS->bindParam(1, $id_valeur_metier);
       $inserecoupleVMBS->bindParam(2, $id_bien_support);
       $inserecoupleVMBS->bindParam(3, $resultat['id_mission']);

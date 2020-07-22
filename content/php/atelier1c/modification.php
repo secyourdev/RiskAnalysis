@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
+include("../bdd/connexion_sqli.php");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -36,7 +36,7 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/", $niveau_de_grav
 
 if ($input["action"] === 'edit' && $results["error"] === false) {
     $query = "
-    UPDATE evenement_redoute 
+    UPDATE M_evenement_redoute 
     SET 
     nom_evenement_redoute = '" . $nom_evenement_redoute . "',
     description_evenement_redoute = '" . $description_evenement_redoutes . "',
@@ -54,7 +54,7 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
 }
 if ($input["action"] === 'delete') {
     $query = "
-    DELETE FROM evenement_redoute 
+    DELETE FROM M_evenement_redoute 
     WHERE id_evenement_redoute = '".$input["id_evenement_redoute"]."'
     ";
     echo $query;

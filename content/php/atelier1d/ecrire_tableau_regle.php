@@ -1,18 +1,9 @@
 <?php
-//Connexion à la base de donnee
-try {
-  $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
-    'ebios-rm',
-    'hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-  );
-} catch (PDOException $e) {
-  die('Erreur :' . $e->getMessage());
-}
+
+include("../bdd/connexion.php");
 
 $query = $bdd->prepare(
-  "SELECT * FROM regle WHERE regle.id_socle_securite = ? ORDER BY regle.id_regle"
+  "SELECT * FROM O_regle WHERE O_regle.id_socle_securite = ? ORDER BY O_regle.id_regle"
 );
 
 // $query_vide = $bdd->prepare(
@@ -28,7 +19,7 @@ $query = $bdd->prepare(
 if (isset($_POST['nom_referentiel'])) {
   $nom_referentiel = $_POST['nom_referentiel'];
   // echo 'nom_referentiel ' . $nom_referentiel ;
-  $recupere_id_socle = $bdd->prepare("SELECT id_socle_securite FROM socle_de_securite WHERE nom_referentiel = ?");
+  $recupere_id_socle = $bdd->prepare("SELECT id_socle_securite FROM N_socle_de_securite WHERE nom_referentiel = ?");
   $recupere_id_socle->bindParam(1, $nom_referentiel);
   $recupere_id_socle->execute();
 

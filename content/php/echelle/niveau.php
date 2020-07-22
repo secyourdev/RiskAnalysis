@@ -1,21 +1,11 @@
 <?php
-//Connexion à la base de donnee
-try {
-  $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
-    'ebios-rm',
-    'hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-  );
-} catch (PDOException $e) {
-  die('Erreur :' . $e->getMessage());
-}
+include("../bdd/connexion.php");
 
-$query = $bdd->prepare("SELECT id_niveau, valeur_niveau, description_niveau FROM niveau NATURAL JOIN echelle WHERE id_echelle = ?");
+$query = $bdd->prepare("SELECT id_niveau, valeur_niveau, description_niveau FROM E_niveau NATURAL JOIN D_echelle WHERE id_echelle = ?");
 
 if(isset($_POST['nom_echelle'])){
     $nom_echelle = $_POST['nom_echelle'];
-    $affiche_niveau = $bdd->prepare("SELECT id_echelle FROM echelle WHERE nom_echelle = ?");
+    $affiche_niveau = $bdd->prepare("SELECT id_echelle FROM D_echelle WHERE nom_echelle = ?");
     $affiche_niveau->bindParam(1, $nom_echelle);
     $affiche_niveau->execute();
     $resultat = $affiche_niveau->fetch();

@@ -3,8 +3,7 @@
 session_start();
 $getid_projet = $_SESSION['id_projet'];
 
-//Connexion à la base de donnee
-$bdd = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
+include("../bdd/connexion_sqli.php");
 
 // Initialize message variable
 $msg = "";
@@ -32,7 +31,7 @@ if (isset($_POST['nom_scenario_operationnel'])) {
         // image file directory
         $target = "../../../image/" . basename($image);
 
-        $sql = "UPDATE scenario_operationnel SET image = '$image' WHERE id_projet = $getid_projet AND id_atelier = '4.a' AND id_scenario_operationnel = $id_scenario_operationnel";
+        $sql = "UPDATE U_scenario_operationnel SET image = '$image' WHERE id_projet = $getid_projet AND id_atelier = '4.a' AND id_scenario_operationnel = $id_scenario_operationnel";
         // print $sql;
         // execute query
         mysqli_query($bdd, $sql);

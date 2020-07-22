@@ -1,6 +1,5 @@
 <?php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
-
+include("../bdd/connexion_sqli.php");
 $input = filter_input_array(INPUT_POST);
 
 // $id_risque = mysqli_real_escape_string($connect, $input['id_risque']);
@@ -17,7 +16,7 @@ if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_scena
 if ($input["action"] === 'edit' && $results["error"] === false) {
     
     $query = "
-    UPDATE scenario_operationnel 
+    UPDATE U_scenario_operationnel 
     SET description_scenario_operationnel = '".$description_scenario_operationnel."'
     WHERE id_scenario_operationnel = '".$input["id_scenario_operationnel"]."'
     ";
@@ -26,7 +25,7 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
 }
 if ($input["action"] === 'delete') {
     $query = "
-    DELETE FROM scenario_operationnel 
+    DELETE FROM U_scenario_operationnel 
     WHERE id_scenario_operationnel = '".$input["id_scenario_operationnel"]."'
     ";
     mysqli_query($connect, $query);

@@ -1,15 +1,7 @@
 <?php
 session_start();
 
-  //Connexion à la base de donnee
-  try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-  }
-
-  catch(PDOException $e){
-    die('Erreur :'.$e->getMessage());
-  }
+include("../bdd/connexion.php");
 
   $results["error"] = false;
 
@@ -19,7 +11,7 @@ session_start();
   $email=$_POST['email'];
   $type_compte=$_POST['type_compte'];
 
-  $insertutilisateur = $bdd->prepare('INSERT INTO `utilisateur`(`id_utilisateur`, `nom`, `prenom`, `poste`, `email`, `mot_de_passe`, `type_compte`) VALUES (?,?,?,?,?,?,?)');
+  $insertutilisateur = $bdd->prepare('INSERT INTO `A_utilisateur`(`id_utilisateur`, `nom`, `prenom`, `poste`, `email`, `mot_de_passe`, `type_compte`) VALUES (?,?,?,?,?,?,?)');
 
     function passgen1($nbChar) {
         $chaine ="mnoTUzS5678kVvwxy9WXYZRNCDEFrslq41GtuaHIJKpOPQA23LcdefghiBMbj0";
@@ -61,7 +53,7 @@ session_start();
         $_SESSION['message_error_4'] = "Type de compte invalide";
     }
     
-    $reqmail = $bdd->prepare("SELECT * FROM utilisateur where email = ?");
+    $reqmail = $bdd->prepare("SELECT * FROM A_utilisateur where email = ?");
     $reqmail->execute(array($email));
     $mailexist = $reqmail->rowCount();
     if($mailexist!=0){

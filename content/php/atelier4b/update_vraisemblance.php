@@ -1,22 +1,13 @@
 <?php
 session_start();
 $get_id_projet = $_SESSION['id_projet'];
-try {
-    $bdd = new PDO(
-        'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
-        'ebios-rm',
-        'hLLFL\bsF|&[8=m8q-$j',
-        array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-    );
-} catch (PDOException $e) {
-    die('Erreur :' . $e->getMessage());
-}
 
+include("../bdd/connexion.php");
 
-$get_id = $bdd->prepare("SELECT echelle.id_echelle FROM echelle NATURAL JOIN projet WHERE projet.id_projet = ?");
+$get_id = $bdd->prepare("SELECT D_echelle.id_echelle FROM D_echelle NATURAL JOIN F_projet WHERE F_projet.id_projet = ?");
 
-$updatevraisemblance = $bdd->prepare("UPDATE echelle SET echelle_vraisemblance = ? WHERE id_echelle = ?");
-$updatescenar = $bdd->prepare("UPDATE scenario_operationnel SET vraisemblance = 4 WHERE vraisemblance = 5");
+$updatevraisemblance = $bdd->prepare("UPDATE D_echelle SET echelle_vraisemblance = ? WHERE id_echelle = ?");
+$updatescenar = $bdd->prepare("UPDATE U_scenario_operationnel SET vraisemblance = 4 WHERE vraisemblance = 5");
 
 
 

@@ -197,11 +197,11 @@ function get_database_project_info(){
         dataType : 'html',
         success: function (resultat) {
             var projet_info = JSON.parse(resultat);
-            sessionIdProjet=sessionIdProjet-1
-            nom_etude.value = projet_info[sessionIdProjet][1]
-            objectif_atteindre.value = projet_info[sessionIdProjet][3]        
-            respo_acceptation_risque.value=projet_info[sessionIdProjet][4]        
-            cadre_temporel.value = projet_info[sessionIdProjet][5]
+            console.log(projet_info)
+            nom_etude.value = projet_info[0][1]
+            objectif_atteindre.value = projet_info[0][3]        
+            respo_acceptation_risque.value=projet_info[0][4]        
+            cadre_temporel.value = projet_info[0][5]
 
             verify_input(nom_etude.value,regex_nom_etude,nom_etude)
             verify_textarea(objectif_atteindre.value,regex_objectif_atteindre,objectif_atteindre)

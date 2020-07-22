@@ -2,17 +2,7 @@
 session_start();
 $getid_projet = $_SESSION['id_projet'];
 
-//Connexion à la base de donnee
-try {
-  $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
-    'ebios-rm',
-    'hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-  );
-} catch (PDOException $e) {
-  die('Erreur :' . $e->getMessage());
-}
+include("../bdd/connexion.php");
 
 $results["error"] = false;
 $results["message"] = [];
@@ -25,7 +15,7 @@ $etat_de_la_conformite = $_POST['commentaire'];
 $id_socle_securite = "id_socle_securite";
 $id_atelier = "1.d";
 
-$insere = $bdd->prepare("INSERT INTO socle_de_securite(id_socle_securite, type_referentiel, nom_referentiel, etat_d_application, etat_de_la_conformite, id_atelier, id_projet) VALUES (?,?,?,?,?,?,?)");
+$insere = $bdd->prepare("INSERT INTO N_socle_de_securite(id_socle_securite, type_referentiel, nom_referentiel, etat_d_application, etat_de_la_conformite, id_atelier, id_projet) VALUES (?,?,?,?,?,?,?)");
 
 // Verification du type_referenciel
 if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $type_referenciel)) {

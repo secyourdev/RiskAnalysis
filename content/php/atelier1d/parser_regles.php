@@ -4,20 +4,9 @@ $getid_projet = $_SESSION['id_projet'];
 
 // header('Location: ../../../atelier-1d');
 
-//Connexion à la base de donnee
-
 use function PHPSTORM_META\type;
 
-try {
-  $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
-    'ebios-rm',
-    'hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-  );
-} catch (PDOException $e) {
-  die('Erreur :' . $e->getMessage());
-}
+include("../bdd/connexion.php");
 
 //set directory
 $uploaddir  = "../../../uploads/";
@@ -75,7 +64,7 @@ if ($fileType != "json") {
 
 
 
-  $recupere_id_socle_securite = $bdd->prepare("SELECT id_socle_securite FROM socle_de_securite WHERE nom_referentiel = ? AND id_atelier = '1.d' AND id_projet = $getid_projet");
+  $recupere_id_socle_securite = $bdd->prepare("SELECT id_socle_securite FROM N_socle_de_securite WHERE nom_referentiel = ? AND id_atelier = '1.d' AND id_projet = $getid_projet");
 
   //trouve le socle
   $type_referentiel = array_key_first($data);
@@ -84,7 +73,7 @@ if ($fileType != "json") {
   // print '<br />';
 
   //recupere l'id du socle pour savoir s'il existe deja
-  $recupere_exist_socle = $bdd->prepare("SELECT * FROM socle_de_securite WHERE nom_referentiel = ? AND id_atelier = '1.d' AND id_projet = $getid_projet");
+  $recupere_exist_socle = $bdd->prepare("SELECT * FROM N_socle_de_securite WHERE nom_referentiel = ? AND id_atelier = '1.d' AND id_projet = $getid_projet");
   $recupere_exist_socle->bindParam(1, $nom_referentiel);
   $recupere_exist_socle->execute();
   $exist_socle = $recupere_exist_socle->fetch();
@@ -93,7 +82,7 @@ if ($fileType != "json") {
   if ($exist_socle == false) {
     // print '$exist_socle[0] == 0';
     $insere_socle = $bdd->prepare(
-      'INSERT INTO socle_de_securite
+      'INSERT INTO N_socle_de_securite
           (
             id_socle_securite, 
             type_referentiel, 
@@ -137,7 +126,7 @@ if ($fileType != "json") {
     $new_id_regle = (/* $id_socle_securite[0] . */ $key_id_titre_desc['id']);
 
     //recupere l'id de la regle pour savoir si elle existe deja
-    $recupere_exist_regle = $bdd->prepare("SELECT * FROM regle WHERE id_socle_securite = ? AND id_regle = ?");
+    $recupere_exist_regle = $bdd->prepare("SELECT * FROM O_regle WHERE id_socle_securite = ? AND id_regle = ?");
     $recupere_exist_regle->bindParam(1, $id_socle_securite[0]);
     $recupere_exist_regle->bindParam(2, $new_id_regle);
     $recupere_exist_regle->execute();
@@ -148,7 +137,7 @@ if ($fileType != "json") {
 
       //insère les régles avec les paramètres groupés
       $insere_regle = $bdd->prepare(
-        "INSERT INTO regle(id_regle, id_regle_affichage, titre, description, etat_de_la_regle, justification_ecart, dates, responsable, id_socle_securite) 
+        "INSERT INTO O_regle(id_regle, id_regle_affichage, titre, description, etat_de_la_regle, justification_ecart, dates, responsable, id_socle_securite) 
     VALUES ('',?,?,?,NULL,NULL,NULL,NULL,?)"
       );
 
@@ -160,7 +149,7 @@ if ($fileType != "json") {
     }
   }
   $recupere_tableau = $bdd->prepare(
-    "SELECT * FROM socle_de_securite 
+    "SELECT * FROM N_socle_de_securite 
   WHERE id_socle_securite = ?"
   );
   $recupere_tableau->bindParam(1, $id_socle_securite[0]);

@@ -1,21 +1,9 @@
 <?php
 // $getid_projet = intval($_GET['id_projet']);
-//Connexion à la base de donnee
-try {
-  $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
-    'ebios-rm',
-    'hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-  );
-} catch (PDOException $e) {
-  die('Erreur :' . $e->getMessage());
-}
 
+include("../bdd/connexion.php");
 
-$queryregles = $bdd->prepare("SELECT id_regle, titre FROM regle WHERE id_socle_securite = ?");
-
-
+$queryregles = $bdd->prepare("SELECT id_regle, titre FROM O_regle WHERE id_socle_securite = ?");
 
 if(isset($_POST['ref'])){
     $ref = $_POST['ref'];

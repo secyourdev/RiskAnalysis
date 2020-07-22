@@ -2,15 +2,7 @@
 session_start();
 $getid_utilisateur = $_SESSION['id_utilisateur'];
 
-  //Connexion à la base de donnee
-  try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-  }
-
-  catch(PDOException $e){
-    die('Erreur :'.$e->getMessage());
-  }
+include("../bdd/connexion.php");
 
 $results["error"] = false;
 $results["message"] = [];
@@ -20,7 +12,7 @@ $nouveau_mdp=$_POST['nouveau_mdp'];
 $confirmation_nouveau_mdp=$_POST['confirmation_nouveau_mdp'];
 
 if (isset($_POST['modifier_mdp_user'])){
-    $verification_mdp = $bdd->prepare("SELECT * FROM utilisateur where id_utilisateur=?");
+    $verification_mdp = $bdd->prepare("SELECT * FROM A_utilisateur where id_utilisateur=?");
     $verification_mdp->bindParam(1, $getid_utilisateur);
     $verification_mdp->execute();
     $resultat = $verification_mdp->fetch();
@@ -28,7 +20,7 @@ if (isset($_POST['modifier_mdp_user'])){
     if(password_verify($ancien_mdp, $resultat["mot_de_passe"])){
         if($nouveau_mdp==$confirmation_nouveau_mdp){
             $mot_de_passe = password_hash($confirmation_nouveau_mdp, PASSWORD_BCRYPT);
-            $update_mdp = $bdd->prepare("UPDATE utilisateur SET mot_de_passe = ? WHERE id_utilisateur=?");
+            $update_mdp = $bdd->prepare("UPDATE A_utilisateur SET mot_de_passe = ? WHERE id_utilisateur=?");
             $update_mdp->bindParam(1, $mot_de_passe);
             $update_mdp->bindParam(2, $getid_utilisateur);
             $update_mdp->execute();

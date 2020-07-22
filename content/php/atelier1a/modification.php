@@ -2,13 +2,13 @@
 session_start();
 $getid_projet = $_SESSION['id_projet'];
 
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
+include("../bdd/connexion_sqli.php");
 
 $input = filter_input_array(INPUT_POST);
 
 if($input["action"] === 'delete'){
     $query = "
-    DELETE FROM RACI 
+    DELETE FROM H_RACI 
     WHERE id_utilisateur = '".$input["id_utilisateur"]."' 
     AND id_projet = $getid_projet
     ";

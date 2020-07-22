@@ -1,17 +1,7 @@
 <?php
 session_start();
 
-//Connexion à la base de donnee
-try {
-  $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
-    'ebios-rm',
-    'hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-  );
-} catch (PDOException $e) {
-  die('Erreur :' . $e->getMessage());
-}
+include("../bdd/connexion.php");
 
 $results["error"] = false;
 $results["message"] = [];
@@ -24,7 +14,7 @@ $id_atelier = '3.a';
 $id_projet = $_SESSION['id_projet'];
 
 $insere = $bdd->prepare(
-  "UPDATE seuil SET seuil_danger=?,seuil_controle=?,seuil_veille=? WHERE id_projet=?");
+  "UPDATE Q_seuil SET seuil_danger=?,seuil_controle=?,seuil_veille=? WHERE id_projet=?");
 
 // Verification du seuil_danger
 if (!preg_match("/^[1-9][0-9]?$|^100$/", $seuil_danger)) {

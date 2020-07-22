@@ -1,6 +1,5 @@
 <?php  
-//action.php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
+include("../bdd/connexion_sqli.php");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -15,7 +14,7 @@ if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_niveau
 
 if($input["action"] === 'edit' && $results["error"] === false){
     $query = "
-    UPDATE niveau 
+    UPDATE E_niveau 
     SET description_niveau = '".$description_niveau."'
     WHERE id_niveau = '".$input["id_niveau"]."'
     ";
@@ -25,7 +24,7 @@ if($input["action"] === 'edit' && $results["error"] === false){
 
 if($input["action"] === 'delete'){
     $query = "
-    DELETE FROM niveau 
+    DELETE FROM E_niveau 
     WHERE id_niveau = '".$input["id_niveau"]."'
     ";
     mysqli_query($connect, $query);

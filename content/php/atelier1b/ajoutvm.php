@@ -1,18 +1,8 @@
 <?php
-  session_start();
-  $getid_projet = $_SESSION['id_projet'];
+session_start();
+$getid_projet = $_SESSION['id_projet'];
 
-//Connexion à la base de donnee
-try {
-  $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
-    'ebios-rm',
-    'hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-  );
-} catch (PDOException $e) {
-  die('Erreur :' . $e->getMessage());
-}
+include("../bdd/connexion.php");
 
 $results["error"] = false;
 
@@ -23,7 +13,7 @@ $descriptionvm = $_POST['descriptionvm'];
 $id_valeur_metier = "valeur_metier";
 $id_atelier = "1.b";
 
-$inserevm = $bdd->prepare('INSERT INTO valeur_metier(id_valeur_metier, nom_valeur_metier, nature_valeur_metier, description_valeur_metier, id_atelier, id_projet) VALUES (?,?,?,?,?,?)');
+$inserevm = $bdd->prepare('INSERT INTO J_valeur_metier(id_valeur_metier, nom_valeur_metier, nature_valeur_metier, description_valeur_metier, id_atelier, id_projet) VALUES (?,?,?,?,?,?)');
 
 
 // Verification du nom de la valeur métier

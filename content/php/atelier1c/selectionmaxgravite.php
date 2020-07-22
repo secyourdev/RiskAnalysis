@@ -1,18 +1,10 @@
 <?php
-// session_start();
-try {
-    $bdd = new PDO(
-        'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
-        'ebios-rm',
-        'hLLFL\bsF|&[8=m8q-$j',
-        array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-    );
-} catch (PDOException $e) {
-    die('Erreur :' . $e->getMessage());
-}
+
+include("content/php/bdd/connexion.php");
+
 $results["error"] = false;
 $results["message"] = [];
-$recupere = $bdd->prepare("SELECT echelle_gravite FROM projet NATURAL JOIN echelle WHERE id_projet = ?");
+$recupere = $bdd->prepare("SELECT echelle_gravite FROM F_projet NATURAL JOIN D_echelle WHERE id_projet = ?");
 $id_projet = $_SESSION['id_projet'];
 
 

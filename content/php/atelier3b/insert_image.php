@@ -4,7 +4,7 @@ session_start();
 $getid_projet = $_SESSION['id_projet'];
 
 //Connexion à la base de donnee
-$bdd = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
+include("../bdd/connexion_sqli.php");
 
 // Initialize message variable
 $msg = "";
@@ -29,7 +29,7 @@ if (isset($_POST['file_submit'])) {
         // print 'select_nom_scenario_strategique séléctionné, id: ';
         $id_scenario = $_POST['select_nom_scenario_strategique'];
         // print $id_scenario;
-        $sql = "UPDATE scenario_strategique SET image = '$image' WHERE id_projet = $getid_projet AND id_atelier = '3.b' AND id_scenario_strategique = $id_scenario";
+        $sql = "UPDATE S_scenario_strategique SET image = '$image' WHERE id_projet = $getid_projet AND id_atelier = '3.b' AND id_scenario_strategique = $id_scenario";
         // print $sql;
         $header = 'Location: ../../../atelier-3b&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet'];
     }
@@ -37,7 +37,7 @@ if (isset($_POST['file_submit'])) {
         // print 'select_nom_scenario_operationnel séléctionné, id: ';
         $id_scenario = $_POST['select_nom_scenario_operationnel'];
         // print $id_scenario;
-        $sql = "UPDATE scenario_operationnel SET image = '$image' WHERE id_projet = $getid_projet AND id_atelier = '4.a' AND id_scenario_operationnel = $id_scenario";
+        $sql = "UPDATE U_scenario_operationnel SET image = '$image' WHERE id_projet = $getid_projet AND id_atelier = '4.a' AND id_scenario_operationnel = $id_scenario";
         $header = 'Location: ../../../atelier-4a&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet'];
         print $sql;
     }
@@ -47,7 +47,7 @@ if (isset($_POST['file_submit'])) {
 
         print $sql;
         // execute query
-        mysqli_query($bdd, $sql);
+        mysqli_query($connect, $sql);
 
         if (move_uploaded_file($_FILES['inpFile']['tmp_name'], $target)) {
             header($header);

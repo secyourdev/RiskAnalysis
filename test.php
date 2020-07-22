@@ -1,30 +1,20 @@
 <?php
 session_start();
 
-//Connexion à la base de donnee
-try {
-  $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
-    'ebios-rm',
-    'hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-  );
-} catch (PDOException $e) {
-  die('Erreur :' . $e->getMessage());
-}
+include("content/php/bdd/connexion.php");
 
 if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
   $getid = intval($_GET['id_utilisateur']);
-  $requser = $bdd->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = ?');
+  $requser = $bdd->prepare('SELECT * FROM A_utilisateur WHERE id_utilisateur = ?');
   $requser->execute(array($getid));
   $userinfo = $requser->fetch();
 
   $getidproject = intval($_GET['id_projet']);
-  $reqproject = $bdd->prepare('SELECT nom_projet FROM projet WHERE id_projet = ?');
+  $reqproject = $bdd->prepare('SELECT nom_projet FROM F_projet WHERE id_projet = ?');
   $reqproject->execute(array($getidproject));
   $projectinfo = $reqproject->fetch();
 
-  $reqdroit = $bdd->prepare('SELECT * FROM RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.a"');
+  $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.a"');
   $reqdroit->bindParam(1, $getid);
   $reqdroit->bindParam(2, $getidproject);
   $reqdroit->execute();

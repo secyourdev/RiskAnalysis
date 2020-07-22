@@ -1,17 +1,7 @@
 <?php
 session_start();
 
-//Connexion à la base de donnee
-try {
-  $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
-    'ebios-rm',
-    'hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-  );
-} catch (PDOException $e) {
-  die('Erreur :' . $e->getMessage());
-}
+include("../bdd/connexion.php");
 
 $results["error"] = false;
 
@@ -39,7 +29,7 @@ if(!preg_match("/^[0-9\s-]{1,100}$/", $id_grp_utilisateur_modif)){
 }
   
 if(isset($_POST['modifier_projet']) && $results["error"] === false ){
-    $update_projet = $bdd->prepare("UPDATE projet SET nom_projet = ?, description_projet=?, id_grp_utilisateur=? WHERE id_projet=?");
+    $update_projet = $bdd->prepare("UPDATE F_projet SET nom_projet = ?, description_projet=?, id_grp_utilisateur=? WHERE id_projet=?");
     $update_projet->bindParam(1, $nom_etude_modif);
     $update_projet->bindParam(2, $description_etude_modif);
     $update_projet->bindParam(3, $id_grp_utilisateur_modif);

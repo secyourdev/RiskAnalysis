@@ -1,18 +1,7 @@
 <?php
 // header('Location: ../../../atelier-5bpacs');
 
-
-//Connexion à la base de donnee
-try {
-  $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
-    'ebios-rm',
-    'hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-  );
-} catch (PDOException $e) {
-  die('Erreur :' . $e->getMessage());
-}
+include("../bdd/connexion.php");
 
 $results["error"] = false;
 $results["message"] = [];
@@ -31,8 +20,8 @@ $id_atelier = "5.b";
 
 
 
-$recupere = $bdd->prepare("SELECT id_valeur_metier FROM valeur_metier WHERE nom_valeur_metier = ?");
-$insere = $bdd->prepare('INSERT INTO `traitement_de_securite`(`id_traitement_de_securite`, `principe_de_securite`, `difficulte_traitement_de_securite`, `cout_traitement_de_securite`, `date_traitement_de_securite`, `statut`, `id_atelier`) VALUES (?,?,?,?,?,?,?)');
+$recupere = $bdd->prepare("SELECT id_valeur_metier FROM J_valeur_metier WHERE nom_valeur_metier = ?");
+$insere = $bdd->prepare('INSERT INTO `ZA_traitement_de_securite`(`id_traitement_de_securite`, `principe_de_securite`, `difficulte_traitement_de_securite`, `cout_traitement_de_securite`, `date_traitement_de_securite`, `statut`, `id_atelier`) VALUES (?,?,?,?,?,?,?)');
 
 
 // Verification de la difficulté

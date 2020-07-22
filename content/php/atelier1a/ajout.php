@@ -1,15 +1,7 @@
 <?php
 session_start();
 
-  //Connexion à la base de donnee
-  try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-  }
-
-  catch(PDOException $e){
-    die('Erreur :'.$e->getMessage());
-  }
+include("../bdd/connexion.php");
 
   $results["error"] = false;
   $results["message"] = [];
@@ -31,7 +23,7 @@ session_start();
   $atelier5b = '5.b';
   $atelier5c = '5.c';
   $droit = 'Information';
-  $insertutilisateur = $bdd->prepare('INSERT INTO `RACI`(`id_projet`, `id_utilisateur`, `id_atelier`, `ecriture`) VALUES (?,?,?,?)');
+  $insertutilisateur = $bdd->prepare('INSERT INTO `H_RACI`(`id_projet`, `id_utilisateur`, `id_atelier`, `ecriture`) VALUES (?,?,?,?)');
 
   $insertutilisateur->bindParam(1, $id_projet);
   $insertutilisateur->bindParam(2, $id_utilisateur);

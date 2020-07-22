@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
+include("../bdd/connexion_sqli.php");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -43,7 +43,7 @@ if ($input["action"] === 'edit') {
 
     if ($results["error"] === false) {
         $query_regle =
-            "UPDATE regle 
+            "UPDATE O_regle 
             SET
             etat_de_la_regle = '$etat_de_la_regle',
             justification_ecart = '$justification_ecart',
@@ -57,7 +57,7 @@ if ($input["action"] === 'edit') {
 }
 if ($input["action"] === 'delete') {
     $query =
-        "DELETE FROM regle 
+        "DELETE FROM O_regle 
         WHERE id_regle = $id_regle";
     mysqli_query($connect, $query);
 }

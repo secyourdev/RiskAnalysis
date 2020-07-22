@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
+include("../bdd/connexion_sqli.php");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -130,11 +130,11 @@ $input = filter_input_array(INPUT_POST);
 // }
 if ($input["action"] === 'delete') {
     $query = "
-    DELETE FROM comporter_2 
+    DELETE FROM ZB_comporter_2 
     WHERE id_mesure = '".$input["id_mesure"]."'
     ";
     $query2 = "
-    DELETE FROM mesure 
+    DELETE FROM Y_mesure 
     WHERE id_mesure = '".$input["id_mesure"]."'
     ";
     mysqli_query($connect, $query2);

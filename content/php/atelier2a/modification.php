@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
+include("../bdd/connexion_sqli.php");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -43,7 +43,7 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/", $description_ob
 if ($input["action"] === 'edit' && $results["error"] === false) {
     
     $query = "
-    UPDATE SROV 
+    UPDATE P_SROV 
     SET type_d_attaquant_source_de_risque = '".$type_attaquant."',
     profil_de_l_attaquant_source_de_risque = '".$profil_attaquant."',
     description_source_de_risque = '".$description_source_risque."',
@@ -56,7 +56,7 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
 }
 if ($input["action"] === 'delete') {
     $query = "
-    DELETE FROM SROV 
+    DELETE FROM P_SROV 
     WHERE id_source_de_risque = '".$input["id_source_de_risque"]."'
     ";
     echo $query;

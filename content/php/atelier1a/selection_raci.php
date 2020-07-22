@@ -1,20 +1,10 @@
 <?php
-  session_start(); 
-  $getid_projet = $_SESSION['id_projet'];
+session_start(); 
+$getid_projet = $_SESSION['id_projet'];
 
-//Connexion à la base de donnee
-try {
-  $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
-    'ebios-rm',
-    'hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-  );
-} catch (PDOException $e) {
-  die('Erreur :' . $e->getMessage());
-}
+include("../bdd/connexion.php");
 
-$search_raci = $bdd->prepare("SELECT * FROM RACI where id_projet=?");
+$search_raci = $bdd->prepare("SELECT * FROM H_RACI where id_projet=?");
 $search_raci->bindParam(1, $getid_projet);
 $search_raci->execute();
 

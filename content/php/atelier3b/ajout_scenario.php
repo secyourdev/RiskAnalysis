@@ -2,18 +2,7 @@
 session_start();
 header('Location: ../../../atelier-3b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
 
-
-//Connexion à la base de donnee
-try {
-  $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
-    'ebios-rm',
-    'hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-  );
-} catch (PDOException $e) {
-  die('Erreur :' . $e->getMessage());
-}
+include("../bdd/connexion.php");
 
 $results["error"] = false;
 $results["message"] = [];
@@ -29,7 +18,7 @@ $id_projet = $_SESSION['id_projet'];
 $id_scenario = 'id_scenario';
 
 $insere = $bdd->prepare(
-  'INSERT INTO scenario_strategique 
+  'INSERT INTO S_scenario_strategique 
   (id_scenario_strategique, nom_scenario_strategique, id_atelier, id_source_de_risque, id_evenement_redoute, id_projet)
    VALUES 
    ( ?, ?, ?, ?, ?, ?)'

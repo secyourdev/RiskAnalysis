@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
+include("../bdd/connexion_sqli.php");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -50,7 +50,7 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/", $statut)) {
 if ($input["action"] === 'edit' && $results["error"] === false) {
     
     $query = "
-    UPDATE traitement_de_securite 
+    UPDATE ZA_traitement_de_securite 
     SET principe_de_securite = '".$principe."',
     responsable = '".$responsable."',
     difficulte_traitement_de_securite = '".$difficulte."',

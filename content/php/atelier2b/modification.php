@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
+include("../bdd/connexion_sqli.php");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -91,7 +91,7 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
     }
     
     $query = "
-    UPDATE SROV 
+    UPDATE P_SROV 
     SET motivation = '".$motivation."',
     ressources = '".$ressources."',
     activite = '".$activite."',
@@ -108,7 +108,7 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
 }
 if ($input["action"] === 'delete') {
     $query = "
-    DELETE FROM SROV 
+    DELETE FROM P_SROV 
     WHERE id_source_de_risque = '".$input["id_source_de_risque"]."'
     ";
     mysqli_query($connect, $query);

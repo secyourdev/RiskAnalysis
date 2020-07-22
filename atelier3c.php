@@ -1,28 +1,20 @@
 <?php
 session_start();
 
-//Connexion à la base de donnee
-try{
-    $bdd=new PDO('mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8','ebios-rm','hLLFL\bsF|&[8=m8q-$j',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-}
-
-catch(PDOException $e){
-    die('Erreur :'.$e->getMessage());
-}
+include("content/php/bdd/connexion.php");
 
 if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $getid = intval($_GET['id_utilisateur']);
-    $requser = $bdd->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = ?');
+    $requser = $bdd->prepare('SELECT * FROM A_utilisateur WHERE id_utilisateur = ?');
     $requser->execute(array($getid));
     $userinfo = $requser->fetch();
 
     $getidproject = intval($_GET['id_projet']);
-    $reqproject = $bdd->prepare('SELECT nom_projet FROM projet WHERE id_projet = ?');
+    $reqproject = $bdd->prepare('SELECT nom_projet FROM F_projet WHERE id_projet = ?');
     $reqproject->execute(array($getidproject));
     $projectinfo = $reqproject->fetch();
 
-    $reqdroit = $bdd->prepare('SELECT * FROM RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.a"');
+    $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.a"');
     $reqdroit->bindParam(1, $getid);
     $reqdroit->bindParam(2, $getidproject);
     $reqdroit->execute();
@@ -369,6 +361,44 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               </i>
               <span id="nom_sous_atelier_13" title="Décider de la stratégie de traitement du risque et définir les mesures de sécurité">Décider de la stratégie de traitement du risque et définir les mesures de sécurité</span>
             </a>
+            <a class="collapse-item"
+                href="atelier-5btableau&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                <i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                        <g transform="translate(-124 -292)">
+                            <path class="number_sub_activity"
+                                d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
+                                transform="translate(124 292)" fill="#394c7a" />
+                            <text class="number_sub_activity_text" data-name="5.b"
+                                transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11"
+                                font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                                <tspan x="-7.5" y="-1.5">5.b</tspan>
+                            </text>
+                        </g>
+                    </svg>
+                </i>
+                <span id="nom_sous_atelier_16"
+                    title="Tableau récapitulatif">Tableau récapitulatif</span>
+            </a>
+            <a class="collapse-item"
+                href="atelier-5bpacs&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                <i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                        <g transform="translate(-124 -292)">
+                            <path class="number_sub_activity"
+                                d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
+                                transform="translate(124 292)" fill="#394c7a" />
+                            <text class="number_sub_activity_text" data-name="5.b"
+                                transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11"
+                                font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                                <tspan x="-7.5" y="-1.5">5.b</tspan>
+                            </text>
+                        </g>
+                    </svg>
+                </i>
+                <span id="nom_sous_atelier_17"
+                    title="PACS">PACS</span>
+            </a>
             <a class="collapse-item" href="atelier-5c&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
               <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
@@ -596,7 +626,11 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                           <th>Nom mesure de sécurité</th>
                           <th>Description mesure de sécurité</th>
                           <th>Menace initiale</th>
-                          <th>menace résiduelle</th>
+                          <th>Dépendance résiduelle</th>
+                          <th>Pénétration résiduelle</th>
+                          <th>Maturité résiduelle</th>
+                          <th>Confiance résiduelle</th>
+                          <th>Menace résiduelle</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -610,6 +644,10 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <td>' . $row["nom_mesure"] . '</td>
                         <td>' . $row["description_mesure"] . '</td>
                         <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
+                        <td>' . $row["dependance_residuelle"] . '</td>
+                        <td>' . $row["penetration_residuelle"] . '</td>
+                        <td>' . $row["maturite_residuelle"] . '</td>
+                        <td>' . $row["confiance_residuelle"] . '</td>
                         <td>' . $row["niveau_de_menace_residuelle"] . '</td>
                         </tr>
                         ';
@@ -729,7 +767,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               <div class="row">
                 <div class=" col-6">
                   <div class="choix-valeur">
-                    <div>Dépendance</div>
+                    <div>Dépendance résduelle</div>
                     <div>
                       <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Motivation">
                         <label class="btn perso_checkbox shadow-none">
@@ -751,7 +789,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
 
                   <div class="choix-valeur">
-                    <div>Penetration</div>
+                    <div>Penetration résiduelle</div>
                     <div>
                       <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Ressources">
                         <label class="btn perso_checkbox shadow-none">
@@ -772,7 +810,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </div>
                 <div class=" col-6">
                   <div class="choix-valeur">
-                    <div>Maturité</div>
+                    <div>Maturité résiduelle</div>
                     <div>
 
                       <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Activité">
@@ -792,7 +830,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     </div>
                   </div>
                   <div class="choix-valeur">
-                    <div>Confiance</div>
+                    <div>Confiance résiduelle</div>
                     <div>
                       <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Choix">
                         <label class="btn perso_checkbox shadow-none">

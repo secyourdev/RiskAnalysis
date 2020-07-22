@@ -1,5 +1,5 @@
 <?php  
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
+include("../bdd/connexion_sqli.php");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -8,7 +8,7 @@ $results["message"] = [];
 
 if($input["action"] === 'delete'){
     $query = "
-    DELETE FROM impliquer  
+    DELETE FROM C_impliquer  
     WHERE id_utilisateur = '".$input["id_utilisateur"]."'
     ";
     mysqli_query($connect, $query);

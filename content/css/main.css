@@ -1182,6 +1182,7 @@ h6 {
 
 .width_RACI {
     width: -webkit-fill-available;
+    width: -moz-available;
 }
 
 .gravite {
@@ -1242,7 +1243,8 @@ h6 {
     background-color: var(--card-divider) !important;
 }
 
-#msg_suppression_projet{
+#msg_suppression_projet,
+#msg_config_bdd{
     text-align: center;
 }
 
