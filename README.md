@@ -8,7 +8,7 @@
 ## 4/Configuez l'arrivée de mail depuis de notre application :
 En modifiant le fichier ```C:\xampp\php\php.ini``` en changeant les lignes de la fonction ```[mail function]``` par :
 
-```C
+```ini
 [mail function]
 ; For Win32 only.
 ; http://php.net/smtp
@@ -38,7 +38,7 @@ sendmail_path = ""C:\xampp\sendmail\sendmail.exe" -t"
 ```
 Ensuite, vous devez modifier le fichier ```C:\xampp\sendmail\sendmail.ini``` en supprimant tout et en remplaçant par :
 
-```C
+```ini
 [sendmail]
 
 smtp_server=smtp-ebios-rm.alwaysdata.net #/!\ Ceci est un exemple, vous devez mettre votre serveur SMTP !
