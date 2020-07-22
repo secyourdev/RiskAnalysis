@@ -16,7 +16,7 @@ $.post("content/php/atelier3a/chart.php", function (data) {
     console.log(seuil_danger);
     console.log(seuil_controle);
     console.log(seuil_veille);
-
+    
     color_zone = ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)']
     if (seuil_danger[0] !== -1) {
         color_zone[16-seuil_danger[0]-1] = "#FF6565";
@@ -31,13 +31,14 @@ $.post("content/php/atelier3a/chart.php", function (data) {
     // color_actuel = ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#FF6565", 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#4AD991", 'rgba(0, 0, 0, 0.1)', "#3B86FF"]
     // console.log(color_actuel);
     
-
+    
     var menace = [];
     var exposition = [];
     var taille_point = [];
     var taille_point_hover = [];
     var fiabilite = [];
     var labels = [];
+    // var nom_partie_prenante = [];
     console.log(data);
     for (var i in data['data_interne']) {
         menace.push(data['data_interne'][i].menace); //valeur de menace - pronfondeur en axe y
@@ -45,10 +46,11 @@ $.post("content/php/atelier3a/chart.php", function (data) {
         taille_point_hover.push((data['data_interne'][i].exposition) / 2 + 1); //taille du points en hover
         taille_point.push((data['data_interne'][i].exposition) / 2 + 2); //taille du points en hover
         fiabilite.push(data['data_interne'][i].fiabilite);
+        labels.push(data['data_interne'][i].nom_partie_prenante)
     }
-    for (let i = 0; i < menace.length; i++) {
-        labels.push('R' + i);
-    }
+    // for (let i = 0; i < menace.length; i++) {
+    //     labels.push('R' + i);
+    // }
 
     console.log('interne : ');
     console.log(menace);
@@ -148,10 +150,11 @@ $.post("content/php/atelier3a/chart.php", function (data) {
         taille_point_hover.push((data['data_externe'][i].exposition) / 2 + 1); //taille du points en hover
         taille_point.push((data['data_externe'][i].exposition) / 2 + 2); //taille du points en hover
         fiabilite.push(data['data_externe'][i].fiabilite);
+        labels.push(data['data_externe'][i].nom_partie_prenante)
     }
-    for (let i = 0; i < menace.length; i++) {
-        labels.push('R' + i);
-    }
+    // for (let i = 0; i < menace.length; i++) {
+    //     labels.push('R' + i);
+    // }
 
     console.log('externe : ');
     console.log(menace);
