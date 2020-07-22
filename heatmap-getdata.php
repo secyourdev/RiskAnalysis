@@ -5,7 +5,7 @@ header('Content-Type: application/json');
 
 $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
 
-$query = "SELECT scenario_operationnel.vraisemblance, evenement_redoute.niveau_de_gravite FROM scenario_operationnel, evenement_redoute,chemin_d_attaque_strategique, scenario_strategique WHERE scenario_operationnel.id_chemin_d_attaque_strategique = chemin_d_attaque_strategique.id_chemin_d_attaque_strategique AND chemin_d_attaque_strategique.id_scenario_strategique = scenario_strategique.id_scenario_strategique AND scenario_strategique.id_evenement_redoute = evenement_redoute.id_evenement_redoute";
+$query = "SELECT scenario_operationnel.vraisemblance, evenement_redoute.niveau_de_gravite FROM U_scenario_operationnel, M_evenement_redoute, T_chemin_d_attaque_strategique, S_scenario_strategique WHERE scenario_operationnel.id_chemin_d_attaque_strategique = chemin_d_attaque_strategique.id_chemin_d_attaque_strategique AND chemin_d_attaque_strategique.id_scenario_strategique = scenario_strategique.id_scenario_strategique AND scenario_strategique.id_evenement_redoute = evenement_redoute.id_evenement_redoute";
 // $query_externe = "SELECT id_partie_prenante,dependance_partie_prenante,penetration_partie_prenante,maturite_partie_prenante,confiance_partie_prenante FROM partie_prenante WHERE type = 'Externe' AND id_projet = $getid_projet ORDER BY id_partie_prenante";
 // $query_seuil = "SELECT id_seuil, seuil_danger, seuil_controle, seuil_veille, id_projet, id_atelier FROM seuil WHERE id_projet = $getid_projet ORDER BY id_seuil";
 
