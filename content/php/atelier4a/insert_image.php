@@ -31,7 +31,7 @@ if (isset($_POST['nom_scenario_operationnel'])) {
         // image file directory
         $target = "../../../image/" . basename($image);
 
-        $sql = "UPDATE V_scenario_operationnel SET image = '$image' WHERE id_projet = $getid_projet AND id_atelier = '4.a' AND id_scenario_operationnel = $id_scenario_operationnel";
+        $sql = "UPDATE U_scenario_operationnel SET image = '$image' WHERE id_projet = $getid_projet AND id_atelier = '4.a' AND id_scenario_operationnel = $id_scenario_operationnel";
         // print $sql;
         // execute query
         mysqli_query($bdd, $sql);

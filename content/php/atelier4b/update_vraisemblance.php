@@ -7,7 +7,7 @@ include("../bdd/connexion.php");
 $get_id = $bdd->prepare("SELECT D_echelle.id_echelle FROM D_echelle NATURAL JOIN F_projet WHERE F_projet.id_projet = ?");
 
 $updatevraisemblance = $bdd->prepare("UPDATE D_echelle SET echelle_vraisemblance = ? WHERE id_echelle = ?");
-$updatescenar = $bdd->prepare("UPDATE V_scenario_operationnel SET vraisemblance = 4 WHERE vraisemblance = 5");
+$updatescenar = $bdd->prepare("UPDATE U_scenario_operationnel SET vraisemblance = 4 WHERE vraisemblance = 5");
 
 
 

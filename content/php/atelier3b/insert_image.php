@@ -37,7 +37,7 @@ if (isset($_POST['file_submit'])) {
         // print 'select_nom_scenario_operationnel séléctionné, id: ';
         $id_scenario = $_POST['select_nom_scenario_operationnel'];
         // print $id_scenario;
-        $sql = "UPDATE V_scenario_operationnel SET image = '$image' WHERE id_projet = $getid_projet AND id_atelier = '4.a' AND id_scenario_operationnel = $id_scenario";
+        $sql = "UPDATE U_scenario_operationnel SET image = '$image' WHERE id_projet = $getid_projet AND id_atelier = '4.a' AND id_scenario_operationnel = $id_scenario";
         $header = 'Location: ../../../atelier-4a&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet'];
         print $sql;
     }

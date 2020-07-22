@@ -3,7 +3,7 @@ $getid_projet = intval($_GET['id_projet']);
 include("content/php/bdd/connexion_sqli.php");
 
 //affichage tableau de rappel
-$query_evenement_redoutes = "SELECT * FROM M_evenement_redoute INNER JOIN J_valeur_metier on M_evenement_redoute.id_valeur_metier = J_valeur_metier.id_valeur_metier WHERE J_valeur_metier.id_projet = $getid_projet";
+$query_evenement_redoutes = "SELECT * FROM M_evenement_redoute INNER JOIN J_valeur_metier on M_evenement_redoute.id_valeur_metier = J_valeur_metier.id_valeur_metier WHERE M_evenement_redoute.id_projet = $getid_projet";
 $query_SROV = "SELECT id_source_de_risque, type_d_attaquant_source_de_risque,profil_de_l_attaquant_source_de_risque, description_source_de_risque, objectif_vise, description_objectif_vise FROM P_SROV WHERE id_projet = $getid_projet ORDER BY id_source_de_risque";
 
 //affichage tableau modifiable

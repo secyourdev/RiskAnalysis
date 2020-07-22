@@ -14,8 +14,8 @@ T_chemin_d_attaque_strategique.nom_chemin_d_attaque_strategique,
 T_chemin_d_attaque_strategique.niveau_de_menace_residuelle,
 R_partie_prenante.nom_partie_prenante,
 R_partie_prenante.niveau_de_menace_partie_prenante,
-V_scenario_operationnel.description_scenario_operationnel,
-V_scenario_operationnel.vraisemblance,
+U_scenario_operationnel.description_scenario_operationnel,
+U_scenario_operationnel.vraisemblance,
 Y_mesure.nom_mesure,
 Y_mesure.id_mesure
 FROM Y_mesure
@@ -26,7 +26,7 @@ INNER JOIN R_partie_prenante ON T_chemin_d_attaque_strategique.id_partie_prenant
 INNER JOIN P_SROV ON S_scenario_strategique.id_source_de_risque = P_SROV.id_source_de_risque
 INNER JOIN M_evenement_redoute ON S_scenario_strategique.id_evenement_redoute = M_evenement_redoute.id_evenement_redoute
 INNER JOIN J_valeur_metier ON M_evenement_redoute.id_valeur_metier = J_valeur_metier.id_valeur_metier
-INNER JOIN V_scenario_operationnel ON V_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique
+INNER JOIN U_scenario_operationnel ON U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique
 WHERE R_partie_prenante.id_projet = $getid_projet
 ";
 

@@ -33,10 +33,10 @@ WHERE nom_chemin_d_attaque_strategique = ?
 AND  id_risque = ?');
 
 $insereope = $bdd->prepare(
-  'INSERT INTO V_scenario_operationnel
+  'INSERT INTO U_scenario_operationnel
   (id_scenario_operationnel, description_scenario_operationnel, vraisemblance, id_atelier, id_chemin_d_attaque_strategique, id_risque, id_projet)
   VALUES
-  (?, NULL, NULL, ?, ?, ?, ?)'
+  (?, ?, NULL, ?, ?, ?, ?)'
 );
 
 
@@ -62,11 +62,14 @@ if ($results["error"] === false && isset($_POST['validerchemin'])) {
   $recuperechemin->execute();
   $resultchemin = $recuperechemin->fetch();
 
+  $description_ope = "Scenario opérationnel pour : " . $chemin_d_attaque_strategique;
+  echo $description_ope;
   $insereope->bindParam(1, $id_scenar);
-  $insereope->bindParam(2, $id_atelier);
-  $insereope->bindParam(3, $resultchemin[0]);
-  $insereope->bindParam(4, $resultchemin[1]);
-  $insereope->bindParam(5, $get_id_projet);
+  $insereope->bindParam(2, $description_ope);
+  $insereope->bindParam(3, $id_atelier);
+  $insereope->bindParam(4, $resultchemin[0]);
+  $insereope->bindParam(5, $resultchemin[1]);
+  $insereope->bindParam(6, $get_id_projet);
   $insereope->execute();
 ?>
   <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
