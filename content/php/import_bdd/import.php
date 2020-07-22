@@ -47,7 +47,7 @@ else {
     $filename = "../../../bdd/". basename($_FILES["userfile"]["name"]);
 
     // Connect to MySQL server
-    $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v23");
+    include("../bdd/connexion_sqli.php");
 
     // Temporary variable, used to store current query
     $templine = '';
