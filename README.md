@@ -1,3 +1,4 @@
+# CyberRiskManager, Copyright 2020 ©
 ## 1/Téléchargez le repository SecYourDev/CyberRiskManager en le sauvegardant momentanément dans un dossier temporaire
 
 ## 2/Lancez l'installation d'un serveur Apache, de préférence Xampp
@@ -5,7 +6,7 @@
 ## 3/Mettez le dossier téléchargé dans le dossier C:\xampp\htdocs\
 
 ## 4/Configuez l'arrivée de mail depuis de notre application :
-    En modifiant le fichier C:\xampp\php\php.ini en changeant les lignes de la fonction 'mail function' par :
+En modifiant le fichier C:\xampp\php\php.ini en changeant les lignes de la fonction 'mail function' par :
 
 ```[mail function]
 ; For Win32 only.
@@ -51,19 +52,19 @@ force_sender=ebios-rm@alwaysdata.net /!\ Ceci est un exemple, vous devez mettre 
 ## 5/Créez une base de données dans phpmyadmin avec le nom que vous désirez !
 
 ## 6/Importez le fichier base_de_donnees.sql dans phpmyadmin et dans la base de données que vous venez de créer. 
-  Pour effectuer l'import, vous avez juste à vous rendre sur la base de données et dans l'onglet 'Import' pour déposer le fichier SQL. 
+Pour effectuer l'import, vous avez juste à vous rendre sur la base de données et dans l'onglet 'Import' pour déposer le fichier SQL. 
 
 ## 7/Modifiez les fichiers de configuration de la base de donnée pour effectuer la connexion depuis l'application : 
-    Dans le fichier "content/php/bdd/connexion.php" : 
-	Appliquer sur la ligne ```$bdd=new PDO(...)``` les données pour effectuer la connexion : /!\ Attention, l'ordre est celle que nous avons précisé ! /!\
+Dans le fichier "content/php/bdd/connexion.php" : 
+Appliquer sur la ligne ```$bdd=new PDO(...)``` les données pour effectuer la connexion : /!\ Attention, l'ordre est celle que nous avons précisé ! /!\
 ``` HOST : "localhost" 
 	DBNAME : "Nom de la table donnée précédemment"
 	CHARSET : "utf8"
 	ID : "root"
 	PASSWORD : ""
 ```
-  Dans le fichier "content/php/bdd/connexion_sqli.php" : 
-	Appliquer sur la ligne ```$connect = mysqli_connect(...)``` les données pour effectuer la connexion : /!\ Attention, l'ordre est celle que nous avons précisé ! /!\
+Dans le fichier "content/php/bdd/connexion_sqli.php" : 
+Appliquer sur la ligne ```$connect = mysqli_connect(...)``` les données pour effectuer la connexion : /!\ Attention, l'ordre est celle que nous avons précisé ! /!\
 ``` HOST : "localhost" 
 	ID : "root"
 	PASSWORD : ""
@@ -78,5 +79,5 @@ Vous aurez besoin juste d'indiquer les données de connexion :
 ```
 ## 9/Vous pourrez démarrer l'application à l'adresse http://localhost/RiskAnalysis/
 ``` ID : connexion@admin
-PASSWORD : admin
+	PASSWORD : admin
 ```
