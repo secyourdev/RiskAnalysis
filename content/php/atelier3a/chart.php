@@ -5,8 +5,8 @@ header('Content-Type: application/json');
 
 $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v21");
 
-$query_interne = "SELECT id_partie_prenante,dependance_partie_prenante,penetration_partie_prenante,maturite_partie_prenante,confiance_partie_prenante FROM partie_prenante WHERE type = 'Interne' AND id_projet = $getid_projet ORDER BY id_partie_prenante";
-$query_externe = "SELECT id_partie_prenante,dependance_partie_prenante,penetration_partie_prenante,maturite_partie_prenante,confiance_partie_prenante FROM partie_prenante WHERE type = 'Externe' AND id_projet = $getid_projet ORDER BY id_partie_prenante";
+$query_interne = "SELECT id_partie_prenante,nom_partie_prenante, dependance_partie_prenante,penetration_partie_prenante,maturite_partie_prenante,confiance_partie_prenante FROM partie_prenante WHERE type = 'Interne' AND id_projet = $getid_projet ORDER BY id_partie_prenante";
+$query_externe = "SELECT id_partie_prenante,nom_partie_prenante, dependance_partie_prenante,penetration_partie_prenante,maturite_partie_prenante,confiance_partie_prenante FROM partie_prenante WHERE type = 'Externe' AND id_projet = $getid_projet ORDER BY id_partie_prenante";
 $query_seuil = "SELECT id_seuil, seuil_danger, seuil_controle, seuil_veille, id_projet, id_atelier FROM seuil WHERE id_projet = $getid_projet ORDER BY id_seuil";
 
 $result_interne = mysqli_query($connect, $query_interne);
@@ -18,11 +18,13 @@ foreach ($result_interne as $row) {
   $menace = ($row['dependance_partie_prenante'] * $row['penetration_partie_prenante']) / ($row['maturite_partie_prenante'] * $row['confiance_partie_prenante']);
   $exposition = ($row['dependance_partie_prenante'] * $row['penetration_partie_prenante']);
   $fiabilite = ($row['maturite_partie_prenante'] * $row['confiance_partie_prenante']);
+  $nom_partie_prenante = $row['nom_partie_prenante'];
 
   $data_interne[] = array(
     "menace" => $menace,
     "exposition" => $exposition,
-    "fiabilite" => $fiabilite
+    "fiabilite" => $fiabilite,
+    "nom_partie_prenante" => $nom_partie_prenante
   );
 }
 
@@ -31,11 +33,13 @@ foreach ($result_externe as $row) {
   $menace = ($row['dependance_partie_prenante'] * $row['penetration_partie_prenante']) / ($row['maturite_partie_prenante'] * $row['confiance_partie_prenante']);
   $exposition = ($row['dependance_partie_prenante'] * $row['penetration_partie_prenante']);
   $fiabilite = ($row['maturite_partie_prenante'] * $row['confiance_partie_prenante']);
+  $nom_partie_prenante = $row["nom_partie_prenante"];
 
   $data_externe[] = array(
     "menace" => $menace,
     "exposition" => $exposition,
-    "fiabilite" => $fiabilite
+    "fiabilite" => $fiabilite,
+    "nom_partie_prenante" => $nom_partie_prenante
   );
 }
 
