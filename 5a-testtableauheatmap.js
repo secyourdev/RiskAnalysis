@@ -27,7 +27,7 @@ $.post("heatmap-getdata.php", function (data) {
 						parent = document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(2) > div")
 						parent.append(mode_operatoire, br)
 						console.log(mode_operatoire, br);
-						
+
 						break;
 					case '2':
 						parent = document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(3) > div")
@@ -159,149 +159,14 @@ $.post("heatmap-getdata.php", function (data) {
 
 	}
 
-
-	// define colors
-// 	var colors = {
-// 		"critical": "#ca0101",
-// 		"bad": "#e17a2d",
-// 		"medium": "#e1d92d",
-// 		"good": "#5dbe24",
-// 		"verygood": "#0b7d03"
-// 	};
-
-// 	var datatableau = [{
-// 		"x": "Very good",
-// 		"y": "Critical",
-// 		"color": colors.medium,
-// 		"value": ""
-// 	}, {
-// 		"x": "Very good",
-// 		"y": "Bad",
-// 		"color": colors.good,
-// 		"value": ""
-// 	}, {
-// 		"x": "Very good",
-// 		"y": "Medium",
-// 		"color": colors.verygood,
-// 		"value": ""
-// 	}, {
-// 		"x": "Very good",
-// 		"y": "Good",
-// 		"color": colors.verygood,
-// 		"value": ""
-// 	}, {
-// 		"x": "Very good",
-// 		"y": "Very good",
-// 		"color": colors.verygood,
-// 		"value": ""
-// 	},
-
-// 	{
-// 		"x": "Good",
-// 		"y": "Critical",
-// 		"color": colors.bad,
-// 		"value": ""
-// 	}, {
-// 		"x": "Good",
-// 		"y": "Bad",
-// 		"color": colors.medium,
-// 		"value": ""
-// 	}, {
-// 		"x": "Good",
-// 		"y": "Medium",
-// 		"color": colors.good,
-// 		"value": ""
-// 	}, {
-// 		"x": "Good",
-// 		"y": "Good",
-// 		"color": colors.verygood,
-// 		"value": ""
-// 	}, {
-// 		"x": "Good",
-// 		"y": "Very good",
-// 		"color": colors.verygood,
-// 		"value": ""
-// 	},
-
-// 	{
-// 		"x": "Medium",
-// 		"y": "Critical",
-// 		"color": colors.bad,
-// 		"value": ""
-// 	}, {
-// 		"x": "Medium",
-// 		"y": "Bad",
-// 		"color": colors.bad,
-// 		"value": ""
-// 	}, {
-// 		"x": "Medium",
-// 		"y": "Medium",
-// 		"color": colors.medium,
-// 		"value": ""
-// 	}, {
-// 		"x": "Medium",
-// 		"y": "Good",
-// 		"color": colors.good,
-// 		"value": ""
-// 	}, {
-// 		"x": "Medium",
-// 		"y": "Very good",
-// 		"color": colors.good,
-// 		"value": ""
-// 	},
-
-// 	{
-// 		"x": "Bad",
-// 		"y": "Critical",
-// 		"color": colors.critical,
-// 		"value": ""
-// 	}, {
-// 		"x": "Bad",
-// 		"y": "Bad",
-// 		"color": colors.critical,
-// 		"value": ""
-// 	}, {
-// 		"x": "Bad",
-// 		"y": "Medium",
-// 		"color": colors.bad,
-// 		"value": ""
-// 	}, {
-// 		"x": "Bad",
-// 		"y": "Good",
-// 		"color": colors.medium,
-// 		"value": ""
-// 	}, {
-// 		"x": "Bad",
-// 		"y": "Very good",
-// 		"color": colors.good,
-// 		"value": ""
-// 	},
-
-// 	{
-// 		"x": "Critical",
-// 		"y": "Critical",
-// 		"color": colors.critical,
-// 		"value": ""
-// 	}, {
-// 		"x": "Critical",
-// 		"y": "Bad",
-// 		"color": colors.critical,
-// 		"value": ""
-// 	}, {
-// 		"x": "Critical",
-// 		"y": "Medium",
-// 		"color": colors.critical,
-// 		"value": ""
-// 	}, {
-// 		"x": "Critical",
-// 		"y": "Good",
-// 		"color": colors.bad,
-// 		"value": ""
-// 	}, {
-// 		"x": "Critical",
-// 		"y": "Very good",
-// 		"color": colors.medium,
-// 		"value": ""
-// 	}
-// 	];
 })
+
+$('table').on('click', "td", function () {
+	if ($(this).hasClass('fond-vert')) {
+		$(this).removeClass('fond-vert').addClass('fond-orange');
+	} else if ($(this).hasClass('fond-orange')) {
+		$(this).removeClass('fond-orange').addClass('fond-rouge');
+	} else if ($(this).hasClass('fond-rouge')) {
+		$(this).removeClass('fond-rouge').addClass('fond-vert');
+	}
+});
