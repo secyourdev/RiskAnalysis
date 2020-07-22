@@ -730,7 +730,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                             <select class="form-control" id="respo_acceptation_risque">
                                                 <option value="" selected>...</option>
                                                     <?php
-                                                    while($row = mysqli_fetch_array($result_RACI_user))
+                                                    while($row = mysqli_fetch_array($result_risques_residuels))
                                                     {
                                                         echo '
                                                         <option value="'.$row["id_utilisateur"].'">'.$row["nom"].' '.$row["prenom"].'</option>
