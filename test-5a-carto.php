@@ -4,7 +4,7 @@ session_start();
 //Connexion à la base de donnee
 try {
   $bdd = new PDO(
-    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v21;charset=utf8',
+    'mysql:host=mysql-ebios-rm.alwaysdata.net;dbname=ebios-rm_v22;charset=utf8',
     'ebios-rm',
     'hLLFL\bsF|&[8=m8q-$j',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -500,7 +500,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
 
 
-                        <style>
+                        <!-- <style>
                           table {
                             width: 100%;
                           }
@@ -510,51 +510,69 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             border: 1px solid grey;
                             width: 20%;
                           }
-                        </style>
+                        </style> -->
 
 
 
 
-                        <table>
-                          <tbody>
-                            <tr>
-                              <!-- top row -->
-                              <td>a</td><!-- first cell -->
-                              <td>a</td>
-                              <td>a</td>
-                              <td>a</td>
-                              <td>a</td>
-                            </tr>
-                            <tr>
-                              <td>a</td>
-                              <td>a</td>
-                              <td>a</td>
-                              <td>a</td>
-                              <td>a</td>
-                            </tr>
-                            <tr>
-                              <td>a</td>
-                              <td>a</td>
-                              <td>a</td>
-                              <td>a</td>
-                              <td>a</td>
-                            </tr>
-                            <tr>
-                              <td>a</td>
-                              <td>a</td>
-                              <td>a</td>
-                              <td>a</td>
-                              <td>a</td>
-                            </tr>
-                            <tr>
-                              <td>a</td>
-                              <td>a</td>
-                              <td>a</td>
-                              <td>a</td>
-                              <td>a</td>
-                            </tr>
-                          </tbody>
-                        </table>
+                        <div class="table-responsive">
+                          <table class="table table-bordered perso_border" id="dataTable" width="100%" cellspacing="0">
+
+                            <tbody>
+                              <tr>
+                                <td class="perso_border texte-droite">Gravité</td>
+                                <td class="perso_border"></td>
+                                <td class="perso_border"></td>
+                                <td class="perso_border"></td>
+                                <td class="perso_border"></td>
+                                <td class="perso_border"></td>
+
+                              </tr>
+                              <tr>
+                                <td class="perso_border texte-droite">4</td>
+                                <td class="fond-orange"><div></div></td>
+                                <td class="fond-orange"><div></div></td>
+                                <td class="fond-rouge"><div></div></td>
+                                <td class="fond-rouge"><div></div></td>
+                                <td class="perso_border"><div></div></td>
+                              </tr>
+                              <tr>
+                                <td class="perso_border texte-droite">3</td>
+                                <td class="fond-vert"><div></div></td>
+                                <td class="fond-orange"><div></div></td>
+                                <td class="fond-rouge"><div></div></td>
+                                <td class="fond-rouge"><div></div></td>
+                                <td class="perso_border"><div></div></td>
+                              </tr>
+                              <tr>
+                                <td class="perso_border texte-droite">2</td>
+                                <td class="fond-vert"><div></div></td>
+                                <td class="fond-vert"><div></div></td>
+                                <td class="fond-orange"><div></div></td>
+                                <td class="fond-rouge"><div></div></td>
+                                <td class="perso_border"><div></div></td>
+                              </tr>
+                              <tr>
+                                <td class="perso_border texte-droite">1</td>
+                                <td class="fond-vert"><div></div></td>
+                                <td class="fond-vert"><div></div></td>
+                                <td class="fond-orange"><div></div></td>
+                                <td class="fond-orange"><div></div></td>
+                                <td class="perso_border"><div></div></td>
+                              </tr>
+                              <tr>
+                                <td class="perso_border"></td>
+                                <td class="perso_border">1</td>
+                                <td class="perso_border">2</td>
+                                <td class="perso_border">3</td>
+                                <td class="perso_border">4</td>
+                                <td class="perso_border texte-gauche">Vraisemblance</td>
+                              </tr>
+
+
+                            </tbody>
+                          </table>
+                        </div>
 
 
 
@@ -786,7 +804,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <!-- Our JS -->
           <script src="content/js/modules/dark_mode.js"></script>
           <script src="content/js/modules/top_bar.js"></script>
-          <script src="content/js/modules/side_bar.js"></script>
+          <!-- <script src="content/js/modules/side_bar.js"></script> -->
           <script src="content/js/modules/fixed_page.js"></script>
           <!-- <script src="content/js/modules/help_button.js"></script> -->
           <!-- <script src="content/js/modules/gravite.js"></script> -->
