@@ -19,6 +19,8 @@ $dependance = $_POST['dependance'];
 $penetration = $_POST['penetration'];
 $maturite = $_POST['maturite'];
 $confiance = $_POST['confiance'];
+$id_projet = $_SESSION['id_projet'];
+$id_traitement = "id_traitement";
 $id_atelier = '3.c';
 
 // Pour les règles du référentiel
@@ -57,6 +59,7 @@ $recupere_risque = $bdd->prepare("SELECT id_risque FROM T_chemin_d_attaque_strat
 $insere_comporte = $bdd->prepare("INSERT INTO ZB_comporter_2 (id_mesure, id_chemin_d_attaque_strategique, id_risque) VALUES (?,?,?)");
 
 $recupere_pp = $bdd->prepare("SELECT ponderation_dependance, ponderation_penetration, ponderation_maturite, ponderation_confiance FROM R_partie_prenante WHERE id_partie_prenante = ?");
+$insere_traitement = $bdd->prepare('INSERT INTO ZA_traitement_de_securite (id_traitement_de_securite, id_atelier, id_projet, id_mesure) VALUES (?, ?, ?, ?)');
 
 $updatechemin = $bdd->prepare(
   'UPDATE T_chemin_d_attaque_strategique
@@ -136,6 +139,12 @@ if ($results["error"] === false && isset($_POST['validermesure'])) {
   $updatechemin->bindParam(5, $menace_residuelle);
   $updatechemin->bindParam(6, $chemin);
   $updatechemin->execute();
+
+  $insere_traitement->bindParam(1, $id_traitement);
+  $insere_traitement->bindParam(2, $id_atelier);
+  $insere_traitement->bindparam(3, $id_projet);
+  $insere_traitement->bindParam(4, $id_mesure[0]);
+  $insere_traitement->execute();
 ?>
   <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
 <?php
