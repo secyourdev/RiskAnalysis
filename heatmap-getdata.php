@@ -3,7 +3,7 @@ session_start();
 $getid_projet = $_SESSION['id_projet'];
 header('Content-Type: application/json');
 
-$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v22");
+$connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bsF|&[8=m8q-$j', "ebios-rm_v23");
 
 // $query = "SELECT U_scenario_operationnel.vraisemblance, M_evenement_redoute.niveau_de_gravite, W_mode_operatoire.mode_operatoire
 // FROM W_mode_operatoire, U_scenario_operationnel, T_chemin_d_attaque_strategique, S_scenario_strategique , M_evenement_redoute
