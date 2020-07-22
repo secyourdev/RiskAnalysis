@@ -8,7 +8,8 @@
 ## 4/Configuez l'arrivée de mail depuis de notre application :
 En modifiant le fichier ```C:\xampp\php\php.ini``` en changeant les lignes de la fonction ```[mail function]``` par :
 
-```[mail function]
+```C
+[mail function]
 ; For Win32 only.
 ; http://php.net/smtp
 ;SMTP=(smtp-ebios-rm.alwaysdata.net) #/!\ Ceci est un exemple, vous devez mettre votre serveur SMTP !
@@ -37,7 +38,8 @@ sendmail_path = ""C:\xampp\sendmail\sendmail.exe" -t"
 ```
 Ensuite, vous devez modifier le fichier ```C:\xampp\sendmail\sendmail.ini``` en supprimant tout et en remplaçant par :
 
-```[sendmail]
+```C
+[sendmail]
 
 smtp_server=smtp-ebios-rm.alwaysdata.net #/!\ Ceci est un exemple, vous devez mettre votre serveur SMTP !
 smtp_port=587 #/!\ Ceci est un exemple, vous devez mettre votre serveur SMTP !
@@ -57,7 +59,8 @@ Pour effectuer l'import, vous avez juste à vous rendre sur la base de données 
 ## 7/Modifiez les fichiers de configuration de la base de donnée pour effectuer la connexion depuis l'application : 
 Dans le fichier ```content/php/bdd/connexion.php``` : 
 Appliquer sur la ligne ```$bdd=new PDO(...)``` les données pour effectuer la connexion : /!\ Attention, l'ordre est celle que nous avons précisé ! /!\
-``` HOST : "localhost" 
+```C
+	HOST : "localhost" 
 	DBNAME : "Nom de la table donnée précédemment"
 	CHARSET : "utf8"
 	ID : "root"
@@ -65,20 +68,22 @@ Appliquer sur la ligne ```$bdd=new PDO(...)``` les données pour effectuer la co
 ```
 Dans le fichier ```content/php/bdd/connexion_sqli.php``` : 
 Appliquer sur la ligne ```$connect = mysqli_connect(...)``` les données pour effectuer la connexion : /!\ Attention, l'ordre est celle que nous avons précisé ! /!\
-``` HOST : "localhost" 
+```C
+	HOST : "localhost" 
 	ID : "root"
 	PASSWORD : ""
 	DBNAME : "Nom de la table donnée précédemment"
 ```
 ## 8/Mettez en place la sauvegarde
 Vous aurez besoin juste d'indiquer les données de connexion : 
-```	'username' => 'root',
+```C
+	'username' => 'root',
 	'passwd' => '',
 	'dbname' => 'Nom de la table donnée précédemment',
 	'host' => 'localhost',
 ```
 ## 9/Vous pourrez démarrer l'application à l'adresse http://localhost/RiskAnalysis/
-``` 
+```C
 	ID : connexion@admin
 	PASSWORD : admin
 ```
