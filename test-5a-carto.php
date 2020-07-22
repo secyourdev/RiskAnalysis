@@ -519,6 +519,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                           <table class="table table-bordered perso_border" id="dataTable" width="100%" cellspacing="0">
 
                             <tbody>
+                              
                               <tr>
                                 <td class="perso_border texte-droite">Gravité</td>
                                 <td class="perso_border"></td>
@@ -526,39 +527,112 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <td class="perso_border"></td>
                                 <td class="perso_border"></td>
                                 <td class="perso_border"></td>
-
+                                <td class="perso_border"></td>
+                              </tr>
+                              <tr>
+                                <td class="perso_border texte-droite">5</td>
+                                <td class="fond-orange">
+                                  <div></div>
+                                </td>
+                                <td class="fond-orange">
+                                  <div></div>
+                                </td>
+                                <td class="fond-rouge">
+                                  <div></div>
+                                </td>
+                                <td class="fond-rouge">
+                                  <div></div>
+                                </td>
+                                <td class="fond-rouge">
+                                  <div></div>
+                                </td>
+                                <td class="perso_border">
+                                  <div></div>
+                                </td>
                               </tr>
                               <tr>
                                 <td class="perso_border texte-droite">4</td>
-                                <td class="fond-orange"><div></div></td>
-                                <td class="fond-orange"><div></div></td>
-                                <td class="fond-rouge"><div></div></td>
-                                <td class="fond-rouge"><div></div></td>
-                                <td class="perso_border"><div></div></td>
+                                <td class="fond-vert">
+                                  <div></div>
+                                </td>
+                                <td class="fond-orange">
+                                  <div></div>
+                                </td>
+                                <td class="fond-rouge">
+                                  <div></div>
+                                </td>
+                                <td class="fond-rouge">
+                                  <div></div>
+                                </td>
+                                <td class="fond-rouge">
+                                  <div></div>
+                                </td>
+                                <td class="perso_border">
+                                  <div></div>
+                                </td>
                               </tr>
                               <tr>
                                 <td class="perso_border texte-droite">3</td>
-                                <td class="fond-vert"><div></div></td>
-                                <td class="fond-orange"><div></div></td>
-                                <td class="fond-rouge"><div></div></td>
-                                <td class="fond-rouge"><div></div></td>
-                                <td class="perso_border"><div></div></td>
+                                <td class="fond-vert">
+                                  <div></div>
+                                </td>
+                                <td class="fond-vert">
+                                  <div></div>
+                                </td>
+                                <td class="fond-orange">
+                                  <div></div>
+                                </td>
+                                <td class="fond-rouge">
+                                  <div></div>
+                                </td>
+                                <td class="fond-rouge">
+                                  <div></div>
+                                </td>
+                                <td class="perso_border">
+                                  <div></div>
+                                </td>
                               </tr>
                               <tr>
                                 <td class="perso_border texte-droite">2</td>
-                                <td class="fond-vert"><div></div></td>
-                                <td class="fond-vert"><div></div></td>
-                                <td class="fond-orange"><div></div></td>
-                                <td class="fond-rouge"><div></div></td>
-                                <td class="perso_border"><div></div></td>
+                                <td class="fond-vert">
+                                  <div></div>
+                                </td>
+                                <td class="fond-vert">
+                                  <div></div>
+                                </td>
+                                <td class="fond-orange">
+                                  <div></div>
+                                </td>
+                                <td class="fond-orange">
+                                  <div></div>
+                                </td>
+                                <td class="fond-orange">
+                                  <div></div>
+                                </td>
+                                <td class="perso_border">
+                                  <div></div>
+                                </td>
                               </tr>
                               <tr>
                                 <td class="perso_border texte-droite">1</td>
-                                <td class="fond-vert"><div></div></td>
-                                <td class="fond-vert"><div></div></td>
-                                <td class="fond-orange"><div></div></td>
-                                <td class="fond-orange"><div></div></td>
-                                <td class="perso_border"><div></div></td>
+                                <td class="fond-vert">
+                                  <div></div>
+                                </td>
+                                <td class="fond-vert">
+                                  <div></div>
+                                </td>
+                                <td class="fond-orange">
+                                  <div></div>
+                                </td>
+                                <td class="fond-orange">
+                                  <div></div>
+                                </td>
+                                <td class="fond-orange">
+                                  <div></div>
+                                </td>
+                                <td class="perso_border">
+                                  <div></div>
+                                </td>
                               </tr>
                               <tr>
                                 <td class="perso_border"></td>
@@ -566,6 +640,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <td class="perso_border">2</td>
                                 <td class="perso_border">3</td>
                                 <td class="perso_border">4</td>
+                                <td class="perso_border">5</td>
                                 <td class="perso_border texte-gauche">Vraisemblance</td>
                               </tr>
 
