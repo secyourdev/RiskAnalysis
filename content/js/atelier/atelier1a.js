@@ -199,8 +199,11 @@ function get_database_project_info(){
             var projet_info = JSON.parse(resultat);
             console.log(projet_info)
             nom_etude.value = projet_info[0][1]
-            objectif_atteindre.value = projet_info[0][3]        
-            respo_acceptation_risque.value=projet_info[0][4]        
+            objectif_atteindre.value = projet_info[0][3]
+            if(projet_info[0][4]!=null)        
+                respo_acceptation_risque.value=projet_info[0][4]        
+            else 
+                respo_acceptation_risque.selectedIndex=0    
             cadre_temporel.value = projet_info[0][5]
 
             verify_input(nom_etude.value,regex_nom_etude,nom_etude)

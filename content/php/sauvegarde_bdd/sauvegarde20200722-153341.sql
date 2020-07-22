@@ -1,5 +1,5 @@
 --
--- sauvegarde20200722-145522.sql.gz
+-- sauvegarde20200722-153341.sql.gz
 
 
 DROP TABLE IF EXISTS `A_utilisateur`;
@@ -101,9 +101,9 @@ CREATE TABLE `F_projet` (
   KEY `F_projet_B_grp_utilisateur0_FK` (`id_grp_utilisateur`),
   CONSTRAINT `F_projet_B_grp_utilisateur0_FK` FOREIGN KEY (`id_grp_utilisateur`) REFERENCES `B_grp_utilisateur` (`id_grp_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `F_projet_D_echelle_FK` FOREIGN KEY (`id_echelle`) REFERENCES `D_echelle` (`id_echelle`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `F_projet` VALUES ('19','TestJoyston','TestJoyston',NULL,'1','2020-07-04','2','2');
+INSERT INTO `F_projet` VALUES ('19','TestJoyston','TestJoyston','TestJoyston','1','2020-07-04','2','2');
 
 
 DROP TABLE IF EXISTS `G_atelier`;
@@ -636,7 +636,7 @@ CREATE TABLE `Q_seuil` (
   KEY `Q_seuil_G_atelier0_FK` (`id_atelier`),
   CONSTRAINT `Q_seuil_F_projet_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `Q_seuil_G_atelier0_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `Q_seuil` VALUES ('1','6','4','2','19','3.a');
 

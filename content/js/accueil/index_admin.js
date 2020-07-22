@@ -188,14 +188,12 @@ $.ajax({
             div_modif.setAttribute('class', 'modification')
 
             var pen = document.createElement('i')
-            pen.setAttribute('id','modif_icon')
-            pen.setAttribute('class','crayon fas fa-pen')
+            pen.setAttribute('class','modif_icon crayon fas fa-pen')
             pen.setAttribute('data-toggle','modal')
             pen.setAttribute('data-target','#modif_projet')
 
             var trash = document.createElement('i')
-            trash.setAttribute('id','suppr_icon')
-            trash.setAttribute('class','poubelle fas fa-trash-alt')
+            trash.setAttribute('class','suppr_icon poubelle fas fa-trash-alt')
             trash.setAttribute('data-toggle','modal')
             trash.setAttribute('data-target','#suppr_projet')
 
@@ -340,6 +338,7 @@ for(let i=0;i<lenght_reinitialiser_mdp;i++){
 }
 /*------------------------- MODIFICATION & SUPPRESSION PROJET ----------------------*/
 function modification_projet(){
+    var modif_icon = document.getElementsByClassName('modif_icon');
     var lenght_modif_icon = modif_icon.length;
     var id_etude_modif = document.getElementById('id_etude_modif')
     var nom_etude_modif = document.getElementById('nom_etude_modif')
@@ -367,6 +366,7 @@ function modification_projet(){
 }
 
 function suppression_projet(){
+    var suppr_icon = document.getElementsByClassName('suppr_icon')
     var lenght_suppr_icon = suppr_icon.length;
     var id_etude_suppr = document.getElementById('id_etude_suppr')
     var nom_etude_suppr = document.getElementById('nom_etude_suppr')
