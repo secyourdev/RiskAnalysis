@@ -254,7 +254,7 @@ class BackupMySQL extends mysqli {
 new BackupMySQL(array(
 	'username' => 'ebios-rm',
 	'passwd' => 'hLLFL\bsF|&[8=m8q-$j',
-	'dbname' => 'ebios-rm_v22',
+	'dbname' => 'ebios-rm_v23',
 	'host' => 'mysql-ebios-rm.alwaysdata.net',
 	'nbr_fichiers' => 2,
 	'nom_fichier' => 'sauvegarde'

@@ -21,8 +21,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
   $userdroit = $reqdroit->fetch();
 ?>
 
-
-  <?php include("content/php/atelier3a/selection.php"); ?>
+  <?php include("content/php/atelier1d/selection.php"); ?>
   <!DOCTYPE html>
   <html lang="fr">
 
@@ -32,26 +31,28 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <meta name="description" content="CyberRiskManager">
     <meta name="author" content="SecYourDev">
 
-    <title>CyberRiskManager | Atelier 3.a</title>
+    <title>CyberRiskManager | Atelier 1.d</title>
 
     <!-- Fonts-->
     <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
-    <link href="content/fonts/nunito.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- CSS -->
     <link href="content/css/bootstrap.css" rel="stylesheet">
     <link href="content/css/main.css" rel="stylesheet">
+    <!-- <link href="content/vendor/jquery-ui/jquery-ui.css" rel="stylesheet">
+    <link href="content/vendor/jquery-ui/style.css" rel="stylesheet"> -->
 
     <!-- JS -->
     <script src="content/vendor/jquery/jquery.js"></script>
-    <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
+    <!-- <script src="content/vendor/jquery-tabledit/jquery.tabledit1d.js"></script> -->
+    <!-- <script src="content/vendor/jquery-ui/jquery-ui.js"></script> -->
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
     <link rel="icon" href="content/img/logo_cyber_risk_manager.png" type="image/png">
 
-    <!-- CHART.JS -->
-    <script src="content\vendor\chart.js\chart.min.js"></script>
+
   </head>
 
   <?php
@@ -92,12 +93,12 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             <div class="sidebar-heading">Ateliers</div>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier1" aria-expanded="true" aria-controls="Atelier1">
                 <i>
                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
                     <g transform="translate(-1230 -689)">
-                      <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                      <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
                       <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
                         <tspan x="-3.432" y="0">1</tspan>
                       </text>
@@ -221,12 +222,12 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                 </div>
               </div>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier3" aria-expanded="true" aria-controls="Atelier3">
                 <i>
                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
                     <g transform="translate(-1230 -689)">
-                      <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                      <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
                       <text class="number_activity_text" data-name="3" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
                         <tspan x="-3.432" y="0">3</tspan>
                       </text>
@@ -366,44 +367,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     </i>
                     <span id="nom_sous_atelier_13" title="Décider de la stratégie de traitement du risque et définir les mesures de sécurité">Décider de la stratégie de traitement du risque et définir les mesures de sécurité</span>
                   </a>
-                  <a class="collapse-item"
-                      href="atelier-5btableau&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                      <i>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
-                              <g transform="translate(-124 -292)">
-                                  <path class="number_sub_activity"
-                                      d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
-                                      transform="translate(124 292)" fill="#394c7a" />
-                                  <text class="number_sub_activity_text" data-name="5.b"
-                                      transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11"
-                                      font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
-                                      <tspan x="-7.5" y="-1.5">5.b</tspan>
-                                  </text>
-                              </g>
-                          </svg>
-                      </i>
-                      <span id="nom_sous_atelier_16"
-                          title="Tableau récapitulatif">Tableau récapitulatif</span>
-                  </a>
-                  <a class="collapse-item"
-                      href="atelier-5bpacs&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                      <i>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
-                              <g transform="translate(-124 -292)">
-                                  <path class="number_sub_activity"
-                                      d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
-                                      transform="translate(124 292)" fill="#394c7a" />
-                                  <text class="number_sub_activity_text" data-name="5.b"
-                                      transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11"
-                                      font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
-                                      <tspan x="-7.5" y="-1.5">5.b</tspan>
-                                  </text>
-                              </g>
-                          </svg>
-                      </i>
-                      <span id="nom_sous_atelier_17"
-                          title="PACS">PACS</span>
-                  </a>
                   <a class="collapse-item" href="atelier-5c&<?php echo $_SESSION['id_utilisateur']; ?>&<?php echo $_SESSION['id_projet']; ?>">
                     <i>
                       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
@@ -436,20 +399,18 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             <div id="content">
               <!-- Topbar -->
               <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top fixed-top shadow" id="barre_info">
-
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                   <i class="fa fa-bars"></i>
                 </button>
 
                 <div id="top_bar_1" class="top_bar_name_1"><?php echo $projectinfo['nom_projet']; ?></div>
-                <div id="top_bar_2" class="top_bar_name_2">Atelier 3</div>
-                <div id="top_bar_3" class="top_bar_name_3">Activité 3.a - Construire la cartographie des menaces numériques de l'écosystème et sélectionner les parties prenantes critiques</div>
+                <div id="top_bar_2" class="top_bar_name_2">Atelier 1</div>
+                <div id="top_bar_3" class="top_bar_name_3">Activité 1.d - Le socle de sécurité</div>
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
                   <!-- Dark Mode toggle switch -->
-
                   <label class="theme-switch" for="checkbox_dark_theme">
                     <input class="perso_switch" type="checkbox" id="checkbox_dark_theme" />
                     <div class="slider round"></div>
@@ -485,151 +446,226 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                 <!-- Content Row -->
                 <div class="row fondu">
                   <!-- Area Card -->
-                  <div class="col-xl col-lg">
+                  <!-- Objectif -->
+                  <div class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                      <div class="card-header d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0">Objectif</h6>
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
-                        <p>L'objectif de l'atelier 3 est de disposer d'une vision claire de l'écosystème, afin d'en identifier
-                          les parties prenantes les plus vulnérables. Il s'agit ensuite de bâtir des scénarios de haut niveau,
-                          appelés scénarios stratégiques. Ces derniers sont autant de chemins d'attaque que pourrait emprunter une
-                          source de risque pour empruter une source de risque pour atteindre son objectif.
-                        </p>
+                        <p> Le but de ce premier atelier est de définir le cadre de l’étude, son périmètre métier et technique, les
+                          événements
+                          redoutés associés et le socle de sécurité. Cet atelier est un prérequis à la réalisation d’une appréciation des
+                          risques.
+                          La période à considérer pour cet atelier est celle du cycle stratégique.</p>
                         <!--text-->
                       </div>
                     </div>
                   </div>
 
+
                   <!-- Area Card -->
-                  <div class="col-xl-12 col-lg-12">
+                  <!-- Socle de sécurité -->
+                  <div id="socle" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Création des seuils</h6>
+                      <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0">Socle de sécurité</h6>
                       </div>
-
                       <!-- Card Body -->
                       <div class="card-body">
 
-                        <form method="post" action="content/php/atelier3a/ajout_seuil.php" class="user" id="formeseuil">
-                          <fieldset>
-                            <div class="form-group">
-                              <label class="titre_input" for="seuil_danger">Seuil de danger</label>
-                              <input type="text" class="perso_form shadow-none form-control form-control-user" name="seuil_danger" id="seuil_danger" placeholder="Seuil de danger" required>
-                            </div>
-                            <div class="form-group">
-                              <label class="titre_input" for="seuil_controle">Seuil de contrôle</label>
-                              <input type="text" class="perso_form shadow-none form-control form-control-user" name="seuil_controle" id="seuil_controle" placeholder="Seuil de contrôle" required>
-                            </div>
-                            <div class="form-group">
-                              <label class="titre_input" for="seuil_veille">Seuil de veille</label>
-                              <input type="text" class="perso_form shadow-none form-control form-control-user" name="seuil_veille" id="seuil_veille" placeholder="Seuil de veille" required>
-                            </div>
-                            <!-- bouton Ajouter -->
-                            <!-- bouton Ajouter une nouvelle ligne -->
-                            <div class="text-center">
-                              <button type="submit" name="validerseuil" class="btn perso_btn_primary perso_btn_spacing shadow-none">Valider le seuil</button>
-                            </div>
-                          </fieldset>
-                        </form>
 
-                      </div>
-                    </div>
-                  </div>
 
-                  <!-- Area Card -->
-                  <div id="partie_prenante" class="col-xl-12 col-lg-12">
-                    <div class="card shadow mb-4">
-                      <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Ajouter une partie prenante</h6>
-                      </div>
 
-                      <!-- Card Body -->
-                      <div class="card-body">
-                        <!--tableau-->
+
+
+
+
+
+
+
+
+
+
+                        <!-- <style>
+                          table {
+                            width: 100%;
+                          }
+
+
+                          table>tbody>tr>td {
+                            border: 1px solid grey;
+                            width: 20%;
+                          }
+                        </style> -->
+
+
+
+
                         <div class="table-responsive">
-                          <input type="text" class="rechercher_input" id="rechercher_evenement_redoute" placeholder="Rechercher">
-                          <table id="editable_table" class="table table-bordered table-striped">
-                            <thead>
-                              <tr>
-                                <th>ID</th>
-                                <th>Catégorie</th>
-                                <th>Partie prenante</th>
-                                <th>Type</th>
-                                <th>Dépendance</th>
-                                <th>Facteur de pondération dépendance</th>
-                                <th>Pénétration</th>
-                                <th>Facteur de pondération pénétration</th>
-                                <th>Maturité</th>
-                                <th>Facteur de pondération maturité</th>
-                                <th>Confiance</th>
-                                <th>Facteur de pondération confiance</th>
-                                <th>Niveau de menace</th>
-                              </tr>
-                            </thead>
+                          <table class="table table-bordered perso_border" id="dataTable" width="100%" cellspacing="0">
+
                             <tbody>
-                              <?php
-                              while ($row = mysqli_fetch_array($result)) {
-                                echo '
-                        <tr>
-                        <td>' . $row["id_partie_prenante"] . '</td>
-                        <td>' . $row["categorie_partie_prenante"] . '</td>
-                        <td>' . $row["nom_partie_prenante"] . '</td>
-                        <td>' . $row["type"] . '</td>
-                        <td>' . $row["dependance_partie_prenante"] . '</td>
-                        <td>' . $row["ponderation_dependance"] . '</td>
-                        <td>' . $row["penetration_partie_prenante"] . '</td>
-                        <td>' . $row["ponderation_penetration"] . '</td>
-                        <td>' . $row["maturite_partie_prenante"] . '</td>
-                        <td>' . $row["ponderation_maturite"] . '</td>
-                        <td>' . $row["confiance_partie_prenante"] . '</td>
-                        <td>' . $row["ponderation_confiance"] . '</td>
-                        <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
-                        </tr>
-                        ';
-                              }
-                              ?>
+                              
+                              <tr>
+                                <td class="perso_border texte-droite">Gravité</td>
+                                <td class="perso_border"></td>
+                                <td class="perso_border"></td>
+                                <td class="perso_border"></td>
+                                <td class="perso_border"></td>
+                                <td class="perso_border"></td>
+                                <td class="perso_border"></td>
+                              </tr>
+                              <tr>
+                                <td class="perso_border texte-droite">5</td>
+                                <td class="fond-orange">
+                                  <div></div>
+                                </td>
+                                <td class="fond-orange">
+                                  <div></div>
+                                </td>
+                                <td class="fond-rouge">
+                                  <div></div>
+                                </td>
+                                <td class="fond-rouge">
+                                  <div></div>
+                                </td>
+                                <td class="fond-rouge">
+                                  <div></div>
+                                </td>
+                                <td class="perso_border">
+                                  <div></div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="perso_border texte-droite">4</td>
+                                <td class="fond-vert">
+                                  <div></div>
+                                </td>
+                                <td class="fond-orange">
+                                  <div></div>
+                                </td>
+                                <td class="fond-rouge">
+                                  <div></div>
+                                </td>
+                                <td class="fond-rouge">
+                                  <div></div>
+                                </td>
+                                <td class="fond-rouge">
+                                  <div></div>
+                                </td>
+                                <td class="perso_border">
+                                  <div></div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="perso_border texte-droite">3</td>
+                                <td class="fond-vert">
+                                  <div></div>
+                                </td>
+                                <td class="fond-vert">
+                                  <div></div>
+                                </td>
+                                <td class="fond-orange">
+                                  <div></div>
+                                </td>
+                                <td class="fond-rouge">
+                                  <div></div>
+                                </td>
+                                <td class="fond-rouge">
+                                  <div></div>
+                                </td>
+                                <td class="perso_border">
+                                  <div></div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="perso_border texte-droite">2</td>
+                                <td class="fond-vert">
+                                  <div></div>
+                                </td>
+                                <td class="fond-vert">
+                                  <div></div>
+                                </td>
+                                <td class="fond-orange">
+                                  <div></div>
+                                </td>
+                                <td class="fond-orange">
+                                  <div></div>
+                                </td>
+                                <td class="fond-orange">
+                                  <div></div>
+                                </td>
+                                <td class="perso_border">
+                                  <div></div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="perso_border texte-droite">1</td>
+                                <td class="fond-vert">
+                                  <div></div>
+                                </td>
+                                <td class="fond-vert">
+                                  <div></div>
+                                </td>
+                                <td class="fond-orange">
+                                  <div></div>
+                                </td>
+                                <td class="fond-orange">
+                                  <div></div>
+                                </td>
+                                <td class="fond-orange">
+                                  <div></div>
+                                </td>
+                                <td class="perso_border">
+                                  <div></div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="perso_border"></td>
+                                <td class="perso_border">1</td>
+                                <td class="perso_border">2</td>
+                                <td class="perso_border">3</td>
+                                <td class="perso_border">4</td>
+                                <td class="perso_border">5</td>
+                                <td class="perso_border texte-gauche">Vraisemblance</td>
+                              </tr>
+
+
                             </tbody>
                           </table>
                         </div>
 
-                        <!-- bouton Ajouter une nouvelle ligne -->
-                        <div class="text-center">
-                          <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_partie_prenante">Ajouter une partie prenante</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Area Card -->
-                  <div class="col-xl-12 col-lg-12">
-                    <div class="card shadow mb-4">
-                      <!-- Card Header - Dropdown -->
-                      <div class="row perso_no_margin">
-                        <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                          <h6>Parties prenantes</h6>
-                        </div>
-                      </div>
-                      <!-- Card Body -->
-                      <div class="card-body">
-                        <div class="row perso_no_margin">
-
-                          <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                            <h6>Parties prenantes internes</h6>
-                            <canvas height="450" width="480" id="myChart_interne"></canvas>
-                          </div>
-
-                          <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                            <h6>Parties prenantes externes</h6>
-                            <canvas height="450" width="480" id="myChart_externe"></canvas>
-                          </div>
 
 
-                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                       </div>
                     </div>
                   </div>
@@ -658,156 +694,144 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
           </a>
-          <!-- -------------------------------------------------------------------------------------------------------------- 
------------------------------------------ modal ajout de ligne ----------------------------------------------------
---------------------------------------------------------------------------------------------------------------- -->
-          <div class="modal fade" id="ajout_partie_prenante" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+
+          <!------------------------------------------------------------------------------------------------------------------ 
+--------------------------------------- modal ajout socle de sécurité ----------------------------------------------
+-------------------------------------------------------------------------------------------------------------------->
+          <div class="modal fade" id="ajout_socle_de_securite" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Ajout d'une partie prenante</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Ajout d'un socle de sécurité</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 <div class="modal-body perso_modal_body">
-                  <form method="post" action="content/php/atelier3a/ajout.php" class="user" id="formecartPop">
+
+                  <div class="panel panel-default">
+
+                    <div class="panel-body">
+                      <span id="success_message"></span>
+                      <form method="post" id="sample_form">
+
+                        <div class="custom-file">
+                          <input name="userfile" id="fileToUpload" class="custom-file-input" type="file">
+                          <label class="custom-file-label" for="fileToUpload">Choisir un fichier au format JSON</label>
+                        </div>
+
+                        <div class="form-group" align="center">
+                          <input type="submit" name="file_submit" id="file_submit" class="btn perso_btn_primary shadow-none" value="Ajouter un fichier" />
+                        </div>
+
+                        <div class="form-group" align="center">
+                          <img id="ajax-loader" src="content/img/ajax-loader.gif" style="display: none">
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!----------------------------------------------------------------------------------------------------------------------- 
+--------------------------------------- modal créer socle de sécurité main ----------------------------------------------
+------------------------------------------------------------------------------------------------------------------------->
+          <div class="modal fade" id="ajout_socle_de_securite_main" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Ajout d'un socle de sécurité</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body perso_modal_body">
+                  <form method="post" action="content/php/atelier1d/ajout_socle.php" class="user" id="formSoclePop">
                     <fieldset>
-                      <div class="row">
-                        <div class="col-12">
 
-                          <div class="form-group">
-                            <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="categorie_pop" name="categorie_partie_prenante" placeholder="Catégorie" required>
-                            <datalist id="categorie_pop">
-                              <?php
-                              while ($row = mysqli_fetch_array($result_categorie_partie_prenante)) {
-                                echo '
-                        <option value="' . $row["categorie_partie_prenante"] . '">' . $row["categorie_partie_prenante"] . '</option>
-                        ';
-                              }
-                              ?>
-                            </datalist>
-                          </div>
-
-                          <div class="form-group">
-                            <label for="SelectType">Type</label>
-                            <select class="form-control" name="type" id="SelectType">
-                              <option value="" selected>...</option>
-                              <option value="Interne">Interne</option>
-                              <option value="Externe">Externe</option>
-                            </select>
-                          </div>
-
-                          <div class="form-group">
-                            <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_partie_prenante" id="Nom de la partie prenante" placeholder="Nom de la partie prenante" required>
-                          </div>
-
-                        </div>
+                      <div class="form-group">
+                        <input type="text" class="perso_form shadow-none form-control form-control-user" name="type_referenciel" placeholder="Type de référentiel" required>
                       </div>
-                      <div class="row">
-                        <div class=" col-6">
-                          <div class="choix-valeur">
-                            <div>Dépendance</div>
-                            <div class="btn-group btn-group-toggle form-group" data-toggle="buttons">
-                              <?php
-                              for ($i = 1; $i <= 4; $i++) //selection.php
-                              {
-                                if ($i == 1) {
-                                  echo '
-                                  <label class="btn perso_checkbox shadow-none active">
-                                    <input type="radio" id="dependance' . $i . '" autocomplete="off" name="dependance_partie_prenante" value="' . $i . '" selected> ' . $i . '
-                                  </label>';
-                                } else {
-                                  echo '
-                                  <label class="btn perso_checkbox shadow-none">
-                                    <input type="radio" id="dependance' . $i . '" autocomplete="off" name="dependance_partie_prenante" value="' . $i . '"> ' . $i . '
-                                  </label>';
-                                }
-                              }
-                              ?>
-                            </div>
-                          </div>
-
-
-                          <div class="choix-valeur">
-                            <div>Pénétration</div>
-                            <div class="btn-group btn-group-toggle form-group" data-toggle="buttons">
-                              <?php
-                              for ($i = 1; $i <= 4; $i++) //selection.php
-                              {
-                                if ($i == 1) {
-                                  echo '
-                                  <label class="btn perso_checkbox shadow-none active">
-                                    <input type="radio" id="penetration' . $i . '" autocomplete="off" name="penetration_partie_prenante" value="' . $i . '" selected> ' . $i . '
-                                  </label>';
-                                } else {
-                                  echo '
-                                  <label class="btn perso_checkbox shadow-none">
-                                    <input type="radio" id="penetration' . $i . '" autocomplete="off" name="penetration_partie_prenante" value="' . $i . '" > ' . $i . '
-                                  </label>';
-                                }
-                              }
-                              ?>
-                            </div>
-                          </div>
-
-                        </div>
-                        <div class=" col-6">
-
-                          <div class="choix-valeur">
-                            <div>Maturité</div>
-                            <div class="btn-group btn-group-toggle form-group" data-toggle="buttons">
-                              <?php
-                              for ($i = 1; $i <= 4; $i++) //selection.php
-                              {
-                                if ($i == 1) {
-                                  echo '
-                                  <label class="btn perso_checkbox shadow-none active">
-                                    <input type="radio" id="maturite' . $i . '" autocomplete="off" name="maturite_partie_prenante" value="' . $i . '" selected> ' . $i . '
-                                  </label>';
-                                } else {
-                                  echo '
-                                  <label class="btn perso_checkbox shadow-none">
-                                    <input type="radio" id="maturite' . $i . '" autocomplete="off" name="maturite_partie_prenante" value="' . $i . '"> ' . $i . '
-                                  </label>';
-                                }
-                              }
-                              ?>
-                            </div>
-                          </div>
-
-                          <div class="choix-valeur">
-                            <div>Confiance</div>
-                            <div class="btn-group btn-group-toggle form-group" data-toggle="buttons">
-                              <?php
-                              for ($i = 1; $i <= 4; $i++) //selection.php
-                              {
-                                if ($i == 1) {
-                                  echo '
-                                  <label class="btn perso_checkbox shadow-none active">
-                                    <input type="radio" id="confiance' . $i . '" autocomplete="off" name="confiance_partie_prenante" value="' . $i . '" selected> ' . $i . '
-                                  </label>';
-                                } else {
-                                  echo '
-                                  <label class="btn perso_checkbox shadow-none">
-                                    <input type="radio" id="confiance' . $i . '" autocomplete="off" name="confiance_partie_prenante" value="' . $i . '"> ' . $i . '
-                                  </label>';
-                                }
-                              }
-                              ?>
-                            </div>
-                          </div>
-
-                        </div>
+                      <div class="form-group">
+                        <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_referentiel" placeholder="Nom du référentiel" required>
                       </div>
-                      <!-- bouton Ajouter -->
+                      <div class="form-group">
+                        <label for="Select_etat_d_application">État d'application</label>
+                        <select class="form-control" name="etat_d_application" id="Select_etat_d_application">
+                          <option value="" selected>...</option>
+                          <option value="Non appliqué">Non appliqué</option>
+                          <option value="Appliqué sans restriction">Appliqué sans restriction</option>
+                          <option value="Appliqué avec restriction">Appliqué avec restriction</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <input type="text" class="perso_form shadow-none form-control form-control-user" name="commentaire" placeholder="Commentaire" required>
+                      </div>
+
                       <div class="modal-footer perso_middle_modal_footer">
-                        <input type="submit" name="validerpartie" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
+                        <input type="submit" name="validersocle" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
                       </div>
                     </fieldset>
                   </form>
                 </div>
+              </div>
+            </div>
+          </div>
 
+          <!---------------------------------------------------------------------------------------------------------------- 
+  --------------------------------------- modal Ajout d'une règle --------------------------------------------------
+  ----------------------------------------------------------------------------------------------------------------->
+          <div class="modal fade" id="ajout_ecart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Ajout d'une règle</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body perso_modal_body">
+                  <form method="post" action="content/php/atelier1d/ajout_regle.php" class="user" id="formecartPop">
+                    <fieldset>
+
+                      <div class="form-group">
+                        <label for="nomreferentiel">Nom du référentiel de sécurité</label>
+                        <select class="form-control" name="nomreferentiel" id="nomreferentiel">
+                          <option value="" selected>...</option>
+                          <?php
+                          while ($row = mysqli_fetch_array($result_nom_referentiel2)) //selection.php
+                          {
+                            echo '
+                        <option id="socle_securite" value="' . $row['nom_referentiel'] . '">' . $row['nom_referentiel'] . '</option>
+                        ';
+                          }
+                          ?>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_regle" placeholder="ID de la règle" required>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="titre_regle">Titre de la règle</label>
+                        <textarea class="form-control perso_text_area" name="titre_regle" id="titre_regle" rows="3"></textarea>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control perso_text_area" name="description" id="description" rows="3"></textarea>
+                      </div>
+
+                      <div class="modal-footer perso_middle_modal_footer">
+                        <input type="submit" name="validerecart" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
 
               </div>
             </div>
@@ -819,20 +843,15 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Êtes-vous prêt à quitter l'application ?</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                   <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                   </button>
                 </div>
-                <div class="modal-body">Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à terminer votre session
-                  en cours.</div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                  <form method="post" action="content/php/deconnexion/logs.php">
-                    <fieldset>
-                      <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
-                      <input type="submit" name="deconnexion" value="Déconnexion" class="btn btn-primary"></input>
-                      <fieldset>
-                  </form>
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                  <a class="btn btn-primary" href="login.html">Logout</a>
                 </div>
               </div>
             </div>
@@ -850,15 +869,18 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <!-- Our JS -->
           <script src="content/js/modules/dark_mode.js"></script>
           <script src="content/js/modules/top_bar.js"></script>
-          <script src="content/js/modules/side_bar.js"></script>
+          <!-- <script src="content/js/modules/side_bar.js"></script> -->
           <script src="content/js/modules/fixed_page.js"></script>
-          <script src="content/js/modules/help_button.js"></script>
-          <script src="content/js/modules/gravite.js"></script>
-          <script src="content/js/modules/realtime.js"></script>
-          <script src="content/js/modules/set_filter_sort_table.js"></script>
-          <script src="content/js/atelier/atelier3a.js"></script>
-          <script src="content/js/modules/sort_table.js"></script>
-          <script src="content/js/modules/3a_carto.js"></script>
+          <!-- <script src="content/js/modules/help_button.js"></script> -->
+          <!-- <script src="content/js/modules/gravite.js"></script> -->
+          <!-- <script src="content/js/modules/realtime.js"></script> -->
+          <!-- <script src="content/js/modules/set_filter_sort_table.js"></script> -->
+          <!-- <script src="content/js/atelier/atelier1d.js"></script> -->
+          <!-- <script src="content/js/modules/sort_table.js"></script> -->
+          <!-- <script src="content/js/modules/socle_pour_regle.js"></script> -->
+          <!-- <script src="content/js/modules/browse.js"></script> -->
+          <!-- <script src="content/js/modules/parser.js"></script> -->
+          <script src="5a-testtableauheatmap.js"></script>
       </body>
   <?php
     }

@@ -1,5 +1,5 @@
 --
--- sauvegarde20200721-164402.sql.gz
+-- sauvegarde20200721-163418.sql.gz
 
 
 DROP TABLE IF EXISTS `A_utilisateur`;
@@ -960,6 +960,18 @@ INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('20','eee','eeee',NULL,'1',
 INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('23','R3','Chemintrois',NULL,'2','1','3','4','0.17','7','35');
 
 
+DROP TABLE IF EXISTS `U_etre`;
+CREATE TABLE `U_etre` (
+  `id_scenario_operationnel` int(11) NOT NULL,
+  `id_evenement_redoute` int(11) NOT NULL,
+  `niveau_de_risque` double DEFAULT NULL,
+  PRIMARY KEY (`id_scenario_operationnel`,`id_evenement_redoute`),
+  KEY `U_etre_M_evenement_redoute0_FK` (`id_evenement_redoute`),
+  CONSTRAINT `U_etre_M_evenement_redoute0_FK` FOREIGN KEY (`id_evenement_redoute`) REFERENCES `M_evenement_redoute` (`id_evenement_redoute`),
+  CONSTRAINT `U_etre_U_scenario_operationnel_FK` FOREIGN KEY (`id_scenario_operationnel`) REFERENCES `U_scenario_operationnel` (`id_scenario_operationnel`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 DROP TABLE IF EXISTS `U_scenario_operationnel`;
 CREATE TABLE `U_scenario_operationnel` (
   `id_scenario_operationnel` int(11) NOT NULL AUTO_INCREMENT,
@@ -972,12 +984,12 @@ CREATE TABLE `U_scenario_operationnel` (
   `id_risque` varchar(50) NOT NULL,
   `id_projet` int(11) NOT NULL,
   PRIMARY KEY (`id_scenario_operationnel`),
-  KEY `U_scenario_operationnel_G_atelier_FK` (`id_atelier`) USING BTREE,
-  KEY `U_scenario_operationnel_F_projet1_FK` (`id_projet`) USING BTREE,
-  KEY `U_scenario_operationnel_T_chemin_d_attaque_strategique0_FK` (`id_chemin_d_attaque_strategique`,`id_risque`) USING BTREE,
-  CONSTRAINT `V_scenario_operationnel_F_projet1_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`),
-  CONSTRAINT `V_scenario_operationnel_G_atelier_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`),
-  CONSTRAINT `V_scenario_operationnel_T_chemin_d_attaque_strategique0_FK` FOREIGN KEY (`id_chemin_d_attaque_strategique`, `id_risque`) REFERENCES `T_chemin_d_attaque_strategique` (`id_chemin_d_attaque_strategique`, `id_risque`)
+  KEY `U_scenario_operationnel_G_atelier_FK` (`id_atelier`),
+  KEY `U_scenario_operationnel_T_chemin_d_attaque_strategique0_FK` (`id_chemin_d_attaque_strategique`,`id_risque`),
+  KEY `U_scenario_operationnel_F_projet1_FK` (`id_projet`),
+  CONSTRAINT `U_scenario_operationnel_F_projet1_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`),
+  CONSTRAINT `U_scenario_operationnel_G_atelier_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`),
+  CONSTRAINT `U_scenario_operationnel_T_chemin_d_attaque_strategique0_FK` FOREIGN KEY (`id_chemin_d_attaque_strategique`, `id_risque`) REFERENCES `T_chemin_d_attaque_strategique` (`id_chemin_d_attaque_strategique`, `id_risque`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `U_scenario_operationnel` VALUES ('16','','Scenarun','1','couchédesoleil.png','4.a','15','R1','1');
@@ -986,26 +998,14 @@ INSERT INTO `U_scenario_operationnel` VALUES ('21','','TotoSO',NULL,'hacker_cybe
 INSERT INTO `U_scenario_operationnel` VALUES ('24','','Scenartrois','1','Capture.PNG','4.a','23','R3','1');
 
 
-DROP TABLE IF EXISTS `V_etre`;
-CREATE TABLE `V_etre` (
-  `id_scenario_operationnel` int(11) NOT NULL,
-  `id_evenement_redoute` int(11) NOT NULL,
-  `niveau_de_risque` double DEFAULT NULL,
-  PRIMARY KEY (`id_scenario_operationnel`,`id_evenement_redoute`) USING BTREE,
-  KEY `V_etre_M_evenement_redoute0_FK` (`id_evenement_redoute`) USING BTREE,
-  CONSTRAINT `U_etre_M_evenement_redoute0_FK` FOREIGN KEY (`id_evenement_redoute`) REFERENCES `M_evenement_redoute` (`id_evenement_redoute`),
-  CONSTRAINT `U_etre_V_scenario_operationnel_FK` FOREIGN KEY (`id_scenario_operationnel`) REFERENCES `U_scenario_operationnel` (`id_scenario_operationnel`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-
 DROP TABLE IF EXISTS `W_mode_operatoire`;
 CREATE TABLE `W_mode_operatoire` (
   `id_mode_operatoire` int(11) NOT NULL AUTO_INCREMENT,
   `mode_operatoire` varchar(1000) DEFAULT NULL,
   `id_scenario_operationnel` int(11) NOT NULL,
   PRIMARY KEY (`id_mode_operatoire`),
-  KEY `W_mode_operatoire_V_scenario_operationnel_FK` (`id_scenario_operationnel`),
-  CONSTRAINT `W_mode_operatoire_V_scenario_operationnel_FK` FOREIGN KEY (`id_scenario_operationnel`) REFERENCES `U_scenario_operationnel` (`id_scenario_operationnel`)
+  KEY `W_mode_operatoire_U_scenario_operationnel_FK` (`id_scenario_operationnel`),
+  CONSTRAINT `W_mode_operatoire_U_scenario_operationnel_FK` FOREIGN KEY (`id_scenario_operationnel`) REFERENCES `U_scenario_operationnel` (`id_scenario_operationnel`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `W_mode_operatoire` VALUES ('3','a','16');

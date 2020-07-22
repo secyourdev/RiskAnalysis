@@ -5,18 +5,16 @@ var sidebarToggle = document.getElementById("sidebarToggle");
 var nom_etude = document.getElementById('nom_etude');
 var objectif_atteindre = document.getElementById('objectif_atteindre');
 var cadre_temporel = document.getElementById('cadre_temporel');
-var nom_acteur = document.getElementById('nom_acteur');
-var prenom_acteur = document.getElementById('prenom_acteur');
-var poste_acteur = document.getElementById('poste_acteur');
+
 var button = document.getElementsByClassName('tabledit-edit-button')
 var save_button = document.getElementsByClassName('tabledit-save-button')
+
 var valider_acteur = document.getElementsByName('valider')[0]
+
 var label_nom_etude = document.getElementById('nom_etude').previousSibling.previousSibling
 var label_cadre_temporel = document.getElementById('cadre_temporel').previousSibling.previousSibling
 var raci = document.getElementById('raci')
 var acteur_id_raci = document.getElementById('acteur_id_raci')
-var radio_gravite4 = document.getElementById('radio_gravite4')
-var radio_gravite5 = document.getElementById('radio_gravite5')
 var respo_acceptation_risque = document.getElementById('respo_acceptation_risque')
 var find_acteur_id;
 var find_atelier_num;
@@ -199,8 +197,11 @@ function get_database_project_info(){
             var projet_info = JSON.parse(resultat);
             console.log(projet_info)
             nom_etude.value = projet_info[0][1]
-            objectif_atteindre.value = projet_info[0][3]        
-            respo_acceptation_risque.value=projet_info[0][4]        
+            objectif_atteindre.value = projet_info[0][3]
+            if(projet_info[0][4]!=null)        
+                respo_acceptation_risque.value=projet_info[0][4]        
+            else 
+                respo_acceptation_risque.selectedIndex=0    
             cadre_temporel.value = projet_info[0][5]
 
             verify_input(nom_etude.value,regex_nom_etude,nom_etude)

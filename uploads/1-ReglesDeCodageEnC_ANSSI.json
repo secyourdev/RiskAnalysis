@@ -1,0 +1,912 @@
+{
+  "Référentiel de sécurité": {
+    "name": "Règles de codage",
+    "Exigence": [
+      {
+        "id": "1",
+        "Titre": "RÈGLE — Application de conventions de codage claires et explicites",
+        "Description": "Des conventions de codage doivent être définies et documentées pour le logiciel à produire. Ces conventions doivent définir au minimum les points suivants : l’encodage des fichiers sources, la mise en page du code et l’indentation, les types standards à utiliser, le nommage (bibliothèques, fichiers, fonctions, types, variables, . . .), le format de la documentation. Ces conventions doivent être appliquées par chaque développeur."
+      },
+      {
+        "id": "2",
+        "Titre": "RÈGLE — Seul le codage C conforme au standard est autorisé",
+        "Description": "Aucune violation des contraintes et de la syntaxe C telles que définies dans les standards C90 ou C99 n’est autorisée."
+      },
+      {
+        "id": "3",
+        "Titre": "RECOMMANDATION — Maîtrise des actions opérées à la compilation.",
+        "Description": " Le développeur doit connaître et documenter les actions associées aux options activées du compilateur y compris en terme d’optimisation de code"
+      },
+      {
+        "id": "4",
+        "Titre": "RÈGLE — Définir précisément les options de compilation",
+        "Description": "Les options utilisées pour la compilation doivent être précisément définies pour l’ensemble des sources d’un logiciel. Ces options doivent notamment fixer précisément :\n- la version du standard C utilisée (par exemple C99 ou encore C90) ;\n- le nom et la version du compilateur utilisé ;"
+      },
+      {
+        "id": "5",
+        "Titre": "RÈGLE — Utiliser des options de durcissement",
+        "Description": "L’utilisation d’options de durcissement est obligatoire que ce soit pour imposer la génération d’exécutables relocalisables, une randomization d’adresses efficace ou la protection contre le dépassement de pile entre autres."
+      },
+      {
+        "id": "6",
+        "Titre": "BONNE PRATIQUE — Utiliser des générateurs de projets pour la compilation.",
+        "Description": "Vide"
+      },
+      {
+        "id": "7",
+        "Titre": "RÈGLE — Compiler le code sans erreur ni avertissement en activant des options de compilation exigentes",
+        "Description": "Activer le niveau d’avertissement et d’erreur le plus élevé du compilateur et de l’éditeur de liens afin de s’assurer de l’absence de problèmes potentiels liés à l’utilisation incorrecte du langage de programmation et traiter tous les avertissements et toutes les erreurs signalés par le compilateur et l’éditeur de liens pour les éliminer."
+      },
+      {
+        "id": "8",
+        "Titre": "RECOMMANDATION — Utiliser les options des compilations les plus exigentes",
+        "Description": "Si une option élevée d’un compilateur n’apparaît pas pertinente pour un développement donné, une justification sera fournie pour expliquer ce choix."
+      },
+      {
+        "id": "9",
+        "Titre": "RÈGLE — Tout code mis en production doit être compilé en mode release",
+        "Description": "La compilation en mode release est obligatoire pour une mise en production."
+      },
+      {
+        "id": "10",
+        "Titre": "RECOMMANDATION — Prêter une attention particulière aux modes debug et release lors de la compilation",
+        "Description": "L’utilisation des modes debug et release à la compilation doit se faire en toute connaissance des modifications induites en terme de gestion de mémoire et d’optimisation de code. Les différences entre ces deux modes doivent être documentées de manière exhaustive."
+      },
+      {
+        "id": "11",
+        "Titre": "RECOMMANDATION — Limiter et justifier les inclusions de fichier d'en-tête dans un autre fichier d'en-tête",
+        "Description": "Vide"
+      },
+      {
+        "id": "12",
+        "Titre": "RECOMMANDATION — Limiter et justifier les inclusions de fichier d'en-tête dans un autre fichier d'en-tête",
+        "Description": "Vide"
+      },
+      {
+        "id": "13",
+        "Titre": "RÈGLE — Utiliser des macros de garde d'inclusion multiple d'un fichier",
+        "Description": "Une macro de garde contre l’inclusion multiple d’un fichier doit être utilisée afin d’empêcher que le contenu d’un fichier d’en-tête soit inclus plus d’une fois :\n// début du fichier d'en -tête\n#ifndef HEADER_H\n#define HEADER_H\n/* contenu du fichier */\n#endif\n//fin du fichier d'en -tête"
+      },
+      {
+        "id": "14",
+        "Titre": "RÈGLE — Les inclusions de fichiers d'en-tête sont groupées en début de fichier",
+        "Description": "Toutes les inclusions de fichiers d’en-tête doivent être regroupées au début du fichier ou juste après des commentaires ou les directives de preprocessing, mais systématiquement avant la définition de variables globales ou de fonctions."
+      },
+      {
+        "id": "15",
+        "Titre": "RECOMMANDATION — Les inclusions de fichiers d'en-tête systèmes sont effectuées avant les inclusions des fichiers d'en-tête utilisateur",
+        "Description": "Vide"
+      },
+      {
+        "id": "16",
+        "Titre": "BONNE PRATIQUE — Utiliser l'ordre alphabétique dans l'inclusion de chaque type de fichiers d'en-tête",
+        "Description": "Pour éviter les redondances dans les inclusions de fichiers d’en-tête systèmes ou utilisateur, le développeur peut les ordonner par ordre alphabétique ce qui permet d’avoir un ordre d’inclusion déterministe et de faciliter la revue de code."
+      },
+      {
+        "id": "17",
+        "Titre": "RÈGLE — Ne pas inclure un fichier source dans un autre fichier source",
+        "Description": "Seule l’inclusion de fichiers d’en-tête est autorisée dans un fichier source."
+      },
+      {
+        "id": "18",
+        "Titre": "RÈGLE — Les chemins des fichiers doivent être portables et la casse doit être respectée",
+        "Description": "Les chemins de fichiers, que ce soit pour une directive d’inclusion #include ou non, doivent être portables tout en respectant la casse des répertoires."
+      },
+      {
+        "id": "19",
+        "Titre": "RÈGLE — Le nom d'un fichier d'en-tête ne doit pas contenir certains caractères ou séquences de caractères",
+        "Description": "Le nom d’un fichier d’en-tête doit être exempt des caractères et des séquences de caractères suivants : « ', \", \\, /* et // »."
+      },
+      {
+        "id": "20",
+        "Titre": "RECOMMANDATION — Les blocs préprocesseurs doivent être commentés",
+        "Description": "Les directives des blocs préprocesseurs doivent être commentées afin d’expliciter le cas traité et pour les directives « intermédiaires » et « fermantes », celles-ci doivent aussi être associées à la directive « ouvrante » correspondante par le biais d’un commentaire."
+      },
+      {
+        "id": "21",
+        "Titre": "BONNE PRATIQUE — La double négation dans l'expression des conditions des blocs préprocesseurs doit être évitée",
+        "Description": "Vide"
+      },
+      {
+        "id": "22",
+        "Titre": "RÈGLE — Définition d'un bloc préprocesseur dans un seul et même fichier",
+        "Description": "Pour un bloc préprocesseur, toutes les directives associées doivent se trouver dans le même fichier."
+      },
+      {
+        "id": "23",
+        "Titre": "RECOMMANDATION — Les expressions de contrôle des directives de preprocessing doivent être bien formées.",
+        "Description": "Les expressions de contrôle doivent être évaluées uniquement à 0 ou 1 et doivent utiliser uniquement des identifiants définis (via #define)."
+      },
+      {
+        "id": "24",
+        "Titre": "RÈGLE — Ne pas utiliser dans une même expression plus d'un des opérateurs de preprocessing # et ##",
+        "Description": "Vide"
+      },
+      {
+        "id": "25",
+        "Titre": "RÈGLE — Utiliser les opérateurs de preprocessing # et ## en maîtrisant leur expansion",
+        "Description": "Vide"
+      },
+      {
+        "id": "26",
+        "Titre": "RÈGLE — Les macros doivent être nommées de façon spécifique",
+        "Description": "Pour différencier aisément les macros des fonctions et ne pas utiliser un nom réservé d’une autre macro C, les macros préprocesseurs doivent être en capitales et les mots composant le nom séparés par le caractère souligné « _ » mais sans les faire débuter par le caractère souligné car il s’agit d’une convention pour les noms réservés du langage C."
+      },
+      {
+        "id": "27",
+        "Titre": "RÈGLE — Ne pas terminer une macro par un point-virgule",
+        "Description": "Le point-virgule final doit être omis à la fin de la définition d’une macro."
+      },
+      {
+        "id": "28",
+        "Titre": "Le point-virgule final doit être omis à la fin de la définition d’une macro.",
+        "Description": "Vide"
+      },
+      {
+        "id": "29",
+        "Titre": "RÈGLE — L'expansion d'une macro définie par le développeur ne doit pas créer de fonction",
+        "Description": "Vide"
+      },
+      {
+        "id": "30",
+        "Titre": "RÈGLE — Les macros contenant plusieurs instructions doivent utiliser une boucle do { ... } while(0) pour leur définition",
+        "Description": "Vide"
+      },
+      {
+        "id": "31",
+        "Titre": "RÈGLE — Parenthèses obligatoires autour des paramètres utilisés dans le corps d'une macro",
+        "Description": "Les paramètres d’une macro doivent systématiquement être entourés de parenthèses lors de leur utilisation, afin de préserver l’ordre souhaité d’évaluation des expressions."
+      },
+      {
+        "id": "32",
+        "Titre": "RECOMMANDATION — Il faut éviter les arguments d'une macro réalisant une opération",
+        "Description": "Vide"
+      },
+      {
+        "id": "33",
+        "Titre": "RÈGLE — Les arguments d'une macro ne doivent pas contenir d'effets de bord.",
+        "Description": "Des arguments de macro avec des effets de bord peuvent entraîner des évaluations multiples non désirées."
+      },
+      {
+        "id": "34",
+        "Titre": "RÈGLE — Ne pas utiliser de directives de preprocessing en arguments d'une macro",
+        "Description": "Vide"
+      },
+      {
+        "id": "35",
+        "Titre": "RÈGLE — La directive #undef ne doit pas être utilisée",
+        "Description": "Vide"
+      },
+      {
+        "id": "36",
+        "Titre": "RÈGLE — Ne pas utiliser de trigraphes",
+        "Description": "Vide"
+      },
+      {
+        "id": "37",
+        "Titre": "RECOMMANDATION — Les points d'interrogation ne doivent pas être utilisés de façon successive",
+        "Description": "Cette règle s’applique pour toute partie du code mais aussi pour les commentaires."
+      },
+      {
+        "id": "38",
+        "Titre": "RECOMMANDATION — Seules les déclarations multiples de variables simples de même type sont autorisées",
+        "Description": "Vide"
+      },
+      {
+        "id": "39",
+        "Titre": "RÈGLE — Ne pas faire de déclaration multiple de variables associée à une initialisation.",
+        "Description": "Les initialisations associées (i.e. consécutives et dans une même instruction) à une déclaration multiple sont interdites."
+      },
+      {
+        "id": "40",
+        "Titre": "RECOMMANDATION — Regrouper les déclarations de variables en début du bloc dans lequel elles sont utilisées",
+        "Description": "Pour des questions de lisibilité et pour éviter les redéfinitions, les déclarations de variables sont regroupées en début de fichier, fonction ou bloc d’instructions selon leur portée."
+      },
+      {
+        "id": "41",
+        "Titre": "RÈGLE — Ne pas utiliser des valeurs en dur",
+        "Description": "Les valeurs utilisées dans le code doivent être déclarées comme des constantes."
+      },
+      {
+        "id": "42",
+        "Titre": "BONNE PRATIQUE — Centraliser la déclaration des constantes en début de fichier",
+        "Description": "Pour faciliter la lecture, les constantes sont déclarées ensemble en début du fichier."
+      },
+      {
+        "id": "43",
+        "Titre": "RÈGLE — Déclarer les constantes en capitales",
+        "Description": "Vide"
+      },
+      {
+        "id": "44",
+        "Titre": "RÈGLE — Les constantes sans contrôle de type sont déclarées avec la macro préprocesseur de définition de constantes #define",
+        "Description": "Vide"
+      },
+      {
+        "id": "45",
+        "Titre": "RÈGLE — Les constantes avec un contrôle de type explicite doivent être déclarées avec le mot clé const",
+        "Description": "Vide"
+      },
+      {
+        "id": "46",
+        "Titre": "RÈGLE — Les valeurs constantes doivent être associées à un suffixe dépendant du type",
+        "Description": "Pour éviter toute mauvaise interprétation, les valeurs constantes doivent utiliser un suffixe selon leurs types :\n il faut utiliser le suffixe U pour toutes les constantes de type entier non signé ; \n pour indiquer une constante de type long (ou long long pour C99), il faut utiliser le suffixe L (resp. LL) et non l (resp. ll) afin d’éviter toute ambiguïté avec le chiffre 1 ;\n les valeurs flottantes sont par défaut considérées comme double, il faut utiliser le suffixe f pour le type float (resp. d pour le type double)."
+      },
+      {
+        "id": "47",
+        "Titre": "RÈGLE — La taille du type associé à une expression constante doit être suffisante pour la contenir",
+        "Description": "Il faut s’assurer que les valeurs ou expressions constantes utilisées ne dépassent pas du type qui leur est associé."
+      },
+      {
+        "id": "48",
+        "Titre": "RECOMMANDATION — Proscrire les constantes en octal",
+        "Description": "Ne pas utiliser de constante ni de séquence d’échappement en octal."
+      },
+      {
+        "id": "49",
+        "Titre": "RÈGLE — Limiter les variables globales au strict nécessaire",
+        "Description": "Limiter l’usage des variables globales et préférer les paramètres de fonctions pour propager une structure de données au travers d’une application."
+      },
+      {
+        "id": "50",
+        "Titre": "RÈGLE — Utilisation systématique du modificateur de déclaration static",
+        "Description": "Utiliser le mot clef static pour toutes les fonctions et variables globales qui ne sont pas utilisées à l’extérieur du fichier source dans lequel elles sont définies."
+      },
+      {
+        "id": "51",
+        "Titre": "RÈGLE — Seules les variables modifiables en dehors de l'implémentation doivent être déclarées volatile",
+        "Description": "Seules les variables associées à des ports entrée/sortie ou des fonctions d’interruption asynchrone doivent être déclarées comme volatile pour empêcher toute optimisation ou réorganisation à la compilation."
+      },
+      {
+        "id": "52",
+        "Titre": "RÈGLE — Seuls des pointeurs spécifiés volatile peuvent accéder à des variables volatile",
+        "Description": "Vide"
+      },
+      {
+        "id": "53",
+        "Titre": "RÈGLE — Aucune omission de type n'est acceptée lors de la déclaration d'une variable",
+        "Description": "Toutes les variables utilisées doivent avoir été préalablement déclarées de façon explicite."
+      },
+      {
+        "id": "54",
+        "Titre": "RECOMMANDATION — Limiter l'utilisation des compound literals",
+        "Description": "Du fait du risque de mauvaise manipulation des compound literals, leur utilisation doit être limitée, documentée et une attention particulière doit être donnée à leur portée."
+      },
+      {
+        "id": "55",
+        "Titre": "RÈGLE — Ne pas mélanger des constantes explicites et implicites dans une énumération",
+        "Description": "Il faut soit expliciter toutes les constantes d’une énumération avec une valeur unique soit n’en expliciter aucune."
+      },
+      {
+        "id": "56",
+        "Titre": "RÈGLE — Ne pas utiliser des énumérations anonymes",
+        "Description": "Vide"
+      },
+      {
+        "id": "57",
+        "Titre": "RECOMMANDATION — Les variables doivent être initialisées à la déclaration ou immédiatement après",
+        "Description": "Toutes les variables doivent être systématiquement initialisées à leur déclaration ou immédiatement après dans le cas de déclarations multiples."
+      },
+      {
+        "id": "58",
+        "Titre": "RÈGLE — Ne pas mélanger les différents types d'initialisation pour les variables structurées",
+        "Description": "Pour l’initialisation d’une variable structurée, un seul et unique type d’initialisation doit être choisi et utilisé."
+      },
+      {
+        "id": "59",
+        "Titre": "RÈGLE — Les variables structurées ne doivent pas être initialisées sans expliciter la valeur d'initialisation et chacun des champs/éléments de la variable structurée doit être initialisé",
+        "Description": "Les variables non scalaires doivent être initialisées explicitement : chaque élément doit être initialisé en étant clairement identifié sans valeur d’initialisation superflue ou la notation ={0} ; peut être utilisée à la déclaration. Enfin les tailles des tableaux doivent être explicitées à l’initialisation."
+      },
+      {
+        "id": "60",
+        "Titre": "RECOMMANDATION — Chaque déclaration publique (non static) doit être utilisée",
+        "Description": "Toutes les déclarations publiques (i.e. non static) doivent être utilisées, qu’il s’agissede variables, fonctions, labels ou autres."
+      },
+      {
+        "id": "61",
+        "Titre": "RÈGLE — Utiliser des variables pour les données sensibles distinctes des variables pour les données non sensibles",
+        "Description": "Vide"
+      },
+      {
+        "id": "62",
+        "Titre": "RÈGLE — Utiliser des variables pour les données sensibles et protégées en confidentialité et/ou intégrité distinctes des variables pour les données sensibles non protégées",
+        "Description": "Vide"
+      },
+      {
+        "id": "63",
+        "Titre": "RÈGLE — Ne jamais coder en dur une donnée sensible.",
+        "Description": "Vide"
+      },
+      {
+        "id": "64",
+        "Titre": "RECOMMANDATION — Seuls des types d'entiers dont la taille et le signe sont explicites doivent être utilisés",
+        "Description": "Vide"
+      },
+      {
+        "id": "65",
+        "Titre": "RÈGLE — Seuls les types signed char et unsigned char doivent être utilisés.",
+        "Description": "Vide"
+      },
+      {
+        "id": "66",
+        "Titre": "RECOMMANDATION — Ne pas redéfinir des alias de types",
+        "Description": "Vide"
+      },
+      {
+        "id": "67",
+        "Titre": "RÈGLE — Compréhension fine et précise des règles de conversions",
+        "Description": "Le développeur se doit de connaître et comprendre toutes les règles de conversionimplicites des types entiers."
+      },
+      {
+        "id": "68",
+        "Titre": "RÈGLE — Conversions explicites entre des types signés et non signés",
+        "Description": "Proscrire les conversions implicites de types. Utiliser des conversions explicites notamment entre type signé et type non signé."
+      },
+      {
+        "id": "69",
+        "Titre": "RECOMMANDATION — Ne pas utiliser de transtypage de pointeurs sur des types structurés différents",
+        "Description": "Vide"
+      },
+      {
+        "id": "70",
+        "Titre": "RÈGLE — L'accès aux éléments d'un tableau se fera toujours en désignant en premier attribut le tableau et en second l'indice de l'élement concerné",
+        "Description": "L’accès au ième élément d’un tableau s’écrira toujours avec le nom du tableau en premier suivi de l’indice de la case à atteindre."
+      },
+      {
+        "id": "71",
+        "Titre": "RECOMMANDATION — L'accès aux éléments d'un tableau doit se faire en utilisant les crochets",
+        "Description": "Dans le cas d’une variable de type tableau, la notation dédiée (via les crochets) doit être utilisée pour éviter toute ambiguïté."
+      },
+      {
+        "id": "72",
+        "Titre": "RÈGLE — Ne pas utiliser de VLA",
+        "Description": "Vide"
+      },
+      {
+        "id": "73",
+        "Titre": "RECOMMANDATION — Ne pas utiliser de taille implicite pour les tableaux",
+        "Description": "Afin de s’assurer que les accès tableaux sont bien valides, la taille de ceux-ci doit être explicitée."
+      },
+      {
+        "id": "74",
+        "Titre": "RÈGLE — Utiliser des entiers non signés pour les tailles de tableaux",
+        "Description": "Vide"
+      },
+      {
+        "id": "75",
+        "Titre": "RÈGLE — Ne pas accèder à un élément de tableau sans vérifier la validité de l'indice utilisé",
+        "Description": "La validité des indices de tableau utilisés doit être vérifié de façon systématique : un indice de tableau est valide s’il est supérieur ou égal à zéro et strictement inférieur à la taille déclarée du tableau. Dans le cas d’un tableau de caractères, le caractère de fin de chaine ’\\0’ doit être pris en compte."
+      },
+      {
+        "id": "76",
+        "Titre": "RÈGLE — Un pointeur NULL ne doit pas être déréférencé",
+        "Description": "Avant de déréférencer un pointeur, le développeur doit s’assurer que celui-ci n’est pas NULL."
+      },
+      {
+        "id": "77",
+        "Titre": "RÈGLE — Un pointeur doit être affecté à NULL après désallocation",
+        "Description": "Un pointeur doit être systématiquement affecté à NULL suite à la désallocation de la mémoire qu’il pointe."
+      },
+      {
+        "id": "78",
+        "Titre": "RÈGLE — Ne pas utiliser le qualificateur de pointeur restrict",
+        "Description": "Le qualificateur restrict ne doit pas être utilisé directement par le développeur. Seule l’utilisation indirecte i.e. via l’appel de fonctions de la bibliothèque standard est tolérée mais le développeur devra s’assurer qu’aucun comportement indéfini résultera de l’utilisation de telles fonctions."
+      },
+      {
+        "id": "79",
+        "Titre": "RECOMMANDATION — Le nombre de niveau d'indirections de pointeur doit être limité à deux",
+        "Description": "Le nombre d’indirections pour un pointeur ne doit pas dépasser deux niveaux."
+      },
+      {
+        "id": "80",
+        "Titre": "RECOMMANDATION — Préférer l'utilisation de l'opérateur d'indirection ->",
+        "Description": "L’opérateur d’indirection -> doit être utilisé pour atteindre les champs d’une structure par l’intermédiaire d’un pointeur."
+      },
+      {
+        "id": "81",
+        "Titre": "RÈGLE — Seul l'incrément ou le décrément de pointeurs de tableaux est autorisé",
+        "Description": "L’incrément ou le décrément de pointeurs ne doit être utilisé que sur des pointeurs représentant un tableau ou un élément d’un tableau."
+      },
+      {
+        "id": "82",
+        "Titre": "RÈGLE — Aucune arithmétique sur les pointeurs void* n'est autorisée",
+        "Description": "Il faut proscrire l’utilisation de toute arithmétique sur des pointeurs de type void*."
+      },
+      {
+        "id": "83",
+        "Titre": "RECOMMANDATION — Arithmétique des pointeurs sur tableaux contrôlée",
+        "Description": "L’arithmétique sur des pointeurs représentant un tableau ou un élément d’un tableau doit être faite en s’assurant que le pointeur résultant pointera toujours sur un élément du même tableau."
+      },
+      {
+        "id": "84",
+        "Titre": "RÈGLE — Soustraction et comparaison entre pointeurs d'un même tableau uniquement",
+        "Description": "Seules les soustractions et comparaisons de pointeurs sur un même tableau sont autorisés."
+      },
+      {
+        "id": "85",
+        "Titre": "RECOMMANDATION — Il ne faut pas affecter directement une adresse fixe à un pointeur.",
+        "Description": "Vide"
+      },
+      {
+        "id": "86",
+        "Titre": "RÈGLE — Une structure doit être utilisée pour regrouper les données représentant une même entité",
+        "Description": "Les données liées doivent être regroupées au sein d’une structure."
+      },
+      {
+        "id": "87",
+        "Titre": "RÈGLE — Ne pas calculer la taille d'une structure comme la somme de la taille de ses champs",
+        "Description": "Du fait du padding, la taille d’une structure ne doit pas être supposée comme la somme de la taille de ses champs."
+      },
+      {
+        "id": "88",
+        "Titre": "RÈGLE — Tout bitfield doit obligatoirement être déclaré explicitement comme non signé",
+        "Description": "Vide"
+      },
+      {
+        "id": "89",
+        "Titre": "RÈGLE — Ne pas faire d'hypothèse sur la représentation interne de structures avec des bitfields",
+        "Description": "Vide"
+      },
+      {
+        "id": "90",
+        "Titre": "RÈGLE — Ne pas utiliser les FAM",
+        "Description": "Vide"
+      },
+      {
+        "id": "91",
+        "Titre": "RECOMMANDATION — Ne pas utiliser les unions",
+        "Description": "L’utilisation du même espace mémoire pour plusieurs données de natures différentes n’est pas autorisée."
+      },
+      {
+        "id": "92",
+        "Titre": "RÈGLE — Supprimer tous les débordements de valeurs possibles pour des entiers signés.",
+        "Description": "Vide"
+      },
+      {
+        "id": "93",
+        "Titre": "RECOMMANDATION — Détecter tous les wraps possibles de valeurs pour les entiers non signés.",
+        "Description": "vide"
+      },
+      {
+        "id": "94",
+        "Titre": "RÈGLE — Détecter et supprimer toute potentielle division par zéro",
+        "Description": "Cette vérification doit être systématique pour tout calcul de division ou de reste de division."
+      },
+      {
+        "id": "95",
+        "Titre": "RECOMMANDATION — Les opérations arithmétiques doivent être écrites en favorisant leur lisibilité",
+        "Description": "Il faut utiliser des opérations arithmétiques le plus explicites possibles (naturelles) et dans la logique du programme."
+      },
+      {
+        "id": "96",
+        "Titre": "RECOMMANDATION — Les opérateurs logiques ne doivent pas être appliqués avec des opérandes signés",
+        "Description": "Vide"
+      },
+      {
+        "id": "97",
+        "Titre": "RÈGLE — Explicitation de l'ordre d'évaluation des calculs par utilisation de parenthèses",
+        "Description": "Malgré la priorité des opérateurs, pour éviter toute ambiguïté, les expressions seront entourées de parenthèses pour rendre plus explicite l’ordre d’évaluation d’un calcul."
+      },
+      {
+        "id": "98",
+        "Titre": "RECOMMANDATION — Eviter les expressions de comparaison ou d'égalité multiple",
+        "Description": "Vide"
+      },
+      {
+        "id": "99",
+        "Titre": "RÈGLE — Toujours utiliser les parenthèses dans les expressions de comparaison ou d'égalité multiple",
+        "Description": "Les expressions booléennes de comparaison ou d’égalité contenant au moins 2 opérateurs relationnels sont interdites sans parenthèse."
+      },
+      {
+        "id": "100",
+        "Titre": "RÈGLE — Parenthèses autour des éléments d'une expression booléenne",
+        "Description": "Il est nécessaire de toujours mettre entre parenthèses les différents éléments d’une expression booléenne, afin qu’il n’y ait aucune ambiguïté dans l’ordre d’évaluation."
+      },
+      {
+        "id": "101",
+        "Titre": "RÈGLE — Comparaison implicite avec 0 interdite",
+        "Description": "Toutes les expressions booléennes doivent utiliser des opérateurs de comparaison. Aucun test implicite avec une valeur égale à 0 ou différente de 0 ne doit être effectué."
+      },
+      {
+        "id": "102",
+        "Titre": "RECOMMANDATION — Utilisation du type bool en C99",
+        "Description": "En C99, le type bool (ou _Bool) doit être utilisé pour les variables à valeurs booléennes."
+      },
+      {
+        "id": "103",
+        "Titre": "RÈGLE — Pas d'opérateur bit-à-bit sur un opérande de type booléen ou assimilé",
+        "Description": "Vide"
+      },
+      {
+        "id": "104",
+        "Titre": "BONNE PRATIQUE — Ne pas utiliser la valeur retournée lors d'une affectation",
+        "Description": "Vide"
+      },
+      {
+        "id": "105",
+        "Titre": "RÈGLE — Affectation interdite dans une expression booléenne",
+        "Description": "Une affectation ne doit pas être effectuée dans une expression booléenne quelle qu’elle soit. Une affectation doit être effectuée dans une instruction indépendante."
+      },
+      {
+        "id": "106",
+        "Titre": "BONNE PRATIQUE — Comparaison avec opérande constant à gauche",
+        "Description": "Quand une comparaison fait intervenir un opérande constant celui-ci sera de préférence mis comme opérande gauche pour éviter une affectation non intentionnelle."
+      },
+      {
+        "id": "107",
+        "Titre": "RÈGLE — Affectation multiple de variables interdite",
+        "Description": "L’affectation multiple de variables n’est pas autorisée."
+      },
+      {
+        "id": "108",
+        "Titre": "RÈGLE — Une seule instruction par ligne de code",
+        "Description": "Vide"
+      },
+      {
+        "id,": "109",
+        "Titre": "BONNE PRATIQUE — Éviter les constantes flottantes",
+        "Description": "Ne pas utiliser de constantes numériques flottantes pour éviter les pertes de précision et autres phénomènes liés aux nombres flottants. Si cela ne peut être évité, la représentativité de la valeur flottante en question doit être vérifiée."
+      },
+      {
+        "id": "110",
+        "Titre": "RECOMMANDATION — Limiter l'utilisation des nombres flottants au strict nécessaire",
+        "Description": "Il faut limiter l’utilisation des nombres flottants."
+      },
+      {
+        "id": "111",
+        "Titre": "RÈGLE — Pas de compteur de boucle de type flottant",
+        "Description": "Les compteurs de boucle doivent être uniquement de type entier, avec la vérification de non débordement de type des valeurs des compteurs."
+      },
+      {
+        "id": "112",
+        "Titre": "RÈGLE — Ne pas utiliser de nombres flottants pour des comparaisons d'égalité ou d'inégalité",
+        "Description": "Vide"
+      },
+      {
+        "id": "113",
+        "Titre": "RECOMMANDATION — Non utilisation des nombres complexes",
+        "Description": "Les nombres complexes introduits depuis C99 ne doivent pas être utilisés."
+      },
+      {
+        "id": "114",
+        "Titre": "RÈGLE — Utilisation systématique des accolades pour les conditionnelles et les boucles",
+        "Description": "Ne jamais omettre les accolades pour délimiter un bloc d’instructions. Les accolades doivent être écrites pour délimiter un bloc d’instructions après les boucles (for, while, do) et les conditionnelles (if, else)."
+      },
+      {
+        "id": "115",
+        "Titre": "RÈGLE — Définition systématique d'un cas par défaut dans les switch",
+        "Description": "Un switch-case doit toujours contenir un cas default placé en dernier."
+      },
+      {
+        "id": "116",
+        "Titre": "RECOMMANDATION — Utilisation de break dans chaque cas des instructions switch",
+        "Description": "Un switch-case doit par défaut toujours contenir un break pour chaque cas. L’absence de break pour éviter de dupliquer du code est tolérée mais doit être explicitée dans un commentaire."
+      },
+      {
+        "id": "117",
+        "Titre": "RECOMMANDATION — Pas d'imbrication de structure de contrôle dans un switch-case",
+        "Description": " Même si le C l’autorise, l’imbrication de structures de contrôle à l’intérieur d’un switch est à éviter."
+      },
+      {
+        "id": "118",
+        "Titre": "RÈGLE — Ne pas introduire d'instructions avant le premier label d'un switch-case",
+        "Description": "Vide"
+      },
+      {
+        "id": "119",
+        "Titre": "RÈGLE — Bonne construction des boucles for",
+        "Description": "Chaque élément d’une boucle for doit être complété et contenir exactement une seule instruction. Ainsi une boucle for doit contenir une initialisation de son compteur, une condition d’arrêt portant sur son compteur, et une incrémentation ou décrémentation du compteur de boucle."
+      },
+      {
+        "id": "120",
+        "Titre": "RÈGLE — Modification d'un compteur d'une boucle for interdite dans le corps de la boucle",
+        "Description": "Le compteur d’une boucle for ne doit pas être modifié à l’intérieur du corps de la boucle for."
+      },
+      {
+        "id": "121",
+        "Titre": "RÈGLE — Non utilisation de goto arrière (backward goto)",
+        "Description": "Proscrire, au sein d’une fonction, l’utilisation d’instructions goto renvoyant vers un label qui est placé avant cette instruction goto."
+      },
+      {
+        "id": "122",
+        "Titre": "RECOMMANDATION — Utilisation limitée du saut avant (forward goto)",
+        "Description": "L’utilisation d’un forward goto est tolérée uniquement dans les cas où elle permet :\n de limiter significativement le nombre de points de sortie de la fonction ;\n de rendre le code beaucoup plus lisible.\nLe ou les labels référencés par les instructions goto doivent tous être situés en fin de fonction."
+      },
+      {
+        "id": "123",
+        "Titre": "RÈGLE — Toute fonction (non static) définie doit possèder une déclaration/ prototype de fonction",
+        "Description": "Vide"
+      },
+      {
+        "id": "124",
+        "Titre": "RÈGLE — Le prototype de déclaration d'une fonction doit concorder avec sa définition",
+        "Description": "Les types des paramètres utilisés pour la définition et la déclaration d’une fonction doivent être les mêmes."
+      },
+      {
+        "id": "125",
+        "Titre": "RÈGLE — Toute fonction doit être associée à un type de retour et à une liste de paramètres explicites",
+        "Description": "Chaque fonction est définie explicitement avec un type de retour. Les fonctions sans valeur de retour doivent être déclarées avec un paramètre du type void. De la même façon, une fonction sans paramètre devra être définie et déclarée avec void en argument."
+      },
+      {
+        "id": "126",
+        "Titre": "RECOMMANDATION — Documentation des fonctions",
+        "Description": "Tous les fonctions doivent être documentées. Cela comprend :\nn une description de la fonction et du traitement effectué ;\n la documentation de chaque paramètre, le sens du paramètre (en entrée, en sortie, en entrée et en sortie) et les éventuelles conditions existant sur celui-ci ;\n les valeurs de retour possibles doivent être décrites."
+      },
+      {
+        "id": "127",
+        "Titre": "RECOMMANDATION — Préciser les conditions d'appel pour chaque fonction",
+        "Description": "Vide"
+      },
+      {
+        "id": "128",
+        "Titre": "RÈGLE — La validité de tous les paramètres d'une fonction doit systématiquement être remise en cause",
+        "Description": "Cela inclut :\n la validité des adresses pour les paramètres de type pointeur doit être vérifiée (non , alignement des adresses conforme...) ;\n l’appartenance des paramètres à leur domaine doit être vérifiée.\nCela s’applique aux fonctions définies par le développeur (cf. section 12.2) mais aussi aux fonctions de la bibliothèque standard."
+      },
+      {
+        "id": "129",
+        "Titre": "RÈGLE — Les paramètres de fonction de type pointeur pour lesquels la zone mémoire pointée n'est pas modifiée doivent être déclarés comme const",
+        "Description": "Marquer const tous les paramètres de type pointeur d’une fonction qui pointent vers une zone mémoire qui ne doit pas être modifiée dans le corps de celle-ci. Le qualificateur const doit s’appliquer à l’objet pointé."
+      },
+      {
+        "id": "130",
+        "Titre": "RÈGLE — Les fonctions inline doivent être déclarées comme static",
+        "Description": "Pour éviter un comportement non défini une fonction inline est systématiquement static."
+      },
+      {
+        "id": "131",
+        "Titre": "RÈGLE — Interdiction de redéfinir les fonctions ou macros de la bibliothèque standard ou d'une autre bibliothèque",
+        "Description": "Les identifiants, macros ou noms de fonctions faisant partie de la bibliothèque standard ou d’une autre bibliothèque utilisée ne doivent pas être redéfinis."
+      },
+      {
+        "id": "132",
+        "Titre": "RÈGLE — La valeur de retour d'une fonction doit toujours être testée",
+        "Description": "Lorsqu’une fonction retourne une valeur, la valeur retournée doit être systématiquement testée."
+      },
+      {
+        "id": "133",
+        "Titre": "RÈGLE — Retour implicite interdit pour les fonctions de type non void",
+        "Description": "Tous les chemins d’une fonction non void doivent retourner une valeur explicitement."
+      },
+      {
+        "id": "134",
+        "Titre": "RÈGLE — Les structures doivent être passées par référence à une fonction",
+        "Description": "Il ne faut pas passer de paramètres de type structure par copie lors de l’appel d’une fonction."
+      },
+      {
+        "id": "135",
+        "Titre": "RECOMMANDATION — Passage d'un tableau en paramètre d'une fonction",
+        "Description": "Il existe plusieurs façons de passer un tableau en paramètre d’une fonction. Lors du passage par pointeur, il faut préciser dans la documentation de la fonction que le paramètre correspond à un tableau et également utiliser la notation dédiée aux tableaux."
+      },
+      {
+        "id": "136",
+        "Titre": "RECOMMANDATION — Utilisation obligatoire dans une fonction de tous ses paramètres",
+        "Description": "Tous les paramètres présents dans le prototype de la fonction doivent être utilisés dans son implémentation."
+      },
+      {
+        "id": "137",
+        "Titre": "BONNE PRATIQUE — Utiliser les options de compilation -Wformat=2 et -Wformat-security dès qu'une fonction variadique est utilisée",
+        "Description": "Plus de détails sur ces options sont données en annexe B."
+      },
+      {
+        "id": "138",
+        "Titre": "RÈGLE — Ne pas appeler de fonctions variadiques avec NULL en argument",
+        "Description": "Vide"
+      },
+      {
+        "id": "139",
+        "Titre": "RÈGLE — Usage de la virgule interdit pour le séquencement d'instructions",
+        "Description": "La virgule n’est pas autorisée dans le cadre du séquencement des instructions decode."
+      },
+      {
+        "id": "140",
+        "Titre": "RECOMMANDATION — Les opérateurs pré-fixes ++ et -- ne doivent pas être utilisés",
+        "Description": "Les opérateurs de pré-incrémentation et pré-decrémentation ne seront pas utilisés."
+      },
+      {
+        "id": "141",
+        "Titre": "RECOMMANDATION — Pas d'utilisation combinée des opérateurs postfixes avec d'autres opérateurs",
+        "Description": "Les opérateurs de post-incrémentation et de post-décrémentation ne doivent pas être mixés avec d’autres opérateurs."
+      },
+      {
+        "id": "142",
+        "Titre": "RECOMMANDATION — Éviter l'utilisation d'opérateurs d'affectation combinés",
+        "Description": "Vide"
+      },
+      {
+        "id": "143",
+        "Titre": "RÈGLE — Non utilisation imbriquée de l'opérateur ternaire ?:",
+        "Description": "L’imbrication d’opérateurs ternaires ?: est interdite."
+      },
+      {
+        "id": "144",
+        "Titre": "RÈGLE — Bonne construction des expressions avec l'opérateur ternaire ?:",
+        "Description": "Les expressions résultantes de l’opérateur ternaire ?: doivent être exactement de même type pour éviter tout transtypage."
+      },
+      {
+        "id": "145",
+        "Titre": "RÈGLE — Allouer dynamiquement un espace mémoire dont la taille est suffisante pour l'objet alloué",
+        "Description": "Pour un pointeur ptr, on préférera utiliser ptr=malloc(sizeof(*ptr)); quand cela est possible."
+      },
+      {
+        "id": "146",
+        "Titre": "RÈGLE — Libérer la mémoire allouée dynamiquement au plus tôt",
+        "Description": "Tout espace mémoire alloué dynamiquement doit être libéré quand celui-ci n’est plus utile."
+      },
+      {
+        "id": "147",
+        "Titre": "RÈGLE — Les zones mémoires sensibles doivent être mises à zéro avant d'être libérées.",
+        "Description": "Vide"
+      },
+      {
+        "id": "148",
+        "Titre": "RÈGLE — Ne pas libérer de mémoire non allouée dynamiquement",
+        "Description": "Vide"
+      },
+      {
+        "id": "149",
+        "Titre": "RÈGLE — Ne pas modifier l'allocation dynamique via realloc",
+        "Description": "Vide"
+      },
+      {
+        "id": "150",
+        "Titre": "RÈGLE — Bonne utilisation de l'opérateur sizeof",
+        "Description": "Une expression contenue dans un sizeof ne doit pas :\n contenir l’opérateur « = » car l’expression ne sera pas évaluée ; \n contenir de déréférencement de pointeur ;\n être appliqué sur un pointeur représentant un tableau."
+      },
+      {
+        "id": "151",
+        "Titre": "RÈGLE — Vérification obligatoire du succès d'une allocation mémoire",
+        "Description": "Le succès d’une allocation mémoire doit toujours être vérifié."
+      },
+      {
+        "id": "152",
+        "Titre": "RÈGLE — L'isolement des données sensibles doit être effectué",
+        "Description": "Contrôler le bon usage d’une zone mémoire stockant des données sensibles i.e. minimiser l’exposition en mémoire, minimiser la copie et effacer la/les zones ayant contenu les données sensibles au plus tôt."
+      },
+      {
+        "id": "153",
+        "Titre": "RÈGLE — Initialiser et consulter la valeur de errno avant et après toute exécution d'une fonction de la bibliothèque standard qui modifie sa valeur",
+        "Description": "Vide"
+      },
+      {
+        "id": "154",
+        "Titre": "RÈGLE — La gestion des erreurs retournées par une fonction de la bibliothèque standard doit être systématique",
+        "Description": "Vide"
+      },
+      {
+        "id": "155",
+        "Titre": "RÈGLE — Documentation des codes d'erreur",
+        "Description": "Tous les codes d’erreur retournés par une fonction doivent être documentés. Dans le cas où plusieurs codes d’erreur peuvent être retournés en même temps par la fonction, la documentation doit définir la priorité de gestion de ces codes."
+      },
+      {
+        "id": "156",
+        "Titre": "RECOMMANDATION — Structuration des codes de retour",
+        "Description": "Les codes de retour doivent être structurés de façon à pouvoir obtenir rapidement une information concernant le déroulement de la fonction appelée : \n erreur ; \n type d’erreur ; \n alarme ; \n type d’alarme ; \n ok ;"
+      },
+      {
+        "id": "157",
+        "Titre": "RÈGLE — Code de retour d'un programme C en fonction du résultat de son exécution",
+        "Description": "Le code de retour d’un programme C doit avoir une signification afin d’indiquer le bon déroulement du programme ou la survenue d’une erreur : \n la valeur du code de retour doit être comprise entre 0 et 127 ; \n la valeur 0 indique que le programme s’est exécuté sans erreur ;\n la valeur 2 est généralement utilisée sous Unix pour indiquer une erreur dans les arguments passés en paramètres au programme. \nLa signification des codes de retour du programme doit être indiquée dans sa documentation."
+      },
+      {
+        "id": "158",
+        "Titre": "RECOMMANDATION — Privilégier les retours d'erreurs via des codes de retour dans la fonction principale",
+        "Description": "Un programme C doit disposer d’une fonction main() minimale. Les retours d’erreurs se font par un retour de code dédié (et donc documenté) de cette fonction."
+      },
+      {
+        "id": "159",
+        "Titre": "RÈGLE — Ne pas utiliser les fonctions abort() ou _Exit()",
+        "Description": "Vide"
+      },
+      {
+        "id": "160",
+        "Titre": "RECOMMANDATION — Limiter les appels à exit()",
+        "Description": "Les appels à la fonction exit() doivent être commentés et non systématiques. Le développeur doit le plus souvent possible les remplacer par un retour de code d’erreur  dans la fonction principale."
+      },
+      {
+        "id": "161",
+        "Titre": "RÈGLE — Ne pas utiliser les fonctions setjmp() et longjump()",
+        "Description": "Vide"
+      },
+      {
+        "id": "162",
+        "Titre": "RÈGLE — Ne pas utiliser les bibliothèques standards setjmp.h et stdarg.h",
+        "Description": "Vide"
+      },
+      {
+        "id": "163",
+        "Titre": "RECOMMANDATION — Limiter l'utilisation des bibliothèques standards manipulant des nombres flottants",
+        "Description": "Les bibliothèques standards float.h, fenv.h, complex.h et math.h ne doivent être utilisées que si cela est vraiment nécessaire."
+      },
+      {
+        "id": "164",
+        "Titre": "RÈGLE — Ne pas utiliser les fonctions atoi() atol() atof() et atoll() de la bibliothèque stdlib.h",
+        "Description": "Les fonctions équivalentes strto*() sont à utiliser en remplacement."
+      },
+      {
+        "id": "165",
+        "Titre": "RÈGLE — Ne pas utiliser la fonction rand() de la bibliothèque standard",
+        "Description": "Vide"
+      },
+      {
+        "id": "166",
+        "Titre": "RÈGLE — Utiliser les versions « plus sécurisées » pour les fonctions de la bibliothèque standard",
+        "Description": "Quand des fonctions de la bibliothèque standard existent en différentes versions, la version « plus sécurisée » doit être utilisée."
+      },
+      {
+        "id": "167",
+        "Titre": "RÈGLE — Ne pas utiliser de fonctions de la bibliothèque obsolescentes ou devenues obsolètes dans des normes suivantes.",
+        "Description": "Vide"
+      },
+      {
+        "id": "168",
+        "Titre": "RÈGLE — Ne pas utiliser de fonctions de la bibliothèque manipulant des buffers sans prendre la taille du buffer en argument.",
+        "Description": "Vide"
+      },
+      {
+        "id": "169",
+        "Titre": "BONNE PRATIQUE — Tout code doit être soumis à relecture",
+        "Description": "Vide"
+      },
+      {
+        "id": "170",
+        "Titre": "RECOMMANDATION — Indentation des expressions longues",
+        "Description": "Lorsqu’une instruction ou une expression s’étale sur plusieurs lignes, il est indispensable de l’indenter afin de faciliter la compréhension du code."
+      },
+      {
+        "id": "171",
+        "Titre": "RÈGLE — Identifier et supprimer tout code mort",
+        "Description": "Vide"
+      },
+      {
+        "id": "172",
+        "Titre": "RÈGLE — Le code doit être exempt de code non atteignable en dehors de code défensif et de code d'interface",
+        "Description": "Il ne doit jamais y avoir de code inatteignable, sauf s’il s’agit de code défensif ou s’il s’agit de code d’une interface et dans ces deux cas, il faut le préciser en commentaire."
+      },
+      {
+        "id": "173",
+        "Titre": "RECOMMANDATION — Evaluation outillée du code source pour limiter les risques d'erreurs d'exécution",
+        "Description": "Le code source du logiciel doit être analysé via au moins un outil d’analyse de code. Les résultats produits par l’outil d’analyse doivent être étudiés par le développeur et les corrections doivent être effectuées par rapport aux problèmes découverts."
+      },
+      {
+        "id": "174",
+        "Titre": "RECOMMANDATION — Limitation de la complexité cyclomatique",
+        "Description": "La complexité cyclomatique d’une fonction doit être limitée au maximum."
+      },
+      {
+        "id": "175",
+        "Titre": "RECOMMANDATION — Limitation de la longueur et la complexité d'une fonction",
+        "Description": "Une fonction doit être associée idéalement à un seul et unique traitement et doit donc correspondre à un nombre de lignes de code raisonnable."
+      },
+      {
+        "id": "176",
+        "Titre": "RÈGLE — Ne pas utiliser de mots clés du C++",
+        "Description": "Vide"
+      },
+      {
+        "id": "177",
+        "Titre": "RÈGLE — Séquences de caractères interdites dans les commentaires",
+        "Description": "Les séquences /* et // sont interdites dans tous les commentaires. Et un commentaire sur une ligne introduit par // ne doit pas contenir de caractère de continuation de ligne \\."
+      },
+      {
+        "id": "178",
+        "Titre": "RÈGLE — Mise en oeuvre manuelle de mécanismes « canari » si les options de durcissement ne sont pas accessibles à la compilation",
+        "Description": "Vide"
+      },
+      {
+        "id": "179",
+        "Titre": "RÈGLE — Pas d'assertions de mise au point sur un code mis en production",
+        "Description": "Les assertions de mise au point ne doivent pas être présentes en production."
+      },
+      {
+        "id": "180",
+        "Titre": "RECOMMANDATION — La gestion des assertions d'intégrité doit inclure un effacement des données d'urgence",
+        "Description": "Les assertions d’intégrité doivent apparaître en production. En cas de déclenchement d’une assertion d’intégrité, le code de traitement doit aboutir à un effacement d’urgence des données sensibles."
+      },
+      {
+        "id": "181",
+        "Titre": "RÈGLE — Tout fichier non vide doit se terminer par un retour à la ligne et les directives de preprocessing et les commentaires doivent être fermés ",
+        "Description": "Un fichier non vide ne doit pas se terminer au milieu d’un commentaire ou d’une directive de preprocessing."
+      }
+    ]
+  }
+}

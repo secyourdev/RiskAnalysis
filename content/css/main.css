@@ -541,6 +541,7 @@ h6 {
 
 .perso_border {
     border: none !important;
+    color: var(--font-color);
 }
 
 .perso_middle_modal_footer {
@@ -1084,6 +1085,12 @@ h6 {
     border-radius: 20px;
     background: #000000;
 }
+
+.legende {
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
 /*------------------------------------------------------------------------------ */
 /*---------------------------------- Popup atelier 3--------------------------------- */
 
@@ -1117,15 +1124,38 @@ h6 {
 }
 
 .fond-rouge {
-    background-color: #FF6565;
+    background-color: #e14242;
+    color: var(--reverse-font-color);
+    width: 15rem;
 }
 
 .fond-orange {
-    background-color: #FFCA83;
+    background-color: #ffc141;
+    color: var(--reverse-font-color);
+    width: 15rem;
 }
 
 .fond-vert {
-    background-color: #4AD991;
+    background-color: #15c66d;
+    color: var(--reverse-font-color);
+    width: 15rem;
+}
+.fond-rouge > div{
+    height: 4rem;
+    /* width: 4rem; */
+    overflow: auto;
+}
+
+.fond-orange > div{
+    height: 4rem;
+    /* width: 4rem; */
+    overflow: auto;
+}
+
+.fond-vert > div{
+    height: 4rem;
+    /* width: 4rem; */
+    overflow: auto;
 }
 
 .popup-tableau {

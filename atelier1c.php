@@ -794,7 +794,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         while ($row = mysqli_fetch_array($resultvm)) //selection.php
                         {
                           echo '
-                        <option value="' . $row['nom_valeur_metier'] . '">' . $row['nom_valeur_metier'] . '</option>
+                        <option value="' . $row['id_valeur_metier'] . '">' . $row['nom_valeur_metier'] . '</option>
                         ';
                         }
                         ?>
