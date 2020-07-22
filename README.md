@@ -6,14 +6,14 @@
 ## 3/Mettez le dossier téléchargé dans le dossier C:\xampp\htdocs\
 
 ## 4/Configuez l'arrivée de mail depuis de notre application :
-En modifiant le fichier C:\xampp\php\php.ini en changeant les lignes de la fonction 'mail function' par :
+En modifiant le fichier ```C:\xampp\php\php.ini``` en changeant les lignes de la fonction ```[mail function]``` par :
 
 ```[mail function]
 ; For Win32 only.
 ; http://php.net/smtp
-;SMTP=(smtp-ebios-rm.alwaysdata.net) /!\ Ceci est un exemple, vous devez mettre votre serveur SMTP !
+;SMTP=(smtp-ebios-rm.alwaysdata.net) #/!\ Ceci est un exemple, vous devez mettre votre serveur SMTP !
 ; http://php.net/smtp-port
-;smtp_port=587 /!\ Ceci est un exemple, vous devez mettre votre serveur SMTP !
+;smtp_port=587 #/!\ Ceci est un exemple, vous devez mettre votre serveur SMTP !
 
 ; For Win32 only.
 ; http://php.net/sendmail-from
@@ -35,18 +35,18 @@ sendmail_path = ""C:\xampp\sendmail\sendmail.exe" -t"
 ;mail.log =
 ; Log mail to syslog
 ```
-	Ensuite, vous devez modifier le fichier C:\xampp\sendmail\sendmail.ini en supprimant tout et en remplaçant par :
+Ensuite, vous devez modifier le fichier ```C:\xampp\sendmail\sendmail.ini``` en supprimant tout et en remplaçant par :
 
 ```[sendmail]
 
-smtp_server=smtp-ebios-rm.alwaysdata.net /!\ Ceci est un exemple, vous devez mettre votre serveur SMTP !
-smtp_port=587 /!\ Ceci est un exemple, vous devez mettre votre serveur SMTP !
+smtp_server=smtp-ebios-rm.alwaysdata.net #/!\ Ceci est un exemple, vous devez mettre votre serveur SMTP !
+smtp_port=587 #/!\ Ceci est un exemple, vous devez mettre votre serveur SMTP !
 smtp_ssl=auto
 error_logfile=error.log
 debug_logfile=debug.log
-auth_username=ebios-rm@alwaysdata.net /!\ Ceci est un exemple, vous devez mettre votre serveur SMTP !
-auth_password=hLLFL\bsF|&[8=m8q-$j /!\ Ceci est un exemple, vous devez mettre votre serveur SMTP !
-force_sender=ebios-rm@alwaysdata.net /!\ Ceci est un exemple, vous devez mettre votre serveur SMTP !
+auth_username=ebios-rm@alwaysdata.net #/!\ Ceci est un exemple, vous devez mettre votre serveur SMTP !
+auth_password=hLLFL\bsF|&[8=m8q-$j #/!\ Ceci est un exemple, vous devez mettre votre serveur SMTP !
+force_sender=ebios-rm@alwaysdata.net #/!\ Ceci est un exemple, vous devez mettre votre serveur SMTP !
 ```
 
 ## 5/Créez une base de données dans phpmyadmin avec le nom que vous désirez !
@@ -55,7 +55,7 @@ force_sender=ebios-rm@alwaysdata.net /!\ Ceci est un exemple, vous devez mettre 
 Pour effectuer l'import, vous avez juste à vous rendre sur la base de données et dans l'onglet 'Import' pour déposer le fichier SQL. 
 
 ## 7/Modifiez les fichiers de configuration de la base de donnée pour effectuer la connexion depuis l'application : 
-Dans le fichier "content/php/bdd/connexion.php" : 
+Dans le fichier ```content/php/bdd/connexion.php``` : 
 Appliquer sur la ligne ```$bdd=new PDO(...)``` les données pour effectuer la connexion : /!\ Attention, l'ordre est celle que nous avons précisé ! /!\
 ``` HOST : "localhost" 
 	DBNAME : "Nom de la table donnée précédemment"
@@ -63,7 +63,7 @@ Appliquer sur la ligne ```$bdd=new PDO(...)``` les données pour effectuer la co
 	ID : "root"
 	PASSWORD : ""
 ```
-Dans le fichier "content/php/bdd/connexion_sqli.php" : 
+Dans le fichier ```content/php/bdd/connexion_sqli.php``` : 
 Appliquer sur la ligne ```$connect = mysqli_connect(...)``` les données pour effectuer la connexion : /!\ Attention, l'ordre est celle que nous avons précisé ! /!\
 ``` HOST : "localhost" 
 	ID : "root"
@@ -78,6 +78,7 @@ Vous aurez besoin juste d'indiquer les données de connexion :
 	'host' => 'localhost',
 ```
 ## 9/Vous pourrez démarrer l'application à l'adresse http://localhost/RiskAnalysis/
-``` ID : connexion@admin
+``` 
+	ID : connexion@admin
 	PASSWORD : admin
 ```
