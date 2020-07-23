@@ -1127,23 +1127,26 @@ h6 {
 .fond-rouge {
     background-color: #e14242;
     color           : var(--reverse-font-color);
+    color: var(--reverse-font-color)!important;
     /* width           : 15rem; */
 }
 
 .fond-orange {
     background-color: #ffc141;
     color           : var(--reverse-font-color);
+    color: var(--reverse-font-color)!important;
     /* width           : 15rem; */
 }
 
 .fond-vert {
     background-color: #15c66d;
     color           : var(--reverse-font-color);
+    color: var(--reverse-font-color)!important;
     /* width           : 15rem; */
 }
 
 .perso_heatmap>tr>td {
-    color: var(--reverse-font-color);
+    color: var(--font-color);
     width: 15rem;
 }
 .perso_heatmap>tr>td>div {
