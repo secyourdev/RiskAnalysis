@@ -11,7 +11,7 @@ $result_SROV = mysqli_query($connect, $query_SROV);
 
 $data_SROV = array();
 foreach ($result_SROV as $row) {
-  $SROV = ($row['profil_de_l_attaquant_source_de_risque'] . " / " . $row['objectif_vise']);
+  $SROV = ($row['description_source_de_risque'] . " / " . $row['objectif_vise']);
   if ($row['pertinence'] === "Faible"){
     $pertinence = "1";
   }
