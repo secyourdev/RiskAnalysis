@@ -131,17 +131,17 @@ body {
 /* -------------------------------------------------------------------------------------------------------------- */
 /*------------------------------------ overwrite des classes bootstrap -------------------------------------------*/
 /* -------------------------------------------------------------------------------------------------------------- */
-#fixed_page{
-    padding-left: 15.5rem;
+#fixed_page {
+    padding-left : 15.5rem;
     padding-right: 1.5rem;
-    margin-top: 6rem;
+    margin-top   : 6rem;
 }
 
-#barre_info{
+#barre_info {
     margin-left: 14rem;
 }
 
-#footer{
+#footer {
     margin-left: 14rem;
 }
 
@@ -541,7 +541,7 @@ h6 {
 
 .perso_border {
     border: none !important;
-    color: var(--font-color);
+    color : var(--font-color);
 }
 
 .perso_middle_modal_footer {
@@ -903,7 +903,7 @@ h6 {
     width  : 2rem;
     height : 2rem;
     padding: 5px 5px 5px 5px;
-    cursor: pointer;
+    cursor : pointer;
 }
 
 .modification {
@@ -1066,31 +1066,32 @@ h6 {
 
 
 .cercle-vert {
-    width: 40px;
-    height: 40px;
+    width        : 40px;
+    height       : 40px;
     border-radius: 20px;
-    background: #4AD991;
+    background   : #4AD991;
 }
 
 .cercle-rouge {
-    width: 40px;
-    height: 40px;
+    width        : 40px;
+    height       : 40px;
     border-radius: 20px;
-    background: #FF6565;
+    background   : #FF6565;
 }
 
 .cercle-noir {
-    width: 40px;
-    height: 40px;
+    width        : 40px;
+    height       : 40px;
     border-radius: 20px;
-    background: #000000;
+    background   : #000000;
 }
 
 .legende {
-    text-align: center;
-    margin-top: 0.5rem;
+    text-align   : center;
+    margin-top   : 0.5rem;
     margin-bottom: 0.5rem;
 }
+
 /*------------------------------------------------------------------------------ */
 /*---------------------------------- Popup atelier 3--------------------------------- */
 
@@ -1125,36 +1126,28 @@ h6 {
 
 .fond-rouge {
     background-color: #e14242;
-    color: var(--reverse-font-color);
-    width: 15rem;
+    color           : var(--reverse-font-color);
+    /* width           : 15rem; */
 }
 
 .fond-orange {
     background-color: #ffc141;
-    color: var(--reverse-font-color);
-    width: 15rem;
+    color           : var(--reverse-font-color);
+    /* width           : 15rem; */
 }
 
 .fond-vert {
     background-color: #15c66d;
+    color           : var(--reverse-font-color);
+    /* width           : 15rem; */
+}
+
+.perso_heatmap>tr>td {
     color: var(--reverse-font-color);
     width: 15rem;
 }
-.fond-rouge > div{
-    height: 4rem;
-    /* width: 4rem; */
-    overflow: auto;
-}
-
-.fond-orange > div{
-    height: 4rem;
-    /* width: 4rem; */
-    overflow: auto;
-}
-
-.fond-vert > div{
-    height: 4rem;
-    /* width: 4rem; */
+.perso_heatmap>tr>td>div {
+    height : 4rem;
     overflow: auto;
 }
 
@@ -1274,7 +1267,7 @@ h6 {
 }
 
 #msg_suppression_projet,
-#msg_config_bdd{
+#msg_config_bdd {
     text-align: center;
 }
 
@@ -1377,14 +1370,14 @@ h6 {
 }
 
 /*Message erreur*/
-.message_success{
-    text-align: center;
+.message_success {
+    text-align : center;
     font-weight: 800;
-    color:#4AD991;
+    color      : #4AD991;
 }
 
-.message_error{
-    text-align: center;
+.message_error {
+    text-align : center;
     font-weight: 800;
     color:#FF6565;
 }
