@@ -524,6 +524,69 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         </ul>
         <!-- End of Sidebar -->
 
+        <!-- Right Sidebar -->
+        <ul id=menu>
+            <li>
+                <a class="nav-link collapse-item test_menu_float" href="#donnees_principales">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                            <g transform="translate(-1230 -689)">
+                                <path class="number_activity active"
+                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
+                                    transform="translate(1230 689)" fill="#ffffffcc" />
+                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
+                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
+                                    font-weight="700">
+                                    <tspan x="-3.432" y="0">1</tspan>
+                                </text>
+                            </g>
+                        </svg>
+                    </i>
+                    <span class="nom_atelier">Données principales</span>
+                </a>
+            </li>
+            <li>
+                <a class="nav-link collapse-item test_menu_float" href="#acteurs">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                            <g transform="translate(-1230 -689)">
+                                <path class="number_activity active"
+                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
+                                    transform="translate(1230 689)" fill="#ffffffcc" />
+                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
+                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
+                                    font-weight="700">
+                                    <tspan x="-3.432" y="0">2</tspan>
+                                </text>
+                            </g>
+                        </svg>
+                    </i>
+                    <span class="nom_atelier">Acteurs</span>
+                </a>
+            </li>
+            <li>
+                <a class="nav-link collapse-item test_menu_float" href="#RACI">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                            <g transform="translate(-1230 -689)">
+                                <path class="number_activity active"
+                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
+                                    transform="translate(1230 689)" fill="#ffffffcc" />
+                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
+                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
+                                    font-weight="700">
+                                    <tspan x="-3.432" y="0">3</tspan>
+                                </text>
+                            </g>
+                        </svg>
+                    </i>
+                    <span class="nom_atelier">RACI</span>
+                </a>
+            </li>
+        </ul>
+
+        <!-- End of Sidebar -->
+
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
@@ -604,7 +667,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <div class="card-columns">
                             <!-- Area Card -->
                             <!-- Données principales -->
-                            <div class="card shadow mb-4 perso_card_half_screen">
+                            <div id="donnees_principales" class="card shadow mb-4 perso_card_half_screen">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0">Données principales</h6>
@@ -750,7 +813,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
                             <!-- Area Card -->
                             <!-- Acteurs -->
-                            <div class="card shadow mb-4 perso_card_half_screen" id=acteurs>
+                            <div id="acteurs" class="card shadow mb-4 perso_card_half_screen" >
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0">Acteurs</h6>
@@ -853,7 +916,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
                         <!-- Area Card -->
                         <!-- RACI -->
-                        <div class="col-xl-12 col-lg-12">
+                        <div id="RACI" class="col-xl-12 col-lg-12">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="row perso_no_margin">
@@ -955,25 +1018,32 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         </div>
                     </div>
                 </div>
-    <!-- End of Main Content -->
+                <!-- End of Main Content -->
 
-    <!-- Footer -->
-    <footer id="footer" class="sticky-footer bg-white">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-                <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
+                <!-- Footer -->
+                <footer id="footer" class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
             </div>
+            <!-- End of Content -->
         </div>
-    </footer>
-    <!-- End of Footer -->
-    </div>
-    <!-- End of Content Wrapper -->
+        <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
+    </a>                                                
+
+    <!-- Scroll to Top Button-->
+    <a class="open_menu rounded">
+        <i class="fas fa-bars"></i>
     </a>
 
     <!-- Logout Modal-->
@@ -1015,6 +1085,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <script src="content/js/modules/top_bar.js"></script>
     <script src="content/js/modules/side_bar.js"></script>
     <script src="content/js/modules/fixed_page.js"></script>
+    <script src="content/js/modules/float_menu.js"></script>
     <script src="content/js/modules/help_button.js"></script>
     <script src="content/js/modules/gravite.js"></script>
     <script src="content/js/modules/realtime.js"></script>
