@@ -31,31 +31,167 @@ $.post("heatmap-getdata.php", function (data) {
 					document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(6)").remove()
 					document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(6)").remove()
 					document.querySelector("#dataTable > tbody > tr:nth-child(7) > td:nth-child(6)").remove()
+
+
+
+
+					document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(2)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(2)").classList.add('fond-vert')
+					document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(2)").classList.add('fond-vert')
+					document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(2)").classList.add('fond-vert')
+
+					document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(3)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(3)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(3)").classList.add('fond-vert')
+					document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(3)").classList.add('fond-vert')
+
+					document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(4)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(4)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(4)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(4)").classList.add('fond-orange')
+
+					document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(5)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(5)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(5)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(5)").classList.add('fond-orange')
 					break;
 
-				default:
+				case "5":
+					document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(2)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(2)").classList.add('fond-vert')
+					document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(2)").classList.add('fond-vert')
+					document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(2)").classList.add('fond-vert')
+
+					document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(3)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(3)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(3)").classList.add('fond-vert')
+					document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(3)").classList.add('fond-vert')
+
+					document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(4)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(4)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(4)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(4)").classList.add('fond-vert')
+
+					document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(5)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(5)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(5)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(5)").classList.add('fond-orange')
+
+					document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(6)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(6)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(6)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(6)").classList.add('fond-orange')
 					break;
 			}
-			break;
+		break;
 
+		case "5":
+				switch (echelle_vraisemblance) {
+					case "4":
+						document.querySelector("#dataTable > tbody > tr:nth-child(1) > td:nth-child(6)").remove()
+						document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(6)").remove()
+						document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(6)").remove()
+						document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(6)").remove()
+						document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(6)").remove()
+						document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(6)").remove()
+						document.querySelector("#dataTable > tbody > tr:nth-child(7) > td:nth-child(6)").remove()
+
+
+
+
+
+						document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(2)").classList.add('fond-orange')
+						document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(2)").classList.add('fond-orange')
+						document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(2)").classList.add('fond-vert')
+						document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(2)").classList.add('fond-vert')
+						document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(2)").classList.add('fond-vert')
+
+						document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(3)").classList.add('fond-rouge')
+						document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(3)").classList.add('fond-orange')
+						document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(3)").classList.add('fond-orange')
+						document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(3)").classList.add('fond-vert')
+						document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(3)").classList.add('fond-vert')
+
+						document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(4)").classList.add('fond-rouge')
+						document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(4)").classList.add('fond-rouge')
+						document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(4)").classList.add('fond-orange')
+						document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(4)").classList.add('fond-orange')
+						document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(4)").classList.add('fond-vert')
+
+						document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(5)").classList.add('fond-rouge')
+						document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(5)").classList.add('fond-rouge')
+						document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(5)").classList.add('fond-rouge')
+						document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(5)").classList.add('fond-orange')
+						document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(5)").classList.add('fond-orange')
+						break;
+
+					case "5":
+						document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(2)").classList.add('fond-orange')
+						document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(2)").classList.add('fond-orange')
+						document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(2)").classList.add('fond-vert')
+						document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(2)").classList.add('fond-vert')
+						document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(2)").classList.add('fond-vert')
+
+						document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(3)").classList.add('fond-orange')
+						document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(3)").classList.add('fond-orange')
+						document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(3)").classList.add('fond-orange')
+						document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(3)").classList.add('fond-vert')
+						document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(3)").classList.add('fond-vert')
+
+						document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(4)").classList.add('fond-rouge')
+						document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(4)").classList.add('fond-orange')
+						document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(4)").classList.add('fond-orange')
+						document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(4)").classList.add('fond-orange')
+						document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(4)").classList.add('fond-vert')
+
+						document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(5)").classList.add('fond-rouge')
+						document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(5)").classList.add('fond-rouge')
+						document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(5)").classList.add('fond-orange')
+						document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(5)").classList.add('fond-orange')
+						document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(5)").classList.add('fond-orange')
+
+						document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(6)").classList.add('fond-rouge')
+						document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(6)").classList.add('fond-rouge')
+						document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(6)").classList.add('fond-rouge')
+						document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(6)").classList.add('fond-orange')
+						document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(6)").classList.add('fond-orange')
+						break;
+				}
+		break;
 		default:
+			document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(2)").classList.add('fond-orange')
+			document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(2)").classList.add('fond-orange')
+			document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(2)").classList.add('fond-vert')
+			document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(2)").classList.add('fond-vert')
+			document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(2)").classList.add('fond-vert')
+
+			document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(3)").classList.add('fond-orange')
+			document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(3)").classList.add('fond-orange')
+			document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(3)").classList.add('fond-orange')
+			document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(3)").classList.add('fond-vert')
+			document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(3)").classList.add('fond-vert')
+
+			document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(4)").classList.add('fond-rouge')
+			document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(4)").classList.add('fond-orange')
+			document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(4)").classList.add('fond-orange')
+			document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(4)").classList.add('fond-orange')
+			document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(4)").classList.add('fond-vert')
+
+			document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(5)").classList.add('fond-rouge')
+			document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(5)").classList.add('fond-rouge')
+			document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(5)").classList.add('fond-orange')
+			document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(5)").classList.add('fond-orange')
+			document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(5)").classList.add('fond-orange')
+
+			document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(6)").classList.add('fond-rouge')
+			document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(6)").classList.add('fond-rouge')
+			document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(6)").classList.add('fond-rouge')
+			document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(6)").classList.add('fond-orange')
+			document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(6)").classList.add('fond-orange')
 			break;
 	}
 
-	switch (echelle_vraisemblance) {
-		case "4":
-			document.querySelector("#dataTable > tbody > tr:nth-child(1) > td:nth-child(6)").remove()
-			document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(6)").remove()
-			document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(6)").remove()
-			document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(6)").remove()
-			document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(6)").remove()
-			document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(6)").remove()
-			document.querySelector("#dataTable > tbody > tr:nth-child(7) > td:nth-child(6)").remove()
-			break;
-
-		default:
-			break;
-	}
+	
 	
 	
 
