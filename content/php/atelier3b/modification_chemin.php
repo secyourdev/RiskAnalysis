@@ -14,7 +14,7 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
     $query = "
     UPDATE T_chemin_d_attaque_strategique 
     SET 
-    nom_chemin_d_attaque_strategique = '" . $T_chemin_d_attaque_strategique . "'
+    nom_chemin_d_attaque_strategique = '" . $chemin_d_attaque_strategique . "'
     WHERE id_chemin_d_attaque_strategique = '" . $input["id_chemin_d_attaque_strategique"] . "'
     ";
     echo $query;

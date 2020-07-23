@@ -489,12 +489,17 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                           <th id="numero_risque">N° Risque</th>
                           <th id="chemin_attaque_strategique">Chemin d'attaque stratégique</th>
                           <th id="partie_prenante">Partie prenante</th>
-                          <th id="menace">Niveau de menace</th>
+                          <th id="menace">Niveau de menace initial</th>
+                          <th id="dependance_residuelle">Dependance résiduelle</th>
+                          <th id="penetration_residuelle">Penetration résiduelle</th>
+                          <th id="maturite_residuelle">Maturite résiduelle</th>
+                          <th id="confiance_residuelle">Confiance résiduelle</th>
                           <th id="menace_residuelle">Niveau de menace résiduel</th>
                           <th id="scenario_operationnel">Scenario opérationnel</th>
                           <th id="vraisemblance">Vraisemblance</th>
                           <th id="risque">Risque</th>
                           <th id="mesure">Mesure de sécurité</th>
+                          <th id="description_mesure">Description de la mesure</th>
                           
                         </tr>
                       </thead>
@@ -518,11 +523,16 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <td>'.$row["nom_chemin_d_attaque_strategique"].'</td>
                         <td>'.$row["nom_partie_prenante"].'</td>
                         <td>'.$row["niveau_de_menace_partie_prenante"].'</td>
+                        <td>'.$row["dependance_residuelle"].'</td>
+                        <td>'.$row["penetration_residuelle"].'</td>
+                        <td>'.$row["maturite_residuelle"].'</td>
+                        <td>'.$row["confiance_residuelle"].'</td>
                         <td>'.$row["niveau_de_menace_residuelle"].'</td>
                         <td>'.$row["description_scenario_operationnel"].'</td>
                         <td>'.$row["vraisemblance"].'</td>
                         <td>'.$risque.'</td>
                         <td>'.$row["nom_mesure"].'</td>
+                        <td>'.$row["description_mesure"].'</td>
                         </tr>
                         ';
                       }
