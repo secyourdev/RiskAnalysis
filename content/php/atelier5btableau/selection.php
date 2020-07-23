@@ -11,12 +11,17 @@ P_SROV.pertinence,
 T_chemin_d_attaque_strategique.id_risque,
 T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique,
 T_chemin_d_attaque_strategique.nom_chemin_d_attaque_strategique,
+T_chemin_d_attaque_strategique.dependance_residuelle,
+T_chemin_d_attaque_strategique.penetration_residuelle,
+T_chemin_d_attaque_strategique.maturite_residuelle,
+T_chemin_d_attaque_strategique.confiance_residuelle,
 T_chemin_d_attaque_strategique.niveau_de_menace_residuelle,
 R_partie_prenante.nom_partie_prenante,
 R_partie_prenante.niveau_de_menace_partie_prenante,
 U_scenario_operationnel.description_scenario_operationnel,
 U_scenario_operationnel.vraisemblance,
 Y_mesure.nom_mesure,
+Y_mesure.description_mesure,
 Y_mesure.id_mesure
 FROM Y_mesure
 NATURAL JOIN ZB_comporter_2

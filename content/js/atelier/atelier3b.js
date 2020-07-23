@@ -91,13 +91,9 @@ $(document).ready(function () {
         url: 'content/php/atelier3b/modification_chemin.php',
         sortable: true,
         columns: {
-            identifier: [
-                [0, 'id_chemin_d_attaque_strategique'],
-                [2, 'nom_scenario_strategique']
-            ],
+            identifier: [0, 'id_chemin_d_attaque_strategique'],
             editable: [
-                [3, 'chemin_d_attaque_strategique'],
-                [4, 'partie_prenante']
+                [3, 'chemin_d_attaque_strategique']
             ],
             checkboxeditable: []
         },
@@ -129,9 +125,9 @@ OURJQUERYFN.setFilterTable("#rechercher_chemin_d_attaque","#editable_table_chemi
 // });
 
 // sleep(100).then(() => {
-//     for(let i=editable_table_scenario_strategique.rows.length-1;i<editable_table_scenario_strategique.rows.length+editable_table_chemin_d_attaque.rows.length-2;i++){
+//     for(let i=editable_table_chemin_d_attaque.rows.length-1;i<editable_table_scenario_strategique.rows.length+editable_table_chemin_d_attaque.rows.length-2;i++){
 //         k++;
-//         button[i].setAttribute('onclick','tableau_verification('+k+','+'editable_table_SROV'+','+'5'+')')
+//         button[i].setAttribute('onclick','tableau_verification('+k+','+'editable_table_chemin_d_attaque'+','+'5'+')')
 //     }
 // });
 

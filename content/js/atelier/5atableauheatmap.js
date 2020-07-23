@@ -33,29 +33,31 @@ $.post("heatmap-getdata.php", function (data) {
 					document.querySelector("#dataTable > tbody > tr:nth-child(7) > td:nth-child(6)").remove()
 					break;
 
-				default:
+				case "5":
 					break;
 			}
-			break;
+		break;
+		case "5":
+				switch (echelle_vraisemblance) {
+					case "4":
+						document.querySelector("#dataTable > tbody > tr:nth-child(1) > td:nth-child(6)").remove()
+						document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(6)").remove()
+						document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(6)").remove()
+						document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(6)").remove()
+						document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(6)").remove()
+						document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(6)").remove()
+						document.querySelector("#dataTable > tbody > tr:nth-child(7) > td:nth-child(6)").remove()
+						break;
 
+					case "5":
+						break;
+				}
+		break;
 		default:
 			break;
 	}
 
-	switch (echelle_vraisemblance) {
-		case "4":
-			document.querySelector("#dataTable > tbody > tr:nth-child(1) > td:nth-child(6)").remove()
-			document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(6)").remove()
-			document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(6)").remove()
-			document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(6)").remove()
-			document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(6)").remove()
-			document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(6)").remove()
-			document.querySelector("#dataTable > tbody > tr:nth-child(7) > td:nth-child(6)").remove()
-			break;
-
-		default:
-			break;
-	}
+	
 	
 	
 

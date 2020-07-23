@@ -875,7 +875,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         while ($row = mysqli_fetch_array($result_id_scenario_strategique)) //selection.php
                         {
                           echo '
-                        <option id="nom_scenario_strategique" value="' . $row["nom_scenario_strategique"] . '">' . $row["nom_scenario_strategique"] . '</option>
+                        <option id="nom_scenario_strategique" value="' . $row["id_scenario_strategique"] . '">' . $row["nom_scenario_strategique"] . '</option>
                         ';
                         }
                         ?>
@@ -890,7 +890,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         while ($row = mysqli_fetch_array($result_id_partie_prenante)) //selection.php
                         {
                           echo '
-                        <option id="partie_prenante" value="' . $row["nom_partie_prenante"] . '">' . $row["nom_partie_prenante"] . '</option>
+                        <option id="partie_prenante" value="' . $row["id_partie_prenante"] . '">' . $row["nom_partie_prenante"] . '</option>
                         ';
                         }
                         ?>

@@ -526,19 +526,19 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               </tr>
                               <tr>
                                 <td class="perso_border texte-droite">5</td>
-                                <td class="fond-orange">
+                                <td class="">
                                   <div></div>
                                 </td>
-                                <td class="fond-orange">
+                                <td class="">
                                   <div></div>
                                 </td>
-                                <td class="fond-rouge">
+                                <td class="">
                                   <div></div>
                                 </td>
-                                <td class="fond-rouge">
+                                <td class="">
                                   <div></div>
                                 </td>
-                                <td class="fond-rouge">
+                                <td class="">
                                   <div></div>
                                 </td>
                                 <td class="perso_border">
@@ -547,19 +547,19 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               </tr>
                               <tr>
                                 <td class="perso_border texte-droite">4</td>
-                                <td class="fond-vert">
+                                <td class="">
                                   <div></div>
                                 </td>
-                                <td class="fond-orange">
+                                <td class="">
                                   <div></div>
                                 </td>
-                                <td class="fond-rouge">
+                                <td class="">
                                   <div></div>
                                 </td>
-                                <td class="fond-rouge">
+                                <td class="">
                                   <div></div>
                                 </td>
-                                <td class="fond-rouge">
+                                <td class="">
                                   <div></div>
                                 </td>
                                 <td class="perso_border">
@@ -568,19 +568,19 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               </tr>
                               <tr>
                                 <td class="perso_border texte-droite">3</td>
-                                <td class="fond-vert">
+                                <td class="">
                                   <div></div>
                                 </td>
-                                <td class="fond-vert">
+                                <td class="">
                                   <div></div>
                                 </td>
-                                <td class="fond-orange">
+                                <td class="">
                                   <div></div>
                                 </td>
-                                <td class="fond-rouge">
+                                <td class="">
                                   <div></div>
                                 </td>
-                                <td class="fond-rouge">
+                                <td class="">
                                   <div></div>
                                 </td>
                                 <td class="perso_border">
@@ -589,19 +589,19 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               </tr>
                               <tr>
                                 <td class="perso_border texte-droite">2</td>
-                                <td class="fond-vert">
+                                <td class="">
                                   <div></div>
                                 </td>
-                                <td class="fond-vert">
+                                <td class="">
                                   <div></div>
                                 </td>
-                                <td class="fond-orange">
+                                <td class="">
                                   <div></div>
                                 </td>
-                                <td class="fond-orange">
+                                <td class="">
                                   <div></div>
                                 </td>
-                                <td class="fond-orange">
+                                <td class="">
                                   <div></div>
                                 </td>
                                 <td class="perso_border">
@@ -610,19 +610,19 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               </tr>
                               <tr>
                                 <td class="perso_border texte-droite">1</td>
-                                <td class="fond-vert">
+                                <td class="">
                                   <div></div>
                                 </td>
-                                <td class="fond-vert">
+                                <td class="">
                                   <div></div>
                                 </td>
-                                <td class="fond-orange">
+                                <td class="">
                                   <div></div>
                                 </td>
-                                <td class="fond-orange">
+                                <td class="">
                                   <div></div>
                                 </td>
-                                <td class="fond-orange">
+                                <td class="">
                                   <div></div>
                                 </td>
                                 <td class="perso_border">
@@ -715,34 +715,34 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                           </tr>
                           <tr>
                             <td class="perso_border texte-droite">4</td>
-                            <td class="fond-orange">R5</td>
-                            <td class="fond-orange">R4</td>
-                            <td class="fond-rouge"></td>
-                            <td class="fond-rouge"></td>
+                            <td class="">R5</td>
+                            <td class="">R4</td>
+                            <td class=""></td>
+                            <td class=""></td>
                             <td class="perso_border"></td>
                           </tr>
                           <tr>
                             <td class="perso_border texte-droite">3</td>
-                            <td class="fond-vert"></td>
-                            <td class="fond-orange">R2</td>
-                            <td class="fond-rouge">R1</td>
-                            <td class="fond-rouge">R3</td>
+                            <td class=""></td>
+                            <td class="">R2</td>
+                            <td class="">R1</td>
+                            <td class="">R3</td>
                             <td class="perso_border"></td>
                           </tr>
                           <tr>
                             <td class="perso_border texte-droite">2</td>
-                            <td class="fond-vert"></td>
-                            <td class="fond-vert"></td>
-                            <td class="fond-orange"></td>
-                            <td class="fond-rouge"></td>
+                            <td class=""></td>
+                            <td class=""></td>
+                            <td class=""></td>
+                            <td class=""></td>
                             <td class="perso_border"></td>
                           </tr>
                           <tr>
                             <td class="perso_border texte-droite">1</td>
-                            <td class="fond-vert"></td>
-                            <td class="fond-vert"></td>
-                            <td class="fond-orange"></td>
-                            <td class="fond-orange"></td>
+                            <td class=""></td>
+                            <td class=""></td>
+                            <td class=""></td>
+                            <td class=""></td>
                             <td class="perso_border"></td>
                           </tr>
                           <tr>
@@ -809,7 +809,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <script src="content/js/modules/top_bar.js"></script>
           <script src="content/js/modules/side_bar.js"></script>
           <script src="content/js/modules/fixed_page.js"></script>
-          <script src="content\js\atelier\5tableauheatmap.js"></script>
+          <script src="content/js/atelier/5btableauheatmap.js"></script>
       </body>
   <?php
     }
