@@ -53,6 +53,14 @@ if (isset($_POST['file_submit'])) {
             header($header);
             $msg = "Image uploadée avec succès";
             print $msg;
+            $zip = new ZipArchive;
+            if ($zip->open('../sauvegarde_image/schema.zip') === TRUE) {
+                $zip->addFile('../../../image/'.$image, $image);
+                $zip->close();
+                echo 'ok';
+            } else {
+                echo 'échec';
+            }
         } else {
             $msg = "Erreur dans l'upload de l'image";
             print $msg;
@@ -61,4 +69,6 @@ if (isset($_POST['file_submit'])) {
     }else {
         print "erreur: aucun scénario n'a été choisi";
     }
+
+    
 }

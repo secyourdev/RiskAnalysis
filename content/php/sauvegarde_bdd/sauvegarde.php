@@ -147,6 +147,7 @@ class BackupMySQL extends mysqli {
 		
 		$sql  = '--' ."\n";
 		$sql .= '-- '. $this->nom_fichier ."\n";
+		$sql .= 'SET FOREIGN_KEY_CHECKS =  0 ;';
 		gzwrite($this->gz_fichier, $sql);
 		
 		// Liste les tables
