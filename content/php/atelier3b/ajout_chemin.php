@@ -1,7 +1,7 @@
 <?php
 session_start();
 $get_id_projet = $_SESSION['id_projet'];
-header('Location: ../../../atelier-3b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
+header('Location: ../../../atelier-3b&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet']);
 
 include("../bdd/connexion.php");
 
@@ -26,6 +26,22 @@ $insere = $bdd->prepare(
   (id_chemin_d_attaque_strategique,id_risque,nom_chemin_d_attaque_strategique,dependance_residuelle, penetration_residuelle, maturite_residuelle,confiance_residuelle, niveau_de_menace_residuelle, id_scenario_strategique, id_partie_prenante) 
   VALUES 
   (?, ?, ?, NULL, NULL, NULL, NULL, NULL, ? ,?)'
+);
+$insere_reeval = $bdd->prepare(
+  'INSERT INTO 
+  X_revaluation_du_risque
+  (
+    id_revaluation, 
+  nom_risque_residuelle, 
+  description_risque_residuelle, 
+  vraisemblance_residuelle, 
+  risque_residuel, 
+  gestion_risque_residuelle, 
+  id_atelier, 
+  id_chemin_d_attaque_strategique, 
+  id_risque, 
+  id_projet
+  ) VALUES ("", NULL, NULL, NULL, NULL, NULL,"5.c",?,?,?)'
 );
 
 $recuperechemin = $bdd->prepare('SELECT id_chemin_d_attaque_strategique, id_risque FROM T_chemin_d_attaque_strategique
@@ -61,6 +77,11 @@ if ($results["error"] === false && isset($_POST['validerchemin'])) {
   $recuperechemin->bindParam(2, $id_risque);
   $recuperechemin->execute();
   $resultchemin = $recuperechemin->fetch();
+
+  $insere_reeval->bindParam(2, $resultchemin[0]);
+  $insere_reeval->bindParam(3, $resultchemin[1]);
+  $insere_reeval->bindParam(4, $get_id_projet);
+  $insere_reeval->execute();
 
   $description_ope = "Scenario opérationnel pour : " . $chemin_d_attaque_strategique;
   echo $description_ope;
