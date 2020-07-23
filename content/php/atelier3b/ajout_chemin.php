@@ -11,8 +11,8 @@ $results["message"] = [];
 
 $id_risque = $_POST['id_risque'];
 $chemin_d_attaque_strategique = $_POST['chemin_d_attaque_strategique'];
-$nom_scenario_strategique = $_POST['nom_scenario_strategique'];
-$nom_partie_prenante = $_POST['nom_partie_prenante'];
+$id_scenario_strategique = $_POST['nom_scenario_strategique'];
+$id_partie_prenante = $_POST['nom_partie_prenante'];
 $id_chemin_d_attaque = "id_chemin";
 $id_scenar = "id_scenar";
 $id_atelier = "4.a";
@@ -41,20 +41,20 @@ $insereope = $bdd->prepare(
 
 
 if ($results["error"] === false && isset($_POST['validerchemin'])) {
-  $recupere->bindParam(1, $nom_scenario_strategique);
-  $recupere->execute();
-  $id_scenario_strategique = $recupere->fetch();
+  // $recupere->bindParam(1, $nom_scenario_strategique);
+  // $recupere->execute();
+  // $id_scenario_strategique = $recupere->fetch();
 
-  $recuperepp->bindParam(1, $nom_partie_prenante);
-  $recuperepp->bindParam(2, $get_id_projet);
-  $recuperepp->execute();
-  $id_partie_prenante = $recuperepp->fetch();
+  // $recuperepp->bindParam(1, $nom_partie_prenante);
+  // $recuperepp->bindParam(2, $get_id_projet);
+  // $recuperepp->execute();
+  // $id_partie_prenante = $recuperepp->fetch();
 
   $insere->bindParam(1, $id_chemin_d_attaque);
   $insere->bindParam(2, $id_risque);
   $insere->bindParam(3, $chemin_d_attaque_strategique);
-  $insere->bindParam(4, $id_scenario_strategique[0]);
-  $insere->bindParam(5, $id_partie_prenante[0]);
+  $insere->bindParam(4, $id_scenario_strategique);
+  $insere->bindParam(5, $id_partie_prenante);
   $insere->execute();
 
   $recuperechemin->bindParam(1, $chemin_d_attaque_strategique);
