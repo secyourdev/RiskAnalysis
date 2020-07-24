@@ -1,4 +1,4 @@
-var length_sous_atelier=18
+var length_sous_atelier=16
 
 for(let i=1;i<length_sous_atelier;i++){
     var nom_sous_atelier = document.getElementById("nom_sous_atelier_"+i)

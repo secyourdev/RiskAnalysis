@@ -46,7 +46,6 @@
     e.preventDefault();
   });
 
-  
   $('.open_menu').fadeIn();
 
 })(jQuery); // End of use strict

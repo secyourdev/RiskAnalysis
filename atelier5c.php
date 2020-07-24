@@ -362,32 +362,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     </i>
                     <span id="nom_sous_atelier_13" title="Décider de la stratégie de traitement du risque et définir les mesures de sécurité">Décider de la stratégie de traitement du risque et définir les mesures de sécurité</span>
                   </a>
-                  <a class="collapse-item" href="atelier-5btableau&<?php echo $_SESSION['id_utilisateur']; ?>&<?php echo $_SESSION['id_projet']; ?>">
-                    <i>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
-                        <g transform="translate(-124 -292)">
-                          <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
-                          <text class="number_sub_activity_text" data-name="5.b" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
-                            <tspan x="-7.5" y="-1.5">5.b</tspan>
-                          </text>
-                        </g>
-                      </svg>
-                    </i>
-                    <span id="nom_sous_atelier_16" title="Tableau récapitulatif">Tableau récapitulatif</span>
-                  </a>
-                  <a class="collapse-item" href="atelier-5bpacs&<?php echo $_SESSION['id_utilisateur']; ?>&<?php echo $_SESSION['id_projet']; ?>">
-                    <i>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
-                        <g transform="translate(-124 -292)">
-                          <path class="number_sub_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(124 292)" fill="#394c7a" />
-                          <text class="number_sub_activity_text" data-name="5.b" transform="translate(136.5 309.19)" fill="#eaf1eb" font-size="11" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
-                            <tspan x="-7.5" y="-1.5">5.b</tspan>
-                          </text>
-                        </g>
-                      </svg>
-                    </i>
-                    <span id="nom_sous_atelier_17" title="PACS">PACS</span>
-                  </a>
                   <a class="collapse-item" href="atelier-5c&<?php echo $_SESSION['id_utilisateur']; ?>&<?php echo $_SESSION['id_projet']; ?>">
                     <i>
                       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
@@ -413,6 +387,68 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             </div>
           </ul>
           <!-- End of Sidebar -->
+
+          <!-- Right Sidebar -->
+          <ul id=menu>
+            <li>
+                <a class="nav-link collapse-right-item menu_float" href="#evaluation_risques_residuels">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                            <g transform="translate(-1230 -689)">
+                                <path class="number_activity active"
+                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
+                                    transform="translate(1230 689)" fill="#ffffffcc" />
+                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
+                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
+                                    font-weight="700">
+                                    <tspan x="-3.432" y="0">1</tspan>
+                                </text>
+                            </g>
+                        </svg>
+                    </i>
+                    <span class="nom_sous_menu">Évaluation et documentation des risques résiduels</span>
+                </a>
+            </li>
+            <li>
+                <a class="nav-link collapse-right-item menu_float" href="#cartographie_risque_initial">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                            <g transform="translate(-1230 -689)">
+                                <path class="number_activity active"
+                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
+                                    transform="translate(1230 689)" fill="#ffffffcc" />
+                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
+                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
+                                    font-weight="700">
+                                    <tspan x="-3.432" y="0">2</tspan>
+                                </text>
+                            </g>
+                        </svg>
+                    </i>
+                    <span class="nom_sous_menu">Cartographie du risque initial</span>
+                </a>
+            </li>
+            <li>
+                <a class="nav-link collapse-right-item menu_float" href="#cartographie_risque_residuel">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                            <g transform="translate(-1230 -689)">
+                                <path class="number_activity active"
+                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
+                                    transform="translate(1230 689)" fill="#ffffffcc" />
+                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
+                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
+                                    font-weight="700">
+                                    <tspan x="-3.432" y="0">3</tspan>
+                                </text>
+                            </g>
+                        </svg>
+                    </i>
+                    <span class="nom_sous_menu">Cartographie du risque résiduel</span>
+                </a>
+            </li>
+          </ul>
+          <!-- End of Right Sidebar -->
 
           <!-- Content Wrapper -->
           <div id="content-wrapper" class="d-flex flex-column">
@@ -484,28 +520,23 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div class="row">
                   <!-- Area Card -->
-                  <div class="col-xl col-lg">
+                  <div id="evaluation_risques_residuels" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0">Évaluation et documentation des risques résiduels</h6>
                       </div>
 
-
                       <!-- Card Body -->
                       <div class="card-body">
-
-
                         <div class="table-responsive">
                           <input type="text" class="rechercher_input" id="rechercher_srov" placeholder="Rechercher">
                           <table id="editable_table" class="table table-bordered table-striped">
                             <thead>
                               <tr>
-                                <th>id</th>
+                                <th>ID</th>
                                 <th>Nom du risque</th>
                                 <th>Gravité initiale</th>
                                 <th>Vraisemblance initiale</th>
@@ -527,7 +558,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
                                 echo '
                                 <tr>
-                                <td>'.$row["id_chemin_d_attaque_strategique"].'</td>
+                                <td>'.$row["id_revaluation"].'</td>
                                 <td>'.$row["nom_chemin_d_attaque_strategique"].'</td>
                                 <td>'.$row["niveau_de_gravite"].'</td>
                                 <td>'.$row["vraisemblance"].'</td>
@@ -544,117 +575,314 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </tbody>
                           </table>
                         </div>
-
-
-
-                        <!-- text
+                      </div>
+                    </div>
+                  </div>
+                  <div id="cartographie_risque_initial" class="col-xl-12 col-lg-12">
+                    <div class="card shadow mb-4">
+                      <!-- Card Header - Dropdown -->
+                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0">Cartographie du risque initial</h6>
+                      </div>
+                      <!-- Card Body -->
+                      <div class="card-body">
+                        <!--text-->
                         <div class="table-responsive">
-                          <table class="table table-bordered perso_border" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
+                          <table class="table table-bordered perso_border" id="dataTable_avant" width="100%" cellspacing="0">
+                            <tbody class="perso_heatmap">
                               <tr>
-                                <th>Nom du risque</th>
-                                <th>Gravité initiale</th>
-                                <th>Vraisemblance initiale</th>
-                                <th>Risque initial</th>
-                                <th>Gravité résiduelle</th>
-                                <th>Vraisemblance résiduelle</th>
-                                <th>Risque résiduel</th>
-                                <th class="perso_border"></th>
+                                <td class="perso_border texte-droite">Gravité</td>
+                                <td class="perso_border"></td>
+                                <td class="perso_border"></td>
+                                <td class="perso_border"></td>
+                                <td class="perso_border"></td>
+                                <td class="perso_border"></td>
+                                <td class="perso_border"></td>
                               </tr>
-                            </thead>
-
-                            <tbody>
                               <tr>
-                                <td>Un concurrent vole des informations de R&D grâce à un canal d'exfiltration</td>
-                                <td>3</td>
-                                <td>3</td>
-                                <td>9</td>
-                                <td>3</td>
-                                <td>2</td>
-                                <td>6</td>
-                                <td class="perso_border">
-                                  <div class="modification">
-                                    <i data-toggle="modal" data-target="#ajout_vraisemblance_résiduelle" class="crayon fas fa-pen"></i>
-                                  </div>
+                                <td class="perso_border texte-droite">5</td>
+                                <td class="">
+                                  <div></div>
                                 </td>
-
-                              </tr>
-                              <tr>
-                                <td>Un concurrent vole des informations de R&D en exfiltrant celles détenues par le laboratoire</td>
-                                <td>3</td>
-                                <td>2</td>
-                                <td>6</td>
-                                <td>3</td>
-                                <td>1</td>
-                                <td>3</td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
                                 <td class="perso_border">
-                                  <div class="modification">
-                                    <i data-toggle="modal" data-target="#ajout_vraisemblance_résiduelle" class="crayon fas fa-pen"></i>
-                                  </div>
+                                  <div></div>
                                 </td>
                               </tr>
                               <tr>
-                                <td>Un concurrent vole des informations de R&D grâce à un canal d'exfiltration via le prestataire informatique</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>12</td>
-                                <td>3</td>
-                                <td>3</td>
-                                <td>9</td>
+                                <td class="perso_border texte-droite">4</td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
                                 <td class="perso_border">
-                                  <div class="modification">
-                                    <i data-toggle="modal" data-target="#ajout_vraisemblance_résiduelle" class="crayon fas fa-pen"></i>
-                                  </div>
+                                  <div></div>
                                 </td>
                               </tr>
                               <tr>
-                                <td>Un hacktiviste provoque un arrêt de la production des vaccins en compromettant l'équipement de maintenance des fournisseurs de matériel</td>
-                                <td>4</td>
-                                <td>2</td>
-                                <td>8</td>
-                                <td>4</td>
-                                <td>1</td>
-                                <td>4</td>
+                                <td class="perso_border texte-droite">3</td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
                                 <td class="perso_border">
-                                  <div class="modification">
-                                    <i data-toggle="modal" data-target="#ajout_vraisemblance_résiduelle" class="crayon fas fa-pen"></i>
-                                  </div>
+                                  <div></div>
                                 </td>
                               </tr>
                               <tr>
-                                <td>Un hacktiviste provoque un arrêt de la production des vacances en compromettant l'équipement de maintenance des fournisseurs de matériel</td>
-                                <td>4</td>
-                                <td>1</td>
-                                <td>4</td>
-                                <td>4</td>
-                                <td>1</td>
-                                <td>4</td>
-                                <td class="perso_border">
-                                  <div class="modification">
-                                    <i data-toggle="modal" data-target="#ajout_vraisemblance_résiduelle" class="crayon fas fa-pen"></i>
-                                  </div>
+                                <td class="perso_border texte-droite">2</td>
+                                <td class="">
+                                  <div></div>
                                 </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="perso_border">
+                                  <div></div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="perso_border texte-droite">1</td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="perso_border">
+                                  <div></div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="perso_border"></td>
+                                <td class="perso_border">1</td>
+                                <td class="perso_border">2</td>
+                                <td class="perso_border">3</td>
+                                <td class="perso_border">4</td>
+                                <td class="perso_border">5</td>
+                                <td class="perso_border texte-gauche">Vraisemblance</td>
                               </tr>
 
 
                             </tbody>
                           </table>
+                        </div>
+                        <!-- <h6 class="m-0">Scénarios de risque</h6>
+                        <div class="card-body">
+                          R1 : Un concurrent vole des informations de R&D grâce à une canal d'exfiltration <br>
+                          R2 : Un concurrent vole des informations de R&D en exfiltrant celles détenues par le laboratoire <br>
+                          R3 : Un concurrent vole des informations de R&D grâce à un canal d'exfiltration via le prestataire informatique <br>
+                          R4 : Un hacktiviste provoque un arret de la production des vaccins en compromettant l'équipement de maintenance du fournisseur de matériel <br>
+                          R5 : Un hacktiviste perturbe la distribution de vaccins en modifiant leur étiquetage <br>
                         </div> -->
-                        <!-- bouton Ajouter une nouvelle ligne -->
-                        <!-- <div class="text-center">
-                          <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_vraisemblance_résiduelle">Ajouter une nouvelle ligne</button>
-                        </div> -->
-
-
                       </div>
                     </div>
                   </div>
 
+                  <div id="cartographie_risque_residuel" class="col-xl-12 col-lg-12">
+                    <div class="card shadow mb-4">
+                      <!-- Card Header - Dropdown -->
+                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0">Cartographie du risque résiduel</h6>
+                      </div>
+                      <!-- Card Body -->
+                      <div class="card-body">
+                        <!--text-->
+                        <div class="table-responsive">
+                          <table class="table table-bordered perso_border" id="dataTable_apres" width="100%" cellspacing="0">
+                            <tbody class="perso_heatmap">
+                              <tr>
+                                <td class="perso_border texte-droite">Gravité</td>
+                                <td class="perso_border"></td>
+                                <td class="perso_border"></td>
+                                <td class="perso_border"></td>
+                                <td class="perso_border"></td>
+                                <td class="perso_border"></td>
+                                <td class="perso_border"></td>
+                              </tr>
+                              <tr>
+                                <td class="perso_border texte-droite">5</td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="perso_border">
+                                  <div></div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="perso_border texte-droite">4</td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="perso_border">
+                                  <div></div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="perso_border texte-droite">3</td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="perso_border">
+                                  <div></div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="perso_border texte-droite">2</td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="perso_border">
+                                  <div></div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="perso_border texte-droite">1</td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="">
+                                  <div></div>
+                                </td>
+                                <td class="perso_border">
+                                  <div></div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="perso_border"></td>
+                                <td class="perso_border">1</td>
+                                <td class="perso_border">2</td>
+                                <td class="perso_border">3</td>
+                                <td class="perso_border">4</td>
+                                <td class="perso_border">5</td>
+                                <td class="perso_border texte-gauche">Vraisemblance</td>
+                              </tr>
+
+
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- <h6 class="m-0">Scénarios de risque</h6>
+                        <div class="card-body">
+                          R1 : Un concurrent vole des informations de R&D grâce à une canal d'exfiltration <br>
+                          R2 : Un concurrent vole des informations de R&D en exfiltrant celles détenues par le laboratoire <br>
+                          R3 : Un concurrent vole des informations de R&D grâce à un canal d'exfiltration via le prestataire informatique <br>
+                          R4 : Un hacktiviste provoque un arret de la production des vaccins en compromettant l'équipement de maintenance du fournisseur de matériel <br>
+                          R5 : Un hacktiviste perturbe la distribution de vaccins en modifiant leur étiquetage <br>
+                        </div> -->
+                      </div>
+                    </div>
+                  </div>
 
                 </div>
-
-
-
               </div>
               <!-- End of Main Content -->
 
@@ -678,9 +906,14 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
           </a>
+          <!-- Open the right menu-->
+          <a class="open_menu rounded">
+              <i class="fas fa-bars"></i>
+          </a>
+
           <!-- -------------------------------------------------------------------------------------------------------------- 
------------------------------------------ modal ajout de ligne ----------------------------------------------------
---------------------------------------------------------------------------------------------------------------- -->
+          ----------------------------------------- modal ajout de ligne ----------------------------------------------------
+          --------------------------------------------------------------------------------------------------------------- -->
           <div class="modal fade" id="ajout_vraisemblance_résiduelle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
@@ -790,11 +1023,14 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <script src="content/js/modules/dark_mode.js"></script>
           <script src="content/js/modules/top_bar.js"></script>
           <script src="content/js/modules/side_bar.js"></script>
+          <script src="content/js/modules/float_menu.js"></script>
           <script src="content/js/modules/fixed_page.js"></script>
           <script src="content/js/modules/realtime.js"></script>
           <script src="content/js/modules/set_filter_sort_table.js"></script>
           <script src="content/js/atelier/atelier5c.js"></script>
           <script src="content/js/modules/sort_table.js"></script>
+          <script src="content/js/atelier/5cheatmapavant.js"></script>
+          <script src="content/js/atelier/5cheatmapapres.js"></script>
       </body>
   <?php
     }

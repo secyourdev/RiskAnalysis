@@ -1,6 +1,6 @@
 <?php
 session_start();
-header('Location: ../../../atelier5btableau.php?id_utilisateur='.$_SESSION['id_utilisateur'].'&id_projet='.$_SESSION['id_projet']);
+header('Location: ../../../atelier5b.php?id_utilisateur='.$_SESSION['id_utilisateur'].'&id_projet='.$_SESSION['id_projet']);
 
 include("../bdd/connexion.php");
 

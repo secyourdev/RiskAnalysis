@@ -3,11 +3,19 @@ include("../bdd/connexion_sqli.php");
 
 $input = filter_input_array(INPUT_POST);
 
+$results["error"] = false;
+$results["message"] = [];
 
 $nom_scenario_strategique = mysqli_real_escape_string($connect, $input['nom_scenario_strategique']);
 
-$results["error"] = false;
-$results["message"] = [];
+
+// Verification du nom_scenario_strategique
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $nom_scenario_strategique)) {
+    $results["error"] = true;
+    $_SESSION['message_error_1'] = "nom_scenario_strategique invalide";
+}
+
+
 
 if ($input["action"] === 'edit' && $results["error"] === false) {
     $query = "

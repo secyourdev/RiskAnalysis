@@ -23,6 +23,40 @@ $id_projet = $_SESSION['id_projet'];
 $id_traitement = "id_traitement";
 $id_atelier = '3.c';
 
+
+
+    // Verification du nom_mesure
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $nom_mesure)) {
+      $results["error"] = true;
+      $_SESSION['message_error_1'] = "nom_mesure invalide";
+    }
+    // Verification du description_mesure
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $description_mesure)) {
+      $results["error"] = true;
+      $_SESSION['message_error_1'] = "description_mesure invalide";
+    }
+    // Verification du dependance
+    if (!preg_match("/^[1-4]$/", $dependance)) {
+      $results["error"] = true;
+      $_SESSION['message_error_1'] = "dependance invalide";
+    }
+    // Verification du penetration
+    if (!preg_match("/^[1-4]$/", $penetration)) {
+      $results["error"] = true;
+      $_SESSION['message_error_1'] = "penetration invalide";
+    }
+    // Verification du maturite
+    if (!preg_match("/^[1-4]$/", $maturite)) {
+      $results["error"] = true;
+      $_SESSION['message_error_1'] = "maturite invalide";
+    }
+    // Verification du confiance
+    if (!preg_match("/^[1-4]$/", $confiance)) {
+      $results["error"] = true;
+      $_SESSION['message_error_1'] = "confiance invalide";
+    }
+
+    
 // Pour les règles du référentiel
 
 // $recupere_regle = $bdd->prepare("SELECT id_regle_affichage FROM O_regle WHERE id_regle = ?");
@@ -145,6 +179,7 @@ if ($results["error"] === false && isset($_POST['validermesure'])) {
   $insere_traitement->bindparam(3, $id_projet);
   $insere_traitement->bindParam(4, $id_mesure[0]);
   $insere_traitement->execute();
+      $_SESSION['message_success_1'] = "La mesure a bien été ajoutée !";
 ?>
   <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
 <?php

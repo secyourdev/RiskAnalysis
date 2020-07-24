@@ -58,7 +58,7 @@ var hyp16 = (length_3>40&&window.matchMedia("(min-width: 1100px)").matches);
     else if(hyp15==true)top_bar("inline","inline","inline")
     else if(hyp16==true)top_bar("inline","inline","inline")
 
-    if(top_bar_1.offsetHeight==41||top_bar_2.offsetHeight==41||top_bar_3.offsetHeight==41){
+    if(top_bar_1.offsetHeight>=41||top_bar_2.offsetHeight>=41||top_bar_3.offsetHeight>=41){
         top_bar("none","none","inline")
     }
 }
