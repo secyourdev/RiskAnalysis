@@ -24,7 +24,7 @@ $(document).ready(function () {
     $('#editable_table').Tabledit({
         url: 'content/php/atelier5c/modification.php',
         columns: {
-            identifier: [0, 'id_chemin_d_attaque_strategique'],
+            identifier: [0, 'id_revaluation'],
             editable: [
                 [5, 'nom_risque_residuelle'],
                 [6, 'description_risque_residuelle'],
