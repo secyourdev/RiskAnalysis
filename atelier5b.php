@@ -21,6 +21,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
   $userdroit = $reqdroit->fetch();
 ?>
 
+<?php include("content/php/atelier5b/selection.php");?>
   <!DOCTYPE html>
   <html lang="fr">
 
@@ -42,6 +43,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
     <!-- JS -->
     <script src="content/vendor/jquery/jquery.js"></script>
+    <script src="content/vendor/jquery-tabledit/jquery.tabledit1d.js"></script>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
@@ -496,18 +498,10 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <h6 class="m-0">Cartographie du risque initial</h6>
 
 
-
-
-
-
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
                         <!--text-->
-
-
-
-
 
 
                         <div class="table-responsive">
@@ -645,16 +639,157 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         </div>
 
 
-
-
-
-
-
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Area Card -->
+                  <div class="col-xl-12 col-lg-12">
+                    <div class="card shadow mb-4">
+                      <!-- Card Header - Dropdown -->
+                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0"></h6>
+                      </div>
+                      <!-- Card Body -->
+                      <div class="card-body">
+                        <!--text-->
+                        <div class="table-responsive">
+                        <input type="text" class="rechercher_input" id="rechercher_tableau" placeholder="Rechercher">
+                          <table id="editable_table" class="table table-bordered table-striped">
+                            <thead>
+                              <tr>
+                                <th id="id">ID</th>
+                                <th id="valeur_metier">Valeur Métier</th>
+                                <th id="evenement_redoute">Événement redouté</th>
+                                <th id="impact">Impact</th>
+                                <th id="gravite">Gravité</th>
+                                <th id="source_de_risque">Source de risque</th>
+                                <th id="objectif_vise">Objectif visé</th>
+                                <th id="pertinence">Pertinence</th>
+                                <th id="numero_risque">N° Risque</th>
+                                <th id="chemin_attaque_strategique">Chemin d'attaque stratégique</th>
+                                <th id="partie_prenante">Partie prenante</th>
+                                <th id="menace">Niveau de menace initial</th>
+                                <th id="dependance_residuelle">Dependance résiduelle</th>
+                                <th id="penetration_residuelle">Penetration résiduelle</th>
+                                <th id="maturite_residuelle">Maturite résiduelle</th>
+                                <th id="confiance_residuelle">Confiance résiduelle</th>
+                                <th id="menace_residuelle">Niveau de menace résiduel</th>
+                                <th id="scenario_operationnel">Scenario opérationnel</th>
+                                <th id="vraisemblance">Vraisemblance</th>
+                                <th id="risque">Risque</th>
+                                <th id="mesure">Mesure de sécurité</th>
+                                <th id="description_mesure">Description de la mesure</th>
+                                
+                              </tr>
+                            </thead>
+                              
+                            <tbody>
+                            <?php
+                            while($row = mysqli_fetch_array($result))
+                            {
+                              $risque = $row["niveau_de_gravite"] * $row["vraisemblance"];
+                              echo '
+                              <tr>
+                              <td>'.$row["id_mesure"].'</td>
+                              <td>'.$row["nom_valeur_metier"].'</td>
+                              <td>'.$row["nom_evenement_redoute"].'</td>
+                              <td>'.$row["impact"].'</td>
+                              <td>'.$row["niveau_de_gravite"].'</td>
+                              <td>'.$row["description_source_de_risque"].'</td>
+                              <td>'.$row["objectif_vise"].'</td>
+                              <td>'.$row["pertinence"].'</td>
+                              <td>'.$row["id_risque"].'</td>
+                              <td>'.$row["nom_chemin_d_attaque_strategique"].'</td>
+                              <td>'.$row["nom_partie_prenante"].'</td>
+                              <td>'.$row["niveau_de_menace_partie_prenante"].'</td>
+                              <td>'.$row["dependance_residuelle"].'</td>
+                              <td>'.$row["penetration_residuelle"].'</td>
+                              <td>'.$row["maturite_residuelle"].'</td>
+                              <td>'.$row["confiance_residuelle"].'</td>
+                              <td>'.$row["niveau_de_menace_residuelle"].'</td>
+                              <td>'.$row["description_scenario_operationnel"].'</td>
+                              <td>'.$row["vraisemblance"].'</td>
+                              <td>'.$risque.'</td>
+                              <td>'.$row["nom_mesure"].'</td>
+                              <td>'.$row["description_mesure"].'</td>
+                              </tr>
+                              ';
+                            }
+                            ?>
+                            </tbody>
+                          </table>
+                        </div>    
+                        <!-- bouton Ajouter une nouvelle ligne -->
+                        <div class="text-center">
+                          <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_tableau">Ajouter une nouvelle ligne</button>
+                        </div> 
 
 
                       </div>
                     </div>
                   </div>
+
+                  <!-- Area Card -->
+                  <div class="col-xl-12 col-lg-12">
+                    <div class="card shadow mb-4">
+                      <!-- Card Header - Dropdown -->
+                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0">Plan d'amélioration continue de la sécurité</h6>
+                      </div>
+                      <!-- Card Body -->
+                      <div class="card-body">
+                        <!--text-->
+                        <div class="table-responsive">
+                        <input type="text" class="rechercher_input" id="rechercher_pacs" placeholder="Rechercher">
+                          <table id="pacs" class="table table-bordered table-striped">
+                            <thead>
+                              <tr>
+                                <th id="id_traitement_de_securite">ID traitement de sécurité</th>
+                                <th id="mesure">Mesure de sécurité</th>
+                                <th id="scenario_risques_associes">Scénario des risques associés</th>
+                                <th id="principe">Principe de sécurité</th>
+                                <th id="responsable">Responsable</th>
+                                <th id="freins_et_difficulte">Frein et difficultés de mise en oeuvre</th>
+                                <th id="cout">Coût</th>
+                                <th id="echeance">Échéance</th>
+                                <th id="Statut">Statut</th>
+                                
+                              </tr>
+                            </thead>
+                              
+                            <tbody>
+                            <?php
+                            while($row = mysqli_fetch_array($result_pacs))
+                            {
+                              echo '
+                              <tr>
+                              <td>'.$row["id_traitement_de_securite"].'</td>
+                              <td>'.$row["nom_mesure"].'</td>
+                              <td>'.$row["id_risque"].'</td>
+                              <td>'.$row["principe_de_securite"].'</td>
+                              <td>'.$row["responsable"].'</td>
+                              <td>'.$row["difficulte_traitement_de_securite"].'</td>
+                              <td>'.$row["cout_traitement_de_securite"].'</td>
+                              <td>'.$row["date_traitement_de_securite"].'</td>
+                              <td>'.$row["statut"].'</td>
+                              </tr>
+                              ';
+                            }
+                            ?>
+                            </tbody>
+                          </table>
+                        </div>    
+                        <!-- bouton Ajouter une nouvelle ligne -->
+                        <!-- <div class="text-center">
+                          <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_pacs">Ajouter une nouvelle ligne</button>
+                        </div>  -->
+
+
+                      </div>
+                    </div>
+                  </div>
+
+
 
 
                 </div>
@@ -684,91 +819,143 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
           </a>
-          <!-- -------------------------------------------------------------------------------------------------------------- 
+<!-- -------------------------------------------------------------------------------------------------------------- 
 ----------------------------------------- modal ajout de ligne ----------------------------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
-          <div class="modal fade" id="barème" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Gestion du barème de la stratégie de traitement de risque</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body popup-tableau">
-                  <form class="user" id="formbarème">
-                    <div class="texte-vraisemblance centre-vraisemblance">Veuillez cliquer sur une case pour modifier le barème</div>
+<div class="modal fade" id="ajout_ligne_tableau" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modification des mesures de sécurité</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body perso_modal_body">
+        <form method="post" action="content/php/atelier5b/ajout.php" class="user" id="formecartPop">
+          <fieldset>
+            <div class="row">
+              <div class="form-group col-12">
+                <label for="chemin">Chemin d'attaque stratégique</label>
+                <select class="form-control" id="chemin", name="chemin">
+                  <option value="" selected>...</option>
+                  <?php
+                  while ($row = mysqli_fetch_array($resultchemin)) //selection.php
+                  {
+                    echo '
+                        <option id="id_chemin" value="' . $row["id_chemin_d_attaque_strategique"] . '">' . $row["nom_chemin_d_attaque_strategique"] . '</option>
+                        ';
+                  }
+                  ?>
+                </select>
+              </div>
+              <div class="form-group col-12">
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name="nommesure" id="nommesure" placeholder="Nom de la mesure de sécurité" required>
+              </div>
 
-                    <div class="table-responsive">
-                      <table class="table table-bordered perso_border" id="dataTable" width="100%" cellspacing="0">
-
-                        <tbody>
-                          <tr>
-                            <td class="perso_border texte-droite">Gravité</td>
-                            <td class="perso_border"></td>
-                            <td class="perso_border"></td>
-                            <td class="perso_border"></td>
-                            <td class="perso_border"></td>
-                            <td class="perso_border"></td>
-
-                          </tr>
-                          <tr>
-                            <td class="perso_border texte-droite">4</td>
-                            <td class="">R5</td>
-                            <td class="">R4</td>
-                            <td class=""></td>
-                            <td class=""></td>
-                            <td class="perso_border"></td>
-                          </tr>
-                          <tr>
-                            <td class="perso_border texte-droite">3</td>
-                            <td class=""></td>
-                            <td class="">R2</td>
-                            <td class="">R1</td>
-                            <td class="">R3</td>
-                            <td class="perso_border"></td>
-                          </tr>
-                          <tr>
-                            <td class="perso_border texte-droite">2</td>
-                            <td class=""></td>
-                            <td class=""></td>
-                            <td class=""></td>
-                            <td class=""></td>
-                            <td class="perso_border"></td>
-                          </tr>
-                          <tr>
-                            <td class="perso_border texte-droite">1</td>
-                            <td class=""></td>
-                            <td class=""></td>
-                            <td class=""></td>
-                            <td class=""></td>
-                            <td class="perso_border"></td>
-                          </tr>
-                          <tr>
-                            <td class="perso_border"></td>
-                            <td class="perso_border">1</td>
-                            <td class="perso_border">2</td>
-                            <td class="perso_border">3</td>
-                            <td class="perso_border">4</td>
-                            <td class="perso_border texte-gauche">Vraisemblance</td>
-                          </tr>
-
-
-                        </tbody>
-                      </table>
+              <div class="form-group col-12">
+                <label for="descriptionmesure">Description de la mesure de sécurité</label>
+                <textarea class="form-control perso_text_area" name="descriptionmesure" id="descriptionmesure" rows="3"></textarea>
+              </div>
+              
+            </div>
+            <div class="row">
+              <div class=" col-6">
+                <div class="choix-valeur">
+                  <div>Dépendance</div>
+                  <div>
+                    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Motivation">
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="dependance" autocomplete="off" value="1"> 1
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="dependance" autocomplete="off" value="2"> 2
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="dependance" autocomplete="off" value="3"> 3
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="dependance" autocomplete="off" value="4"> 4
+                      </label>
                     </div>
+                  </div>
                 </div>
-                <!-- bouton Valider -->
-                <div class="modal-footer perso_middle_modal_footer">
-                  <button type="button" class="btn perso_btn_primary shadow-none">Valider</button>
+
+
+
+                <div class="choix-valeur">
+                  <div>Penetration</div>
+                  <div>
+                    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Ressources">
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="penetration" autocomplete="off" value="1"> 1
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="penetration" autocomplete="off" value="2"> 2
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="penetration" autocomplete="off" value="3"> 3
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="penetration" autocomplete="off" value="4"> 4
+                      </label>
+                    </div>
+                  </div>
                 </div>
-                </form>
+              </div>
+              <div class=" col-6">
+                <div class="choix-valeur">
+                  <div>Maturité</div>
+                  <div>
+
+                    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Activité">
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="maturite" autocomplete="off" value="1"> 1
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="maturite" autocomplete="off" value="2"> 2
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="maturite" autocomplete="off" value="3"> 3
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="maturite" autocomplete="off" value="4"> 4
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="choix-valeur">
+                  <div>Confiance</div>
+                  <div>
+                    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Choix">
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="confiance" autocomplete="off" value="1"> 1
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="confiance" autocomplete="off" value="2"> 2
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="confiance" autocomplete="off" value="3"> 3
+                      </label>
+                      <label class="btn perso_checkbox shadow-none">
+                        <input type="radio" name="confiance" autocomplete="off" value="4"> 4
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-
-
+            <!-- bouton Valider -->
+            <div class="modal-footer perso_middle_modal_footer">
+              <input type="submit" name="ajouterregle" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
           <!-- Logout Modal-->
           <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -795,7 +982,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           </div>
 
           <!-- Bootstrap core JavaScript-->
-          <script src="content/vendor/jquery/jquery.min.js"></script>
           <script src="content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
           <!-- Core plugin JavaScript-->
@@ -810,6 +996,10 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <script src="content/js/modules/side_bar.js"></script>
           <script src="content/js/modules/fixed_page.js"></script>
           <script src="content/js/atelier/5btableauheatmap.js"></script>
+          <script src="content/js/modules/realtime.js"></script>
+          <script src="content/js/modules/set_filter_sort_table.js"></script>
+          <script src="content/js/atelier/atelier5b.js"></script>
+          <script src="content/js/modules/sort_table.js"></script>
       </body>
   <?php
     }
