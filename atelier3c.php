@@ -432,7 +432,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </g>
                         </svg>
                     </i>
-                    <span class="nom_atelier">Parties prenantes</span>
+                    <span class="nom_sous_menu">Parties prenantes</span>
                 </a>
             </li>
             <li>
@@ -451,7 +451,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </g>
                         </svg>
                     </i>
-                    <span class="nom_atelier">Scénarios stratégiques</span>
+                    <span class="nom_sous_menu">Scénarios stratégiques</span>
                 </a>
             </li>
             <li>
@@ -470,7 +470,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </g>
                         </svg>
                     </i>
-                    <span class="nom_atelier">Mesure de sécurité</span>
+                    <span class="nom_sous_menu">Mesure de sécurité</span>
                 </a>
             </li>
           </ul>

@@ -448,7 +448,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </g>
                         </svg>
                     </i>
-                    <span class="nom_atelier">Seuils</span>
+                    <span class="nom_sous_menu">Seuils</span>
                 </a>
             </li>
             <li>
@@ -467,7 +467,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </g>
                         </svg>
                     </i>
-                    <span class="nom_atelier">Partie prenante</span>
+                    <span class="nom_sous_menu">Partie prenante</span>
                 </a>
             </li>
             <li>
@@ -486,7 +486,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </g>
                         </svg>
                     </i>
-                    <span class="nom_atelier">Cartographie des parties prenantes</span>
+                    <span class="nom_sous_menu">Cartographie des parties prenantes</span>
                 </a>
             </li>
           </ul>
@@ -670,12 +670,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   <!-- Area Card -->
                   <div id="cartographie_pp" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
-                      <!-- Card Header - Dropdown -->
-                      <div class="row perso_no_margin">
-                        <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                          <h6>Événements redoutés</h6>
-                        </div>
-                      </div>
                       <!-- Card Body -->
                       <div class="card-body">
                         <div class="row perso_no_margin">

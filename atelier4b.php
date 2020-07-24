@@ -410,7 +410,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       </g>
                   </svg>
               </i>
-              <span class="nom_atelier">Évaluation de la vraisemblance</span>
+              <span class="nom_sous_menu">Évaluation de la vraisemblance</span>
           </a>
       </li>
     </ul>

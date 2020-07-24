@@ -431,7 +431,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </g>
                         </svg>
                     </i>
-                    <span class="nom_atelier">Cartographie du risque initial</span>
+                    <span class="nom_sous_menu">Cartographie du risque initial</span>
                 </a>
             </li>
           </ul>

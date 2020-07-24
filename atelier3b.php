@@ -444,7 +444,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </g>
                         </svg>
                     </i>
-                    <span class="nom_atelier">Événements redoutés</span>
+                    <span class="nom_sous_menu">Événements redoutés</span>
                 </a>
             </li>
             <li>
@@ -463,7 +463,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </g>
                         </svg>
                     </i>
-                    <span class="nom_atelier">Sources de risques / Objectifs visés</span>
+                    <span class="nom_sous_menu">Sources de risques / Objectifs visés</span>
                 </a>
             </li>
             <li>
@@ -482,7 +482,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </g>
                         </svg>
                     </i>
-                    <span class="nom_atelier">Scénarios stratégiques</span>
+                    <span class="nom_sous_menu">Scénarios stratégiques</span>
                 </a>
             </li>
             <li>
@@ -501,7 +501,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </g>
                         </svg>
                     </i>
-                    <span class="nom_atelier">Schémas des scénarios stratégiques</span>
+                    <span class="nom_sous_menu">Schémas des scénarios stratégiques</span>
                 </a>
             </li>
             <li>
@@ -520,7 +520,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </g>
                         </svg>
                     </i>
-                    <span class="nom_atelier">Chemins d'attaque</span>
+                    <span class="nom_sous_menu">Chemins d'attaque</span>
                 </a>
             </li>
           </ul>

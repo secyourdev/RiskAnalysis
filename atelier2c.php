@@ -413,7 +413,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       </g>
                   </svg>
               </i>
-              <span class="nom_atelier">Choix des sources de risque</span>
+              <span class="nom_sous_menu">Choix des sources de risque</span>
           </a>
       </li>
       <li>
@@ -432,7 +432,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       </g>
                   </svg>
               </i>
-              <span class="nom_atelier">Cartographie des "Source de risque / Objectif visé"</span>
+              <span class="nom_sous_menu">Cartographie des "Source de risque / Objectif visé"</span>
           </a>
       </li>
     </ul>

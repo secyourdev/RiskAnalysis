@@ -444,7 +444,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       </g>
                   </svg>
               </i>
-              <span class="nom_atelier">Mission</span>
+              <span class="nom_sous_menu">Mission</span>
           </a>
       </li>
       <li>
@@ -463,7 +463,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       </g>
                   </svg>
               </i>
-              <span class="nom_atelier">Valeur métier</span>
+              <span class="nom_sous_menu">Valeur métier</span>
           </a>
       </li>
       <li>
@@ -482,7 +482,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       </g>
                   </svg>
               </i>
-              <span class="nom_atelier">Bien Support</span>
+              <span class="nom_sous_menu">Bien Support</span>
           </a>
       </li>
     </ul>

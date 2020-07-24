@@ -432,7 +432,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </g>
                         </svg>
                     </i>
-                    <span class="nom_atelier">Évaluation et documentation des risques résiduels</span>
+                    <span class="nom_sous_menu">Évaluation et documentation des risques résiduels</span>
                 </a>
             </li>
           </ul>

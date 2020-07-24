@@ -445,7 +445,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </g>
                         </svg>
                     </i>
-                    <span class="nom_atelier">Scénarios stratégiques</span>
+                    <span class="nom_sous_menu">Scénarios stratégiques</span>
                 </a>
             </li>
             <li>
@@ -464,7 +464,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </g>
                         </svg>
                     </i>
-                    <span class="nom_atelier">Scénario opérationnel</span>
+                    <span class="nom_sous_menu">Scénario opérationnel</span>
                 </a>
             </li>
             <li>
@@ -483,7 +483,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </g>
                         </svg>
                     </i>
-                    <span class="nom_atelier">Mode opératoire</span>
+                    <span class="nom_sous_menu">Mode opératoire</span>
                 </a>
             </li>
             <li>
@@ -502,7 +502,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </g>
                         </svg>
                     </i>
-                    <span class="nom_atelier">Schéma des scénarios opérationnels</span>
+                    <span class="nom_sous_menu">Schéma des scénarios opérationnels</span>
                 </a>
             </li>
           </ul>

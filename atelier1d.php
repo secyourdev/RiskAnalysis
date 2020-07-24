@@ -447,7 +447,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </g>
                         </svg>
                     </i>
-                    <span class="nom_atelier">Socle de sécurité</span>
+                    <span class="nom_sous_menu">Socle de sécurité</span>
                 </a>
             </li>
             <li>
@@ -466,7 +466,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </g>
                         </svg>
                     </i>
-                    <span class="nom_atelier">Règles</span>
+                    <span class="nom_sous_menu">Règles</span>
                 </a>
             </li>
           </ul>
