@@ -809,6 +809,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <script src="content/js/modules/top_bar.js"></script>
           <script src="content/js/modules/side_bar.js"></script>
           <script src="content/js/modules/fixed_page.js"></script>
+          <script src="content/js/atelier/atelier5a.js"></script>
           <script src="content/js/atelier/5btableauheatmap.js"></script>
       </body>
   <?php

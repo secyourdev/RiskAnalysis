@@ -1,6 +1,7 @@
 html,
 body {
     height: 100%;
+    scroll-behavior: smooth;
 }
 
 /* -------------------------------------------------------------------------------------------------------------- */
@@ -12,6 +13,7 @@ body {
     --card-content-color          : #fff;
     --card-header-color           : #f7f7f7;
     --card-divider                : #D7E3EA;
+    --right-card-divider          : #eaf1eb4d;
     --nav-top-and-copyright-color : #fff;
     --side-nav-color              : #394C7A;
     --button-color                : #394C7A;
@@ -40,6 +42,7 @@ body {
     --card-content-color         : #3c3c3c;
     --card-header-color          : #383838;
     --card-divider               : #eaf1eb4d;
+    --right-card-divider         : #eaf1eb4d;
     --nav-top-and-copyright-color: #2C2C30;
     --side-nav-color             : #394C7A;
     --button-color               : #6769C7;
@@ -226,12 +229,16 @@ h6 {
     color: var(--font-color) !important;
 }
 
-.collapse-item {
+.collapse-item,.collapse-right-item {
     margin: 0 0rem !important;
 }
 
 .collapse-item:hover {
     background-color: var(--card-divider) !important;
+}
+
+.collapse-right-item:hover {
+    background-color: var(--right-card-divider) !important;
 }
 
 .sidebar .nav-item .collapse .collapse-inner {
@@ -1066,22 +1073,22 @@ h6 {
 
 
 .cercle-vert {
-    width        : 40px;
-    height       : 40px;
+    width        : 25px;
+    height       : 25px;
     border-radius: 20px;
     background   : #4AD991;
 }
 
 .cercle-rouge {
-    width        : 40px;
-    height       : 40px;
+    width        : 25px;
+    height       : 25px;
     border-radius: 20px;
     background   : #FF6565;
 }
 
 .cercle-noir {
-    width        : 40px;
-    height       : 40px;
+    width        : 25px;
+    height       : 25px;
     border-radius: 20px;
     background   : #000000;
 }
@@ -1385,12 +1392,12 @@ h6 {
     color:#FF6565;
 }
 
-/*Left SideBar*/
+/*Right SideBar*/
 #menu {
     position: fixed;
     right: 0.8rem;
     top: 8.5rem;
-    width: 150px;
+    width: auto;
     margin: 3px 3px 3px 3px;
     font-weight: bold;
     text-align: left;
@@ -1410,8 +1417,16 @@ h6 {
 #menu a {
     text-decoration: none;
 	color: inherit;
-  }
+}
 
+:target{
+    padding-top: 5em; 
+    margin-top: -5em;
+}
+
+.menu_float{
+    padding: 0px 8px 0px 0px;
+}
 
 .open_menu{
     position: fixed;
@@ -1424,6 +1439,7 @@ h6 {
     color: #fff !important;
     background: rgba(90, 92, 105, 0.5);
     line-height: 46px;
+    cursor : pointer;
 }
 
 .open_menu:focus, .open_menu:hover {
@@ -1438,6 +1454,4 @@ h6 {
     font-weight: 800;
 }
 
-.test_menu_float{
-    padding: 0px 8px 0px 0px;
-}
+
