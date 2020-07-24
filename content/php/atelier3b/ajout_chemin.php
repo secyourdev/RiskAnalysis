@@ -20,6 +20,11 @@ $id_atelier = "4.a";
 $recupere = $bdd->prepare("SELECT S_scenario_strategique.id_scenario_strategique FROM S_scenario_strategique  WHERE S_scenario_strategique.nom_scenario_strategique = ?");
 $recuperepp = $bdd->prepare("SELECT id_partie_prenante FROM R_partie_prenante WHERE nom_partie_prenante = ? AND id_projet = ?");
 
+$recupere_chemins_existants = $bdd->prepare("SELECT T_chemin_d_attaque_strategique.nom_chemin_d_attaque_strategique 
+FROM T_chemin_d_attaque_strategique, U_scenario_operationnel
+WHERE U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique
+AND U_scenario_operationnel.id_projet = ?");
+
 $insere = $bdd->prepare(
   'INSERT INTO 
   T_chemin_d_attaque_strategique 
@@ -65,6 +70,26 @@ if ($results["error"] === false && isset($_POST['validerchemin'])) {
   // $recuperepp->bindParam(2, $get_id_projet);
   // $recuperepp->execute();
   // $id_partie_prenante = $recuperepp->fetch();
+  $recupere_chemins_existants->bindParam(1, $get_id_projet);
+  $recupere_chemins_existants->execute();
+  $result_nom_chemin_existant = $recupere_chemins_existants->fetchAll(PDO::FETCH_COLUMN);
+
+  // print '<br>';
+  // print $get_id_projet;
+  // print '<br>';
+  // print_r($recupere_chemins_existants);
+  // print '<br>';
+  // print_r($result_nom_chemin_existant);
+
+  // print '<br>';
+  // print($chemin_d_attaque_strategique);
+  // print '<br>';
+  // print in_array($chemin_d_attaque_strategique, $result_nom_chemin_existant);
+  // print '<br>';
+
+  if (!in_array($chemin_d_attaque_strategique, $result_nom_chemin_existant)){
+    print 'chemin non existent';
+
 
   $insere->bindParam(1, $id_chemin_d_attaque);
   $insere->bindParam(2, $id_risque);
@@ -78,9 +103,9 @@ if ($results["error"] === false && isset($_POST['validerchemin'])) {
   $recuperechemin->execute();
   $resultchemin = $recuperechemin->fetch();
 
-  $insere_reeval->bindParam(2, $resultchemin[0]);
-  $insere_reeval->bindParam(3, $resultchemin[1]);
-  $insere_reeval->bindParam(4, $get_id_projet);
+  $insere_reeval->bindParam(1, $resultchemin[0]);
+  $insere_reeval->bindParam(2, $resultchemin[1]);
+  $insere_reeval->bindParam(3, $get_id_projet);
   $insere_reeval->execute();
 
   $description_ope = "Scenario opérationnel pour : " . $chemin_d_attaque_strategique;
@@ -92,6 +117,9 @@ if ($results["error"] === false && isset($_POST['validerchemin'])) {
   $insereope->bindParam(5, $resultchemin[1]);
   $insereope->bindParam(6, $get_id_projet);
   $insereope->execute();
+  }else {
+    print 'chemin déjà existant';
+  }
 ?>
   <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
 <?php
