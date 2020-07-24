@@ -1382,5 +1382,62 @@ h6 {
 .message_error {
     text-align : center;
     font-weight: 800;
-    color      : #FF6565;
+    color:#FF6565;
+}
+
+/*Left SideBar*/
+#menu {
+    position: fixed;
+    right: 0.8rem;
+    top: 8.5rem;
+    width: 150px;
+    margin: 3px 3px 3px 3px;
+    font-weight: bold;
+    text-align: left;
+    text-indent: 10px;
+    color : #fff;
+    border-radius: 10px 10px 10px 10px;
+    background: rgba(90, 92, 105, 0.75);
+    z-index: 2;
+    padding : 5px 0px 5px 0px;
+    list-style: none;
+  }
+ 
+#menu li {
+    margin: 0; 
+  }
+  
+#menu a {
+    text-decoration: none;
+	color: inherit;
+  }
+
+
+.open_menu{
+    position: fixed;
+    right: 1rem;
+    top: 5.5rem;
+    display: none;
+    width: 2.75rem;
+    height: 2.75rem;
+    text-align: center;
+    color: #fff !important;
+    background: rgba(90, 92, 105, 0.5);
+    line-height: 46px;
+}
+
+.open_menu:focus, .open_menu:hover {
+    color: white;
+}
+
+.open_menu:hover {
+    background: #5a5c69;
+}
+
+.open_menu i {
+    font-weight: 800;
+}
+
+.test_menu_float{
+    padding: 0px 8px 0px 0px;
 }

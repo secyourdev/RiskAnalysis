@@ -35,7 +35,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     <!-- JS -->
     <script src="content/vendor/jquery/jquery.js"></script>
     <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
-
+    
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
 	<link rel="icon" href="content/img/logo_cyber_risk_manager.png" type="image/png">
@@ -385,8 +385,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                     <td>'.$row["poste"].'</td>
                                                     <td>'.$row["email"].'</td>
                                                     <td>'.$row["type_compte"].'</td>
-                                                    <td> <button id="reinitialiser_mdp" type="button" data-toggle="modal" data-target="#modifier_mdp_user" class="btn perso_btn_primary width_RACI shadow-none">Réinitialiser</button> </td>
-                                                    <td> <button id="generer_mdp" type="button" class="btn perso_btn_primary width_RACI shadow-none">Générer</button> </td>
+                                                    <td> <button type="button" data-toggle="modal" data-target="#modifier_mdp_user" class="reinitialiser_mdp btn perso_btn_primary width_RACI shadow-none">Réinitialiser</button> </td>
+                                                    <td> <button type="button" class="generer_mdp btn perso_btn_primary width_RACI shadow-none">Générer</button> </td>
                                                 </tr>
                                                 ';
                                             }
@@ -432,6 +432,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                 <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#config_bdd" >Configurer la base de données</button></br>
                                 <a href="content/php/sauvegarde_bdd/sauvegarde.php" class="btn perso_btn_primary perso_btn_spacing shadow-none">Sauvegarder la base de données</a></br>
                                 <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#import_bdd">Importer la base de données</button></br>  
+                                <a href="content/php/sauvegarde_image/sauvegarde.php" class="btn perso_btn_primary perso_btn_spacing shadow-none">Sauvegarder les schémas</a></br>
+                                <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#import_image">Importer des schémas</button></br>  
                             </div>
                         </div>     
                     </div>
@@ -859,6 +861,44 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         </div>
 
 
+        <!-------------------------------------------------------------------------------------------------------------- 
+        ---------------------------------------------- modal import image ----------------------------------------------
+        ---------------------------------------------------------------------------------------------------------------->
+        <div class="modal fade" id="import_image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Importation des schémas</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body perso_modal_body">
+                    <span id="success_message"></span>
+                    <form method="post" id="importer_image_form">
+                            <fieldset>
+                                <!-- FILE -->
+                                <div class="custom-file">
+                                    <input name="userfile" id="import_image_file" class="custom-file-input" type="file">
+                                    <label class="custom-file-label" for="import_image_file">Choisir un fichier au format ZIP</label>
+                                </div>            
+
+                                <div class="form-group" align="center">
+                                    <input type="submit" name="importer_zip" id="importer_zip" class="btn perso_btn_primary shadow-none" value="Importer les schémas" />
+                                </div>
+
+                                <div class="form-group" align="center">
+                                    <img id="ajax-loader" src="content/img/ajax-loader.gif" style="display: none">
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <!-- Logout Modal-->
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -901,6 +941,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <script src="content/js/modules/set_filter_sort_table.js"></script>
         <script src="content/js/accueil/recherche_utilisateur.js"></script>
         <script src="content/js/modules/importer_bdd.js"></script>
+        <script src="content/js/modules/importer_image.js"></script>
         <script src="content/js/modules/browse.js"></script>
                                    
         
