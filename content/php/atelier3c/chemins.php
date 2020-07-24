@@ -30,7 +30,7 @@ if(isset($_POST['pp'])){
       <option value="'.$row["id_chemin_d_attaque_strategique"].'">'.$row["nom_chemin_d_attaque_strategique"].'</option>
       ';
     }
-    // echo 'Dependance : "' . $valeurs["dependance"] . '"Penetration : "' . $valeurs["penetration"] . '"Menace : "' . $valeurs["menace"] . '"Confiance : "' . $valeurs["confiance"]';
+    echo 'Dependance : ' . $valeurs["dependance_partie_prenante"] . 'Penetration : ' . $valeurs["penetration_partie_prenante"] . 'Menace : ' . $valeurs["maturite_partie_prenante"] . 'Confiance : ' . $valeurs["confiance_partie_prenante"];
 }
 
 
