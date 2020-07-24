@@ -724,7 +724,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                   </select>
                   <script src="content/js/modules/chemins.js"></script>
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group col-6" id="ecrire">
                   <label for="chemins">Chemin d'attaque stratégique</label>
                   <select class="form-control" id="chemins" name="chemins">
                     <option value="" selected>Choisissez une partie prenante</option>

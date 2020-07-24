@@ -78,9 +78,9 @@ if ($results["error"] === false && isset($_POST['validerchemin'])) {
   $recuperechemin->execute();
   $resultchemin = $recuperechemin->fetch();
 
-  $insere_reeval->bindParam(2, $resultchemin[0]);
-  $insere_reeval->bindParam(3, $resultchemin[1]);
-  $insere_reeval->bindParam(4, $get_id_projet);
+  $insere_reeval->bindParam(1, $resultchemin[0]);
+  $insere_reeval->bindParam(2, $resultchemin[1]);
+  $insere_reeval->bindParam(3, $get_id_projet);
   $insere_reeval->execute();
 
   $description_ope = "Scenario opérationnel pour : " . $chemin_d_attaque_strategique;
