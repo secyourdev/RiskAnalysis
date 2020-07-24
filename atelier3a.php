@@ -430,6 +430,68 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           </ul>
           <!-- End of Sidebar -->
 
+          <!-- Right Sidebar -->
+          <ul id=menu>
+            <li>
+                <a class="nav-link collapse-right-item menu_float" href="#seuils">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                            <g transform="translate(-1230 -689)">
+                                <path class="number_activity active"
+                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
+                                    transform="translate(1230 689)" fill="#ffffffcc" />
+                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
+                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
+                                    font-weight="700">
+                                    <tspan x="-3.432" y="0">1</tspan>
+                                </text>
+                            </g>
+                        </svg>
+                    </i>
+                    <span class="nom_sous_menu">Seuils</span>
+                </a>
+            </li>
+            <li>
+                <a class="nav-link collapse-right-item menu_float" href="#partie_prenante">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                            <g transform="translate(-1230 -689)">
+                                <path class="number_activity active"
+                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
+                                    transform="translate(1230 689)" fill="#ffffffcc" />
+                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
+                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
+                                    font-weight="700">
+                                    <tspan x="-3.432" y="0">2</tspan>
+                                </text>
+                            </g>
+                        </svg>
+                    </i>
+                    <span class="nom_sous_menu">Partie prenante</span>
+                </a>
+            </li>
+            <li>
+                <a class="nav-link collapse-right-item menu_float" href="#cartographie_pp">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                            <g transform="translate(-1230 -689)">
+                                <path class="number_activity active"
+                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
+                                    transform="translate(1230 689)" fill="#ffffffcc" />
+                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
+                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
+                                    font-weight="700">
+                                    <tspan x="-3.432" y="0">3</tspan>
+                                </text>
+                            </g>
+                        </svg>
+                    </i>
+                    <span class="nom_sous_menu">Cartographie des parties prenantes</span>
+                </a>
+            </li>
+          </ul>
+          <!-- End of Right Sidebar -->
+
           <!-- Content Wrapper -->
           <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
@@ -504,7 +566,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   </div>
 
                   <!-- Area Card -->
-                  <div class="col-xl-12 col-lg-12">
+                  <div id="seuils" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -606,14 +668,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   </div>
 
                   <!-- Area Card -->
-                  <div class="col-xl-12 col-lg-12">
+                  <div id="cartographie_pp" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
-                      <!-- Card Header - Dropdown -->
-                      <div class="row perso_no_margin">
-                        <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                          <h6>Événements redoutés</h6>
-                        </div>
-                      </div>
                       <!-- Card Body -->
                       <div class="card-body">
                         <div class="row perso_no_margin">
@@ -658,9 +714,15 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
           </a>
-          <!-- -------------------------------------------------------------------------------------------------------------- 
------------------------------------------ modal ajout de ligne ----------------------------------------------------
---------------------------------------------------------------------------------------------------------------- -->
+
+          <!-- Open the right menu-->
+          <a class="open_menu rounded">
+              <i class="fas fa-bars"></i>
+          </a>
+
+          <!---------------------------------------------------------------------------------------------------------------- 
+          ----------------------------------------- modal ajout de ligne ----------------------------------------------------
+          --------------------------------------------------------------------------------------------------------------- -->
           <div class="modal fade" id="ajout_partie_prenante" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
@@ -851,9 +913,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <script src="content/js/modules/dark_mode.js"></script>
           <script src="content/js/modules/top_bar.js"></script>
           <script src="content/js/modules/side_bar.js"></script>
+          <script src="content/js/modules/float_menu.js"></script>
           <script src="content/js/modules/fixed_page.js"></script>
-          <script src="content/js/modules/help_button.js"></script>
-          <script src="content/js/modules/gravite.js"></script>
           <script src="content/js/modules/realtime.js"></script>
           <script src="content/js/modules/set_filter_sort_table.js"></script>
           <script src="content/js/atelier/atelier3a.js"></script>

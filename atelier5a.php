@@ -413,6 +413,30 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           </ul>
           <!-- End of Sidebar -->
 
+          <!-- Right Sidebar -->
+          <ul id=menu>
+            <li>
+                <a class="nav-link collapse-right-item menu_float" href="#cartographie_risque_initial">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                            <g transform="translate(-1230 -689)">
+                                <path class="number_activity active"
+                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
+                                    transform="translate(1230 689)" fill="#ffffffcc" />
+                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
+                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
+                                    font-weight="700">
+                                    <tspan x="-3.432" y="0">1</tspan>
+                                </text>
+                            </g>
+                        </svg>
+                    </i>
+                    <span class="nom_sous_menu">Cartographie du risque initial</span>
+                </a>
+            </li>
+          </ul>
+          <!-- End of Right Sidebar -->
+
           <!-- Content Wrapper -->
           <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
@@ -484,34 +508,20 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div class="row">
                   <!-- Area Card -->
-                  <div class="col-xl col-lg">
+                  <div id='cartographie_risque_initial' class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0">Cartographie du risque initial</h6>
-
-
-
-
-
-
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
                         <!--text-->
-
-
-
-
                         <div class="table-responsive">
                           <table class="table table-bordered perso_border" id="dataTable" width="100%" cellspacing="0">
-
                             <tbody class="perso_heatmap">
-
                               <tr>
                                 <td class="perso_border texte-droite">Gravité</td>
                                 <td class="perso_border"></td>
@@ -635,33 +645,13 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <td class="perso_border">5</td>
                                 <td class="perso_border texte-gauche">Vraisemblance</td>
                               </tr>
-
-
                             </tbody>
                           </table>
                         </div>
-
-
-
-
-
-                        <!-- <h6 class="m-0">Scénarios de risque</h6>
-                        <div class="card-body">
-                          R1 : Un concurrent vole des informations de R&D grâce à une canal d'exfiltration <br>
-                          R2 : Un concurrent vole des informations de R&D en exfiltrant celles détenues par le laboratoire <br>
-                          R3 : Un concurrent vole des informations de R&D grâce à un canal d'exfiltration via le prestataire informatique <br>
-                          R4 : Un hacktiviste provoque un arret de la production des vaccins en compromettant l'équipement de maintenance du fournisseur de matériel <br>
-                          R5 : Un hacktiviste perturbe la distribution de vaccins en modifiant leur étiquetage <br>
-                        </div> -->
                       </div>
                     </div>
                   </div>
-
-
                 </div>
-
-
-
               </div>
               <!-- End of Main Content -->
 
@@ -674,19 +664,18 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                 </div>
               </footer>
               <!-- End of Footer -->
-
             </div>
             <!-- End of Content Wrapper -->
-
           </div>
           <!-- End of Page Wrapper -->
-
           <!-- Scroll to Top Button-->
           <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
           </a>
-
-
+          <!-- Open the right menu-->
+          <a class="open_menu rounded">
+              <i class="fas fa-bars"></i>
+          </a>
 
           <!-- Logout Modal-->
           <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -727,7 +716,9 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <script src="content/js/modules/dark_mode.js"></script>
           <script src="content/js/modules/top_bar.js"></script>
           <script src="content/js/modules/side_bar.js"></script>
+          <script src="content/js/modules/float_menu.js"></script>
           <script src="content/js/modules/fixed_page.js"></script>
+          <script src="content/js/atelier/atelier5a.js"></script>
           <script src="content/js/atelier/5atableauheatmap.js"></script>
       </body>
   <?php

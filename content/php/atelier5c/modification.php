@@ -45,7 +45,9 @@ if ($input["action"] === 'edit') {
         -- risque_residuel = ' '$risque_residuel',
         risque_residuel = '$risque_residuel',
         gestion_risque_residuelle = '$gestion_risque_residuelle'
-        WHERE 1";
+        WHERE id_revaluation = '".$input["id_revaluation"]."'
+        AND id_projet = $getid_projet
+        ";
         echo $query;
         mysqli_query($connect, $query);
     }

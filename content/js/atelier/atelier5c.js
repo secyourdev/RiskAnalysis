@@ -12,9 +12,9 @@ sidebarToggleTop.addEventListener('click', show_sub_content,false);
 sidebarToggle.addEventListener('click',show_sub_content,false);
 window.addEventListener('resize', show_sub_content, false);
 function show_sub_content(){
-    var Atelier1 = document.getElementById('Atelier2');
+    var Atelier5 = document.getElementById('Atelier5');
     if(!accordionSidebar.classList.contains('toggled')&&(window.matchMedia("(min-width: 768px)").matches)){
-        Atelier1.classList.add('show')
+        Atelier5.classList.add('show')
     }
 }
 
@@ -24,7 +24,7 @@ $(document).ready(function () {
     $('#editable_table').Tabledit({
         url: 'content/php/atelier5c/modification.php',
         columns: {
-            identifier: [0, 'id_chemin_d_attaque_strategique'],
+            identifier: [0, 'id_revaluation'],
             editable: [
                 [5, 'nom_risque_residuelle'],
                 [6, 'description_risque_residuelle'],
