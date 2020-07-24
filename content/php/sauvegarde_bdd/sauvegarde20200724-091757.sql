@@ -1,5 +1,5 @@
 --
--- sauvegarde20200723-140755.sql.gz
+-- sauvegarde20200724-091757.sql.gz
 SET FOREIGN_KEY_CHECKS =  0 ;
 
 DROP TABLE IF EXISTS `A_utilisateur`;
@@ -17,7 +17,7 @@ CREATE TABLE `A_utilisateur` (
 INSERT INTO `A_utilisateur` VALUES ('1','ANTON RAVEENDRAN','Joyston','Ingénieur Cybersécurité','joyston.antonraveendran@edu.esiee.fr','$2y$10$q5kNYc39PkMbuahj6JiLqOh3.DU6CcTL.3MKzysa5taN8RRnjkUEm','Administrateur Logiciel');
 INSERT INTO `A_utilisateur` VALUES ('2','LAFOURCADE','Anthony','Ingénieur','anthony.lafourcade@edu.esiee.fr','$2y$10$Pd7nIvQFin4raKDiQaT14.WHR7HSL7MshaKylPwoSpPqSVRelBqeS','Administrateur Logiciel');
 INSERT INTO `A_utilisateur` VALUES ('3','MICHEL','Guillaume','Ingénieur','guillaume.michel@edu.esiee.fr','$2y$10$yduLDQV6L7Pu6QkMhIVfNuK7nXuQ6oloFwOEGGLTRFopXPNrw9ttq','Administrateur Logiciel');
-INSERT INTO `A_utilisateur` VALUES ('5','PINTO','Carlos','Ingénieur sécurité','carlospinto4949@hotmail.com','$2y$10$3meatQGQUU9vgENoJT7HduTl/qeLFdi.3r/VaokUmNseqGaihS2ai','Utilisateur');
+INSERT INTO `A_utilisateur` VALUES ('5','PINTO','Carlos','Ingénieur sécurité','carlospinto4949@hotmail.com','$2y$10$Cs3LYsjdmddhzoLOpcNQBO6GUX3J9MGJvg44AUsU6NHSTxtfRNcGm','Utilisateur');
 INSERT INTO `A_utilisateur` VALUES ('6','PINTO','Carlos','Ingénieur sécurité','carlos.pinto5@wanadoo.fr','$2y$10$MV8n.ZZn32.qUcR0FZxXXOZs21oZSvXPjAfJntM0UQ9iE7xUoDbWS','Administrateur Logiciel');
 
 
@@ -49,6 +49,7 @@ INSERT INTO `C_impliquer` VALUES ('1','3');
 INSERT INTO `C_impliquer` VALUES ('2','1');
 INSERT INTO `C_impliquer` VALUES ('2','2');
 INSERT INTO `C_impliquer` VALUES ('2','3');
+INSERT INTO `C_impliquer` VALUES ('2','6');
 INSERT INTO `C_impliquer` VALUES ('3','1');
 INSERT INTO `C_impliquer` VALUES ('3','2');
 INSERT INTO `C_impliquer` VALUES ('3','6');
@@ -64,7 +65,7 @@ CREATE TABLE `D_echelle` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `D_echelle` VALUES ('1','Standard','5','5');
-INSERT INTO `D_echelle` VALUES ('2','CarlosEchelle','5','4');
+INSERT INTO `D_echelle` VALUES ('2','CarlosEchelle','5','5');
 
 
 DROP TABLE IF EXISTS `E_niveau`;
@@ -83,7 +84,7 @@ INSERT INTO `E_niveau` VALUES ('2','Conséquences significatives mais limitées 
 INSERT INTO `E_niveau` VALUES ('3','Conséquences importantes pour l’organisation. Forte dégradation des performances de l’activité, avec d’éventuels impacts significatifs sur la sécurité des personnes et des biens. L’organisation surmontera la situation avec de sérieuses difficultés (fonctionnement en mode très dégradé), sans impact sectoriel ou étatique.','3','1');
 INSERT INTO `E_niveau` VALUES ('4','Conséquences désastreuses pour l’organisation avec d’éventuels impacts sur l’écosystème. Incapacité pour l’organisation d’assurer la totalité ou une partie de son activité, avec d’éventuels impacts graves sur la sécurité des personnes et des biens. L’organisation ne surmontera vraisemblablement pas la situation (sa survie est menacée), les secteurs d’activité ou étatiques dans lesquels elle opère seront susceptibles d’être légèrement impactés, sans conséquences durables.','4','1');
 INSERT INTO `E_niveau` VALUES ('5','Conséquences sectorielles ou régaliennes au-delà de l’organisation. Écosystème(s) sectoriel(s) impacté(s) de façon importante, avec des conséquences éventuellement durables. Et/ou : difficulté pour l’État, voire incapacité, d’assurer une fonction régalienne ou une de ses missions d’importance vitale. Et/ou : impacts critiques sur la sécurité des personnes et des biens (crise sanitaire, pollution environnementale majeure, destruction d’infrastructures essentielles, etc.).	\r\n','5','1');
-INSERT INTO `E_niveau` VALUES ('6','Pas grave du tout','1','2');
+INSERT INTO `E_niveau` VALUES ('6','ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd','1','2');
 INSERT INTO `E_niveau` VALUES ('7','Un peu grave','2','2');
 INSERT INTO `E_niveau` VALUES ('8','Grave','3','2');
 INSERT INTO `E_niveau` VALUES ('9','Très grave','4','2');
@@ -104,12 +105,14 @@ CREATE TABLE `F_projet` (
   KEY `F_projet_B_grp_utilisateur0_FK` (`id_grp_utilisateur`),
   CONSTRAINT `F_projet_B_grp_utilisateur0_FK` FOREIGN KEY (`id_grp_utilisateur`) REFERENCES `B_grp_utilisateur` (`id_grp_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `F_projet_D_echelle_FK` FOREIGN KEY (`id_echelle`) REFERENCES `D_echelle` (`id_echelle`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `F_projet` VALUES ('19','TestJoyston','TestJoyston','TestJoyston','3','2020-07-04','2','2');
 INSERT INTO `F_projet` VALUES ('25','CarlosProject','Ma description',NULL,NULL,NULL,'1','2');
 INSERT INTO `F_projet` VALUES ('27','sdfsdfs','sdfsdf',NULL,NULL,NULL,'1','1');
 INSERT INTO `F_projet` VALUES ('29','TestAnthony','Test',NULL,NULL,NULL,'1','1');
+INSERT INTO `F_projet` VALUES ('31','gdfgdfg','dfgdfg',NULL,NULL,NULL,'1','1');
+INSERT INTO `F_projet` VALUES ('33','cvxcvxcv','xcvxcvx',NULL,NULL,NULL,'1','1');
 
 
 DROP TABLE IF EXISTS `G_atelier`;
@@ -261,6 +264,34 @@ INSERT INTO `H_RACI` VALUES ('29','2','4.b','Réalisation');
 INSERT INTO `H_RACI` VALUES ('29','2','5.a','Réalisation');
 INSERT INTO `H_RACI` VALUES ('29','2','5.b','Réalisation');
 INSERT INTO `H_RACI` VALUES ('29','2','5.c','Réalisation');
+INSERT INTO `H_RACI` VALUES ('31','6','1.a','Réalisation');
+INSERT INTO `H_RACI` VALUES ('31','6','1.b','Réalisation');
+INSERT INTO `H_RACI` VALUES ('31','6','1.c','Réalisation');
+INSERT INTO `H_RACI` VALUES ('31','6','1.d','Réalisation');
+INSERT INTO `H_RACI` VALUES ('31','6','2.a','Réalisation');
+INSERT INTO `H_RACI` VALUES ('31','6','2.b','Réalisation');
+INSERT INTO `H_RACI` VALUES ('31','6','3.a','Réalisation');
+INSERT INTO `H_RACI` VALUES ('31','6','3.b','Réalisation');
+INSERT INTO `H_RACI` VALUES ('31','6','3.c','Réalisation');
+INSERT INTO `H_RACI` VALUES ('31','6','4.a','Réalisation');
+INSERT INTO `H_RACI` VALUES ('31','6','4.b','Réalisation');
+INSERT INTO `H_RACI` VALUES ('31','6','5.a','Réalisation');
+INSERT INTO `H_RACI` VALUES ('31','6','5.b','Réalisation');
+INSERT INTO `H_RACI` VALUES ('31','6','5.c','Réalisation');
+INSERT INTO `H_RACI` VALUES ('33','6','1.a','Réalisation');
+INSERT INTO `H_RACI` VALUES ('33','6','1.b','Réalisation');
+INSERT INTO `H_RACI` VALUES ('33','6','1.c','Réalisation');
+INSERT INTO `H_RACI` VALUES ('33','6','1.d','Réalisation');
+INSERT INTO `H_RACI` VALUES ('33','6','2.a','Réalisation');
+INSERT INTO `H_RACI` VALUES ('33','6','2.b','Réalisation');
+INSERT INTO `H_RACI` VALUES ('33','6','3.a','Réalisation');
+INSERT INTO `H_RACI` VALUES ('33','6','3.b','Réalisation');
+INSERT INTO `H_RACI` VALUES ('33','6','3.c','Réalisation');
+INSERT INTO `H_RACI` VALUES ('33','6','4.a','Réalisation');
+INSERT INTO `H_RACI` VALUES ('33','6','4.b','Réalisation');
+INSERT INTO `H_RACI` VALUES ('33','6','5.a','Réalisation');
+INSERT INTO `H_RACI` VALUES ('33','6','5.b','Réalisation');
+INSERT INTO `H_RACI` VALUES ('33','6','5.c','Réalisation');
 
 
 DROP TABLE IF EXISTS `I_mission`;
@@ -275,10 +306,11 @@ CREATE TABLE `I_mission` (
   KEY `I_mission_G_atelier_FK` (`id_atelier`),
   CONSTRAINT `I_mission_F_projet0_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `I_mission_G_atelier_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `I_mission` VALUES ('1','MIun','MIun','1.b','19');
+INSERT INTO `I_mission` VALUES ('1','cccccccccccccccccccccccccccccccccccccccccccccccccc','ccccccccccccccccccccccc','1.b','19');
 INSERT INTO `I_mission` VALUES ('3','Missionun','Respoun','1.b','29');
+INSERT INTO `I_mission` VALUES ('4','MIun','Carlos','1.b','19');
 
 
 DROP TABLE IF EXISTS `J_valeur_metier`;
@@ -296,7 +328,7 @@ CREATE TABLE `J_valeur_metier` (
   CONSTRAINT `J_valeur_metier_G_atelier_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `J_valeur_metier` VALUES ('1','VMun','Processus','VMun','1.b','19');
+INSERT INTO `J_valeur_metier` VALUES ('1','cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc','Processus','ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc','1.b','19');
 INSERT INTO `J_valeur_metier` VALUES ('4','Ma VM','Information','Des cVM','1.b','25');
 INSERT INTO `J_valeur_metier` VALUES ('5','a','Processus','a','1.b','19');
 INSERT INTO `J_valeur_metier` VALUES ('6','b','Processus','b','1.b','19');
@@ -345,7 +377,8 @@ CREATE TABLE `L_couple_VMBS` (
   CONSTRAINT `L_couple_VMBS_K_bien_support0_FK` FOREIGN KEY (`id_bien_support`) REFERENCES `K_bien_support` (`id_bien_support`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `L_couple_VMBS` VALUES ('1','1','1','MIun','MIun');
+INSERT INTO `L_couple_VMBS` VALUES ('1','1','1','ccccccccccccccccccccccccccccccccccccccc','cccccccccccccccccccccccccc');
+INSERT INTO `L_couple_VMBS` VALUES ('1','1','4','','Toto');
 INSERT INTO `L_couple_VMBS` VALUES ('9','7','3','RespoVM','RespoBS');
 
 
@@ -370,9 +403,9 @@ CREATE TABLE `M_evenement_redoute` (
   CONSTRAINT `M_evenement_redoute_F_projet1_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `M_evenement_redoute_G_atelier0_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `M_evenement_redoute_J_valeur_metier_FK` FOREIGN KEY (`id_valeur_metier`) REFERENCES `J_valeur_metier` (`id_valeur_metier`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `M_evenement_redoute` VALUES ('1','EVun','EVun','2','2','1','2','EVun','3','1','1.c','19');
+INSERT INTO `M_evenement_redoute` VALUES ('1','ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd','sdddddddddddddddddddddddddddddddddd','2','2','1','2','EVun','3','1','1.c','19');
 INSERT INTO `M_evenement_redoute` VALUES ('4','ER ER','Des ER','2','2','2','2','Des impact','4','4','1.c','25');
 INSERT INTO `M_evenement_redoute` VALUES ('7','a','a','1','1','1','1','a','2','5','1.c','19');
 INSERT INTO `M_evenement_redoute` VALUES ('8','b','b','1','1','2','1','b','2','6','1.c','19');
@@ -380,6 +413,7 @@ INSERT INTO `M_evenement_redoute` VALUES ('9','c','c','1','2','2','1','c','2','7
 INSERT INTO `M_evenement_redoute` VALUES ('10','ERun','ERun','1','2','1','3','ERun','4','9','1.c','29');
 INSERT INTO `M_evenement_redoute` VALUES ('11','ERdeu','ERdeux','1','2','2','1','ERdeux','3','10','1.c','29');
 INSERT INTO `M_evenement_redoute` VALUES ('12','ERtrois','ERtrois','3','3','3','3','VMtrois','5','11','1.c','29');
+INSERT INTO `M_evenement_redoute` VALUES ('13','gdfdgf','dfgdfg','1','1','1','1','dfgdf',NULL,'1','1.c','19');
 
 
 DROP TABLE IF EXISTS `N_socle_de_securite`;
@@ -753,12 +787,14 @@ CREATE TABLE `Q_seuil` (
   KEY `Q_seuil_G_atelier0_FK` (`id_atelier`),
   CONSTRAINT `Q_seuil_F_projet_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `Q_seuil_G_atelier0_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `Q_seuil` VALUES ('1','6','4','2','19','3.a');
 INSERT INTO `Q_seuil` VALUES ('7','6','4','2','25','3.a');
 INSERT INTO `Q_seuil` VALUES ('9','6','4','2','27','3.a');
 INSERT INTO `Q_seuil` VALUES ('11','6','4','2','29','3.a');
+INSERT INTO `Q_seuil` VALUES ('13','6','4','2','31','3.a');
+INSERT INTO `Q_seuil` VALUES ('15','6','4','2','33','3.a');
 
 
 DROP TABLE IF EXISTS `R_partie_prenante`;
@@ -820,7 +856,7 @@ CREATE TABLE `S_scenario_strategique` (
   CONSTRAINT `S_scenario_strategique_P_SROV0_FK` FOREIGN KEY (`id_source_de_risque`) REFERENCES `P_SROV` (`id_source_de_risque`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `S_scenario_strategique` VALUES ('1','SSun','Capture.PNG','3.b','1','1','19');
+INSERT INTO `S_scenario_strategique` VALUES ('1','SSun','logo_Google_FullColor_3x_830x271px.max-2800x2800-1.png','3.b','1','1','19');
 INSERT INTO `S_scenario_strategique` VALUES ('2','SSdeux','Microsoft_logo_(2012)_modified.svg.png','3.b','2','1','19');
 INSERT INTO `S_scenario_strategique` VALUES ('5','Scen',NULL,'3.b','6','4','25');
 INSERT INTO `S_scenario_strategique` VALUES ('6','a','Microsoft_logo_(2012)_modified.svg.png','3.b','1','7','19');
@@ -859,7 +895,7 @@ INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('7','a','a',NULL,NULL,NULL,
 INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('8','b','b',NULL,NULL,NULL,NULL,NULL,NULL,'7','11');
 INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('9','R1','Cheminun',NULL,'3','3','1','1','9','9','12');
 INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('10','R2','Chemindeux',NULL,'2','4','3','1','2.67','10','13');
-INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('11','R3','Chemintrois',NULL,NULL,NULL,NULL,NULL,NULL,'11','14');
+INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('11','R3','Chemintrois',NULL,'1','4','3','2','0.67','11','14');
 
 
 DROP TABLE IF EXISTS `U_scenario_operationnel`;
@@ -888,9 +924,9 @@ INSERT INTO `U_scenario_operationnel` VALUES ('5',NULL,'Scenario opérationnel p
 INSERT INTO `U_scenario_operationnel` VALUES ('6',NULL,'Scenario opérationnel pour : AAAA','4',NULL,'4.a','6','bvcbv','19');
 INSERT INTO `U_scenario_operationnel` VALUES ('7',NULL,'Scenario opérationnel pour : a','1',NULL,'4.a','7','a','19');
 INSERT INTO `U_scenario_operationnel` VALUES ('8',NULL,'Scenario opérationnel pour : b','1',NULL,'4.a','8','b','19');
-INSERT INTO `U_scenario_operationnel` VALUES ('9',NULL,'Scenario opérationnel pour : a',NULL,NULL,'4.a','9','R1','29');
-INSERT INTO `U_scenario_operationnel` VALUES ('10',NULL,'Scenario opérationnel pour : Chemindeux',NULL,NULL,'4.a','10','R2','29');
-INSERT INTO `U_scenario_operationnel` VALUES ('11',NULL,'Scenario opérationnel pour : Chemintrois',NULL,NULL,'4.a','11','R3','29');
+INSERT INTO `U_scenario_operationnel` VALUES ('9',NULL,'Scenarun','4',NULL,'4.a','9','R1','29');
+INSERT INTO `U_scenario_operationnel` VALUES ('10',NULL,'Scenario opérationnel pour : Chemindeux','5',NULL,'4.a','10','R2','29');
+INSERT INTO `U_scenario_operationnel` VALUES ('11',NULL,'Scenario opérationnel pour : Chemintrois','2',NULL,'4.a','11','R3','29');
 
 
 DROP TABLE IF EXISTS `V_etre`;
@@ -913,11 +949,14 @@ CREATE TABLE `W_mode_operatoire` (
   PRIMARY KEY (`id_mode_operatoire`),
   KEY `W_mode_operatoire_U_scenario_operationnel_FK` (`id_scenario_operationnel`),
   CONSTRAINT `W_mode_operatoire_U_scenario_operationnel_FK` FOREIGN KEY (`id_scenario_operationnel`) REFERENCES `U_scenario_operationnel` (`id_scenario_operationnel`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `W_mode_operatoire` VALUES ('1','MOun','1');
 INSERT INTO `W_mode_operatoire` VALUES ('5','azer','4');
 INSERT INTO `W_mode_operatoire` VALUES ('6','zzz','6');
+INSERT INTO `W_mode_operatoire` VALUES ('7','Modeopeun','9');
+INSERT INTO `W_mode_operatoire` VALUES ('8','Modeopedeux','10');
+INSERT INTO `W_mode_operatoire` VALUES ('9','Modeopetrois','11');
 
 
 DROP TABLE IF EXISTS `X_revaluation_du_risque`;
@@ -939,7 +978,9 @@ CREATE TABLE `X_revaluation_du_risque` (
   CONSTRAINT `X_revaluation_du_risque_F_projet1_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `X_revaluation_du_risque_G_atelier_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `X_revaluation_du_risque_T_chemin_d_attaque_strategique0_FK` FOREIGN KEY (`id_chemin_d_attaque_strategique`, `id_risque`) REFERENCES `T_chemin_d_attaque_strategique` (`id_chemin_d_attaque_strategique`, `id_risque`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `X_revaluation_du_risque` VALUES ('1','sdgfggggggggggggggggggggggggggsfqdfsdsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss','dfgssssssssssssssssssssssssssssssssssssssssss','5','10','2','5.c','7','a','19');
 
 
 DROP TABLE IF EXISTS `Y_mesure`;
@@ -948,7 +989,7 @@ CREATE TABLE `Y_mesure` (
   `nom_mesure` varchar(100) DEFAULT NULL,
   `description_mesure` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`id_mesure`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `Y_mesure` VALUES ('1','MSun','MSun');
 INSERT INTO `Y_mesure` VALUES ('2','Mesureun','Mesureun');
@@ -958,6 +999,7 @@ INSERT INTO `Y_mesure` VALUES ('5','Lol','Desc LOL');
 INSERT INTO `Y_mesure` VALUES ('6','xwcwxcwxcwx','wxcwxcw');
 INSERT INTO `Y_mesure` VALUES ('7','Mesureun','Mesureun');
 INSERT INTO `Y_mesure` VALUES ('8','Mesuredeux','Mesuredeux');
+INSERT INTO `Y_mesure` VALUES ('9','Mesuretrois','Mesuretrois');
 
 
 DROP TABLE IF EXISTS `ZA_traitement_de_securite`;
@@ -979,13 +1021,14 @@ CREATE TABLE `ZA_traitement_de_securite` (
   CONSTRAINT `ZA_traitement_de_securite_F_projet0_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ZA_traitement_de_securite_G_atelier_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ZA_traitement_de_securite_Y_mesure1_FK` FOREIGN KEY (`id_mesure`) REFERENCES `Y_mesure` (`id_mesure`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ZA_traitement_de_securite` VALUES ('3',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','19','4');
 INSERT INTO `ZA_traitement_de_securite` VALUES ('4',NULL,NULL,NULL,NULL,NULL,NULL,'5.b','25','5');
 INSERT INTO `ZA_traitement_de_securite` VALUES ('5',NULL,NULL,NULL,NULL,NULL,NULL,'5.b','19','6');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('6',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','29','2');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('7',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','29','3');
+INSERT INTO `ZA_traitement_de_securite` VALUES ('6','Gouvernance','Frein','++','2020-07-24','Respo','En cours','3.c','29','2');
+INSERT INTO `ZA_traitement_de_securite` VALUES ('7','Defense','Frein','+++','2020-07-23','Respo','En cours','3.c','29','3');
+INSERT INTO `ZA_traitement_de_securite` VALUES ('8','Defense','Frein','+++','2020-07-08','Respo','Terminé','3.c','29','9');
 
 
 DROP TABLE IF EXISTS `ZB_comporter_2`;
@@ -1005,3 +1048,4 @@ INSERT INTO `ZB_comporter_2` VALUES ('3','10','R2');
 INSERT INTO `ZB_comporter_2` VALUES ('4','4','ffddf');
 INSERT INTO `ZB_comporter_2` VALUES ('5','5','OOO');
 INSERT INTO `ZB_comporter_2` VALUES ('6','4','ffddf');
+INSERT INTO `ZB_comporter_2` VALUES ('9','11','R3');
