@@ -16,6 +16,39 @@ $id_mesure = mysqli_real_escape_string($connect, $input['id_mesure']);
 $results["error"] = false;
 $results["message"] = [];
 
+// Verification du nom_mesure
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $nom_mesure)) {
+    $results["error"] = true;
+    $_SESSION['message_error_2'] = "nom_mesure invalide";
+}
+// Verification du description_mesure
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $description_mesure)) {
+    $results["error"] = true;
+    $_SESSION['message_error_2'] = "description_mesure invalide";
+}
+// Verification du dependance
+if (!preg_match("/^[1-4]$/", $dependance)) {
+    $results["error"] = true;
+    $_SESSION['message_error_2'] = "dependance invalide";
+}
+// Verification du penetration
+if (!preg_match("/^[1-4]$/", $penetration)) {
+    $results["error"] = true;
+    $_SESSION['message_error_2'] = "penetration invalide";
+}
+// Verification du maturite
+if (!preg_match("/^[1-4]$/", $maturite)) {
+    $results["error"] = true;
+    $_SESSION['message_error_2'] = "maturite invalide";
+}
+// Verification du confiance
+if (!preg_match("/^[1-4]$/", $confiance)) {
+    $results["error"] = true;
+    $_SESSION['message_error_2'] = "confiance invalide";
+}
+
+
+
 
 if ($input["action"] === 'edit' && $results["error"] === false) {
     //update la mesure

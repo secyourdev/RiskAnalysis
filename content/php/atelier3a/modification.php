@@ -24,6 +24,71 @@ $id_atelier = '3.a';
 
 $results["error"] = false;
 
+// Verification du categorie_partie_prenante
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/", $categorie_partie_prenante)) {
+    $results["error"] = true;
+    $_SESSION['message_error_2'] = "categorie_partie_prenante invalide";
+}
+// Verification du nom_partie_prenante
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/", $nom_partie_prenante)) {
+    $results["error"] = true;
+    $_SESSION['message_error_2'] = "nom_partie_prenante invalide";
+}
+// Verification du type
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/", $type)) {
+    $results["error"] = true;
+    $_SESSION['message_error_2'] = "type invalide";
+}
+// Verification du dependance_partie_prenante
+if (!preg_match("/^([0-4])$/", $dependance_partie_prenante)) {
+    $results["error"] = true;
+    $_SESSION['message_error_2'] = "dependance_partie_prenante invalide";
+}
+// Verification du penetration_partie_prenante
+if (!preg_match("/^([0-4])$/", $penetration_partie_prenante)) {
+    $results["error"] = true;
+    $_SESSION['message_error_2'] = "penetration_partie_prenante invalide";
+}
+// Verification du maturite_partie_prenante
+if (!preg_match("/^([0-4])$/", $maturite_partie_prenante)) {
+    $results["error"] = true;
+    $_SESSION['message_error_2'] = "maturite_partie_prenante invalide";
+}
+// Verification du confiance_partie_prenante
+if (!preg_match("/^([0-4])$/", $confiance_partie_prenante)) {
+    $results["error"] = true;
+    $_SESSION['message_error_2'] = "confiance_partie_prenante invalide";
+}
+// Verification du ponderation_dependance
+if (!preg_match("/^([0-9]|1[0-6])$/", $ponderation_dependance)) {
+    $results["error"] = true;
+    $_SESSION['message_error_2'] = "ponderation_dependance invalide";
+}
+// Verification du ponderation_penetration
+if (!preg_match("/^([0-9]|1[0-6])$/", $ponderation_penetration)) {
+    $results["error"] = true;
+    $_SESSION['message_error_2'] = "ponderation_penetration invalide";
+}
+// Verification du ponderation_maturite
+if (!preg_match("/^([0-9]|1[0-6])$/", $ponderation_maturite)) {
+    $results["error"] = true;
+    $_SESSION['message_error_2'] = "ponderation_maturite invalide";
+}
+// Verification du ponderation_confiance
+if (!preg_match("/^([0-9]|1[0-6])$/", $ponderation_confiance)) {
+    $results["error"] = true;
+    $_SESSION['message_error_2'] = "ponderation_confiance invalide";
+}
+// // Verification du niveau_de_menace_partie_prenante
+// if (!preg_match("/^([0-9]|1[0-6])$/", $niveau_de_menace_partie_prenante)) {
+//     $results["error"] = true;
+//     $_SESSION['message_error_2'] = "niveau_de_menace_partie_prenante invalide";
+// }
+
+
+
+
+
 if ($input["action"] === 'edit' && $results["error"] === false) {
     $query =
         "UPDATE R_partie_prenante 
