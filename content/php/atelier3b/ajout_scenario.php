@@ -38,9 +38,17 @@ $insere = $bdd->prepare(
    VALUES 
    ( ?, ?, ?, ?, ?, ?)'
 );
+$recupere_scenarios_existants = $bdd->prepare("SELECT nom_scenario_strategique FROM S_scenario_strategique WHERE S_scenario_strategique.id_projet = ?");
 
 if ($results["error"] === false && isset($_POST['validerscenario'])) {
 
+  $recupere_scenarios_existants->bindParam(1, $id_projet);
+  $recupere_scenarios_existants->execute();
+  $result_scenarios_existants = $recupere_scenarios_existants->fetchAll(PDO::FETCH_COLUMN);
+
+
+  if (!in_array($nom_scenario_strategique, $result_scenarios_existants)) {
+    print 'chemin non existent';
   $insere->bindParam(1, $id_scenario);
   $insere->bindParam(2, $nom_scenario_strategique);
   $insere->bindParam(3, $id_atelier);
@@ -50,6 +58,9 @@ if ($results["error"] === false && isset($_POST['validerscenario'])) {
 
   $insere->execute();
   $_SESSION['message_success_1'] = "La règle a bien été ajoutée !";
+  } else {
+    print 'scenario déjà existant';
+  }
 ?>
   <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
 <?php
