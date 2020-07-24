@@ -584,7 +584,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Liste des scénarios stratégiques établis lors de l'atelier 3</h6>
+                        <h6 class="m-0">Liste des scénarios stratégiques établis lors de l'atelier 3.b</h6>
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
@@ -635,7 +635,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Ajouter un scénario opérationnel</h6>
+                        <h6 class="m-0">Scénario opérationnel</h6>
 
                       </div>
                       <!-- Card Body -->
@@ -678,7 +678,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Ajouter un mode opératoire</h6>
+                        <h6 class="m-0">Mode opératoire</h6>
 
                       </div>
                       <!-- Card Body -->

@@ -24,7 +24,7 @@ $(document).ready(function () {
                 $('#ajax-loader').css('display', 'none');
                 $('#file_submit').attr('disabled', false);
                 $('#success_message').html("<div class='alert alert-success'>Base de données importée</div>");
-                location.reload();
+                // location.reload();
             }
         })
 
