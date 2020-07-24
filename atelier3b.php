@@ -1049,10 +1049,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <script src="content/js/modules/sort_table.js"></script>
         <script src="content/js/modules/browse_img.js"></script>
         <script src="content/js/modules/ajax_pour_image.js"></script>
-<<<<<<< HEAD
-=======
-        <!-- <script src="ajax-browse-image.js"></script> -->
->>>>>>> origin/Guillaume
       </body>
   <?php
     }
