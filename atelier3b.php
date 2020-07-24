@@ -503,7 +503,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Liste des évènements redoutés établis lors de l'atelier 1</h6>
+                        <h6 class="m-0">Liste des évènements redoutés établis à l'atelier 1.c</h6>
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
@@ -555,7 +555,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Liste des couples sources de risques / objectifs visés établis lors de l'atelier 2</h6>
+                        <h6 class="m-0">Liste des couples sources de risques / objectifs visés établis à l'atelier 2</h6>
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
@@ -600,7 +600,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Liste des scénarios stratégiques</h6>
+                        <h6 class="m-0">Scénarios stratégiques</h6>
 
                       </div>
                       <!-- Card Body -->
@@ -703,7 +703,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Liste des chemins d'attaque</h6>
+                        <h6 class="m-0">Chemins d'attaque</h6>
 
                       </div>
                       <!-- Card Body -->
@@ -949,7 +949,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <script src="content/js/atelier/atelier3b.js"></script>
         <script src="content/js/modules/sort_table.js"></script>
         <script src="content/js/modules/browse_img.js"></script>
-        <script src="content\js\modules\ajax_pour_image.js"></script>
+        <script src="content/js/modules/ajax_pour_image.js"></script>
         <!-- <script src="ajax-browse-image.js"></script> -->
       </body>
   <?php

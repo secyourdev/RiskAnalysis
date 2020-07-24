@@ -14,12 +14,15 @@ print "bonjour";
 print_r($_POST); //ce qui est reçu du ajax
 
 
-// If upload button is clicked ...
-if (isset($_POST['file_submit'])) {
-    print 'le boutton file_submit a été pressé. ';
+//if file exists / is selected
+if ($_FILES['inpFile']['size'] != 0) {
+    print 'le boutton file_submit a été pressé, une image a été selectionné. ';
 
     // Get image name
     $image = $_FILES['inpFile']['name'];
+    print($image != NULL);
+
+
     // image file directory
     $target = "../../../image/" . basename($image);
 
@@ -55,7 +58,7 @@ if (isset($_POST['file_submit'])) {
             print $msg;
             $zip = new ZipArchive;
             if ($zip->open('../sauvegarde_image/schema.zip') === TRUE) {
-                $zip->addFile('../../../image/'.$image, $image);
+                $zip->addFile('../../../image/' . $image, $image);
                 $zip->close();
                 echo 'ok';
             } else {
@@ -65,10 +68,12 @@ if (isset($_POST['file_submit'])) {
             $msg = "Erreur dans l'upload de l'image";
             print $msg;
         }
-
-    }else {
+    } else {
         print "erreur: aucun scénario n'a été choisi";
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        exit;
     }
-
-    
+}else{ //image does not exist or was not selected
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    exit;
 }
