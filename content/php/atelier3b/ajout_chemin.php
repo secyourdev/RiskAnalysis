@@ -17,6 +17,42 @@ $id_chemin_d_attaque = "id_chemin";
 $id_scenar = "id_scenar";
 $id_atelier = "4.a";
 
+
+
+
+
+
+// Verification du id_risque
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $id_risque)) {
+  $results["error"] = true;
+  $_SESSION['message_error_1'] = "id_risque invalide";
+}
+// Verification du chemin_d_attaque_strategique
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $chemin_d_attaque_strategique)) {
+  $results["error"] = true;
+  $_SESSION['message_error_1'] = "chemin_d_attaque_strategique invalide";
+}
+// Verification du id_scenario_strategique
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $id_scenario_strategique)) {
+  $results["error"] = true;
+  $_SESSION['message_error_1'] = "id_scenario_strategique invalide";
+}
+// Verification du id_partie_prenante
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $id_partie_prenante)) {
+  $results["error"] = true;
+  $_SESSION['message_error_1'] = "id_partie_prenante invalide";
+}
+
+
+
+
+
+
+
+
+
+
+
 $recupere = $bdd->prepare("SELECT S_scenario_strategique.id_scenario_strategique FROM S_scenario_strategique  WHERE S_scenario_strategique.nom_scenario_strategique = ?");
 $recuperepp = $bdd->prepare("SELECT id_partie_prenante FROM R_partie_prenante WHERE nom_partie_prenante = ? AND id_projet = ?");
 
@@ -87,37 +123,38 @@ if ($results["error"] === false && isset($_POST['validerchemin'])) {
   // print in_array($chemin_d_attaque_strategique, $result_nom_chemin_existant);
   // print '<br>';
 
-  if (!in_array($chemin_d_attaque_strategique, $result_nom_chemin_existant)){
+  if (!in_array($chemin_d_attaque_strategique, $result_nom_chemin_existant)) {
     print 'chemin non existent';
 
 
-  $insere->bindParam(1, $id_chemin_d_attaque);
-  $insere->bindParam(2, $id_risque);
-  $insere->bindParam(3, $chemin_d_attaque_strategique);
-  $insere->bindParam(4, $id_scenario_strategique);
-  $insere->bindParam(5, $id_partie_prenante);
-  $insere->execute();
+    $insere->bindParam(1, $id_chemin_d_attaque);
+    $insere->bindParam(2, $id_risque);
+    $insere->bindParam(3, $chemin_d_attaque_strategique);
+    $insere->bindParam(4, $id_scenario_strategique);
+    $insere->bindParam(5, $id_partie_prenante);
+    $insere->execute();
 
-  $recuperechemin->bindParam(1, $chemin_d_attaque_strategique);
-  $recuperechemin->bindParam(2, $id_risque);
-  $recuperechemin->execute();
-  $resultchemin = $recuperechemin->fetch();
+    $recuperechemin->bindParam(1, $chemin_d_attaque_strategique);
+    $recuperechemin->bindParam(2, $id_risque);
+    $recuperechemin->execute();
+    $resultchemin = $recuperechemin->fetch();
 
-  $insere_reeval->bindParam(1, $resultchemin[0]);
-  $insere_reeval->bindParam(2, $resultchemin[1]);
-  $insere_reeval->bindParam(3, $get_id_projet);
-  $insere_reeval->execute();
+    $insere_reeval->bindParam(1, $resultchemin[0]);
+    $insere_reeval->bindParam(2, $resultchemin[1]);
+    $insere_reeval->bindParam(3, $get_id_projet);
+    $insere_reeval->execute();
 
-  $description_ope = "Scenario opérationnel pour : " . $chemin_d_attaque_strategique;
-  echo $description_ope;
-  $insereope->bindParam(1, $id_scenar);
-  $insereope->bindParam(2, $description_ope);
-  $insereope->bindParam(3, $id_atelier);
-  $insereope->bindParam(4, $resultchemin[0]);
-  $insereope->bindParam(5, $resultchemin[1]);
-  $insereope->bindParam(6, $get_id_projet);
-  $insereope->execute();
-  }else {
+    $description_ope = "Scenario opérationnel pour : " . $chemin_d_attaque_strategique;
+    echo $description_ope;
+    $insereope->bindParam(1, $id_scenar);
+    $insereope->bindParam(2, $description_ope);
+    $insereope->bindParam(3, $id_atelier);
+    $insereope->bindParam(4, $resultchemin[0]);
+    $insereope->bindParam(5, $resultchemin[1]);
+    $insereope->bindParam(6, $get_id_projet);
+    $insereope->execute();
+    $_SESSION['message_success_1'] = "La règle a bien été ajoutée !";
+  } else {
     print 'chemin déjà existant';
   }
 ?>

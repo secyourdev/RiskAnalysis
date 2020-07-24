@@ -33,6 +33,39 @@ if (isset($_POST['confiance_partie_prenante'])) {
 
 $niveau_de_menace_partie_prenante = round(($dependance_partie_prenante* $penetration_partie_prenante)/ ($maturite_partie_prenante* $confiance_partie_prenante), 2);
 
+
+// Verification du categorie_partie_prenante
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $categorie_partie_prenante)) {
+  $results["error"] = true;
+  $_SESSION['message_error_2'] = "categorie_partie_prenante invalide";
+}
+// Verification du nom_partie_prenante
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $nom_partie_prenante)) {
+  $results["error"] = true;
+  $_SESSION['message_error_2'] = "nom_partie_prenante invalide";
+}
+// Verification du dependance_partie_prenante
+if (!preg_match("/^[1-4]$/", $dependance_partie_prenante)) {
+  $results["error"] = true;
+  $_SESSION['message_error_2'] = "dependance_partie_prenante invalide";
+}
+// Verification du penetration_partie_prenante
+if (!preg_match("/^[1-4]$/", $penetration_partie_prenante)) {
+  $results["error"] = true;
+  $_SESSION['message_error_2'] = "penetration_partie_prenante invalide";
+}
+// Verification du maturite_partie_prenante
+if (!preg_match("/^[1-4]$/", $maturite_partie_prenante)) {
+  $results["error"] = true;
+  $_SESSION['message_error_2'] = "maturite_partie_prenante invalide";
+}
+// Verification du confiance_partie_prenante
+if (!preg_match("/^[1-4]$/", $confiance_partie_prenante)) {
+  $results["error"] = true;
+  $_SESSION['message_error_2'] = "confiance_partie_prenante invalide";
+}
+
+
 $id_atelier = '3.a';
 $id_projet =$_SESSION['id_projet'];
 $recupere_id_seuil = $bdd->prepare(
@@ -85,6 +118,7 @@ if ($results["error"] === false && isset($_POST['validerpartie'])) {
   $insere->bindParam(10, $id_atelier);
   $insere->bindParam(11, $id_projet);
   $insere->execute();
+  $_SESSION['message_success_2'] = "La règle a bien été ajoutée !";
 ?>
   <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
 <?php

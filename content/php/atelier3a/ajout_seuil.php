@@ -17,28 +17,19 @@ $insere = $bdd->prepare(
   "UPDATE Q_seuil SET seuil_danger=?,seuil_controle=?,seuil_veille=? WHERE id_projet=?");
 
 // Verification du seuil_danger
-if (!preg_match("/^[1-9][0-9]?$|^100$/", $seuil_danger)) {
+if (!preg_match("/^([0-9]|1[0-6])$/", $seuil_danger)) {
   $results["error"] = true;
-  $results["message"]["seuil_danger"] = "seuil_danger invalide";
-?>
-  <strong style="color:#FF6565;">seuil_danger invalide </br></strong>
-<?php
+  $_SESSION['message_error_2'] = "seuil_danger invalide";
 }
 // Verification du seuil_controle
-if (!preg_match("/^[1-9][0-9]?$|^100$/", $seuil_controle)) {
+if (!preg_match("/^([0-9]|1[0-6])$/", $seuil_controle)) {
   $results["error"] = true;
-  $results["message"]["seuil_controle"] = "seuil_controle invalide";
-?>
-  <strong style="color:#FF6565;">seuil_controle invalide </br></strong>
-<?php
+  $_SESSION['message_error_2'] = "seuil_controle invalide";
 }
 // Verification du seuil_veille
-if (!preg_match("/^[1-9][0-9]?$|^100$/", $seuil_veille)) {
+if (!preg_match("/^([0-9]|1[0-6])$/", $seuil_veille)) {
   $results["error"] = true;
-  $results["message"]["seuil_veille"] = "seuil_veille invalide";
-?>
-  <strong style="color:#FF6565;">seuil_veille invalide </br></strong>
-<?php
+  $_SESSION['message_error_2'] = "seuil_veille invalide";
 }
 
 if ($results["error"] === false && isset($_POST['validerseuil'])) {
@@ -48,6 +39,7 @@ if ($results["error"] === false && isset($_POST['validerseuil'])) {
   $insere->bindParam(3, $seuil_veille);
   $insere->bindParam(4, $id_projet);
   $insere->execute();
+  $_SESSION['message_success_2'] = "La règle a bien été ajoutée !";
 
 ?>
   <strong style="color:#4AD991;">Le seuil a bien été ajoutée !</br></strong>
