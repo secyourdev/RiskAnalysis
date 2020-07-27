@@ -19,6 +19,11 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $reqdroit->bindParam(2, $getidproject);
     $reqdroit->execute();
     $userdroit = $reqdroit->fetch();
+
+    $reqdroit_chef_de_projet = $bdd->prepare('SELECT id_utilisateur FROM F_projet WHERE id_projet = ?');
+    $reqdroit_chef_de_projet->bindParam(1, $getidproject);
+    $reqdroit_chef_de_projet->execute();
+    $userdroit_chef_de_projet = $reqdroit_chef_de_projet->fetch();
 ?>
 
 <?php include("content/php/atelier1a/selection.php");?>
@@ -641,7 +646,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         <div class="form-group">
                                             <label class="titre_input" for="nom_etude">Nom</label>
                                             <?php if(isset($userdroit['ecriture'])){
-                                                    if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'){
+                                                    if($userdroit['ecriture']=='Réalisation'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
                                             ?>
                                                         <input type="text"
                                                             class="perso_form shadow-none form-control form-control-user"
