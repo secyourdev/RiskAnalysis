@@ -663,6 +663,14 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </tbody>
                           </table>
                         </div>
+                        <?php
+                            while($row = mysqli_fetch_array($resultlegende))
+                            {
+                              echo 
+                              $row["id_risque"].' : '.$row["nom_chemin_d_attaque_strategique"]."<br/>"
+                              ;
+                            }
+                            ?>
                       </div>
                     </div>
                   </div>

@@ -25,9 +25,12 @@ AND T_chemin_d_attaque_strategique.id_scenario_strategique = S_scenario_strategi
 AND S_scenario_strategique.id_evenement_redoute = M_evenement_redoute.id_evenement_redoute
 AND X_revaluation_du_risque.id_projet = $getid_projet";
 
+$querylegende = "SELECT * FROM T_chemin_d_attaque_strategique NATURAL JOIN S_scenario_strategique WHERE id_projet = $getid_projet";
 
 $result = mysqli_query($connect, $query);
 
+$resultlegendeavant = mysqli_query($connect, $querylegende);
+$resultlegendeapres = mysqli_query($connect, $querylegende);
 
 // $risque_init = array();
 // foreach ($result as $row) {
