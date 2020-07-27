@@ -1,4 +1,36 @@
+
+console.log( '3a_carto.js');
+
 $.post("content/php/atelier3c/chart_copy.php", function (data) {
+
+    var seuil_danger = [];
+    var seuil_controle = [];
+    var seuil_veille = [];
+    console.log(data);
+    for (var i in data['data_seuil']) {
+        seuil_danger.push(data['data_seuil'][i].seuil_danger); //valeur de seuil_danger - zone rouge
+        seuil_controle.push(data['data_seuil'][i].seuil_controle); //valeur de seuil_danger - zone verte
+        seuil_veille.push(data['data_seuil'][i].seuil_veille); //valeur de seuil_danger - zone bleue
+    }
+    console.log('seuil : ');
+    console.log(seuil_danger);
+    console.log(seuil_controle);
+    console.log(seuil_veille);
+    
+    color_zone = ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)']
+    if (seuil_danger[0] !== -1) {
+        color_zone[16-seuil_danger[0]] = "#FF6565";
+    }
+    if (seuil_controle[0] !== -1) {
+        color_zone[16-seuil_controle[0]] = "#4AD991";
+    }
+    if (seuil_veille[0] !== -1) {
+        color_zone[16-seuil_veille[0]] = "#3B86FF";
+    }
+    console.log(color_zone);
+    // color_actuel = ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#FF6565", 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#4AD991", 'rgba(0, 0, 0, 0.1)', "#3B86FF"]
+    // console.log(color_actuel);
+
 
     var menace = [];
     var exposition = [];
@@ -47,7 +79,7 @@ $.post("content/php/atelier3c/chart_copy.php", function (data) {
                 data: menace, //valeur de menace - pronfondeur en axe y
                 data_exposition: exposition, //taille du points
                 data_fiabilite: fiabilite, //couleur points
-                label: 'Initial',
+                label: 'Parties prenantes initiales',
                 responsive: true,
                 backgroundColor: 'rgb(255, 99, 132)',
                 fill: false,
@@ -78,7 +110,7 @@ $.post("content/php/atelier3c/chart_copy.php", function (data) {
                 data: menace_interne_residuelle, //valeur de menace_interne_residuelle - pronfondeur en axe y
                 data_exposition: exposition_interne_residuelle, //taille du points
                 data_fiabilite: fiabilite_interne_residuelle, //couleur points
-                label: 'Résiduel',
+                label: 'Parties prenantes résiduelles',
                 responsive: true,
                 backgroundColor: 'rgb(255, 99, 132)',
                 fill: false,
@@ -113,16 +145,18 @@ $.post("content/php/atelier3c/chart_copy.php", function (data) {
         scale: {
             gridLines: {
                 circular: true,
-                color: ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#FF6565", 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#4AD991", 'rgba(0, 0, 0, 0.1)', "#3B86FF"]
+                color: color_zone
+                // color: ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#FF6565", 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#4AD991", 'rgba(0, 0, 0, 0.1)', "#3B86FF"]
             },
             ticks: {
                 beginAtZero: true,
                 reverse: true,
-                stepSize: maxmenace / 9
+                suggestedMax: 16.5,
+                stepSize: 1
             }
         },
         tooltips: {
-            mode: 'nearest',
+            mode: 'index',
             callbacks: {
                 footer: function (tooltipItems, data) {
                     var value_expo = 0;
@@ -139,7 +173,7 @@ $.post("content/php/atelier3c/chart_copy.php", function (data) {
             footerFontStyle: 'normal'
         },
         hover: {
-            mode: 'nearest',
+            mode: 'index',
             intersect: true
         },
     };
@@ -194,7 +228,7 @@ $.post("content/php/atelier3c/chart_copy.php", function (data) {
                 data: menace, //valeur de menace - pronfondeur en axe y
                 data_exposition: exposition, //taille du points
                 data_fiabilite: fiabilite, //couleur points
-                label: 'Initial',
+                label: 'Parties prenantes initiales',
                 responsive: true,
                 backgroundColor: 'rgb(255, 99, 132)',
                 fill: false,
@@ -225,7 +259,7 @@ $.post("content/php/atelier3c/chart_copy.php", function (data) {
                 data: menace_externe_residuelle, //valeur de menace_externe_residuelle - pronfondeur en axe y
                 data_exposition: exposition_externe_residuelle, //taille du points
                 data_fiabilite: fiabilite_externe_residuelle, //couleur points
-                label: 'Résiduel',
+                label: 'Parties prenantes résiduelles',
                 responsive: true,
                 backgroundColor: 'rgb(255, 99, 132)',
                 fill: false,
@@ -260,16 +294,18 @@ $.post("content/php/atelier3c/chart_copy.php", function (data) {
         scale: {
             gridLines: {
                 circular: true,
-                color: ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#FF6565", 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#4AD991", 'rgba(0, 0, 0, 0.1)', "#3B86FF"]
+                color: color_zone
+                // color: ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#FF6565", 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#4AD991", 'rgba(0, 0, 0, 0.1)', "#3B86FF"]
             },
             ticks: {
                 beginAtZero: true,
                 reverse: true,
-                stepSize: maxmenace / 9
+                suggestedMax: 16.5,
+                stepSize: 1
             }
         },
         tooltips: {
-            mode: 'nearest',
+            mode: 'index',
             callbacks: {
                 footer: function (tooltipItems, data) {
                     var value_expo = 0;
@@ -286,7 +322,7 @@ $.post("content/php/atelier3c/chart_copy.php", function (data) {
             footerFontStyle: 'normal'
         },
         hover: {
-            mode: 'nearest',
+            mode: 'index',
             intersect: true
         },
     };

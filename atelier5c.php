@@ -718,14 +718,14 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </tbody>
                           </table>
                         </div>
-                        <!-- <h6 class="m-0">Scénarios de risque</h6>
-                        <div class="card-body">
-                          R1 : Un concurrent vole des informations de R&D grâce à une canal d'exfiltration <br>
-                          R2 : Un concurrent vole des informations de R&D en exfiltrant celles détenues par le laboratoire <br>
-                          R3 : Un concurrent vole des informations de R&D grâce à un canal d'exfiltration via le prestataire informatique <br>
-                          R4 : Un hacktiviste provoque un arret de la production des vaccins en compromettant l'équipement de maintenance du fournisseur de matériel <br>
-                          R5 : Un hacktiviste perturbe la distribution de vaccins en modifiant leur étiquetage <br>
-                        </div> -->
+                        <?php
+                            while($row = mysqli_fetch_array($resultlegendeavant))
+                            {
+                              echo 
+                              $row["id_risque"].' : '.$row["nom_chemin_d_attaque_strategique"]."<br/>"
+                              ;
+                            }
+                            ?>
                       </div>
                     </div>
                   </div>
@@ -870,14 +870,14 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </tbody>
                           </table>
                         </div>
-                        <!-- <h6 class="m-0">Scénarios de risque</h6>
-                        <div class="card-body">
-                          R1 : Un concurrent vole des informations de R&D grâce à une canal d'exfiltration <br>
-                          R2 : Un concurrent vole des informations de R&D en exfiltrant celles détenues par le laboratoire <br>
-                          R3 : Un concurrent vole des informations de R&D grâce à un canal d'exfiltration via le prestataire informatique <br>
-                          R4 : Un hacktiviste provoque un arret de la production des vaccins en compromettant l'équipement de maintenance du fournisseur de matériel <br>
-                          R5 : Un hacktiviste perturbe la distribution de vaccins en modifiant leur étiquetage <br>
-                        </div> -->
+                        <?php
+                            while($row = mysqli_fetch_array($resultlegendeapres))
+                            {
+                              echo 
+                              $row["id_risque"].' : '.$row["nom_chemin_d_attaque_strategique"]."<br/>"
+                              ;
+                            }
+                            ?>
                       </div>
                     </div>
                   </div>
