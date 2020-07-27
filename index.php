@@ -331,10 +331,25 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                 <th>Poste</th>
                                             </tr>
                                         </thead>
-
                                         <tbody id="ecrire_user">
                                         </tbody>
                                     </table>
+                                    <div class='message_success'>
+                                    <?php 
+                                        if(isset($_SESSION['message_success_2b'])){
+                                        echo $_SESSION['message_success_2b'];
+                                        unset($_SESSION['message_success_2b']);
+                                        }
+                                    ?>
+                                    </div> 
+                                    <div class='message_error'>
+                                    <?php                
+                                        if(isset($_SESSION['message_error_2b'])){
+                                            echo $_SESSION['message_error_2b'];
+                                            unset($_SESSION['message_error_2b']);
+                                        }
+                                    ?>
+                                    </div>
                                 </div>
                         
                                 <!-- bouton Ajouter une nouvelle ligne -->
@@ -490,16 +505,32 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         id="description_etude" rows="3"></textarea>
                                 </div>
 
+                                <!--CHEF DE PROJET-->
+                                <div class="form-group">
+                                    <label for="select_chef_projet">Chef de projet</label>
+                                    <select class="form-control" name="id_utilisateur" id="select_chef_projet">
+                                        <option value="" selected>...</option>
+                                        <?php
+                                        while($row = mysqli_fetch_array($result_chef_de_projet_creation))
+                                            {
+                                                echo '
+                                                <option value="'.$row["id_utilisateur"].'">'.$row["nom"].' '.$row["prenom"].'</option>
+                                                ';
+                                            }
+                                        ?>
+                                    </select>
+                                </div>                                
+                                
                                 <!--GROUPE UTILISATEUR-->
                                 <div class="form-group">
-                                    <label for="SelectGrpUserPop">Groupe d'utilisateur</label>
-                                    <select class="form-control" name="nom_grp_utilisateur" id="SelectGrpUser">
+                                    <label for="SelectGrpUser">Groupe d'utilisateur</label>
+                                    <select class="form-control" name="id_grp_utilisateur" id="SelectGrpUser">
                                         <option value="" selected>...</option>
                                         <?php
                                         while($row = mysqli_fetch_array($result_grp_user_creation))
                                             {
                                                 echo '
-                                                <option value="'.$row["nom_grp_utilisateur"].'">'.$row["nom_grp_utilisateur"].'</option>
+                                                <option value="'.$row["id_grp_utilisateur"].'">'.$row["nom_grp_utilisateur"].'</option>
                                                 ';
                                             }
                                         ?>
@@ -575,7 +606,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         while($row = mysqli_fetch_array($result_user))
                                             {
                                                 echo '
-                                                <option value="'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'">'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'</option>
+                                                <option value="'.$row["id_utilisateur"].'">'.$row["nom"].' '.$row["prenom"].'</option>
                                                 ';
                                             }
                                         ?>
@@ -637,7 +668,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         <option>Utilisateur</option>
                                     </select>
                                 </div>
-                                <div>
+                                <div class="modal-footer perso_middle_modal_footer">
                                     <input type="submit" name="valider" value="Ajouter"
                                         class="btn perso_btn_primary shadow-none"></input>
                                 </div>
@@ -731,6 +762,22 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                     <textarea class="form-control perso_text_area" name="description_etude_modif"
                                         id="description_etude_modif" rows="3" required></textarea>
                                 </div>
+
+                                <!--CHEF DE PROJET-->
+                                <div class="form-group">
+                                    <label for="chef_de_projet_modif">Chef de projet</label>
+                                    <select class="form-control" name="id_utilisateur" id="chef_de_projet_modif">
+                                        <option value="" selected>...</option>
+                                        <?php
+                                        while($row = mysqli_fetch_array($result_chef_de_projet_modification))
+                                            {
+                                                echo '
+                                                <option value="'.$row["id_utilisateur"].'">'.$row["nom"].' '.$row["prenom"].'</option>
+                                                ';
+                                            }
+                                        ?>
+                                    </select>
+                                </div>           
 
                                 <!--GROUPE UTILISATEUR-->
                                 <div class="form-group">

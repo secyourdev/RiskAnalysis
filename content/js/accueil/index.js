@@ -263,7 +263,7 @@ ajouter_user.addEventListener('click', (event) => {
       url: 'content/php/accueil/ajout_user.php',
       type: 'POST',
       data: {
-            id_utilisateur: SelectUser.options[SelectUser.selectedIndex].value.substring(0,SelectUser.options[SelectUser.selectedIndex].value.indexOf("-",0)),
+            id_utilisateur: SelectUser.value,
             nom_grp_utilisateur: nomgrpuser.value
       },
       success: function (data) {

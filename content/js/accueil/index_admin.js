@@ -288,7 +288,7 @@ ajouter_user.addEventListener('click', (event) => {
       url: 'content/php/accueil/ajout_user.php',
       type: 'POST',
       data: {
-            id_utilisateur: SelectUser.options[SelectUser.selectedIndex].value.substring(0,SelectUser.options[SelectUser.selectedIndex].value.indexOf("-",0)),
+            id_utilisateur: SelectUser.value,
             nom_grp_utilisateur: nomgrpuser.value
       },
       success: function (data) {
@@ -345,6 +345,7 @@ function modification_projet(){
     var id_etude_modif = document.getElementById('id_etude_modif')
     var nom_etude_modif = document.getElementById('nom_etude_modif')
     var description_etude_modif = document.getElementById('description_etude_modif')
+    var chef_de_projet_modif = document.getElementById('chef_de_projet_modif')
     var id_grp_utilisateur_modif = document.getElementById('id_grp_utilisateur_modif')
     for(let i=0;i<lenght_modif_icon;i++){
         modif_icon[i].addEventListener('click',function(){
@@ -357,10 +358,12 @@ function modification_projet(){
                 dataType: 'html',
                 success: function (resultat) {
                     var projet_JSON = JSON.parse(resultat);
+                    console.log(projet_JSON)
                     id_etude_modif.value = projet_JSON[0][0]
                     nom_etude_modif.value = projet_JSON[0][1]
                     description_etude_modif.value = projet_JSON[0][2]
-                    id_grp_utilisateur_modif.value = projet_JSON[0][3]
+                    chef_de_projet_modif.value = projet_JSON[0][3]
+                    id_grp_utilisateur_modif.value = projet_JSON[0][4]
                 }
               })
         })    
