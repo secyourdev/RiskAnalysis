@@ -4,7 +4,7 @@ include("content/php/bdd/connexion.php");
 
 $results["error"] = false;
 $results["message"] = [];
-$recupere = $bdd->prepare("SELECT echelle_gravite FROM F_projet NATURAL JOIN D_echelle WHERE id_projet = ?");
+$recupere = $bdd->prepare("SELECT echelle_gravite FROM F_projet NATURAL JOIN DA_echelle WHERE id_projet = ?");
 $id_projet = $_SESSION['id_projet'];
 
 

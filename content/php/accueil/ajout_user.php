@@ -17,4 +17,6 @@ include("../bdd/connexion.php");
     $insereuser->bindParam(2, $id_utilisateur);
     $insereuser->execute();
 
+    $_SESSION['message_success_2b'] = "L'utilisateur a bien été ajouté !";
+
 ?>

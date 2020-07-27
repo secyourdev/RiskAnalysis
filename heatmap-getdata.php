@@ -12,7 +12,7 @@ $connect = mysqli_connect("mysql-ebios-rm.alwaysdata.net", "ebios-rm", 'hLLFL\bs
 // AND T_chemin_d_attaque_strategique.id_scenario_strategique = S_scenario_strategique.id_scenario_strategique 
 // AND S_scenario_strategique.id_evenement_redoute = M_evenement_redoute.id_evenement_redoute";
 
-$query_dimension = "SELECT D_echelle.echelle_vraisemblance, D_echelle.echelle_gravite FROM D_echelle, F_projet WHERE id_projet = $getid_projet AND F_projet.id_echelle = D_echelle.id_echelle"; 
+$query_dimension = "SELECT DA_echelle.echelle_vraisemblance, DA_echelle.echelle_gravite FROM DA_echelle, F_projet WHERE id_projet = $getid_projet AND F_projet.id_echelle = DA_echelle.id_echelle"; 
 
 $query = "SELECT U_scenario_operationnel.vraisemblance, M_evenement_redoute.niveau_de_gravite, T_chemin_d_attaque_strategique.id_risque
 FROM U_scenario_operationnel INNER JOIN T_chemin_d_attaque_strategique ON U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique INNER JOIN S_scenario_strategique ON T_chemin_d_attaque_strategique.id_scenario_strategique = S_scenario_strategique.id_scenario_strategique  INNER JOIN M_evenement_redoute ON S_scenario_strategique.id_evenement_redoute = M_evenement_redoute.id_evenement_redoute

@@ -4,10 +4,10 @@ include("content/php/bdd/connexion_sqli.php");
 $query = "SELECT * FROM M_evenement_redoute INNER JOIN J_valeur_metier on M_evenement_redoute.id_valeur_metier = J_valeur_metier.id_valeur_metier WHERE M_evenement_redoute.id_projet = $getid_projet";
 $queryvm = "SELECT id_valeur_metier, nom_valeur_metier FROM J_valeur_metier WHERE id_projet = $getid_projet";
 $queryniveaugravite = "SELECT valeur_max_gravite FROM F_projet WHERE id_projet = $getid_projet";
-$query1 = "SELECT * FROM D_echelle";
-$query2 = "SELECT * FROM E_niveau NATURAL JOIN D_echelle";
-$queryechelle = "SELECT id_echelle,nom_echelle FROM D_echelle";
-// $queryprojet = "SELECT nom_echelle FROM F_projet NATURAL JOIN D_echelle WHERE id_projet = $getid_projet";
+$query1 = "SELECT * FROM DA_echelle";
+$query2 = "SELECT * FROM DA_niveau NATURAL JOIN DA_echelle";
+$queryechelle = "SELECT id_echelle,nom_echelle FROM DA_echelle";
+// $queryprojet = "SELECT nom_echelle FROM F_projet NATURAL JOIN DA_echelle WHERE id_projet = $getid_projet";
 
 if(isset($_POST['nomechelle'])){
     $nom_echelle = $_POST['nomechelle'];
