@@ -1,7 +1,7 @@
 <?php
 session_start();
 $get_id_projet = $_SESSION['id_projet'];
-// header('Location: ../../../atelier-3b&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet']);
+header('Location: ../../../atelier-3b&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet']);
 
 include("../bdd/connexion.php");
 
