@@ -4,12 +4,12 @@ var sidebarToggle = document.getElementById("sidebarToggle");
 
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
-sidebarToggleTop.addEventListener('click', show_sub_content,false);
-sidebarToggle.addEventListener('click',show_sub_content,false);
+sidebarToggleTop.addEventListener('click', show_sub_content, false);
+sidebarToggle.addEventListener('click', show_sub_content, false);
 window.addEventListener('resize', show_sub_content, false);
-function show_sub_content(){
+function show_sub_content() {
     var Atelier1 = document.getElementById('Atelier1');
-    if(!accordionSidebar.classList.contains('toggled')&&(window.matchMedia("(min-width: 768px)").matches)){
+    if (!accordionSidebar.classList.contains('toggled') && (window.matchMedia("(min-width: 768px)").matches)) {
         Atelier1.classList.add('show')
     }
 }
@@ -52,7 +52,7 @@ $(document).ready(function () {
                 [6, 'nom'],
                 // [7, 'date']
             ],
-            
+
             dateeditable: [[7, 'date']]
         },
         restoreButton: false,
@@ -82,8 +82,10 @@ $("#editable_table_socle > tbody > tr > td:nth-child(4)").each(function () {
 
 });
 
+
+
 /*--------------------------- Couleurs regle --------------------------*/
-$("#editable_table_socle > tbody > tr > td:nth-child(5)").each(function () {
+$("#editable_table_ecart > tbody > tr > td:nth-child(5)").on().each(function () {
 
     // if ($(this)[0].innerText == "Non traité") { $(this)[0].classList.add('fond-vert'); }
     if ($(this)[0].innerText == "Conforme") { $(this)[0].classList.add('fond-vert'); }
@@ -92,3 +94,4 @@ $("#editable_table_socle > tbody > tr > td:nth-child(5)").each(function () {
     // if ($(this)[0].innerText == "Non applicable") { $(this)[0].classList.add('fond-rouge'); }
 
 });
+
