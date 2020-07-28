@@ -829,6 +829,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                 </div> -->
 
                       <div class="form-group col-6">
+                      <label class="titre_input" for="nommesure">Nom de la mesure de sécurité</label>
                         <input type="text" class="perso_form shadow-none form-control form-control-user" name="nommesure" id="nommesure" placeholder="Nom de la mesure de sécurité" required>
                       </div>
 

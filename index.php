@@ -514,13 +514,13 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                 <div class="form-group">
                                     <label class="titre_textarea" for="description_etude">Description</label>
                                     <textarea class="form-control perso_text_area" name="description_etude"
-                                        id="description_etude" rows="3"></textarea>
+                                        id="description_etude" rows="3" required></textarea>
                                 </div>
 
                                 <!--CHEF DE PROJET-->
                                 <div class="form-group">
                                     <label for="select_chef_projet">Chef de projet</label>
-                                    <select class="form-control" name="id_utilisateur" id="select_chef_projet">
+                                    <select class="form-control" name="id_utilisateur" id="select_chef_projet" required>
                                         <option value="" selected>...</option>
                                         <?php
                                         while($row = mysqli_fetch_array($result_chef_de_projet_creation))
@@ -536,7 +536,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                 <!--GROUPE UTILISATEUR-->
                                 <div class="form-group">
                                     <label for="SelectGrpUser">Groupe d'utilisateur</label>
-                                    <select class="form-control" name="id_grp_utilisateur" id="SelectGrpUser">
+                                    <select class="form-control" name="id_grp_utilisateur" id="SelectGrpUser" required> 
                                         <option value="" selected>...</option>
                                         <?php
                                         while($row = mysqli_fetch_array($result_grp_user_creation))
