@@ -394,61 +394,49 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <!-- Right Sidebar -->
           <ul id=menu>
             <li>
-                <a class="nav-link collapse-right-item menu_float" href="#parties_prenantes">
-                    <i>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
-                            <g transform="translate(-1230 -689)">
-                                <path class="number_activity active"
-                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
-                                    transform="translate(1230 689)" fill="#ffffffcc" />
-                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
-                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
-                                    font-weight="700">
-                                    <tspan x="-3.432" y="0">1</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                    </i>
-                    <span class="nom_sous_menu">Parties prenantes</span>
-                </a>
+              <a class="nav-link collapse-right-item menu_float" href="#parties_prenantes">
+                <i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                    <g transform="translate(-1230 -689)">
+                      <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                      <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                        <tspan x="-3.432" y="0">1</tspan>
+                      </text>
+                    </g>
+                  </svg>
+                </i>
+                <span class="nom_sous_menu">Parties prenantes</span>
+              </a>
             </li>
             <li>
-                <a class="nav-link collapse-right-item menu_float" href="#scenarios_strategiques">
-                    <i>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
-                            <g transform="translate(-1230 -689)">
-                                <path class="number_activity active"
-                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
-                                    transform="translate(1230 689)" fill="#ffffffcc" />
-                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
-                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
-                                    font-weight="700">
-                                    <tspan x="-3.432" y="0">2</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                    </i>
-                    <span class="nom_sous_menu">Scénarios stratégiques</span>
-                </a>
+              <a class="nav-link collapse-right-item menu_float" href="#scenarios_strategiques">
+                <i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                    <g transform="translate(-1230 -689)">
+                      <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                      <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                        <tspan x="-3.432" y="0">2</tspan>
+                      </text>
+                    </g>
+                  </svg>
+                </i>
+                <span class="nom_sous_menu">Scénarios stratégiques</span>
+              </a>
             </li>
             <li>
-                <a class="nav-link collapse-right-item menu_float" href="#mesure_de_securité">
-                    <i>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
-                            <g transform="translate(-1230 -689)">
-                                <path class="number_activity active"
-                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
-                                    transform="translate(1230 689)" fill="#ffffffcc" />
-                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
-                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
-                                    font-weight="700">
-                                    <tspan x="-3.432" y="0">3</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                    </i>
-                    <span class="nom_sous_menu">Mesure de sécurité</span>
-                </a>
+              <a class="nav-link collapse-right-item menu_float" href="#mesure_de_securité">
+                <i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                    <g transform="translate(-1230 -689)">
+                      <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                      <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                        <tspan x="-3.432" y="0">3</tspan>
+                      </text>
+                    </g>
+                  </svg>
+                </i>
+                <span class="nom_sous_menu">Mesure de sécurité</span>
+              </a>
             </li>
           </ul>
           <!-- End of Right Sidebar -->
@@ -525,36 +513,36 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     </div>
                   </div>
 
-            <!-- Area Card -->
-            <div id="parties_prenantes" class="col-xl-12 col-lg-12">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Liste des parties prenantes établis à l'atelier 3.a</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <!--text-->
-                  <div class="table-responsive">
-                    <input type="text" class="rechercher_input" id="rechercher_partie_prenante" placeholder="Rechercher">
-                    <table id="editable_table" class="table table-bordered table-striped">
-                      <thead>
-                        <tr>
-                          <th>ID</th>
-                          <th>Catégorie</th>
-                          <th>Partie prenante</th>
-                          <th>Type</th>
-                          <th>Dépendance</th>
-                          <th>Pénétration</th>
-                          <th>Maturité</th>
-                          <th>Confiance</th>
-                          <th>Niveau de menace</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php
-                        while ($row = mysqli_fetch_array($result_partie_prenante)) {
-                          echo '
+                  <!-- Area Card -->
+                  <div id="parties_prenantes" class="col-xl-12 col-lg-12">
+                    <div class="card shadow mb-4">
+                      <!-- Card Header - Dropdown -->
+                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0">Liste des parties prenantes établis à l'atelier 3.a</h6>
+                      </div>
+                      <!-- Card Body -->
+                      <div class="card-body">
+                        <!--text-->
+                        <div class="table-responsive">
+                          <input type="text" class="rechercher_input" id="rechercher_partie_prenante" placeholder="Rechercher">
+                          <table id="editable_table" class="table table-bordered table-striped">
+                            <thead>
+                              <tr>
+                                <th>ID</th>
+                                <th>Catégorie</th>
+                                <th>Partie prenante</th>
+                                <th>Type</th>
+                                <th>Dépendance</th>
+                                <th>Pénétration</th>
+                                <th>Maturité</th>
+                                <th>Confiance</th>
+                                <th>Niveau de menace</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <?php
+                              while ($row = mysqli_fetch_array($result_partie_prenante)) {
+                                echo '
                         <tr>
                         <td>' . $row["id_partie_prenante"] . '</td>
                         <td>' . $row["categorie_partie_prenante"] . '</td>
@@ -567,40 +555,40 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
                         </tr>
                         ';
-                        }
-                        ?>
-                      </tbody>
-                    </table>
+                              }
+                              ?>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>          
-              </div>      
-            </div>      
 
-            <!-- Area Card -->
-            <div id="scenarios_strategiques" class="col-xl-12 col-lg-12">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0">Liste des scénarios stratégiques établis à l'atelier 3.b</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <!--text-->                
-                  <div class="table-responsive">
-                    <input type="text" class="rechercher_input" id="rechercher_scenario_strategique" placeholder="Rechercher">
-                    <table id="editable_table_scenario_strategique" class="table table-bordered table-striped">
-                      <thead>
-                        <tr>
-                          <th>ID</th>
-                          <th>Scénario stratégique</th>
-                          <th>Source de risque : Objectif visé</th>
-                          <th>Evénement redouté</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php
-                        while ($row = mysqli_fetch_array($result_scenario_strategique)) {
-                          echo '
+                  <!-- Area Card -->
+                  <div id="scenarios_strategiques" class="col-xl-12 col-lg-12">
+                    <div class="card shadow mb-4">
+                      <!-- Card Header - Dropdown -->
+                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0">Liste des scénarios stratégiques établis à l'atelier 3.b</h6>
+                      </div>
+                      <!-- Card Body -->
+                      <div class="card-body">
+                        <!--text-->
+                        <div class="table-responsive">
+                          <input type="text" class="rechercher_input" id="rechercher_scenario_strategique" placeholder="Rechercher">
+                          <table id="editable_table_scenario_strategique" class="table table-bordered table-striped">
+                            <thead>
+                              <tr>
+                                <th>ID</th>
+                                <th>Scénario stratégique</th>
+                                <th>Source de risque : Objectif visé</th>
+                                <th>Evénement redouté</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <?php
+                              while ($row = mysqli_fetch_array($result_scenario_strategique)) {
+                                echo '
                         <tr>
                         <td>' . $row["id_scenario_strategique"] . '</td>
                         <td>' . $row["nom_scenario_strategique"] . '</td>
@@ -608,21 +596,21 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <td>' . $row["nom_evenement_redoute"] . '</td>
                         </tr>
                         ';
-                        }
-                        ?>
-                      </tbody>
-                    </table>
+                              }
+                              ?>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
 
-            <!-- Area Card -->
-            <div id="mesure_de_securité" class="col-xl-12 col-lg-12">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Mesure de sécurité</h6>
+                  <!-- Area Card -->
+                  <div id="mesure_de_securité" class="col-xl-12 col-lg-12">
+                    <div class="card shadow mb-4">
+                      <!-- Card Header - Dropdown -->
+                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0">Mesure de sécurité</h6>
 
                       </div>
                       <!-- Card Body -->
@@ -638,6 +626,58 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <th>Chemin d'attaque stratégique</th>
                                 <th>Nom mesure de sécurité</th>
                                 <th>Description mesure de sécurité</th>
+                                <!-- <th>Menace initiale</th>
+                                <th>Dépendance résiduelle</th>
+                                <th>Pénétration résiduelle</th>
+                                <th>Maturité résiduelle</th>
+                                <th>Confiance résiduelle</th>
+                                <th>Menace résiduelle</th> -->
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <?php
+                              while ($row = mysqli_fetch_array($result_mesure)) {
+                                echo '
+                        <tr>
+                        <td>' . $row["id_mesure"] . '</td>
+                        <td>' . $row["nom_partie_prenante"] . '</td>
+                        <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
+                        <td>' . $row["nom_mesure"] . '</td>
+                        <td>' . $row["description_mesure"] . '</td>
+                        </tr>
+                        ';
+                              }
+                              ?>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- bouton Ajouter une nouvelle ligne -->
+                        <div class="text-center">
+                          <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_mesure_sécurité">Ajouter une mesure de sécurité</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <!-- Area Card -->
+                  <div id="mesure_de_securité" class="col-xl-12 col-lg-12">
+                    <div class="card shadow mb-4">
+                      <!-- Card Header - Dropdown -->
+                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0">Mesure de sécurité</h6>
+
+                      </div>
+                      <!-- Card Body -->
+                      <div class="card-body">
+                        <!--text-->
+                        <div class="table-responsive">
+                          <input type="text" class="rechercher_input" id="rechercher_mesure" placeholder="Rechercher">
+                          <table id="editable_table_mesure" class="table table-bordered table-striped">
+                            <thead>
+                              <tr>
+                                <th>ID</th>
+                                <th>Partie prenante</th>
                                 <th>Menace initiale</th>
                                 <th>Dépendance résiduelle</th>
                                 <th>Pénétration résiduelle</th>
@@ -653,9 +693,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <tr>
                         <td>' . $row["id_mesure"] . '</td>
                         <td>' . $row["nom_partie_prenante"] . '</td>
-                        <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
-                        <td>' . $row["nom_mesure"] . '</td>
-                        <td>' . $row["description_mesure"] . '</td>
                         <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
                         <td>' . $row["dependance_residuelle"] . '</td>
                         <td>' . $row["penetration_residuelle"] . '</td>
@@ -719,40 +756,40 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         </div>
         <!-- End of Page Wrapper -->
 
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+          <i class="fas fa-angle-up"></i>
+        </a>
 
-  <!-- Open the right menu-->
-  <a class="open_menu rounded">
-        <i class="fas fa-bars"></i>
-  </a>
+        <!-- Open the right menu-->
+        <a class="open_menu rounded">
+          <i class="fas fa-bars"></i>
+        </a>
 
-  <!----------------------------------------------------------------------------------------------------------------- 
+        <!----------------------------------------------------------------------------------------------------------------- 
   ----------------------------------------- modal ajout de ligne ----------------------------------------------------
   ------------------------------------------------------------------------------------------------------------------>
-  <div class="modal fade" id="ajout_ligne_mesure_sécurité" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ajout d'une mesure de sécurité</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body perso_modal_body">
-          <form method="post" action="content/php/atelier3c/ajout.php"class="user" id="formpp">
-            <fieldset>
-              <div class="row">
-                <div class="form-group col-6">
-                  <label for="partieprenante">Partie prenante</label>
-                  <select class="form-control" id="partieprenante", name="partieprenante">
-                    <option value="" selected>...</option>
-                    <?php
-                    while ($row = mysqli_fetch_array($result_partie_prenante2)) //selection.php
-                    {
-                      echo '
+        <div class="modal fade" id="ajout_ligne_mesure_sécurité" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ajout d'une mesure de sécurité</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body perso_modal_body">
+                <form method="post" action="content/php/atelier3c/ajout.php" class="user" id="formpp">
+                  <fieldset>
+                    <div class="row">
+                      <div class="form-group col-6">
+                        <label for="partieprenante">Partie prenante</label>
+                        <select class="form-control" id="partieprenante" , name="partieprenante">
+                          <option value="" selected>...</option>
+                          <?php
+                          while ($row = mysqli_fetch_array($result_partie_prenante2)) //selection.php
+                          {
+                            echo '
                           <option id="nom_partie_prenante" value="' . $row["id_partie_prenante"] . '">' . $row["nom_partie_prenante"] . '</option>
                           ';
                           }
@@ -922,37 +959,37 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             </div>
           </div>
         </div>
-    </div>
+        </div>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="content/vendor/jquery-easing/jquery.easing.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="content/vendor/jquery-easing/jquery.easing.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="content/js/bootstrap.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="content/js/bootstrap.js"></script>
 
-  <!-- Our JS -->
-  <script src="content/js/modules/dark_mode.js"></script>
-  <script src="content/js/modules/top_bar.js"></script>
-  <script src="content/js/modules/side_bar.js"></script>
-  <script src="content/js/modules/float_menu.js"></script>
-  <script src="content/js/modules/fixed_page.js"></script>
-  <script src="content/js/modules/realtime.js"></script>
-  <script src="content/js/modules/set_filter_sort_table.js"></script>
-  <script src="content/js/atelier/atelier3c.js"></script>
-  <script src="content/js/modules/sort_table.js"></script>
-  <script src="content/js/modules/browse.js"></script>
-  <script src="content/js/modules/parser.js"></script>
-  <script src="content/js/modules/3c_carto.js"></script>
-</body>
-<?php
+        <!-- Our JS -->
+        <script src="content/js/modules/dark_mode.js"></script>
+        <script src="content/js/modules/top_bar.js"></script>
+        <script src="content/js/modules/side_bar.js"></script>
+        <script src="content/js/modules/float_menu.js"></script>
+        <script src="content/js/modules/fixed_page.js"></script>
+        <script src="content/js/modules/realtime.js"></script>
+        <script src="content/js/modules/set_filter_sort_table.js"></script>
+        <script src="content/js/atelier/atelier3c.js"></script>
+        <script src="content/js/modules/sort_table.js"></script>
+        <script src="content/js/modules/browse.js"></script>
+        <script src="content/js/modules/parser.js"></script>
+        <script src="content/js/modules/3c_carto.js"></script>
+      </body>
+  <?php
+    }
+  } else {
+    header('Location: connexion');
   }
-} else {
-header('Location: connexion');
-}
-?>
+  ?>
 
   </html>
 <?php
