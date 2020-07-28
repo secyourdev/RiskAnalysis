@@ -135,3 +135,13 @@ description_er.addEventListener('keyup',function(event){
 impact.addEventListener('keyup',function(event){
     verify_textarea(impact.value,regex_description,impact)
 })
+/*--------------------------- Couleurs Gravité --------------------------*/
+$("#tableau_er > tbody > tr > td:nth-child(10)").each(function () {
+
+    if ($(this)[0].innerText == "1") { $(this)[0].classList.add('fond-vert'); }
+    if ($(this)[0].innerText == "2") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "3") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "4") { $(this)[0].classList.add('fond-rouge'); }
+    if ($(this)[0].innerText == "5") { $(this)[0].classList.add('fond-rouge'); }
+
+});

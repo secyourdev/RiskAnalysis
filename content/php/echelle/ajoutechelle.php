@@ -1,5 +1,6 @@
 <?php
 session_start();
+$id_projet = $_SESSION['id_projet'];
 
 include("../bdd/connexion.php");
 
@@ -9,8 +10,8 @@ $nom_echelle=$_POST['nom_echelle'];
 $echelle_gravite=$_POST['echelle_gravite'];
 $id_echelle="id_echelle";
 
-$insere = $bdd->prepare('INSERT INTO `DA_echelle`(`id_echelle`, `nom_echelle`, `echelle_gravite`, `echelle_vraisemblance`) VALUES (?,?,?,0)');
-$recupere = $bdd->prepare('SELECT id_echelle FROM DA_echelle WHERE nom_echelle = ?');
+$insere = $bdd->prepare('INSERT INTO `DA_echelle`(`id_echelle`, `nom_echelle`, `echelle_gravite`, `echelle_vraisemblance`, `id_projet`) VALUES (?,?,?,0,?)');
+$recupere = $bdd->prepare('SELECT id_echelle FROM DA_echelle WHERE nom_echelle = ? AND id_projet=?');
 
 $insere_niveau_1 = $bdd->prepare('INSERT INTO `DA_niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`) VALUES (NULL, NULL, 1,?)');
 $insere_niveau_2 = $bdd->prepare('INSERT INTO `DA_niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`) VALUES (NULL, NULL, 2,?)');
@@ -28,8 +29,10 @@ $insere_niveau_5 = $bdd->prepare('INSERT INTO `DA_niveau`(`id_niveau`, `descript
     $insere->bindParam(1, $id_echelle);
     $insere->bindParam(2, $nom_echelle);
     $insere->bindParam(3, $echelle_gravite);
+    $insere->bindParam(4, $id_projet);
     $insere->execute();
     $recupere->bindParam(1, $nom_echelle);
+    $recupere->bindParam(2, $id_projet);
     $recupere->execute();
     $id_echelle = $recupere->fetch();
     $insere_niveau_1->bindParam(1, $id_echelle[0]);

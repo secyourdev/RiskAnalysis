@@ -77,3 +77,15 @@ sleep(100).then(() => {
         button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table'+','+'9'+')')
     }
 });
+
+
+
+
+/*--------------------------- Couleurs pacs > statut --------------------------*/
+$("#pacs > tbody > tr > td:nth-child(9)").each(function () {
+
+    if ($(this)[0].innerText == "Terminé") { $(this)[0].classList.add('fond-vert'); }
+    if ($(this)[0].innerText == "En cours") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "A lancer") { $(this)[0].classList.add('fond-rouge'); }
+
+});

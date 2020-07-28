@@ -1,5 +1,7 @@
 <?php
 include("../bdd/connexion_sqli.php");
+session_start();
+$getid_projet = $_SESSION['id_projet'];
 
 $input = filter_input_array(INPUT_POST);
 
@@ -49,7 +51,9 @@ if ($input["action"] === 'edit') {
             justification_ecart = '$justification_ecart',
             dates = '$dates',
             responsable = '$responsable'
-            WHERE id_regle = $id_regle";
+            WHERE id_regle = $id_regle
+            AND id_atelier = '1.d'
+            AND id_projet = $getid_projet";
         print $query_regle;
 
         mysqli_query($connect, $query_regle);
@@ -58,7 +62,9 @@ if ($input["action"] === 'edit') {
 if ($input["action"] === 'delete') {
     $query =
         "DELETE FROM O_regle 
-        WHERE id_regle = $id_regle";
+        WHERE id_regle = $id_regle
+        AND id_atelier = '1.d'
+        AND id_projet = $getid_projet";
     mysqli_query($connect, $query);
 }
 

@@ -1,3 +1,4 @@
+/*------------------------------- VARIABLES ----------------------------------*/
 var accordionSidebar = document.getElementById("accordionSidebar");
 var sidebarToggle = document.getElementById("sidebarToggle");
 
@@ -27,33 +28,8 @@ var save_button = document.getElementsByClassName('tabledit-save-button')
 var j = 0;
 var k = 0;
 var l = 0;
-/*-----*/
-// var length_JSON;
-// var json_modification_vm='';
-// var resultat_final
-// $.ajax({
-//     url: 'content/php/atelier1b/selectionvm.php',
-//     type: 'POST',
-//     async:  false,
-//     data:  "resultat_final=",
-//     success: function (resultat) {
-//         var vm_JSON = JSON.parse(resultat);
-//         length_JSON=vm_JSON.length;
-//         console.log(vm_JSON)
-//         for(let i=0;i<length_JSON;i++){
-//             json_modification_vm = json_modification_vm +'"'+vm_JSON[i][0]+'":"'+vm_JSON[i][1]+'",'
-//         }
-//         var lenght_json_modification_vm= json_modification_vm.length;
-//         json_modification_vm= json_modification_vm.substring(0, lenght_json_modification_vm-1)
-//         json_modification_vm = "'{"+json_modification_vm+"}'"
-//         resultat_final=json_modification_vm
-//     },
-//     error: function (erreur) {
-//         alert('ERROR :' + erreur);
-//     }
-// });
-// console.log(resultat_final);
-/*------------------------------- SIDEBAR ----------------------------------*/
+
+/*-------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
 sidebarToggleTop.addEventListener('click', show_sub_content,false);
 sidebarToggle.addEventListener('click',show_sub_content,false);

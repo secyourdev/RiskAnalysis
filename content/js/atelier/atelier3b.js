@@ -173,3 +173,27 @@ id_risque.addEventListener('keyup',function(event){
 cheminattaque.addEventListener('keyup',function(event){
     verify_textarea(cheminattaque.value,regex_description,cheminattaque)
 })
+
+
+
+/*--------------------------- Couleurs 1.c > gravité --------------------------*/
+$("#editable_table > tbody > tr > td:nth-child(10)").each(function () {
+
+    if ($(this)[0].innerText == "1") { $(this)[0].classList.add('fond-vert'); }
+    if ($(this)[0].innerText == "2") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "3") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "4") { $(this)[0].classList.add('fond-rouge'); }
+    if ($(this)[0].innerText == "5") { $(this)[0].classList.add('fond-rouge'); }
+
+});
+
+/*--------------------------- Couleurs scénario > gravité --------------------------*/
+$("#editable_table_scenario_strategique > tbody > tr > td:nth-child(5)").each(function () {
+
+    if ($(this)[0].innerText == "1") { $(this)[0].classList.add('fond-vert'); }
+    if ($(this)[0].innerText == "2") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "3") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "4") { $(this)[0].classList.add('fond-rouge'); }
+    if ($(this)[0].innerText == "5") { $(this)[0].classList.add('fond-rouge'); }
+
+});
