@@ -775,7 +775,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <!--text-->
                         <div class="table-responsive">
                         <input type="text" class="rechercher_input" id="rechercher_pacs" placeholder="Rechercher">
-                          <table id="pacs" class="table table-bordered table-striped">
+                          <table id="editable_table" class="table table-bordered table-striped">
                             <thead>
                               <tr>
                                 <th id="id_traitement_de_securite">ID traitement de sécurité</th>
