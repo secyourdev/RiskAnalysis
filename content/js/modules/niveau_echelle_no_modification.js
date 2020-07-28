@@ -1,7 +1,7 @@
-
 const selectechelle = document.getElementById('nomechelle');
 
 selectechelle.selectedIndex = sessionStorage.getItem('selectechelle')
+
 selectEchelle(selectechelle.value);
 
 selectechelle.addEventListener('change', (event) => {
