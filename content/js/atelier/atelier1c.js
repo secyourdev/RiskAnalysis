@@ -2,8 +2,20 @@
 var accordionSidebar = document.getElementById("accordionSidebar");
 var sidebarToggle = document.getElementById("sidebarToggle");
 
+var nomechelle = document.getElementById("nom_echelle");
+var label_echelle = document.getElementById("nom_echelle").previousSibling.previousSibling
+
+var nom_er = document.getElementById("nom_evenement_redoute");
+var description_er = document.getElementById("description_evenement_redoute")
+var impact = document.getElementById("impact");
+var label_er = document.getElementById("nom_evenement_redoute").previousSibling.previousSibling
+
 var button = document.getElementsByClassName('tabledit-edit-button')
 var save_button = document.getElementsByClassName('tabledit-save-button')
+
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.]{1,1000}$/
+
 var j=0;
 var k=0;
 var l=0;
@@ -99,4 +111,37 @@ $.ajax({
     error: function (erreur) {
         alert('ERROR :' + erreur);
     }
+});
+
+/*------------------------------ LABELS CACHES ------------------------------*/
+label_er.style.display="none"
+label_echelle.style.display="none"
+
+/*----------------------- ENREGISTREMENT DES COOKIES ------------------------*/
+nomechelle.addEventListener('keyup',function(event){
+    verify_input(nomechelle.value,regex_nom,nomechelle)
+    activate_label(nomechelle.value,label_echelle)
+}) 
+
+nom_er.addEventListener('keyup',function(event){
+    verify_input(nom_er.value,regex_nom,nom_er)
+    activate_label(nom_er.value,label_er)
+}) 
+
+description_er.addEventListener('keyup',function(event){
+    verify_textarea(description_er.value,regex_description,description_er)
+})
+
+impact.addEventListener('keyup',function(event){
+    verify_textarea(impact.value,regex_description,impact)
+})
+/*--------------------------- Couleurs Gravité --------------------------*/
+$("#tableau_er > tbody > tr > td:nth-child(10)").each(function () {
+
+    if ($(this)[0].innerText == "1") { $(this)[0].classList.add('fond-vert'); }
+    if ($(this)[0].innerText == "2") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "3") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "4") { $(this)[0].classList.add('fond-rouge'); }
+    if ($(this)[0].innerText == "5") { $(this)[0].classList.add('fond-rouge'); }
+
 });

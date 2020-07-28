@@ -4,12 +4,12 @@ $getid_projet = $_SESSION['id_projet'];
 
 include("../bdd/connexion.php");
 
-$search_user = $bdd->prepare("SELECT id_echelle FROM F_projet NATURAL JOIN D_echelle WHERE id_projet = $getid_projet");
-$search_user->execute();
+$search_echelle = $bdd->prepare("SELECT id_echelle FROM F_projet NATURAL JOIN DA_echelle WHERE id_projet = $getid_projet");
+$search_echelle->execute();
 
 $array = array();
 
-while($ecriture = $search_user->fetch()){
+while($ecriture = $search_echelle->fetch()){
     array_push($array,$ecriture);
 }
 

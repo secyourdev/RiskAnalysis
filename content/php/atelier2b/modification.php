@@ -81,12 +81,12 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
             echo "Faible";
         }
         elseif (($ressources === "3" && $motivation === "1") || ($ressources === "2" && $motivation === "2") || ($ressources === "1" && $motivation === "3")) {
-            $pertinence = "Moyen";
-            echo "Moyen";
+            $pertinence = "Moyenne";
+            echo "Moyenne";
         }
         else {
-            $pertinence = "Elevé";
-            echo "Elevé";
+            $pertinence = "Élevée";
+            echo "Élevée";
         }
     }
     

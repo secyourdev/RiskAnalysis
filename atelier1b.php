@@ -14,11 +14,16 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $reqproject->execute(array($getidproject));
     $projectinfo = $reqproject->fetch();
 
-    $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.a"');
+    $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.b"');
     $reqdroit->bindParam(1, $getid);
     $reqdroit->bindParam(2, $getidproject);
     $reqdroit->execute();
     $userdroit = $reqdroit->fetch();
+
+    $reqdroit_chef_de_projet = $bdd->prepare('SELECT id_utilisateur FROM F_projet WHERE id_projet = ?');
+    $reqdroit_chef_de_projet->bindParam(1, $getidproject);
+    $reqdroit_chef_de_projet->execute();
+    $userdroit_chef_de_projet = $reqdroit_chef_de_projet->fetch();
 ?>
 
 <?php include("content/php/atelier1b/selection.php"); ?>
@@ -53,7 +58,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
 <?php 
 if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur'])
 {
-  if(isset($userdroit['ecriture'])){
+  if(isset($userdroit['ecriture'])||$userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
 ?>
 
 <body id="page-top">
@@ -541,11 +546,11 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <tr>
                           <th id="id_mission">ID_mission</th>
                           <th id="nom_mission">Nom de la mission</th>
-                          <th id="responsable">Responsable</th>
-                          <th id="responsable">Valeur métier</th>
-                          <th id="responsable">Responsable de la valeur métier</th>
-                          <th id="responsable">Bien Support</th>
-                          <th id="responsable">Responsable du bien support</th>
+                          <th id="responsable_mission">Responsable</th>
+                          <th id="valeur_metier">Valeur métier</th>
+                          <th id="responsable_valeur_metier">Responsable de la valeur métier</th>
+                          <th id="bien_support">Bien Support</th>
+                          <th id="responsable_bien_support">Responsable du bien support</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -585,10 +590,25 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                   ?>
                   </div>
 
-                  <!-- bouton Ajouter une nouvelle ligne -->
-                  <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_mission">Ajouter une mission</button>
-                  </div>
+                  <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                  ?> 
+                          <!-- bouton Ajouter une nouvelle ligne -->
+                          <div class="text-center">
+                            <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_mission">Ajouter une mission</button>
+                          </div>
+                  <?php
+                        }
+                        else if (isset($userdroit['ecriture'])){
+                            if($userdroit['ecriture']=='Réalisation'){
+                  ?>        
+                              <!-- bouton Ajouter une nouvelle ligne -->
+                              <div class="text-center">
+                                <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_mission">Ajouter une mission</button>
+                              </div>
+                  <?php
+                            }
+                        }                          
+                  ?>
                 </div>
               </div>
             </div>
@@ -647,11 +667,27 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       }
                   ?>
                   </div>
+                  
+                  <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                  ?> 
+                            <!-- bouton Ajouter une nouvelle ligne -->
+                            <div class="text-center">
+                              <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_valeur_metier">Ajouter une valeur métier</button>
+                            </div>
+                  <?php
+                        }
+                        else if (isset($userdroit['ecriture'])){
+                            if($userdroit['ecriture']=='Réalisation'){
+                  ?>        
+                            <!-- bouton Ajouter une nouvelle ligne -->
+                            <div class="text-center">
+                              <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_valeur_metier">Ajouter une valeur métier</button>
+                            </div>
+                  <?php
+                            }
+                        }                          
+                  ?>               
 
-                  <!-- bouton Ajouter une nouvelle ligne -->
-                  <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_valeur_metier">Ajouter une valeur métier</button>
-                  </div>
                 </div>
               </div>
             </div>
@@ -672,7 +708,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       <thead>
                         <tr>
                           <th id="id_biensupport">ID Bien support</th>
-                          <th id="biensupport">Bien support</th>
+                          <th id="bien_support">Bien support</th>
                           <th id="description">Description</th>
                         </tr>
                       </thead>
@@ -709,11 +745,25 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                   ?>
                   </div>
 
-                  <!-- bouton Ajouter une nouvelle ligne -->
-                  <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_bien_support">Ajouter un bien support</button>
-                  </div>
-
+                  <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                  ?> 
+                          <!-- bouton Ajouter une nouvelle ligne -->
+                          <div class="text-center">
+                            <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_bien_support">Ajouter un bien support</button>
+                          </div>
+                  <?php
+                        }
+                        else if (isset($userdroit['ecriture'])){
+                            if($userdroit['ecriture']=='Réalisation'){
+                  ?>    
+                              <!-- bouton Ajouter une nouvelle ligne -->
+                              <div class="text-center">
+                                <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_bien_support">Ajouter un bien support</button>
+                              </div>
+                  <?php
+                            }
+                        }                          
+                  ?>
                 </div>
               </div>
             </div>
@@ -747,6 +797,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <i class="fas fa-bars"></i>
     </a>
 
+<?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid||(isset($userdroit['ecriture'])&&$userdroit['ecriture']=='Réalisation')){ 
+?> 
 <!---------------------------------------------------------------------------------------------------------------- 
 --------------------------------------- modal ajout de bien support ----------------------------------------------
 ------------------------------------------------------------------------------------------------------------------>
@@ -762,14 +814,15 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
           <div class="modal-body perso_modal_body">
             <form method="post" action="content/php/atelier1b/ajoutbs.php" class="user" id="formBienSupportPop">
               <fieldset>
-
+                
                 <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="biensupport" id="InputBienSupportPop" placeholder="Dénomination du bien support" required>
+                  <label class="titre_input" for="biensupport">Dénomination du bien support</label>
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="biensupport" id="biensupport" placeholder="Dénomination du bien support" required>
                 </div>
 
                 <div class="form-group">
-                  <label for="DescriptionBienPop">Description</label>
-                  <textarea class="form-control perso_text_area" name="descriptionbs" id="DescriptionBienPop" rows="3"></textarea>
+                  <label for="descriptionbs">Description</label>
+                  <textarea class="form-control perso_text_area" name="descriptionbs" id="descriptionbs" rows="3"></textarea>
                 </div>
 
                 <!-- bouton Ajouter -->
@@ -799,14 +852,15 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
           <div class="modal-body perso_modal_body">
             <form method="post" action="content/php/atelier1b/ajoutvm.php" class="user" id="formValeurMetierPop">
               <fieldset>
-
+              
                 <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomvm" id="InputValeurMetierPop" placeholder="Dénomination de la valeur métier" required>
+                <label class="titre_input" for="nomvm">Dénomination de la valeur métier</label>
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="nomvm" id="nomvm" placeholder="Dénomination de la valeur métier" required>
                 </div>
 
                 <div class="form-group">
                   <label for="SelectNaturePop">Nature</label>
-                  <select class="form-control" name="nature" id="SelectNaturePop">
+                  <select class="form-control" name="nature" id="nature">
                     <option value="" selected>...</option>
                     <option value="Processus">Processus</option>
                     <option value="Information">Information</option>
@@ -815,7 +869,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
                 <div class="form-group">
                   <label for="DescriptionValeurPop">Description</label>
-                  <textarea class="form-control perso_text_area" name="descriptionvm" id="DescriptionValeurPop" rows="3"></textarea>
+                  <textarea class="form-control perso_text_area" name="descriptionvm" id="descriptionvm" rows="3"></textarea>
                 </div>
 
                 <!-- bouton Ajouter -->
@@ -847,12 +901,16 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             <form method="post" action="content/php/atelier1b/ajoutmission.php" class="user" id="formMission">
               <fieldset>
                 <!-- MISSION -->
+                
                 <div class="form-group">
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_mission" id="InputNomMission" placeholder="Mission" required>
+                  <label class="titre_input" for="nommission">Mission</label>
+                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_mission" id="nommission" placeholder="Mission" required>
                 </div>
                 
                 <!-- RESPONSABLE -->
+                
                 <div class="form-group">
+                  <label class="titre_input" for="responsable">Responsable</label>
                   <input type="text" class="perso_form shadow-none form-control form-control-user" name="responsable" id="responsable" placeholder="Responsable" required>
                 </div>
 
@@ -872,7 +930,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </div>
 
                 <!-- RESPONSABLE VALEUR METIER -->
+                
                 <div class="form-group">
+                  <label class="titre_input" for="responsable_vm">Responsable de la valeur métier</label>
                   <input type="text" class="perso_form shadow-none form-control form-control-user" name="responsable_vm" id="responsable_vm" placeholder="Responsable de la valeur métier">
                 </div>
 
@@ -892,7 +952,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </div>
 
                 <!-- RESPONSABLE BIEN SUPPORT -->
+                
                 <div class="form-group">
+                  <label class="titre_input" for="responsable_bs">Responsable du bien support</label>
                   <input type="text" class="perso_form shadow-none form-control form-control-user" name="responsable_bs" id="responsable_bs" placeholder="Responsable du bien support">
                 </div>
 
@@ -906,7 +968,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         </div>
       </div>
     </div>
-
+<?php
+}
+?>
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -949,7 +1013,24 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <script src="content/js/modules/fixed_page.js"></script>
     <script src="content/js/modules/realtime.js"></script>
     <script src="content/js/modules/set_filter_sort_table.js"></script>
-    <script src="content/js/atelier/atelier1b.js"></script>
+    <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
+    ?>
+        <script src="content/js/atelier/atelier1b.js"></script>
+    <?php
+        }
+        else if(isset($userdroit['ecriture'])){
+            if($userdroit['ecriture']=='Réalisation'){
+    ?>
+                <script src="content/js/atelier/atelier1b.js"></script>
+    <?php 
+            }
+            else{
+    ?>
+                <script src="content/js/atelier/atelier1b_no_modification.js"></script>
+    <?php
+            }
+        }        
+    ?>
     <script src="content/js/modules/sort_table.js"></script>
 
 </body>

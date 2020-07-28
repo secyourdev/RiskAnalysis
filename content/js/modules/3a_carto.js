@@ -72,7 +72,7 @@ $.post("content/php/atelier3a/chart.php", function (data) {
                 data: menace, //valeur de menace - pronfondeur en axe y
                 data_exposition: exposition, //taille du points
                 data_fiabilite: fiabilite, //couleur points
-                label: 'My First dataset',
+                label: 'Parties prenantes',
                 responsive: true,
                 backgroundColor: 'rgb(255, 99, 132)',
                 fill: false,
@@ -175,7 +175,7 @@ $.post("content/php/atelier3a/chart.php", function (data) {
                 data: menace, //valeur de menace - pronfondeur en axe y
                 data_exposition: exposition, //taille du points
                 data_fiabilite: fiabilite, //couleur points
-                label: 'My First dataset',
+                label: 'Parties prenantes',
                 responsive: true,
                 backgroundColor: 'rgb(255, 99, 132)',
                 fill: false,

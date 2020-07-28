@@ -663,20 +663,31 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </tbody>
                           </table>
                         </div>
+                        <?php
+                            while($row = mysqli_fetch_array($resultlegende))
+                            {
+                              echo 
+                              $row["id_risque"].' : '.$row["nom_chemin_d_attaque_strategique"]."<br/>"
+                              ;
+                            }
+                            ?>
                       </div>
                     </div>
                   </div>
                   <!-- Area Card -->
-                  <div id="mesure_de_securite" class="col-xl-12 col-lg-12">
-                    <div class="card shadow mb-4">
+                  <!-- <div id="mesure_de_securite" class="col-xl-12 col-lg-12">
+                    <div class="card shadow mb-4"> -->
+
                       <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                      <!-- <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0">Mesure de sécurité</h6>
-                      </div>
+                      </div> -->
+
                       <!-- Card Body -->
-                      <div class="card-body">
+                      <!-- <div class="card-body"> -->
+
                         <!--text-->
-                        <div class="table-responsive">
+                        <!-- <div class="table-responsive">
                         <input type="text" class="rechercher_input" id="rechercher_tableau" placeholder="Rechercher">
                           <table id="editable_table" class="table table-bordered table-striped">
                             <thead>
@@ -709,47 +720,48 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               
                             <tbody>
                             <?php
-                            while($row = mysqli_fetch_array($result))
-                            {
-                              $risque = $row["niveau_de_gravite"] * $row["vraisemblance"];
-                              echo '
-                              <tr>
-                              <td>'.$row["id_mesure"].'</td>
-                              <td>'.$row["nom_valeur_metier"].'</td>
-                              <td>'.$row["nom_evenement_redoute"].'</td>
-                              <td>'.$row["impact"].'</td>
-                              <td>'.$row["niveau_de_gravite"].'</td>
-                              <td>'.$row["description_source_de_risque"].'</td>
-                              <td>'.$row["objectif_vise"].'</td>
-                              <td>'.$row["pertinence"].'</td>
-                              <td>'.$row["id_risque"].'</td>
-                              <td>'.$row["nom_chemin_d_attaque_strategique"].'</td>
-                              <td>'.$row["nom_partie_prenante"].'</td>
-                              <td>'.$row["niveau_de_menace_partie_prenante"].'</td>
-                              <td>'.$row["dependance_residuelle"].'</td>
-                              <td>'.$row["penetration_residuelle"].'</td>
-                              <td>'.$row["maturite_residuelle"].'</td>
-                              <td>'.$row["confiance_residuelle"].'</td>
-                              <td>'.$row["niveau_de_menace_residuelle"].'</td>
-                              <td>'.$row["description_scenario_operationnel"].'</td>
-                              <td>'.$row["vraisemblance"].'</td>
-                              <td>'.$risque.'</td>
-                              <td>'.$row["nom_mesure"].'</td>
-                              <td>'.$row["description_mesure"].'</td>
-                              </tr>
-                              ';
-                            }
+                            // while($row = mysqli_fetch_array($result))
+                            // {
+                            //   $risque = $row["niveau_de_gravite"] * $row["vraisemblance"];
+                            //   echo '
+                            //   <tr>
+                            //   <td>'.$row["id_mesure"].'</td>
+                            //   <td>'.$row["nom_valeur_metier"].'</td>
+                            //   <td>'.$row["nom_evenement_redoute"].'</td>
+                            //   <td>'.$row["impact"].'</td>
+                            //   <td>'.$row["niveau_de_gravite"].'</td>
+                            //   <td>'.$row["description_source_de_risque"].'</td>
+                            //   <td>'.$row["objectif_vise"].'</td>
+                            //   <td>'.$row["pertinence"].'</td>
+                            //   <td>'.$row["id_risque"].'</td>
+                            //   <td>'.$row["nom_chemin_d_attaque_strategique"].'</td>
+                            //   <td>'.$row["nom_partie_prenante"].'</td>
+                            //   <td>'.$row["niveau_de_menace_partie_prenante"].'</td>
+                            //   <td>'.$row["dependance_residuelle"].'</td>
+                            //   <td>'.$row["penetration_residuelle"].'</td>
+                            //   <td>'.$row["maturite_residuelle"].'</td>
+                            //   <td>'.$row["confiance_residuelle"].'</td>
+                            //   <td>'.$row["niveau_de_menace_residuelle"].'</td>
+                            //   <td>'.$row["description_scenario_operationnel"].'</td>
+                            //   <td>'.$row["vraisemblance"].'</td>
+                            //   <td>'.$risque.'</td>
+                            //   <td>'.$row["nom_mesure"].'</td>
+                            //   <td>'.$row["description_mesure"].'</td>
+                            //   </tr>
+                            //   ';
+                            // }
                             ?>
                             </tbody>
                           </table>
-                        </div>    
+                        </div>  -->
+
                         <!-- bouton Ajouter une nouvelle ligne -->
-                        <div class="text-center">
+                        <!-- <div class="text-center">
                           <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_tableau">Ajouter une nouvelle ligne</button>
                         </div> 
                       </div>
                     </div>
-                  </div>
+                  </div> -->
 
                   <!-- Area Card -->
                   <div id="plan_amelioration_continue_de_la_securite" class="col-xl-12 col-lg-12">
@@ -763,7 +775,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <!--text-->
                         <div class="table-responsive">
                         <input type="text" class="rechercher_input" id="rechercher_pacs" placeholder="Rechercher">
-                          <table id="pacs" class="table table-bordered table-striped">
+                          <table id="editable_table" class="table table-bordered table-striped">
                             <thead>
                               <tr>
                                 <th id="id_traitement_de_securite">ID traitement de sécurité</th>
@@ -802,9 +814,9 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                           </table>
                         </div>    
                         <!-- bouton Ajouter une nouvelle ligne -->
-                        <!-- <div class="text-center">
-                          <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_pacs">Ajouter une nouvelle ligne</button>
-                        </div>  -->
+                         <div class="text-center">
+                          <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_tableau">Ajouter une nouvelle ligne</button>
+                        </div>
 
 
                       </div>
@@ -884,7 +896,7 @@ aria-hidden="true">
               </div>
               
             </div>
-            <div class="row">
+            <!-- <div class="row">
               <div class=" col-6">
                 <div class="choix-valeur">
                   <div>Dépendance</div>
@@ -969,7 +981,7 @@ aria-hidden="true">
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
             <!-- bouton Valider -->
             <div class="modal-footer perso_middle_modal_footer">
               <input type="submit" name="ajouterregle" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>

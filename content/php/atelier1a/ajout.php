@@ -14,6 +14,7 @@ include("../bdd/connexion.php");
   $atelier1d = '1.d';
   $atelier2a = '2.a';
   $atelier2b = '2.b';
+  $atelier2c = '2.c';
   $atelier3a = '3.a';
   $atelier3b = '3.b';
   $atelier3c = '3.c';
@@ -58,6 +59,12 @@ include("../bdd/connexion.php");
   $insertutilisateur->bindParam(1, $id_projet);
   $insertutilisateur->bindParam(2, $id_utilisateur);
   $insertutilisateur->bindParam(3, $atelier2b);
+  $insertutilisateur->bindParam(4, $droit);
+  $insertutilisateur->execute();      
+
+  $insertutilisateur->bindParam(1, $id_projet);
+  $insertutilisateur->bindParam(2, $id_utilisateur);
+  $insertutilisateur->bindParam(3, $atelier2c);
   $insertutilisateur->bindParam(4, $droit);
   $insertutilisateur->execute();      
 

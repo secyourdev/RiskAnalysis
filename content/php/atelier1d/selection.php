@@ -4,7 +4,7 @@ $getid_projet = $_SESSION['id_projet'];
 
 include("content/php/bdd/connexion_sqli.php");
 
-$query_socle = "SELECT * FROM N_socle_de_securite WHERE id_projet = $getid_projet ORDER BY id_socle_securite ";
+$query_socle = "SELECT * FROM N_socle_de_securite WHERE id_atelier = '1.d' AND id_projet = $getid_projet ORDER BY id_socle_securite";
 
 // $query_regle =
 // "SELECT * FROM regle ORDER BY id_regle ASC";

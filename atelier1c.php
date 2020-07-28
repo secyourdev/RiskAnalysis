@@ -14,22 +14,21 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $reqproject->execute(array($getidproject));
     $projectinfo = $reqproject->fetch();
 
-    $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.a"');
+    $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.c"');
     $reqdroit->bindParam(1, $getid);
     $reqdroit->bindParam(2, $getidproject);
     $reqdroit->execute();
     $userdroit = $reqdroit->fetch();
+
+    $reqdroit_chef_de_projet = $bdd->prepare('SELECT id_utilisateur FROM F_projet WHERE id_projet = ?');
+    $reqdroit_chef_de_projet->bindParam(1, $getidproject);
+    $reqdroit_chef_de_projet->execute();
+    $userdroit_chef_de_projet = $reqdroit_chef_de_projet->fetch();
 ?>
 
 <?php include("content/php/atelier1c/selection.php"); ?>
 <!DOCTYPE html>
 <html lang="fr">
-
-<?php 
-if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur'])
-{
-  if(isset($userdroit['ecriture'])){
-?>
 
 <head>
   <meta charset="utf-8">
@@ -55,6 +54,12 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
 	<link rel="icon" href="content/img/logo_cyber_risk_manager.png" type="image/png">
 </head>
+
+<?php 
+if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur'])
+{
+  if(isset($userdroit['ecriture'])||$userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
+?>
 
 <body id="page-top">
 
@@ -537,9 +542,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th id="id_echelle">ID echelle</th>
-                          <th id="nom_echelle">Nom de l'échelle</th>
-                          <th id="echelle_gravite">Echelle de la gravité</th>
+                          <th>ID echelle</th>
+                          <th>Nom de l'échelle</th>
+                          <th>Echelle de la gravité</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -575,11 +580,26 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       }
                   ?>
                   </div>
-
-                  <!-- bouton Ajouter une nouvelle ligne -->
-                  <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_mission">Ajouter une nouvelle échelle de gravité</button>
-                  </div>
+                  
+                  <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                  ?> 
+                          <!-- bouton Ajouter une nouvelle ligne -->
+                          <div class="text-center">
+                            <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_echelle">Ajouter une nouvelle échelle de gravité</button>
+                          </div>
+                  <?php
+                        }
+                        else if (isset($userdroit['ecriture'])){
+                            if($userdroit['ecriture']=='Réalisation'){
+                  ?>        
+                          <!-- bouton Ajouter une nouvelle ligne -->
+                          <div class="text-center">
+                            <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_echelle">Ajouter une nouvelle échelle de gravité</button>
+                          </div>
+                  <?php
+                            }
+                        }                          
+                  ?>
                 </div>
               </div>
             </div>
@@ -601,7 +621,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                           while($row = mysqli_fetch_array($resultechelle))
                           {
                             echo '
-                            <option value="'.$row["nom_echelle"].'">'.$row["nom_echelle"].'</option>
+                            <option value="'.$row["id_echelle"].'">'.$row["nom_echelle"].'</option>
                             ';
                           }
                       ?>
@@ -662,7 +682,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                           <th id="nom_valeur_metier">Valeur métier</th>
                           <th id="nom_evenement_redoutes">Nom de l'événement redouté</th>
                           <th id="description_evenement_redoutes">Description événement redouté</th>
-                          <th id="impact">Impacts</th>
+                          <th id="impacts">Impacts</th>
                           <th id="confidentialite">Confidentialité</th>
                           <th id="integrite">Integrité</th>
                           <th id="disponibilite">Disponibilité</th>
@@ -710,10 +730,25 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                   ?>
                   </div>
                   
-                  <!-- bouton Ajouter une nouvelle ligne -->
-                  <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_evenement_redoute">Ajouter un nouvel énénement redouté</button>
-                  </div>
+                  <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                  ?>
+                          <!-- bouton Ajouter une nouvelle ligne -->
+                          <div class="text-center">
+                            <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_evenement_redoute">Ajouter un nouvel énénement redouté</button>
+                          </div>
+                  <?php
+                        }
+                        else if (isset($userdroit['ecriture'])){
+                            if($userdroit['ecriture']=='Réalisation'){
+                  ?>    
+                              <!-- bouton Ajouter une nouvelle ligne -->
+                              <div class="text-center">
+                                <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_evenement_redoute">Ajouter un nouvel énénement redouté</button>
+                              </div>
+                  <?php
+                            }
+                        }                          
+                  ?>
                 </div>
               </div>
             </div>
@@ -748,10 +783,12 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <i class="fas fa-bars"></i>
     </a>
 
-<!-- -------------------------------------------------------------------------------------------------------------- 
---------------------------------------- modal ajout de mission ----------------------------------------------
---------------------------------------------------------------------------------------------------------------  -->
-<div class="modal fade" id="ajout_mission" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid||(isset($userdroit['ecriture'])&&$userdroit['ecriture']=='Réalisation')){ 
+?> 
+<!---------------------------------------------------------------------------------------------------------------- 
+--------------------------------------------- modal ajout d'échelle ----------------------------------------------
+--------------------------------------------------------------------------------------------------------------+--->
+<div class="modal fade" id="ajout_echelle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
@@ -765,6 +802,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
           <form method="post" action="content/php/echelle/ajoutechelle.php" class="user" id="formMission">
             <fieldset>
               <div class="form-group">
+                <label class="titre_input" for="nom_echelle">Nom de l'échelle</label>
                 <input type="text" class="perso_form shadow-none form-control form-control-user" name ="nom_echelle" id="nom_echelle"
                   placeholder="Nom de l'échelle" required>
               </div>
@@ -793,7 +831,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     </div>
   </div>
 
-    <!-- -------------------------------------------------------------------------------------------------------------- 
+<!---------------------------------------------------------------------------------------------------------------- 
 --------------------------------------- modal ajout Événement redouté ----------------------------------------------
 --------------------------------------------------------------------------------------------------------------  -->
     <div class="modal fade" id="ajout_evenement_redoute" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -811,7 +849,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <div class="row">
                   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="form-group">
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_evenement_redoute" id="InputEvenementRedoute" placeholder="Dénomination de l'événement redouté" required>
+                    <label class="titre_input" for="nom_evenement_redoute">Dénomination de l'événement redouté</label>
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_evenement_redoute" id="nom_evenement_redoute" placeholder="Dénomination de l'événement redouté" required>
                     </div>
 
                     <div class="form-group">
@@ -830,8 +869,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     </div>
 
                     <div class="form-group">
-                      <label for="Description_event_pop">Événement redouté</label>
-                      <textarea class="form-control perso_text_area" name="description_evenement_redoute" id="Description_event_pop" rows="3"></textarea>
+                      <label for="description_evenement_redoute">Événement redouté</label>
+                      <textarea class="form-control perso_text_area" name="description_evenement_redoute" id="description_evenement_redoute" rows="3"></textarea>
                     </div>
 
                     <div class="form-group">
@@ -854,23 +893,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     </div>
                   </div>
                   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <!-- <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck1" name="formcheck[]" value="1">
-                      <label class="custom-control-label" for="customCheck1">Confidentialité</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck2" name="formcheck[]" value="2">
-                      <label class="custom-control-label" for="customCheck2">Intégrité</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck3" name="formcheck[]" value="3">
-                      <label class="custom-control-label" for="customCheck3">Disponibilité</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck4" name="formcheck[]" value="4">
-                      <label class="custom-control-label" for="customCheck4">Traçabilité</label>
-                    </div> -->
-
                     <div class="form-group">
                       <label for="Select_valeur_metier">Disponibilité</label>
                       <select class="form-control" name="disponibilite" id="disponibilite">
@@ -889,14 +911,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <option value="3">3</option>
                       </select>
                     </div>
-
-                    
-
-
-
                     <div class="form-group">
-                      <label for="Description_impact_pop">Impacts</label>
-                      <textarea class="form-control perso_text_area" name="impact" id="Description_impact_pop" rows="3"></textarea>
+                      <label for="impact">Impacts</label>
+                      <textarea class="form-control perso_text_area" name="impact" id="impact" rows="3"></textarea>
                     </div>
 
                     <div class="form-group" id="niveaudegravité">
@@ -904,7 +921,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <?php
                         include("content/php/atelier1c/selectionmaxgravite.php");
-                        for ($i = 1; $i <= $nbniveaugravite[0]; $i++) //selection.php
+                        for ($i = 1; $i <= $nbniveaugravite[0]; $i++)
                         {
                           echo '
                         <label class="btn perso_checkbox shadow-none">
@@ -912,21 +929,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         </label>';
                         }
                         ?>
-                        <!-- <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" id="gravite1" autocomplete="off" name="niveau_de_gravite" value="1"> 1
-                        </label>
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" id="gravite2" autocomplete="off" name="niveau_de_gravite" value="2"> 2
-                        </label>
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" id="gravite3" autocomplete="off" name="niveau_de_gravite" value="3"> 3
-                        </label>
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" id="gravite4" autocomplete="off" name="niveau_de_gravite" value="4"> 4
-                        </label>
-                        <label class="btn perso_checkbox shadow-none">
-                          <input type="radio" id="gravite5" autocomplete="off" name="niveau_de_gravite" value="5"> 5
-                        </label> -->
                       </div>
                     </div>
 
@@ -942,7 +944,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         </div>
       </div>
     </div>
-
+<?php
+}
+?>
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -986,8 +990,27 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <script src="content/js/modules/fixed_page.js"></script>
     <script src="content/js/modules/realtime.js"></script>
     <script src="content/js/modules/set_filter_sort_table.js"></script>
-    <script src="content/js/modules/niveau_echelle.js"></script>
-    <script src="content/js/atelier/atelier1c.js"></script>
+    <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
+    ?>
+        <script src="content/js/modules/niveau_echelle.js"></script>
+        <script src="content/js/atelier/atelier1c.js"></script>
+    <?php
+        }
+        else if(isset($userdroit['ecriture'])){
+            if($userdroit['ecriture']=='Réalisation'){
+    ?>
+                <script src="content/js/modules/niveau_echelle.js"></script>
+                <script src="content/js/atelier/atelier1c.js"></script>
+    <?php 
+            }
+            else{
+    ?>
+                <script src="content/js/modules/niveau_echelle_no_modification.js"></script>
+                <script src="content/js/atelier/atelier1c_no_modification.js"></script>
+    <?php
+            }
+        }        
+    ?>
     <script src="content/js/modules/sort_table.js"></script>
 
 

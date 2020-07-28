@@ -14,7 +14,7 @@ if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_niveau
 
 if($input["action"] === 'edit' && $results["error"] === false){
     $query = "
-    UPDATE E_niveau 
+    UPDATE DA_niveau 
     SET description_niveau = '".$description_niveau."'
     WHERE id_niveau = '".$input["id_niveau"]."'
     ";
@@ -24,7 +24,7 @@ if($input["action"] === 'edit' && $results["error"] === false){
 
 if($input["action"] === 'delete'){
     $query = "
-    DELETE FROM E_niveau 
+    DELETE FROM DA_niveau 
     WHERE id_niveau = '".$input["id_niveau"]."'
     ";
     mysqli_query($connect, $query);

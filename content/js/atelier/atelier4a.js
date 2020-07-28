@@ -2,6 +2,9 @@
 var accordionSidebar = document.getElementById("accordionSidebar");
 var sidebarToggle = document.getElementById("sidebarToggle");
 
+var modeope = document.getElementById("modeope");
+
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.]{1,1000}$/
 var button = document.getElementsByClassName('tabledit-edit-button')
 var save_button = document.getElementsByClassName('tabledit-save-button')
 var j=0;
@@ -93,3 +96,19 @@ OURJQUERYFN.setFilterTable("#rechercher_mode_ope","#tableau_mode_ope tbody tr")
 //         button[i].setAttribute('onclick','tableau_verification('+l+','+'tableau_bs'+','+'7'+')')
 //     }
 // });
+
+modeope.addEventListener('keyup',function(event){
+    verify_textarea(modeope.value,regex_description,modeope)
+})
+
+
+/*--------------------------- Couleurs scénario > gravité --------------------------*/
+$("#editable_table > tbody > tr > td:nth-child(8)").each(function () {
+
+    if ($(this)[0].innerText == "1") { $(this)[0].classList.add('fond-vert'); }
+    if ($(this)[0].innerText == "2") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "3") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "4") { $(this)[0].classList.add('fond-rouge'); }
+    if ($(this)[0].innerText == "5") { $(this)[0].classList.add('fond-rouge'); }
+
+});

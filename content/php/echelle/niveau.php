@@ -1,15 +1,11 @@
 <?php
 include("../bdd/connexion.php");
 
-$query = $bdd->prepare("SELECT id_niveau, valeur_niveau, description_niveau FROM E_niveau NATURAL JOIN D_echelle WHERE id_echelle = ?");
+$query = $bdd->prepare("SELECT id_niveau, valeur_niveau, description_niveau FROM DA_niveau NATURAL JOIN DA_echelle WHERE id_echelle = ?");
 
 if(isset($_POST['nom_echelle'])){
     $nom_echelle = $_POST['nom_echelle'];
-    $affiche_niveau = $bdd->prepare("SELECT id_echelle FROM D_echelle WHERE nom_echelle = ?");
-    $affiche_niveau->bindParam(1, $nom_echelle);
-    $affiche_niveau->execute();
-    $resultat = $affiche_niveau->fetch();
-    $query->bindParam(1, $resultat[0]);
+    $query->bindParam(1, $nom_echelle);
     $query->execute();
 
     

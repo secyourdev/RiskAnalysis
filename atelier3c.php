@@ -48,6 +48,9 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
     <link rel="icon" href="content/img/logo_cyber_risk_manager.png" type="image/png">
+
+    <!-- CHART.JS -->
+    <script src="content\vendor\chart.js\chart.min.js"></script>
   </head>
 
   <?php
@@ -673,6 +676,28 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       </div>
                     </div>
                   </div>
+                  <!-- Area Card -->
+                  <div id="cartographie_pp" class="col-xl-12 col-lg-12">
+                    <div class="card shadow mb-4">
+                      <!-- Card Body -->
+                      <div class="card-body">
+                        <div class="row perso_no_margin">
+
+                          <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <h6>Parties prenantes internes</h6>
+                            <canvas height="450" width="480" id="myChart_interne"></canvas>
+                          </div>
+
+                          <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <h6>Parties prenantes externes</h6>
+                            <canvas height="450" width="480" id="myChart_externe"></canvas>
+                          </div>
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -767,6 +792,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                 </div> -->
 
                       <div class="form-group col-6">
+                      <label class="titre_input" for="nommesure">Nom de la mesure de sécurité</label>
                         <input type="text" class="perso_form shadow-none form-control form-control-user" name="nommesure" id="nommesure" placeholder="Nom de la mesure de sécurité" required>
                       </div>
 
@@ -920,6 +946,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
   <script src="content/js/modules/sort_table.js"></script>
   <script src="content/js/modules/browse.js"></script>
   <script src="content/js/modules/parser.js"></script>
+  <script src="content/js/modules/3c_carto.js"></script>
 </body>
 <?php
   }

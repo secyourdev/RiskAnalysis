@@ -14,11 +14,16 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $reqproject->execute(array($getidproject));
     $projectinfo = $reqproject->fetch();
 
-    $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.a"');
+    $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="2.a"');
     $reqdroit->bindParam(1, $getid);
     $reqdroit->bindParam(2, $getidproject);
     $reqdroit->execute();
     $userdroit = $reqdroit->fetch();
+
+    $reqdroit_chef_de_projet = $bdd->prepare('SELECT id_utilisateur FROM F_projet WHERE id_projet = ?');
+    $reqdroit_chef_de_projet->bindParam(1, $getidproject);
+    $reqdroit_chef_de_projet->execute();
+    $userdroit_chef_de_projet = $reqdroit_chef_de_projet->fetch();
 ?>
 
 <?php include("content/php/atelier2a/selection.php");?>
@@ -53,7 +58,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
 <?php 
 if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur'])
 {
-  if(isset($userdroit['ecriture'])){
+  if(isset($userdroit['ecriture'])||$userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
 ?>
 
 <body id="page-top">
@@ -467,7 +472,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <tr>
                           <th id="id_srov">ID SROV</th>
                           <th id="type_attaquant">Type d'attaquant</th>
-                          <th id="profil_attaquant">Profil d'attaquant</th>
+                          <th id="profil_d_attaquant">Profil d'attaquant</th>
                           <th id="description_source_risque">Description source de risque</th>
                           <th id="objectif vise">Objectif visé</th>
                           <th id="description_objectif">Description de l'objectif</th>
@@ -509,11 +514,26 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       }
                   ?>
                   </div>
-
-                  <!-- bouton Ajouter une nouvelle ligne -->
-                  <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_sr">Ajouter un couple Source de Menace / Objecif visé</button>
-                  </div>   
+                  
+                  <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                  ?>
+                          <!-- bouton Ajouter une nouvelle ligne -->
+                          <div class="text-center">
+                            <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_sr">Ajouter un couple Source de Menace / Objecif visé</button>
+                          </div> 
+                          <?php
+                        }
+                        else if (isset($userdroit['ecriture'])){
+                            if($userdroit['ecriture']=='Réalisation'){
+                  ?>    
+                            <!-- bouton Ajouter une nouvelle ligne -->
+                            <div class="text-center">
+                              <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_sr">Ajouter un couple Source de Menace / Objecif visé</button>
+                            </div> 
+                  <?php
+                            }
+                        }                          
+                  ?>
                 </div>
               </div>
             </div>          
@@ -545,6 +565,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <i class="fas fa-bars"></i>
   </a>
 
+<?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid||(isset($userdroit['ecriture'])&&$userdroit['ecriture']=='Réalisation')){ 
+?> 
 <!-- -------------------------------------------------------------------------------------------------------------- 
 ----------------------------------------- modal ajout de ligne ----------------------------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
@@ -572,7 +594,8 @@ aria-hidden="true">
                 </select>
               
                 <div class="form-group form-colonne">
-                  <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Profil d'attaquant" name="profil_attaquant" placeholder="Profil d'attaquant" required>
+                <label class="titre_input" for="profil_attaquant">Profil d'attaquant</label>
+                  <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Profil d'attaquant" name="profil_attaquant" id="profil_attaquant" placeholder="Profil d'attaquant" required>
                   <datalist id="Profil d'attaquant">
                     <option value="Etatique">
                     <option value="Crime organisé">
@@ -587,8 +610,8 @@ aria-hidden="true">
               </div>
 
               <div class="form-group col-6">
-                <label for="Description de la source de risque">Description de la source de risque</label>
-                <textarea class="form-control perso_text_area" id="Description de la source de risque" name="description_sr"rows="5"></textarea>
+                <label for="description_sr">Description de la source de risque</label>
+                <textarea class="form-control perso_text_area" id="description_sr" name="description_sr"rows="5"></textarea>
               </div>
             </div>
             <div class="row">
@@ -597,7 +620,8 @@ aria-hidden="true">
                   placeholder="Objectif visé" required>
               </div> -->
               <div class="form-group form-colonne col-12">
-                  <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Objectif visé" name="objectif_vise" placeholder="Objectif visé" required>
+              <label class="titre_input" for="objectif_vise">Objectif vise</label>
+                  <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Objectif visé" name="objectif_vise" id="objectif_vise" placeholder="Objectif visé" required>
                   <datalist id="Objectif visé">
                     <option value="Espionnage">
                     <option value="Prépositionnement stratégique">
@@ -609,8 +633,8 @@ aria-hidden="true">
                 </div>
 
               <div class="form-group col-12">
-                <label for="Description de l'objectif visé">Description de l'objectif visé</label>
-                <textarea class="form-control perso_text_area" id="Description de l'objectif visé" name="description_objectif_vise" rows="3"></textarea>
+                <label for="description_objectif_viseDescription de l'objectif visé">Description de l'objectif visé</label>
+                <textarea class="form-control perso_text_area" id="description_objectif_vise" name="description_objectif_vise" rows="3"></textarea>
               </div>
             </div>
             <!-- bouton Ajouter -->
@@ -623,25 +647,33 @@ aria-hidden="true">
     </div>
   </div>
 </div>
-
+<?php
+}
+?>
 <!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-        <a class="btn btn-primary" href="login.html">Logout</a>
-      </div>
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Êtes-vous prêt à quitter l'application ?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à terminer votre session
+                    en cours.</div>
+                <div class="modal-footer">
+                    <form method="post" action="content/php/deconnexion/logs.php">
+                        <fieldset>
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                            <input type="submit" name="deconnexion" value="Déconnexion" class="btn btn-primary"></input>
+                            <fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
   <!-- Bootstrap core JavaScript-->
   <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
@@ -660,7 +692,24 @@ aria-hidden="true">
   <script src="content/js/modules/fixed_page.js"></script>
   <script src="content/js/modules/realtime.js"></script>
   <script src="content/js/modules/set_filter_sort_table.js"></script>
-  <script src="content/js/atelier/atelier2a.js"></script>
+  <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
+    ?>
+        <script src="content/js/atelier/atelier2a.js"></script>
+    <?php
+        }
+        else if(isset($userdroit['ecriture'])){
+            if($userdroit['ecriture']=='Réalisation'){
+    ?>
+                <script src="content/js/atelier/atelier2a.js"></script>
+    <?php 
+            }
+            else{
+    ?>
+                <script src="content/js/atelier/atelier2a_no_modification.js"></script>
+    <?php
+            }
+        }        
+    ?>
   <script src="content/js/modules/sort_table.js"></script>
 </body>
 <?php

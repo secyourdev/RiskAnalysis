@@ -1,38 +1,35 @@
+/*------------------------------- VARIABLES ----------------------------------*/
 var accordionSidebar = document.getElementById("accordionSidebar");
 var sidebarToggle = document.getElementById("sidebarToggle");
+
+var biensupport = document.getElementById("biensupport");
+var descriptionbs = document.getElementById("descriptionbs");
+var label_biensupport = document.getElementById("biensupport").previousSibling.previousSibling
+
+var valeurmetier = document.getElementById("nomvm");
+var descriptionvm = document.getElementById("descriptionvm");
+var label_valeurmetier = document.getElementById("nomvm").previousSibling.previousSibling
+
+var nommission = document.getElementById("nommission");
+var responsable = document.getElementById("responsable");
+var responsablevm = document.getElementById("responsable_vm");
+var responsablebs = document.getElementById("responsable_bs");
+var label_mission = document.getElementById("nommission").previousSibling.previousSibling
+var label_responsable = document.getElementById("responsable").previousSibling.previousSibling
+var label_responsablevm = document.getElementById("responsable_vm").previousSibling.previousSibling
+var label_responsablebs = document.getElementById("responsable_bs").previousSibling.previousSibling
+
+var regex_nom_mission = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,50}$/
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.]{1,1000}$/
 
 var button = document.getElementsByClassName('tabledit-edit-button')
 var save_button = document.getElementsByClassName('tabledit-save-button')
 var j = 0;
 var k = 0;
 var l = 0;
-/*-----*/
-// var length_JSON;
-// var json_modification_vm='';
-// var resultat_final
-// $.ajax({
-//     url: 'content/php/atelier1b/selectionvm.php',
-//     type: 'POST',
-//     async:  false,
-//     data:  "resultat_final=",
-//     success: function (resultat) {
-//         var vm_JSON = JSON.parse(resultat);
-//         length_JSON=vm_JSON.length;
-//         console.log(vm_JSON)
-//         for(let i=0;i<length_JSON;i++){
-//             json_modification_vm = json_modification_vm +'"'+vm_JSON[i][0]+'":"'+vm_JSON[i][1]+'",'
-//         }
-//         var lenght_json_modification_vm= json_modification_vm.length;
-//         json_modification_vm= json_modification_vm.substring(0, lenght_json_modification_vm-1)
-//         json_modification_vm = "'{"+json_modification_vm+"}'"
-//         resultat_final=json_modification_vm
-//     },
-//     error: function (erreur) {
-//         alert('ERROR :' + erreur);
-//     }
-// });
-// console.log(resultat_final);
-/*------------------------------- SIDEBAR ----------------------------------*/
+
+/*-------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
 sidebarToggleTop.addEventListener('click', show_sub_content,false);
 sidebarToggle.addEventListener('click',show_sub_content,false);
@@ -120,3 +117,51 @@ sleep(100).then(() => {
     }
 });
 
+
+/*------------------------------ LABELS CACHES ------------------------------*/
+label_biensupport.style.display="none"
+label_valeurmetier.style.display="none"
+label_mission.style.display="none"
+label_responsable.style.display="none"
+label_responsablebs.style.display="none"
+label_responsablevm.style.display="none"
+
+/*----------------------- ENREGISTREMENT DES COOKIES ------------------------*/
+biensupport.addEventListener('keyup',function(event){
+    verify_input(biensupport.value,regex_nom,biensupport)
+    activate_label(biensupport.value,label_biensupport)
+}) 
+
+descriptionbs.addEventListener('keyup',function(event){
+    verify_textarea(descriptionbs.value,regex_description,descriptionbs)
+})
+
+
+valeurmetier.addEventListener('keyup',function(event){
+    verify_input(valeurmetier.value,regex_nom,valeurmetier)
+    activate_label(valeurmetier.value,label_valeurmetier)
+}) 
+
+descriptionvm.addEventListener('keyup',function(event){
+    verify_textarea(descriptionvm.value,regex_description,descriptionvm)
+})
+
+nommission.addEventListener('keyup',function(event){
+    verify_input(nommission.value,regex_nom_mission,nommission)
+    activate_label(nommission.value,label_mission)
+}) 
+
+responsable.addEventListener('keyup',function(event){
+    verify_input(responsable.value,regex_nom,responsable)
+    activate_label(responsable.value,label_responsable)
+}) 
+
+responsablevm.addEventListener('keyup',function(event){
+    verify_input(responsablevm.value,regex_nom,responsablevm)
+    activate_label(responsablevm.value,label_responsablevm)
+})
+
+responsablebs.addEventListener('keyup',function(event){
+    verify_input(responsablebs.value,regex_nom,responsablebs)
+    activate_label(responsablebs.value,label_responsablebs)
+})

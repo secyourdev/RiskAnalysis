@@ -737,10 +737,12 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     <fieldset>
 
                       <div class="form-group">
-                        <input type="text" class="perso_form shadow-none form-control form-control-user" name="type_referenciel" placeholder="Type de référentiel" required>
+                        <label class="titre_input" for="type_referenciel">Type de référentiel</label>
+                        <input type="text" class="perso_form shadow-none form-control form-control-user" name="type_referenciel" id="type_referenciel" placeholder="Type de référentiel" required>
                       </div>
                       <div class="form-group">
-                        <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_referentiel" placeholder="Nom du référentiel" required>
+                        <label class="titre_input" for="nom_referentiel">Nom du référentiel</label>
+                        <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_referentiel" id="nom_referentiel" placeholder="Nom du référentiel" required>
                       </div>
                       <div class="form-group">
                         <label for="Select_etat_d_application">État d'application</label>
@@ -752,7 +754,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         </select>
                       </div>
                       <div class="form-group">
-                        <input type="text" class="perso_form shadow-none form-control form-control-user" name="commentaire" placeholder="Commentaire" required>
+                        <label class="titre_input" for="commentaire">Commentaire</label>
+                        <input type="text" class="perso_form shadow-none form-control form-control-user" name="commentaire" id="commentaire" placeholder="Commentaire" required>
                       </div>
 
                       <div class="modal-footer perso_middle_modal_footer">
@@ -797,7 +800,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       </div>
 
                       <div class="form-group">
-                        <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_regle" placeholder="ID de la règle" required>
+                        <label class="titre_input" for="id_regle">ID de la régle</label>
+                        <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_regle" id="id_regle" placeholder="ID de la règle" required>
                       </div>
 
                       <div class="form-group">
@@ -823,22 +827,28 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
 
           <!-- Logout Modal-->
-          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                  </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                  <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
+          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Êtes-vous prêt à quitter l'application ?</h5>
+                          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">×</span>
+                          </button>
+                      </div>
+                      <div class="modal-body">Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à terminer votre session
+                          en cours.</div>
+                      <div class="modal-footer">
+                          <form method="post" action="content/php/deconnexion/logs.php">
+                              <fieldset>
+                                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                                  <input type="submit" name="deconnexion" value="Déconnexion" class="btn btn-primary"></input>
+                                  <fieldset>
+                          </form>
+                      </div>
+                  </div>
               </div>
-            </div>
           </div>
 
           <!-- Bootstrap core JavaScript-->

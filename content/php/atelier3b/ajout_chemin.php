@@ -8,11 +8,12 @@ include("../bdd/connexion.php");
 $results["error"] = false;
 $results["message"] = [];
 
-
+print_r($_POST);
 $id_risque = $_POST['id_risque'];
 $chemin_d_attaque_strategique = $_POST['chemin_d_attaque_strategique'];
 $id_scenario_strategique = $_POST['nom_scenario_strategique'];
-$id_partie_prenante = $_POST['nom_partie_prenante'];
+$id_partie_prenante_array = $_POST['nom_partie_prenante'];
+// print $id_partie_prenante;
 $id_chemin_d_attaque = "id_chemin";
 $id_scenar = "id_scenar";
 $id_atelier = "4.a";
@@ -37,20 +38,11 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $id_scenario_
   $results["error"] = true;
   $_SESSION['message_error_1'] = "id_scenario_strategique invalide";
 }
-// Verification du id_partie_prenante
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $id_partie_prenante)) {
-  $results["error"] = true;
-  $_SESSION['message_error_1'] = "id_partie_prenante invalide";
-}
-
-
-
-
-
-
-
-
-
+// // Verification du id_partie_prenante
+// if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $id_partie_prenante)) {
+//   $results["error"] = true;
+//   $_SESSION['message_error_1'] = "id_partie_prenante invalide";
+// }
 
 
 $recupere = $bdd->prepare("SELECT S_scenario_strategique.id_scenario_strategique FROM S_scenario_strategique  WHERE S_scenario_strategique.nom_scenario_strategique = ?");
@@ -62,11 +54,17 @@ WHERE U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaq
 AND U_scenario_operationnel.id_projet = ?");
 
 $insere = $bdd->prepare(
-  'INSERT INTO 
-  T_chemin_d_attaque_strategique 
-  (id_chemin_d_attaque_strategique,id_risque,nom_chemin_d_attaque_strategique,dependance_residuelle, penetration_residuelle, maturite_residuelle,confiance_residuelle, niveau_de_menace_residuelle, id_scenario_strategique, id_partie_prenante) 
-  VALUES 
-  (?, ?, ?, NULL, NULL, NULL, NULL, NULL, ? ,?)'
+  "INSERT INTO 
+  T_chemin_d_attaque_strategique
+  (id_chemin_d_attaque_strategique, 
+  id_risque, 
+  nom_chemin_d_attaque_strategique, 
+  description_chemin_d_attaque_strategique, 
+  id_scenario_strategique, 
+  id_partie_prenante, 
+  id_projet, 
+  id_atelier) VALUES 
+  (?,?,?,NULL,?,?,$get_id_projet,'3.b')"
 );
 $insere_reeval = $bdd->prepare(
   'INSERT INTO 
@@ -126,13 +124,15 @@ if ($results["error"] === false && isset($_POST['validerchemin'])) {
   if (!in_array($chemin_d_attaque_strategique, $result_nom_chemin_existant)) {
     print 'chemin non existent';
 
-
-    $insere->bindParam(1, $id_chemin_d_attaque);
-    $insere->bindParam(2, $id_risque);
-    $insere->bindParam(3, $chemin_d_attaque_strategique);
-    $insere->bindParam(4, $id_scenario_strategique);
-    $insere->bindParam(5, $id_partie_prenante);
-    $insere->execute();
+foreach ($id_partie_prenante_array as $id_partie_prenante) {
+  # code...
+  $insere->bindParam(1, $id_chemin_d_attaque);
+  $insere->bindParam(2, $id_risque);
+  $insere->bindParam(3, $chemin_d_attaque_strategique);
+  $insere->bindParam(4, $id_scenario_strategique);
+  $insere->bindParam(5, $id_partie_prenante);
+  $insere->execute();
+}
 
     $recuperechemin->bindParam(1, $chemin_d_attaque_strategique);
     $recuperechemin->bindParam(2, $id_risque);

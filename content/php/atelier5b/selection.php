@@ -6,7 +6,7 @@ $query_pacs = "SELECT * FROM ZA_traitement_de_securite
 NATURAL JOIN ZB_comporter_2
 INNER JOIN Y_mesure ON Y_mesure.id_mesure = ZA_traitement_de_securite.id_mesure
 INNER JOIN T_chemin_d_attaque_strategique ON ZB_comporter_2.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique
-WHERE id_projet = $getid_projet
+WHERE ZA_traitement_de_securite.id_projet = $getid_projet
 ";
 
 $result_pacs = mysqli_query($connect, $query_pacs);
@@ -51,5 +51,5 @@ $result = mysqli_query($connect, $query);
 $resultchemin = mysqli_query($connect, $querychemin);
 $query_referentiel = "SELECT * FROM N_socle_de_securite WHERE id_projet = $getid_projet";
 $result_referentiel = mysqli_query($connect, $query_referentiel);
-
+$resultlegende = mysqli_query($connect, $querychemin);
 ?>
