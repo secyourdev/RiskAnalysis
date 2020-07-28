@@ -542,9 +542,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     <table id="editable_table" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th id="id_echelle">ID echelle</th>
-                          <th id="nomechelle">Nom de l'échelle</th>
-                          <th id="echelle_gravite">Echelle de la gravité</th>
+                          <th>ID echelle</th>
+                          <th>Nom de l'échelle</th>
+                          <th>Echelle de la gravité</th>
                         </tr>
                       </thead>
                       <tbody>
