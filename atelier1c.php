@@ -14,11 +14,16 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $reqproject->execute(array($getidproject));
     $projectinfo = $reqproject->fetch();
 
-    $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.a"');
+    $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.c"');
     $reqdroit->bindParam(1, $getid);
     $reqdroit->bindParam(2, $getidproject);
     $reqdroit->execute();
     $userdroit = $reqdroit->fetch();
+
+    $reqdroit_chef_de_projet = $bdd->prepare('SELECT id_utilisateur FROM F_projet WHERE id_projet = ?');
+    $reqdroit_chef_de_projet->bindParam(1, $getidproject);
+    $reqdroit_chef_de_projet->execute();
+    $userdroit_chef_de_projet = $reqdroit_chef_de_projet->fetch();
 ?>
 
 <?php include("content/php/atelier1c/selection.php"); ?>
