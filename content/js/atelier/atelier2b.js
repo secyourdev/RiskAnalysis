@@ -38,7 +38,7 @@ $(document).ready(function () {
                 [9, 'secteur_d_activite'],
                 [10, 'arsenal_d_attaque'],
                 [11, 'faits_d_armes'],
-                [12, 'pertinence', '{"Auto" : "Auto", "Faible": "Faible", "Moyen": "Moyen", "Elevé": "Elevé"}'],
+                [12, 'pertinence', '{"Auto" : "Auto", "Faible": "Faible", "Moyenne": "Moyenne", "Élevée": "Élevée"}'],
             ],
         },
         restoreButton: false,
@@ -62,4 +62,17 @@ sleep(100).then(() => {
         j=i+1;
         button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table'+','+'15'+')')
     }
+});
+
+
+
+/*--------------------------- Couleurs pertinence --------------------------*/
+$("#editable_table > tbody > tr > td:nth-child(13)").each(function () {
+
+    // if ($(this)[0].innerText == "Non traité") { $(this)[0].classList.add('fond-vert'); }
+    if ($(this)[0].innerText == "Faible") { $(this)[0].classList.add('fond-vert'); }
+    if ($(this)[0].innerText == "Moyenne") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "Élevée") { $(this)[0].classList.add('fond-rouge'); }
+    // if ($(this)[0].innerText == "Non applicable") { $(this)[0].classList.add('fond-rouge'); }
+
 });

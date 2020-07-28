@@ -1,9 +1,11 @@
 <?php
 
 include("../bdd/connexion.php");
+session_start();
+$getid_projet = $_SESSION['id_projet'];
 
 $query = $bdd->prepare(
-  "SELECT * FROM O_regle WHERE O_regle.id_socle_securite = ? ORDER BY O_regle.id_regle"
+  "SELECT * FROM O_regle WHERE O_regle.id_socle_securite = ? WHERE id_atelier = '1.d' AND id_projet = $getid_projet ORDER BY O_regle.id_regle"
 );
 
 // $query_vide = $bdd->prepare(
@@ -19,7 +21,7 @@ $query = $bdd->prepare(
 if (isset($_POST['nom_referentiel'])) {
   $nom_referentiel = $_POST['nom_referentiel'];
   // echo 'nom_referentiel ' . $nom_referentiel ;
-  $recupere_id_socle = $bdd->prepare("SELECT id_socle_securite FROM N_socle_de_securite WHERE nom_referentiel = ?");
+  $recupere_id_socle = $bdd->prepare("SELECT id_socle_securite FROM N_socle_de_securite WHERE nom_referentiel = ? AND id_atelier = '1.d' AND id_projet = $getid_projet");
   $recupere_id_socle->bindParam(1, $nom_referentiel);
   $recupere_id_socle->execute();
 

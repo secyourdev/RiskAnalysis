@@ -126,7 +126,7 @@ if ($fileType != "json") {
     $new_id_regle = (/* $id_socle_securite[0] . */ $key_id_titre_desc['id']);
 
     //recupere l'id de la regle pour savoir si elle existe deja
-    $recupere_exist_regle = $bdd->prepare("SELECT * FROM O_regle WHERE id_socle_securite = ? AND id_regle = ?");
+    $recupere_exist_regle = $bdd->prepare("SELECT * FROM O_regle WHERE id_socle_securite = ? AND id_regle = ? AND id_atelier = '1.d' AND id_projet = $getid_projet");
     $recupere_exist_regle->bindParam(1, $id_socle_securite[0]);
     $recupere_exist_regle->bindParam(2, $new_id_regle);
     $recupere_exist_regle->execute();
@@ -137,8 +137,8 @@ if ($fileType != "json") {
 
       //insère les régles avec les paramètres groupés
       $insere_regle = $bdd->prepare(
-        "INSERT INTO O_regle(id_regle, id_regle_affichage, titre, description, etat_de_la_regle, justification_ecart, dates, responsable, id_socle_securite) 
-    VALUES ('',?,?,?,NULL,NULL,NULL,NULL,?)"
+        "INSERT INTO O_regle(id_regle, id_regle_affichage, titre, description, etat_de_la_regle, justification_ecart, dates, responsable, id_socle_securite, id_projet) 
+    VALUES ('',?,?,?,NULL,NULL,NULL,NULL,?, '1.d', $getid_projet)"
       );
 
       $insere_regle->bindParam(1, $new_id_regle);
@@ -150,7 +150,9 @@ if ($fileType != "json") {
   }
   $recupere_tableau = $bdd->prepare(
     "SELECT * FROM N_socle_de_securite 
-  WHERE id_socle_securite = ?"
+  WHERE id_socle_securite = ?
+  AND id_atelier = '1.d'
+  AND id_projet = $getid_projet"
   );
   $recupere_tableau->bindParam(1, $id_socle_securite[0]);
   $recupere_tableau->execute();

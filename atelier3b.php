@@ -44,6 +44,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <!-- JS -->
     <script src="content/vendor/jquery/jquery.js"></script>
     <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
+    <link rel="stylesheet" href="content/vendor/bootstrap-select-1.13.14/dist/css/bootstrap-select.css">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
@@ -391,99 +392,79 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <!-- Right Sidebar -->
           <ul id=menu>
             <li>
-                <a class="nav-link collapse-right-item menu_float" href="#evenements_redoutes">
-                    <i>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
-                            <g transform="translate(-1230 -689)">
-                                <path class="number_activity active"
-                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
-                                    transform="translate(1230 689)" fill="#ffffffcc" />
-                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
-                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
-                                    font-weight="700">
-                                    <tspan x="-3.432" y="0">1</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                    </i>
-                    <span class="nom_sous_menu">Événements redoutés</span>
-                </a>
+              <a class="nav-link collapse-right-item menu_float" href="#evenements_redoutes">
+                <i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                    <g transform="translate(-1230 -689)">
+                      <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                      <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                        <tspan x="-3.432" y="0">1</tspan>
+                      </text>
+                    </g>
+                  </svg>
+                </i>
+                <span class="nom_sous_menu">Événements redoutés</span>
+              </a>
             </li>
             <li>
-                <a class="nav-link collapse-right-item menu_float" href="#srov">
-                    <i>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
-                            <g transform="translate(-1230 -689)">
-                                <path class="number_activity active"
-                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
-                                    transform="translate(1230 689)" fill="#ffffffcc" />
-                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
-                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
-                                    font-weight="700">
-                                    <tspan x="-3.432" y="0">2</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                    </i>
-                    <span class="nom_sous_menu">Sources de risques / Objectifs visés</span>
-                </a>
+              <a class="nav-link collapse-right-item menu_float" href="#srov">
+                <i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                    <g transform="translate(-1230 -689)">
+                      <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                      <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                        <tspan x="-3.432" y="0">2</tspan>
+                      </text>
+                    </g>
+                  </svg>
+                </i>
+                <span class="nom_sous_menu">Sources de risques / Objectifs visés</span>
+              </a>
             </li>
             <li>
-                <a class="nav-link collapse-right-item menu_float" href="#scenario_strategique">
-                    <i>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
-                            <g transform="translate(-1230 -689)">
-                                <path class="number_activity active"
-                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
-                                    transform="translate(1230 689)" fill="#ffffffcc" />
-                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
-                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
-                                    font-weight="700">
-                                    <tspan x="-3.432" y="0">3</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                    </i>
-                    <span class="nom_sous_menu">Scénarios stratégiques</span>
-                </a>
+              <a class="nav-link collapse-right-item menu_float" href="#scenario_strategique">
+                <i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                    <g transform="translate(-1230 -689)">
+                      <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                      <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                        <tspan x="-3.432" y="0">3</tspan>
+                      </text>
+                    </g>
+                  </svg>
+                </i>
+                <span class="nom_sous_menu">Scénarios stratégiques</span>
+              </a>
             </li>
             <li>
-                <a class="nav-link collapse-right-item menu_float" href="#schemas_scenarios_strategiques">
-                    <i>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
-                            <g transform="translate(-1230 -689)">
-                                <path class="number_activity active"
-                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
-                                    transform="translate(1230 689)" fill="#ffffffcc" />
-                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
-                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
-                                    font-weight="700">
-                                    <tspan x="-3.432" y="0">4</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                    </i>
-                    <span class="nom_sous_menu">Schémas des scénarios stratégiques</span>
-                </a>
+              <a class="nav-link collapse-right-item menu_float" href="#schemas_scenarios_strategiques">
+                <i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                    <g transform="translate(-1230 -689)">
+                      <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                      <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                        <tspan x="-3.432" y="0">4</tspan>
+                      </text>
+                    </g>
+                  </svg>
+                </i>
+                <span class="nom_sous_menu">Schémas des scénarios stratégiques</span>
+              </a>
             </li>
             <li>
-                <a class="nav-link collapse-right-item menu_float" href="#chemin_dattaque">
-                    <i>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
-                            <g transform="translate(-1230 -689)">
-                                <path class="number_activity active"
-                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
-                                    transform="translate(1230 689)" fill="#ffffffcc" />
-                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
-                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
-                                    font-weight="700">
-                                    <tspan x="-3.432" y="0">5</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                    </i>
-                    <span class="nom_sous_menu">Chemins d'attaque</span>
-                </a>
+              <a class="nav-link collapse-right-item menu_float" href="#chemin_dattaque">
+                <i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                    <g transform="translate(-1230 -689)">
+                      <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                      <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                        <tspan x="-3.432" y="0">5</tspan>
+                      </text>
+                    </g>
+                  </svg>
+                </i>
+                <span class="nom_sous_menu">Chemins d'attaque</span>
+              </a>
             </li>
           </ul>
           <!-- End of Right Sidebar -->
@@ -717,7 +698,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       <div class="card-body">
                         <!--text-->
                         <span id="success_message"></span>
-                        <form method="POST" id="sample_form" action="content\php\atelier3b\insert_image.php" enctype="multipart/form-data">
+                        <form method="POST" id="sample_form" action="content/php/atelier3b/insert_image.php" enctype="multipart/form-data">
 
                           <label for="select_nom_scenario_strategique">Nom du scénario stratégiques</label>
                           <select class="form-control" name="select_nom_scenario_strategique" id="select_nom_scenario_strategique">
@@ -746,11 +727,11 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         </form>
 
 
-                          <div class='image-preview' id='imagePreview'>
+                        <div class='image-preview' id='imagePreview'>
                           <img class='image-preview__image' src='image/'>
                           <span class='image-preview__default-text'>Image Preview</span>
                           <!-- <p>".$row['image_text']."</p> -->
-                          </div>
+                        </div>
 
                       </div>
                     </div>
@@ -935,10 +916,16 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       </select>
                     </div>
 
+
+                    <!-- <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+                    <script src="content/vendor/bootstrap-select-1.13.14/dist/js/bootstrap-select.js"></script> -->
+                    <!-- <link rel="stylesheet" href="content/vendor/bootstrap-select-1.13.14/dist/css/bootstrap-select.css"> -->
+
+
                     <div class="form-group col-12">
                       <label for="Select_nom_scenario_strategique">Partie prenante</label>
-                      <select class="form-control" name="nom_partie_prenante" id="nom_partie_prenante">
-                        <option value="" selected>...</option>
+                      <select class="selectpicker form-control" name="nom_partie_prenante[]" id="nom_partie_prenante" multiple data-live-search="true">
+                        <!-- <option value="">...</option> -->
                         <?php
                         while ($row = mysqli_fetch_array($result_id_partie_prenante)) //selection.php
                         {
@@ -990,6 +977,9 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <!-- Bootstrap core JavaScript-->
         <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
+        <!-- bootstrap-select js -->
+        <script src="content/vendor/bootstrap-select-1.13.14/dist/js/bootstrap-select.js"></script>
+
         <!-- Core plugin JavaScript-->
         <script src="content/vendor/jquery-easing/jquery.easing.js"></script>
 
@@ -1000,7 +990,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <script src="content/js/modules/dark_mode.js"></script>
         <script src="content/js/modules/top_bar.js"></script>
         <script src="content/js/modules/side_bar.js"></script>
-        <script src="content/js/modules/float_menu.js"></script>       
+        <script src="content/js/modules/float_menu.js"></script>
         <script src="content/js/modules/fixed_page.js"></script>
         <script src="content/js/modules/realtime.js"></script>
         <script src="content/js/modules/set_filter_sort_table.js"></script>
@@ -1008,6 +998,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <script src="content/js/modules/sort_table.js"></script>
         <script src="content/js/modules/browse_img.js"></script>
         <script src="content/js/modules/ajax_pour_image.js"></script>
+        <!-- <script src="content/js/modules/selectpicker.js"></script> -->
       </body>
   <?php
     }

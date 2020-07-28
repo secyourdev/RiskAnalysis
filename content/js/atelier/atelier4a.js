@@ -93,3 +93,16 @@ OURJQUERYFN.setFilterTable("#rechercher_mode_ope","#tableau_mode_ope tbody tr")
 //         button[i].setAttribute('onclick','tableau_verification('+l+','+'tableau_bs'+','+'7'+')')
 //     }
 // });
+
+
+
+/*--------------------------- Couleurs scénario > gravité --------------------------*/
+$("#editable_table > tbody > tr > td:nth-child(8)").each(function () {
+
+    if ($(this)[0].innerText == "1") { $(this)[0].classList.add('fond-vert'); }
+    if ($(this)[0].innerText == "2") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "3") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "4") { $(this)[0].classList.add('fond-rouge'); }
+    if ($(this)[0].innerText == "5") { $(this)[0].classList.add('fond-rouge'); }
+
+});

@@ -51,5 +51,5 @@ $result = mysqli_query($connect, $query);
 $resultchemin = mysqli_query($connect, $querychemin);
 $query_referentiel = "SELECT * FROM N_socle_de_securite WHERE id_projet = $getid_projet";
 $result_referentiel = mysqli_query($connect, $query_referentiel);
-
+$resultlegende = mysqli_query($connect, $querychemin);
 ?>

@@ -144,3 +144,28 @@ OURJQUERYFN.setFilterTable("#rechercher_chemin_d_attaque","#editable_table_chemi
 //         button[i].setAttribute('onclick','tableau_verification('+l+','+'editable_table_chemin_d_attaque'+','+'4'+')')
 //     }
 // });
+
+
+
+
+/*--------------------------- Couleurs 1.c > gravité --------------------------*/
+$("#editable_table > tbody > tr > td:nth-child(10)").each(function () {
+
+    if ($(this)[0].innerText == "1") { $(this)[0].classList.add('fond-vert'); }
+    if ($(this)[0].innerText == "2") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "3") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "4") { $(this)[0].classList.add('fond-rouge'); }
+    if ($(this)[0].innerText == "5") { $(this)[0].classList.add('fond-rouge'); }
+
+});
+
+/*--------------------------- Couleurs scénario > gravité --------------------------*/
+$("#editable_table_scenario_strategique > tbody > tr > td:nth-child(5)").each(function () {
+
+    if ($(this)[0].innerText == "1") { $(this)[0].classList.add('fond-vert'); }
+    if ($(this)[0].innerText == "2") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "3") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "4") { $(this)[0].classList.add('fond-rouge'); }
+    if ($(this)[0].innerText == "5") { $(this)[0].classList.add('fond-rouge'); }
+
+});
