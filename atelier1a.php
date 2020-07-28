@@ -58,7 +58,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
 <?php 
 if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur'])
 {
-  if(isset($userdroit['ecriture'])||$userinfo['type_compte']=='Administrateur Logiciel'){
+  if(isset($userdroit['ecriture'])||$userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
 ?>
 
 <body id="page-top">
@@ -645,8 +645,17 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         <!--NOM ETUDE-->
                                         <div class="form-group">
                                             <label class="titre_input" for="nom_etude">Nom</label>
-                                            <?php if(isset($userdroit['ecriture'])){
-                                                    if($userdroit['ecriture']=='Réalisation'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
+                                            <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                                            ?>        
+                                                    <input type="text"
+                                                        class="perso_form shadow-none form-control form-control-user"
+                                                        id="nom_etude" placeholder="Nom" required>
+                                                    </input>
+                                        </div>
+                                            <?php
+                                                }
+                                                else if (isset($userdroit['ecriture'])){
+                                                    if($userdroit['ecriture']=='Réalisation'){
                                             ?>
                                                         <input type="text"
                                                             class="perso_form shadow-none form-control form-control-user"
@@ -663,22 +672,19 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                             <?php
                                                     }
                                                 }
-                                                else if($userinfo['type_compte']=='Administrateur Logiciel'){ 
-                                            ?>        
-                                                    <input type="text"
-                                                        class="perso_form shadow-none form-control form-control-user"
-                                                        id="nom_etude" placeholder="Nom" required>
-                                                    </input>
-                                        </div>
-                                            <?php
-                                                }
                                             ?>                   
 
                                         <!--OBJECTIF ETUDE-->
                                         <div class="form-group">
                                             <label class="titre_textarea" for="objectif_atteindre">Objectif à atteindre</label>
-                                            <?php if(isset($userdroit['ecriture'])){
-                                                    if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'){
+                                            <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){         
+                                            ?>
+                                                <textarea class="form-control perso_text_area" id="objectif_atteindre" rows="3"></textarea>
+                                        </div>
+                                            <?php
+                                                } 
+                                                else if(isset($userdroit['ecriture'])){
+                                                    if($userdroit['ecriture']=='Réalisation'){
                                             ?>
                                                         <textarea class="form-control perso_text_area" id="objectif_atteindre" rows="3"></textarea>
                                         </div>
@@ -692,18 +698,19 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                             <?php
                                                     }
                                                 }
-                                                else if($userinfo['type_compte']=='Administrateur Logiciel'){         
-                                            ?>
-                                                <textarea class="form-control perso_text_area" id="objectif_atteindre" rows="3"></textarea>
-                                        </div>
-                                            <?php
-                                                }
                                             ?>                    
                                         <!--CADRE TEMPOREL ETUDE-->
                                         <div class="form-group">
                                             <label class="titre_input" for="cadre_temporel">Cadre Temporel</label>
-                                            <?php if(isset($userdroit['ecriture'])){
-                                                    if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'){
+                                            <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
+                                            ?>
+                                                <input type="date" class="perso_form shadow-none form-control form-control-user"
+                                                id="cadre_temporel" placeholder="Cadre temporel" required>
+                                        </div>
+                                            <?php
+                                                }
+                                                else if(isset($userdroit['ecriture'])){
+                                                    if($userdroit['ecriture']=='Réalisation'){
                                             ?>
                                                         <input type="date" class="perso_form shadow-none form-control form-control-user"
                                                         id="cadre_temporel" placeholder="Cadre temporel" required>
@@ -718,20 +725,29 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                             <?php
                                                     }
                                                 }
-                                                else if($userinfo['type_compte']=='Administrateur Logiciel'){       
-                                            ?>
-                                                <input type="date" class="perso_form shadow-none form-control form-control-user"
-                                                id="cadre_temporel" placeholder="Cadre temporel" required>
-                                        </div>
-                                            <?php
-                                                }
                                             ?>  
                                         <!--RISQUE ETUDE-->
                                         <div class="form-group">
                                             <label class="titre_input" for="respo_acceptation_risque">Personne responsable d'accepter
                                                 les risques résiduels au terme de l'étude</label>
-                                            <?php if(isset($userdroit['ecriture'])){
-                                                    if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'){
+                                            <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
+                                            ?>
+                                            <select class="form-control" id="respo_acceptation_risque">
+                                                <option value="" selected>...</option>
+                                                    <?php
+                                                    while($row = mysqli_fetch_array($result_risques_residuels))
+                                                    {
+                                                        echo '
+                                                        <option value="'.$row["id_utilisateur"].'">'.$row["nom"].' '.$row["prenom"].'</option>
+                                                        ';
+                                                    }
+                                                    ?>
+                                            </select>
+                                        </div>
+                                            <?php
+                                                }
+                                                else if(isset($userdroit['ecriture'])){
+                                                    if($userdroit['ecriture']=='Réalisation'){
                                             ?>
                                                         <select class="form-control" id="respo_acceptation_risque">
                                                         <option value="" selected>...</option>
@@ -755,22 +771,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                             <?php
                                                     }
                                                 }
-                                                else if($userinfo['type_compte']=='Administrateur Logiciel'){       
-                                            ?>
-                                            <select class="form-control" id="respo_acceptation_risque">
-                                                <option value="" selected>...</option>
-                                                    <?php
-                                                    while($row = mysqli_fetch_array($result_risques_residuels))
-                                                    {
-                                                        echo '
-                                                        <option value="'.$row["id_utilisateur"].'">'.$row["nom"].' '.$row["prenom"].'</option>
-                                                        ';
-                                                    }
-                                                    ?>
-                                            </select>
-                                        </div>
-                                            <?php
-                                                }
                                             ?>  
                                     </form>
                                     <img src="content/img/task.svg" class="img-fluid perso_img">
@@ -788,8 +788,34 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <?php if(isset($userdroit['ecriture'])){
-                                            if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'){
+                                    <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){                                     
+                                    ?>
+                                            <form>
+                                                <fieldset>
+                                                    <div class="form-group">
+                                                        <label class="titre_input" for="user_1a">Utilisateur</label>
+                                                            <select class="form-control" name="nom_utilisateur" id="user_1a">
+                                                                <option value="" selected>...</option>
+                                                                <?php
+                                                                while($row = mysqli_fetch_array($result_RACI_user))
+                                                                {
+                                                                    echo '
+                                                                    <option value="'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'">'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'</option>
+                                                                    ';
+                                                                }
+                                                                ?>
+                                                            </select>
+                                                    </div>
+                                                    
+                                                    <div>
+                                                    <button type="button" id='ajouter_user' name="ajouter_user" class="btn perso_btn shadow-none">Ajouter</button>
+                                                </fieldset>
+                                            </form>
+                                            </br>
+                                    <?php
+                                        }
+                                        else if(isset($userdroit['ecriture'])){
+                                            if($userdroit['ecriture']=='Réalisation'){
                                     ?>
                                                 <form>
                                                     <fieldset>
@@ -818,34 +844,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                             else { 
                                     ?>
                                     <?php
-                                        }
-                                    }
-                                        else if($userinfo['type_compte']=='Administrateur Logiciel'){                                     
-                                    ?>
-                                            <form>
-                                                <fieldset>
-                                                    <div class="form-group">
-                                                        <label class="titre_input" for="user_1a">Utilisateur</label>
-                                                            <select class="form-control" name="nom_utilisateur" id="user_1a">
-                                                                <option value="" selected>...</option>
-                                                                <?php
-                                                                while($row = mysqli_fetch_array($result_RACI_user))
-                                                                {
-                                                                    echo '
-                                                                    <option value="'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'">'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'</option>
-                                                                    ';
-                                                                }
-                                                                ?>
-                                                            </select>
-                                                    </div>
-                                                    
-                                                    <div>
-                                                    <button type="button" id='ajouter_user' name="ajouter_user" class="btn perso_btn shadow-none">Ajouter</button>
-                                                </fieldset>
-                                            </form>
-                                            </br>
-                                    <?php
-                                        }
+                                            }
+                                        }   
                                     ?>   
 
                                     <!--tableau-->
@@ -1056,8 +1056,13 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <script src="content/js/modules/fixed_page.js"></script>
     <script src="content/js/modules/realtime.js"></script>
     <script src="content/js/modules/set_filter_sort_table.js"></script>
-    <?php if(isset($userdroit['ecriture'])){
-            if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Chef de Projet'){
+    <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
+    ?>
+        <script src="content/js/atelier/atelier1a.js"></script>
+    <?php
+        }
+        else if(isset($userdroit['ecriture'])){
+            if($userdroit['ecriture']=='Réalisation'){
     ?>
                 <script src="content/js/atelier/atelier1a.js"></script>
     <?php 
@@ -1067,12 +1072,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <script src="content/js/atelier/atelier1a_no_modification.js"></script>
     <?php
             }
-        }
-        else if($userinfo['type_compte']=='Administrateur Logiciel'){    
-    ?>
-        <script src="content/js/atelier/atelier1a.js"></script>
-    <?php
-        }
+        }        
     ?>
     <script src="content/js/modules/sort_table.js"></script>
 </body>

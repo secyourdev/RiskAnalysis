@@ -14,6 +14,18 @@ while($ecriture = $search_projet->fetch()){
     array_push($array,$ecriture);
 }
 
+if($array==null){
+    $search_projet = $bdd->prepare("SELECT DISTINCT F_projet.id_projet, nom_projet,description_projet,cadre_temporel FROM F_projet WHERE F_projet.id_utilisateur=?");
+    $search_projet->bindParam(1, $getid_utilisateur);
+    $search_projet->execute();
+
+    $array = array();
+
+    while($ecriture = $search_projet->fetch()){
+        array_push($array,$ecriture);
+}
+}
+
 echo json_encode($array)
 
 ?>
