@@ -2,6 +2,14 @@
 var accordionSidebar = document.getElementById("accordionSidebar");
 var sidebarToggle = document.getElementById("sidebarToggle");
 
+var categorie = document.getElementById("categorie_partie_prenante");
+var nom = document.getElementById("nom_partie_prenante");
+var label_categorie = document.getElementById("categorie_partie_prenante").previousSibling.previousSibling
+var label_nom = document.getElementById("nom_partie_prenante").previousSibling.previousSibling
+
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.]{1,1000}$/
+
 var button = document.getElementsByClassName('tabledit-edit-button')
 var save_button = document.getElementsByClassName('tabledit-save-button')
 var j=0;
@@ -91,3 +99,18 @@ function get_database_seuil() {
     });
 }
 get_database_seuil()
+
+/*------------------------------ LABELS CACHES ------------------------------*/
+label_nom.style.display="none"
+label_categorie.style.display="none"
+
+/*----------------------- ENREGISTREMENT DES COOKIES ------------------------*/
+categorie.addEventListener('keyup',function(event){
+    verify_input(categorie.value,regex_nom,categorie)
+    activate_label(categorie.value,label_categorie)
+}) 
+
+nom.addEventListener('keyup',function(event){
+    verify_input(nom.value,regex_nom,nom)
+    activate_label(nom.value,label_nom)
+}) 

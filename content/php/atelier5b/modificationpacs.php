@@ -39,7 +39,7 @@ if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $difficulte)) {
 
 
 // Verification de la description de l'objectif visé
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/", $statut)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/", $statut)) {
     $results["error"] = true;
     $results["message"]["description objectif vise"] = "Statut invalide";
     ?>

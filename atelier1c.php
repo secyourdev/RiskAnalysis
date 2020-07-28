@@ -543,7 +543,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       <thead>
                         <tr>
                           <th id="id_echelle">ID echelle</th>
-                          <th id="nom_echelle">Nom de l'échelle</th>
+                          <th id="nomechelle">Nom de l'échelle</th>
                           <th id="echelle_gravite">Echelle de la gravité</th>
                         </tr>
                       </thead>
@@ -585,7 +585,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                   ?> 
                           <!-- bouton Ajouter une nouvelle ligne -->
                           <div class="text-center">
-                            <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_mission">Ajouter une nouvelle échelle de gravité</button>
+                            <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_echelle">Ajouter une nouvelle échelle de gravité</button>
                           </div>
                   <?php
                         }
@@ -594,7 +594,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                   ?>        
                           <!-- bouton Ajouter une nouvelle ligne -->
                           <div class="text-center">
-                            <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_mission">Ajouter une nouvelle échelle de gravité</button>
+                            <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_echelle">Ajouter une nouvelle échelle de gravité</button>
                           </div>
                   <?php
                             }
@@ -682,7 +682,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                           <th id="nom_valeur_metier">Valeur métier</th>
                           <th id="nom_evenement_redoutes">Nom de l'événement redouté</th>
                           <th id="description_evenement_redoutes">Description événement redouté</th>
-                          <th id="impact">Impacts</th>
+                          <th id="impacts">Impacts</th>
                           <th id="confidentialite">Confidentialité</th>
                           <th id="integrite">Integrité</th>
                           <th id="disponibilite">Disponibilité</th>
@@ -786,9 +786,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid||(isset($userdroit['ecriture'])&&$userdroit['ecriture']=='Réalisation')){ 
 ?> 
 <!---------------------------------------------------------------------------------------------------------------- 
---------------------------------------- modal ajout de mission ----------------------------------------------
---------------------------------------------------------------------------------------------------------------  -->
-<div class="modal fade" id="ajout_mission" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+--------------------------------------------- modal ajout d'échelle ----------------------------------------------
+--------------------------------------------------------------------------------------------------------------+--->
+<div class="modal fade" id="ajout_echelle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
@@ -802,6 +802,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
           <form method="post" action="content/php/echelle/ajoutechelle.php" class="user" id="formMission">
             <fieldset>
               <div class="form-group">
+                <label class="titre_input" for="nom_echelle">Nom de l'échelle</label>
                 <input type="text" class="perso_form shadow-none form-control form-control-user" name ="nom_echelle" id="nom_echelle"
                   placeholder="Nom de l'échelle" required>
               </div>
@@ -848,7 +849,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <div class="row">
                   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="form-group">
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_evenement_redoute" id="InputEvenementRedoute" placeholder="Dénomination de l'événement redouté" required>
+                    <label class="titre_input" for="nom_evenement_redoute">Dénomination de l'événement redouté</label>
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_evenement_redoute" id="nom_evenement_redoute" placeholder="Dénomination de l'événement redouté" required>
                     </div>
 
                     <div class="form-group">
@@ -867,8 +869,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     </div>
 
                     <div class="form-group">
-                      <label for="Description_event_pop">Événement redouté</label>
-                      <textarea class="form-control perso_text_area" name="description_evenement_redoute" id="Description_event_pop" rows="3"></textarea>
+                      <label for="description_evenement_redoute">Événement redouté</label>
+                      <textarea class="form-control perso_text_area" name="description_evenement_redoute" id="description_evenement_redoute" rows="3"></textarea>
                     </div>
 
                     <div class="form-group">
@@ -910,8 +912,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       </select>
                     </div>
                     <div class="form-group">
-                      <label for="Description_impact_pop">Impacts</label>
-                      <textarea class="form-control perso_text_area" name="impact" id="Description_impact_pop" rows="3"></textarea>
+                      <label for="impact">Impacts</label>
+                      <textarea class="form-control perso_text_area" name="impact" id="impact" rows="3"></textarea>
                     </div>
 
                     <div class="form-group" id="niveaudegravité">

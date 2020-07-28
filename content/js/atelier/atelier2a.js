@@ -2,6 +2,18 @@
 var accordionSidebar = document.getElementById("accordionSidebar");
 var sidebarToggle = document.getElementById("sidebarToggle");
 
+var profilattaquant = document.getElementById("profil_attaquant");
+var descriptionsr = document.getElementById("description_sr");
+var objectifvise = document.getElementById("objectif_vise");
+var descriptionov = document.getElementById("description_objectif_vise");
+
+var label_profilattaquant = document.getElementById("profil_attaquant").previousSibling.previousSibling
+var label_objectifvise = document.getElementById("objectif_vise").previousSibling.previousSibling
+
+
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.]{1,1000}$/
+
 var button = document.getElementsByClassName('tabledit-edit-button')
 var save_button = document.getElementsByClassName('tabledit-save-button')
 var j=0;
@@ -53,3 +65,26 @@ sleep(100).then(() => {
         button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table'+','+'6'+')')
     }
 });
+
+/*------------------------------ LABELS CACHES ------------------------------*/
+label_profilattaquant.style.display="none"
+label_objectifvise.style.display="none"
+
+/*----------------------- ENREGISTREMENT DES COOKIES ------------------------*/
+profilattaquant.addEventListener('keyup',function(event){
+    verify_input(profilattaquant.value,regex_nom,profilattaquant)
+    activate_label(profilattaquant.value,label_profilattaquant)
+}) 
+
+objectifvise.addEventListener('keyup',function(event){
+    verify_input(objectifvise.value,regex_nom,objectifvise)
+    activate_label(objectifvise.value,label_objectifvise)
+})
+
+descriptionsr.addEventListener('keyup',function(event){
+    verify_textarea(descriptionsr.value,regex_description,descriptionsr)
+})
+
+descriptionov.addEventListener('keyup',function(event){
+    verify_textarea(descriptionov.value,regex_description,descriptionov)
+})

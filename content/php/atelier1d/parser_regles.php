@@ -48,7 +48,7 @@ if ($fileType != "json") {
 
   // Check if $uploadOk is set to 0 by an error
   if ($uploadOk == 0) {
-    // print "Your file was not uploaded. ";
+    print "Your file was not uploaded. ";
 
     // if everything is ok, try to upload file
   } else {
@@ -80,7 +80,7 @@ if ($fileType != "json") {
 
   //si le socle n'existe pas encore
   if ($exist_socle == false) {
-    // print '$exist_socle[0] == 0';
+    print '$exist_socle[0] == 0';
     $insere_socle = $bdd->prepare(
       'INSERT INTO N_socle_de_securite
           (
@@ -112,12 +112,12 @@ if ($fileType != "json") {
   //trouve les parametres pour chaques regles
   $key_id_titre_desc = array();
   foreach ($exigence as $regle => $parametres) {
-    //  print 'règle ' . $regle . ' à les paramètres suivant:';
-    //  print '<br />';
-    //  print '<br />';
+     print 'règle ' . $regle . ' à les paramètres suivant:';
+     print '<br />';
+     print '<br />';
     foreach ($parametres as $key => $value) {
-    //  print $key . ' : ' . $value;
-    //  print '<br />';
+     print $key . ' : ' . $value;
+     print '<br />';
 
       //pour chaque parametre d'une regle, les rentre dans une array qui les groupe
       $key_id_titre_desc[$key] = $value;
@@ -137,10 +137,8 @@ if ($fileType != "json") {
 
       //insère les régles avec les paramètres groupés
       $insere_regle = $bdd->prepare(
-        "INSERT INTO O_regle(id_regle, id_regle_affichage, titre, description, etat_de_la_regle, justification_ecart, dates, responsable, id_socle_securite, id_projet) 
-    VALUES ('',?,?,?,NULL,NULL,NULL,NULL,?, '1.d', $getid_projet)"
+        "INSERT INTO O_regle(id_regle, id_regle_affichage, titre, description, etat_de_la_regle, justification_ecart, dates, responsable, id_socle_securite, id_projet, id_atelier) VALUES ('',?,?,?,NULL,NULL,NULL,NULL,?, $getid_projet, '1.d')"
       );
-
       $insere_regle->bindParam(1, $new_id_regle);
       $insere_regle->bindParam(2, $key_id_titre_desc['Titre']);
       $insere_regle->bindParam(3, $key_id_titre_desc['Description']);

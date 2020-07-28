@@ -701,7 +701,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <div class="col-12">
 
                           <div class="form-group">
-                            <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="categorie_pop" name="categorie_partie_prenante" placeholder="Catégorie" required>
+                          <label class="titre_input" for="categorie_partie_prenante">Catégorie</label>
+                            <input type="texte" class="perso_arrow perso_form shadow-none form-control" list="categorie_pop" name="categorie_partie_prenante" id="categorie_partie_prenante" placeholder="Catégorie" required>
                             <datalist id="categorie_pop">
                               <?php
                               while ($row = mysqli_fetch_array($result_categorie_partie_prenante)) {
@@ -723,7 +724,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                           </div>
 
                           <div class="form-group">
-                            <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_partie_prenante" id="Nom de la partie prenante" placeholder="Nom de la partie prenante" required>
+                            <label class="titre_input" for="nom_partie_prenante">Nom de la partie prenante</label>
+                            <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_partie_prenante" id="nom_partie_prenante" placeholder="Nom de la partie prenante" required>
                           </div>
 
                         </div>

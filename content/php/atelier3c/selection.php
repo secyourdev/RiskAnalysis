@@ -73,7 +73,7 @@ INNER JOIN Y_mesure
 ON Y_mesure.id_mesure = ZB_comporter_2.id_mesure
 INNER JOIN R_partie_prenante
 ON T_chemin_d_attaque_strategique.id_partie_prenante = R_partie_prenante.id_partie_prenante
-WHERE id_projet = $getid_projet
+WHERE T_chemin_d_attaque_strategique.id_projet = $getid_projet
 ";
 
 $result_mesure = mysqli_query($connect, $query_mesure);
