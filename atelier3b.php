@@ -598,7 +598,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Liste des couples sources de risques / objectifs visés établis à l'atelier 2</h6>
+                        <h6 class="m-0">Liste des couples sources de risques / objectifs visés retenus établis à l'atelier 2</h6>
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
@@ -950,22 +950,28 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           </div>
         </div>
         <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-              <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
-              </div>
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Êtes-vous prêt à quitter l'application ?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à terminer votre session
+                        en cours.</div>
+                    <div class="modal-footer">
+                        <form method="post" action="content/php/deconnexion/logs.php">
+                            <fieldset>
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                                <input type="submit" name="deconnexion" value="Déconnexion" class="btn btn-primary"></input>
+                                <fieldset>
+                        </form>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
 
         <!-- Bootstrap core JavaScript-->

@@ -153,6 +153,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                 </div>
                             </div>
                         </div>
+                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'){ 
+                        ?>        
                         <div class="col-xl-3 col-lg-3">
                             <div class="card shadow mb-4">
                                 <div id="tableau_de_bord_grp_user"
@@ -204,6 +206,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                 </div>
                             </div>
                         </div>
+                        <?php
+                            }
+                        ?>
                     </div>
                     
 
@@ -237,7 +242,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <div class="row" id="projets"> </div>
                     </div>
 
-
+                    <?php if($userinfo['type_compte']=='Administrateur Logiciel'){ 
+                    ?>                  
                     <div id="grp_user_card" class="col-xl-12 col-lg-12 fondu">
                         <div class="card shadow mb-4">
                             <!-- Card Header - Dropdown -->
@@ -331,10 +337,25 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                 <th>Poste</th>
                                             </tr>
                                         </thead>
-
                                         <tbody id="ecrire_user">
                                         </tbody>
                                     </table>
+                                    <div class='message_success'>
+                                    <?php 
+                                        if(isset($_SESSION['message_success_2b'])){
+                                        echo $_SESSION['message_success_2b'];
+                                        unset($_SESSION['message_success_2b']);
+                                        }
+                                    ?>
+                                    </div> 
+                                    <div class='message_error'>
+                                    <?php                
+                                        if(isset($_SESSION['message_error_2b'])){
+                                            echo $_SESSION['message_error_2b'];
+                                            unset($_SESSION['message_error_2b']);
+                                        }
+                                    ?>
+                                    </div>
                                 </div>
                         
                                 <!-- bouton Ajouter une nouvelle ligne -->
@@ -438,6 +459,10 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         </div>     
                     </div>
 
+                    <?php
+                        }
+                    ?>
+
                 </div>
                 <!-- End of Main Content -->
                 </br>
@@ -459,7 +484,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
         </a>
-
+        
+        <?php if($userinfo['type_compte']=='Administrateur Logiciel'){ 
+        ?>   
         <!-------------------------------------------------------------------------------------------------------------- 
         --------------------------------------- modal creation d'un projet ---------------------------------------------
         ---------------------------------------------------------------------------------------------------------------->
@@ -490,16 +517,32 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         id="description_etude" rows="3"></textarea>
                                 </div>
 
+                                <!--CHEF DE PROJET-->
+                                <div class="form-group">
+                                    <label for="select_chef_projet">Chef de projet</label>
+                                    <select class="form-control" name="id_utilisateur" id="select_chef_projet">
+                                        <option value="" selected>...</option>
+                                        <?php
+                                        while($row = mysqli_fetch_array($result_chef_de_projet_creation))
+                                            {
+                                                echo '
+                                                <option value="'.$row["id_utilisateur"].'">'.$row["nom"].' '.$row["prenom"].'</option>
+                                                ';
+                                            }
+                                        ?>
+                                    </select>
+                                </div>                                
+                                
                                 <!--GROUPE UTILISATEUR-->
                                 <div class="form-group">
-                                    <label for="SelectGrpUserPop">Groupe d'utilisateur</label>
-                                    <select class="form-control" name="nom_grp_utilisateur" id="SelectGrpUser">
+                                    <label for="SelectGrpUser">Groupe d'utilisateur</label>
+                                    <select class="form-control" name="id_grp_utilisateur" id="SelectGrpUser">
                                         <option value="" selected>...</option>
                                         <?php
                                         while($row = mysqli_fetch_array($result_grp_user_creation))
                                             {
                                                 echo '
-                                                <option value="'.$row["nom_grp_utilisateur"].'">'.$row["nom_grp_utilisateur"].'</option>
+                                                <option value="'.$row["id_grp_utilisateur"].'">'.$row["nom_grp_utilisateur"].'</option>
                                                 ';
                                             }
                                         ?>
@@ -517,6 +560,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </div>
             </div>
         </div>
+           
         <!-------------------------------------------------------------------------------------------------------------- 
         --------------------------------------- modal creation d'un groupe utilisateur ---------------------------------
         ---------------------------------------------------------------------------------------------------------------->
@@ -575,7 +619,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         while($row = mysqli_fetch_array($result_user))
                                             {
                                                 echo '
-                                                <option value="'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'">'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'</option>
+                                                <option value="'.$row["id_utilisateur"].'">'.$row["nom"].' '.$row["prenom"].'</option>
                                                 ';
                                             }
                                         ?>
@@ -637,7 +681,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         <option>Utilisateur</option>
                                     </select>
                                 </div>
-                                <div>
+                                <div class="modal-footer perso_middle_modal_footer">
                                     <input type="submit" name="valider" value="Ajouter"
                                         class="btn perso_btn_primary shadow-none"></input>
                                 </div>
@@ -731,6 +775,22 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                     <textarea class="form-control perso_text_area" name="description_etude_modif"
                                         id="description_etude_modif" rows="3" required></textarea>
                                 </div>
+
+                                <!--CHEF DE PROJET-->
+                                <div class="form-group">
+                                    <label for="chef_de_projet_modif">Chef de projet</label>
+                                    <select class="form-control" name="id_utilisateur" id="chef_de_projet_modif">
+                                        <option value="" selected>...</option>
+                                        <?php
+                                        while($row = mysqli_fetch_array($result_chef_de_projet_modification))
+                                            {
+                                                echo '
+                                                <option value="'.$row["id_utilisateur"].'">'.$row["nom"].' '.$row["prenom"].'</option>
+                                                ';
+                                            }
+                                        ?>
+                                    </select>
+                                </div>           
 
                                 <!--GROUPE UTILISATEUR-->
                                 <div class="form-group">
@@ -897,7 +957,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </div>
             </div>
         </div>
-
+        <?php }
+        ?>                                    
 
         <!-- Logout Modal-->
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -937,23 +998,22 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <!-- Our JS -->
         <script src="content/js/modules/dark_mode.js"></script>
         <script src="content/js/modules/fixed_page.js"></script>
-        <script src="content/js/modules/realtime.js"></script>
-        <script src="content/js/modules/set_filter_sort_table.js"></script>
-        <script src="content/js/accueil/recherche_utilisateur.js"></script>
-        <script src="content/js/modules/importer_bdd.js"></script>
-        <script src="content/js/modules/importer_image.js"></script>
-        <script src="content/js/modules/browse.js"></script>
-                                   
-        
-        
-        <?php if($userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Utilisateur'){
+        <script src="content/js/modules/realtime.js"></script>                            
+            
+        <?php if($userinfo['type_compte']=='Utilisateur'){
         ?>
-                <script src="content/js/accueil/index.js"></script>
+                <script src="content/js/accueil/index_utilisateur.js"></script>
         <?php 
             }
               else if($userinfo['type_compte']=='Administrateur Logiciel'){    
         ?>
+                <script src="content/js/modules/set_filter_sort_table.js"></script>
+                <script src="content/js/modules/importer_bdd.js"></script>
+                <script src="content/js/modules/importer_image.js"></script>
+                <script src="content/js/modules/browse.js"></script>
+                <script src="content/js/accueil/recherche_utilisateur.js"></script>
                 <script src="content/js/accueil/index_admin.js"></script>
+                
         <?php
             }
         ?>

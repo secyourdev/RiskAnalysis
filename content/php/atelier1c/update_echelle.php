@@ -3,9 +3,9 @@ session_start();
 
 include("../bdd/connexion.php");
 
-$update = $bdd->prepare("UPDATE F_projet SET id_echelle = ? WHERE id_projet = ?");
-$get_id = $bdd->prepare("SELECT id_echelle FROM D_echelle WHERE id_echelle = ?");
-$get_gravite = $bdd->prepare("SELECT echelle_gravite FROM D_echelle WHERE id_echelle = ?");
+$update = $bdd->prepare("UPDATE DA_echelle SET id_projet = ? WHERE id_projet = ?");
+$get_id = $bdd->prepare("SELECT id_echelle FROM DA_echelle WHERE id_echelle = ?");
+$get_gravite = $bdd->prepare("SELECT echelle_gravite FROM DA_echelle WHERE id_echelle = ?");
 $updateer = $bdd->prepare("UPDATE M_evenement_redoute SET niveau_de_gravite = 4 WHERE niveau_de_gravite = 5");
 $id_projet = $_SESSION['id_projet'];
 
