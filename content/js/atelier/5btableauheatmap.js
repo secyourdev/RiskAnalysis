@@ -4,9 +4,9 @@ console.log('5a-testtableauheatmap.js');
 $.post("heatmap-getdata.php", function (data) {
 
 
-	console.log(data);
-	console.log(data['data_dim']);
-	console.log(data['data_cell']);
+	// console.log(data);
+	// console.log(data['data_dim']);
+	// console.log(data['data_cell']);
 
 
 	for (i = 0; i < data['data_dim'].length; i++) {
@@ -83,81 +83,81 @@ $.post("heatmap-getdata.php", function (data) {
 					document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(6)").classList.add('fond-orange')
 					break;
 			}
-		break;
+			break;
 
 		case "5":
-				switch (echelle_vraisemblance) {
-					case "4":
-						document.querySelector("#dataTable > tbody > tr:nth-child(1) > td:nth-child(6)").remove()
-						document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(6)").remove()
-						document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(6)").remove()
-						document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(6)").remove()
-						document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(6)").remove()
-						document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(6)").remove()
-						document.querySelector("#dataTable > tbody > tr:nth-child(7) > td:nth-child(6)").remove()
+			switch (echelle_vraisemblance) {
+				case "4":
+					document.querySelector("#dataTable > tbody > tr:nth-child(1) > td:nth-child(6)").remove()
+					document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(6)").remove()
+					document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(6)").remove()
+					document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(6)").remove()
+					document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(6)").remove()
+					document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(6)").remove()
+					document.querySelector("#dataTable > tbody > tr:nth-child(7) > td:nth-child(6)").remove()
 
 
 
 
 
-						document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(2)").classList.add('fond-orange')
-						document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(2)").classList.add('fond-orange')
-						document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(2)").classList.add('fond-vert')
-						document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(2)").classList.add('fond-vert')
-						document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(2)").classList.add('fond-vert')
+					document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(2)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(2)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(2)").classList.add('fond-vert')
+					document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(2)").classList.add('fond-vert')
+					document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(2)").classList.add('fond-vert')
 
-						document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(3)").classList.add('fond-rouge')
-						document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(3)").classList.add('fond-orange')
-						document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(3)").classList.add('fond-orange')
-						document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(3)").classList.add('fond-vert')
-						document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(3)").classList.add('fond-vert')
+					document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(3)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(3)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(3)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(3)").classList.add('fond-vert')
+					document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(3)").classList.add('fond-vert')
 
-						document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(4)").classList.add('fond-rouge')
-						document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(4)").classList.add('fond-rouge')
-						document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(4)").classList.add('fond-orange')
-						document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(4)").classList.add('fond-orange')
-						document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(4)").classList.add('fond-vert')
+					document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(4)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(4)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(4)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(4)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(4)").classList.add('fond-vert')
 
-						document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(5)").classList.add('fond-rouge')
-						document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(5)").classList.add('fond-rouge')
-						document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(5)").classList.add('fond-rouge')
-						document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(5)").classList.add('fond-orange')
-						document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(5)").classList.add('fond-orange')
-						break;
+					document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(5)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(5)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(5)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(5)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(5)").classList.add('fond-orange')
+					break;
 
-					case "5":
-						document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(2)").classList.add('fond-orange')
-						document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(2)").classList.add('fond-orange')
-						document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(2)").classList.add('fond-vert')
-						document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(2)").classList.add('fond-vert')
-						document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(2)").classList.add('fond-vert')
+				case "5":
+					document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(2)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(2)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(2)").classList.add('fond-vert')
+					document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(2)").classList.add('fond-vert')
+					document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(2)").classList.add('fond-vert')
 
-						document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(3)").classList.add('fond-orange')
-						document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(3)").classList.add('fond-orange')
-						document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(3)").classList.add('fond-orange')
-						document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(3)").classList.add('fond-vert')
-						document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(3)").classList.add('fond-vert')
+					document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(3)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(3)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(3)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(3)").classList.add('fond-vert')
+					document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(3)").classList.add('fond-vert')
 
-						document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(4)").classList.add('fond-rouge')
-						document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(4)").classList.add('fond-orange')
-						document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(4)").classList.add('fond-orange')
-						document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(4)").classList.add('fond-orange')
-						document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(4)").classList.add('fond-vert')
+					document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(4)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(4)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(4)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(4)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(4)").classList.add('fond-vert')
 
-						document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(5)").classList.add('fond-rouge')
-						document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(5)").classList.add('fond-rouge')
-						document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(5)").classList.add('fond-orange')
-						document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(5)").classList.add('fond-orange')
-						document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(5)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(5)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(5)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(5)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(5)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(5)").classList.add('fond-orange')
 
-						document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(6)").classList.add('fond-rouge')
-						document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(6)").classList.add('fond-rouge')
-						document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(6)").classList.add('fond-rouge')
-						document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(6)").classList.add('fond-orange')
-						document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(6)").classList.add('fond-orange')
-						break;
-				}
-		break;
+					document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(6)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(6)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(6)").classList.add('fond-rouge')
+					document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(6)").classList.add('fond-orange')
+					document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(6)").classList.add('fond-orange')
+					break;
+			}
+			break;
 		default:
 			document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(2)").classList.add('fond-orange')
 			document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(2)").classList.add('fond-orange')
@@ -191,9 +191,9 @@ $.post("heatmap-getdata.php", function (data) {
 			break;
 	}
 
-	
-	
-	
+
+
+
 
 
 
@@ -351,6 +351,50 @@ $.post("heatmap-getdata.php", function (data) {
 
 	}
 
+	// console.log(parseInt(echelle_gravite));
+	// console.log(parseInt(echelle_vraisemblance));
+
+	for (let i = 1; i <= (parseInt(echelle_gravite)); i++) {
+
+		// console.log('gravite: ' + i);
+
+		for (let j = 1; j <= (parseInt(echelle_vraisemblance)); j++) {
+
+			console.log('vraisemblance: ' + j);
+
+			
+			console.log(document.getElementById("dataTable").rows[i].cells[j]);
+			document.getElementById("dataTable").rows[i].cells[j].addEventListener('click', function () {
+				
+				var case_echelle_gravite = i
+				console.log(case_echelle_gravite);
+				
+				var case_echelle_vraisemblance = j
+				console.log(case_echelle_vraisemblance);
+				
+				sleep(100).then(() => {
+					var case_couleur = document.getElementById("dataTable").rows[i].cells[j].classList[0]
+					console.log(case_couleur);
+					
+					
+					
+					$.ajax({
+						url: 'content/php/atelier5b/ajax-heatmap.php',
+						type: 'POST',
+						data: {
+							case_echelle_gravite: case_echelle_gravite,
+							case_echelle_vraisemblance: case_echelle_vraisemblance,
+							case_couleur: case_couleur
+						},
+						success: function () {
+							console.log('traitement du barème fait');
+						}
+					});
+					
+				});
+			})
+		}
+	}
 })
 
 $('table').on('click', "td", function () {
@@ -362,3 +406,10 @@ $('table').on('click', "td", function () {
 		$(this).removeClass('fond-rouge').addClass('fond-vert');
 	}
 });
+
+
+
+
+
+
+
