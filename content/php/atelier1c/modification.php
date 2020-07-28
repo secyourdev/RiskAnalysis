@@ -30,7 +30,7 @@ if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $impact)) {
 }
 
 // Verification du niveau_de_gravite
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/", $niveau_de_gravite)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/", $niveau_de_gravite)) {
     $results["error"] = true;
 }
 

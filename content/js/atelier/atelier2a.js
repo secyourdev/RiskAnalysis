@@ -11,7 +11,7 @@ var label_profilattaquant = document.getElementById("profil_attaquant").previous
 var label_objectifvise = document.getElementById("objectif_vise").previousSibling.previousSibling
 
 
-var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/
 var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.]{1,1000}$/
 
 var button = document.getElementsByClassName('tabledit-edit-button')

@@ -18,7 +18,8 @@ var label_responsable = document.getElementById("responsable").previousSibling.p
 var label_responsablevm = document.getElementById("responsable_vm").previousSibling.previousSibling
 var label_responsablebs = document.getElementById("responsable_bs").previousSibling.previousSibling
 
-var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
+var regex_nom_mission = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,50}$/
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/
 var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.]{1,1000}$/
 
 var button = document.getElementsByClassName('tabledit-edit-button')
@@ -170,7 +171,7 @@ descriptionvm.addEventListener('keyup',function(event){
 })
 
 nommission.addEventListener('keyup',function(event){
-    verify_input(nommission.value,regex_nom,nommission)
+    verify_input(nommission.value,regex_nom_mission,nommission)
     activate_label(nommission.value,label_mission)
 }) 
 
