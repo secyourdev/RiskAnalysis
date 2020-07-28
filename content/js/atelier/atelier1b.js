@@ -139,7 +139,7 @@ descriptionbs.addEventListener('keyup',function(event){
 
 valeurmetier.addEventListener('keyup',function(event){
     verify_input(valeurmetier.value,regex_nom,valeurmetier)
-    activate_label(valeurmetier.value,label_mission)
+    activate_label(valeurmetier.value,label_valeurmetier)
 }) 
 
 descriptionvm.addEventListener('keyup',function(event){
@@ -161,7 +161,7 @@ responsablevm.addEventListener('keyup',function(event){
     activate_label(responsablevm.value,label_responsablevm)
 })
 
-responsable.addEventListener('keyup',function(event){
+responsablebs.addEventListener('keyup',function(event){
     verify_input(responsablebs.value,regex_nom,responsablebs)
     activate_label(responsablebs.value,label_responsablebs)
 })
