@@ -467,7 +467,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <tr>
                           <th id="id_srov">ID SROV</th>
                           <th id="type_attaquant">Type d'attaquant</th>
-                          <th id="profil_attaquant">Profil d'attaquant</th>
+                          <th id="profil_d_attaquant">Profil d'attaquant</th>
                           <th id="description_source_risque">Description source de risque</th>
                           <th id="objectif vise">Objectif visé</th>
                           <th id="description_objectif">Description de l'objectif</th>
@@ -572,7 +572,8 @@ aria-hidden="true">
                 </select>
               
                 <div class="form-group form-colonne">
-                  <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Profil d'attaquant" name="profil_attaquant" placeholder="Profil d'attaquant" required>
+                <label class="titre_input" for="profil_attaquant">Profil d'attaquant</label>
+                  <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Profil d'attaquant" name="profil_attaquant" id="profil_attaquant" placeholder="Profil d'attaquant" required>
                   <datalist id="Profil d'attaquant">
                     <option value="Etatique">
                     <option value="Crime organisé">
@@ -587,8 +588,8 @@ aria-hidden="true">
               </div>
 
               <div class="form-group col-6">
-                <label for="Description de la source de risque">Description de la source de risque</label>
-                <textarea class="form-control perso_text_area" id="Description de la source de risque" name="description_sr"rows="5"></textarea>
+                <label for="description_sr">Description de la source de risque</label>
+                <textarea class="form-control perso_text_area" id="description_sr" name="description_sr"rows="5"></textarea>
               </div>
             </div>
             <div class="row">
@@ -597,7 +598,8 @@ aria-hidden="true">
                   placeholder="Objectif visé" required>
               </div> -->
               <div class="form-group form-colonne col-12">
-                  <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Objectif visé" name="objectif_vise" placeholder="Objectif visé" required>
+              <label class="titre_input" for="objectif_vise">Objectif vise</label>
+                  <input type="search" class="perso_arrow perso_form shadow-none form-control" list="Objectif visé" name="objectif_vise" id="objectif_vise" placeholder="Objectif visé" required>
                   <datalist id="Objectif visé">
                     <option value="Espionnage">
                     <option value="Prépositionnement stratégique">
@@ -609,8 +611,8 @@ aria-hidden="true">
                 </div>
 
               <div class="form-group col-12">
-                <label for="Description de l'objectif visé">Description de l'objectif visé</label>
-                <textarea class="form-control perso_text_area" id="Description de l'objectif visé" name="description_objectif_vise" rows="3"></textarea>
+                <label for="description_objectif_viseDescription de l'objectif visé">Description de l'objectif visé</label>
+                <textarea class="form-control perso_text_area" id="description_objectif_vise" name="description_objectif_vise" rows="3"></textarea>
               </div>
             </div>
             <!-- bouton Ajouter -->
