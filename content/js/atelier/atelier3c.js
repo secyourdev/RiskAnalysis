@@ -2,6 +2,13 @@
 var accordionSidebar = document.getElementById("accordionSidebar");
 var sidebarToggle = document.getElementById("sidebarToggle");
 
+var nommesure = document.getElementById("nommesure");
+var descriptionmesure = document.getElementById("descriptionmesure");
+var label_mesure = document.getElementById("nommesure").previousSibling.previousSibling
+
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.]{1,1000}$/
+
 var button = document.getElementsByClassName('tabledit-edit-button')
 var save_button = document.getElementsByClassName('tabledit-save-button')
 var j=0;
@@ -93,3 +100,16 @@ sleep(100).then(() => {
         button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table_mesure'+','+'11'+')')
     }
 });
+
+/*------------------------------ LABELS CACHES ------------------------------*/
+label_mesure.style.display="none"
+
+/*----------------------- ENREGISTREMENT DES COOKIES ------------------------*/
+nommesure.addEventListener('keyup',function(event){
+    verify_input(nommesure.value,regex_nom,nommesure)
+    activate_label(nommesure.value,label_mesure)
+}) 
+
+descriptionmesure.addEventListener('keyup',function(event){
+    verify_textarea(descriptionmesure.value,regex_description,descriptionmesure)
+})

@@ -2,6 +2,16 @@
 var accordionSidebar = document.getElementById("accordionSidebar");
 var sidebarToggle = document.getElementById("sidebarToggle");
 
+var scenariostrategique = document.getElementById("nom_scenario_strategique");
+var label_scenariostrategique = document.getElementById("nom_scenario_strategique").previousSibling.previousSibling
+
+var id_risque = document.getElementById("id_risque");
+var cheminattaque = document.getElementById("chemin_d_attaque_strategique")
+var label_id_risque = document.getElementById("id_risque").previousSibling.previousSibling
+
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-]{1,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.]{1,1000}$/
+
 var button = document.getElementsByClassName('tabledit-edit-button')
 var save_button = document.getElementsByClassName('tabledit-save-button')
 var j=0;
@@ -144,3 +154,22 @@ OURJQUERYFN.setFilterTable("#rechercher_chemin_d_attaque","#editable_table_chemi
 //         button[i].setAttribute('onclick','tableau_verification('+l+','+'editable_table_chemin_d_attaque'+','+'4'+')')
 //     }
 // });
+
+/*------------------------------ LABELS CACHES ------------------------------*/
+label_scenariostrategique.style.display="none"
+label_id_risque.style.display="none"
+
+/*----------------------- ENREGISTREMENT DES COOKIES ------------------------*/
+scenariostrategique.addEventListener('keyup',function(event){
+    verify_input(scenariostrategique.value,regex_nom,scenariostrategique)
+    activate_label(scenariostrategique.value,label_scenariostrategique)
+}) 
+
+id_risque.addEventListener('keyup',function(event){
+    verify_input(id_risque.value,regex_nom,id_risque)
+    activate_label(id_risque.value,label_id_risque)
+}) 
+
+cheminattaque.addEventListener('keyup',function(event){
+    verify_textarea(cheminattaque.value,regex_description,cheminattaque)
+})
