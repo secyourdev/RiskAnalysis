@@ -45,15 +45,6 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $id_scenario_
 // }
 
 
-
-
-
-
-
-
-
-
-
 $recupere = $bdd->prepare("SELECT S_scenario_strategique.id_scenario_strategique FROM S_scenario_strategique  WHERE S_scenario_strategique.nom_scenario_strategique = ?");
 $recuperepp = $bdd->prepare("SELECT id_partie_prenante FROM R_partie_prenante WHERE nom_partie_prenante = ? AND id_projet = ?");
 
@@ -63,11 +54,17 @@ WHERE U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaq
 AND U_scenario_operationnel.id_projet = ?");
 
 $insere = $bdd->prepare(
-  'INSERT INTO 
-  T_chemin_d_attaque_strategique 
-  (id_chemin_d_attaque_strategique,id_risque,nom_chemin_d_attaque_strategique,dependance_residuelle, penetration_residuelle, maturite_residuelle,confiance_residuelle, niveau_de_menace_residuelle, id_scenario_strategique, id_partie_prenante) 
-  VALUES 
-  (?, ?, ?, NULL, NULL, NULL, NULL, NULL, ? ,?)'
+  "INSERT INTO 
+  T_chemin_d_attaque_strategique
+  (id_chemin_d_attaque_strategique, 
+  id_risque, 
+  nom_chemin_d_attaque_strategique, 
+  description_chemin_d_attaque_strategique, 
+  id_scenario_strategique, 
+  id_partie_prenante, 
+  id_projet, 
+  id_atelier) VALUES 
+  (?,?,?,NULL,?,?,$get_id_projet,'3.b')"
 );
 $insere_reeval = $bdd->prepare(
   'INSERT INTO 
