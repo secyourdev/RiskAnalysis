@@ -948,6 +948,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                         risque/objectifs visés</th>
                                                 </tr>
                                                 <tr>
+                                                    <th name="2.c" scope="row">Activité 2.c - Sélectionner les couples SR/OV retenus pour la suite de l'analyse</th>
+                                                </tr>
+                                                <tr>
                                                     <th name="3.a" scope="row">Activité 3.a - Construire la cartographie des menaces
                                                         numériques de l'écosystème et sélectionner les parties prenantes critiques</th>
                                                 </tr>

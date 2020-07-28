@@ -16,20 +16,24 @@ function show_sub_content(){
     }
 }
 /*--------------------------------- TABLES JS -------------------------------*/
+
 $(document).ready(function () {
     $('#editable_table').Tabledit({
-        url: 'content/php/atelier2c/modification.php',
-        deleteButton: false,
+        url: 'content/php/atelier2a/modification.php',
         columns: {
             identifier: [0, 'id_source_de_risque'],
-            editable: [
-                [13, 'choix_source_de_risque', '{"..." : "...", "P1": "P1", "P2": "P2"}']
-            ],
+            editable: [],
         },
         restoreButton: false,
+        editButton: false,
+        deleteButton: false,
+        onSuccess: function (data, textStatus, jqXHR) {
+            if (data.action == 'delete') {
+                $('#' + data.id_source_de_risque).remove();
+            }
+        }
     });
 });
-
 
 /*--------------------------- SORT & FILTER TABLES --------------------------*/
 setSortTable('editable_table');

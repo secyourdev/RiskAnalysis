@@ -16,35 +16,18 @@ function show_sub_content(){
     }
 }
 /*--------------------------------- TABLES JS -------------------------------*/
-
 $(document).ready(function () {
     $('#editable_table').Tabledit({
-        url: 'content/php/atelier2b/modification.php',
-        deleteButton: false,
+        url: 'content/php/atelier2c/modification.php',
         columns: {
             identifier: [0, 'id_source_de_risque'],
-            editable: [
-                [5, 'motivation', '{"" : "...", "1": "1", "2": "2", "3": "3"}'],
-                [6, 'ressources', '{"" : "...", "1": "1", "2": "2", "3": "3"}'],
-                [7, 'activite', '{"" : "...", "1": "1", "2": "2", "3": "3"}'],
-                [8, 'mode_operatoire'],
-                [9, 'secteur_d_activite'],
-                [10, 'arsenal_d_attaque'],
-                [11, 'faits_d_armes'],
-                [12, 'pertinence', '{"Auto" : "Auto", "Faible": "Faible", "Moyenne": "Moyenne", "Élevée": "Élevée"}'],
-            ],
+            editable: [],
         },
         restoreButton: false,
+        editButton: false,
+        deleteButton: false,
     });
 });
-
-
 /*--------------------------- SORT & FILTER TABLES --------------------------*/
 setSortTable('editable_table');
 OURJQUERYFN.setFilterTable("#rechercher_srov","#editable_table tbody tr")
-/*--------------------------- Couleurs pertinence --------------------------*/
-$("#editable_table > tbody > tr > td:nth-child(13)").each(function () {
-    if ($(this)[0].innerText == "Faible") { $(this)[0].classList.add('fond-vert'); }
-    if ($(this)[0].innerText == "Moyenne") { $(this)[0].classList.add('fond-orange'); }
-    if ($(this)[0].innerText == "Élevée") { $(this)[0].classList.add('fond-rouge'); }
-});

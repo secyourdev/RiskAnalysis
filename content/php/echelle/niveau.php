@@ -5,11 +5,7 @@ $query = $bdd->prepare("SELECT id_niveau, valeur_niveau, description_niveau FROM
 
 if(isset($_POST['nom_echelle'])){
     $nom_echelle = $_POST['nom_echelle'];
-    $affiche_niveau = $bdd->prepare("SELECT id_echelle FROM DA_echelle WHERE nom_echelle = ?");
-    $affiche_niveau->bindParam(1, $nom_echelle);
-    $affiche_niveau->execute();
-    $resultat = $affiche_niveau->fetch();
-    $query->bindParam(1, $resultat[0]);
+    $query->bindParam(1, $nom_echelle);
     $query->execute();
 
     

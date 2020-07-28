@@ -797,7 +797,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <i class="fas fa-bars"></i>
     </a>
 
-<?php if($userdroit['ecriture']=='Réalisation'||$userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+<?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid||(isset($userdroit['ecriture'])&&$userdroit['ecriture']=='Réalisation')){ 
 ?> 
 <!---------------------------------------------------------------------------------------------------------------- 
 --------------------------------------- modal ajout de bien support ----------------------------------------------

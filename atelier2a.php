@@ -14,11 +14,16 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $reqproject->execute(array($getidproject));
     $projectinfo = $reqproject->fetch();
 
-    $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.a"');
+    $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="2.a"');
     $reqdroit->bindParam(1, $getid);
     $reqdroit->bindParam(2, $getidproject);
     $reqdroit->execute();
     $userdroit = $reqdroit->fetch();
+
+    $reqdroit_chef_de_projet = $bdd->prepare('SELECT id_utilisateur FROM F_projet WHERE id_projet = ?');
+    $reqdroit_chef_de_projet->bindParam(1, $getidproject);
+    $reqdroit_chef_de_projet->execute();
+    $userdroit_chef_de_projet = $reqdroit_chef_de_projet->fetch();
 ?>
 
 <?php include("content/php/atelier2a/selection.php");?>
@@ -53,7 +58,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
 <?php 
 if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur'])
 {
-  if(isset($userdroit['ecriture'])){
+  if(isset($userdroit['ecriture'])||$userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
 ?>
 
 <body id="page-top">
@@ -509,11 +514,26 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       }
                   ?>
                   </div>
-
-                  <!-- bouton Ajouter une nouvelle ligne -->
-                  <div class="text-center">
-                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_sr">Ajouter un couple Source de Menace / Objecif visé</button>
-                  </div>   
+                  
+                  <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                  ?>
+                          <!-- bouton Ajouter une nouvelle ligne -->
+                          <div class="text-center">
+                            <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_sr">Ajouter un couple Source de Menace / Objecif visé</button>
+                          </div> 
+                          <?php
+                        }
+                        else if (isset($userdroit['ecriture'])){
+                            if($userdroit['ecriture']=='Réalisation'){
+                  ?>    
+                            <!-- bouton Ajouter une nouvelle ligne -->
+                            <div class="text-center">
+                              <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_sr">Ajouter un couple Source de Menace / Objecif visé</button>
+                            </div> 
+                  <?php
+                            }
+                        }                          
+                  ?>
                 </div>
               </div>
             </div>          
@@ -545,6 +565,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <i class="fas fa-bars"></i>
   </a>
 
+<?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid||(isset($userdroit['ecriture'])&&$userdroit['ecriture']=='Réalisation')){ 
+?> 
 <!-- -------------------------------------------------------------------------------------------------------------- 
 ----------------------------------------- modal ajout de ligne ----------------------------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
@@ -623,7 +645,9 @@ aria-hidden="true">
     </div>
   </div>
 </div>
-
+<?php
+}
+?>
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -666,7 +690,24 @@ aria-hidden="true">
   <script src="content/js/modules/fixed_page.js"></script>
   <script src="content/js/modules/realtime.js"></script>
   <script src="content/js/modules/set_filter_sort_table.js"></script>
-  <script src="content/js/atelier/atelier2a.js"></script>
+  <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
+    ?>
+        <script src="content/js/atelier/atelier2a.js"></script>
+    <?php
+        }
+        else if(isset($userdroit['ecriture'])){
+            if($userdroit['ecriture']=='Réalisation'){
+    ?>
+                <script src="content/js/atelier/atelier2a.js"></script>
+    <?php 
+            }
+            else{
+    ?>
+                <script src="content/js/atelier/atelier2a_no_modification.js"></script>
+    <?php
+            }
+        }        
+    ?>
   <script src="content/js/modules/sort_table.js"></script>
 </body>
 <?php

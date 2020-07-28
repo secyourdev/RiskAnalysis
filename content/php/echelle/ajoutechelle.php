@@ -8,10 +8,13 @@ $results["error"] = false;
 
 $nom_echelle=$_POST['nom_echelle'];
 $echelle_gravite=$_POST['echelle_gravite'];
+$echelle_vraisemblance= '0';
 $id_echelle="id_echelle";
 
-$insere = $bdd->prepare('INSERT INTO `DA_echelle`(`id_echelle`, `nom_echelle`, `echelle_gravite`, `echelle_vraisemblance`, `id_projet`) VALUES (?,?,?,0,?)');
-$recupere = $bdd->prepare('SELECT id_echelle FROM DA_echelle WHERE nom_echelle = ? AND id_projet=?');
+$insere = $bdd->prepare('INSERT INTO `DA_echelle`(`id_echelle`, `nom_echelle`, `echelle_gravite`, `echelle_vraisemblance`) VALUES (?,?,?,0)');
+$recupere = $bdd->prepare('SELECT id_echelle AS LAST FROM DA_echelle ORDER BY id_echelle DESC LIMIT 1');
+$insereevaluer = $bdd->prepare('INSERT INTO `DA_evaluer`(`id_echelle`, `id_projet`) VALUES (?,?)');
+//$recupere = $bdd->prepare('SELECT id_echelle FROM DA_echelle NATURAL JOIN DA_evaluer WHERE nom_echelle=? AND id_projet=?');
 
 $insere_niveau_1 = $bdd->prepare('INSERT INTO `DA_niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`) VALUES (NULL, NULL, 1,?)');
 $insere_niveau_2 = $bdd->prepare('INSERT INTO `DA_niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`) VALUES (NULL, NULL, 2,?)');
@@ -29,12 +32,21 @@ $insere_niveau_5 = $bdd->prepare('INSERT INTO `DA_niveau`(`id_niveau`, `descript
     $insere->bindParam(1, $id_echelle);
     $insere->bindParam(2, $nom_echelle);
     $insere->bindParam(3, $echelle_gravite);
-    $insere->bindParam(4, $id_projet);
     $insere->execute();
-    $recupere->bindParam(1, $nom_echelle);
-    $recupere->bindParam(2, $id_projet);
+   
     $recupere->execute();
     $id_echelle = $recupere->fetch();
+
+    $insereevaluer->bindParam(1, $id_echelle[0]);
+    $insereevaluer->bindParam(2, $id_projet);
+    $insereevaluer->execute();
+
+    // $recupere->bindParam(1, $nom_echelle);
+    // $recupere->bindParam(2, $echelle_gravite);
+    // $recupere->bindParam(3, $echelle_vraisemblance);
+    // $recupere->execute();
+    // $id_echelle = $recupere->fetch();
+
     $insere_niveau_1->bindParam(1, $id_echelle[0]);
     $insere_niveau_2->bindParam(1, $id_echelle[0]);
     $insere_niveau_3->bindParam(1, $id_echelle[0]);
