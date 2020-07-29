@@ -16,3 +16,6 @@ $resultvm = mysqli_query($connect, $queryvm);
 
 $querybien = "SELECT id_bien_support,nom_bien_support FROM K_bien_support WHERE id_projet = $getid_projet";
 $resultbien = mysqli_query($connect, $querybien);
+
+$querymission = "SELECT DISTINCT I_mission.id_mission, I_mission.nom_mission FROM I_mission WHERE id_projet=$getid_projet";
+$resultmission = mysqli_query($connect, $querymission);

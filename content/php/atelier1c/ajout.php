@@ -22,19 +22,19 @@ $insere = $bdd->prepare('INSERT INTO `M_evenement_redoute`(`id_evenement_redoute
 // Verification du nom_evenement_redoutes
 if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $nom_evenement_redoutes)) {
   $results["error"] = true;
-  $_SESSION['message_error_2'] = "Nom de l'événement redouté invalide";
+  $_SESSION['message_error_3'] = "Nom de l'événement redouté invalide";
 }
 
 // Verification du description_evenement_redoutes
 if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $description_evenement_redoutes)) {
   $results["error"] = true;
-  $_SESSION['message_error_2'] = "Description événement redouté invalide";
+  $_SESSION['message_error_3'] = "Description événement redouté invalide";
 }
 
 // Verification du impact
 if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $impact)) {
   $results["error"] = true;
-  $_SESSION['message_error_2'] = "Impact invalide";
+  $_SESSION['message_error_3'] = "Impact invalide";
 }
 
 if ($results["error"] === false && isset($_POST['validerevenementredoute'])) {
@@ -51,7 +51,7 @@ if ($results["error"] === false && isset($_POST['validerevenementredoute'])) {
   $insere->bindParam(11, $id_atelier);
   $insere->bindParam(12, $id_projet);
   $insere->execute();
-  $_SESSION['message_success_2'] = "L'événement redouté a été ajouté !";
+  $_SESSION['message_success_3'] = "L'événement redouté a été ajouté !";
 }
 
 header('Location: ../../../atelier-1c&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#evenements_redoutes');

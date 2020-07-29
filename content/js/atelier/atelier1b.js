@@ -95,29 +95,6 @@ OURJQUERYFN.setFilterTable("#rechercher_valeur_metier", "#tableau_vm tbody tr")
 setSortTable('tableau_bs');
 OURJQUERYFN.setFilterTable("#rechercher_bien_support", "#tableau_bs tbody tr")
 
-/*------------------ AJOUT DE LA VERIFICATION DES TABLEAUX ------------------*/
-// sleep(100).then(() => {
-//     for (let i = 0; i < editable_table.rows.length - 1; i++) {
-//         j = i + 1;
-//         button[i].setAttribute('onclick', 'tableau_verification(' + j + ',' + 'editable_table' + ',' + '5' + ')')
-//     }
-// });
-
-sleep(100).then(() => {
-    for (let i = editable_table.rows.length - 1; i < editable_table.rows.length + tableau_vm.rows.length - 2; i++) {
-        k++;
-        button[i].setAttribute('onclick', 'tableau_verification(' + k + ',' + 'tableau_vm' + ',' + '4' + ')')
-    }
-});
-
-sleep(100).then(() => {
-    for (let i = editable_table.rows.length + tableau_vm.rows.length - 2; i < editable_table.rows.length + tableau_vm.rows.length + tableau_bs.rows.length - 3; i++) {
-        l++;
-        button[i].setAttribute('onclick', 'tableau_verification(' + l + ',' + 'tableau_bs' + ',' + '3' + ')')
-    }
-});
-
-
 /*------------------------------ LABELS CACHES ------------------------------*/
 label_biensupport.style.display="none"
 label_valeurmetier.style.display="none"

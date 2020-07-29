@@ -292,15 +292,15 @@ function compteur_anim() {
             $(this).text(Math.ceil(now));
         },
     });
-    $('#bdd.compteur b').animate({
-        bdd: bdd,
-    }, {
-        duration: 2000,
-        easing: 'swing',
-        step: function (now) {
-            $(this).text(Math.ceil(now));
-        },
-    });
+    // $('#bdd.compteur b').animate({
+    //     bdd: bdd,
+    // }, {
+    //     duration: 2000,
+    //     easing: 'swing',
+    //     step: function (now) {
+    //         $(this).text(Math.ceil(now));
+    //     },
+    // });
 };
 
 

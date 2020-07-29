@@ -19,17 +19,17 @@ $insere = $bdd->prepare(
 // Verification du seuil_danger
 if (!preg_match("/^([0-9]|1[0-6])$/", $seuil_danger)) {
   $results["error"] = true;
-  $_SESSION['message_error_2'] = "seuil_danger invalide";
+  $_SESSION['message_error'] = "Seuil danger invalide";
 }
 // Verification du seuil_controle
 if (!preg_match("/^([0-9]|1[0-6])$/", $seuil_controle)) {
   $results["error"] = true;
-  $_SESSION['message_error_2'] = "seuil_controle invalide";
+  $_SESSION['message_error'] = "Seuil contrôle invalide";
 }
 // Verification du seuil_veille
 if (!preg_match("/^([0-9]|1[0-6])$/", $seuil_veille)) {
   $results["error"] = true;
-  $_SESSION['message_error_2'] = "seuil_veille invalide";
+  $_SESSION['message_error'] = "Seuil veille invalide";
 }
 
 if ($results["error"] === false && isset($_POST['validerseuil'])) {
@@ -39,11 +39,8 @@ if ($results["error"] === false && isset($_POST['validerseuil'])) {
   $insere->bindParam(3, $seuil_veille);
   $insere->bindParam(4, $id_projet);
   $insere->execute();
-  $_SESSION['message_success_2'] = "La règle a bien été ajoutée !";
-
-?>
-  <strong style="color:#4AD991;">Le seuil a bien été ajoutée !</br></strong>
-<?php
+  $_SESSION['message_success'] = "Les valeurs de seuils ont été bien enregistrées !";
 }
+
 header('Location: ../../../atelier-3a&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#chemin_dattaque');
 ?>

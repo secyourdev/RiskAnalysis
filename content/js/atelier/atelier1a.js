@@ -47,7 +47,7 @@ ajouter_user.addEventListener('click', (event) => {
       url: 'content/php/atelier1a/ajout.php',
       type: 'POST',
       data: {
-            id_utilisateur: user_1a.options[user_1a.selectedIndex].value.substring(0,user_1a.options[user_1a.selectedIndex].value.indexOf("-",0)),
+            id_utilisateur: user_1a.value,
       },
       success: function (data) {
         location.reload();
@@ -195,14 +195,13 @@ function get_database_project_info(){
         dataType : 'html',
         success: function (resultat) {
             var projet_info = JSON.parse(resultat);
-            console.log(projet_info)
             nom_etude.value = projet_info[0][1]
-            objectif_atteindre.value = projet_info[0][3]
+            objectif_atteindre.value = projet_info[0][2]
             if(projet_info[0][4]!=null)        
                 respo_acceptation_risque.value=projet_info[0][4]        
             else 
                 respo_acceptation_risque.selectedIndex=0    
-            cadre_temporel.value = projet_info[0][5]
+            cadre_temporel.value = projet_info[0][3]
 
             verify_input(nom_etude.value,regex_nom_etude,nom_etude)
             verify_textarea(objectif_atteindre.value,regex_objectif_atteindre,objectif_atteindre)

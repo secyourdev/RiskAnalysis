@@ -199,7 +199,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                 <th>Base de données</th>
                                             </tr>
                                             <tr>
-                                                <td class="compteur" id="bdd"><b nbobs="7">0</b></td>
+                                                <td class="compteur" id="bdd"><b>-</b></td>
                                             </tr>
                                         </tbody>
                                     </table>

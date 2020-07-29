@@ -13,6 +13,7 @@ if($input["action"] === 'delete'){
     AND id_projet = $getid_projet
     ";
     mysqli_query($connect, $query);
+    $_SESSION['message_success_2'] = "L'utilisateur a bien été supprimé du projet !";
 }
 
 echo json_encode($input);
