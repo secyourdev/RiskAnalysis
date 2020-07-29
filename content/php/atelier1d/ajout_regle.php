@@ -1,7 +1,7 @@
 <?php
 session_start();
 $getid_projet = $_SESSION['id_projet'];
-print $getid_projet;
+
 include("../bdd/connexion.php");
 
 $results["error"] = false;
@@ -29,19 +29,19 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $nom_referent
 }
 
 // Verification du id_regle_affichage
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $id_regle_affichage)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $id_regle_affichage)) {
   $results["error"] = true;
   $_SESSION['message_error_2'] = "ID de la règle invalide";
 }
 
 // Verification du titre
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,1000}$/", $titre)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $titre)) {
   $results["error"] = true;
   $_SESSION['message_error_2'] = "Titre de la règle invalide";
 }
 
 // Verification du description
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,1000}$/", $description)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $description)) {
   $results["error"] = true;
   $_SESSION['message_error_2'] = "Description invalide";
 }
@@ -65,5 +65,5 @@ if ($results["error"] === false && isset($_POST['validerecart'])) {
   $_SESSION['message_success_2'] = "La règle a bien été ajoutée !";
 }
 
-// header('Location: ../../../atelier-1d&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet'].'#regles');
+header('Location: ../../../atelier-1d&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet'].'#regles');
 ?>

@@ -1217,7 +1217,7 @@ h6 {
     text-align: initial;
 }
 
-.width_RACI {
+.width_select {
     width: -webkit-fill-available;
     width: -moz-available;
 }

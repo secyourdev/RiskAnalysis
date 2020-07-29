@@ -10,7 +10,7 @@ if($input["action"] === 'edit'){
     $results["error"] = false;
 
     // Verification de la description
-    if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_niveau)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $description_niveau)){
         $results["error"] = true;
         $_SESSION['message_error_2'] = "Description invalide";
     }

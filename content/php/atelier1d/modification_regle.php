@@ -19,12 +19,12 @@ $results["message"] = [];
 if ($input["action"] === 'edit') {
 
     // Verification du justification_ecart
-    if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $justification_ecart)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $justification_ecart)) {
         $results["error"] = true;
         $_SESSION['message_error_2'] = "Justification écart invalide";
     }
     // Verification du responsable
-    if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $responsable)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $responsable)) {
         $results["error"] = true;
         $results["message"]["responsable"] = "Responsable invalide";
     }

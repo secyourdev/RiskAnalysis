@@ -25,17 +25,17 @@ if ($input["action"] === 'edit') {
     $results["error"] = false;
 
     // Verification du categorie_partie_prenante
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $categorie_partie_prenante)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $categorie_partie_prenante)) {
         $results["error"] = true;
         $_SESSION['message_error_2'] = "Catégorie partie prenante invalide";
     }
     // Verification du nom_partie_prenante
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $nom_partie_prenante)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $nom_partie_prenante)) {
         $results["error"] = true;
         $_SESSION['message_error_2'] = "Nom partie prenante invalide";
     }
     // Verification du type
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $type)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $type)) {
         $results["error"] = true;
         $_SESSION['message_error_2'] = "Type invalide";
     }

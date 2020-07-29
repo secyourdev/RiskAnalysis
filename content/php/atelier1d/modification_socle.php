@@ -18,13 +18,13 @@ if ($input["action"] === 'edit') {
     }
 
     // Verification du etat_d_application
-    if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $etat_d_application)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $etat_d_application)) {
         $results["error"] = true;
         $_SESSION['message_error'] = "État d'application invalide";
     }
 
     // Verification du etat_de_la_conformite
-    if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $etat_de_la_conformite)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $etat_de_la_conformite)) {
         $results["error"] = true;
         $_SESSION['message_error'] = "État de la conformité invalide";
     }

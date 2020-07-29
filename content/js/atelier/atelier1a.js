@@ -22,9 +22,9 @@ var find_raci_value;
 
 var nombre_atelier = raci.rows.length
 
-var regex_nom_etude = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/
-var regex_description_etude = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,1000}$/
-var regex_objectif_atteindre = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,1000}$/
+var regex_nom_etude = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,100}$/
+var regex_description_etude = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,1000}$/
+var regex_objectif_atteindre = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,1000}$/
 var regex_cadre_temporel = /^[0-9\s-]{1,100}$/
 
 /*------------------------------- SIDEBAR ----------------------------------*/
@@ -92,7 +92,7 @@ for(let i=2;i<nombre_atelier;i++){
         var option_C = document.createElement("option")
         var option_I = document.createElement("option")
 
-        select.setAttribute("class","form-control width_RACI")
+        select.setAttribute("class","form-control width_select")
         option_R.innerHTML = "Réalisation"; option_R.setAttribute("valeur","Réalisation");
         option_A.innerHTML = "Approbation"; option_A.setAttribute("valeur","Approbation");
         option_C.innerHTML = "Consultation"; option_C.setAttribute("valeur","Consultation");
