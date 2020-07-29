@@ -68,7 +68,7 @@ $(document).ready(function () {
                 columns: {
                     identifier: [0, 'id_evenement_redoute'],
                     editable: [
-                        [1, 'nom_valeur_metier'],
+                        // [1, 'nom_valeur_metier'],
                         [2, 'nom_evenement_redoute'],
                         [3, 'description_evenement_redoute'],
                         [4, 'impact'], 
