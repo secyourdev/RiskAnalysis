@@ -7,6 +7,7 @@ include("content/php/bdd/connexion_sqli.php");
 $query_partie_prenante = "SELECT * FROM R_partie_prenante WHERE id_projet = $getid_projet";
 $result_partie_prenante = mysqli_query($connect, $query_partie_prenante);
 $result_partie_prenante2 = mysqli_query($connect, $query_partie_prenante);
+$result_partie_prenante3 = mysqli_query($connect, $query_partie_prenante);
 
 $query_categorie_partie_prenante = "SELECT categorie_partie_prenante FROM R_partie_prenante";
 $result_categorie_partie_prenante = mysqli_query($connect, $query_categorie_partie_prenante);
@@ -36,7 +37,6 @@ $result_scenario_strategique = mysqli_query($connect, $query_scenario_strategiqu
 //tableau mesures
 
 // Si utilisation des mesures de référentiel
-
 // $query_mesure =
 // "SELECT 
 // chemin_d_attaque_strategique.id_chemin_d_attaque_strategique,
@@ -54,17 +54,52 @@ $result_scenario_strategique = mysqli_query($connect, $query_scenario_strategiqu
 // ON chemin_d_attaque_strategique.id_partie_prenante = R_partie_prenante.id_partie_prenante
 // WHERE id_projet = $getid_projet";
 
-$query_mesure = "SELECT
+
+//----------mesure en un seul tableau
+// $query_mesure = "SELECT
+// Y_mesure.id_mesure,
+// nom_partie_prenante, 
+// nom_chemin_d_attaque_strategique,
+// Y_mesure.nom_mesure,
+// Y_mesure.description_mesure,
+// dependance_residuelle,
+// penetration_residuelle,
+// maturite_residuelle,
+// confiance_residuelle, 
+// niveau_de_menace_partie_prenante,
+// niveau_de_menace_residuelle
+// FROM T_chemin_d_attaque_strategique
+// INNER JOIN ZB_comporter_2
+// ON T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = ZB_comporter_2.id_chemin_d_attaque_strategique
+// INNER JOIN Y_mesure
+// ON Y_mesure.id_mesure = ZB_comporter_2.id_mesure
+// INNER JOIN R_partie_prenante
+// ON T_chemin_d_attaque_strategique.id_partie_prenante = R_partie_prenante.id_partie_prenante
+// WHERE T_chemin_d_attaque_strategique.id_projet = $getid_projet
+// ";
+$query_mesure1 = "SELECT
 Y_mesure.id_mesure,
 nom_partie_prenante, 
 nom_chemin_d_attaque_strategique,
 Y_mesure.nom_mesure,
-Y_mesure.description_mesure,
+Y_mesure.description_mesure
+FROM T_chemin_d_attaque_strategique
+INNER JOIN ZB_comporter_2
+ON T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = ZB_comporter_2.id_chemin_d_attaque_strategique
+INNER JOIN Y_mesure
+ON Y_mesure.id_mesure = ZB_comporter_2.id_mesure
+INNER JOIN R_partie_prenante
+ON T_chemin_d_attaque_strategique.id_partie_prenante = R_partie_prenante.id_partie_prenante
+WHERE T_chemin_d_attaque_strategique.id_projet = $getid_projet";
+
+$query_mesure2 = "SELECT
+R_partie_prenante.id_partie_prenante,
+nom_partie_prenante, 
+niveau_de_menace_partie_prenante,
 dependance_residuelle,
 penetration_residuelle,
 maturite_residuelle,
-confiance_residuelle, 
-niveau_de_menace_partie_prenante,
+confiance_residuelle,
 niveau_de_menace_residuelle
 FROM T_chemin_d_attaque_strategique
 INNER JOIN ZB_comporter_2
@@ -73,10 +108,12 @@ INNER JOIN Y_mesure
 ON Y_mesure.id_mesure = ZB_comporter_2.id_mesure
 INNER JOIN R_partie_prenante
 ON T_chemin_d_attaque_strategique.id_partie_prenante = R_partie_prenante.id_partie_prenante
-WHERE T_chemin_d_attaque_strategique.id_projet = $getid_projet
-";
+WHERE T_chemin_d_attaque_strategique.id_projet = $getid_projet";
 
-$result_mesure = mysqli_query($connect, $query_mesure);
+
+// $result_mesure = mysqli_query($connect, $query_mesure);
+$result_mesure1 = mysqli_query($connect, $query_mesure1);
+$result_mesure2 = mysqli_query($connect, $query_mesure2);
 
 
 

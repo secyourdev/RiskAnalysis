@@ -1,4 +1,4 @@
-$.post("content/php/atelier2c/chart.php", function (data) {
+$.post("content/php/atelier2c/chart_copy.php", function (data) {
 
     // var menace = [];
     // var exposition = [];
