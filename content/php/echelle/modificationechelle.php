@@ -9,26 +9,10 @@ if($input["action"] === 'edit'){
     $nom_echelle = mysqli_real_escape_string($connect, $input["nom_echelle"]);
     $echelle_gravite = mysqli_real_escape_string($connect, $input["echelle_gravite"]);
 
-<<<<<<< HEAD
-// Verification du nom de l'échelle
-if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $nom_echelle)){
-    $results["error"] = true;
-}
-
-if($input["action"] === 'edit' && $results["error"] === false){
-    $query = "
-    UPDATE DA_echelle
-    SET nom_echelle = '".$nom_echelle."',
-    echelle_gravite = '".$echelle_gravite."'
-    WHERE id_echelle = '".$input["id_echelle"]."'
-    ";
-    mysqli_query($connect, $query);
-=======
     $results["error"] = false;
->>>>>>> origin/Joyston
 
     // Verification du nom de l'échelle
-    if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_echelle)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $nom_echelle)){
         $results["error"] = true;
         $_SESSION['message_error'] = "Nom de l'échelle invalide";
     }

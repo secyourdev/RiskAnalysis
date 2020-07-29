@@ -1,8 +1,9 @@
 
 console.log( '3a_carto.js');
 
-$.post("content/php/atelier3c/chart_copy.php", function (data) {
-
+$.post("content/php/atelier3c/chart.php", function (data) {
+    console.log(data);
+    
     var seuil_danger = [];
     var seuil_controle = [];
     var seuil_veille = [];

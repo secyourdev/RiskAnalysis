@@ -15,47 +15,31 @@ if ($input["action"] === 'edit'){
     $tracabilite = mysqli_real_escape_string($connect, $input['tracabilite']);
     $niveau_de_gravite = mysqli_real_escape_string($connect, $input['niveau_de_gravite']);
 
-<<<<<<< HEAD
-// Verification du nom_evenement_redoutes
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $nom_evenement_redoute)) {
-    $results["error"] = true;
-}
-
-// Verification du description_evenement_redoutes
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $description_evenement_redoutes)) {
-    $results["error"] = true;
-}
-
-// Verification du impact
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $impact)) {
-    $results["error"] = true;
-}
-
-// Verification du niveau_de_gravite
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $niveau_de_gravite)) {
-    $results["error"] = true;
-}
-=======
     $results["error"] = false;
 
     // Verification du nom_evenement_redoutes
-    if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $nom_evenement_redoute)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $nom_evenement_redoute)) {
         $results["error"] = true;
         $_SESSION['message_error_3'] = "Nom de l'événement redouté invalide";
     }
 
     // Verification du description_evenement_redoutes
-    if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $description_evenement_redoutes)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $description_evenement_redoutes)) {
         $results["error"] = true;
         $_SESSION['message_error_3'] = "Description événement redouté invalide";
     }
 
     // Verification du impact
-    if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $impact)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $impact)) {
         $results["error"] = true;
         $_SESSION['message_error_3'] = "Impact invalide";
     }
->>>>>>> origin/Joyston
+
+    // Verification du niveau_de_gravite
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $niveau_de_gravite)) {
+        $results["error"] = true;
+        $_SESSION['message_error_3'] = "Niveau de gravité invalide";
+    }
 
     if ($results["error"] === false) {
         $query = "

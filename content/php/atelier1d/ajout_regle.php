@@ -1,7 +1,7 @@
 <?php
 session_start();
 $getid_projet = $_SESSION['id_projet'];
-// print $getid_projet;
+
 include("../bdd/connexion.php");
 
 $results["error"] = false;
@@ -66,5 +66,5 @@ if ($results["error"] === false && isset($_POST['validerecart'])) {
   $_SESSION['message_success_2'] = "La règle a bien été ajoutée !";
 }
 
-// header('Location: ../../../atelier-1d&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet'].'#regles');
+header('Location: ../../../atelier-1d&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet'].'#regles');
 ?>

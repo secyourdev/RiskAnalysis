@@ -49,21 +49,13 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $descrip
 }
 
 // Verification de l'objectif visé
-<<<<<<< HEAD
 if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $objectif_vise)) {
-=======
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $objectif_vise)) {
->>>>>>> origin/Joyston
   $results["error"] = true;
   $_SESSION['message_error'] = "Objectif vise invalide";
 }
 
 // Verification de la description de l'objectif visé
-<<<<<<< HEAD
 if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $description_objectif_vise)) {
-=======
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_objectif_vise)) {
->>>>>>> origin/Joyston
   $results["error"] = true;
   $_SESSION['message_error'] = "Description objectif vise invalide";
 }
