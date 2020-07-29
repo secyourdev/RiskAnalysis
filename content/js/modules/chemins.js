@@ -1,5 +1,5 @@
 
-const selectpp = document.getElementById('partieprenante');
+const selectpp = document.getElementById('partieprenante1');
 
 selectpp.addEventListener('change', (event) => {
   //   const result = document.querySelector('.result');
