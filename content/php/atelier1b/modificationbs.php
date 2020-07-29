@@ -13,14 +13,16 @@ $id_projet = $_SESSION['id_projet'];;
 if($input["action"] === 'edit'){
     $nom_bien_support = mysqli_real_escape_string($connect, $input["nom_bien_support"]);
     $description_bien_support = mysqli_real_escape_string($connect, $input["description_bien_support"]);
+    echo $nom_bien_support;
+    echo $description_bien_support;
 
     // Verification du nom du bien support
-    if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_bien_support)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $nom_bien_support)){
         $results["error"] = true;
     }
 
     // Verification de la description
-    if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_bien_support)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $description_bien_support)){
         $results["error"] = true;
     }
 

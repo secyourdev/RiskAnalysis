@@ -31,25 +31,25 @@ id_projet
  VALUES ('',?,?,?,?,?,?,?,?,?)");
 
 // // Verification du nom_risque_residuelle
-// if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_risque_residuelle)) {
+// if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $nom_risque_residuelle)) {
 //   $results["error"] = true;
 //   $_SESSION['message_error'] = "Type du nom_risque_residuelle invalide";
 // }
 
 // // Verification du description_risque_residuelle
-// if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_risque_residuelle)) {
+// if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $description_risque_residuelle)) {
 //   $results["error"] = true;
 //   $_SESSION['message_error'] = "Nom invalide";
 // }
 
 // // Verification du niveau_de_gravite
-// if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $niveau_de_gravite)) {
+// if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $niveau_de_gravite)) {
 //   $results["error"] = true;
 //   $_SESSION['message_error'] = "État de l'application invalide";
 // }
 
 // // Verification du vraisemblance_residuelle
-// if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $vraisemblance_residuelle)) {
+// if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $vraisemblance_residuelle)) {
 //   $results["error"] = true;
 //   $_SESSION['message_error'] = "Commentaire invalide";
 // }

@@ -9,7 +9,7 @@ $echelle_gravite = mysqli_real_escape_string($connect, $input["echelle_gravite"]
 $results["error"] = false;
 
 // Verification du nom de l'échelle
-if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_echelle)){
+if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $nom_echelle)){
     $results["error"] = true;
 }
 

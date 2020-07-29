@@ -16,27 +16,27 @@ $id_projet =  $_SESSION['id_projet'];
 $results["error"] = false;
 
 // Verification du type de l'attaquant
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $type_attaquant)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $type_attaquant)) {
     $results["error"] = true;
 }
 
 // Verification du profil de l'attaquant
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $profil_attaquant)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $profil_attaquant)) {
     $results["error"] = true;
 }
 
 // Verification de la description de l'attaquant
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_source_risque)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $description_source_risque)) {
     $results["error"] = true;
 }
 
 // Verification de l'objectif visé
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/", $objectif_vise)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $objectif_vise)) {
     $results["error"] = true;
 }
 
 // Verification de la description de l'objectif visé
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/", $description_objectif_vise)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $description_objectif_vise)) {
     $results["error"] = true;
 }
 

@@ -16,17 +16,17 @@ if($input["action"] === 'edit'){
     $description_valeur_metier = mysqli_real_escape_string($connect, $input["description_valeur_metier"]);
 
     // Verification du nom de la valeur métier
-    if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_valeur_metier)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $nom_valeur_metier)) {
       $results["error"] = true;
     }
 
     // Verification de la description de la valeur métier
-    if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $description_valeur_metier)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $description_valeur_metier)) {
       $results["error"] = true;
     }
 
     // Verification de la nature de la valeur métier
-    if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nature_valeur_metier)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $nature_valeur_metier)) {
       $results["error"] = true;
     }
 

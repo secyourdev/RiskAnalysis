@@ -8,7 +8,7 @@ $description_niveau = mysqli_real_escape_string($connect, $input["description_ni
 $results["error"] = false;
 
 // Verification de la description
-if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_niveau)){
+if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $description_niveau)){
     $results["error"] = true;
 }
 

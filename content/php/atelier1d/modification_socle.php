@@ -21,7 +21,7 @@ if ($input["action"] === 'edit') {
     }
 
     // Verification du etat_d_application
-    if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $etat_d_application)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $etat_d_application)) {
         $results["error"] = true;
         $results["message"]["etat_d_application"] = "Nom de l'évenement redouté invalide";
 ?>
@@ -30,7 +30,7 @@ if ($input["action"] === 'edit') {
     }
 
     // Verification du etat_de_la_conformite
-    if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $etat_de_la_conformite)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $etat_de_la_conformite)) {
         $results["error"] = true;
         $results["message"]["etat_de_la_conformite"] = "Description de l'événement redouté invalide";
     ?>

@@ -19,7 +19,7 @@ $results["message"] = [];
 if ($input["action"] === 'edit') {
 
     // Verification du justification_ecart
-    if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $justification_ecart)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $justification_ecart)) {
         $results["error"] = true;
         $results["message"]["justification_ecart"] = "Description de l'événement redouté invalide";
 ?>
@@ -27,7 +27,7 @@ if ($input["action"] === 'edit') {
     <?php
     }
     // Verification du responsable
-    if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $responsable)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $responsable)) {
         $results["error"] = true;
         $results["message"]["responsable"] = "Description de l'événement redouté invalide";
     ?>

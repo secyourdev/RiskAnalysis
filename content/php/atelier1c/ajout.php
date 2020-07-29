@@ -20,19 +20,19 @@ $id_projet = $_SESSION['id_projet'];
 $insere = $bdd->prepare('INSERT INTO `M_evenement_redoute`(`id_evenement_redoute`, `nom_evenement_redoute`, `description_evenement_redoute`, `confidentialite`, `integrite`, `disponibilite`, `tracabilite`, `impact`, `niveau_de_gravite`, `id_valeur_metier`, `id_atelier`, `id_projet`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)');
 
 // Verification du nom_evenement_redoutes
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_evenement_redoutes)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $nom_evenement_redoutes)) {
   $results["error"] = true;
   $_SESSION['message_error_2'] = "Nom de l'événement redouté invalide";
 }
 
 // Verification du description_evenement_redoutes
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_evenement_redoutes)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $description_evenement_redoutes)) {
   $results["error"] = true;
   $_SESSION['message_error_2'] = "Description événement redouté invalide";
 }
 
 // Verification du impact
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $impact)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $impact)) {
   $results["error"] = true;
   $_SESSION['message_error_2'] = "Impact invalide";
 }
