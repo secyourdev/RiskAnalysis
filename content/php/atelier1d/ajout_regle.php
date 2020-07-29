@@ -14,12 +14,12 @@ $etat_de_la_regle = '';
 $justification_ecart = '';
 $responsable = '';
 $dates = '';
-$id_atelier = "1.d";
 
 $recupere_id_socle = $bdd->prepare("SELECT id_socle_securite FROM N_socle_de_securite WHERE N_socle_de_securite.nom_referentiel = ? AND id_atelier = '1.d' AND id_projet = $getid_projet");
 
 $insere_regle = $bdd->prepare(
-  "INSERT INTO O_regle(id_regle, id_regle_affichage, titre, description, etat_de_la_regle, justification_ecart, dates, responsable, id_socle_securite, id_projet, id_atelier) VALUES ('',?,?,?,?,?,?,?,?,?, $getid_projet)"
+  "INSERT INTO O_regle(id_regle, id_regle_affichage, titre, description, etat_de_la_regle, justification_ecart, dates, responsable, id_socle_securite, id_projet) 
+VALUES ('',?,?,?,?,?,?,?,?, '1.d', $getid_projet)"
 );
 
 // Verification du nom_referentiel
@@ -61,7 +61,6 @@ if ($results["error"] === false && isset($_POST['validerecart'])) {
   $insere_regle->bindParam(6, $dates);
   $insere_regle->bindParam(7, $responsable);
   $insere_regle->bindParam(8, $id_socle_securite[0]);
-  $insere_regle->bindParam(9, $id_atelier);
   $insere_regle->execute();
   $_SESSION['message_success_2'] = "La règle a bien été ajoutée !";
 }
