@@ -37,32 +37,32 @@ $niveau_de_menace_partie_prenante = round(($dependance_partie_prenante* $penetra
 // Verification du categorie_partie_prenante
 if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $categorie_partie_prenante)) {
   $results["error"] = true;
-  $_SESSION['message_error_2'] = "categorie_partie_prenante invalide";
+  $_SESSION['message_error_2'] = "Catégorie partie prenante invalide";
 }
 // Verification du nom_partie_prenante
 if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $nom_partie_prenante)) {
   $results["error"] = true;
-  $_SESSION['message_error_2'] = "nom_partie_prenante invalide";
+  $_SESSION['message_error_2'] = "Nom partie prenante invalide";
 }
 // Verification du dependance_partie_prenante
 if (!preg_match("/^[1-4]$/", $dependance_partie_prenante)) {
   $results["error"] = true;
-  $_SESSION['message_error_2'] = "dependance_partie_prenante invalide";
+  $_SESSION['message_error_2'] = "Dépendance partie prenante invalide";
 }
 // Verification du penetration_partie_prenante
 if (!preg_match("/^[1-4]$/", $penetration_partie_prenante)) {
   $results["error"] = true;
-  $_SESSION['message_error_2'] = "penetration_partie_prenante invalide";
+  $_SESSION['message_error_2'] = "Pénetration partie prenante invalide";
 }
 // Verification du maturite_partie_prenante
 if (!preg_match("/^[1-4]$/", $maturite_partie_prenante)) {
   $results["error"] = true;
-  $_SESSION['message_error_2'] = "maturite_partie_prenante invalide";
+  $_SESSION['message_error_2'] = "Maturité partie prenante invalide";
 }
 // Verification du confiance_partie_prenante
 if (!preg_match("/^[1-4]$/", $confiance_partie_prenante)) {
   $results["error"] = true;
-  $_SESSION['message_error_2'] = "confiance_partie_prenante invalide";
+  $_SESSION['message_error_2'] = "Confiance partie prenante invalide";
 }
 
 
@@ -118,10 +118,7 @@ if ($results["error"] === false && isset($_POST['validerpartie'])) {
   $insere->bindParam(10, $id_atelier);
   $insere->bindParam(11, $id_projet);
   $insere->execute();
-  $_SESSION['message_success_2'] = "La règle a bien été ajoutée !";
-?>
-  <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
-<?php
+  $_SESSION['message_success_2'] = "La partie prenante a bien été ajoutée !";
 }
 
 header('Location: ../../../atelier-3a&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#partie_prenante');

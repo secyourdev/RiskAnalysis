@@ -678,6 +678,24 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </tbody>
                           </table>
                         </div>
+
+                        <div class='message_success'>
+                        <?php 
+                            if(isset($_SESSION['message_success'])){
+                              echo $_SESSION['message_success'];
+                              unset($_SESSION['message_success']);
+                            }
+                        ?>
+                        </div> 
+                        <div class='message_error'>
+                        <?php                
+                            if(isset($_SESSION['message_error'])){
+                                echo $_SESSION['message_error'];
+                                unset($_SESSION['message_error']);
+                            }
+                        ?>
+                        </div>                             
+
                         <!-- bouton Ajouter une nouvelle ligne -->
                         <div class="text-center">
                           <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_scenario_strategique">Ajouter un scénario stratégique</button>
@@ -720,6 +738,23 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             <input name="inpFile" id="inpFile" class="custom-file-input" type="file">
                             <label class="custom-file-label" for="inpFile">Choisir un fichier au format image</label>
                           </div>
+                          
+                          <div class='message_success'>
+                          <?php 
+                              if(isset($_SESSION['message_success_2'])){
+                                echo $_SESSION['message_success_2'];
+                                unset($_SESSION['message_success_2']);
+                              }
+                          ?>
+                          </div> 
+                          <div class='message_error'>
+                          <?php                
+                              if(isset($_SESSION['message_error_2'])){
+                                  echo $_SESSION['message_error_2'];
+                                  unset($_SESSION['message_error_2']);
+                              }
+                          ?>
+                          </div>
 
                           <div class="form-group" align="center">
                             <input type="submit" name="file_submit" id="file_submit" class="btn perso_btn_primary shadow-none" value="Ajouter une image" />
@@ -754,7 +789,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <tr>
                                 <th>ID</th>
                                 <th>ID du risque</th>
-                                <th>nom du scénario stratégique</th>
+                                <th>Nom du scénario stratégique</th>
                                 <th>Chemin d'attaque stratégique</th>
                                 <th>Partie prenante</th>
                               </tr>
@@ -776,6 +811,24 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </tbody>
                           </table>
                         </div>
+
+                        <div class='message_success'>
+                        <?php 
+                            if(isset($_SESSION['message_success_3'])){
+                              echo $_SESSION['message_success_3'];
+                              unset($_SESSION['message_success_3']);
+                            }
+                        ?>
+                        </div> 
+                        <div class='message_error'>
+                        <?php                
+                            if(isset($_SESSION['message_error_3'])){
+                                echo $_SESSION['message_error_3'];
+                                unset($_SESSION['message_error_3']);
+                            }
+                        ?>
+                        </div>
+
                         <!-- bouton Ajouter une nouvelle ligne -->
                         <div class="text-center">
                           <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_chemin_attaque">Ajouter un chemin d'attaque</button>
@@ -831,7 +884,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
                     <div class=" form-group col-12">
                     <label class="titre_input" for="nom_scenario_strategique">Nom du scénario stratégique</label>
-                      <input type="search" class="perso_form shadow-none form-control form-control-user" name="nom_scenario_strategique" id="nom_scenario_strategique" placeholder="Nom du scénario stratégique" required>
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_scenario_strategique" id="nom_scenario_strategique" placeholder="Nom du scénario stratégique" required>
                     </div>
 
                     <div class="form-group col-12">
@@ -895,7 +948,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
                     <div class=" form-group col-12">
                     <label class="titre_input" for="id_risque">ID du risque</label>
-                      <input type="search" class="perso_form shadow-none form-control form-control-user" name="id_risque" id="id_risque" placeholder="ID du risque" required>
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_risque" id="id_risque" placeholder="ID du risque" required>
                     </div>
 
                     <div class="form-group col-12">

@@ -552,8 +552,25 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <label class="titre_input" for="seuil_veille">Seuil de veille</label>
                               <input type="text" class="perso_form shadow-none form-control form-control-user" name="seuil_veille" id="seuil_veille" placeholder="Seuil de veille" required>
                             </div>
+
+                            <div class='message_success'>
+                            <?php 
+                                if(isset($_SESSION['message_success'])){
+                                  echo $_SESSION['message_success'];
+                                  unset($_SESSION['message_success']);
+                                }
+                            ?>
+                            </div> 
+                            <div class='message_error'>
+                            <?php                
+                                if(isset($_SESSION['message_error'])){
+                                    echo $_SESSION['message_error'];
+                                    unset($_SESSION['message_error']);
+                                }
+                            ?>
+                            </div>
+
                             <!-- bouton Ajouter -->
-                            <!-- bouton Ajouter une nouvelle ligne -->
                             <div class="text-center">
                               <button type="submit" name="validerseuil" class="btn perso_btn_primary perso_btn_spacing shadow-none">Valider le seuil</button>
                             </div>
@@ -619,6 +636,23 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               ?>
                             </tbody>
                           </table>
+                        </div>
+
+                        <div class='message_success'>
+                        <?php 
+                            if(isset($_SESSION['message_success_2'])){
+                              echo $_SESSION['message_success_2'];
+                              unset($_SESSION['message_success_2']);
+                            }
+                        ?>
+                        </div> 
+                        <div class='message_error'>
+                        <?php                
+                            if(isset($_SESSION['message_error_2'])){
+                                echo $_SESSION['message_error_2'];
+                                unset($_SESSION['message_error_2']);
+                            }
+                        ?>
                         </div>
 
                         <!-- bouton Ajouter une nouvelle ligne -->

@@ -547,7 +547,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   <fieldset>
 
                     <div class=" form-group col-12">
-                      <input type="search" class="perso_form shadow-none form-control form-control-user" name="nom_scenario_strategique" id="nom_scenario_strategique" placeholder="Nom du scénario stratégique" required>
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_scenario_strategique" id="nom_scenario_strategique" placeholder="Nom du scénario stratégique" required>
                     </div>
 
                     <div class="form-group col-12">
@@ -612,7 +612,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   <fieldset>
 
                     <div class=" form-group col-12">
-                      <input type="search" class="perso_form shadow-none form-control form-control-user" name="id_risque" id="id_risque" placeholder="ID du risque" required>
+                      <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_risque" id="id_risque" placeholder="ID du risque" required>
                     </div>
 
                     <div class="form-group col-12">

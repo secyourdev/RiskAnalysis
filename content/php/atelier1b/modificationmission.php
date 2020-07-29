@@ -20,21 +20,25 @@ if ($input["action"] === 'edit') {
     // Verification de la mission
     if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_mission)) {
         $results["error"] = true;
+        $_SESSION['message_error'] = "Nom invalide";
     }
 
     // Verification du responsable de la mission
     if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $responsable)) {
         $results["error"] = true;
+        $_SESSION['message_error'] = "Responsable mission invalide";
     }
 
     // Verification du responsable de la valeur métier
     if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_responsable_vm)) {
         $results["error"] = true;
+        $_SESSION['message_error'] = "Responsable valeur métier invalide";
     }
 
     // Verification du responsable du bien support
     if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_responsable_bs)) {
         $results["error"] = true;
+        $_SESSION['message_error'] = "Nom bien support invalide";
     }
 
     if($results["error"] === false){
@@ -57,6 +61,7 @@ if ($input["action"] === 'edit') {
     ";
 
     mysqli_query($connect, $query_couple);
+    $_SESSION['message_success'] = "La mission a bien été modifiée !";
     }
 }
 
@@ -68,6 +73,7 @@ if ($input["action"] === 'delete') {
     AND id_projet = " . $id_projet . "
     ";
     mysqli_query($connect, $query);
+    $_SESSION['message_error'] = "La mission a bien été modifiée !";
 }
 
 echo json_encode($input);
