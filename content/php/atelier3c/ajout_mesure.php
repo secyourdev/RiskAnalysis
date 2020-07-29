@@ -1,56 +1,30 @@
 <?php
 session_start();
 $getid_projet = $_SESSION['id_projet'];
-print $getid_projet;
+
 include("../bdd/connexion.php");
 
 $results["error"] = false;
 $results["message"] = [];
 
-
 $id_partie_prenante = $_POST['partieprenante1'];
 $chemin = $_POST['chemins'];
 
-// Pour les régles du référentiel
-// $referentiel = $_POST['referentiel'];
-// $id_mesure = $_POST['mesure'];
 $nom_mesure = $_POST['nommesure'];
 $description_mesure = $_POST['descriptionmesure'];
 $id_traitement = "id_traitement";
 $id_atelier = '3.c';
 
-
-
-    // Verification du nom_mesure
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $nom_mesure)) {
-      $results["error"] = true;
-      $_SESSION['message_error_1'] = "nom_mesure invalide";
-    }
-    // Verification du description_mesure
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $description_mesure)) {
-      $results["error"] = true;
-      $_SESSION['message_error_1'] = "description_mesure invalide";
-    }
-    // Verification du dependance
-    // if (!preg_match("/^[1-4]$/", $dependance)) {
-    //   $results["error"] = true;
-    //   $_SESSION['message_error_1'] = "dependance invalide";
-    // }
-    // // Verification du penetration
-    // if (!preg_match("/^[1-4]$/", $penetration)) {
-    //   $results["error"] = true;
-    //   $_SESSION['message_error_1'] = "penetration invalide";
-    // }
-    // // Verification du maturite
-    // if (!preg_match("/^[1-4]$/", $maturite)) {
-    //   $results["error"] = true;
-    //   $_SESSION['message_error_1'] = "maturite invalide";
-    // }
-    // // Verification du confiance
-    // if (!preg_match("/^[1-4]$/", $confiance)) {
-    //   $results["error"] = true;
-    //   $_SESSION['message_error_1'] = "confiance invalide";
-    // }
+  // Verification du nom_mesure
+  if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $nom_mesure)) {
+    $results["error"] = true;
+    $_SESSION['message_error'] = "Nom mesure de sécurité invalide";
+  }
+  // Verification du description_mesure
+  if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $description_mesure)) {
+    $results["error"] = true;
+    $_SESSION['message_error'] = "Description mesure de sécurité invalide";
+  }
 
     
 // Pour les règles du référentiel
@@ -129,7 +103,6 @@ $insere_traitement = $bdd->prepare('INSERT INTO ZA_traitement_de_securite (id_tr
 // }
 
 if ($results["error"] === false && isset($_POST['validermesure1'])) {
-  print 'bonjour';
   // insere mesure
   $insere_mesure->bindParam(1, $nom_mesure);
   $insere_mesure->bindParam(2, $nom_mesure);
@@ -177,10 +150,7 @@ if ($results["error"] === false && isset($_POST['validermesure1'])) {
   $insere_traitement->bindparam(3, $getid_projet);
   $insere_traitement->bindParam(4, $id_mesure[0]);
   $insere_traitement->execute();
-      $_SESSION['message_success_1'] = "La mesure a bien été ajoutée !";
-?>
-  <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
-<?php
+  $_SESSION['message_success'] = "La mesure a bien été ajoutée !";
 }
 
 header('Location: ../../../atelier-3c&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
