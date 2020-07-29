@@ -13,8 +13,8 @@ var label_er = document.getElementById("nom_evenement_redoute").previousSibling.
 var button = document.getElementsByClassName('tabledit-edit-button')
 var save_button = document.getElementsByClassName('tabledit-save-button')
 
-var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/
-var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.]{1,1000}$/
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/
 
 var j=0;
 var k=0;
@@ -68,7 +68,7 @@ $(document).ready(function () {
                 columns: {
                     identifier: [0, 'id_evenement_redoute'],
                     editable: [
-                        [1, 'nom_valeur_metier'],
+                        // [1, 'nom_valeur_metier'],
                         [2, 'nom_evenement_redoute'],
                         [3, 'description_evenement_redoute'],
                         [4, 'impact'], 

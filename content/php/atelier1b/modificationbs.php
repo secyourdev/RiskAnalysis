@@ -13,15 +13,19 @@ $id_projet = $_SESSION['id_projet'];;
 if($input["action"] === 'edit'){
     $nom_bien_support = mysqli_real_escape_string($connect, $input["nom_bien_support"]);
     $description_bien_support = mysqli_real_escape_string($connect, $input["description_bien_support"]);
+    echo $nom_bien_support;
+    echo $description_bien_support;
 
     // Verification du nom du bien support
-    if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_bien_support)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $nom_bien_support)){
         $results["error"] = true;
+        $_SESSION['message_error_3'] = "Nom invalide";
     }
 
     // Verification de la description
-    if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_bien_support)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $description_bien_support)){
         $results["error"] = true;
+        $_SESSION['message_error_3'] = "Description invalide";
     }
 
     if($results["error"] === false){
@@ -34,6 +38,8 @@ if($input["action"] === 'edit'){
         AND id_projet = " . $id_projet . "
         ";
         mysqli_query($connect, $querybs);
+        
+        $_SESSION['message_success_3'] = "Le bien support a bien été modifié !";
     }
 }
 
@@ -45,6 +51,8 @@ if($input["action"] === 'delete'){
     AND id_projet = " . $id_projet . "
     ";
     mysqli_query($connect, $query);
+
+    $_SESSION['message_success_3'] = "Le bien support a bien été supprimé !";
 }
 
 echo json_encode($input);

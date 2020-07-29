@@ -904,7 +904,16 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 
                 <div class="form-group">
                   <label class="titre_input" for="nommission">Mission</label>
-                  <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_mission" id="nommission" placeholder="Mission" required>
+                  <input type="text" class="perso_arrow perso_form shadow-none form-control" list="Mission" name="nom_mission" id="nommission" placeholder="Mission" required>
+                  <datalist id="Mission">
+                      <?php
+                      while ($row = mysqli_fetch_array($resultmission)) {
+                        echo '
+                          <option value="' . $row["nom_mission"] . '"></option>
+                          ';
+                      }
+                      ?>
+                  </datalist>
                 </div>
                 
                 <!-- RESPONSABLE -->

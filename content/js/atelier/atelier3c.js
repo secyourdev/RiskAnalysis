@@ -6,8 +6,8 @@ var nommesure = document.getElementById("nommesure");
 var descriptionmesure = document.getElementById("descriptionmesure");
 var label_mesure = document.getElementById("nommesure").previousSibling.previousSibling
 
-var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/
-var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.]{1,1000}$/
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,1000}$/
 
 var button = document.getElementsByClassName('tabledit-edit-button')
 var save_button = document.getElementsByClassName('tabledit-save-button')
@@ -59,19 +59,39 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $('#editable_table_mesure').Tabledit({
-        url: 'content/php/atelier3c/modification.php',
+        url: 'content/php/atelier3c/modification_mesure1.php',
         sortable: true,
         columns: {
             identifier: [0, 'id_mesure'],
             editable: [
                 [3, 'nom_mesure_securite'],
-                [4, 'description_mesure_securite'],
-                [6, 'dependance_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
-                [7, 'penetration_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
-                [8, 'maturite_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
-                [9, 'confiance_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}']
+                [4, 'description_mesure_securite']
             ]
         },
+        restoreButton: false,
+        onSuccess: function (data, textStatus, jqXHR) {
+            if (data.action == 'delete') {
+                $('#' + data.id_evenement_redoutes).remove();
+            }
+        }
+    });
+});
+
+$(document).ready(function () {
+    $('#editable_table_mesure2').Tabledit({
+        url: 'content/php/atelier3c/modification_mesure2.php',
+        sortable: true,
+        columns: {
+            identifier: [0, 'id_partie_prenante'],
+            editable: [
+
+                [3, 'dependance_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
+                [4, 'penetration_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
+                [5, 'maturite_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
+                [6, 'confiance_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}']
+            ]
+        },
+        deleteButton: false,
         restoreButton: false,
         onSuccess: function (data, textStatus, jqXHR) {
             if (data.action == 'delete') {

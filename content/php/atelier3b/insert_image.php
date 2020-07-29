@@ -1,5 +1,4 @@
 <?php
-// session_start();
 session_start();
 $getid_projet = $_SESSION['id_projet'];
 
@@ -54,8 +53,9 @@ if ($_FILES['inpFile']['size'] != 0) {
 
         if (move_uploaded_file($_FILES['inpFile']['tmp_name'], $target)) {
             header($header);
-            $msg = "Image uploadée avec succès";
-            print $msg;
+            //$msg = "Image uploadée avec succès";
+            $_SESSION['message_success_2'] = "Image uploadée avec succès !";
+            //print $msg;
             $zip = new ZipArchive;
             if ($zip->open('../sauvegarde_image/schema.zip') === TRUE) {
                 $zip->addFile('../../../image/' . $image, $image);
@@ -65,11 +65,13 @@ if ($_FILES['inpFile']['size'] != 0) {
                 echo 'échec';
             }
         } else {
-            $msg = "Erreur dans l'upload de l'image";
-            print $msg;
+            //$msg = "Erreur dans l'upload de l'image";
+            $_SESSION['message_error_2'] = "Erreur dans l'upload de l'image !";
+            //print $msg;
         }
     } else {
-        print "erreur: aucun scénario n'a été choisi";
+        //print "erreur: aucun scénario n'a été choisi";
+        $_SESSION['message_error_2'] = "Aucun scénario n'a été choisi";
         header('Location: ' . $_SERVER['HTTP_REFERER']);
         exit;
     }

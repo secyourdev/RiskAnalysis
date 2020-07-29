@@ -1,7 +1,7 @@
 <?php
 session_start();
 $getid_projet = $_SESSION['id_projet'];
-print $getid_projet;
+
 include("../bdd/connexion.php");
 
 $results["error"] = false;
@@ -18,7 +18,7 @@ $dates = '';
 $recupere_id_socle = $bdd->prepare("SELECT id_socle_securite FROM N_socle_de_securite WHERE N_socle_de_securite.nom_referentiel = ? AND id_atelier = '1.d' AND id_projet = $getid_projet");
 
 $insere_regle = $bdd->prepare(
-  "INSERT INTO O_regle(id_regle, id_regle_affichage, titre, description, etat_de_la_regle, justification_ecart, dates, responsable, id_socle_securite, id_projet) 
+  "INSERT INTO O_regle(id_regle, id_regle_affichage, titre, description, etat_de_la_regle, justification_ecart, dates, responsable, id_socle_securite, id_atelier, id_projet) 
 VALUES ('',?,?,?,?,?,?,?,?, '1.d', $getid_projet)"
 );
 
@@ -29,19 +29,19 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $nom_referent
 }
 
 // Verification du id_regle_affichage
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/", $id_regle_affichage)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $id_regle_affichage)) {
   $results["error"] = true;
   $_SESSION['message_error_2'] = "ID de la règle invalide";
 }
 
 // Verification du titre
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,1000}$/", $titre)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $titre)) {
   $results["error"] = true;
   $_SESSION['message_error_2'] = "Titre de la règle invalide";
 }
 
 // Verification du description
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,1000}$/", $description)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $description)) {
   $results["error"] = true;
   $_SESSION['message_error_2'] = "Description invalide";
 }
@@ -65,5 +65,5 @@ if ($results["error"] === false && isset($_POST['validerecart'])) {
   $_SESSION['message_success_2'] = "La règle a bien été ajoutée !";
 }
 
-// header('Location: ../../../atelier-1d&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet'].'#regles');
+header('Location: ../../../atelier-1d&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet'].'#regles');
 ?>

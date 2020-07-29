@@ -31,31 +31,31 @@ $insere = $bdd->prepare('INSERT INTO `P_SROV`(`id_source_de_risque`, `type_d_att
 
 
 // Verification du type de l'attaquant
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $type_attaquant)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $type_attaquant)) {
   $results["error"] = true;
   $_SESSION['message_error'] = "Type de l'attaquant invalide";
 }
 
 // Verification du profil de l'attaquant
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $profil_attaquant)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $profil_attaquant)) {
   $results["error"] = true;
   $_SESSION['message_error'] = "Profil de l'attaquant invalide";
 }
 
 // Verification de la description de l'attaquant
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_source_risque)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $description_source_risque)) {
   $results["error"] = true;
   $_SESSION['message_error'] = "Description de l'attaquant invalide";
 }
 
 // Verification de l'objectif visé
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/", $objectif_vise)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $objectif_vise)) {
   $results["error"] = true;
   $_SESSION['message_error'] = "Objectif vise invalide";
 }
 
 // Verification de la description de l'objectif visé
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/", $description_objectif_vise)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $description_objectif_vise)) {
   $results["error"] = true;
   $_SESSION['message_error'] = "Description objectif vise invalide";
 }

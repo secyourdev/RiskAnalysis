@@ -116,6 +116,6 @@ include("../bdd/connexion.php");
   $insertutilisateur->bindParam(4, $droit);
   $insertutilisateur->execute();      
 
+  $_SESSION['message_success'] = "L'utilisateur a bien été ajouté dans le projet !";
 
-  
 ?>

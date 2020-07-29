@@ -19,9 +19,9 @@ var label_responsable = document.getElementById("responsable").previousSibling.p
 var label_responsablevm = document.getElementById("responsable_vm").previousSibling.previousSibling
 var label_responsablebs = document.getElementById("responsable_bs").previousSibling.previousSibling
 
-var regex_nom_mission = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,50}$/
+var regex_nom_mission = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,50}$/
 var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/
-var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.]{1,1000}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,1000}$/
 
 var button = document.getElementsByClassName('tabledit-edit-button')
 var save_button = document.getElementsByClassName('tabledit-save-button')
@@ -94,29 +94,6 @@ setSortTable('tableau_vm');
 OURJQUERYFN.setFilterTable("#rechercher_valeur_metier", "#tableau_vm tbody tr")
 setSortTable('tableau_bs');
 OURJQUERYFN.setFilterTable("#rechercher_bien_support", "#tableau_bs tbody tr")
-
-/*------------------ AJOUT DE LA VERIFICATION DES TABLEAUX ------------------*/
-// sleep(100).then(() => {
-//     for (let i = 0; i < editable_table.rows.length - 1; i++) {
-//         j = i + 1;
-//         button[i].setAttribute('onclick', 'tableau_verification(' + j + ',' + 'editable_table' + ',' + '5' + ')')
-//     }
-// });
-
-sleep(100).then(() => {
-    for (let i = editable_table.rows.length - 1; i < editable_table.rows.length + tableau_vm.rows.length - 2; i++) {
-        k++;
-        button[i].setAttribute('onclick', 'tableau_verification(' + k + ',' + 'tableau_vm' + ',' + '4' + ')')
-    }
-});
-
-sleep(100).then(() => {
-    for (let i = editable_table.rows.length + tableau_vm.rows.length - 2; i < editable_table.rows.length + tableau_vm.rows.length + tableau_bs.rows.length - 3; i++) {
-        l++;
-        button[i].setAttribute('onclick', 'tableau_verification(' + l + ',' + 'tableau_bs' + ',' + '3' + ')')
-    }
-});
-
 
 /*------------------------------ LABELS CACHES ------------------------------*/
 label_biensupport.style.display="none"

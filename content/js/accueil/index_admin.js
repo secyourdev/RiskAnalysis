@@ -20,7 +20,28 @@ var email_modif_mdp = document.getElementById('email_modif_mdp')
 var reinitialiser_mdp = document.getElementsByClassName('reinitialiser_mdp')
 var generer_mdp = document.getElementsByClassName('generer_mdp')
 
+var nom_etude = document.getElementById('nom_etude');
+var description_etude = document.getElementById('description_etude');
+var label_nom_etude = document.getElementById('nom_etude').previousSibling.previousSibling
+
+var nom_groupe_utilisateur = document.getElementById('nom_grp_user');
+var label_groupe_utilisateur = document.getElementById('nom_grp_user').previousSibling.previousSibling
+
+var nom_utilisateur = document.getElementById('nom_utilisateur');
+var prenom_utilisateur = document.getElementById('prenom_utilisateur');
+var poste_utilisateur = document.getElementById('poste_utilisateur');
+var email_utilisateur = document.getElementById('email_utilisateur');
+
+var label_nom_utilisateur =document.getElementById('nom_utilisateur').previousSibling.previousSibling
+var label_prenom_utilisateur = document.getElementById('prenom_utilisateur').previousSibling.previousSibling
+var label_poste_utilisateur = document.getElementById('poste_utilisateur').previousSibling.previousSibling
+var label_email_utilisateur = document.getElementById('email_utilisateur').previousSibling.previousSibling
+
 var lenght_reinitialiser_mdp = reinitialiser_mdp.length;
+
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,1000}$/
+var regex_email = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"@]{1,100}$/
 
 button_add_user_in_grp.style.display='none'
 grp_user_card.style.display="none"
@@ -271,15 +292,15 @@ function compteur_anim() {
             $(this).text(Math.ceil(now));
         },
     });
-    $('#bdd.compteur b').animate({
-        bdd: bdd,
-    }, {
-        duration: 2000,
-        easing: 'swing',
-        step: function (now) {
-            $(this).text(Math.ceil(now));
-        },
-    });
+    // $('#bdd.compteur b').animate({
+    //     bdd: bdd,
+    // }, {
+    //     duration: 2000,
+    //     easing: 'swing',
+    //     step: function (now) {
+    //         $(this).text(Math.ceil(now));
+    //     },
+    // });
 };
 
 
@@ -393,3 +414,47 @@ function suppression_projet(){
         })
     }
 }
+
+/*------------------------------ LABELS CACHES ------------------------------*/
+label_nom_etude.style.display="none"
+label_groupe_utilisateur.display="none"
+label_prenom_utilisateur.display="none"
+label_nom_utilisateur.display="none"
+label_poste_utilisateur.display="none"
+label_email_utilisateurdisplay="none"
+
+/*----------------------- ENREGISTREMENT DES COOKIES ------------------------*/
+nom_etude.addEventListener('keyup',function(event){
+    verify_input(nom_etude.value,regex_nom,nom_etude)
+    activate_label(nom_etude.value,label_nom_etude)
+}) 
+
+description_etude.addEventListener('keyup',function(event){
+    verify_textarea(description_etude.value,regex_description,description_etude)
+})
+
+nom_groupe_utilisateur.addEventListener('keyup',function(event){
+    verify_input(nom_groupe_utilisateur.value,regex_nom,nom_groupe_utilisateur)
+    activate_label(nom_groupe_utilisateur.value,label_groupe_utilisateur)
+})
+
+nom_utilisateur.addEventListener('keyup',function(event){
+    verify_input(nom_utilisateur.value,regex_nom,nom_utilisateur)
+    activate_label(nom_utilisateur.value,label_nom_utilisateur)
+})
+
+prenom_utilisateur.addEventListener('keyup',function(event){
+    verify_input(prenom_utilisateur.value,regex_nom,prenom_utilisateur)
+    activate_label(prenom_utilisateur.value,label_prenom_utilisateur)
+})
+
+poste_utilisateur.addEventListener('keyup',function(event){
+    verify_input(poste_utilisateur.value,regex_nom,poste_utilisateur)
+    activate_label(poste_utilisateur.value,label_poste_utilisateur)
+})
+
+email_utilisateur.addEventListener('keyup',function(event){
+    verify_input(email_utilisateur.value,regex_email,email_utilisateur)
+    activate_label(email_utilisateur.value,label_email_utilisateur)
+})
+

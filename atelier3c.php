@@ -414,7 +414,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
                     <g transform="translate(-1230 -689)">
                       <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
-                      <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <text class="number_activity_text" data-name="2" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
                         <tspan x="-3.432" y="0">2</tspan>
                       </text>
                     </g>
@@ -429,13 +429,43 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
                     <g transform="translate(-1230 -689)">
                       <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
-                      <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                      <text class="number_activity_text" data-name="3" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
                         <tspan x="-3.432" y="0">3</tspan>
                       </text>
                     </g>
                   </svg>
                 </i>
                 <span class="nom_sous_menu">Mesure de sécurité</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-link collapse-right-item menu_float" href="#evaluation">
+                <i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                    <g transform="translate(-1230 -689)">
+                      <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                      <text class="number_activity_text" data-name="4" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                        <tspan x="-3.432" y="0">4</tspan>
+                      </text>
+                    </g>
+                  </svg>
+                </i>
+                <span class="nom_sous_menu">Évaluation</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-link collapse-right-item menu_float" href="#cartographie_pp">
+                <i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                    <g transform="translate(-1230 -689)">
+                      <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                      <text class="number_activity_text" data-name="5" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                        <tspan x="-3.432" y="0">5</tspan>
+                      </text>
+                    </g>
+                  </svg>
+                </i>
+                <span class="nom_sous_menu">Carthographie partie prenantes</span>
               </a>
             </li>
           </ul>
@@ -617,7 +647,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       <div class="card-body">
                         <!--text-->
                         <div class="table-responsive">
-                          <input type="text" class="rechercher_input" id="rechercher_mesure" placeholder="Rechercher">
+                          <input type="text" class="rechercher_input" id="rechercher_mesure1" placeholder="Rechercher">
                           <table id="editable_table_mesure" class="table table-bordered table-striped">
                             <thead>
                               <tr>
@@ -626,17 +656,11 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <th>Chemin d'attaque stratégique</th>
                                 <th>Nom mesure de sécurité</th>
                                 <th>Description mesure de sécurité</th>
-                                <!-- <th>Menace initiale</th>
-                                <th>Dépendance résiduelle</th>
-                                <th>Pénétration résiduelle</th>
-                                <th>Maturité résiduelle</th>
-                                <th>Confiance résiduelle</th>
-                                <th>Menace résiduelle</th> -->
                               </tr>
                             </thead>
                             <tbody>
                               <?php
-                              while ($row = mysqli_fetch_array($result_mesure)) {
+                              while ($row = mysqli_fetch_array($result_mesure1)) {
                                 echo '
                         <tr>
                         <td>' . $row["id_mesure"] . '</td>
@@ -651,6 +675,24 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </tbody>
                           </table>
                         </div>
+
+                        <div class='message_success'>
+                        <?php 
+                            if(isset($_SESSION['message_success'])){
+                              echo $_SESSION['message_success'];
+                              unset($_SESSION['message_success']);
+                            }
+                        ?>
+                        </div> 
+                        <div class='message_error'>
+                        <?php                
+                            if(isset($_SESSION['message_error'])){
+                                echo $_SESSION['message_error'];
+                                unset($_SESSION['message_error']);
+                            }
+                        ?>
+                        </div>
+
                         <!-- bouton Ajouter une nouvelle ligne -->
                         <div class="text-center">
                           <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_mesure_sécurité">Ajouter une mesure de sécurité</button>
@@ -661,19 +703,19 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
 
                   <!-- Area Card -->
-                  <div id="mesure_de_securité" class="col-xl-12 col-lg-12">
+                  <div id="evaluation" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Mesure de sécurité</h6>
+                        <h6 class="m-0">Évaluation</h6>
 
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
                         <!--text-->
                         <div class="table-responsive">
-                          <input type="text" class="rechercher_input" id="rechercher_mesure" placeholder="Rechercher">
-                          <table id="editable_table_mesure" class="table table-bordered table-striped">
+                          <input type="text" class="rechercher_input" id="rechercher_mesure2" placeholder="Rechercher">
+                          <table id="editable_table_mesure2" class="table table-bordered table-striped">
                             <thead>
                               <tr>
                                 <th>ID</th>
@@ -688,10 +730,10 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </thead>
                             <tbody>
                               <?php
-                              while ($row = mysqli_fetch_array($result_mesure)) {
+                              while ($row = mysqli_fetch_array($result_mesure2)) {
                                 echo '
                         <tr>
-                        <td>' . $row["id_mesure"] . '</td>
+                        <td>' . $row["id_partie_prenante"] . '</td>
                         <td>' . $row["nom_partie_prenante"] . '</td>
                         <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
                         <td>' . $row["dependance_residuelle"] . '</td>
@@ -705,10 +747,23 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               ?>
                             </tbody>
                           </table>
-                        </div>
-                        <!-- bouton Ajouter une nouvelle ligne -->
-                        <div class="text-center">
-                          <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_mesure_sécurité">Ajouter une mesure de sécurité</button>
+
+                          <div class='message_success'>
+                          <?php 
+                              if(isset($_SESSION['message_success_2'])){
+                                echo $_SESSION['message_success_2'];
+                                unset($_SESSION['message_success_2']);
+                              }
+                          ?>
+                          </div> 
+                          <div class='message_error'>
+                          <?php                
+                              if(isset($_SESSION['message_error_2'])){
+                                  echo $_SESSION['message_error_2'];
+                                  unset($_SESSION['message_error_2']);
+                              }
+                          ?>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -779,12 +834,12 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                 </button>
               </div>
               <div class="modal-body perso_modal_body">
-                <form method="post" action="content/php/atelier3c/ajout.php" class="user" id="formpp">
+                <form method="post" action="content/php/atelier3c/ajout_mesure.php" class="user" id="formpp1">
                   <fieldset>
                     <div class="row">
                       <div class="form-group col-6">
-                        <label for="partieprenante">Partie prenante</label>
-                        <select class="form-control" id="partieprenante" , name="partieprenante">
+                        <label for="partieprenante1">Partie prenante</label>
+                        <select class="form-control" id="partieprenante1" , name="partieprenante1">
                           <option value="" selected>...</option>
                           <?php
                           while ($row = mysqli_fetch_array($result_partie_prenante2)) //selection.php
@@ -829,7 +884,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                 </div> -->
 
                       <div class="form-group col-6">
-                      <label class="titre_input" for="nommesure">Nom de la mesure de sécurité</label>
+                        <label class="titre_input" for="nommesure">Nom de la mesure de sécurité</label>
                         <input type="text" class="perso_form shadow-none form-control form-control-user" name="nommesure" id="nommesure" placeholder="Nom de la mesure de sécurité" required>
                       </div>
 
@@ -838,7 +893,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <textarea class="form-control perso_text_area" name="descriptionmesure" id="descriptionmesure" rows="3"></textarea>
                       </div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                       <div class=" col-6">
                         <div class="choix-valeur">
                           <div>Dépendance résduelle</div>
@@ -923,12 +978,12 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                   </fieldset>
               </div>
               <!-- bouton Ajouter -->
               <div class="modal-footer perso_middle_modal_footer">
-                <input type="submit" name="validermesure" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
+                <input type="submit" name="validermesure1" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
               </div>
               </form>
 
@@ -936,6 +991,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             </div>
           </div>
         </div>
+
 
         <!-- Logout Modal-->
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

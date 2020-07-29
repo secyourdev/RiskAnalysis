@@ -800,15 +800,33 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                                 while($row = mysqli_fetch_array($result_RACI_user))
                                                                 {
                                                                     echo '
-                                                                    <option value="'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'">'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'</option>
+                                                                    <option value="'.$row["id_utilisateur"].'">'.$row["nom"].' '.$row["prenom"].'</option>
                                                                     ';
                                                                 }
                                                                 ?>
                                                             </select>
                                                     </div>
                                                     
+                                                    <div class='message_success'>
+                                                    <?php 
+                                                        if(isset($_SESSION['message_success'])){
+                                                            echo $_SESSION['message_success'];
+                                                            unset($_SESSION['message_success']);
+                                                        }
+                                                    ?>
+                                                    </div> 
+                                                    <div class='message_error'>
+                                                    <?php                
+                                                        if(isset($_SESSION['message_error'])){
+                                                            echo $_SESSION['message_error'];
+                                                            unset($_SESSION['message_error']);
+                                                        }
+                                                    ?>
+                                                    </div>
+
                                                     <div>
-                                                    <button type="button" id='ajouter_user' name="ajouter_user" class="btn perso_btn shadow-none">Ajouter</button>
+                                                        <button type="button" id='ajouter_user' name="ajouter_user" class="btn perso_btn shadow-none">Ajouter</button>
+                                                    </div>
                                                 </fieldset>
                                             </form>
                                             </br>
@@ -827,15 +845,33 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                                     while($row = mysqli_fetch_array($result_RACI_user))
                                                                     {
                                                                         echo '
-                                                                        <option value="'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'">'.$row["id_utilisateur"].'- '.$row["nom"].' '.$row["prenom"].'</option>
+                                                                        <option value="'.$row["id_utilisateur"].'">'.$row["nom"].' '.$row["prenom"].'</option>
                                                                         ';
                                                                     }
                                                                     ?>
                                                                 </select>
                                                         </div>
                                                         
+                                                        <div class='message_success'>
+                                                        <?php 
+                                                            if(isset($_SESSION['message_success'])){
+                                                                echo $_SESSION['message_success'];
+                                                                unset($_SESSION['message_success']);
+                                                            }
+                                                        ?>
+                                                        </div> 
+                                                        <div class='message_error'>
+                                                        <?php                
+                                                            if(isset($_SESSION['message_error'])){
+                                                                echo $_SESSION['message_error'];
+                                                                unset($_SESSION['message_error']);
+                                                            }
+                                                        ?>
+                                                        </div>            
+
                                                         <div>
-                                                        <button type="button" id='ajouter_user' name="ajouter_user" class="btn perso_btn shadow-none">Ajouter</button>
+                                                            <button type="button" id='ajouter_user' name="ajouter_user" class="btn perso_btn shadow-none">Ajouter</button>
+                                                        </div>
                                                     </fieldset>
                                                 </form>
                                                 </br>
@@ -876,6 +912,23 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                 ?>
                                             </tbody>
                                         </table>
+
+                                        <div class='message_success'>
+                                        <?php 
+                                            if(isset($_SESSION['message_success_2'])){
+                                                echo $_SESSION['message_success_2'];
+                                                unset($_SESSION['message_success_2']);
+                                            }
+                                        ?>
+                                        </div> 
+                                        <div class='message_error'>
+                                        <?php                
+                                            if(isset($_SESSION['message_error_2'])){
+                                                echo $_SESSION['message_error_2'];
+                                                unset($_SESSION['message_error_2']);
+                                            }
+                                        ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

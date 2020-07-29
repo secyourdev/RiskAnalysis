@@ -1217,7 +1217,7 @@ h6 {
     text-align: initial;
 }
 
-.width_RACI {
+.width_select {
     width: -webkit-fill-available;
     width: -moz-available;
 }
@@ -1457,5 +1457,4 @@ h6 {
 .open_menu i {
     font-weight: 800;
 }
-
 

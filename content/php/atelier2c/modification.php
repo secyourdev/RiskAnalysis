@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("../bdd/connexion_sqli.php");
 
 $input = filter_input_array(INPUT_POST);
@@ -16,13 +17,9 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
     ";
     echo $query;
     mysqli_query($connect, $query);
+    $_SESSION['message_success'] = "Le choix de source de risque a été ajouté !";
+
 }
-if ($input["action"] === 'delete') {
-    $query = "
-    DELETE FROM P_SROV 
-    WHERE id_source_de_risque = '".$input["id_source_de_risque"]."'
-    ";
-    mysqli_query($connect, $query);
-}
+
 
 echo json_encode($input);
