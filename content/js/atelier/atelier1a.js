@@ -92,7 +92,7 @@ for(let i=2;i<nombre_atelier;i++){
         var option_C = document.createElement("option")
         var option_I = document.createElement("option")
 
-        select.setAttribute("class","form-control width_RACI")
+        select.setAttribute("class","form-control width_select")
         option_R.innerHTML = "Réalisation"; option_R.setAttribute("valeur","Réalisation");
         option_A.innerHTML = "Approbation"; option_A.setAttribute("valeur","Approbation");
         option_C.innerHTML = "Consultation"; option_C.setAttribute("valeur","Consultation");

@@ -1,7 +1,7 @@
 <?php
 session_start();
 $getid_projet = $_SESSION['id_projet'];
-print $getid_projet;
+// print $getid_projet;
 include("../bdd/connexion.php");
 
 $results["error"] = false;
