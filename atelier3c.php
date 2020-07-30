@@ -429,7 +429,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
               </a>
             </li>
             <li>
-              <a class="nav-link collapse-right-item menu_float" href="#mesure_de_securité">
+              <a class="nav-link collapse-right-item menu_float" href="#mesure_de_securite">
                 <i>
                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
                     <g transform="translate(-1230 -689)">
@@ -641,7 +641,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   </div>
 
                   <!-- Area Card -->
-                  <div id="mesure_de_securité" class="col-xl-12 col-lg-12">
+                  <div id="mesure_de_securite" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">

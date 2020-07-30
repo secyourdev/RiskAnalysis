@@ -1,7 +1,6 @@
 <?php
 session_start();
 $get_id_projet = $_SESSION['id_projet'];
-header('Location: ../../../atelier-3b&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet']);
 
 include("../bdd/connexion.php");
 
@@ -113,15 +112,15 @@ if ($results["error"] === false && isset($_POST['validerchemin'])) {
   if (!in_array($chemin_d_attaque_strategique, $result_nom_chemin_existant)) {
     //print 'chemin non existent';
 
-foreach ($id_partie_prenante_array as $id_partie_prenante) {
-  # code...
-  $insere->bindParam(1, $id_chemin_d_attaque);
-  $insere->bindParam(2, $id_risque);
-  $insere->bindParam(3, $chemin_d_attaque_strategique);
-  $insere->bindParam(4, $id_scenario_strategique);
-  $insere->bindParam(5, $id_partie_prenante);
-  $insere->execute();
-}
+    foreach ($id_partie_prenante_array as $id_partie_prenante) {
+      # code...
+      $insere->bindParam(1, $id_chemin_d_attaque);
+      $insere->bindParam(2, $id_risque);
+      $insere->bindParam(3, $chemin_d_attaque_strategique);
+      $insere->bindParam(4, $id_scenario_strategique);
+      $insere->bindParam(5, $id_partie_prenante);
+      $insere->execute();
+    }
 
     $recuperechemin->bindParam(1, $chemin_d_attaque_strategique);
     $recuperechemin->bindParam(2, $id_risque);
@@ -148,4 +147,5 @@ foreach ($id_partie_prenante_array as $id_partie_prenante) {
   }
 }
 
+header('Location: ../../../atelier-3b&' . $_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#chemin_dattaque');
 ?>

@@ -153,5 +153,5 @@ if ($results["error"] === false && isset($_POST['validermesure1'])) {
   $_SESSION['message_success'] = "La mesure a bien été ajoutée !";
 }
 
-header('Location: ../../../atelier-3c&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
+header('Location: ../../../atelier-3c&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#mesure_de_securite');
 ?>

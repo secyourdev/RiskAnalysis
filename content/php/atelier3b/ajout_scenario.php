@@ -61,5 +61,5 @@ if ($results["error"] === false && isset($_POST['validerscenario'])) {
     $_SESSION['message_error'] = "Le scénario stratégique entré existe déjà !";
   }
 }
-header('Location: ../../../atelier-3b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
+header('Location: ../../../atelier-3b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#scenario_strategique');
 ?>

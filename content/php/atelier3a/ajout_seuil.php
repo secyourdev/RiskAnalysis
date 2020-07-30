@@ -42,5 +42,5 @@ if ($results["error"] === false && isset($_POST['validerseuil'])) {
   $_SESSION['message_success'] = "Les valeurs de seuils ont été bien enregistrées !";
 }
 
-header('Location: ../../../atelier-3a&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#chemin_dattaque');
+header('Location: ../../../atelier-3a&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#seuils');
 ?>
