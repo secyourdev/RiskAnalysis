@@ -1,5 +1,5 @@
 --
--- sauvegarde20200729-144822.sql.gz
+-- sauvegarde20200730-145655.sql.gz
 SET FOREIGN_KEY_CHECKS =  0 ;
 
 DROP TABLE IF EXISTS `A_utilisateur`;
@@ -54,6 +54,7 @@ INSERT INTO `C_impliquer` VALUES ('2','5');
 INSERT INTO `C_impliquer` VALUES ('2','6');
 INSERT INTO `C_impliquer` VALUES ('2','7');
 INSERT INTO `C_impliquer` VALUES ('3','2');
+INSERT INTO `C_impliquer` VALUES ('3','3');
 
 
 DROP TABLE IF EXISTS `DA_echelle`;
@@ -121,7 +122,7 @@ INSERT INTO `DA_niveau` VALUES ('4','Conséquences désastreuses pour l''organis
 INSERT INTO `DA_niveau` VALUES ('7',NULL,'1','7');
 INSERT INTO `DA_niveau` VALUES ('8',NULL,'2','7');
 INSERT INTO `DA_niveau` VALUES ('9',NULL,'3','7');
-INSERT INTO `DA_niveau` VALUES ('10','ghgdg','4','7');
+INSERT INTO `DA_niveau` VALUES ('10','vddfgd','4','7');
 INSERT INTO `DA_niveau` VALUES ('11','test','1','13');
 INSERT INTO `DA_niveau` VALUES ('12','test','2','13');
 INSERT INTO `DA_niveau` VALUES ('13','test','3','13');
@@ -504,6 +505,21 @@ INSERT INTO `H_RACI` VALUES ('14','2','4.b','Réalisation');
 INSERT INTO `H_RACI` VALUES ('14','2','5.a','Réalisation');
 INSERT INTO `H_RACI` VALUES ('14','2','5.b','Réalisation');
 INSERT INTO `H_RACI` VALUES ('14','2','5.c','Réalisation');
+INSERT INTO `H_RACI` VALUES ('14','3','1.a','Réalisation');
+INSERT INTO `H_RACI` VALUES ('14','3','1.b','Réalisation');
+INSERT INTO `H_RACI` VALUES ('14','3','1.c','Réalisation');
+INSERT INTO `H_RACI` VALUES ('14','3','1.d','Réalisation');
+INSERT INTO `H_RACI` VALUES ('14','3','2.a','Réalisation');
+INSERT INTO `H_RACI` VALUES ('14','3','2.b','Réalisation');
+INSERT INTO `H_RACI` VALUES ('14','3','2.c','Réalisation');
+INSERT INTO `H_RACI` VALUES ('14','3','3.a','Réalisation');
+INSERT INTO `H_RACI` VALUES ('14','3','3.b','Réalisation');
+INSERT INTO `H_RACI` VALUES ('14','3','3.c','Réalisation');
+INSERT INTO `H_RACI` VALUES ('14','3','4.a','Réalisation');
+INSERT INTO `H_RACI` VALUES ('14','3','4.b','Réalisation');
+INSERT INTO `H_RACI` VALUES ('14','3','5.a','Réalisation');
+INSERT INTO `H_RACI` VALUES ('14','3','5.b','Réalisation');
+INSERT INTO `H_RACI` VALUES ('14','3','5.c','Réalisation');
 
 
 DROP TABLE IF EXISTS `I_mission`;
@@ -622,7 +638,7 @@ INSERT INTO `M_evenement_redoute` VALUES ('2','ER','Description ER','1','1','1',
 INSERT INTO `M_evenement_redoute` VALUES ('3','ER','Description ER','1','1','1','1','Impact','4','3','1.c','11');
 INSERT INTO `M_evenement_redoute` VALUES ('4','ER','Description ER','1','1','1','1','Impact','4','5','1.c','14');
 INSERT INTO `M_evenement_redoute` VALUES ('5','ER','Description ER','1','3','1','1','Impact','5','4','1.c','13');
-INSERT INTO `M_evenement_redoute` VALUES ('6','ER 1','Description ER','1','1','1','1','Impact','4','6','1.c','1');
+INSERT INTO `M_evenement_redoute` VALUES ('6','ER','Description ER','1','1','1','1','Impact','4','6','1.c','1');
 
 
 DROP TABLE IF EXISTS `N_socle_de_securite`;
@@ -639,14 +655,15 @@ CREATE TABLE `N_socle_de_securite` (
   KEY `N_socle_de_securite_G_atelier_FK` (`id_atelier`),
   CONSTRAINT `N_socle_de_securite_F_projet0_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `N_socle_de_securite_G_atelier_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `N_socle_de_securite` VALUES ('1','Echelle de gravité','Gravité EBIOS RM - Automobile','Non appliqué','a','1.d','3');
-INSERT INTO `N_socle_de_securite` VALUES ('2','Référentiel de sécurité','Règles de codage',NULL,NULL,'1.d','1');
+INSERT INTO `N_socle_de_securite` VALUES ('2','Référentiel de sécurité','Règles de codage','Appliqué sans restriction','oui','1.d','1');
 INSERT INTO `N_socle_de_securite` VALUES ('3','Référentiel de sécurité','Règles de codage','Appliqué sans restriction','fbvbvcbcv','1.d','11');
 INSERT INTO `N_socle_de_securite` VALUES ('4','Hello','My Name','Non appliqué','rererererer','1.d','11');
 INSERT INTO `N_socle_de_securite` VALUES ('5','Echelle de gravité','Gravité EBIOS RM - Automobile','Non appliqué','b','1.d','14');
-INSERT INTO `N_socle_de_securite` VALUES ('6','Référentiel de sécurité','Règles de codage',NULL,NULL,'1.d','13');
+INSERT INTO `N_socle_de_securite` VALUES ('6','Référentiel de sécurité','Règles de codage','Appliqué sans restriction','ok','1.d','13');
+INSERT INTO `N_socle_de_securite` VALUES ('7','Ref1','Nom1','Non appliqué','Commentaire1','1.d','1');
 
 
 DROP TABLE IF EXISTS `O_regle`;
@@ -669,7 +686,7 @@ CREATE TABLE `O_regle` (
   CONSTRAINT `O_regle_F_projet0_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `O_regle_G_atelier1_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `O_regle_N_socle_de_securite_FK` FOREIGN KEY (`id_socle_securite`) REFERENCES `N_socle_de_securite` (`id_socle_securite`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=546 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=549 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `O_regle` VALUES ('1','1','G1 – MINEURE','Poursuite de l''exploitation avec une alarme signalant le défaut.','Non conforme','a','2020-07-23','a','1','3','1.d');
 INSERT INTO `O_regle` VALUES ('2','2','G2 – SIGNIFICATIVE','Poursuite de l''exploitation avec une action opérateur.',NULL,NULL,NULL,NULL,'1','3','1.d');
@@ -1035,7 +1052,7 @@ INSERT INTO `O_regle` VALUES ('361','1','G1 – MINEURE','Poursuite de l''exploi
 INSERT INTO `O_regle` VALUES ('362','2','G2 – SIGNIFICATIVE','Poursuite de l''exploitation avec une action opérateur.',NULL,NULL,NULL,NULL,'5','14','1.d');
 INSERT INTO `O_regle` VALUES ('363','3','G3 – GRAVE','Arrêt temporaire de l''exploitation puis reprise sous une procédure particulière (exemple : opérateur supplémentaire).',NULL,NULL,NULL,NULL,'5','14','1.d');
 INSERT INTO `O_regle` VALUES ('364','4','G4 – CRITIQUE','Arrêt durable de l''exploitation nécessitant une intervention de maintenance.',NULL,NULL,NULL,NULL,'5','14','1.d');
-INSERT INTO `O_regle` VALUES ('365','1','RÈGLE — Application de conventions de codage claires et explicites','Des conventions de codage doivent être définies et documentées pour le logiciel à produire. Ces conventions doivent définir au minimum les points suivants : l’encodage des fichiers sources, la mise en page du code et l’indentation, les types standards à utiliser, le nommage (bibliothèques, fichiers, fonctions, types, variables, . . .), le format de la documentation. Ces conventions doivent être appliquées par chaque développeur.','Conforme','mmm','2020-07-03','mmm','6','13','1.d');
+INSERT INTO `O_regle` VALUES ('365','1','RÈGLE — Application de conventions de codage claires et explicites','Des conventions de codage doivent être définies et documentées pour le logiciel à produire. Ces conventions doivent définir au minimum les points suivants : l’encodage des fichiers sources, la mise en page du code et l’indentation, les types standards à utiliser, le nommage (bibliothèques, fichiers, fonctions, types, variables, . . .), le format de la documentation. Ces conventions doivent être appliquées par chaque développeur.','Conforme','mmmhgfhfh','2020-07-03','mmm','6','13','1.d');
 INSERT INTO `O_regle` VALUES ('366','2','RÈGLE — Seul le codage C conforme au standard est autorisé','Aucune violation des contraintes et de la syntaxe C telles que définies dans les standards C90 ou C99 n’est autorisée.',NULL,NULL,NULL,NULL,'6','13','1.d');
 INSERT INTO `O_regle` VALUES ('367','3','RECOMMANDATION — Maîtrise des actions opérées à la compilation.',' Le développeur doit connaître et documenter les actions associées aux options activées du compilateur y compris en terme d’optimisation de code',NULL,NULL,NULL,NULL,'6','13','1.d');
 INSERT INTO `O_regle` VALUES ('368','4','RÈGLE — Définir précisément les options de compilation','Les options utilisées pour la compilation doivent être précisément définies pour l’ensemble des sources d’un logiciel. Ces options doivent notamment fixer précisément :\n- la version du standard C utilisée (par exemple C99 ou encore C90) ;\n- le nom et la version du compilateur utilisé ;',NULL,NULL,NULL,NULL,'6','13','1.d');
@@ -1216,6 +1233,7 @@ INSERT INTO `O_regle` VALUES ('542','178','RÈGLE — Mise en oeuvre manuelle de
 INSERT INTO `O_regle` VALUES ('543','179','RÈGLE — Pas d''assertions de mise au point sur un code mis en production','Les assertions de mise au point ne doivent pas être présentes en production.',NULL,NULL,NULL,NULL,'6','13','1.d');
 INSERT INTO `O_regle` VALUES ('544','180','RECOMMANDATION — La gestion des assertions d''intégrité doit inclure un effacement des données d''urge','Les assertions d’intégrité doivent apparaître en production. En cas de déclenchement d’une assertion d’intégrité, le code de traitement doit aboutir à un effacement d’urgence des données sensibles.',NULL,NULL,NULL,NULL,'6','13','1.d');
 INSERT INTO `O_regle` VALUES ('545','181','RÈGLE — Tout fichier non vide doit se terminer par un retour à la ligne et les directives de preproc','Un fichier non vide ne doit pas se terminer au milieu d’un commentaire ou d’une directive de preprocessing.',NULL,NULL,NULL,NULL,'6','13','1.d');
+INSERT INTO `O_regle` VALUES ('548','aa','aa','aa','Non traité','a','0202-02-02','a','5','14','1.d');
 
 
 DROP TABLE IF EXISTS `P_SROV`;
@@ -1247,9 +1265,9 @@ CREATE TABLE `P_SROV` (
 INSERT INTO `P_SROV` VALUES ('1','Organisation structurée','a','a','a','a','1','1','1','a','a','a','a','Faible','P2','2.a','1');
 INSERT INTO `P_SROV` VALUES ('2','Organisation structurée','a','a','a','a','1','1','1','a','a','aa','a','Faible','P1','2.a','3');
 INSERT INTO `P_SROV` VALUES ('3','Organisation idéologique','b','b','b','b','1','1','1','b','b','b','b','Faible','P1','2.a','14');
-INSERT INTO `P_SROV` VALUES ('4','Organisation structurée','Crime organisé','SRun','Prépositionnement stratégique','OVun','2','1','3','MOun','SAun','AAun','FAun','Faible','P1','2.a','13');
+INSERT INTO `P_SROV` VALUES ('4','Organisation structurée','Crime organisé','SRun','Prépositionnement stratégique','OVun','2','2','3','MOun','SAun','AAun','FAun','Faible','P1','2.a','13');
 INSERT INTO `P_SROV` VALUES ('5','Organisation structurée','Etatique','Source de risque 1','Espionnage','Description objectif visé 1','3','3','3','MO','SA','AA','FA','Élevée','P1','2.a','1');
-INSERT INTO `P_SROV` VALUES ('6','Individu isolé','Amateur','SRdeux','Espionnage','OVdeux','3','3','3','MOdeux','SAdeux','AAdeux','FAdeux','Élevée','','2.a','13');
+INSERT INTO `P_SROV` VALUES ('6','Individu isolé','Amateur','SRdeux','	Prépositionnement stratégique','OVdeux','3','3','3','MOdeux','SAdeux','AAdeux','FAdeux','Élevée','P2','2.a','13');
 
 
 DROP TABLE IF EXISTS `Q_seuil`;
@@ -1314,9 +1332,9 @@ INSERT INTO `R_partie_prenante` VALUES ('1','a','a','Interne','1','1','1','1','1
 INSERT INTO `R_partie_prenante` VALUES ('2','a','a','Interne','1','1','1','1','1','1','1','1','1',NULL,NULL,NULL,NULL,NULL,'3.a','3','2');
 INSERT INTO `R_partie_prenante` VALUES ('3','Cat Me','CarlosPP','Interne','1','1','1','1','1','1','1','1','1',NULL,NULL,NULL,NULL,NULL,'3.a','11','6');
 INSERT INTO `R_partie_prenante` VALUES ('4','b','b','Interne','1','1','1','1','1','1','1','1','1','2','3','4','3','0.5','3.a','14','9');
-INSERT INTO `R_partie_prenante` VALUES ('5','Informatique','PPUn','Externe','3','4','4','3','1','1','1','1','1',NULL,NULL,NULL,NULL,NULL,'3.a','13','8');
-INSERT INTO `R_partie_prenante` VALUES ('6','Informatique','PPdeux','Externe','1','1','1','1','1','1','1','1','1',NULL,NULL,NULL,NULL,NULL,'3.a','13','8');
-INSERT INTO `R_partie_prenante` VALUES ('7','Informatique','PPtrois','Interne','1','1','1','1','1','1','1','1','1',NULL,NULL,NULL,NULL,NULL,'3.a','13','8');
+INSERT INTO `R_partie_prenante` VALUES ('5','Informatique','PPUn','Externe','3','4','4','3','1','1','1','1','1','4','4','1','1','16','3.a','13','8');
+INSERT INTO `R_partie_prenante` VALUES ('6','Informatique','PPdeux','Externe','1','1','1','1','1','1','1','1','1','2','3','3','4','0.5','3.a','13','8');
+INSERT INTO `R_partie_prenante` VALUES ('7','Informatique','PPtrois','Interne','1','1','1','1','1','1','1','1','1','4','2','1','1','8','3.a','13','8');
 INSERT INTO `R_partie_prenante` VALUES ('8','Categorie','Partie Prenante 1','Interne','2','1','1','1','2','1','1','1','1',NULL,NULL,NULL,NULL,NULL,'3.a','1','1');
 
 
@@ -1365,14 +1383,15 @@ CREATE TABLE `T_chemin_d_attaque_strategique` (
   CONSTRAINT `T_chemin_d_attaque_strategique_G_atelier2_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `T_chemin_d_attaque_strategique_R_partie_prenante0_FK` FOREIGN KEY (`id_partie_prenante`) REFERENCES `R_partie_prenante` (`id_partie_prenante`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `T_chemin_d_attaque_strategique_S_scenario_strategique_FK` FOREIGN KEY (`id_scenario_strategique`) REFERENCES `S_scenario_strategique` (`id_scenario_strategique`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('3','a','a',NULL,'1','2','3','3.b');
 INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('4','b','b',NULL,'2','4','14','3.b');
 INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('5','R1','CASun',NULL,'3','5','13','3.b');
-INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('6','R2','CASdeux',NULL,'3','5','13','3.b');
+INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('6','R2','CASdeuxss',NULL,'3','5','13','3.b');
 INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('7','R2','CASdeux',NULL,'3','6','13','3.b');
 INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('9','R1','Chemin 1',NULL,'4','8','1','3.b');
+INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('10','R3','CAStrois',NULL,'3','7','13','3.b');
 
 
 DROP TABLE IF EXISTS `U_scenario_operationnel`;
@@ -1393,13 +1412,14 @@ CREATE TABLE `U_scenario_operationnel` (
   CONSTRAINT `U_scenario_operationnel_F_projet1_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `U_scenario_operationnel_G_atelier_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `U_scenario_operationnel_T_chemin_d_attaque_strategique0_FK` FOREIGN KEY (`id_chemin_d_attaque_strategique`, `id_risque`) REFERENCES `T_chemin_d_attaque_strategique` (`id_chemin_d_attaque_strategique`, `id_risque`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `U_scenario_operationnel` VALUES ('1',NULL,'Scenario opérationnel pour : a',NULL,NULL,'4.a','3','a','3');
 INSERT INTO `U_scenario_operationnel` VALUES ('2',NULL,'Scenario opérationnel pour : b',NULL,NULL,'4.a','4','b','14');
 INSERT INTO `U_scenario_operationnel` VALUES ('3',NULL,'Scenario opérationnel pour : CASun',NULL,'knowledge_graph_logo.png','4.a','5','R1','13');
 INSERT INTO `U_scenario_operationnel` VALUES ('4',NULL,'Scenario opérationnel pour : CASdeux',NULL,NULL,'4.a','6','R2','13');
 INSERT INTO `U_scenario_operationnel` VALUES ('5',NULL,'Scenario opérationnel pour : Chemin 1',NULL,NULL,'4.a','9','R1','1');
+INSERT INTO `U_scenario_operationnel` VALUES ('6',NULL,'Scenario opérationnel pour : CAStrois',NULL,NULL,'4.a','10','R3','13');
 
 
 DROP TABLE IF EXISTS `V_etre`;
@@ -1446,13 +1466,14 @@ CREATE TABLE `X_revaluation_du_risque` (
   CONSTRAINT `X_revaluation_du_risque_F_projet1_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `X_revaluation_du_risque_G_atelier_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `X_revaluation_du_risque_T_chemin_d_attaque_strategique0_FK` FOREIGN KEY (`id_chemin_d_attaque_strategique`, `id_risque`) REFERENCES `T_chemin_d_attaque_strategique` (`id_chemin_d_attaque_strategique`, `id_risque`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `X_revaluation_du_risque` VALUES ('1',NULL,NULL,NULL,NULL,NULL,'5.c','3','a','3');
 INSERT INTO `X_revaluation_du_risque` VALUES ('2',NULL,NULL,NULL,NULL,NULL,'5.c','4','b','14');
 INSERT INTO `X_revaluation_du_risque` VALUES ('3',NULL,NULL,NULL,NULL,NULL,'5.c','5','R1','13');
 INSERT INTO `X_revaluation_du_risque` VALUES ('4',NULL,NULL,NULL,NULL,NULL,'5.c','6','R2','13');
 INSERT INTO `X_revaluation_du_risque` VALUES ('5',NULL,NULL,NULL,NULL,NULL,'5.c','9','R1','1');
+INSERT INTO `X_revaluation_du_risque` VALUES ('6',NULL,NULL,NULL,NULL,NULL,'5.c','10','R3','13');
 
 
 DROP TABLE IF EXISTS `Y_mesure`;
@@ -1467,9 +1488,13 @@ CREATE TABLE `Y_mesure` (
   KEY `Y_mesure_G_atelier0_FK` (`id_atelier`),
   CONSTRAINT `Y_mesure_F_projet_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `Y_mesure_G_atelier0_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `Y_mesure` VALUES ('20','c','c','14','3.c');
+INSERT INTO `Y_mesure` VALUES ('22','MSun','MSun','13','3.c');
+INSERT INTO `Y_mesure` VALUES ('23','MSdeux','MSdeux','13','3.c');
+INSERT INTO `Y_mesure` VALUES ('24','MStroissd','MStrois','13','3.c');
+INSERT INTO `Y_mesure` VALUES ('25','MSquatre','MSquatre','13','3.c');
 
 
 DROP TABLE IF EXISTS `ZA_traitement_de_securite`;
@@ -1491,9 +1516,13 @@ CREATE TABLE `ZA_traitement_de_securite` (
   CONSTRAINT `ZA_traitement_de_securite_F_projet0_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ZA_traitement_de_securite_G_atelier_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ZA_traitement_de_securite_Y_mesure1_FK` FOREIGN KEY (`id_mesure`) REFERENCES `Y_mesure` (`id_mesure`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ZA_traitement_de_securite` VALUES ('1',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','14','20');
+INSERT INTO `ZA_traitement_de_securite` VALUES ('2',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','13','22');
+INSERT INTO `ZA_traitement_de_securite` VALUES ('3',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','13','23');
+INSERT INTO `ZA_traitement_de_securite` VALUES ('4',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','13','24');
+INSERT INTO `ZA_traitement_de_securite` VALUES ('5',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','13','25');
 
 
 DROP TABLE IF EXISTS `ZB_comporter_2`;
@@ -1508,3 +1537,7 @@ CREATE TABLE `ZB_comporter_2` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ZB_comporter_2` VALUES ('20','4','b');
+INSERT INTO `ZB_comporter_2` VALUES ('22','5','R1');
+INSERT INTO `ZB_comporter_2` VALUES ('23','7','R2');
+INSERT INTO `ZB_comporter_2` VALUES ('24','10','R3');
+INSERT INTO `ZB_comporter_2` VALUES ('25','6','R2');
