@@ -870,6 +870,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                           </select>
                         </div>
                         <div class="form-group col-12">
+                        <label for="nommesure">Chemin d'attaque stratégique</label>
                           <input type="text" class="perso_form shadow-none form-control form-control-user" name="nommesure" id="nommesure" placeholder="Nom de la mesure de sécurité" required>
                         </div>
 

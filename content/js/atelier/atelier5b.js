@@ -1,6 +1,17 @@
 /*------------------------------ VARIABLES ----------------------------------*/
 var button = document.getElementsByClassName('tabledit-edit-button')
 var save_button = document.getElementsByClassName('tabledit-save-button')
+
+var nom_mesure = document.getElementById('nommesure')
+var description_mesure = document.getElementById('descriptionmesure')
+
+var label_nom = document.getElementById('nommesure').previousSibling.previousSibling
+var label_description = document.getElementById('descriptionmesure').previousSibling.previousSibling
+
+
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{0,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,1000}$/
+
 var j=0;
 
 /*------------------------------- SIDEBAR ----------------------------------*/
@@ -89,3 +100,16 @@ $("#editable_table > tbody > tr > td:nth-child(9)").each(function () {
     if ($(this)[0].innerText == "A lancer") { $(this)[0].classList.add('fond-rouge'); }
 
 });
+
+/*------------------------------ LABELS CACHES ------------------------------*/
+label_nom.style.display="none"
+
+/*----------------------- ENREGISTREMENT DES COOKIES ------------------------*/
+nom_mesure.addEventListener('keyup',function(event){
+    verify_input(nom_mesure.value,regex_nom,nom_mesure)
+    activate_label(nom_mesure.value,label_nom)
+}) 
+
+description_mesure.addEventListener('keyup',function(event){
+    verify_textarea(description_mesure.value,regex_description,description_mesure)
+})
