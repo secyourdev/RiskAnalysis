@@ -351,33 +351,33 @@ $.post("heatmap-getdata.php", function (data) {
 
 	}
 
-	// console.log(parseInt(echelle_gravite));
-	// console.log(parseInt(echelle_vraisemblance));
+	console.log(parseInt(echelle_gravite));
+	console.log(parseInt(echelle_vraisemblance));
 
 	// for (let i = 1; i <= (parseInt(echelle_gravite)); i++) {
 
-	// 	// console.log('gravite: ' + i);
+	// 	console.log('gravite: ' + i);
 
 	// 	for (let j = 1; j <= (parseInt(echelle_vraisemblance)); j++) {
 
 	// 		console.log('vraisemblance: ' + j);
 
-			
+
 	// 		console.log(document.getElementById("dataTable").rows[i].cells[j]);
 	// 		document.getElementById("dataTable").rows[i].cells[j].addEventListener('click', function () {
-				
+
 	// 			var case_echelle_gravite = i
 	// 			console.log(case_echelle_gravite);
-				
+
 	// 			var case_echelle_vraisemblance = j
 	// 			console.log(case_echelle_vraisemblance);
-				
+
 	// 			sleep(100).then(() => {
 	// 				var case_couleur = document.getElementById("dataTable").rows[i].cells[j].classList[0]
 	// 				console.log(case_couleur);
-					
-					
-					
+
+
+
 	// 				$.ajax({
 	// 					url: 'content/php/atelier5b/ajax-heatmap.php',
 	// 					type: 'POST',
@@ -390,19 +390,76 @@ $.post("heatmap-getdata.php", function (data) {
 	// 						console.log('traitement du barème fait');
 	// 					}
 	// 				});
-					
+
 	// 			});
 	// 		})
 	// 	}
 	// }
+
+
+
+	for (let i = 2; i <= (parseInt(echelle_vraisemblance)) + 1; i++) {
+		// console.log('gravite: ' + i);
+
+		for (let j = 2; j <= (parseInt(echelle_vraisemblance)) + 1; j++) {
+			// console.log('vraisemblance: ' + j);
+
+			$("#dataTable > tbody > tr:nth-child(" + i + ") > td:nth-child(" + j + ")").on('click', function () {
+
+				sleep(100).then(() => {
+
+					$color_to_send = $("#dataTable > tbody > tr:nth-child(" + i + ") > td:nth-child(" + j + ")")[0].classList[0];
+
+					switch (i) {
+						case 2:
+							$gravite_to_send = 5
+							break;
+						case 3:
+							$gravite_to_send = 4
+							break;
+						case 4:
+							$gravite_to_send = 3
+							break;
+						case 5:
+							$gravite_to_send = 2
+							break;
+						case 6:
+							$gravite_to_send = 1
+							break;
+					}
+					console.log($color_to_send);
+
+					$.ajax({
+						url: 'content/php/atelier5b/ajax-heatmap.php',
+						type: 'POST',
+						data: {
+							case_echelle_gravite: $gravite_to_send,
+							case_echelle_vraisemblance: j - 1,
+							case_couleur: $color_to_send
+						},
+						success: function () {
+							console.log('traitement du barème fait');
+						}
+					});
+				});
+
+			});
+
+		}
+	}
+
+
 })
 
 $('table').on('click', "td", function () {
 	if ($(this).hasClass('fond-vert')) {
+		// console.log($(this)[0].parentNode.firstElementChild.textContent);
 		$(this).removeClass('fond-vert').addClass('fond-orange');
 	} else if ($(this).hasClass('fond-orange')) {
+		// console.log($(this)[0].parentNode.firstElementChild.textContent);
 		$(this).removeClass('fond-orange').addClass('fond-rouge');
 	} else if ($(this).hasClass('fond-rouge')) {
+		// console.log($(this)[0].parentNode.firstElementChild.textContent);
 		$(this).removeClass('fond-rouge').addClass('fond-vert');
 	}
 });
