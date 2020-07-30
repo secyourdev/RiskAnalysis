@@ -32,7 +32,7 @@ var prenom_utilisateur = document.getElementById('prenom_utilisateur');
 var poste_utilisateur = document.getElementById('poste_utilisateur');
 var email_utilisateur = document.getElementById('email_utilisateur');
 
-var label_nom_utilisateur =document.getElementById('nom_utilisateur').previousSibling.previousSibling
+var label_nom_utilisateur = document.getElementById('nom_utilisateur').previousSibling.previousSibling
 var label_prenom_utilisateur = document.getElementById('prenom_utilisateur').previousSibling.previousSibling
 var label_poste_utilisateur = document.getElementById('poste_utilisateur').previousSibling.previousSibling
 var label_email_utilisateur = document.getElementById('email_utilisateur').previousSibling.previousSibling
