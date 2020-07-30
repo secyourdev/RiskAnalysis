@@ -19,17 +19,17 @@ $results["message"] = [];
 if ($input["action"] === 'edit') {
 
     // Verification du justification_ecart
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $justification_ecart)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $justification_ecart)) {
         $results["error"] = true;
         $_SESSION['message_error_2'] = "Justification écart invalide";
     }
     // Verification du responsable
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $responsable)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $responsable)) {
         $results["error"] = true;
         $results["message"]["responsable"] = "Responsable invalide";
     }
     // Verification du dates
-    if (!preg_match("/^[0-9\s-]{1,100}$/", $dates)) {
+    if (!preg_match("/^[0-9\s-]{0,100}$/", $dates)) {
         $results["error"] = true;
         $results["message"]["dates"] = "Date invalide";
     }

@@ -17,13 +17,13 @@ if($input["action"] === 'edit'){
     echo $description_bien_support;
 
     // Verification du nom du bien support
-    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $nom_bien_support)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $nom_bien_support)){
         $results["error"] = true;
         $_SESSION['message_error_3'] = "Nom invalide";
     }
 
     // Verification de la description
-    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $description_bien_support)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $description_bien_support)){
         $results["error"] = true;
         $_SESSION['message_error_3'] = "Description invalide";
     }

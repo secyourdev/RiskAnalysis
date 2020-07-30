@@ -14,27 +14,27 @@ if($input["action"] === 'edit'){
     $type_compte = mysqli_real_escape_string($connect, $input["type_compte"]);
     
     // Verification du nom
-    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $nom)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $nom)){
         $results["error"] = true;
     }
 
     // Verification du prenom
-    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $prenom)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $prenom)){
         $results["error"] = true;
     }
 
     // Verification du poste
-    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $poste)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $poste)){
         $results["error"] = true;
     }
 
     // Verification du email
-    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s.,-@]{1,100}$/", $email)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s.,-@]{0,100}$/", $email)){
         $results["error"] = true;
     }
 
     // Verification du type de compte
-    if(!preg_match("/^[a-zA-Zéèàêâùïüëç@\s-]{1,100}$/", $type_compte)){
+    if(!preg_match("/^[a-zA-Zéèàêâùïüëç@\s-]{0,100}$/", $type_compte)){
         $results["error"] = true;
     }
 

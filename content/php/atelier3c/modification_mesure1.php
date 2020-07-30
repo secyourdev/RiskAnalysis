@@ -15,12 +15,12 @@ $results["error"] = false;
 $results["message"] = [];
 
 // Verification du nom_mesure_securite
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $nom_mesure_securite)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $nom_mesure_securite)) {
     $results["error"] = true;
     $_SESSION['message_error_2'] = "nom_mesure_securite invalide";
 }
 // Verification du description_mesure_securite
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $description_mesure_securite)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $description_mesure_securite)) {
     $results["error"] = true;
     $_SESSION['message_error_2'] = "description_mesure_securite invalide";
 }

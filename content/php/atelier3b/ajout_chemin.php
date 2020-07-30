@@ -19,17 +19,17 @@ $id_atelier = "4.a";
 
 
 // Verification du id_risque
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $id_risque)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $id_risque)) {
   $results["error"] = true;
   $_SESSION['message_error_3'] = "Identifiant risque invalide";
 }
 // Verification du chemin_d_attaque_strategique
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $chemin_d_attaque_strategique)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $chemin_d_attaque_strategique)) {
   $results["error"] = true;
   $_SESSION['message_error_3'] = "Chemin d'attaque stratégique invalide";
 }
 // Verification du id_scenario_strategique
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $id_scenario_strategique)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $id_scenario_strategique)) {
   $results["error"] = true;
   $_SESSION['message_error_3'] = "Identifiant scénario stratégique invalide";
 }

@@ -35,12 +35,12 @@ $niveau_de_menace_partie_prenante = round(($dependance_partie_prenante* $penetra
 
 
 // Verification du categorie_partie_prenante
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $categorie_partie_prenante)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $categorie_partie_prenante)) {
   $results["error"] = true;
   $_SESSION['message_error_2'] = "Catégorie partie prenante invalide";
 }
 // Verification du nom_partie_prenante
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $nom_partie_prenante)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $nom_partie_prenante)) {
   $results["error"] = true;
   $_SESSION['message_error_2'] = "Nom partie prenante invalide";
 }
