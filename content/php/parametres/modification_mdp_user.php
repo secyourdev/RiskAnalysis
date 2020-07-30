@@ -7,9 +7,9 @@ include("../bdd/connexion.php");
 $results["error"] = false;
 $results["message"] = [];
 
-$ancien_mdp=$_POST['ancien_mdp'];
-$nouveau_mdp=$_POST['nouveau_mdp'];
-$confirmation_nouveau_mdp=$_POST['confirmation_nouveau_mdp'];
+$ancien_mdp=htmlspecialchars($_POST['ancien_mdp']);
+$nouveau_mdp=htmlspecialchars($_POST['nouveau_mdp']);
+$confirmation_nouveau_mdp=htmlspecialchars($_POST['confirmation_nouveau_mdp']);
 
 if (isset($_POST['modifier_mdp_user'])){
     $verification_mdp = $bdd->prepare("SELECT * FROM A_utilisateur where id_utilisateur=?");

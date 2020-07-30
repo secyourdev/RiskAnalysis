@@ -1,4 +1,5 @@
 <?php  
+session_start();
 include("../bdd/connexion_sqli.php");
 
 $input = filter_input_array(INPUT_POST);
@@ -11,6 +12,7 @@ if($input["action"] === 'edit'){
     // Verification du nom
     if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $nom_grp_utilisateur)){
         $results["error"] = true;
+        $_SESSION['message_error_2'] = "Nom invalide";
     }
 
     if($results["error"] === false){
@@ -21,6 +23,8 @@ if($input["action"] === 'edit'){
     ";
 
     mysqli_query($connect, $query);
+    $_SESSION['message_success_2'] = "Le groupe d'utilisateur a bien été modifié !";
+
     }
 }
 
@@ -30,7 +34,7 @@ if($input["action"] === 'delete'){
     WHERE id_grp_utilisateur = '".$input["id_grp_utilisateur"]."'
     ";
     mysqli_query($connect, $query);
-
+    $_SESSION['message_success_2'] = "Le groupe d'utilisateur a bien été supprimé !";
 }
 
 echo json_encode($input);

@@ -14,7 +14,6 @@ $RACI_user = mysqli_query($connect, $query3);
 $query_grp_user = "SELECT nom_grp_utilisateur FROM B_grp_utilisateur";
 $result_grp_user = mysqli_query($connect, $query_grp_user);
 
-
 $recupere_id_grp_utilisateur = "SELECT id_grp_utilisateur FROM F_projet WHERE id_projet =$getid_projet";
 $result_id_grp_utilisateur = mysqli_query($connect, $recupere_id_grp_utilisateur);
 $result_fetch = mysqli_fetch_array($result_id_grp_utilisateur);

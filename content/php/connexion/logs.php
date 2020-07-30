@@ -8,7 +8,7 @@ $results["message"] = [];
 
 if (isset($_POST['connexion'])){
   $email = htmlspecialchars($_POST["email"]);
-  $mot_de_passe = $_POST["mot_de_passe"];
+  $mot_de_passe = htmlspecialchars($_POST["mot_de_passe"]);
 
   $req = $bdd->prepare("SELECT * FROM A_utilisateur where email = :email");
   $req->execute([":email" => $email]);
@@ -17,7 +17,6 @@ if (isset($_POST['connexion'])){
       if(password_verify($mot_de_passe, $row["mot_de_passe"])){
         $results["error"] = false;
         $results["message"] = "Connexion accepté";
-        //$_SESSION['message_success'] = "Connexion acceptée";
         $_SESSION['id_utilisateur'] = $row['id_utilisateur'];
         $_SESSION['nom'] = $row['nom'];
         $_SESSION['prenom'] = $row['prenom'];

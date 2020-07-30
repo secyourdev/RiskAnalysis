@@ -711,7 +711,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                 <!--EMAIL-->
                                 <div class="form-group">
                                     <label class="titre_input" for="email_modif_mdp">E-mail</label>
-                                    <input type="text" class="perso_form shadow-none form-control form-control-user"
+                                    <input type="email" class="perso_form shadow-none form-control form-control-user"
                                         name="email_modif_mdp" id="email_modif_mdp" placeholder="E-mail" readonly></input>
                                 </div>
 
