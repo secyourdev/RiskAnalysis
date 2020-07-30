@@ -42,6 +42,17 @@ $updatechemin = $bdd->prepare(
   '
 );
 
+// Verification du nom de la mesure
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $nom_mesure)) {
+  $results["error"] = true;
+  $_SESSION['message_error_2'] = "Nom de la mesure invalide";
+}
+// Verification de la description de la mesure
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $description_mesure)) {
+  $results["error"] = true;
+  $_SESSION['message_error_2'] = "Description de la mesure invalide";
+}
+
 
 if ($results["error"] === false && isset($_POST['ajouterregle'])) {
   // $recupere->bindParam(1, $nom_valeur_metier);
