@@ -14,11 +14,16 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
   $reqproject->execute(array($getidproject));
   $projectinfo = $reqproject->fetch();
 
-  $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.a"');
+  $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="4.a"');
   $reqdroit->bindParam(1, $getid);
   $reqdroit->bindParam(2, $getidproject);
   $reqdroit->execute();
   $userdroit = $reqdroit->fetch();
+
+  $reqdroit_chef_de_projet = $bdd->prepare('SELECT id_utilisateur FROM F_projet WHERE id_projet = ?');
+  $reqdroit_chef_de_projet->bindParam(1, $getidproject);
+  $reqdroit_chef_de_projet->execute();
+  $userdroit_chef_de_projet = $reqdroit_chef_de_projet->fetch();
 ?>
 
   <?php include("content/php/atelier4a/selection.php"); ?>
@@ -52,7 +57,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
   <?php
   if (isset($_SESSION['id_utilisateur']) and $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur']) {
-    if (isset($userdroit['ecriture'])) {
+    if(isset($userdroit['ecriture'])||$userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
   ?>
 
       <body id="page-top">
@@ -631,6 +636,22 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               ?>
                             </tbody>
                           </table>
+                          <div class='message_success'>
+                            <?php
+                            if (isset($_SESSION['message_success'])) {
+                              echo $_SESSION['message_success'];
+                              unset($_SESSION['message_success']);
+                            }
+                            ?>
+                          </div>
+                          <div class='message_error'>
+                            <?php
+                            if (isset($_SESSION['message_error'])) {
+                              echo $_SESSION['message_error'];
+                              unset($_SESSION['message_error']);
+                            }
+                            ?>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -645,51 +666,107 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
-                        <!--text-->
-                        <form method="post" action="content/php/atelier4a/ajout.php" class="user" id="formValeurMetierPop">
-                          <fieldset>
-                            <div class="form-group">
-                              <label for="nomscenar">Choix du scénario opérationnel</label>
-                              <select class="form-control" name="nomscenar" id="nomscenar">
-                                <option value="" selected>...</option>
-                                <?php
-                                while ($row = mysqli_fetch_array($result3)) {
-                                  echo '
-                                  <option value="' . $row["id_scenario_operationnel"] . '">' . $row["description_scenario_operationnel"] . '</option>
-                                  ';
+                      <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                      ?> 
+                              <!--text-->
+                              <form method="post" action="content/php/atelier4a/ajout.php" class="user" id="formValeurMetierPop">
+                                <fieldset>
+                                  <div class="form-group">
+                                    <label for="nomscenar">Choix du scénario opérationnel</label>
+                                    <select class="form-control" name="nomscenar" id="nomscenar">
+                                      <option value="" selected>...</option>
+                                      <?php
+                                      while ($row = mysqli_fetch_array($result3)) {
+                                        echo '
+                                        <option value="' . $row["id_scenario_operationnel"] . '">' . $row["description_scenario_operationnel"] . '</option>
+                                        ';
+                                      }
+                                      ?>
+                                    </select>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="modeope">Mode opératoire</label>
+                                    <textarea class="form-control perso_text_area" name="modeope" id="modeope" rows="3"></textarea>
+                                  </div>
+
+                                  <div class='message_success'>
+                                    <?php
+                                    if (isset($_SESSION['message_success_2'])) {
+                                      echo $_SESSION['message_success_2'];
+                                      unset($_SESSION['message_success_2']);
+                                    }
+                                    ?>
+                                  </div>
+                                  <div class='message_error'>
+                                    <?php
+                                    if (isset($_SESSION['message_error_2'])) {
+                                      echo $_SESSION['message_error_2'];
+                                      unset($_SESSION['message_error_2']);
+                                    }
+                                    ?>
+                                  </div>
+
+                                  <!-- bouton Ajouter une nouvelle ligne -->
+                                  <div class="modal-footer perso_middle_modal_footer">
+                                    <input type="submit" name="validerope" value="Ajouter" class="btn perso_btn shadow-none"></input>
+                                  </div>
+                                </fieldset>
+                              </form>
+                        <?php
+                              }
+                              else if (isset($userdroit['ecriture'])){
+                                if($userdroit['ecriture']=='Réalisation'){
+                        ?>
+                                  <!--text-->
+                                  <form method="post" action="content/php/atelier4a/ajout.php" class="user" id="formValeurMetierPop">
+                                    <fieldset>
+                                      <div class="form-group">
+                                        <label for="nomscenar">Choix du scénario opérationnel</label>
+                                        <select class="form-control" name="nomscenar" id="nomscenar">
+                                          <option value="" selected>...</option>
+                                          <?php
+                                          while ($row = mysqli_fetch_array($result3)) {
+                                            echo '
+                                            <option value="' . $row["id_scenario_operationnel"] . '">' . $row["description_scenario_operationnel"] . '</option>
+                                            ';
+                                          }
+                                          ?>
+                                        </select>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="modeope">Mode opératoire</label>
+                                        <textarea class="form-control perso_text_area" name="modeope" id="modeope" rows="3"></textarea>
+                                      </div>
+
+                                      <div class='message_success'>
+                                        <?php
+                                        if (isset($_SESSION['message_success_2'])) {
+                                          echo $_SESSION['message_success_2'];
+                                          unset($_SESSION['message_success_2']);
+                                        }
+                                        ?>
+                                      </div>
+                                      <div class='message_error'>
+                                        <?php
+                                        if (isset($_SESSION['message_error_2'])) {
+                                          echo $_SESSION['message_error_2'];
+                                          unset($_SESSION['message_error_2']);
+                                        }
+                                        ?>
+                                      </div>
+
+                                      <!-- bouton Ajouter une nouvelle ligne -->
+                                      <div class="modal-footer perso_middle_modal_footer">
+                                        <input type="submit" name="validerope" value="Ajouter" class="btn perso_btn shadow-none"></input>
+                                      </div>
+                                    </fieldset>
+                                  </form>
+                          <?php
                                 }
-                                ?>
-                              </select>
-                            </div>
-
-                            <div class="form-group">
-                              <label for="modeope">Mode opératoire</label>
-                              <textarea class="form-control perso_text_area" name="modeope" id="modeope" rows="3"></textarea>
-                            </div>
-
-                            <div class='message_success'>
-                              <?php
-                              if (isset($_SESSION['message_success'])) {
-                                echo $_SESSION['message_success'];
-                                unset($_SESSION['message_success']);
-                              }
-                              ?>
-                            </div>
-                            <div class='message_error'>
-                              <?php
-                              if (isset($_SESSION['message_error'])) {
-                                echo $_SESSION['message_error'];
-                                unset($_SESSION['message_error']);
-                              }
-                              ?>
-                            </div>
-
-                            <!-- bouton Ajouter une nouvelle ligne -->
-                            <div class="modal-footer perso_middle_modal_footer">
-                              <input type="submit" name="validerope" value="Ajouter" class="btn perso_btn shadow-none"></input>
-                            </div>
-                          </fieldset>
-                        </form>
+                              }                          
+                          ?>
 
                         <div class="table-responsive">
                           <input type="text" class="rechercher_input" id="rechercher_mode_ope" placeholder="Rechercher">
@@ -736,32 +813,64 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <!--text-->
 
                         <span id="success_message"></span>
-                        <form method="POST" id="sample_form" action="content\php\atelier3b\insert_image.php" enctype="multipart/form-data">
+                        <form method="POST" id="sample_form" action="content/php/atelier4a/insert_image.php" enctype="multipart/form-data">
 
                           <label for="select_nom_scenario_operationnel">Nom du scénario opérationnel</label>
                           <select class="form-control" name="select_nom_scenario_operationnel" id="select_nom_scenario_operationnel">
                             <option value="" selected>...</option>
                             <?php
-                            // print 'bonjour';
-                            // print_r($result_scenario_op);
-                            while ($row = mysqli_fetch_array($result_scenario_op)) //selection.php
+                            while ($row = mysqli_fetch_array($result_scenario_op)) 
                             {
-                              // print_r($row);
                               echo '<option id="scenario_operationnel" value="' . $row['id_scenario_operationnel'] . '">' . $row['description_scenario_operationnel'] . '</option>';
                             }
                             ?>
                           </select>
+                          </br>
 
-                          <br>
-
-                          <div class="custom-file">
-                            <input name="inpFile" id="inpFile" class="custom-file-input" type="file">
-                            <label class="custom-file-label" for="inpFile">Choisir un fichier au format image</label>
+                          <div class='message_success'>
+                            <?php
+                            if (isset($_SESSION['message_success_3'])) {
+                              echo $_SESSION['message_success_3'];
+                              unset($_SESSION['message_success_3']);
+                            }
+                            ?>
                           </div>
-
-                          <div class="form-group" align="center">
-                            <input type="submit" name="file_submit" id="file_submit" class="btn perso_btn_primary shadow-none" value="Ajouter une image" />
+                          <div class='message_error'>
+                            <?php
+                            if (isset($_SESSION['message_error_3'])) {
+                              echo $_SESSION['message_error_3'];
+                              unset($_SESSION['message_error_3']);
+                            }
+                            ?>
                           </div>
+                          
+                          <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                          ?> 
+                                  <div class="custom-file">
+                                    <input name="inpFile" id="inpFile" class="custom-file-input" type="file">
+                                    <label class="custom-file-label" for="inpFile">Choisir un fichier au format image</label>
+                                  </div>
+
+                                  <div class="form-group" align="center">
+                                    <input type="submit" name="file_submit" id="file_submit" class="btn perso_btn_primary shadow-none" value="Ajouter une image" />
+                                  </div>
+                          <?php
+                                }
+                                else if (isset($userdroit['ecriture'])){
+                                  if($userdroit['ecriture']=='Réalisation'){
+                          ?>
+                                    <div class="custom-file">
+                                      <input name="inpFile" id="inpFile" class="custom-file-input" type="file">
+                                      <label class="custom-file-label" for="inpFile">Choisir un fichier au format image</label>
+                                    </div>
+
+                                    <div class="form-group" align="center">
+                                      <input type="submit" name="file_submit" id="file_submit" class="btn perso_btn_primary shadow-none" value="Ajouter une image" />
+                                    </div>
+                          <?php
+                                  } 
+                                }                          
+                          ?>
                         </form>
 
 
@@ -847,7 +956,24 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <script src="content/js/modules/fixed_page.js"></script>
         <script src="content/js/modules/realtime.js"></script>
         <script src="content/js/modules/set_filter_sort_table.js"></script>
-        <script src="content/js/atelier/atelier4a.js"></script>
+        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
+        ?>
+            <script src="content/js/atelier/atelier4a.js"></script>
+        <?php
+            }
+            else if(isset($userdroit['ecriture'])){
+                if($userdroit['ecriture']=='Réalisation'){
+        ?>
+                    <script src="content/js/atelier/atelier4a.js"></script>
+        <?php 
+                }
+                else{
+        ?>
+                    <script src="content/js/atelier/atelier4a_no_modification.js"></script>
+        <?php
+                }
+            }        
+        ?>
         <script src="content/js/modules/sort_table.js"></script>
         <script src="content/js/modules/browse_img.js"></script>
         <script src="content/js/modules/ajax_pour_image.js"></script>

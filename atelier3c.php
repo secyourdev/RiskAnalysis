@@ -60,7 +60,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
   <?php
   if (isset($_SESSION['id_utilisateur']) and $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur']) {
-    if (isset($userdroit['ecriture'])) {
+    if(isset($userdroit['ecriture'])||$userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
   ?>
 
       <body id="page-top">
@@ -840,8 +840,9 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <a class="open_menu rounded">
           <i class="fas fa-bars"></i>
         </a>
-
-        <!----------------------------------------------------------------------------------------------------------------- 
+<?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid||(isset($userdroit['ecriture'])&&$userdroit['ecriture']=='Réalisation')){ 
+?> 
+  <!----------------------------------------------------------------------------------------------------------------- 
   ----------------------------------------- modal ajout de ligne ----------------------------------------------------
   ------------------------------------------------------------------------------------------------------------------>
         <div class="modal fade" id="ajout_ligne_mesure_sécurité" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1006,12 +1007,12 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                 <input type="submit" name="validermesure1" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
               </div>
               </form>
-
-
             </div>
           </div>
         </div>
-
+<?php
+  }
+?>
 
         <!-- Logout Modal-->
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -1,11 +1,6 @@
 /*------------------------------- VARIABLES ----------------------------------*/
 var accordionSidebar = document.getElementById("accordionSidebar");
 var sidebarToggle = document.getElementById("sidebarToggle");
-
-var modeope = document.getElementById("modeope");
-
-var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,1000}$/
-
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
 sidebarToggleTop.addEventListener('click', show_sub_content,false);
@@ -30,36 +25,28 @@ $(document).ready(function(){
      deleteButton: false
     
     });
+
     $('#tableau_ope').Tabledit({
      url:'content/php/atelier4a/modification.php',
      deleteButton: false,
      columns:{
       identifier:[0, "id_scenario_operationnel"],
-      editable:[ [3, 'description_scenario_operationnel']]
+      editable:[]
      },
      restoreButton:false,
-     onSuccess:function(data, textStatus, jqXHR)
-     {
-      if(data.action == 'delete')
-      {
-       $('#'+data.id_chemin_d_attaque_strategique).remove();
-      }
-     }
+     editButton: false,
+     deleteButton: false
     });
+
     $('#tableau_mode_ope').Tabledit({
      url:'content/php/atelier4a/modificationmodeope.php',
      columns:{
       identifier:[0, "id_mode_operatoire"],
-      editable:[ [2, 'mode_operatoire']]
+      editable:[]
      },
      restoreButton:false,
-     onSuccess:function(data, textStatus, jqXHR)
-     {
-      if(data.action == 'delete')
-      {
-       $('#'+data.id_bien_support).remove();
-      }
-     }
+     editButton: false,
+     deleteButton: false
     });
 });
 

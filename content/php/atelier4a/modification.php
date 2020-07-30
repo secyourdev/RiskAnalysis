@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("../bdd/connexion_sqli.php");
 $input = filter_input_array(INPUT_POST);
 
@@ -11,6 +12,7 @@ $results["error"] = false;
 // Verification du type de l'attaquant
 if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $description_scenario_operationnel)) {
     $results["error"] = true;
+    $_SESSION['message_error'] = "Scénario opérationnel invalide";
 }
 
 if ($input["action"] === 'edit' && $results["error"] === false) {
@@ -20,16 +22,8 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
     SET description_scenario_operationnel = '".$description_scenario_operationnel."'
     WHERE id_scenario_operationnel = '".$input["id_scenario_operationnel"]."'
     ";
-    echo $query;
     mysqli_query($connect, $query);
+    $_SESSION['message_success'] = "Le scénario opérationnel a été bien modifié !";
 }
-if ($input["action"] === 'delete') {
-    $query = "
-    DELETE FROM U_scenario_operationnel 
-    WHERE id_scenario_operationnel = '".$input["id_scenario_operationnel"]."'
-    ";
-    mysqli_query($connect, $query);
-}
-
 
 echo json_encode($input);

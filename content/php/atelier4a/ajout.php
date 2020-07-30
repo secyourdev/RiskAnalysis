@@ -16,7 +16,7 @@ $insere = $bdd->prepare('INSERT INTO `W_mode_operatoire`(`id_mode_operatoire`, `
 // Verification du mode operatoire
 if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $modeope)) {
   $results["error"] = true;
-  $_SESSION['message_error'] = "Mode operatoire invalide";
+  $_SESSION['message_error_2'] = "Mode opératoire invalide";
 }
 
 if ($results["error"] === false && isset($_POST['validerope'])) {
@@ -24,7 +24,7 @@ if ($results["error"] === false && isset($_POST['validerope'])) {
   $insere->bindParam(2, $modeope);
   $insere->bindParam(3, $idscenar);
   $insere->execute();
-  $_SESSION['message_success'] = "Le mode operatoire a bien été ajoutée !";
+  $_SESSION['message_success_2'] = "Le mode opératoire a bien été ajoutée !";
 }
 
 header('Location: ../../../atelier-4a&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);

@@ -20,7 +20,7 @@ function selectSocle(selected_value){
             document.getElementById('ecrire_ecart').innerHTML = data;
             $('#editable_table_ecart').Tabledit({
                 deleteButton: false,
-                url: 'content/php/atelier1b/modification_regle.php',
+                url: 'content/php/atelier1d/modification_regle.php',
                 columns: {
                     identifier: [0, "id_regle"],
                     editable: [],

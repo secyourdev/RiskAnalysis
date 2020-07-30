@@ -33,11 +33,11 @@ $(document).ready(function(){
                 url:'content/php/atelier4b/modification.php',
              columns:{
               identifier:[0, 'id_scenario_operationnel'],
-              editable:[[4, "vraisemblance", valeurs]]
+              editable:[]
              },
              restoreButton:false,
-             deleteButton: false
-            
+             editButton: false,
+             deleteButton: false           
             });
 
             /*--------------------------- SORT & FILTER TABLES --------------------------*/
