@@ -15,10 +15,6 @@ $id_mesure = mysqli_real_escape_string($connect, $input['id_mesure']);
 $results["error"] = false;
 $results["message"] = [];
 
-
-
-
-
 // Verification du type de l'attaquant
 if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $nom_mesure_securite)) {
     $results["error"] = true;

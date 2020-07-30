@@ -65,22 +65,8 @@ $(document).ready(function () {
 });
 
 /*--------------------------- SORT & FILTER TABLES --------------------------*/
-// setSortTable('editable_table');
-// OURJQUERYFN.setFilterTable("#rechercher_tableau","#editable_table tbody tr")
 setSortTable('editable_table');
 OURJQUERYFN.setFilterTable("#rechercher_pacs","#editable_table tbody tr")
-
-/*------------------ AJOUT DE LA VERIFICATION DES TABLEAUX ------------------*/
-sleep(100).then(() => {
-    for(let i=0;i<editable_table.rows.length-1;i++){
-        j=i+1;
-        button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table'+','+'9'+')')
-    }
-});
-
-
-
-
 /*--------------------------- Couleurs pacs > statut --------------------------*/
 $("#editable_table > tbody > tr > td:nth-child(9)").each(function () {
 
