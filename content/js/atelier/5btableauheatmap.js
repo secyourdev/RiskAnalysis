@@ -471,7 +471,7 @@ $.post("heatmap-getdata.php", function (data) {
 
 })
 
-$('table').on('click', "td", function () {
+$('#dataTable').on('click', "td", function () {
 	if ($(this).hasClass('fond-vert')) {
 		// console.log($(this)[0].parentNode.firstElementChild.textContent);
 		$(this).removeClass('fond-vert').addClass('fond-orange');
