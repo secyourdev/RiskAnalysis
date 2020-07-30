@@ -14,11 +14,16 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
   $reqproject->execute(array($getidproject));
   $projectinfo = $reqproject->fetch();
 
-  $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.a"');
+  $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="5.c"');
   $reqdroit->bindParam(1, $getid);
   $reqdroit->bindParam(2, $getidproject);
   $reqdroit->execute();
   $userdroit = $reqdroit->fetch();
+
+  $reqdroit_chef_de_projet = $bdd->prepare('SELECT id_utilisateur FROM F_projet WHERE id_projet = ?');
+  $reqdroit_chef_de_projet->bindParam(1, $getidproject);
+  $reqdroit_chef_de_projet->execute();
+  $userdroit_chef_de_projet = $reqdroit_chef_de_projet->fetch();
 ?>
 
   <?php include("content/php/atelier5c/selection.php"); ?>
@@ -52,7 +57,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
   <?php
   if (isset($_SESSION['id_utilisateur']) and $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur']) {
-    if (isset($userdroit['ecriture'])) {
+    if(isset($userdroit['ecriture'])||$userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
   ?>
 
       <body id="page-top">
@@ -574,6 +579,22 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               ?>
                             </tbody>
                           </table>
+                          <div class='message_success'>
+                            <?php
+                            if (isset($_SESSION['message_success'])) {
+                              echo $_SESSION['message_success'];
+                              unset($_SESSION['message_success']);
+                            }
+                            ?>
+                          </div>
+                          <div class='message_error'>
+                            <?php
+                            if (isset($_SESSION['message_error'])) {
+                              echo $_SESSION['message_error'];
+                              unset($_SESSION['message_error']);
+                            }
+                            ?>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -1027,7 +1048,24 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <script src="content/js/modules/fixed_page.js"></script>
           <script src="content/js/modules/realtime.js"></script>
           <script src="content/js/modules/set_filter_sort_table.js"></script>
-          <script src="content/js/atelier/atelier5c.js"></script>
+          <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
+          ?>
+              <script src="content/js/atelier/atelier5c.js"></script>
+          <?php
+              }
+              else if(isset($userdroit['ecriture'])){
+                  if($userdroit['ecriture']=='Réalisation'){
+          ?>
+                      <script src="content/js/atelier/atelier5c.js"></script>
+          <?php 
+                  }
+                  else{
+          ?>
+                      <script src="content/js/atelier/atelier5c_no_modification.js"></script>
+          <?php
+                  }
+              }        
+          ?>
           <script src="content/js/modules/sort_table.js"></script>
           <script src="content/js/atelier/5cheatmapavant.js"></script>
           <script src="content/js/atelier/5cheatmapapres.js"></script>

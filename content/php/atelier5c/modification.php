@@ -48,8 +48,8 @@ if ($input["action"] === 'edit') {
         WHERE id_revaluation = '".$input["id_revaluation"]."'
         AND id_projet = $getid_projet
         ";
-        echo $query;
         mysqli_query($connect, $query);
+        $_SESSION['message_success'] = "L'évaluation et documentation des risques résiduels a été correctement modifié !";
     }
 }
 

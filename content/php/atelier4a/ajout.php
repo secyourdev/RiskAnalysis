@@ -27,5 +27,5 @@ if ($results["error"] === false && isset($_POST['validerope'])) {
   $_SESSION['message_success_2'] = "Le mode opératoire a bien été ajoutée !";
 }
 
-header('Location: ../../../atelier-4a&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
+header('Location: ../../../atelier-4a&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#mode_operatoire');
 ?>

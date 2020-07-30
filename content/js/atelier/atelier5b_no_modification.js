@@ -1,15 +1,6 @@
 /*------------------------------ VARIABLES ----------------------------------*/
 var accordionSidebar = document.getElementById("accordionSidebar");
 var sidebarToggle = document.getElementById("sidebarToggle");
-
-var nom_mesure = document.getElementById('nommesure')
-var description_mesure = document.getElementById('descriptionmesure')
-
-var label_nom = document.getElementById('nommesure').previousSibling.previousSibling
-var label_description = document.getElementById('descriptionmesure').previousSibling.previousSibling
-
-var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{0,100}$/
-var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,1000}$/
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
 sidebarToggleTop.addEventListener('click', show_sub_content,false);
@@ -48,33 +39,25 @@ function show_sub_content(){
 // });
 
 $(document).ready(function () {
-
     $('#editable_table').Tabledit({
         url: 'content/php/atelier5b/modificationpacs.php',
         columns: {
             identifier: [0, 'id_traitement_de_securite'],
-            editable: [
-                [3, 'principe_de_securite', '{"Gouvernance" : "Gouvernance", "Protection" : "Protection", "Defense" : "Defense", "Resilience" : "Resilience"}'],
-                [4, "responsable"],
-                [5, "difficulte_traitement_de_securite"],
-                [6, "cout_traitement_de_securite", '{"+" : "+", "++" : "++", "+++" : "+++"}'],
-                // [7, "date_traitement_de_securite"],
-                [8, "statut", '{"A lancer" : "A lancer", "En cours" : "En cours", "Terminé" : "Terminé"}']],
-
-            // editable:[[4, "vraisemblance", '{"1" : "1 (Invraisemblable)", "2" : "2 (Peu vraisemblable)", "3" : "3 (Vraisemblable)", "4" : "4 (Très vraisemblable)", "5" : "5 (Quasi certain)"}']]
-            dateeditable: [[7, 'date_traitement_de_securite']]
-
+            editable: [],
+            dateeditable: []
         },
         restoreButton: false,
-        deleteButton: false
-
+        deleteButton: false,
+        editButton: false
     });
 });
+
 /*--------------------------- SORT & FILTER TABLES --------------------------*/
 setSortTable('editable_table');
 OURJQUERYFN.setFilterTable("#rechercher_pacs","#editable_table tbody tr")
 /*--------------------------- Couleurs pacs > statut --------------------------*/
 $("#editable_table > tbody > tr > td:nth-child(9)").each(function () {
+
     if ($(this)[0].innerText == "Terminé") { $(this)[0].classList.add('fond-vert'); }
     if ($(this)[0].innerText == "En cours") { $(this)[0].classList.add('fond-orange'); }
     if ($(this)[0].innerText == "A lancer") { $(this)[0].classList.add('fond-rouge'); }

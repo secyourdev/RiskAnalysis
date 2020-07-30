@@ -18,21 +18,11 @@ $(document).ready(function () {
         url: 'content/php/atelier5c/modification.php',
         columns: {
             identifier: [0, 'id_revaluation'],
-            editable: [
-                [5, 'nom_risque_residuelle'],
-                [6, 'description_risque_residuelle'],
-                [7, 'vraisemblance_residuelle'], 
-                // [8, 'risque_residuel'],
-                [9, 'gestion_risque_residuelle']
-            ],
+            editable: [],
         },
         deleteButton: false,
-        restoreButton: false,
-        onSuccess: function (data, textStatus, jqXHR) {
-            if (data.action == 'delete') {
-                $('#' + data.id_source_de_risque).remove();
-            }
-        }
+        editButton: false,
+        restoreButton: false
     });
 });
 /*--------------------------- SORT & FILTER TABLES --------------------------*/

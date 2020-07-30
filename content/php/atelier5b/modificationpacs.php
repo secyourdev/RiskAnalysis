@@ -64,7 +64,7 @@ if ($input["action"] === 'edit') {
         WHERE id_traitement_de_securite = '".$input["id_traitement_de_securite"]."'
         ";
         mysqli_query($connect, $query);
-        $_SESSION['message_success'] = "Le plan d'amélioration continue de la sécurité a été correctement entré !";
+        $_SESSION['message_success'] = "Le plan d'amélioration continue de la sécurité a été correctement modifié !";
     }
 }
 
