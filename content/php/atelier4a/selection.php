@@ -9,7 +9,6 @@ INNER JOIN R_partie_prenante ON T_chemin_d_attaque_strategique.id_partie_prenant
 WHERE S_scenario_strategique.id_projet = $getid_projet 
 ";
 
-// $query2 = "SELECT * FROM  U_scenario_operationnel NATURAL JOIN T_chemin_d_attaque_strategique WHERE id_projet = $getid_projet";
 $query2 = "SELECT 
 U_scenario_operationnel.id_scenario_operationnel,
 T_chemin_d_attaque_strategique.id_risque,
