@@ -354,47 +354,67 @@ $.post("heatmap-getdata.php", function (data) {
 	console.log(parseInt(echelle_gravite));
 	console.log(parseInt(echelle_vraisemblance));
 
-	// for (let i = 1; i <= (parseInt(echelle_gravite)); i++) {
-
-	// 	console.log('gravite: ' + i);
-
-	// 	for (let j = 1; j <= (parseInt(echelle_vraisemblance)); j++) {
-
-	// 		console.log('vraisemblance: ' + j);
-
-
-	// 		console.log(document.getElementById("dataTable").rows[i].cells[j]);
-	// 		document.getElementById("dataTable").rows[i].cells[j].addEventListener('click', function () {
-
-	// 			var case_echelle_gravite = i
-	// 			console.log(case_echelle_gravite);
-
-	// 			var case_echelle_vraisemblance = j
-	// 			console.log(case_echelle_vraisemblance);
-
-	// 			sleep(100).then(() => {
-	// 				var case_couleur = document.getElementById("dataTable").rows[i].cells[j].classList[0]
-	// 				console.log(case_couleur);
 
 
 
-	// 				$.ajax({
-	// 					url: 'content/php/atelier5b/ajax-heatmap.php',
-	// 					type: 'POST',
-	// 					data: {
-	// 						case_echelle_gravite: case_echelle_gravite,
-	// 						case_echelle_vraisemblance: case_echelle_vraisemblance,
-	// 						case_couleur: case_couleur
-	// 					},
-	// 					success: function () {
-	// 						console.log('traitement du barème fait');
-	// 					}
-	// 				});
 
-	// 			});
-	// 		})
-	// 	}
-	// }
+	if (data['bareme_exist']) {
+		console.log("if (data['bareme_exist']) : ");
+		
+		for (i = 0; i < data['bareme_exist'].length; i++) {
+			console.log(data['bareme_exist'][i]);
+			
+			bareme_vraisemblance = parseInt(data['bareme_exist'][i]['bareme_vraisemblance']);
+			console.log(bareme_vraisemblance);
+			bareme_gravite = parseInt(data['bareme_exist'][i]['bareme_gravite']);
+			console.log(bareme_gravite);
+			bareme_bareme = data['bareme_exist'][i]['bareme_bareme'];
+			console.log(bareme_bareme);
+			
+
+			switch (bareme_gravite) {
+				case 5:
+					$gravite_to_print = 2
+					console.log("$gravite_to_print = 2");
+					break;
+				case 4:
+					$gravite_to_print = 3
+					console.log("$gravite_to_print = 3");
+					break;
+				case 3:
+					$gravite_to_print = 4
+					console.log("$gravite_to_print = 4");
+
+					break;
+				case 2:
+					$gravite_to_print = 5
+					console.log("$gravite_to_print = 5");
+					break;
+				case 1:
+					$gravite_to_print = 6
+					console.log("$gravite_to_print = 6");
+					break;
+			}
+			$vraisemblance_to_print = bareme_vraisemblance + 1;
+
+			$("#dataTable > tbody > tr:nth-child(" + $gravite_to_print + ") > td:nth-child(" + $vraisemblance_to_print + ")").removeClass().addClass(bareme_bareme);
+			console.log($("#dataTable > tbody > tr:nth-child(" + $gravite_to_print + ") > td:nth-child(" + $vraisemblance_to_print + ")"));
+			
+		}
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
