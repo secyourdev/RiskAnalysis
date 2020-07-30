@@ -12,7 +12,7 @@ if ($input["action"] === 'edit') {
     $nom_scenario_strategique = mysqli_real_escape_string($connect, $input['nom_scenario_strategique']);
 
     // Verification du nom_scenario_strategique
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $nom_scenario_strategique)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $nom_scenario_strategique)) {
         $results["error"] = true;
         $_SESSION['message_error'] = "Nom scénario stratégique invalide";
     }

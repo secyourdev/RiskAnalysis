@@ -11,7 +11,7 @@ if ($input["action"] === 'edit') {
     $results["message"] = [];
 
     // Verification du chemin_d_attaque_strategique
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $chemin_d_attaque_strategique)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $chemin_d_attaque_strategique)) {
         $results["error"] = true;
         $_SESSION['message_error_3'] = "Chemin d'attaque stratégique invalide";
     }

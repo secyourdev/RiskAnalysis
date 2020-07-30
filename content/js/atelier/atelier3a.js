@@ -7,8 +7,8 @@ var nom = document.getElementById("nom_partie_prenante");
 var label_categorie = document.getElementById("categorie_partie_prenante").previousSibling.previousSibling
 var label_nom = document.getElementById("nom_partie_prenante").previousSibling.previousSibling
 
-var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,100}$/
-var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,1000}$/
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,1000}$/
 
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()

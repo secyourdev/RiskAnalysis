@@ -16,19 +16,19 @@ if($input["action"] === 'edit'){
     $description_valeur_metier = mysqli_real_escape_string($connect, $input["description_valeur_metier"]);
 
     // Verification du nom de la valeur métier
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $nom_valeur_metier)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $nom_valeur_metier)) {
       $results["error"] = true;
       $_SESSION['message_error_2'] = "Nom invalide";
     }
 
     // Verification de la description de la valeur métier
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $description_valeur_metier)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $description_valeur_metier)) {
       $results["error"] = true;
       $_SESSION['message_error_2'] = "Description invalide";
     }
 
     // Verification de la nature de la valeur métier
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $nature_valeur_metier)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $nature_valeur_metier)) {
       $results["error"] = true;
       $_SESSION['message_error_2'] = "Nature invalide";
     }

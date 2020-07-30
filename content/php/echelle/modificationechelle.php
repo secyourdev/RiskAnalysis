@@ -12,7 +12,7 @@ if($input["action"] === 'edit'){
     $results["error"] = false;
 
     // Verification du nom de l'échelle
-    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $nom_echelle)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $nom_echelle)){
         $results["error"] = true;
         $_SESSION['message_error'] = "Nom de l'échelle invalide";
     }

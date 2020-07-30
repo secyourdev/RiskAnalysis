@@ -3,7 +3,7 @@ console.log('5a-testtableauheatmap.js');
 
 $.post("heatmap-getdata.php", function (data) {
 
-
+	console.log('bonjour');
 	// console.log(data);
 	// console.log(data['data_dim']);
 	// console.log(data['data_cell']);
@@ -354,47 +354,47 @@ $.post("heatmap-getdata.php", function (data) {
 	// console.log(parseInt(echelle_gravite));
 	// console.log(parseInt(echelle_vraisemblance));
 
-	for (let i = 1; i <= (parseInt(echelle_gravite)); i++) {
+	// for (let i = 1; i <= (parseInt(echelle_gravite)); i++) {
 
-		// console.log('gravite: ' + i);
+	// 	// console.log('gravite: ' + i);
 
-		for (let j = 1; j <= (parseInt(echelle_vraisemblance)); j++) {
+	// 	for (let j = 1; j <= (parseInt(echelle_vraisemblance)); j++) {
 
-			console.log('vraisemblance: ' + j);
+	// 		console.log('vraisemblance: ' + j);
 
 			
-			console.log(document.getElementById("dataTable").rows[i].cells[j]);
-			document.getElementById("dataTable").rows[i].cells[j].addEventListener('click', function () {
+	// 		console.log(document.getElementById("dataTable").rows[i].cells[j]);
+	// 		document.getElementById("dataTable").rows[i].cells[j].addEventListener('click', function () {
 				
-				var case_echelle_gravite = i
-				console.log(case_echelle_gravite);
+	// 			var case_echelle_gravite = i
+	// 			console.log(case_echelle_gravite);
 				
-				var case_echelle_vraisemblance = j
-				console.log(case_echelle_vraisemblance);
+	// 			var case_echelle_vraisemblance = j
+	// 			console.log(case_echelle_vraisemblance);
 				
-				sleep(100).then(() => {
-					var case_couleur = document.getElementById("dataTable").rows[i].cells[j].classList[0]
-					console.log(case_couleur);
+	// 			sleep(100).then(() => {
+	// 				var case_couleur = document.getElementById("dataTable").rows[i].cells[j].classList[0]
+	// 				console.log(case_couleur);
 					
 					
 					
-					$.ajax({
-						url: 'content/php/atelier5b/ajax-heatmap.php',
-						type: 'POST',
-						data: {
-							case_echelle_gravite: case_echelle_gravite,
-							case_echelle_vraisemblance: case_echelle_vraisemblance,
-							case_couleur: case_couleur
-						},
-						success: function () {
-							console.log('traitement du barème fait');
-						}
-					});
+	// 				$.ajax({
+	// 					url: 'content/php/atelier5b/ajax-heatmap.php',
+	// 					type: 'POST',
+	// 					data: {
+	// 						case_echelle_gravite: case_echelle_gravite,
+	// 						case_echelle_vraisemblance: case_echelle_vraisemblance,
+	// 						case_couleur: case_couleur
+	// 					},
+	// 					success: function () {
+	// 						console.log('traitement du barème fait');
+	// 					}
+	// 				});
 					
-				});
-			})
-		}
-	}
+	// 			});
+	// 		})
+	// 	}
+	// }
 })
 
 $('table').on('click', "td", function () {

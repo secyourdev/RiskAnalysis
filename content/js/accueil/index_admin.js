@@ -39,9 +39,9 @@ var label_email_utilisateur = document.getElementById('email_utilisateur').previ
 
 var lenght_reinitialiser_mdp = reinitialiser_mdp.length;
 
-var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/
-var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,1000}$/
-var regex_email = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"@]{1,100}$/
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{0,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,1000}$/
+var regex_email = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"@]{0,100}$/
 
 button_add_user_in_grp.style.display='none'
 grp_user_card.style.display="none"
