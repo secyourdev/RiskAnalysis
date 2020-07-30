@@ -70,7 +70,7 @@ sleep(100).then(() => {
 label_profilattaquant.style.display="none"
 label_objectifvise.style.display="none"
 
-/*----------------------- ENREGISTREMENT DES COOKIES ------------------------*/
+/*----------------------- -- VERIFICATION DES CHAMPS -- ------------------------*/
 profilattaquant.addEventListener('keyup',function(event){
     verify_input(profilattaquant.value,regex_nom,profilattaquant)
     activate_label(profilattaquant.value,label_profilattaquant)

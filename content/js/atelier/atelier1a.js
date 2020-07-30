@@ -113,7 +113,7 @@ get_database_raci()
 update_database_raci()
 /*------------------------ RECUPERATION & MODIFICATION ----------------------*/
 get_database_project_info()
-/*----------------------- ENREGISTREMENT DES COOKIES ------------------------*/
+/*----------------------- -- VERIFICATION DES CHAMPS -- ------------------------*/
 nom_etude.addEventListener('keyup',function(event){
     verify_input(nom_etude.value,regex_nom_etude,nom_etude)
     activate_label(nom_etude.value,label_nom_etude)

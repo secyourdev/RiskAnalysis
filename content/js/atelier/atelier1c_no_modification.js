@@ -1,10 +1,6 @@
 /*------------------------------- VARIABLES ----------------------------------*/
 var accordionSidebar = document.getElementById("accordionSidebar");
 var sidebarToggle = document.getElementById("sidebarToggle");
-
-var j=0;
-var k=0;
-var l=0;
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
 sidebarToggleTop.addEventListener('click', show_sub_content,false);
@@ -26,14 +22,7 @@ $(document).ready(function(){
      },
      restoreButton:false,
      editButton: false,
-     deleteButton: false,
-     onSuccess:function(data, textStatus, jqXHR)
-     {
-      if(data.action == 'delete')
-      {
-       $('#'+data.id_mission).remove();
-      }
-     }
+     deleteButton: false
     });
 });
 $(document).ready(function () {

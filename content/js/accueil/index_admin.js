@@ -423,7 +423,7 @@ label_nom_utilisateur.display="none"
 label_poste_utilisateur.display="none"
 label_email_utilisateurdisplay="none"
 
-/*----------------------- ENREGISTREMENT DES COOKIES ------------------------*/
+/*----------------------- -- VERIFICATION DES CHAMPS -- ------------------------*/
 nom_etude.addEventListener('keyup',function(event){
     verify_input(nom_etude.value,regex_nom,nom_etude)
     activate_label(nom_etude.value,label_nom_etude)

@@ -38,7 +38,7 @@ $(document).ready(function () {
         },
         restoreButton: false,
         editButton: false,
-        deleteButton: false,
+        deleteButton: false
     });
 });
 
@@ -52,7 +52,7 @@ $(document).ready(function () {
         },
         restoreButton: false,
         editButton: false,
-        deleteButton: false,
+        deleteButton: false
     });
 });
 
@@ -124,7 +124,7 @@ sleep(100).then(() => {
 /*------------------------------ LABELS CACHES ------------------------------*/
 label_mesure.style.display="none"
 
-/*----------------------- ENREGISTREMENT DES COOKIES ------------------------*/
+/*----------------------- -- VERIFICATION DES CHAMPS -- ------------------------*/
 nommesure.addEventListener('keyup',function(event){
     verify_input(nommesure.value,regex_nom,nommesure)
     activate_label(nommesure.value,label_mesure)

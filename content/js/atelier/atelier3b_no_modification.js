@@ -1,17 +1,6 @@
 /*------------------------------- VARIABLES ----------------------------------*/
 var accordionSidebar = document.getElementById("accordionSidebar");
 var sidebarToggle = document.getElementById("sidebarToggle");
-
-var scenariostrategique = document.getElementById("nom_scenario_strategique");
-var label_scenariostrategique = document.getElementById("nom_scenario_strategique").previousSibling.previousSibling
-
-var id_risque = document.getElementById("id_risque");
-var cheminattaque = document.getElementById("chemin_d_attaque_strategique")
-var label_id_risque = document.getElementById("id_risque").previousSibling.previousSibling
-
-var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,100}$/
-var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,1000}$/
-
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
 sidebarToggleTop.addEventListener('click', show_sub_content,false);
@@ -24,19 +13,12 @@ function show_sub_content(){
     }
 }
 /*--------------------------------- TABLES JS -------------------------------*/
-
 $(document).ready(function () {
     $('#editable_table').Tabledit({
         sortable: true,
         columns: {
             identifier: [0, 'id_evenement_redoutes'],
             editable: [],
-            // checkboxeditable: [
-            //     [5, 'confidentialite'],
-            //     [6, 'integrite'],
-            //     [7, 'disponibilite'],
-            //     [8, 'tracabilite']
-            // ]
         },
         eventType: 'none',
         restoreButton: false,
@@ -74,19 +56,12 @@ $(document).ready(function () {
         sortable: true,
         columns: {
             identifier: [0, 'id_scenario_strategique'],
-            editable: [
-                [1, 'nom_scenario_strategique'],
-                // [2, 'id_source_de_risque'],
-                // [3, 'id_evenement_redoute'],
-            ],
+            editable: [],
             checkboxeditable: []
         },
         restoreButton: false,
-        onSuccess: function (data, textStatus, jqXHR) {
-            if (data.action == 'delete') {
-                $('#' + data.id_evenement_redoutes).remove();
-            }
-        }
+        editButton: false,
+        deleteButton: false
     });
 });
 $(document).ready(function () {
@@ -95,17 +70,12 @@ $(document).ready(function () {
         sortable: true,
         columns: {
             identifier: [0, 'id_chemin_d_attaque_strategique'],
-            editable: [
-                [3, 'chemin_d_attaque_strategique']
-            ],
+            editable: [],
             checkboxeditable: []
         },
         restoreButton: false,
-        onSuccess: function (data, textStatus, jqXHR) {
-            if (data.action == 'delete') {
-                $('#' + data.id_evenement_redoutes).remove();
-            }
-        }
+        editButton: false,
+        deleteButton: false
     });
 });
 
@@ -118,25 +88,6 @@ setSortTable('editable_table_scenario_strategique');
 OURJQUERYFN.setFilterTable("#rechercher_scenario_strategique","#editable_table_scenario_strategique tbody tr")
 setSortTable('editable_table_chemin_d_attaque');
 OURJQUERYFN.setFilterTable("#rechercher_chemin_d_attaque","#editable_table_chemin_d_attaque tbody tr")
-
-/*------------------------------ LABELS CACHES ------------------------------*/
-label_scenariostrategique.style.display="none"
-label_id_risque.style.display="none"
-
-/*----------------------- -- VERIFICATION DES CHAMPS -- ------------------------*/
-scenariostrategique.addEventListener('keyup',function(event){
-    verify_input(scenariostrategique.value,regex_nom,scenariostrategique)
-    activate_label(scenariostrategique.value,label_scenariostrategique)
-}) 
-
-id_risque.addEventListener('keyup',function(event){
-    verify_input(id_risque.value,regex_nom,id_risque)
-    activate_label(id_risque.value,label_id_risque)
-}) 
-
-cheminattaque.addEventListener('keyup',function(event){
-    verify_textarea(cheminattaque.value,regex_description,cheminattaque)
-})
 
 /*--------------------------- Couleurs 1.c > gravité --------------------------*/
 $("#editable_table > tbody > tr > td:nth-child(10)").each(function () {

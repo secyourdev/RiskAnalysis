@@ -17,7 +17,7 @@ if (isset($_POST['connexion'])){
       if(password_verify($mot_de_passe, $row["mot_de_passe"])){
         $results["error"] = false;
         $results["message"] = "Connexion accepté";
-        $_SESSION['message_success'] = "Connexion acceptée";
+        //$_SESSION['message_success'] = "Connexion acceptée";
         $_SESSION['id_utilisateur'] = $row['id_utilisateur'];
         $_SESSION['nom'] = $row['nom'];
         $_SESSION['prenom'] = $row['prenom'];

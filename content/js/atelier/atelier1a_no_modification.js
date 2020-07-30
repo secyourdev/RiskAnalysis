@@ -36,14 +36,7 @@ $(document).ready(function(){
      },
      restoreButton:false,
      editButton: false,
-     deleteButton: false,
-     onSuccess:function(data, textStatus, jqXHR)
-     {
-      if(data.action == 'delete')
-      {
-       $('#'+data.id_utilisateur).remove();
-      }
-     }
+     deleteButton: false
     });
   });   
 /*--------------------------- SORT & FILTER TABLES --------------------------*/

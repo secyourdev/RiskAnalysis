@@ -103,7 +103,7 @@ label_responsable.style.display="none"
 label_responsablebs.style.display="none"
 label_responsablevm.style.display="none"
 
-/*----------------------- ENREGISTREMENT DES COOKIES ------------------------*/
+/*----------------------- -- VERIFICATION DES CHAMPS -- ------------------------*/
 biensupport.addEventListener('keyup',function(event){
     verify_input(biensupport.value,regex_nom,biensupport)
     activate_label(biensupport.value,label_biensupport)
