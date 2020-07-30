@@ -9,8 +9,8 @@ var id_risque = document.getElementById("id_risque");
 var cheminattaque = document.getElementById("chemin_d_attaque_strategique")
 var label_id_risque = document.getElementById("id_risque").previousSibling.previousSibling
 
-var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/
-var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.]{1,1000}$/
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,1000}$/
 
 var button = document.getElementsByClassName('tabledit-edit-button')
 var save_button = document.getElementsByClassName('tabledit-save-button')

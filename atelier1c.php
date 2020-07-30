@@ -642,6 +642,24 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       <tbody id="ecrire_niveau">
                       </tbody>
                     </table>
+
+                    <div class='message_success'>
+                    <?php 
+                        if(isset($_SESSION['message_success_2'])){
+                          echo $_SESSION['message_success_2'];
+                          unset($_SESSION['message_success_2']);
+                        }
+                    ?>
+                    </div> 
+                    <div class='message_error'>
+                    <?php                
+                        if(isset($_SESSION['message_error_2'])){
+                            echo $_SESSION['message_error_2'];
+                            unset($_SESSION['message_error_2']);
+                        }
+                    ?>
+                    </div>
+                    
                   </div> 
                 </div>
               </div>
@@ -715,17 +733,17 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
                   <div class='message_success'>
                   <?php 
-                      if(isset($_SESSION['message_success_2'])){
-                        echo $_SESSION['message_success_2'];
-                        unset($_SESSION['message_success_2']);
+                      if(isset($_SESSION['message_success_3'])){
+                        echo $_SESSION['message_success_3'];
+                        unset($_SESSION['message_success_3']);
                       }
                   ?>
                   </div> 
                   <div class='message_error'>
                   <?php                
-                      if(isset($_SESSION['message_error_2'])){
-                          echo $_SESSION['message_error_2'];
-                          unset($_SESSION['message_error_2']);
+                      if(isset($_SESSION['message_error_3'])){
+                          echo $_SESSION['message_error_3'];
+                          unset($_SESSION['message_error_3']);
                       }
                   ?>
                   </div>

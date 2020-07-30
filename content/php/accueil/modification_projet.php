@@ -12,19 +12,19 @@ $chef_de_projet = $_POST['id_utilisateur'];
 $id_grp_utilisateur_modif = $_POST['id_grp_utilisateur_modif'];
 
 // Verification du nom
-if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nom_etude_modif)){
+if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $nom_etude_modif)){
     $results["error"] = true;
     $_SESSION['message_error'] = "Nom invalide";
 }
 
 // Verification du description
-if(!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $description_etude_modif)){
+if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $description_etude_modif)){
     $results["error"] = true;
     $_SESSION['message_error'] = "Description invalide";
 }
 
 // Verification du groupe d'utilisateur
-if(!preg_match("/^[0-9\s-]{1,100}$/", $id_grp_utilisateur_modif)){
+if(!preg_match("/^[0-9\s-]{0,100}$/", $id_grp_utilisateur_modif)){
     $results["error"] = true;
     $_SESSION['message_error'] = "Groupe d'utilisateur invalide";
 }

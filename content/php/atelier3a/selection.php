@@ -5,7 +5,7 @@ include("content/php/bdd/connexion_sqli.php");
 
 $query = "SELECT * FROM R_partie_prenante WHERE id_projet = $getid_projet AND id_atelier = '$id_atelier'";
 
-$query_categorie_partie_prenante = "SELECT categorie_partie_prenante FROM R_partie_prenante WHERE id_projet = $getid_projet";
+$query_categorie_partie_prenante = "SELECT DISTINCT categorie_partie_prenante FROM R_partie_prenante WHERE id_projet = $getid_projet";
 
 $result = mysqli_query($connect, $query);
 $result_categorie_partie_prenante = mysqli_query($connect, $query_categorie_partie_prenante);

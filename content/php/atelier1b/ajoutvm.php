@@ -17,19 +17,19 @@ $inserevm = $bdd->prepare('INSERT INTO J_valeur_metier(id_valeur_metier, nom_val
 
 
 // Verification du nom de la valeur métier
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nomvm)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $nomvm)) {
   $results["error"] = true;
   $_SESSION['message_error_2'] = "Nom invalide";
 }
 
 // Verification de la description de la valeur métier
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $descriptionvm)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $descriptionvm)) {
   $results["error"] = true;
   $_SESSION['message_error_2'] = "Description invalide";
 }
 
 // Verification de la nature de la valeur métier
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $nature)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $nature)) {
   $results["error"] = true;
   $_SESSION['message_error_2'] = "Nature invalide";
 }

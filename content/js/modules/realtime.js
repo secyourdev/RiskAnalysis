@@ -45,7 +45,7 @@ function activate_label(value,label){
 function tableau_verification(value_test,name_table,table_cells_length){
     var table = name_table
     var bool =new Array()
-    var regex = /^[a-zA-Z0-9éèàêâùïüëç\s.,-@]{1,100}$/
+    var regex = /^[a-zA-Z0-9éèàêâùïüëç\s.,-@]{0,100}$/
         for(let j=1;j<table_cells_length;j++){
             bool[j] = verify_textarea_2(table.rows[value_test].cells[j].children[1].value,regex,table.rows[value_test].cells[j].children[1],save_button[value_test-1])
             table.rows[value_test].cells[j].children[1].addEventListener('keyup',function(){

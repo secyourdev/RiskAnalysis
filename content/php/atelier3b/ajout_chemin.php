@@ -13,37 +13,26 @@ $id_risque = $_POST['id_risque'];
 $chemin_d_attaque_strategique = $_POST['chemin_d_attaque_strategique'];
 $id_scenario_strategique = $_POST['nom_scenario_strategique'];
 $id_partie_prenante_array = $_POST['nom_partie_prenante'];
-// print $id_partie_prenante;
 $id_chemin_d_attaque = "id_chemin";
 $id_scenar = "id_scenar";
 $id_atelier = "4.a";
 
 
-
-
-
-
 // Verification du id_risque
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $id_risque)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $id_risque)) {
   $results["error"] = true;
-  $_SESSION['message_error_1'] = "id_risque invalide";
+  $_SESSION['message_error_3'] = "Identifiant risque invalide";
 }
 // Verification du chemin_d_attaque_strategique
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $chemin_d_attaque_strategique)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $chemin_d_attaque_strategique)) {
   $results["error"] = true;
-  $_SESSION['message_error_1'] = "chemin_d_attaque_strategique invalide";
+  $_SESSION['message_error_3'] = "Chemin d'attaque stratégique invalide";
 }
 // Verification du id_scenario_strategique
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $id_scenario_strategique)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $id_scenario_strategique)) {
   $results["error"] = true;
-  $_SESSION['message_error_1'] = "id_scenario_strategique invalide";
+  $_SESSION['message_error_3'] = "Identifiant scénario stratégique invalide";
 }
-// // Verification du id_partie_prenante
-// if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $id_partie_prenante)) {
-//   $results["error"] = true;
-//   $_SESSION['message_error_1'] = "id_partie_prenante invalide";
-// }
-
 
 // $recupere = $bdd->prepare("SELECT S_scenario_strategique.id_scenario_strategique FROM S_scenario_strategique  WHERE S_scenario_strategique.nom_scenario_strategique = ?");
 // $recuperepp = $bdd->prepare("SELECT id_partie_prenante FROM R_partie_prenante WHERE nom_partie_prenante = ? AND id_projet = ?");
@@ -131,7 +120,7 @@ if ($results["error"] === false && isset($_POST['validerchemin'])) {
   // print '<br>';
 
   if (!in_array($chemin_d_attaque_strategique, $result_nom_chemin_existant)) {
-    print 'chemin non existent';
+    //print 'chemin non existent';
 
     foreach ($id_partie_prenante_array as $id_partie_prenante) {
       # code...
@@ -217,13 +206,10 @@ if ($results["error"] === false && isset($_POST['validerchemin'])) {
     $insereope->bindParam(6, $resultchemin[2]);
     $insereope->bindParam(7, $get_id_projet);
     $insereope->execute();
-    $_SESSION['message_success_1'] = "La règle a bien été ajoutée !";
+    $_SESSION['message_success_3'] = "Le chemin d'attaque a bien été ajouté !";
   } else {
-    print 'chemin déjà existant';
+    $_SESSION['message_error_3'] = "Le chemin d'attaque entré existe déjà !";
   }
-?>
-  <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
-<?php
 }
 
 ?>

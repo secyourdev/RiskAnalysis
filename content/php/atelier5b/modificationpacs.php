@@ -20,7 +20,7 @@ $results["message"] = [];
 
 
 // Verification du profil de l'attaquant
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $responsable)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $responsable)) {
     $results["error"] = true;
     $results["message"]["Profil de l'attaquant"] = "Responsable invalide";
     ?>
@@ -29,7 +29,7 @@ if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,1000}$/", $responsable)) {
 }
 
 // Verification de la description de l'attaquant
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $difficulte)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $difficulte)) {
     $results["error"] = true;
     $results["message"]["impact"] = "Difficulté invalide";
     ?>
@@ -39,7 +39,7 @@ if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $difficulte)) {
 
 
 // Verification de la description de l'objectif visé
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/", $statut)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $statut)) {
     $results["error"] = true;
     $results["message"]["description objectif vise"] = "Statut invalide";
     ?>

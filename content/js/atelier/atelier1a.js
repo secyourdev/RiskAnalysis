@@ -22,10 +22,10 @@ var find_raci_value;
 
 var nombre_atelier = raci.rows.length
 
-var regex_nom_etude = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/
-var regex_description_etude = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,1000}$/
-var regex_objectif_atteindre = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,1000}$/
-var regex_cadre_temporel = /^[0-9\s-]{1,100}$/
+var regex_nom_etude = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,100}$/
+var regex_description_etude = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,1000}$/
+var regex_objectif_atteindre = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,1000}$/
+var regex_cadre_temporel = /^[0-9\s-]{0,100}$/
 
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
@@ -47,7 +47,7 @@ ajouter_user.addEventListener('click', (event) => {
       url: 'content/php/atelier1a/ajout.php',
       type: 'POST',
       data: {
-            id_utilisateur: user_1a.options[user_1a.selectedIndex].value.substring(0,user_1a.options[user_1a.selectedIndex].value.indexOf("-",0)),
+            id_utilisateur: user_1a.value,
       },
       success: function (data) {
         location.reload();
@@ -92,7 +92,7 @@ for(let i=2;i<nombre_atelier;i++){
         var option_C = document.createElement("option")
         var option_I = document.createElement("option")
 
-        select.setAttribute("class","form-control width_RACI")
+        select.setAttribute("class","form-control width_select")
         option_R.innerHTML = "Réalisation"; option_R.setAttribute("valeur","Réalisation");
         option_A.innerHTML = "Approbation"; option_A.setAttribute("valeur","Approbation");
         option_C.innerHTML = "Consultation"; option_C.setAttribute("valeur","Consultation");
@@ -195,14 +195,13 @@ function get_database_project_info(){
         dataType : 'html',
         success: function (resultat) {
             var projet_info = JSON.parse(resultat);
-            console.log(projet_info)
             nom_etude.value = projet_info[0][1]
-            objectif_atteindre.value = projet_info[0][3]
+            objectif_atteindre.value = projet_info[0][2]
             if(projet_info[0][4]!=null)        
                 respo_acceptation_risque.value=projet_info[0][4]        
             else 
                 respo_acceptation_risque.selectedIndex=0    
-            cadre_temporel.value = projet_info[0][5]
+            cadre_temporel.value = projet_info[0][3]
 
             verify_input(nom_etude.value,regex_nom_etude,nom_etude)
             verify_textarea(objectif_atteindre.value,regex_objectif_atteindre,objectif_atteindre)

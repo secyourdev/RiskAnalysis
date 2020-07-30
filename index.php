@@ -199,7 +199,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                 <th>Base de données</th>
                                             </tr>
                                             <tr>
-                                                <td class="compteur" id="bdd"><b nbobs="7">0</b></td>
+                                                <td class="compteur" id="bdd"><b>-</b></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -406,8 +406,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                     <td>'.$row["poste"].'</td>
                                                     <td>'.$row["email"].'</td>
                                                     <td>'.$row["type_compte"].'</td>
-                                                    <td> <button type="button" data-toggle="modal" data-target="#modifier_mdp_user" class="reinitialiser_mdp btn perso_btn_primary width_RACI shadow-none">Réinitialiser</button> </td>
-                                                    <td> <button type="button" class="generer_mdp btn perso_btn_primary width_RACI shadow-none">Générer</button> </td>
+                                                    <td> <button type="button" data-toggle="modal" data-target="#modifier_mdp_user" class="reinitialiser_mdp btn perso_btn_primary width_select shadow-none">Réinitialiser</button> </td>
+                                                    <td> <button type="button" class="generer_mdp btn perso_btn_primary width_select shadow-none">Générer</button> </td>
                                                 </tr>
                                                 ';
                                             }

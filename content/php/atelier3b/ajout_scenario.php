@@ -1,6 +1,5 @@
 <?php
 session_start();
-header('Location: ../../../atelier-3b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
 
 include("../bdd/connexion.php");
 
@@ -13,19 +12,19 @@ $id_source_de_risque = $_POST['id_source_de_risque'];
 $id_evenement_redoute = $_POST['id_evenement_redoute'];
 
 // Verification du nom_scenario_strategique
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $nom_scenario_strategique)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $nom_scenario_strategique)) {
   $results["error"] = true;
-  $_SESSION['message_error_1'] = "nom_scenario_strategique invalide";
+  $_SESSION['message_error'] = "Nom scénario strategique invalide";
 }
 // Verification du id_source_de_risque
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $id_source_de_risque)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $id_source_de_risque)) {
   $results["error"] = true;
-  $_SESSION['message_error_1'] = "id_source_de_risque invalide";
+  $_SESSION['message_error'] = "Identifiant source de risque invalide";
 }
 // Verification du id_evenement_redoute
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $id_evenement_redoute)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $id_evenement_redoute)) {
   $results["error"] = true;
-  $_SESSION['message_error_1'] = "id_evenement_redoute invalide";
+  $_SESSION['message_error'] = "Identifiant événement redouté invalide";
 }
 
 $id_atelier = '3.b';
@@ -48,7 +47,7 @@ if ($results["error"] === false && isset($_POST['validerscenario'])) {
 
 
   if (!in_array($nom_scenario_strategique, $result_scenarios_existants)) {
-    print 'chemin non existent';
+    //print 'chemin non existent';
   $insere->bindParam(1, $id_scenario);
   $insere->bindParam(2, $nom_scenario_strategique);
   $insere->bindParam(3, $id_atelier);
@@ -57,13 +56,10 @@ if ($results["error"] === false && isset($_POST['validerscenario'])) {
   $insere->bindParam(6, $id_projet);
 
   $insere->execute();
-  $_SESSION['message_success_1'] = "La règle a bien été ajoutée !";
+  $_SESSION['message_success'] = "Le scénario stratégique a bien été ajouté !";
   } else {
-    print 'scenario déjà existant';
+    $_SESSION['message_error'] = "Le scénario stratégique entré existe déjà !";
   }
-?>
-  <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
-<?php
 }
-
+header('Location: ../../../atelier-3b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
 ?>

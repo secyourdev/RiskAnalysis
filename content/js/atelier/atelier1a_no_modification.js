@@ -99,9 +99,18 @@ function get_database_project_info(){
         success: function (resultat) {
             var projet_info = JSON.parse(resultat);
             nom_etude.innerText = projet_info[0][1]
-            objectif_atteindre.innerText = projet_info[0][3]
-            respo_acceptation_risque.innerText=projet_info[0][4]   
-            cadre_temporel.innerText = projet_info[0][5]
+            if(projet_info[0][2]!=null)
+                objectif_atteindre.innerText = projet_info[0][2]
+            else 
+                objectif_atteindre.innerText= "A définir"  
+            if(projet_info[0][5]!=null)
+                respo_acceptation_risque.innerText= projet_info[0][5]+" "+ projet_info[0][6]
+            else 
+                respo_acceptation_risque.innerText= "A définir"
+            if(projet_info[0][3]!=null)
+                cadre_temporel.innerText = projet_info[0][3]          
+            else 
+                cadre_temporel.innerText= "A définir"  
             
             activate_label(nom_etude.innerText,label_nom_etude)
             activate_label(cadre_temporel.innerText,label_cadre_temporel)

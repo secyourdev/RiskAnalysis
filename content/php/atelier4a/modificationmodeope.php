@@ -14,7 +14,7 @@ echo "\n";
 
 
 // Verification du type de l'attaquant
-if (!preg_match("/^[a-zA-Zéèàêâùïüëç\s-]{1,100}$/", $modeope)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $modeope)) {
     $results["error"] = true;
     print $results["error"];
 }

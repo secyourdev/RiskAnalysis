@@ -508,8 +508,23 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       ?>
                       </tbody>
                     </table>
+                    <div class='message_success'>
+                    <?php 
+                        if(isset($_SESSION['message_success'])){
+                          echo $_SESSION['message_success'];
+                          unset($_SESSION['message_success']);
+                        }
+                    ?>
+                    </div> 
+                    <div class='message_error'>
+                    <?php                
+                        if(isset($_SESSION['message_error'])){
+                            echo $_SESSION['message_error'];
+                            unset($_SESSION['message_error']);
+                        }
+                    ?>
+                    </div>
                   </div> 
-                   
                 </div>    
               </div>
             </div>
