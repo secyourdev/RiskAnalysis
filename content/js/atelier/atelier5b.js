@@ -82,7 +82,7 @@ sleep(100).then(() => {
 
 
 /*--------------------------- Couleurs pacs > statut --------------------------*/
-$("#pacs > tbody > tr > td:nth-child(9)").each(function () {
+$("#editable_table > tbody > tr > td:nth-child(9)").each(function () {
 
     if ($(this)[0].innerText == "Terminé") { $(this)[0].classList.add('fond-vert'); }
     if ($(this)[0].innerText == "En cours") { $(this)[0].classList.add('fond-orange'); }
