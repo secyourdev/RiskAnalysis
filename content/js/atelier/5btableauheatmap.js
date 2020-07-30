@@ -3,7 +3,7 @@ console.log('5a-testtableauheatmap.js');
 
 $.post("heatmap-getdata.php", function (data) {
 
-
+	console.log('bonjour');
 	// console.log(data);
 	// console.log(data['data_dim']);
 	// console.log(data['data_cell']);

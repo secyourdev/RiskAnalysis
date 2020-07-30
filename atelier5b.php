@@ -1016,11 +1016,11 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <script src="content/js/modules/float_menu.js"></script>
           <script src="content/js/modules/fixed_page.js"></script>
           <script src="content/js/atelier/atelier5a.js"></script>
-          <script src="content/js/atelier/5btableauheatmap.js"></script>
           <script src="content/js/modules/realtime.js"></script>
           <script src="content/js/modules/set_filter_sort_table.js"></script>
           <script src="content/js/atelier/atelier5b.js"></script>
           <script src="content/js/modules/sort_table.js"></script>
+          <script src="content/js/atelier/5btableauheatmap.js"></script>
       </body>
   <?php
     }
