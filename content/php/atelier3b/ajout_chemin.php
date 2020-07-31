@@ -83,6 +83,7 @@ S_scenario_strategique.id_evenement_redoute
 FROM T_chemin_d_attaque_strategique, S_scenario_strategique
 WHERE nom_chemin_d_attaque_strategique = ?
 AND  id_risque = ?
+AND id_projet = $get_id_projet
 AND T_chemin_d_attaque_strategique.id_scenario_strategique = S_scenario_strategique.id_scenario_strategique");
 
 $insereope = $bdd->prepare("INSERT INTO U_scenario_operationnel
