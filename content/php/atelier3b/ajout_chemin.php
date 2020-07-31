@@ -12,6 +12,7 @@ $id_risque = $_POST['id_risque'];
 $chemin_d_attaque_strategique = $_POST['chemin_d_attaque_strategique'];
 $id_scenario_strategique = $_POST['nom_scenario_strategique'];
 $id_partie_prenante = $_POST['nom_partie_prenante'];
+print $id_partie_prenante;
 $id_chemin_d_attaque = "id_chemin";
 $id_scenar = "id_scenar";
 $id_atelier = "4.a";
@@ -124,6 +125,7 @@ if ($results["error"] === false && isset($_POST['validerchemin'])) {
   // print '<br>';
 
   if (!in_array($chemin_d_attaque_strategique, $result_nom_chemin_existant)) {
+    print 'bonjour OK'; //ok
     if (!in_array($id_partie_prenante, $result_pp_existant)) {
 
       //print 'chemin non existent';
