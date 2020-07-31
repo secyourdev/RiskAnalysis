@@ -20,7 +20,7 @@ $id_projet = $_SESSION['id_projet'];
 // echo $maturite;
 // echo $confiance;
 $id_atelier = "5.b";
-$insere_mesure = $bdd->prepare('INSERT INTO Y_mesure (id_mesure, nom_mesure, description_mesure) VALUES (?, ?, ?)');
+$insere_mesure = $bdd->prepare('INSERT INTO Y_mesure (id_mesure, nom_mesure, description_mesure, id_projet, id_atelier) VALUES (?, ?, ?, ?, ?)');
 $recupere_mesure = $bdd->prepare('SELECT id_mesure FROM Y_mesure WHERE nom_mesure = ? AND description_mesure = ?');
 $recupere_risque = $bdd->prepare('SELECT id_risque FROM T_chemin_d_attaque_strategique WHERE id_chemin_d_attaque_strategique = ?');
 $insere2 = $bdd->prepare('INSERT INTO ZB_comporter_2 (id_mesure, id_chemin_d_attaque_strategique, id_risque) VALUES (?,?,?)');
@@ -58,6 +58,8 @@ if ($results["error"] === false && isset($_POST['ajouterregle'])) {
   $insere_mesure->bindParam(1, $id_mesure);
   $insere_mesure->bindParam(2, $nom_mesure);
   $insere_mesure->bindParam(3, $description_mesure);
+  $insere_mesure->bindParam(4, $id_projet);
+  $insere_mesure->bindParam(5, $id_atelier);
   $insere_mesure->execute();
 
   $recupere_mesure->bindParam(1, $nom_mesure);

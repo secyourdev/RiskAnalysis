@@ -224,4 +224,4 @@ if ($results["error"] === false && isset($_POST['validerchemin'])) {
   }
 }
 
-//header('Location: ../../../atelier-3b&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet'] . '#chemin_dattaque');
+header('Location: ../../../atelier-3b&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet'] . '#chemin_dattaque');
