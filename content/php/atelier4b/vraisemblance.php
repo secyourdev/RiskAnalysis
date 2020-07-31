@@ -10,7 +10,6 @@ $get_vraisemblance = $bdd->prepare("SELECT echelle_vraisemblance FROM DA_echelle
 $get_vraisemblance->bindParam(1, $getid_projet);
 $get_vraisemblance->execute();
 $vraisemblance = $get_vraisemblance->fetch();
-echo $vraisemblance[0];
 
     
     

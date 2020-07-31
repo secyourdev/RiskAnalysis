@@ -14,12 +14,9 @@ $updatescenar = $bdd->prepare("UPDATE U_scenario_operationnel SET vraisemblance 
 if(isset($_POST['vraisemblance'])){
 
     $vraisemblance = $_POST['vraisemblance'];
-    // echo $vraisemblance;
     $get_id->bindParam(1, $get_id_projet);
     $get_id->execute();
     $id_echelle = $get_id->fetch();
-    // echo $id_echelle[0];
-    // print_r($id_echelle);
     $updatevraisemblance->bindParam(1, $vraisemblance);
     $updatevraisemblance->bindParam(2, $id_echelle[0]);
     $updatevraisemblance->execute();

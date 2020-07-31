@@ -25,12 +25,14 @@ if ($input["action"] === 'edit') {
         $_SESSION['message_error_2'] = "ID règle invalide";
     }
     // Verification du titre
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,1000}$/", $titre)) {
+    // if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,1000}$/", $titre)) {
+        if(preg_match("/^[<>!]$/", $description)){
         $results["error"] = true;
         $_SESSION['message_error_2'] = "Titre invalide";
     }
     // Verification du description
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,1000}$/", $description)) {
+    // if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,1000}$/", $description)) {
+    if(preg_match("/^[<>!]$/", $description)){
         $results["error"] = true;
         $_SESSION['message_error_2'] = "Description invalide";
     }

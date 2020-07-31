@@ -10,15 +10,8 @@ $id_mesure = "id_mesure";
 $id_traitement = "id_traitement";
 $nom_mesure = $_POST['nommesure'];
 $description_mesure = $_POST['descriptionmesure'];
-// $dependance = $_POST['dependance'];
-// $penetration = $_POST['penetration'];
-// $maturite = $_POST['maturite'];
-// $confiance = $_POST['confiance'];
 $id_projet = $_SESSION['id_projet'];
-// echo $dependance;
-// echo $penetration;
-// echo $maturite;
-// echo $confiance;
+
 $id_atelier = "5.b";
 $insere_mesure = $bdd->prepare('INSERT INTO Y_mesure (id_mesure, nom_mesure, description_mesure, id_projet, id_atelier) VALUES (?, ?, ?, ?, ?)');
 $recupere_mesure = $bdd->prepare('SELECT id_mesure FROM Y_mesure WHERE nom_mesure = ? AND description_mesure = ?');
@@ -52,9 +45,6 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $description_
 
 
 if ($results["error"] === false && isset($_POST['ajouterregle'])) {
-  // $recupere->bindParam(1, $nom_valeur_metier);
-  // $recupere->execute();
-  // $id_valeur_metier = $recupere->fetch();
   $insere_mesure->bindParam(1, $id_mesure);
   $insere_mesure->bindParam(2, $nom_mesure);
   $insere_mesure->bindParam(3, $description_mesure);
@@ -66,46 +56,15 @@ if ($results["error"] === false && isset($_POST['ajouterregle'])) {
   $recupere_mesure->bindParam(2, $description_mesure);
   $recupere_mesure->execute();
   $id_mesure = $recupere_mesure->fetch();
-  // echo $id_mesure[0];
 
   $recupere_risque->bindParam(1, $id_chemin);
-  // echo $id_chemin;
   $recupere_risque->execute();
   $id_risque = $recupere_risque->fetch();
-  // echo $id_risque[0];
 
   $insere2->bindParam(1, $id_mesure[0]);
   $insere2->bindParam(2, $id_chemin);
   $insere2->bindParam(3, $id_risque[0]);
   $insere2->execute();
-
-  // //calcul menace residuelle
-  // $recupere_id_pp->bindParam(1, $id_chemin);
-  // $recupere_id_pp->execute();
-  // $id_pp = $recupere_id_pp->fetch();
-  // print_r($id_pp);
-  // $recupere_pp->bindParam(1, $id_pp[0]);
-  // $recupere_pp->execute();
-  // $result_pp = $recupere_pp->fetch();
-  
-  // // print_r($result_pp);
-  // $ponderation_dependance = $result_pp[0];
-  // $ponderation_penetration = $result_pp[1];
-  // $ponderation_maturite = $result_pp[2];
-  // $ponderation_confiance = $result_pp[3];
-  // print $ponderation_dependance;
-  // print $ponderation_penetration;
-  // print $ponderation_maturite;
-  // print $ponderation_confiance;
-  
-  // $menace_residuelle = round(($dependance*$ponderation_dependance * $penetration*$ponderation_penetration) / ($maturite*$ponderation_maturite * $confiance*$ponderation_confiance), 2);
-  // $updatechemin->bindParam(1, $dependance);
-  // $updatechemin->bindParam(2, $penetration);
-  // $updatechemin->bindParam(3, $maturite);
-  // $updatechemin->bindParam(4, $confiance);
-  // $updatechemin->bindParam(5, $menace_residuelle);
-  // $updatechemin->bindParam(6, $id_chemin);
-  // $updatechemin->execute();
 
   $insere_traitement->bindParam(1, $id_traitement);
   $insere_traitement->bindParam(2, $id_atelier);

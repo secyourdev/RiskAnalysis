@@ -10,14 +10,10 @@ $queryppvalues = $bdd->prepare("SELECT dependance_partie_prenante, penetration_p
 
 if(isset($_POST['pp'])){
     $pp = $_POST['pp'];
-    // $querypp->bindParam(1, $nom_pp);
-    // $querypp->execute();
-    // $id_pp = $querypp->fetch();
 
     $querychemin->bindParam(1, $pp);
     $querychemin->execute();
-    // $row = $querychemin->fetch(PDO::FETCH_ASSOC);
-    // print_r($row);
+
     $queryppvalues->bindParam(1, $pp);
     $queryppvalues->execute();
     $valeurs = $queryppvalues->fetch(PDO::FETCH_ASSOC);

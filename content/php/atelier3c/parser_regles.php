@@ -11,17 +11,7 @@ $uploadOk = 1;
 //check type of the file, ie: JSON  
 $fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-// Check if image file is a actual image or fake image
-// if (isset($_POST["file_submit"])) {
-//   $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-//   if ($check !== false) {
-//     echo "File is an image - " . $check["mime"] . ".";
-//     $uploadOk = 1;
-//   } else {
-//     echo "File is not an image.";
-//     $uploadOk = 0;
-//   }
-// }
+
 
 if (isset($_POST["file_submit"])) {
   $sJson = file_get_contents($_FILES["fileToUpload"]["tmp_name"]);
@@ -46,20 +36,7 @@ if (file_exists($target_file)) {
   $uploadOk = 0;
 }
 
-// Check file size
-// if ($_FILES["fileToUpload"]["size"] > 500000) {
-//   echo "Sorry, your file is too large.";
-//   $uploadOk = 0;
-// }
 
-// Allow certain file formats
-// if (
-//   $fileType != "jpg" && $fileType != "png" && $fileType != "jpeg"
-//   && $fileType != "gif"
-// ) {
-//   echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-//   $uploadOk = 0;
-// }
 
 // Allow certain file formats
 if (
@@ -118,8 +95,7 @@ $insere_regle = $bdd->prepare(
   VALUES ("", ?, ?, ?, NULL, ?)'
 );
 
-// //si le boutton d'ajout est presser
-// if (isset($_POST['file_submit'])) {
+
 
 
 

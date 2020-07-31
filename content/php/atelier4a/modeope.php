@@ -7,12 +7,8 @@ WHERE U_scenario_operationnel.id_scenario_operationnel = ?");
 
 if(isset($_POST['id_scenar'])){
     $id_scenar = $_POST['id_scenar'];
-    // echo $affiche_niveau;
-    // print_r($resultat[0]);
     $query->bindParam(1, $id_scenar);
     $query->execute();
-    // $row = $query->fetch(PDO::FETCH_ASSOC);
-    // print_r($row);
     
     while($row = $query->fetch(PDO::FETCH_ASSOC))
     {

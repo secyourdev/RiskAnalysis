@@ -47,7 +47,6 @@ if ($results["error"] === false && isset($_POST['validerscenario'])) {
 
 
   if (!in_array($nom_scenario_strategique, $result_scenarios_existants)) {
-    //print 'chemin non existent';
   $insere->bindParam(1, $id_scenario);
   $insere->bindParam(2, $nom_scenario_strategique);
   $insere->bindParam(3, $id_atelier);
