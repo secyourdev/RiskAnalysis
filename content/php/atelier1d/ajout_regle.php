@@ -51,7 +51,6 @@ if ($results["error"] === false && isset($_POST['validerecart'])) {
   $recupere_id_socle->bindParam(1, $nom_referentiel);
   $recupere_id_socle->execute();
   $id_socle_securite = $recupere_id_socle->fetch();
-  print $id_socle_securite[0];
 
   $insere_regle->bindParam(1, $id_regle_affichage);
   $insere_regle->bindParam(2, $titre);

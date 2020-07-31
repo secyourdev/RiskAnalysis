@@ -70,7 +70,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <div id="wrapper">
 
           <!-- Sidebar -->
-          <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion" id="accordionSidebar">
+          <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion side_bar_scroll" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
               <!-- Logo -->
@@ -679,6 +679,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <th>Confiance</th>
                                 <th>Facteur de pondération confiance</th>
                                 <th>Niveau de menace</th>
+                                <th>Criticite</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -699,6 +700,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <td>' . $row["confiance_partie_prenante"] . '</td>
                         <td>' . $row["ponderation_confiance"] . '</td>
                         <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
+                        <td>' . $row["criticite"] . '</td>
                         </tr>
                         ';
                               }
@@ -846,6 +848,16 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                           <div class="form-group">
                             <label class="titre_input" for="nom_partie_prenante">Nom de la partie prenante</label>
                             <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_partie_prenante" id="nom_partie_prenante" placeholder="Nom de la partie prenante" required>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="criticite">Criticité</label>
+                            <select class="form-control" name="criticite" id="criticite">
+                              <option value="" selected>...</option>
+                              <option value="Peu critique">Peu critique</option>
+                              <option value="Moyennement critique">Moyennement critique</option>
+                              <option value="Très critique">Très critique</option>
+                            </select>
                           </div>
 
                         </div>

@@ -948,6 +948,12 @@ h6 {
     }
 }
 
+.side_bar_scroll{
+    height: 100px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    overflow-x: hidden;
+}
 /*------------------------------------------------------------------------------ */
 /*---------------------------------- Connexion --------------------------------- */
 .centreHorizontalement {

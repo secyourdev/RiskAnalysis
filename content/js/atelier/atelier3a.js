@@ -43,7 +43,8 @@ $(document).ready(function () {
                 [9, 'ponderation_maturite'],
                 
                 [10, 'confiance_partie_prenante', '{ "1": "1", "2": "2", "3": "3", "4": "4" }'],
-                [11, 'ponderation_confiance']
+                [11, 'ponderation_confiance'],
+                [13, 'criticite', '{"Peu critique" : "Peu critique", "Moyennement critique" : "Moyennement critique", "Très critique" : "Très critique"}']
                 
             ]
         },

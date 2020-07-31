@@ -14,7 +14,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
   $reqproject->execute(array($getidproject));
   $projectinfo = $reqproject->fetch();
 
-  $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="5.a"');
+  $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ?');
   $reqdroit->bindParam(1, $getid);
   $reqdroit->bindParam(2, $getidproject);
   $reqdroit->execute();
@@ -25,7 +25,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
   $reqdroit_chef_de_projet->execute();
   $userdroit_chef_de_projet = $reqdroit_chef_de_projet->fetch();
 ?>
-<?php include("content/php/atelier5a/selection.php");?>
+
+  <?php include("content/php/menu_expert/selection.php"); ?>
   <!DOCTYPE html>
   <html lang="fr">
 
@@ -35,7 +36,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <meta name="description" content="CyberRiskManager">
     <meta name="author" content="SecYourDev">
 
-    <title>CyberRiskManager | Atelier 5.a</title>
+    <title>CyberRiskManager | Menu expert</title>
 
     <!-- Fonts-->
     <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -47,6 +48,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
     <!-- JS -->
     <script src="content/vendor/jquery/jquery.js"></script>
+    <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
@@ -323,12 +325,12 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                 </div>
               </div>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier5" aria-expanded="true" aria-controls="Atelier5">
                 <i>
                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
                     <g transform="translate(-1230 -689)">
-                      <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                      <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
                       <text class="number_activity_text" data-name="5" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
                         <tspan x="-3.432" y="0">5</tspan>
                       </text>
@@ -391,30 +393,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           </ul>
           <!-- End of Sidebar -->
 
-          <!-- Right Sidebar -->
-          <ul id=menu>
-            <li>
-                <a class="nav-link collapse-right-item menu_float" href="#cartographie_risque_initial">
-                    <i>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
-                            <g transform="translate(-1230 -689)">
-                                <path class="number_activity active"
-                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
-                                    transform="translate(1230 689)" fill="#ffffffcc" />
-                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
-                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
-                                    font-weight="700">
-                                    <tspan x="-3.432" y="0">1</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                    </i>
-                    <span class="nom_sous_menu">Cartographie du risque initial</span>
-                </a>
-            </li>
-          </ul>
-          <!-- End of Right Sidebar -->
-
           <!-- Content Wrapper -->
           <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
@@ -425,10 +403,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                   <i class="fa fa-bars"></i>
                 </button>
-
-                <div id="top_bar_1" class="top_bar_name_1"><?php echo $projectinfo['nom_projet']; ?></div>
-                <div id="top_bar_2" class="top_bar_name_2">Atelier 5</div>
-                <div id="top_bar_3" class="top_bar_name_3">Activité 5.a - Réaliser une synthèse des scénarios de risque</div>
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -467,178 +441,92 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
               <!-- Begin Page Content -->
               <div id="fixed_page" class="container-fluid">
                 <!-- Content Row -->
-                <div class="row fondu">
+                <div class="row fondu">               
                   <!-- Area Card -->
-                  <div class="col-xl col-lg">
-                    <div class="card shadow mb-4">
-                      <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Objectif</h6>
-                      </div>
-                      <!-- Card Body -->
-                      <div class="card-body">
-                        <p>Le but de cet atelier est de réaliser une synthèse des scénarios de risque identifiés et de défnir
-                          une stratégie de traitement de risque. Cette stratégie aboutit à la définition de mesures de
-                          sécurité, recensées dans un plan d'amélioration continuee de la sécurité (PACS). Les risques résiduels sont ensuite
-                          identifiés ainsi que le cadre de suivi de ces risques.
-                        </p>
-                        <!--text-->
-                      </div>
-                    </div>
-                  </div>
+                    <div id="mesure_de_securite" class="col-xl-12 col-lg-12">
+                        <div class="card shadow mb-4">
 
-                  <!-- Area Card -->
-                  <div id='cartographie_risque_initial' class="col-xl-12 col-lg-12">
-                    <div class="card shadow mb-4">
-                      <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Cartographie du risque initial</h6>
-                      </div>
-                      <!-- Card Body -->
-                      <div class="card-body">
-                        <!--text-->
-                        <div class="table-responsive">
-                          <table class="table table-bordered perso_border" id="dataTable" width="100%" cellspacing="0">
-                            <tbody class="perso_heatmap">
-                              <tr>
-                                <td class="perso_border texte-droite">Gravité</td>
-                                <td class="perso_border"></td>
-                                <td class="perso_border"></td>
-                                <td class="perso_border"></td>
-                                <td class="perso_border"></td>
-                                <td class="perso_border"></td>
-                                <td class="perso_border"></td>
-                              </tr>
-                              <tr>
-                                <td class="perso_border texte-droite">5</td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="perso_border">
-                                  <div></div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="perso_border texte-droite">4</td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="perso_border">
-                                  <div></div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="perso_border texte-droite">3</td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="perso_border">
-                                  <div></div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="perso_border texte-droite">2</td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="perso_border">
-                                  <div></div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="perso_border texte-droite">1</td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="">
-                                  <div></div>
-                                </td>
-                                <td class="perso_border">
-                                  <div></div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="perso_border"></td>
-                                <td class="perso_border">1</td>
-                                <td class="perso_border">2</td>
-                                <td class="perso_border">3</td>
-                                <td class="perso_border">4</td>
-                                <td class="perso_border">5</td>
-                                <td class="perso_border texte-gauche">Vraisemblance</td>
-                              </tr>
-                            </tbody>
-                          </table>
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0">Tableau récapitulatif</h6>
+                            </div>
+
+                            <!-- Card Body -->
+                            <div class="card-body">
+
+                                <!--text-->
+                                <div class="table-responsive">
+                                    <input type="text" class="rechercher_input" id="rechercher_tableau" placeholder="Rechercher">
+                                    <table id="editable_table" class="table table-bordered table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th id="id">ID</th>
+                                            <th id="valeur_metier">Valeur Métier</th>
+                                            <th id="evenement_redoute">Événement redouté</th>
+                                            <th id="impact">Impact</th>
+                                            <th id="gravite">Gravité</th>
+                                            <th id="source_de_risque">Source de risque</th>
+                                            <th id="objectif_vise">Objectif visé</th>
+                                            <th id="pertinence">Pertinence</th>
+                                            <th id="numero_risque">N° Risque</th>
+                                            <th id="chemin_attaque_strategique">Chemin d'attaque stratégique</th>
+                                            <th id="partie_prenante">Partie prenante</th>
+                                            <th id="menace">Niveau de menace initial</th>
+                                            <th id="dependance_residuelle">Dependance résiduelle</th>
+                                            <th id="penetration_residuelle">Penetration résiduelle</th>
+                                            <th id="maturite_residuelle">Maturite résiduelle</th>
+                                            <th id="confiance_residuelle">Confiance résiduelle</th>
+                                            <th id="menace_residuelle">Niveau de menace résiduel</th>
+                                            <th id="scenario_operationnel">Scenario opérationnel</th>
+                                            <th id="vraisemblance">Vraisemblance</th>
+                                            <th id="risque">Risque</th>
+                                            <th id="mesure">Mesure de sécurité</th>
+                                            <th id="description_mesure">Description de la mesure</th>
+                                            
+                                        </tr>
+                                        </thead>
+                                        
+                                        <tbody>
+                                        <?php
+                                        while($row = mysqli_fetch_array($result))
+                                        {
+                                        $risque = $row["niveau_de_gravite"] * $row["vraisemblance"];
+                                        echo '
+                                        <tr>
+                                        <td>'.$row["id_mesure"].'</td>
+                                        <td>'.$row["nom_valeur_metier"].'</td>
+                                        <td>'.$row["nom_evenement_redoute"].'</td>
+                                        <td>'.$row["impact"].'</td>
+                                        <td>'.$row["niveau_de_gravite"].'</td>
+                                        <td>'.$row["description_source_de_risque"].'</td>
+                                        <td>'.$row["objectif_vise"].'</td>
+                                        <td>'.$row["pertinence"].'</td>
+                                        <td>'.$row["id_risque"].'</td>
+                                        <td>'.$row["nom_chemin_d_attaque_strategique"].'</td>
+                                        <td>'.$row["nom_partie_prenante"].'</td>
+                                        <td>'.$row["niveau_de_menace_partie_prenante"].'</td>
+                                        <td>'.$row["dependance_residuelle"].'</td>
+                                        <td>'.$row["penetration_residuelle"].'</td>
+                                        <td>'.$row["maturite_residuelle"].'</td>
+                                        <td>'.$row["confiance_residuelle"].'</td>
+                                        <td>'.$row["niveau_de_menace_residuelle"].'</td>
+                                        <td>'.$row["description_scenario_operationnel"].'</td>
+                                        <td>'.$row["vraisemblance"].'</td>
+                                        <td>'.$risque.'</td>
+                                        <td>'.$row["nom_mesure"].'</td>
+                                        <td>'.$row["description_mesure"].'</td>
+                                        </tr>
+                                        ';
+                                        }
+                                        ?>
+                                        </tbody>
+                                    </table>
+                                </div> 
+                            </div>
                         </div>
-                        <?php
-                            while($row = mysqli_fetch_array($resultlegende))
-                            {
-                              echo 
-                              $row["id_risque"].' : '.$row["nom_chemin_d_attaque_strategique"]."<br/>"
-                              ;
-                            }
-                            ?>
-                      </div>
                     </div>
-                  </div>
                 </div>
-              </div>
+            </div>
               <!-- End of Main Content -->
 
               <!-- Footer -->
@@ -650,17 +538,16 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                 </div>
               </footer>
               <!-- End of Footer -->
+
             </div>
             <!-- End of Content Wrapper -->
+
           </div>
           <!-- End of Page Wrapper -->
+
           <!-- Scroll to Top Button-->
           <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
-          </a>
-          <!-- Open the right menu-->
-          <a class="open_menu rounded">
-              <i class="fas fa-bars"></i>
           </a>
 
           <!-- Logout Modal-->
@@ -688,40 +575,21 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           </div>
 
           <!-- Bootstrap core JavaScript-->
-          <script src="content/vendor/jquery/jquery.min.js"></script>
-          <script src="content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+          <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
           <!-- Core plugin JavaScript-->
-          <script src="content/vendor/jquery-easing/jquery.easing.min.js"></script>
+          <script src="content/vendor/jquery-easing/jquery.easing.js"></script>
 
           <!-- Custom scripts for all pages-->
           <script src="content/js/bootstrap.js"></script>
 
           <!-- Our JS -->
           <script src="content/js/modules/dark_mode.js"></script>
-          <script src="content/js/modules/top_bar.js"></script>
           <script src="content/js/modules/side_bar.js"></script>
-          <script src="content/js/modules/float_menu.js"></script>
           <script src="content/js/modules/fixed_page.js"></script>
-          <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
-          ?>
-              <script src="content/js/atelier/atelier5a.js"></script>
-          <?php
-              }
-              else if(isset($userdroit['ecriture'])){
-                  if($userdroit['ecriture']=='Réalisation'){
-          ?>
-                      <script src="content/js/atelier/atelier5a.js"></script>
-          <?php 
-                  }
-                  else{
-          ?>
-                      <script src="content/js/atelier/atelier5a.js"></script>
-          <?php
-                  }
-              }        
-          ?>
-          <script src="content/js/atelier/5atableauheatmap.js"></script>
+          <script src="content/js/modules/set_filter_sort_table.js"></script>
+          <script src="content/js/modules/menu_expert.js"></script>
+          <script src="content/js/modules/sort_table.js"></script>
       </body>
   <?php
     }

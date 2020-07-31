@@ -69,7 +69,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <div id="wrapper">
 
           <!-- Sidebar -->
-          <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion" id="accordionSidebar">
+          <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion side_bar_scroll" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
               <!-- Logo -->
@@ -572,6 +572,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <th>Maturité</th>
                                 <th>Confiance</th>
                                 <th>Niveau de menace</th>
+                                <th>Criticité</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -588,6 +589,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <td>' . $row["maturite_partie_prenante"] . '</td>
                         <td>' . $row["confiance_partie_prenante"] . '</td>
                         <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
+                        <td>' . $row["criticite"] . '</td>
                         </tr>
                         ';
                               }

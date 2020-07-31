@@ -17,7 +17,6 @@ function show_sub_content(){
 
 $(document).ready(function () {
     $('#editable_table').Tabledit({
-        url: 'content/php/atelier2a/modification.php',
         columns: {
             identifier: [0, 'id_source_de_risque'],
             editable: [],

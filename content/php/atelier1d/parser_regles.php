@@ -2,7 +2,6 @@
 session_start();
 $getid_projet = $_SESSION['id_projet'];
 
-// header('Location: ../../../atelier-1d');
 
 use function PHPSTORM_META\type;
 

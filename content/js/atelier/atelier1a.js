@@ -82,7 +82,7 @@ OURJQUERYFN.setFilterTable("#rechercher_acteur","#editable_table tbody tr")
 label_nom_etude.style.display="none"
 label_cadre_temporel.style.display="none"
 /*-------------------------- INITIALISATION RACI --------------------------- */
-for(let i=2;i<nombre_atelier;i++){
+for(let i=3;i<nombre_atelier;i++){
     var nombre_acteur = raci.rows[0].children.length-1
     while(nombre_acteur!=0){
         var choix_raci = document.createElement("td")
@@ -107,10 +107,40 @@ for(let i=2;i<nombre_atelier;i++){
         nombre_acteur--
     }
 }
+
+var nombre_acteur = raci.rows[0].children.length-1
+    while(nombre_acteur!=0){
+        var choix_raci = document.createElement("td")
+        var select = document.createElement("select")
+        var option_null = document.createElement("option")
+        var option_R = document.createElement("option")
+        var option_A = document.createElement("option")
+        var option_C = document.createElement("option")
+        var option_I = document.createElement("option")        
+
+        select.setAttribute("class","form-control width_select")
+        option_null.innerHTML = "..."; option_I.setAttribute("valeur",""); option_null.setAttribute("selected","");
+        option_R.innerHTML = "Réalisation"; option_R.setAttribute("valeur","Réalisation");
+        option_A.innerHTML = "Approbation"; option_A.setAttribute("valeur","Approbation");
+        option_C.innerHTML = "Consultation"; option_C.setAttribute("valeur","Consultation");
+        option_I.innerHTML = "Information"; option_I.setAttribute("valeur","Information"); 
+
+        select.appendChild(option_null)
+        select.appendChild(option_R)
+        select.appendChild(option_A)
+        select.appendChild(option_C)
+        select.appendChild(option_I)
+        choix_raci.appendChild(select)
+        raci.rows[2].appendChild(choix_raci)
+        nombre_acteur--
+    }
+
+
 /*----------------- RECUPERATION & MODIFICATION VALEURS RACI ---------------- */
 acteur_id_raci.style.display ='none'
 get_database_raci()
 update_database_raci()
+update_full_raci()
 /*------------------------ RECUPERATION & MODIFICATION ----------------------*/
 get_database_project_info()
 /*----------------------- -- VERIFICATION DES CHAMPS -- ------------------------*/
@@ -147,7 +177,7 @@ function get_database_raci(){
             var nombre_acteur = raci.rows[0].children.length
             var starter=0
             for(let j=1;j<nombre_acteur;j++){
-                for(let i=0;i<(nombre_atelier-2);i++){
+                for(let i=0;i<(nombre_atelier-3);i++){
                         if(raci_JSON[starter][3]=='Réalisation')
                             raci.tBodies[0].children[i].children[j].children[0].selectedIndex=0
                         else if(raci_JSON[starter][3]=='Approbation')
@@ -169,7 +199,7 @@ function get_database_raci(){
 function update_database_raci(){
     var nombre_acteur = raci.rows[0].children.length
     for(let j=1;j<nombre_acteur;j++){
-        for(let i=0;i<nombre_atelier-2;i++){
+        for(let i=0;i<nombre_atelier-3;i++){
             raci.tBodies[0].children[i].children[j].addEventListener('change',function(){
                 find_atelier_num = raci.tBodies[0].children[i].children[0].attributes[0].value
                 find_raci_value = raci.tBodies[0].children[i].children[j].children[0].options[raci.tBodies[0].children[i].children[j].children[0].selectedIndex].value
@@ -185,6 +215,27 @@ function update_database_raci(){
                 });
             })
         }
+    }
+}
+
+function update_full_raci(){
+    var nombre_acteur = raci.rows[0].children.length
+    for(let i=1;i<nombre_acteur;i++){
+        raci.tHead.children[2].children[i].addEventListener('change',function(){
+            find_raci_value = raci.tHead.children[2].children[i].children[0].options[raci.tHead.children[2].children[i].children[0].selectedIndex].value
+            find_acteur_id = raci.tHead.children[0].children[i].children[0].innerText
+            $.ajax({
+                url: 'content/php/atelier1a/modification_full_raci.php',
+                type: 'POST',
+                data: {
+                    acteur_id: find_acteur_id,
+                    raci_value: find_raci_value
+                },
+                success: function (resultat) {
+                    location.reload();
+                }
+            });
+        })
     }
 }
 

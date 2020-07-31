@@ -22,7 +22,6 @@ function show_sub_content(){
 /*--------------------------------- TABLES JS -------------------------------*/
 $(document).ready(function () {
     $('#tableau_bs').Tabledit({
-        url: 'content/php/atelier1b/modificationbs.php',
         columns: {
             identifier: [0, "id_bien_support"],
             editable: []
@@ -34,7 +33,6 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
     $('#tableau_vm').Tabledit({
-        url: 'content/php/atelier1b/modificationvm.php',
         columns: {
             identifier: [0, "id_valeur_metier"],
             editable: []
@@ -46,7 +44,6 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
     $('#editable_table').Tabledit({
-        url: 'content/php/atelier1b/modificationmission.php',
         columns: {
             identifier: [0, 'id_mission'],
             editable: []
