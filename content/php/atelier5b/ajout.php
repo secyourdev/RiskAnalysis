@@ -1,21 +1,42 @@
 <?php
 session_start();
 include("../bdd/connexion.php");
+$get_id_projet = $_SESSION['id_projet'];
 
 $results["error"] = false;
 $results["message"] = [];
 
 $id_chemin = $_POST['chemin'];
+print $id_chemin;
 $id_mesure = "id_mesure";
 $id_traitement = "id_traitement";
 $nom_mesure = $_POST['nommesure'];
+print $nom_mesure;
 $description_mesure = $_POST['descriptionmesure'];
+<<<<<<< HEAD
 $id_projet = $_SESSION['id_projet'];
 
+=======
+// $dependance = $_POST['dependance'];
+// $penetration = $_POST['penetration'];
+// $maturite = $_POST['maturite'];
+// $confiance = $_POST['confiance'];
+// echo $dependance;
+// echo $penetration;
+// echo $maturite;
+// echo $confiance;
+>>>>>>> origin/Guillaume
 $id_atelier = "5.b";
-$insere_mesure = $bdd->prepare('INSERT INTO Y_mesure (id_mesure, nom_mesure, description_mesure, id_projet, id_atelier) VALUES (?, ?, ?, ?, ?)');
+$insere_mesure = $bdd->prepare('INSERT INTO Y_mesure (id_mesure, nom_mesure, description_mesure, id_projet, id_atelier) VALUES ("", ?, ?, ?, ?)');
 $recupere_mesure = $bdd->prepare('SELECT id_mesure FROM Y_mesure WHERE nom_mesure = ? AND description_mesure = ?');
 $recupere_risque = $bdd->prepare('SELECT id_risque FROM T_chemin_d_attaque_strategique WHERE id_chemin_d_attaque_strategique = ?');
+
+$recupere_id_mesure = $bdd->prepare("SELECT id_mesure FROM Y_mesure WHERE  nom_mesure = '$nom_mesure' AND id_projet = $get_id_projet");
+$recupere_comporter2existant = $bdd->prepare("SELECT ZB_comporter_2.id_mesure, ZB_comporter_2.id_chemin_d_attaque_strategique, ZB_comporter_2.id_risque FROM ZB_comporter_2, T_chemin_d_attaque_strategique
+WHERE ZB_comporter_2.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique
+AND T_chemin_d_attaque_strategique.id_projet = $get_id_projet");
+
+
 $insere2 = $bdd->prepare('INSERT INTO ZB_comporter_2 (id_mesure, id_chemin_d_attaque_strategique, id_risque) VALUES (?,?,?)');
 $recupere_id_pp = $bdd->prepare('SELECT id_partie_prenante FROM T_chemin_d_attaque_strategique WHERE id_chemin_d_attaque_strategique = ?');
 $recupere_pp = $bdd->prepare('SELECT ponderation_dependance, ponderation_penetration, ponderation_maturite, ponderation_confiance FROM R_partie_prenante WHERE id_partie_prenante = ?');
@@ -45,6 +66,7 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $description_
 
 
 if ($results["error"] === false && isset($_POST['ajouterregle'])) {
+<<<<<<< HEAD
   $insere_mesure->bindParam(1, $id_mesure);
   $insere_mesure->bindParam(2, $nom_mesure);
   $insere_mesure->bindParam(3, $description_mesure);
@@ -72,6 +94,49 @@ if ($results["error"] === false && isset($_POST['ajouterregle'])) {
   $insere_traitement->bindParam(4, $id_mesure[0]);
   $insere_traitement->execute();
   $_SESSION['message_success'] = "Le plan d'amélioration continue de la sécurité a été correctement entré !";
+=======
+  $recupere_id_mesure->execute();
+  $id_mesure_existant = $recupere_id_mesure->fetch(PDO::FETCH_COLUMN);
+  print $id_mesure_existant;
+  $recupere_comporter2existant->execute();
+  $recupere_comporter2existant->execute();
+  $result_comporter2existant = $recupere_comporter2existant->fetchAll(PDO::FETCH_COLUMN);
+
+
+
+
+  if (!in_array($id_chemin, $result_comporter2existant) && !in_array($id_mesure_existant, $result_comporter2existant)) {
+    print 'bonjour OK'; //ok
+
+    $insere_mesure->bindParam(1, $nom_mesure);
+    $insere_mesure->bindParam(2, $description_mesure);
+    $insere_mesure->bindParam(3, $get_id_projet);
+    $insere_mesure->bindParam(4, $id_atelier);
+    $insere_mesure->execute();
+
+    $recupere_mesure->bindParam(1, $nom_mesure);
+    $recupere_mesure->bindParam(2, $description_mesure);
+    $recupere_mesure->execute();
+    $id_mesure = $recupere_mesure->fetch();
+
+    $recupere_risque->bindParam(1, $id_chemin);
+    $recupere_risque->execute();
+    $id_risque = $recupere_risque->fetch();
+
+    $insere2->bindParam(1, $id_mesure[0]);
+    $insere2->bindParam(2, $id_chemin);
+    $insere2->bindParam(3, $id_risque[0]);
+    $insere2->execute();
+
+    $insere_traitement->bindParam(1, $id_traitement);
+    $insere_traitement->bindParam(2, $id_atelier);
+    $insere_traitement->bindparam(3, $get_id_projet);
+    $insere_traitement->bindParam(4, $id_mesure[0]);
+    $insere_traitement->execute();
+    $_SESSION['message_success'] = "Le plan d'amélioration continue de la sécurité a été correctement entré !";
+  } else {
+    $_SESSION['message_error'] = "Le couple mesure - chemin existe déjà";
+  }
+>>>>>>> origin/Guillaume
 }
-header('Location: ../../../atelier5b.php?id_utilisateur='.$_SESSION['id_utilisateur'].'&id_projet='.$_SESSION['id_projet'].'#plan_amelioration_continue_de_la_securite');
-?>
+header('Location: ../../../atelier5b.php?id_utilisateur=' . $_SESSION['id_utilisateur'] . '&id_projet=' . $_SESSION['id_projet'] . '#plan_amelioration_continue_de_la_securite');
