@@ -65,17 +65,8 @@ $.post("heatmap-getdata.php", function (data) {
 
 	for (i = 0; i < data['data_cell'].length; i++) {
 		vraisemblance = data['data_cell'][i]["vraisemblance"];
-		// console.log("vraisemblance: ");
-		// console.log(vraisemblance);
-
 		gravite = data['data_cell'][i]["niveau_de_gravite"];
-		// console.log("gravite: ");
-		// console.log(gravite);
-
 		id_risque = data['data_cell'][i]["id_risque"];
-		// console.log("id_risque: ");
-		// console.log(id_risque);
-		// datatableau
 
 		var br = document.createElement("br");
 		switch (gravite) {
@@ -103,8 +94,6 @@ $.post("heatmap-getdata.php", function (data) {
 						parent = document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(6) > div")
 						parent.append(id_risque, br)
 						break;
-					// default:
-					// 	console.log(`Sorry, we are out of ${expr}.`);
 				}
 				break;
 			case '2':
@@ -129,8 +118,6 @@ $.post("heatmap-getdata.php", function (data) {
 						parent = document.querySelector("#dataTable > tbody > tr:nth-child(5) > td:nth-child(6) > div")
 						parent.append(id_risque, br)
 						break;
-					// default:
-					// 	console.log(`Sorry, we are out of ${expr}.`);
 				}
 				break;
 			case '3':
@@ -155,8 +142,6 @@ $.post("heatmap-getdata.php", function (data) {
 						parent = document.querySelector("#dataTable > tbody > tr:nth-child(4) > td:nth-child(6) > div")
 						parent.append(id_risque, br)
 						break;
-					// default:
-					// 	console.log(`Sorry, we are out of ${expr}.`);
 				}
 				break;
 			case '4':
@@ -181,8 +166,6 @@ $.post("heatmap-getdata.php", function (data) {
 						parent = document.querySelector("#dataTable > tbody > tr:nth-child(3) > td:nth-child(6) > div")
 						parent.append(id_risque, br)
 						break;
-					// default:
-					// 	console.log(`Sorry, we are out of ${expr}.`);
 				}
 				break;
 			case '5':
@@ -207,12 +190,8 @@ $.post("heatmap-getdata.php", function (data) {
 						parent = document.querySelector("#dataTable > tbody > tr:nth-child(2) > td:nth-child(6) > div")
 						parent.append(id_risque, br)
 						break;
-					// default:
-					// 	console.log(`Sorry, we are out of ${expr}.`);
 				}
 				break;
-			// default:
-			// 	console.log(`Sorry, we are out of ${expr}.`);
 		}
 
 	}

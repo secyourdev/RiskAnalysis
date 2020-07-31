@@ -31,12 +31,6 @@ $(document).ready(function () {
         columns: {
             identifier: [0, 'id_evenement_redoutes'],
             editable: [],
-            // checkboxeditable: [
-            //     [5, 'confidentialite'],
-            //     [6, 'integrite'],
-            //     [7, 'disponibilite'],
-            //     [8, 'tracabilite']
-            // ]
         },
         eventType: 'none',
         restoreButton: false,
@@ -62,11 +56,6 @@ $(document).ready(function () {
         url: 'content/php/atelier3b/choixscenar.php',
         type: 'POST',
         success: function(data){
-            // console.log(data);
-            // var SROV = data[0];
-            // var ER = data[1];
-            // console.log(SROV);
-            // console.log(ER);
         }
     })
     $('#editable_table_scenario_strategique').Tabledit({
@@ -76,8 +65,6 @@ $(document).ready(function () {
             identifier: [0, 'id_scenario_strategique'],
             editable: [
                 [1, 'nom_scenario_strategique'],
-                // [2, 'id_source_de_risque'],
-                // [3, 'id_evenement_redoute'],
             ],
             checkboxeditable: []
         },

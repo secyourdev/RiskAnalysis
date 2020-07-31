@@ -9,13 +9,6 @@ var label_mesure = document.getElementById("nommesure").previousSibling.previous
 var regex_nom = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
 var regex_description = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
 
-var button = document.getElementsByClassName('tabledit-edit-button')
-var save_button = document.getElementsByClassName('tabledit-save-button')
-var j=0;
-var k=0;
-var l=0;
-var m=0;
-
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
 sidebarToggleTop.addEventListener('click', show_sub_content,false);
@@ -112,15 +105,6 @@ OURJQUERYFN.setFilterTable("#rechercher_scenario_strategique", "#editable_table_
 /*--------------------------- SORT & FILTER TABLES --------------------------*/
 setSortTable('editable_table_mesure');
 OURJQUERYFN.setFilterTable("#rechercher_mesure", "#editable_table_mesure tbody tr")
-
-/*------------------ AJOUT DE LA VERIFICATION DES TABLEAUX ------------------*/
-sleep(100).then(() => {
-    for(let i=0;i<editable_table_mesure.rows.length-1;i++){
-        j=i+1;
-        button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table_mesure'+','+'11'+')')
-    }
-});
-
 /*------------------------------ LABELS CACHES ------------------------------*/
 label_mesure.style.display="none"
 

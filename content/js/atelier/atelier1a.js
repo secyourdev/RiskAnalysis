@@ -6,9 +6,6 @@ var nom_etude = document.getElementById('nom_etude');
 var objectif_atteindre = document.getElementById('objectif_atteindre');
 var cadre_temporel = document.getElementById('cadre_temporel');
 
-var button = document.getElementsByClassName('tabledit-edit-button')
-var save_button = document.getElementsByClassName('tabledit-save-button')
-
 var valider_acteur = document.getElementsByName('valider')[0]
 
 var label_nom_etude = document.getElementById('nom_etude').previousSibling.previousSibling

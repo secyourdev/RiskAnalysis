@@ -67,13 +67,8 @@ function get_database_seuil() {
         type: 'POST',
         dataType: 'html',
         success: function (resultat) {
-            // console.log(resultat);
-            
             var seuil = JSON.parse(resultat);
-            console.log('seuil');
-            
-            console.log(seuil);
-            
+           
             seuil_danger.value = seuil[0]["seuil_danger"]
             seuil_controle.value = seuil[0]["seuil_controle"]
             seuil_veille.value = seuil[0]["seuil_veille"]

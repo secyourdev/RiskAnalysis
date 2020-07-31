@@ -41,7 +41,6 @@ var lenght_reinitialiser_mdp = reinitialiser_mdp.length;
 
 var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{0,100}$/
 var regex_description = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
-//var regex_email = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"@]{0,100}$/
 var regex_email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 button_add_user_in_grp.style.display='none'
@@ -302,15 +301,6 @@ function compteur_anim() {
             $(this).text(Math.ceil(now));
         },
     });
-    // $('#bdd.compteur b').animate({
-    //     bdd: bdd,
-    // }, {
-    //     duration: 2000,
-    //     easing: 'swing',
-    //     step: function (now) {
-    //         $(this).text(Math.ceil(now));
-    //     },
-    // });
 };
 
 

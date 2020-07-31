@@ -33,10 +33,7 @@ $(document).ready(function () {
                 [4, "responsable"],
                 [5, "difficulte_traitement_de_securite"],
                 [6, "cout_traitement_de_securite", '{"+" : "+", "++" : "++", "+++" : "+++"}'],
-                // [7, "date_traitement_de_securite"],
                 [8, "statut", '{"A lancer" : "A lancer", "En cours" : "En cours", "Terminé" : "Terminé"}']],
-
-            // editable:[[4, "vraisemblance", '{"1" : "1 (Invraisemblable)", "2" : "2 (Peu vraisemblable)", "3" : "3 (Vraisemblable)", "4" : "4 (Très vraisemblable)", "5" : "5 (Quasi certain)"}']]
             dateeditable: [[7, 'date_traitement_de_securite']]
 
         },

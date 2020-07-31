@@ -1,39 +1,13 @@
 $.post("content/php/atelier2c/chart.php", function (data) {
-
-    // var menace = [];
-    // var exposition = [];
-    // var taille_point = [];
-    // var taille_point_hover = [];
-    // var fiabilite = [];
-    // var labels = [];
-
     var SROV = [];
     var pertinence = [];
     var choix = [];
-    console.log(data);
-    // for (var i in data['data_interne']) {
-    //     menace.push(data['data_interne'][i].menace); //valeur de menace - pronfondeur en axe y
-    //     exposition.push(data['data_interne'][i].exposition); //taille du points
-    //     taille_point_hover.push((data['data_interne'][i].exposition) / 2 + 1); //taille du points en hover
-    //     taille_point.push((data['data_interne'][i].exposition) / 2 + 2); //taille du points en hover
-    //     fiabilite.push(data['data_interne'][i].fiabilite);
-    // }
-    // for (let i = 0; i < menace.length; i++) {
-    //     labels.push('R' + i);
-    // }
 
     for (var i in data['data_SROV']) {
         SROV.push(data['data_SROV'][i].SROV); //valeur de menace - pronfondeur en axe y
         pertinence.push(data['data_SROV'][i].pertinence); //taille du points
         choix.push(data['data_SROV'][i].choix); //taille du points en hover
     }
-    // for (let i = 0; i < menace.length; i++) {
-    //     labels.push('R' + i);
-    // }
-    console.log(SROV);
-    console.log(pertinence);
-    console.log(choix);
-    
 
     var maxgravite = 4;
 
@@ -91,14 +65,9 @@ $.post("content/php/atelier2c/chart.php", function (data) {
             callbacks: {
                 footer: function (tooltipItems, data) {
                     var value_pertinence = 0;
-                    // var value_menace = 0;
-                    // var value_fiabilite = 0;
                     tooltipItems.forEach(function (tooltipItem) {
                         value_pertinence = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-                        // value_expo = data.datasets[tooltipItem.datasetIndex].data_exposition[tooltipItem.index];
-                        // value_fiabilite = data.datasets[tooltipItem.datasetIndex].data_fiabilite[tooltipItem.index];
                     });
-                    // return 'Menace: ' + value_menace + '\n' + 'Exposition: ' + value_expo + '\n' + 'Fiabilité cyber: ' + value_fiabilite;
                     return 'Pertinence: ' + value_pertinence;
                 },
             },

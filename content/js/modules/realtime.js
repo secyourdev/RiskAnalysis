@@ -22,17 +22,14 @@ function verify_textarea_2(value,regex,input,save){
     if(regex.test(value)){
         input.style.border="2px solid #4AD991";
         bool = true;
-        //save.disabled = false
     }
     else if(value.length==0){
         input.style.border="1px solid #64789A";
         bool = false;
-        //save.disabled = true
     }
     else{
         input.style.border="2px solid #FF6565";
         bool = false;
-        //save.disabled = true
     }
     return bool
 }

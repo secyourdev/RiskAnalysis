@@ -44,11 +44,6 @@ $(document).ready(function () {
         url: 'content/php/atelier3b/choixscenar.php',
         type: 'POST',
         success: function(data){
-            // console.log(data);
-            // var SROV = data[0];
-            // var ER = data[1];
-            // console.log(SROV);
-            // console.log(ER);
         }
     })
     $('#editable_table_scenario_strategique').Tabledit({

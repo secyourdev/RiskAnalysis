@@ -1,22 +1,12 @@
-
-console.log( '3a_carto.js');
-
-$.post("content/php/atelier3c/chart.php", function (data) {
-    console.log(data);
-    
+$.post("content/php/atelier3c/chart.php", function (data) { 
     var seuil_danger = [];
     var seuil_controle = [];
     var seuil_veille = [];
-    console.log(data);
     for (var i in data['data_seuil']) {
         seuil_danger.push(data['data_seuil'][i].seuil_danger); //valeur de seuil_danger - zone rouge
         seuil_controle.push(data['data_seuil'][i].seuil_controle); //valeur de seuil_danger - zone verte
         seuil_veille.push(data['data_seuil'][i].seuil_veille); //valeur de seuil_danger - zone bleue
     }
-    console.log('seuil : ');
-    console.log(seuil_danger);
-    console.log(seuil_controle);
-    console.log(seuil_veille);
     
     color_zone = ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)']
     if (seuil_danger[0] !== -1) {
@@ -28,10 +18,6 @@ $.post("content/php/atelier3c/chart.php", function (data) {
     if (seuil_veille[0] !== -1) {
         color_zone[16-seuil_veille[0]] = "#3B86FF";
     }
-    console.log(color_zone);
-    // color_actuel = ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#FF6565", 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#4AD991", 'rgba(0, 0, 0, 0.1)', "#3B86FF"]
-    // console.log(color_actuel);
-
 
     var menace = [];
     var exposition = [];
@@ -58,7 +44,6 @@ $.post("content/php/atelier3c/chart.php", function (data) {
     var taille_point_interne_residuelle = [];
     var taille_point_hover_interne_residuelle = [];
     var fiabilite_interne_residuelle = [];
-    // var labels = [];
 
     for (var i in data['data_interne3c']) {
         menace_interne_residuelle.push(data['data_interne3c'][i].menace_interne_residuelle); //valeur de menace_interne_residuelle - pronfondeur en axe y
@@ -67,9 +52,7 @@ $.post("content/php/atelier3c/chart.php", function (data) {
         taille_point_interne_residuelle.push((data['data_interne3c'][i].exposition_interne_residuelle) / 2 + 2); //taille du points en hover
         fiabilite_interne_residuelle.push(data['data_interne3c'][i].fiabilite_interne_residuelle);
     }
-    // for (let i = 0; i < menace_interne_residuelle.length; i++) {
-    //     labels.push('R' + i);
-    // }
+
     var maxmenace_interne_residuelle = Math.max(...menace_interne_residuelle) + 1.99999;
 
 
@@ -147,7 +130,6 @@ $.post("content/php/atelier3c/chart.php", function (data) {
             gridLines: {
                 circular: true,
                 color: color_zone
-                // color: ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#FF6565", 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#4AD991", 'rgba(0, 0, 0, 0.1)', "#3B86FF"]
             },
             ticks: {
                 beginAtZero: true,
@@ -207,7 +189,6 @@ $.post("content/php/atelier3c/chart.php", function (data) {
     var taille_point_externe_residuelle = [];
     var taille_point_hover_externe_residuelle = [];
     var fiabilite_externe_residuelle = [];
-    // var labels = [];
 
     for (var i in data['data_externe3c']) {
         menace_externe_residuelle.push(data['data_externe3c'][i].menace_externe_residuelle); //valeur de menace_externe_residuelle - pronfondeur en axe y
@@ -216,11 +197,8 @@ $.post("content/php/atelier3c/chart.php", function (data) {
         taille_point_externe_residuelle.push((data['data_externe3c'][i].exposition_externe_residuelle) / 2 + 2); //taille du points en hover
         fiabilite_externe_residuelle.push(data['data_externe3c'][i].fiabilite_externe_residuelle);
     }
-    // for (let i = 0; i < menace_externe_residuelle.length; i++) {
-    //     labels.push('R' + i);
-    // }
-    var maxmenace_externe_residuelle = Math.max(...menace_externe_residuelle) + 1.99999;
 
+    var maxmenace_externe_residuelle = Math.max(...menace_externe_residuelle) + 1.99999;
 
     var chartdata_externe = {
         labels: labels,
@@ -296,7 +274,6 @@ $.post("content/php/atelier3c/chart.php", function (data) {
             gridLines: {
                 circular: true,
                 color: color_zone
-                // color: ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#FF6565", 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#4AD991", 'rgba(0, 0, 0, 0.1)', "#3B86FF"]
             },
             ticks: {
                 beginAtZero: true,

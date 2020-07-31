@@ -1,13 +1,6 @@
 /*------------------------------- VARIABLES ----------------------------------*/
 var accordionSidebar = document.getElementById("accordionSidebar");
 var sidebarToggle = document.getElementById("sidebarToggle");
-
-var button = document.getElementsByClassName('tabledit-edit-button')
-var save_button = document.getElementsByClassName('tabledit-save-button')
-var j = 0;
-var k = 0;
-var l = 0;
-
 /*-------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
 sidebarToggleTop.addEventListener('click', show_sub_content,false);

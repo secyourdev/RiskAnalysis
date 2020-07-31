@@ -1,21 +1,15 @@
 
-    console.log( '3a_carto.js');
-
 $.post("content/php/atelier3a/chart.php", function (data) {
 
     var seuil_danger = [];
     var seuil_controle = [];
     var seuil_veille = [];
-    console.log(data);
+
     for (var i in data['data_seuil']) {
         seuil_danger.push(data['data_seuil'][i].seuil_danger); //valeur de seuil_danger - zone rouge
         seuil_controle.push(data['data_seuil'][i].seuil_controle); //valeur de seuil_danger - zone verte
         seuil_veille.push(data['data_seuil'][i].seuil_veille); //valeur de seuil_danger - zone bleue
     }
-    console.log('seuil : ');
-    console.log(seuil_danger);
-    console.log(seuil_controle);
-    console.log(seuil_veille);
     
     color_zone = ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)']
     if (seuil_danger[0] !== -1) {
@@ -27,10 +21,6 @@ $.post("content/php/atelier3a/chart.php", function (data) {
     if (seuil_veille[0] !== -1) {
         color_zone[16-seuil_veille[0]] = "#3B86FF";
     }
-    console.log(color_zone);
-    // color_actuel = ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#FF6565", 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', "#4AD991", 'rgba(0, 0, 0, 0.1)', "#3B86FF"]
-    // console.log(color_actuel);
-    
     
     var menace = [];
     var exposition = [];
@@ -38,8 +28,7 @@ $.post("content/php/atelier3a/chart.php", function (data) {
     var taille_point_hover = [];
     var fiabilite = [];
     var labels = [];
-    // var nom_partie_prenante = [];
-    console.log(data);
+
     for (var i in data['data_interne']) {
         menace.push(data['data_interne'][i].menace); //valeur de menace - pronfondeur en axe y
         exposition.push(data['data_interne'][i].exposition); //taille du points
@@ -48,22 +37,8 @@ $.post("content/php/atelier3a/chart.php", function (data) {
         fiabilite.push(data['data_interne'][i].fiabilite);
         labels.push(data['data_interne'][i].nom_partie_prenante)
     }
-    // for (let i = 0; i < menace.length; i++) {
-    //     labels.push('R' + i);
-    // }
-
-    console.log('interne : ');
-    console.log(menace);
-    // console.log(exposition);
-    // console.log(taille_point_hover);
-    // console.log(taille_point);
-    // console.log(fiabilite);
 
     var maxmenace = Math.max(...menace) + 0.5;
-    console.log("maxmenace : ");
-    console.log(maxmenace);
-    
-    
 
     var chartdata_interne = {
         labels: labels,
@@ -136,8 +111,6 @@ $.post("content/php/atelier3a/chart.php", function (data) {
         },
     };
 
-    // $.post("content/php/atelier3a/chart_externe.php", function (data) {
-
     var menace = [];
     var exposition = [];
     var taille_point = [];
@@ -152,22 +125,9 @@ $.post("content/php/atelier3a/chart.php", function (data) {
         fiabilite.push(data['data_externe'][i].fiabilite);
         labels.push(data['data_externe'][i].nom_partie_prenante)
     }
-    // for (let i = 0; i < menace.length; i++) {
-    //     labels.push('R' + i);
-    // }
-
-    console.log('externe : ');
-    console.log(menace);
-    // console.log(exposition);
-    // console.log(taille_point_hover);
-    // console.log(taille_point);
-    // console.log(fiabilite);
 
     var maxmenace = Math.max(...menace) + 0.5;
-    console.log("maxmenace : ");
-    console.log(maxmenace);
     
-
     var chartdata_externe = {
         labels: labels,
         datasets: [
