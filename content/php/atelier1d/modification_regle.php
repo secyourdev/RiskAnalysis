@@ -10,8 +10,6 @@ $justification_ecart = mysqli_real_escape_string($connect, $input['justification
 $responsable = mysqli_real_escape_string($connect, $input['responsable']);
 $dates = mysqli_real_escape_string($connect, $input['dates']);
 $id_regle = $input['id_regle'];
-print $id_regle;
-print '<br>';
 
 $results["error"] = false;
 $results["message"] = [];

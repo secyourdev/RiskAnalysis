@@ -57,7 +57,6 @@ if(isset($_POST['cadre_temporel'])){
 
 if(isset($_POST['nom_grp_utilisateur'])){
   $nom_grp_utilisateur = $_POST['nom_grp_utilisateur'];
-  echo $nom_grp_utilisateur;
   $search_id_grp_utilisateur = $bdd->prepare("SELECT `id_grp_utilisateur` FROM `B_grp_utilisateur` WHERE `nom_grp_utilisateur`=?");
   $search_id_grp_utilisateur->bindParam(1, $nom_grp_utilisateur);
   $search_id_grp_utilisateur->execute();

@@ -12,8 +12,6 @@ $descriptionbs = $_POST['descriptionbs'];
 $id_bien_support = "id_bien_support";
 $id_atelier = "1.b";
 
-echo $biensupport;
-echo $descriptionbs;
 
 $inserebs = $bdd->prepare('INSERT INTO K_bien_support(id_bien_support, nom_bien_support, description_bien_support, id_atelier, id_projet) VALUES (?,?,?,?,?)');
 
