@@ -12,7 +12,6 @@ $id_risque = $_POST['id_risque'];
 $chemin_d_attaque_strategique = $_POST['chemin_d_attaque_strategique'];
 $id_scenario_strategique = $_POST['nom_scenario_strategique'];
 $id_partie_prenante = $_POST['nom_partie_prenante'];
-print $id_partie_prenante;
 $id_chemin_d_attaque = "id_chemin";
 $id_scenar = "id_scenar";
 $id_atelier = "4.a";
@@ -223,4 +222,4 @@ if ($results["error"] === false && isset($_POST['validerchemin'])) {
   }
 }
 
-header('Location: ../../../atelier-3b&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet'] . '#chemin_dattaque');
+//header('Location: ../../../atelier-3b&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet'] . '#chemin_dattaque');

@@ -19,12 +19,12 @@ if ($_FILES['inpFile']['size'] != 0) {
     if (isset($_POST['select_nom_scenario_strategique'])) {
         $id_scenario = $_POST['select_nom_scenario_strategique'];
         $sql = "UPDATE S_scenario_strategique SET image = '$image' WHERE id_projet = $getid_projet AND id_atelier = '3.b' AND id_scenario_strategique = $id_scenario";
-        $header = 'Location: ../../../atelier-3b&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet'];
+        $header = 'Location: ../../../atelier-3b&' . $_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#schemas_scenarios_strategiques';
     }
     if (isset($_POST['select_nom_scenario_operationnel'])) {
         $id_scenario = $_POST['select_nom_scenario_operationnel'];
         $sql = "UPDATE U_scenario_operationnel SET image = '$image' WHERE id_projet = $getid_projet AND id_atelier = '4.a' AND id_scenario_operationnel = $id_scenario";
-        $header = 'Location: ../../../atelier-4a&' . $_SESSION['id_utilisateur'] . '&' . $_SESSION['id_projet'];
+        $header = 'Location: ../../../atelier-4a&' . $_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#schema_scenarios_operationnels';
     }
 
     //if selection du scénario a été faite
@@ -34,7 +34,7 @@ if ($_FILES['inpFile']['size'] != 0) {
 
         if (move_uploaded_file($_FILES['inpFile']['tmp_name'], $target)) {
             header($header);
-            $_SESSION['message_success_3'] = "Image uploadée avec succès !";
+            $_SESSION['message_success_2'] = "Image uploadée avec succès !";
             $zip = new ZipArchive;
             if ($zip->open('../sauvegarde_image/schema.zip') === TRUE) {
                 $zip->addFile('../../../image/' . $image, $image);
@@ -44,7 +44,7 @@ if ($_FILES['inpFile']['size'] != 0) {
                 echo 'échec';
             }
         } else {
-            $_SESSION['message_error_3'] = "Erreur dans l'upload de l'image !";
+            $_SESSION['message_error_2'] = "Erreur dans l'upload de l'image !";
         }
     } else {
         $_SESSION['message_error_3'] = "Aucun scénario n'a été choisi";
