@@ -70,7 +70,7 @@ $(document).ready(function(){
      url:'content/php/accueil/modification_app_utilisateur.php',
      columns:{
       identifier:[0, "id_utilisateur"],
-      editable:[[1, 'nom'], [2, 'prenom'], [3, 'poste'], [4, 'email'], [5, 'type_compte','{"Administrateur Logiciel":"Administrateur Logiciel","Chef de Projet":"Chef de Projet","Utilisateur":"Utilisateur"}']]
+      editable:[[1, 'nom'], [2, 'prenom'], [3, 'poste'], [5, 'type_compte','{"Administrateur Logiciel":"Administrateur Logiciel","Utilisateur":"Utilisateur"}']]
      },
      restoreButton:false,
      onSuccess:function(data, textStatus, jqXHR)

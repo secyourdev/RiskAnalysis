@@ -677,7 +677,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                     <select class="form-control" id="type_compte_utilisateur" name="type_compte" placeholder="Type de compte" required>
                                         <option value="" selected>...</option>
                                         <option>Administrateur Logiciel</option>
-                                        <option>Chef de Projet</option>
                                         <option>Utilisateur</option>
                                     </select>
                                 </div>
