@@ -18,9 +18,9 @@ $result_dimension = mysqli_fetch_array($exec_dimension);
 
 $query = "SELECT X_revaluation_du_risque.vraisemblance_residuelle, M_evenement_redoute.niveau_de_gravite, T_chemin_d_attaque_strategique.id_risque
 FROM X_revaluation_du_risque INNER JOIN T_chemin_d_attaque_strategique ON X_revaluation_du_risque.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique INNER JOIN S_scenario_strategique ON T_chemin_d_attaque_strategique.id_scenario_strategique = S_scenario_strategique.id_scenario_strategique  INNER JOIN M_evenement_redoute ON S_scenario_strategique.id_evenement_redoute = M_evenement_redoute.id_evenement_redoute
-WHERE M_evenement_redoute.id_projet = 2
-AND S_scenario_strategique.id_projet = 2
-AND X_revaluation_du_risque.id_projet = 2";
+WHERE M_evenement_redoute.id_projet = $getid_projet
+AND S_scenario_strategique.id_projet = $getid_projet
+AND X_revaluation_du_risque.id_projet = $getid_projet";
 // print $query; // 2 1 a
 $result = mysqli_query($connect, $query);
 // print_r($result);
