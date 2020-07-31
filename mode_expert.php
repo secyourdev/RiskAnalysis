@@ -26,7 +26,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
   $userdroit_chef_de_projet = $reqdroit_chef_de_projet->fetch();
 ?>
 
-  <?php include("content/php/menu_expert/selection.php"); ?>
+  <?php include("content/php/mode_expert/selection.php"); ?>
   <!DOCTYPE html>
   <html lang="fr">
 
@@ -36,7 +36,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <meta name="description" content="CyberRiskManager">
     <meta name="author" content="SecYourDev">
 
-    <title>CyberRiskManager | Menu expert</title>
+    <title>CyberRiskManager | Mode expert</title>
 
     <!-- Fonts-->
     <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -84,6 +84,16 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
               <a class="nav-link" href="index.php">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Tableau de Bord</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="mode_expert&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-tasks"></i>
+                    <span>Mode expert</span></a>
             </li>
 
             <!-- Divider -->
@@ -588,7 +598,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <script src="content/js/modules/side_bar.js"></script>
           <script src="content/js/modules/fixed_page.js"></script>
           <script src="content/js/modules/set_filter_sort_table.js"></script>
-          <script src="content/js/modules/menu_expert.js"></script>
+          <script src="content/js/modules/mode_expert.js"></script>
           <script src="content/js/modules/sort_table.js"></script>
       </body>
   <?php
