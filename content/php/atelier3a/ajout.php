@@ -9,6 +9,7 @@ $results["message"] = [];
 $categorie_partie_prenante = $_POST['categorie_partie_prenante'];
 $nom_partie_prenante = $_POST['nom_partie_prenante'];
 $type = $_POST['type'];
+$criticite = $_POST['criticite'];
 
 if( isset($_POST['dependance_partie_prenante'])){
   $dependance_partie_prenante = $_POST['dependance_partie_prenante'];
@@ -89,9 +90,10 @@ $insere = $bdd->prepare(
     ponderation_confiance,
     id_seuil,
     id_atelier,
-    id_projet
+    id_projet,
+    criticite
     ) 
-    VALUES ( '', ?, ?, ?, ?, ?, ?, ?, ?, 1, 1, 1, 1, ?, ?, ?)");
+    VALUES ( '', ?, ?, ?, ?, ?, ?, ?, ?, 1, 1, 1, 1, ?, ?, ?, ?)");
 
 
 
@@ -110,13 +112,10 @@ if ($results["error"] === false && isset($_POST['validerpartie'])) {
   $insere->bindParam(6, $maturite_partie_prenante);
   $insere->bindParam(7, $confiance_partie_prenante);
   $insere->bindParam(8, $niveau_de_menace_partie_prenante);
-  // $insere->bindParam(9, $ponderation);
-  // $insere->bindParam(10, $ponderation);
-  // $insere->bindParam(11, $ponderation);
-  // $insere->bindParam(12, $ponderation);
   $insere->bindParam(9, $id_seuil[0]);
   $insere->bindParam(10, $id_atelier);
   $insere->bindParam(11, $id_projet);
+  $insere->bindParam(12, $criticite);
   $insere->execute();
   $_SESSION['message_success_2'] = "La partie prenante a bien été ajoutée !";
 }

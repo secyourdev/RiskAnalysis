@@ -15,7 +15,6 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
     SET choix_source_de_risque = '".$choix_sr."'
     WHERE id_source_de_risque = '".$input["id_source_de_risque"]."'
     ";
-    echo $query;
     mysqli_query($connect, $query);
     $_SESSION['message_success'] = "Le choix de source de risque a été ajouté !";
 

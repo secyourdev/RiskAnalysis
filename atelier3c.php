@@ -572,6 +572,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <th>Maturité</th>
                                 <th>Confiance</th>
                                 <th>Niveau de menace</th>
+                                <th>Criticité</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -588,6 +589,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <td>' . $row["maturite_partie_prenante"] . '</td>
                         <td>' . $row["confiance_partie_prenante"] . '</td>
                         <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
+                        <td>' . $row["criticite"] . '</td>
                         </tr>
                         ';
                               }

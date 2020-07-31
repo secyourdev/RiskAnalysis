@@ -55,8 +55,6 @@ if ($input["action"] === 'edit'){
         niveau_de_gravite = '" . $niveau_de_gravite . "'
         WHERE id_evenement_redoute = '" . $input["id_evenement_redoute"] . "'
         ";
-        echo $query;
-
         mysqli_query($connect, $query);
         $_SESSION['message_success_3'] = "L'événement redouté a été modifié !";
     }
@@ -67,7 +65,6 @@ if ($input["action"] === 'delete') {
     DELETE FROM M_evenement_redoute 
     WHERE id_evenement_redoute = '".$input["id_evenement_redoute"]."'
     ";
-    echo $query;
     mysqli_query($connect, $query);
     $_SESSION['message_success_3'] = "L'événement redouté a été supprimé !";
 }

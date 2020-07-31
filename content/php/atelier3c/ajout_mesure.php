@@ -10,6 +10,7 @@ $results["message"] = [];
 $id_partie_prenante = $_POST['partieprenante1'];
 $chemin = $_POST['chemins'];
 
+// Pour les régles du référentiel
 $nom_mesure = $_POST['nommesure'];
 $description_mesure = $_POST['descriptionmesure'];
 $id_traitement = "id_traitement";
