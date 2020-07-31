@@ -52,7 +52,6 @@ $(document).ready(function () {
         }
     })
     $('#editable_table_scenario_strategique').Tabledit({
-        url: 'content/php/atelier3b/modification_scenario.php',
         sortable: true,
         columns: {
             identifier: [0, 'id_scenario_strategique'],
@@ -66,7 +65,6 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
     $('#editable_table_chemin_d_attaque').Tabledit({
-        url: 'content/php/atelier3b/modification_chemin.php',
         sortable: true,
         columns: {
             identifier: [0, 'id_chemin_d_attaque_strategique'],

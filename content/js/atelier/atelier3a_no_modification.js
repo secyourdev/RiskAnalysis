@@ -16,7 +16,6 @@ function show_sub_content(){
 /*--------------------------------- TABLES JS -------------------------------*/
 $(document).ready(function () {
     $('#editable_table').Tabledit({
-        url: 'content/php/atelier3a/modification.php',
         sortable: true,
         columns: {
             identifier: [0, 'id_partie_prenante'],

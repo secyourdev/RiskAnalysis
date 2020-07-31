@@ -66,7 +66,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion side_bar_scroll" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <!-- Logo -->
@@ -877,10 +877,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                 </br>
                                     <?php
                                             }
-                                            else { 
-                                    ?>
-                                    <?php
-                                            }
                                         }   
                                     ?>   
 
@@ -977,6 +973,23 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                     }
                                                     ?>
                                                 </tr>
+                                                <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){                                     
+                                                ?>
+                                                        <tr>
+                                                            <th scope="col">Modification générale</th>
+                                                        </tr>
+                                                <?php
+                                                        }
+                                                        else if(isset($userdroit['ecriture'])){
+                                                            if($userdroit['ecriture']=='Réalisation'){
+                                                ?>
+                                                                <tr>
+                                                                    <th scope="col">Modification générale</th>
+                                                                </tr>
+                                                <?php
+                                                            }
+                                                        }   
+                                                ?> 
                                             </thead>
 
                                             <tbody class="raci_th">

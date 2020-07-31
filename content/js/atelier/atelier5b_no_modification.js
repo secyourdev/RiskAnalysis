@@ -14,33 +14,8 @@ function show_sub_content(){
 }
 /*--------------------------------- TABLES JS -------------------------------*/
 
-// $(document).ready(function () {
-//     $('#editable_table').Tabledit({
-//         url: 'content/php/atelier5b/modificationtableau.php',
-//         columns: {
-//             identifier: [0, 'id_mesure'],
-//             editable: [
-//             [12, 'dependance_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
-//             [13, 'penetration_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
-//             [14, 'maturite_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
-//             [15, 'confiance_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
-//             [20, 'nom_mesure_securite'],
-//             [21, 'description_mesure_securite']
-//         ],
-//         dateeditable: [] 
-//         },
-//         restoreButton: false,
-//         // onSuccess: function (data, textStatus, jqXHR) {
-//         //     if (data.action == 'delete') {
-//         //         $('#' + data.id_source_de_risque).remove();
-//         //     }
-//         // }
-//     });
-// });
-
 $(document).ready(function () {
     $('#editable_table').Tabledit({
-        url: 'content/php/atelier5b/modificationpacs.php',
         columns: {
             identifier: [0, 'id_traitement_de_securite'],
             editable: [],
