@@ -44,7 +44,6 @@ if($input["action"] === 'edit'){
                 INSERT INTO DA_niveau (id_niveau, description_niveau, valeur_niveau, id_echelle) 
                 VALUES (NULL, NULL, 5, '".$input["id_echelle"]."')
                 ";
-                echo $query5;
                 mysqli_query($connect, $query5);
                 }      
         }

@@ -10,8 +10,6 @@ if(isset($_POST['ref'])){
 
     $queryregles->bindParam(1, $ref);
     $queryregles->execute();
-    // $row = $querychemin->fetch(PDO::FETCH_ASSOC);
-    // print_r($row);
     echo '
     <option value="" selected>...</option>
     ';

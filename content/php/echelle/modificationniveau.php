@@ -21,7 +21,6 @@ if($input["action"] === 'edit'){
         SET description_niveau = '".$description_niveau."'
         WHERE id_niveau = '".$input["id_niveau"]."'
         ";
-        echo $query;
         mysqli_query($connect, $query);
         $_SESSION['message_success_2'] = "Les niveaux de l'échelle ont bien été modifiés !";
     }

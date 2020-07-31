@@ -32,11 +32,6 @@ $resultprojet = mysqli_query($connect, $queryprojet);
 
 // browse image
 $query = "SELECT * FROM U_scenario_operationnel WHERE id_projet = $getid_projet";
-// print $query;
 $result = mysqli_query($connect, $query);
-// var_dump($result);
-// $query_scenario_op = "SELECT id_scenario_operationnel, nom_scenario_operationnel FROM U_scenario_operationnel WHERE id_projet = $getid_projet AND id_atelier = '4.a'";
 $query_scenario_op = "SELECT id_scenario_operationnel, description_scenario_operationnel FROM U_scenario_operationnel WHERE id_projet = $getid_projet AND id_atelier = '4.a'";
-// print $query_scenario_op;
 $result_scenario_op = mysqli_query($connect, $query_scenario_op);
-// print_r($result_scenario_op);

@@ -34,49 +34,7 @@ AND S_scenario_strategique.id_projet = $getid_projet
 ORDER BY id_scenario_strategique ASC";
 $result_scenario_strategique = mysqli_query($connect, $query_scenario_strategique);
 
-//tableau mesures
 
-// Si utilisation des mesures de référentiel
-// $query_mesure =
-// "SELECT 
-// chemin_d_attaque_strategique.id_chemin_d_attaque_strategique,
-// nom_partie_prenante, 
-// nom_chemin_d_attaque_strategique,
-// regle.description, 
-// niveau_de_menace_partie_prenante,
-// niveau_de_menace_residuelle
-// FROM chemin_d_attaque_strategique
-// INNER JOIN comporter_3
-// ON chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = comporter_3.id_chemin_d_attaque_strategique
-// INNER JOIN regle
-// ON regle.id_regle = comporter_3.id_regle
-// INNER JOIN partie_prenante
-// ON chemin_d_attaque_strategique.id_partie_prenante = R_partie_prenante.id_partie_prenante
-// WHERE id_projet = $getid_projet";
-
-
-//----------mesure en un seul tableau
-// $query_mesure = "SELECT
-// Y_mesure.id_mesure,
-// nom_partie_prenante, 
-// nom_chemin_d_attaque_strategique,
-// Y_mesure.nom_mesure,
-// Y_mesure.description_mesure,
-// dependance_residuelle,
-// penetration_residuelle,
-// maturite_residuelle,
-// confiance_residuelle, 
-// niveau_de_menace_partie_prenante,
-// niveau_de_menace_residuelle
-// FROM T_chemin_d_attaque_strategique
-// INNER JOIN ZB_comporter_2
-// ON T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = ZB_comporter_2.id_chemin_d_attaque_strategique
-// INNER JOIN Y_mesure
-// ON Y_mesure.id_mesure = ZB_comporter_2.id_mesure
-// INNER JOIN R_partie_prenante
-// ON T_chemin_d_attaque_strategique.id_partie_prenante = R_partie_prenante.id_partie_prenante
-// WHERE T_chemin_d_attaque_strategique.id_projet = $getid_projet
-// ";
 $query_mesure1 = "SELECT
 Y_mesure.id_mesure,
 nom_partie_prenante, 
@@ -111,7 +69,6 @@ ON T_chemin_d_attaque_strategique.id_partie_prenante = R_partie_prenante.id_part
 WHERE T_chemin_d_attaque_strategique.id_projet = $getid_projet";
 
 
-// $result_mesure = mysqli_query($connect, $query_mesure);
 $result_mesure1 = mysqli_query($connect, $query_mesure1);
 $result_mesure2 = mysqli_query($connect, $query_mesure2);
 
