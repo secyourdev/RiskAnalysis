@@ -57,7 +57,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
   <?php
   if (isset($_SESSION['id_utilisateur']) and $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur']) {
-    if(isset($userdroit['ecriture'])||$userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
+    if (isset($userdroit['ecriture']) || $userinfo['type_compte'] == 'Administrateur Logiciel' || $userdroit_chef_de_projet['id_utilisateur'] == $getid) {
   ?>
 
       <body id="page-top">
@@ -396,61 +396,49 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <!-- Right Sidebar -->
           <ul id=menu>
             <li>
-                <a class="nav-link collapse-right-item menu_float" href="#evaluation_risques_residuels">
-                    <i>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
-                            <g transform="translate(-1230 -689)">
-                                <path class="number_activity active"
-                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
-                                    transform="translate(1230 689)" fill="#ffffffcc" />
-                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
-                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
-                                    font-weight="700">
-                                    <tspan x="-3.432" y="0">1</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                    </i>
-                    <span class="nom_sous_menu">Évaluation et documentation des risques résiduels</span>
-                </a>
+              <a class="nav-link collapse-right-item menu_float" href="#evaluation_risques_residuels">
+                <i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                    <g transform="translate(-1230 -689)">
+                      <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                      <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                        <tspan x="-3.432" y="0">1</tspan>
+                      </text>
+                    </g>
+                  </svg>
+                </i>
+                <span class="nom_sous_menu">Évaluation et documentation des risques résiduels</span>
+              </a>
             </li>
             <li>
-                <a class="nav-link collapse-right-item menu_float" href="#cartographie_risque_initial">
-                    <i>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
-                            <g transform="translate(-1230 -689)">
-                                <path class="number_activity active"
-                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
-                                    transform="translate(1230 689)" fill="#ffffffcc" />
-                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
-                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
-                                    font-weight="700">
-                                    <tspan x="-3.432" y="0">2</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                    </i>
-                    <span class="nom_sous_menu">Cartographie du risque initial</span>
-                </a>
+              <a class="nav-link collapse-right-item menu_float" href="#cartographie_risque_initial">
+                <i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                    <g transform="translate(-1230 -689)">
+                      <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                      <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                        <tspan x="-3.432" y="0">2</tspan>
+                      </text>
+                    </g>
+                  </svg>
+                </i>
+                <span class="nom_sous_menu">Cartographie du risque initial</span>
+              </a>
             </li>
             <li>
-                <a class="nav-link collapse-right-item menu_float" href="#cartographie_risque_residuel">
-                    <i>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
-                            <g transform="translate(-1230 -689)">
-                                <path class="number_activity active"
-                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
-                                    transform="translate(1230 689)" fill="#ffffffcc" />
-                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
-                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
-                                    font-weight="700">
-                                    <tspan x="-3.432" y="0">3</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                    </i>
-                    <span class="nom_sous_menu">Cartographie du risque résiduel</span>
-                </a>
+              <a class="nav-link collapse-right-item menu_float" href="#cartographie_risque_residuel">
+                <i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                    <g transform="translate(-1230 -689)">
+                      <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                      <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                        <tspan x="-3.432" y="0">3</tspan>
+                      </text>
+                    </g>
+                  </svg>
+                </i>
+                <span class="nom_sous_menu">Cartographie du risque résiduel</span>
+              </a>
             </li>
           </ul>
           <!-- End of Right Sidebar -->
@@ -543,7 +531,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <tr>
                                 <th>ID</th>
                                 <th>Nom du risque</th>
-                                <th>Événement redouté</th>
+                                <th>Évenement redouté</th>
+                                <th>Mesure de sécurité</th>
                                 <th>Gravité initiale</th>
                                 <th>Vraisemblance initiale</th>
                                 <th>Risque initial</th>
@@ -559,22 +548,20 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               // print_r(mysqli_fetch_array($result));
                               while ($row = mysqli_fetch_array($result)) {
                                 $risque = $row["vraisemblance"] * $row["niveau_de_gravite"];
-
-                                // print_r($row);
-
                                 echo '
                                 <tr>
-                                <td>'.$row["id_revaluation"].'</td>
-                                <td>'.$row["nom_chemin_d_attaque_strategique"].'</td>
-                                <td>'.$row["nom_evenement_redoute"].'</td>
-                                <td>'.$row["niveau_de_gravite"].'</td>
-                                <td>'.$row["vraisemblance"].'</td>
-                                <td>'.$risque.'</td>
-                                <td>'.$row["nom_risque_residuelle"].'</td>
-                                <td>'.$row["description_risque_residuelle"].'</td>
-                                <td>'.$row["vraisemblance_residuelle"].'</td>
-                                <td>'.$row["risque_residuel"].'</td>
-                                <td>'.$row["gestion_risque_residuelle"].'</td>
+                                <td>' . $row["id_revaluation"] . '</td>
+                                <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
+                                <td>' . $row["nom_evenement_redoute"] . '</td>
+                                <td>' . $row["nom_mesure"] . '</td>
+                                <td>' . $row["niveau_de_gravite"] . '</td>
+                                <td>' . $row["vraisemblance"] . '</td>
+                                <td>' . $risque . '</td>
+                                <td>' . $row["nom_risque_residuelle"] . '</td>
+                                <td>' . $row["description_risque_residuelle"] . '</td>
+                                <td>' . $row["vraisemblance_residuelle"] . '</td>
+                                <td>' . $row["risque_residuel"] . '</td>
+                                <td>' . $row["gestion_risque_residuelle"] . '</td>
                                 </tr>
                               ';
                               }
@@ -742,13 +729,11 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                           </table>
                         </div>
                         <?php
-                            while($row = mysqli_fetch_array($resultlegendeavant))
-                            {
-                              echo 
-                              $row["id_risque"].' : '.$row["nom_chemin_d_attaque_strategique"]."<br/>"
-                              ;
-                            }
-                            ?>
+                        while ($row = mysqli_fetch_array($resultlegendeavant)) {
+                          echo
+                            $row["id_risque"] . ' : ' . $row["nom_chemin_d_attaque_strategique"] . "<br/>";
+                        }
+                        ?>
                       </div>
                     </div>
                   </div>
@@ -894,13 +879,11 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                           </table>
                         </div>
                         <?php
-                            while($row = mysqli_fetch_array($resultlegendeapres))
-                            {
-                              echo 
-                              $row["id_risque"].' : '.$row["nom_chemin_d_attaque_strategique"]."<br/>"
-                              ;
-                            }
-                            ?>
+                        while ($row = mysqli_fetch_array($resultlegendeapres)) {
+                          echo
+                            $row["id_risque"] . ' : ' . $row["nom_chemin_d_attaque_strategique"] . "<br/>";
+                        }
+                        ?>
                       </div>
                     </div>
                   </div>
@@ -931,7 +914,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           </a>
           <!-- Open the right menu-->
           <a class="open_menu rounded">
-              <i class="fas fa-bars"></i>
+            <i class="fas fa-bars"></i>
           </a>
 
           <!-- -------------------------------------------------------------------------------------------------------------- 
@@ -1050,23 +1033,21 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <script src="content/js/modules/fixed_page.js"></script>
           <script src="content/js/modules/realtime.js"></script>
           <script src="content/js/modules/set_filter_sort_table.js"></script>
-          <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
+          <?php if ($userinfo['type_compte'] == 'Administrateur Logiciel' || $userdroit_chef_de_projet['id_utilisateur'] == $getid) {
           ?>
+            <script src="content/js/atelier/atelier5c.js"></script>
+            <?php
+          } else if (isset($userdroit['ecriture'])) {
+            if ($userdroit['ecriture'] == 'Réalisation') {
+            ?>
               <script src="content/js/atelier/atelier5c.js"></script>
+            <?php
+            } else {
+            ?>
+              <script src="content/js/atelier/atelier5c_no_modification.js"></script>
           <?php
-              }
-              else if(isset($userdroit['ecriture'])){
-                  if($userdroit['ecriture']=='Réalisation'){
-          ?>
-                      <script src="content/js/atelier/atelier5c.js"></script>
-          <?php 
-                  }
-                  else{
-          ?>
-                      <script src="content/js/atelier/atelier5c_no_modification.js"></script>
-          <?php
-                  }
-              }        
+            }
+          }
           ?>
           <script src="content/js/modules/sort_table.js"></script>
           <script src="content/js/atelier/5cheatmapavant.js"></script>
