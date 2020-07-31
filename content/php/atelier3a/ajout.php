@@ -112,10 +112,6 @@ if ($results["error"] === false && isset($_POST['validerpartie'])) {
   $insere->bindParam(6, $maturite_partie_prenante);
   $insere->bindParam(7, $confiance_partie_prenante);
   $insere->bindParam(8, $niveau_de_menace_partie_prenante);
-  // $insere->bindParam(9, $ponderation);
-  // $insere->bindParam(10, $ponderation);
-  // $insere->bindParam(11, $ponderation);
-  // $insere->bindParam(12, $ponderation);
   $insere->bindParam(9, $id_seuil[0]);
   $insere->bindParam(10, $id_atelier);
   $insere->bindParam(11, $id_projet);

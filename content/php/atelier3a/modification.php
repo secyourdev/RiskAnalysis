@@ -102,7 +102,6 @@ if ($input["action"] === 'edit') {
         AND id_projet = $getid_projet
         AND id_atelier = '$id_atelier'
         ";
-        echo $query;
         mysqli_query($connect, $query);
 
         $_SESSION['message_success_2'] = "La partie prenante a bien été modifiée !";

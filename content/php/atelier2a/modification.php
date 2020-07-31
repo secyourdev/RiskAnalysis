@@ -69,7 +69,6 @@ if ($input["action"] === 'delete') {
     DELETE FROM P_SROV 
     WHERE id_source_de_risque = '".$input["id_source_de_risque"]."'
     ";
-    echo $query;
     mysqli_query($connect, $query);
     $_SESSION['message_success'] = "Le couple source de risque/objectif visé a bien été supprimé !";
 }
