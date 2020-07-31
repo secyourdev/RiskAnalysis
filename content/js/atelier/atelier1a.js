@@ -22,9 +22,9 @@ var find_raci_value;
 
 var nombre_atelier = raci.rows.length
 
-var regex_nom_etude = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
-var regex_description_etude = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
-var regex_objectif_atteindre = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
+var regex_nom_etude = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{1,100}$/
+var regex_description_etude = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{1,100}$/
+var regex_objectif_atteindre = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{1,100}$/
 var regex_cadre_temporel = /^[0-9\s-]{0,100}$/
 
 /*------------------------------- SIDEBAR ----------------------------------*/

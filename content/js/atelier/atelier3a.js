@@ -100,3 +100,11 @@ nom.addEventListener('keyup',function(event){
     verify_input(nom.value,regex_nom,nom)
     activate_label(nom.value,label_nom)
 }) 
+
+
+$("#editable_table > tbody > tr > td:nth-child(14)").each(function () {
+    if ($(this)[0].innerText == "Peu critique") { $(this)[0].classList.add('fond-vert'); }
+    if ($(this)[0].innerText == "Moyennement critique") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "Très critique") { $(this)[0].classList.add('fond-rouge'); }
+
+});

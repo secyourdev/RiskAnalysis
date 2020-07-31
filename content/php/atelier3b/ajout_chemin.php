@@ -12,7 +12,6 @@ $id_risque = $_POST['id_risque'];
 $chemin_d_attaque_strategique = $_POST['chemin_d_attaque_strategique'];
 $id_scenario_strategique = $_POST['nom_scenario_strategique'];
 $id_partie_prenante = $_POST['nom_partie_prenante'];
-print $id_partie_prenante;
 $id_chemin_d_attaque = "id_chemin";
 $id_scenar = "id_scenar";
 $id_atelier = "4.a";
@@ -83,6 +82,8 @@ S_scenario_strategique.id_evenement_redoute
 FROM T_chemin_d_attaque_strategique, S_scenario_strategique
 WHERE nom_chemin_d_attaque_strategique = ?
 AND  id_risque = ?
+AND T_chemin_d_attaque_strategique.id_projet = $get_id_projet
+AND S_scenario_strategique.id_projet = $get_id_projet
 AND T_chemin_d_attaque_strategique.id_scenario_strategique = S_scenario_strategique.id_scenario_strategique");
 
 $insereope = $bdd->prepare("INSERT INTO U_scenario_operationnel

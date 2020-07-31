@@ -133,3 +133,11 @@ nommesure.addEventListener('keyup',function(event){
 descriptionmesure.addEventListener('keyup',function(event){
     verify_textarea(descriptionmesure.value,regex_description,descriptionmesure)
 })
+
+
+$("#editable_table > tbody > tr > td:nth-child(10)").each(function () {
+    if ($(this)[0].innerText == "Peu critique") { $(this)[0].classList.add('fond-vert'); }
+    if ($(this)[0].innerText == "Moyennement critique") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "Très critique") { $(this)[0].classList.add('fond-rouge'); }
+
+});

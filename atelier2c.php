@@ -91,6 +91,16 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
       </li>
 
       <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item">
+          <a class="nav-link" href="mode_expert&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+              <i class="fas fa-fw fa-tasks"></i>
+              <span>Mode expert</span></a>
+      </li>
+
+      <!-- Divider -->
       <hr class="sidebar-divider">
 
       <!-- Heading -->

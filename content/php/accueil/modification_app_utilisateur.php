@@ -38,7 +38,7 @@ if($input["action"] === 'edit'){
     }
 
     // Verification du type de compte
-    if(!preg_match("/^[a-zA-Zéèàêâùïüëç@\s-]{0,100}$/", $type_compte)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{1,100}$/", $type_compte)){
         $results["error"] = true;
         $_SESSION['message_error_4'] = "Type de compte invalide";
     }
