@@ -40,9 +40,9 @@ $recupere_chemins_existants = $bdd->prepare("SELECT T_chemin_d_attaque_strategiq
 FROM T_chemin_d_attaque_strategique, U_scenario_operationnel
 WHERE U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique
 AND U_scenario_operationnel.id_projet = ?");
-$recupere_pp_existant = $bdd->prepare("SELECT id_partie_prenante
-FROM R_partie_prenante
-WHERE R_partie_prenante.id_projet = ?");
+$recupere_pp_existant = $bdd->prepare("SELECT T_chemin_d_attaque_strategique.id_partie_prenante
+FROM T_chemin_d_attaque_strategique
+WHERE T_chemin_d_attaque_strategique.id_projet = ?");
 
 $insere = $bdd->prepare(
   "INSERT INTO 
