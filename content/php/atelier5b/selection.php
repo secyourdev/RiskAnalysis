@@ -45,7 +45,7 @@ INNER JOIN U_scenario_operationnel ON U_scenario_operationnel.id_chemin_d_attaqu
 WHERE R_partie_prenante.id_projet = $getid_projet
 ";
 
-$querychemin = "SELECT * FROM T_chemin_d_attaque_strategique NATURAL JOIN S_scenario_strategique WHERE id_projet = $getid_projet";
+$querychemin = "SELECT DISTINCT id_chemin_d_attaque_strategique, nom_chemin_d_attaque_strategique FROM T_chemin_d_attaque_strategique WHERE id_projet = $getid_projet";
 $querylegende = "SELECT DISTINCT id_risque, nom_chemin_d_attaque_strategique FROM T_chemin_d_attaque_strategique NATURAL JOIN S_scenario_strategique WHERE id_projet = $getid_projet";
 
 $result = mysqli_query($connect, $query);

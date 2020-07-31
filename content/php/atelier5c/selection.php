@@ -9,6 +9,7 @@ $query = "SELECT
 T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique, 
 T_chemin_d_attaque_strategique.nom_chemin_d_attaque_strategique,
 M_evenement_redoute.niveau_de_gravite,
+M_evenement_redoute.nom_evenement_redoute,
 U_scenario_operationnel.vraisemblance,
 X_revaluation_du_risque.nom_risque_residuelle,
 X_revaluation_du_risque.description_risque_residuelle,

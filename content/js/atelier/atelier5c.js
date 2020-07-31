@@ -26,11 +26,11 @@ $(document).ready(function () {
         columns: {
             identifier: [0, 'id_revaluation'],
             editable: [
-                [5, 'nom_risque_residuelle'],
-                [6, 'description_risque_residuelle'],
-                [7, 'vraisemblance_residuelle'], 
+                [6, 'nom_risque_residuelle'],
+                [7, 'description_risque_residuelle'],
+                [8, 'vraisemblance_residuelle'], 
                 // [8, 'risque_residuel'],
-                [9, 'gestion_risque_residuelle']
+                [10, 'gestion_risque_residuelle']
             ],
         },
         deleteButton: false,

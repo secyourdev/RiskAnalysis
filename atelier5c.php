@@ -538,6 +538,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <tr>
                                 <th>ID</th>
                                 <th>Nom du risque</th>
+                                <th>Événement redouté</th>
                                 <th>Gravité initiale</th>
                                 <th>Vraisemblance initiale</th>
                                 <th>Risque initial</th>
@@ -560,6 +561,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <tr>
                                 <td>'.$row["id_revaluation"].'</td>
                                 <td>'.$row["nom_chemin_d_attaque_strategique"].'</td>
+                                <td>'.$row["nom_evenement_redoute"].'</td>
                                 <td>'.$row["niveau_de_gravite"].'</td>
                                 <td>'.$row["vraisemblance"].'</td>
                                 <td>'.$risque.'</td>
