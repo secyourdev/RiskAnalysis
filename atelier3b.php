@@ -49,7 +49,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <!-- JS -->
     <script src="content/vendor/jquery/jquery.js"></script>
     <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
-    <link rel="stylesheet" href="content/vendor/bootstrap-select-1.13.14/dist/css/bootstrap-select.css">
+    <!-- <link rel="stylesheet" href="content/vendor/bootstrap-select-1.13.14/dist/css/bootstrap-select.css"> -->
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
@@ -1049,8 +1049,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
                     <div class="form-group col-12">
                       <label for="Select_nom_scenario_strategique">Partie prenante</label>
-                      <select class="selectpicker form-control" name="nom_partie_prenante[]" id="nom_partie_prenante" multiple data-live-search="true">
-                        <!-- <option value="">...</option> -->
+                      <select class="form-control" name="nom_partie_prenante" id="nom_partie_prenante">
+                        <option value="">...</option>
                         <?php
                         while ($row = mysqli_fetch_array($result_id_partie_prenante)) //selection.php
                         {
@@ -1104,7 +1104,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
         <!-- bootstrap-select js -->
-        <script src="content/vendor/bootstrap-select-1.13.14/dist/js/bootstrap-select.js"></script>
+        <!-- <script src="content/vendor/bootstrap-select-1.13.14/dist/js/bootstrap-select.js"></script> -->
 
         <!-- Core plugin JavaScript-->
         <script src="content/vendor/jquery-easing/jquery.easing.js"></script>
