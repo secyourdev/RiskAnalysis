@@ -1,14 +1,5 @@
 ﻿
-console.log('5a-testtableauheatmap.js');
-
 $.post("heatmap-getdata.php", function (data) {
-
-
-	console.log(data);
-	console.log(data['data_dim']);
-	console.log(data['data_cell']);
-
-
 	for (i = 0; i < data['data_dim'].length; i++) {
 		echelle_vraisemblance = data['data_dim'][i]['echelle_vraisemblance'];
 		echelle_gravite = data['data_dim'][i]['echelle_gravite'];
@@ -57,9 +48,6 @@ $.post("heatmap-getdata.php", function (data) {
 			break;
 	}
 
-	
-	
-	
 
 
 
@@ -75,8 +63,6 @@ $.post("heatmap-getdata.php", function (data) {
 					case '1':
 						parent = document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(2) > div")
 						parent.append(id_risque, br)
-						console.log(id_risque, br);
-
 						break;
 					case '2':
 						parent = document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(3) > div")
