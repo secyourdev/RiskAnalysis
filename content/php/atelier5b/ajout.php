@@ -13,10 +13,6 @@ $id_traitement = "id_traitement";
 $nom_mesure = $_POST['nommesure'];
 print $nom_mesure;
 $description_mesure = $_POST['descriptionmesure'];
-<<<<<<< HEAD
-$id_projet = $_SESSION['id_projet'];
-
-=======
 // $dependance = $_POST['dependance'];
 // $penetration = $_POST['penetration'];
 // $maturite = $_POST['maturite'];
@@ -25,7 +21,6 @@ $id_projet = $_SESSION['id_projet'];
 // echo $penetration;
 // echo $maturite;
 // echo $confiance;
->>>>>>> origin/Guillaume
 $id_atelier = "5.b";
 $insere_mesure = $bdd->prepare('INSERT INTO Y_mesure (id_mesure, nom_mesure, description_mesure, id_projet, id_atelier) VALUES ("", ?, ?, ?, ?)');
 $recupere_mesure = $bdd->prepare('SELECT id_mesure FROM Y_mesure WHERE nom_mesure = ? AND description_mesure = ?');
@@ -66,35 +61,6 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $description_
 
 
 if ($results["error"] === false && isset($_POST['ajouterregle'])) {
-<<<<<<< HEAD
-  $insere_mesure->bindParam(1, $id_mesure);
-  $insere_mesure->bindParam(2, $nom_mesure);
-  $insere_mesure->bindParam(3, $description_mesure);
-  $insere_mesure->bindParam(4, $id_projet);
-  $insere_mesure->bindParam(5, $id_atelier);
-  $insere_mesure->execute();
-
-  $recupere_mesure->bindParam(1, $nom_mesure);
-  $recupere_mesure->bindParam(2, $description_mesure);
-  $recupere_mesure->execute();
-  $id_mesure = $recupere_mesure->fetch();
-
-  $recupere_risque->bindParam(1, $id_chemin);
-  $recupere_risque->execute();
-  $id_risque = $recupere_risque->fetch();
-
-  $insere2->bindParam(1, $id_mesure[0]);
-  $insere2->bindParam(2, $id_chemin);
-  $insere2->bindParam(3, $id_risque[0]);
-  $insere2->execute();
-
-  $insere_traitement->bindParam(1, $id_traitement);
-  $insere_traitement->bindParam(2, $id_atelier);
-  $insere_traitement->bindparam(3, $id_projet);
-  $insere_traitement->bindParam(4, $id_mesure[0]);
-  $insere_traitement->execute();
-  $_SESSION['message_success'] = "Le plan d'amélioration continue de la sécurité a été correctement entré !";
-=======
   $recupere_id_mesure->execute();
   $id_mesure_existant = $recupere_id_mesure->fetch(PDO::FETCH_COLUMN);
   print $id_mesure_existant;
@@ -137,6 +103,5 @@ if ($results["error"] === false && isset($_POST['ajouterregle'])) {
   } else {
     $_SESSION['message_error'] = "Le couple mesure - chemin existe déjà";
   }
->>>>>>> origin/Guillaume
 }
 header('Location: ../../../atelier5b.php?id_utilisateur=' . $_SESSION['id_utilisateur'] . '&id_projet=' . $_SESSION['id_projet'] . '#plan_amelioration_continue_de_la_securite');
