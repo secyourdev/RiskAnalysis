@@ -24,9 +24,9 @@ $(document).ready(function () {
         columns: {
             identifier: [0, 'id_source_de_risque'],
             editable: [
-                [5, 'motivation', '{"" : "...", "1": "1", "2": "2", "3": "3"}'],
-                [6, 'ressources', '{"" : "...", "1": "1", "2": "2", "3": "3"}'],
-                [7, 'activite', '{"" : "...", "1": "1", "2": "2", "3": "3"}'],
+                [5, 'motivation', '{"1": "1", "2": "2", "3": "3"}'],
+                [6, 'ressources', '{"1": "1", "2": "2", "3": "3"}'],
+                [7, 'activite', '{"1": "1", "2": "2", "3": "3"}'],
                 [8, 'mode_operatoire'],
                 [9, 'secteur_d_activite'],
                 [10, 'arsenal_d_attaque'],
