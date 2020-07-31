@@ -7,12 +7,11 @@ include("content/php/bdd/connexion_sqli.php");
 $query_dimension = "SELECT DA_echelle.echelle_vraisemblance, DA_echelle.echelle_gravite 
 FROM DA_echelle, F_projet 
 WHERE id_projet = $getid_projet AND F_projet.id_echelle = DA_echelle.id_echelle";
-// print $query_dimension;//5 4 
-// print '<br>';
+
 $exec_dimension = mysqli_query($connect, $query_dimension);
-// var_dump($exec_dimension);
+
 $result_dimension = mysqli_fetch_array($exec_dimension);
-// print_r($result_dimension);
+
 
 
 
@@ -21,24 +20,23 @@ FROM U_scenario_operationnel INNER JOIN T_chemin_d_attaque_strategique ON U_scen
 WHERE M_evenement_redoute.id_projet = $getid_projet
 AND S_scenario_strategique.id_projet = $getid_projet
 AND U_scenario_operationnel.id_projet = $getid_projet";
-// print $query; // 2 1 a
+
 $result = mysqli_query($connect, $query);
-// print_r($result);
+
 
 
 
 $query_exist_bareme = "SELECT id_bareme_risque, vraisemblance, gravite, bareme FROM DB_bareme_risque WHERE id_projet = $getid_projet";
-// print $query_exist_bareme;
+
 $exec_exist_bareme = mysqli_query($connect, $query_exist_bareme);
-// print_r($exec_exist_bareme);
+
 $result_exist_bareme = mysqli_fetch_array($exec_exist_bareme);
-// var_dump($result_exist_bareme);
+
 $bool_exist = ($result_exist_bareme != NULL);
-// print 'bool_exist : ';
-// var_dump($bool_exist);
+
 
 if ($bool_exist) {
-  // print 'bonjour';
+
   $data_bareme = array();
   foreach ($exec_exist_bareme as $row) {
     $bareme_vraisemblance = $row["vraisemblance"];
@@ -61,7 +59,6 @@ $data_dim[] = array(
   "echelle_gravite" => $echelle_gravite,
 );
 
-// print_r($data_dim);
 
 
 $data_cell = array();
@@ -76,7 +73,6 @@ foreach ($result as $row) {
     "id_risque" => $id_risque,
   );
 }
-// print_r($data_cell);
 
 $data = array(
   'data_dim' => $data_dim,

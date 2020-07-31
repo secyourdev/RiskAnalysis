@@ -555,7 +555,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </thead>
                             <tbody>
                               <?php
-                              // print_r(mysqli_fetch_array($result));
+                              
                               while ($row = mysqli_fetch_array($result)) {
                                 $risque = $row["vraisemblance"] * $row["niveau_de_gravite"];
                                 echo '

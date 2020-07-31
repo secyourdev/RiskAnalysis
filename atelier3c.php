@@ -892,30 +892,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         </select>
                       </div>
 
-                      <!-- Menus déroulants pour les règles des mesures de sécurité -->
-
-                      <!-- <div class="form-group col-6">
-                  <label for="referentiel">Référentiel de sécurité</label>
-                  <select class="form-control" id="referentiel", name="referentiel">
-                    <option value="" selected>...</option>
-                    <?php
-                    // while ($row = mysqli_fetch_array($result_referentiel)) //selection.php
-                    // {
-                    //   echo '
-                    //       <option id="id_socle" value="' . $row["id_socle_securite"] . '">' . $row["nom_referentiel"] . '</option>
-                    //       ';
-                    // }
-                    ?>
-                  </select>
-                  <script src="content/js/modules/regles.js"></script>
-                </div>
-                <div class="form-group col-6">
-                  <label for="mesure">Mesure de sécurité</label>
-                  <select class="form-control" id="mesure" name="mesure">
-                    <option value="" selected>Choisissez un référentiel</option>
-                  </select>
-                </div> -->
-
                       <div class="form-group col-6">
                         <label class="titre_input" for="nommesure">Nom de la mesure de sécurité</label>
                         <input type="text" class="perso_form shadow-none form-control form-control-user" name="nommesure" id="nommesure" placeholder="Nom de la mesure de sécurité" required>
@@ -926,92 +902,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <textarea class="form-control perso_text_area" name="descriptionmesure" id="descriptionmesure" rows="3"></textarea>
                       </div>
                     </div>
-                    <!-- <div class="row">
-                      <div class=" col-6">
-                        <div class="choix-valeur">
-                          <div>Dépendance résduelle</div>
-                          <div>
-                            <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Motivation">
-                              <label class="btn perso_checkbox shadow-none">
-                                <input type="radio" name="dependance" autocomplete="off" value="1"> 1
-                              </label>
-                              <label class="btn perso_checkbox shadow-none">
-                                <input type="radio" name="dependance" autocomplete="off" value="2"> 2
-                              </label>
-                              <label class="btn perso_checkbox shadow-none">
-                                <input type="radio" name="dependance" autocomplete="off" value="3"> 3
-                              </label>
-                              <label class="btn perso_checkbox shadow-none">
-                                <input type="radio" name="dependance" autocomplete="off" value="4"> 4
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-
-
-
-                        <div class="choix-valeur">
-                          <div>Penetration résiduelle</div>
-                          <div>
-                            <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Ressources">
-                              <label class="btn perso_checkbox shadow-none">
-                                <input type="radio" name="penetration" autocomplete="off" value="1"> 1
-                              </label>
-                              <label class="btn perso_checkbox shadow-none">
-                                <input type="radio" name="penetration" autocomplete="off" value="2"> 2
-                              </label>
-                              <label class="btn perso_checkbox shadow-none">
-                                <input type="radio" name="penetration" autocomplete="off" value="3"> 3
-                              </label>
-                              <label class="btn perso_checkbox shadow-none">
-                                <input type="radio" name="penetration" autocomplete="off" value="4"> 4
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class=" col-6">
-                        <div class="choix-valeur">
-                          <div>Maturité résiduelle</div>
-                          <div>
-
-                            <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Activité">
-                              <label class="btn perso_checkbox shadow-none">
-                                <input type="radio" name="maturite" autocomplete="off" value="1"> 1
-                              </label>
-                              <label class="btn perso_checkbox shadow-none">
-                                <input type="radio" name="maturite" autocomplete="off" value="2"> 2
-                              </label>
-                              <label class="btn perso_checkbox shadow-none">
-                                <input type="radio" name="maturite" autocomplete="off" value="3"> 3
-                              </label>
-                              <label class="btn perso_checkbox shadow-none">
-                                <input type="radio" name="maturite" autocomplete="off" value="4"> 4
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="choix-valeur">
-                          <div>Confiance résiduelle</div>
-                          <div>
-                            <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Choix">
-                              <label class="btn perso_checkbox shadow-none">
-                                <input type="radio" name="confiance" autocomplete="off" value="1"> 1
-                              </label>
-                              <label class="btn perso_checkbox shadow-none">
-                                <input type="radio" name="confiance" autocomplete="off" value="2"> 2
-                              </label>
-                              <label class="btn perso_checkbox shadow-none">
-                                <input type="radio" name="confiance" autocomplete="off" value="3"> 3
-                              </label>
-                              <label class="btn perso_checkbox shadow-none">
-                                <input type="radio" name="confiance" autocomplete="off" value="4"> 4
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div> -->
+                    
                   </fieldset>
               </div>
               <!-- bouton Ajouter -->
