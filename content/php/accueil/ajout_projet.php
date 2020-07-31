@@ -14,13 +14,13 @@ include("../bdd/connexion.php");
   $insereprojet = $bdd->prepare('INSERT INTO `F_projet`(`nom_projet`, `description_projet`, `id_grp_utilisateur`, `id_utilisateur`, `id_echelle` ) VALUES (?,?,?,?,?)');
 
   // Verification du nom du projet
-    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $nom_etude)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $nom_etude)){
       $results["error"] = true;
       $_SESSION['message_error'] = "Nom invalide";
     }
 
     // Verification de l'description du projet
-    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $description_etude)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $description_etude)){
       $results["error"] = true;
       $_SESSION['message_error'] = "Description invalide";
     }

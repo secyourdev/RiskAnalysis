@@ -14,11 +14,16 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
   $reqproject->execute(array($getidproject));
   $projectinfo = $reqproject->fetch();
 
-  $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.a"');
+  $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="3.c"');
   $reqdroit->bindParam(1, $getid);
   $reqdroit->bindParam(2, $getidproject);
   $reqdroit->execute();
   $userdroit = $reqdroit->fetch();
+
+  $reqdroit_chef_de_projet = $bdd->prepare('SELECT id_utilisateur FROM F_projet WHERE id_projet = ?');
+  $reqdroit_chef_de_projet->bindParam(1, $getidproject);
+  $reqdroit_chef_de_projet->execute();
+  $userdroit_chef_de_projet = $reqdroit_chef_de_projet->fetch();
 ?>
 
   <?php include("content/php/atelier3c/selection.php"); ?>
@@ -55,7 +60,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
   <?php
   if (isset($_SESSION['id_utilisateur']) and $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur']) {
-    if (isset($userdroit['ecriture'])) {
+    if(isset($userdroit['ecriture'])||$userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
   ?>
 
       <body id="page-top">
@@ -424,7 +429,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
               </a>
             </li>
             <li>
-              <a class="nav-link collapse-right-item menu_float" href="#mesure_de_securité">
+              <a class="nav-link collapse-right-item menu_float" href="#mesure_de_securite">
                 <i>
                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
                     <g transform="translate(-1230 -689)">
@@ -465,7 +470,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     </g>
                   </svg>
                 </i>
-                <span class="nom_sous_menu">Carthographie partie prenantes</span>
+                <span class="nom_sous_menu">Cartographie parties prenantes</span>
               </a>
             </li>
           </ul>
@@ -636,7 +641,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   </div>
 
                   <!-- Area Card -->
-                  <div id="mesure_de_securité" class="col-xl-12 col-lg-12">
+                  <div id="mesure_de_securite" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -692,11 +697,26 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             }
                         ?>
                         </div>
-
-                        <!-- bouton Ajouter une nouvelle ligne -->
-                        <div class="text-center">
-                          <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_mesure_sécurité">Ajouter une mesure de sécurité</button>
-                        </div>
+                          
+                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                        ?> 
+                                <!-- bouton Ajouter une nouvelle ligne -->
+                                <div class="text-center">
+                                  <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_mesure_sécurité">Ajouter une mesure de sécurité</button>
+                                </div>
+                        <?php
+                              }
+                              else if (isset($userdroit['ecriture'])){
+                                if($userdroit['ecriture']=='Réalisation'){
+                        ?>
+                                <!-- bouton Ajouter une nouvelle ligne -->
+                                <div class="text-center">
+                                  <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_mesure_sécurité">Ajouter une mesure de sécurité</button>
+                                </div>
+                        <?php
+                                }
+                              }                          
+                        ?>
                       </div>
                     </div>
                   </div>
@@ -820,8 +840,9 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <a class="open_menu rounded">
           <i class="fas fa-bars"></i>
         </a>
-
-        <!----------------------------------------------------------------------------------------------------------------- 
+<?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid||(isset($userdroit['ecriture'])&&$userdroit['ecriture']=='Réalisation')){ 
+?> 
+  <!----------------------------------------------------------------------------------------------------------------- 
   ----------------------------------------- modal ajout de ligne ----------------------------------------------------
   ------------------------------------------------------------------------------------------------------------------>
         <div class="modal fade" id="ajout_ligne_mesure_sécurité" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -986,12 +1007,12 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                 <input type="submit" name="validermesure1" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
               </div>
               </form>
-
-
             </div>
           </div>
         </div>
-
+<?php
+  }
+?>
 
         <!-- Logout Modal-->
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1035,7 +1056,24 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <script src="content/js/modules/fixed_page.js"></script>
         <script src="content/js/modules/realtime.js"></script>
         <script src="content/js/modules/set_filter_sort_table.js"></script>
-        <script src="content/js/atelier/atelier3c.js"></script>
+        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
+        ?>
+            <script src="content/js/atelier/atelier3c.js"></script>
+        <?php
+            }
+            else if(isset($userdroit['ecriture'])){
+                if($userdroit['ecriture']=='Réalisation'){
+        ?>
+                    <script src="content/js/atelier/atelier3c.js"></script>
+        <?php 
+                }
+                else{
+        ?>
+                    <script src="content/js/atelier/atelier3c_no_modification.js"></script>
+        <?php
+                }
+            }        
+        ?>
         <script src="content/js/modules/sort_table.js"></script>
         <script src="content/js/modules/browse.js"></script>
         <script src="content/js/modules/parser.js"></script>

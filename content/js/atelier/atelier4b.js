@@ -2,12 +2,7 @@
 var accordionSidebar = document.getElementById("accordionSidebar");
 var sidebarToggle = document.getElementById("sidebarToggle");
 
-var button = document.getElementsByClassName('tabledit-edit-button')
-var save_button = document.getElementsByClassName('tabledit-save-button')
 var valeurvraisemblance = document.getElementById('valeurvraisemblance');
-var j=0;
-var k=0;
-var l=0;
 var valeurs = {};
 
 /*------------------------------- SIDEBAR ----------------------------------*/
@@ -56,23 +51,6 @@ $(document).ready(function(){
                     button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table'+','+'5'+')')
                 }
             });
-
-        }
-        
-    })
-    
+        }      
+    })    
 });
-
-// /*--------------------------- SORT & FILTER TABLES --------------------------*/
-// setSortTable('editable_table');
-// OURJQUERYFN.setFilterTable("#rechercher_chemin","#editable_table tbody tr")
-
-// /*------------------ AJOUT DE LA VERIFICATION DES TABLEAUX ------------------*/
-// sleep(100).then(() => {
-//     for(let i=0;i<editable_table.rows.length-1;i++){
-//         j=i+1;
-//         button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table'+','+'5'+')')
-//     }
-// });
-
-

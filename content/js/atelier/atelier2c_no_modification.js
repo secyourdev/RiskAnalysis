@@ -25,7 +25,7 @@ $(document).ready(function () {
         },
         restoreButton: false,
         editButton: false,
-        deleteButton: false,
+        deleteButton: false
     });
 });
 /*--------------------------- SORT & FILTER TABLES --------------------------*/

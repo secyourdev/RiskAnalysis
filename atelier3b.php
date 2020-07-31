@@ -14,11 +14,16 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
   $reqproject->execute(array($getidproject));
   $projectinfo = $reqproject->fetch();
 
-  $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.a"');
+  $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="3.b"');
   $reqdroit->bindParam(1, $getid);
   $reqdroit->bindParam(2, $getidproject);
   $reqdroit->execute();
   $userdroit = $reqdroit->fetch();
+
+  $reqdroit_chef_de_projet = $bdd->prepare('SELECT id_utilisateur FROM F_projet WHERE id_projet = ?');
+  $reqdroit_chef_de_projet->bindParam(1, $getidproject);
+  $reqdroit_chef_de_projet->execute();
+  $userdroit_chef_de_projet = $reqdroit_chef_de_projet->fetch();
 ?>
 
   <?php include("content/php/atelier3b/selection.php"); ?>
@@ -52,8 +57,9 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
   </head>
 
   <?php
-  if (isset($_SESSION['id_utilisateur']) and $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur']) {
-    if (isset($userdroit['ecriture'])) {
+  if (isset($_SESSION['id_utilisateur']) and $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur'])
+  {
+    if(isset($userdroit['ecriture'])||$userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
   ?>
 
       <body id="page-top">
@@ -619,16 +625,16 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <?php
                               while ($row = mysqli_fetch_array($result_SROV)) {
                                 echo '
-                          <tr>
-                          <td>' . $row["id_source_de_risque"] . '</td>
-                          <td>' . $row["type_d_attaquant_source_de_risque"] . '</td>
-                          <td>' . $row["profil_de_l_attaquant_source_de_risque"] . '</td>
-                          <td>' . $row["description_source_de_risque"] . '</td>
-                          <td>' . $row["objectif_vise"] . '</td>
-                          <td>' . $row["description_objectif_vise"] . '</td>
+                                <tr>
+                                <td>' . $row["id_source_de_risque"] . '</td>
+                                <td>' . $row["type_d_attaquant_source_de_risque"] . '</td>
+                                <td>' . $row["profil_de_l_attaquant_source_de_risque"] . '</td>
+                                <td>' . $row["description_source_de_risque"] . '</td>
+                                <td>' . $row["objectif_vise"] . '</td>
+                                <td>' . $row["description_objectif_vise"] . '</td>
 
-                          </tr>
-                          ';
+                                </tr>
+                                ';
                               }
                               ?>
                             </tbody>
@@ -695,11 +701,26 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             }
                         ?>
                         </div>                             
-
-                        <!-- bouton Ajouter une nouvelle ligne -->
-                        <div class="text-center">
-                          <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_scenario_strategique">Ajouter un scénario stratégique</button>
-                        </div>
+                        
+                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                        ?>
+                                <!-- bouton Ajouter une nouvelle ligne -->
+                                <div class="text-center">
+                                  <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_scenario_strategique">Ajouter un scénario stratégique</button>
+                                </div>
+                        <?php
+                              }
+                              else if (isset($userdroit['ecriture'])){
+                                if($userdroit['ecriture']=='Réalisation'){
+                        ?>
+                                <!-- bouton Ajouter une nouvelle ligne -->
+                                <div class="text-center">
+                                  <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_scenario_strategique">Ajouter un scénario stratégique</button>
+                                </div>
+                        <?php
+                                }
+                              }                          
+                        ?>        
                       </div>
                     </div>
                   </div>
@@ -722,43 +743,74 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                           <select class="form-control" name="select_nom_scenario_strategique" id="select_nom_scenario_strategique">
                             <option value="" selected>...</option>
                             <?php
-                            // print 'bonjour';
-                            // print_r($result_scenario_op);
-                            while ($row = mysqli_fetch_array($result_scenario_op)) //selection.php
+                            while ($row = mysqli_fetch_array($result_scenario_op)) 
                             {
-                              // print_r($row);
                               echo '<option id="scenario_strategique" value="' . $row['id_scenario_strategique'] . '">' . $row['nom_scenario_strategique'] . '</option>';
                             }
                             ?>
                           </select>
+                          </br>
+                          <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                          ?> 
+                                  <div class="custom-file">
+                                    <input name="inpFile" id="inpFile" class="custom-file-input" type="file">
+                                    <label class="custom-file-label" for="inpFile">Choisir un fichier au format image</label>
+                                  </div>
+                                  
+                                  <div class='message_success'>
+                                  <?php 
+                                      if(isset($_SESSION['message_success_2'])){
+                                        echo $_SESSION['message_success_2'];
+                                        unset($_SESSION['message_success_2']);
+                                      }
+                                  ?>
+                                  </div> 
+                                  <div class='message_error'>
+                                  <?php                
+                                      if(isset($_SESSION['message_error_2'])){
+                                          echo $_SESSION['message_error_2'];
+                                          unset($_SESSION['message_error_2']);
+                                      }
+                                  ?>
+                                  </div>
 
-                          <br>
-
-                          <div class="custom-file">
-                            <input name="inpFile" id="inpFile" class="custom-file-input" type="file">
-                            <label class="custom-file-label" for="inpFile">Choisir un fichier au format image</label>
-                          </div>
-                          
-                          <div class='message_success'>
-                          <?php 
-                              if(isset($_SESSION['message_success_2'])){
-                                echo $_SESSION['message_success_2'];
-                                unset($_SESSION['message_success_2']);
-                              }
+                                  <div class="form-group" align="center">
+                                    <input type="submit" name="file_submit" id="file_submit" class="btn perso_btn_primary shadow-none" value="Ajouter une image" />
+                                  </div>
+                          <?php
+                                }
+                                else if (isset($userdroit['ecriture'])){
+                                    if($userdroit['ecriture']=='Réalisation'){
                           ?>
-                          </div> 
-                          <div class='message_error'>
-                          <?php                
-                              if(isset($_SESSION['message_error_2'])){
-                                  echo $_SESSION['message_error_2'];
-                                  unset($_SESSION['message_error_2']);
-                              }
-                          ?>
-                          </div>
+                                      <div class="custom-file">
+                                        <input name="inpFile" id="inpFile" class="custom-file-input" type="file">
+                                        <label class="custom-file-label" for="inpFile">Choisir un fichier au format image</label>
+                                      </div>
+                                      
+                                      <div class='message_success'>
+                                      <?php 
+                                          if(isset($_SESSION['message_success_2'])){
+                                            echo $_SESSION['message_success_2'];
+                                            unset($_SESSION['message_success_2']);
+                                          }
+                                      ?>
+                                      </div> 
+                                      <div class='message_error'>
+                                      <?php                
+                                          if(isset($_SESSION['message_error_2'])){
+                                              echo $_SESSION['message_error_2'];
+                                              unset($_SESSION['message_error_2']);
+                                          }
+                                      ?>
+                                      </div>
 
-                          <div class="form-group" align="center">
-                            <input type="submit" name="file_submit" id="file_submit" class="btn perso_btn_primary shadow-none" value="Ajouter une image" />
-                          </div>
+                                      <div class="form-group" align="center">
+                                        <input type="submit" name="file_submit" id="file_submit" class="btn perso_btn_primary shadow-none" value="Ajouter une image" />
+                                      </div>
+                          <?php
+                                    }
+                                }                          
+                          ?>
                         </form>
 
 
@@ -829,10 +881,25 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         ?>
                         </div>
 
-                        <!-- bouton Ajouter une nouvelle ligne -->
-                        <div class="text-center">
-                          <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_chemin_attaque">Ajouter un chemin d'attaque</button>
-                        </div>
+                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                        ?>
+                                <!-- bouton Ajouter une nouvelle ligne -->
+                                <div class="text-center">
+                                  <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_chemin_attaque">Ajouter un chemin d'attaque</button>
+                                </div>
+                        <?php
+                              }
+                              else if (isset($userdroit['ecriture'])){
+                                if($userdroit['ecriture']=='Réalisation'){
+                        ?>
+                                  <!-- bouton Ajouter une nouvelle ligne -->
+                                  <div class="text-center">
+                                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_chemin_attaque">Ajouter un chemin d'attaque</button>
+                                  </div>
+                        <?php
+                                }
+                              }                          
+                        ?>
                       </div>
                     </div>
                   </div>
@@ -866,7 +933,10 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <a class="open_menu rounded">
           <i class="fas fa-bars"></i>
         </a>
-        <!-- -------------------------------------------------------------------------------------------------------------- 
+
+<?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid||(isset($userdroit['ecriture'])&&$userdroit['ecriture']=='Réalisation')){ 
+?> 
+<!----------------------------------------------------------------------------------------------------------------- 
 ----------------------------------------- modal ajout de ligne ----------------------------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
         <div class="modal fade" id="ajout_ligne_scenario_strategique" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -930,7 +1000,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         </div>
 
 
-        <!-- -------------------------------------------------------------------------------------------------------------- 
+<!---------------------------------------------------------------------------------------------------------------- 
 ----------------------------------------- modal ajout de ligne ----------------------------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
         <div class="modal fade" id="ajout_ligne_chemin_attaque" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -999,11 +1069,12 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   </fieldset>
                 </form>
               </div>
-
-
             </div>
           </div>
         </div>
+<?php
+}
+?>
         <!-- Logout Modal-->
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -1049,7 +1120,24 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <script src="content/js/modules/fixed_page.js"></script>
         <script src="content/js/modules/realtime.js"></script>
         <script src="content/js/modules/set_filter_sort_table.js"></script>
-        <script src="content/js/atelier/atelier3b.js"></script>
+        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
+        ?>
+            <script src="content/js/atelier/atelier3b.js"></script>
+        <?php
+            }
+            else if(isset($userdroit['ecriture'])){
+                if($userdroit['ecriture']=='Réalisation'){
+        ?>
+                    <script src="content/js/atelier/atelier3b.js"></script>
+        <?php 
+                }
+                else{
+        ?>
+                    <script src="content/js/atelier/atelier3b_no_modification.js"></script>
+        <?php
+                }
+            }        
+        ?>
         <script src="content/js/modules/sort_table.js"></script>
         <script src="content/js/modules/browse_img.js"></script>
         <script src="content/js/modules/ajax_pour_image.js"></script>

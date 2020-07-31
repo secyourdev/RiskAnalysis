@@ -6,8 +6,8 @@ var nommesure = document.getElementById("nommesure");
 var descriptionmesure = document.getElementById("descriptionmesure");
 var label_mesure = document.getElementById("nommesure").previousSibling.previousSibling
 
-var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,100}$/
-var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,1000}$/
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,1000}$/
 
 var button = document.getElementsByClassName('tabledit-edit-button')
 var save_button = document.getElementsByClassName('tabledit-save-button')
@@ -38,7 +38,7 @@ $(document).ready(function () {
         },
         restoreButton: false,
         editButton: false,
-        deleteButton: false,
+        deleteButton: false
     });
 });
 
@@ -52,7 +52,7 @@ $(document).ready(function () {
         },
         restoreButton: false,
         editButton: false,
-        deleteButton: false,
+        deleteButton: false
     });
 });
 
@@ -124,7 +124,7 @@ sleep(100).then(() => {
 /*------------------------------ LABELS CACHES ------------------------------*/
 label_mesure.style.display="none"
 
-/*----------------------- ENREGISTREMENT DES COOKIES ------------------------*/
+/*----------------------- -- VERIFICATION DES CHAMPS -- ------------------------*/
 nommesure.addEventListener('keyup',function(event){
     verify_input(nommesure.value,regex_nom,nommesure)
     activate_label(nommesure.value,label_mesure)

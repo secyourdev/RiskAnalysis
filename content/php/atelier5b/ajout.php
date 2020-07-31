@@ -1,14 +1,11 @@
 <?php
 session_start();
-header('Location: ../../../atelier5b.php?id_utilisateur='.$_SESSION['id_utilisateur'].'&id_projet='.$_SESSION['id_projet']);
-
 include("../bdd/connexion.php");
 
 $results["error"] = false;
 $results["message"] = [];
 
 $id_chemin = $_POST['chemin'];
-echo $id_chemin;
 $id_mesure = "id_mesure";
 $id_traitement = "id_traitement";
 $nom_mesure = $_POST['nommesure'];
@@ -41,6 +38,17 @@ $updatechemin = $bdd->prepare(
   WHERE id_chemin_d_attaque_strategique = ?
   '
 );
+
+// Verification du nom de la mesure
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $nom_mesure)) {
+  $results["error"] = true;
+  $_SESSION['message_error'] = "Nom de la mesure invalide";
+}
+// Verification de la description de la mesure
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $description_mesure)) {
+  $results["error"] = true;
+  $_SESSION['message_error'] = "Description de la mesure invalide";
+}
 
 
 if ($results["error"] === false && isset($_POST['ajouterregle'])) {
@@ -102,9 +110,7 @@ if ($results["error"] === false && isset($_POST['ajouterregle'])) {
   $insere_traitement->bindparam(3, $id_projet);
   $insere_traitement->bindParam(4, $id_mesure[0]);
   $insere_traitement->execute();
-?>
-  <strong style="color:#4AD991;">La personne a bien été ajoutée !</br></strong>
-<?php
+  $_SESSION['message_success'] = "Le plan d'amélioration continue de la sécurité a été correctement entré !";
 }
-
+header('Location: ../../../atelier5b.php?id_utilisateur='.$_SESSION['id_utilisateur'].'&id_projet='.$_SESSION['id_projet'].'#plan_amelioration_continue_de_la_securite');
 ?>

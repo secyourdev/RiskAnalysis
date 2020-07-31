@@ -23,25 +23,25 @@ VALUES ('',?,?,?,?,?,?,?,?, '1.d', $getid_projet)"
 );
 
 // Verification du nom_referentiel
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $nom_referentiel)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $nom_referentiel)) {
   $results["error"] = true;
   $_SESSION['message_error_2'] = "Nom du référenciel invalide";
 }
 
 // Verification du id_regle_affichage
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $id_regle_affichage)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $id_regle_affichage)) {
   $results["error"] = true;
   $_SESSION['message_error_2'] = "ID de la règle invalide";
 }
 
 // Verification du titre
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $titre)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $titre)) {
   $results["error"] = true;
   $_SESSION['message_error_2'] = "Titre de la règle invalide";
 }
 
 // Verification du description
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $description)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $description)) {
   $results["error"] = true;
   $_SESSION['message_error_2'] = "Description invalide";
 }

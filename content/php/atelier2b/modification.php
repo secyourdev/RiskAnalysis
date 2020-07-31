@@ -36,25 +36,25 @@ if ($input["action"] === 'edit'){
     $results["error"] = false;
 
     // Verification du mode opératoire
-    if (!preg_match("/^$|^[a-zA-Z0-9éèàêâôùïüëç'\s-]{1,100}$/", $mode_operatoire)) {
+    if (!preg_match("/^$|^[a-zA-Z0-9éèàêâôùïüëç'\s-]{0,100}$/", $mode_operatoire)) {
         $results["error"] = true;
         $_SESSION['message_error'] = "Mode opératoire invalide";
     }
 
     // Verification du secteur d'activité
-    if (!preg_match("/^$|^[a-zA-Z0-9éèàêâôùïüëç'\s-]{1,100}$/", $secteur_activite)) {
+    if (!preg_match("/^$|^[a-zA-Z0-9éèàêâôùïüëç'\s-]{0,100}$/", $secteur_activite)) {
         $results["error"] = true;
         $_SESSION['message_error'] = "Secteur d'activité invalide";
     }
 
     // Verification de l'arsenal d'attaque'
-    if (!preg_match("/^$|^[a-zA-Z0-9éèàêâôùïüëç'\s-]{1,100}$/", $arsenal_attaque)) {
+    if (!preg_match("/^$|^[a-zA-Z0-9éèàêâôùïüëç'\s-]{0,100}$/", $arsenal_attaque)) {
         $results["error"] = true;
         $_SESSION['message_error'] = "Arsenal d'attaque invalide";
     }
 
     // Verification des afaits d'armes
-    if (!preg_match("/^$|^[a-zA-Z0-9éèàêâôùïüëç'\s-]{1,100}$/", $faits_armes)) {
+    if (!preg_match("/^$|^[a-zA-Z0-9éèàêâôùïüëç'\s-]{0,100}$/", $faits_armes)) {
         $results["error"] = true;
         $_SESSION['message_error'] = "Faits d'armes invalide";
     }

@@ -667,7 +667,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                     else { 
                                             ?>
                                                         </br>
-                                                        <label id="nom_etude" class="no_modification"></input>
+                                                        <label id="nom_etude" class="no_modification"></label>
                                         </div>
                                             <?php
                                                     }
@@ -693,7 +693,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                     else { 
                                             ?>
                                                         </br>
-                                                        <label id="objectif_atteindre" class="no_modification"></input>
+                                                        <label id="objectif_atteindre" class="no_modification"></label>
                                         </div>
                                             <?php
                                                     }
@@ -720,7 +720,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                     else { 
                                             ?>
                                                         </br>
-                                                        <label id="cadre_temporel" class="no_modification"></input>
+                                                        <label id="cadre_temporel" class="no_modification"></label>
                                         </div>
                                             <?php
                                                     }
@@ -766,7 +766,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                     else { 
                                             ?>
                                                     </br>
-                                                    <label id="respo_acceptation_risque" class="no_modification"></input>
+                                                    <label id="respo_acceptation_risque" class="no_modification"></label>
                                         </div>
                                             <?php
                                                     }

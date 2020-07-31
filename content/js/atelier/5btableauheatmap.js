@@ -3,7 +3,7 @@ console.log('5a-testtableauheatmap.js');
 
 $.post("heatmap-getdata.php", function (data) {
 
-
+	console.log('bonjour');
 	// console.log(data);
 	// console.log(data['data_dim']);
 	// console.log(data['data_cell']);
@@ -351,58 +351,135 @@ $.post("heatmap-getdata.php", function (data) {
 
 	}
 
-	// console.log(parseInt(echelle_gravite));
-	// console.log(parseInt(echelle_vraisemblance));
+	console.log(parseInt(echelle_gravite));
+	console.log(parseInt(echelle_vraisemblance));
 
-	for (let i = 1; i <= (parseInt(echelle_gravite)); i++) {
 
+
+
+
+	if (data['bareme_exist']) {
+		console.log("if (data['bareme_exist']) : ");
+		
+		for (i = 0; i < data['bareme_exist'].length; i++) {
+			console.log(data['bareme_exist'][i]);
+			
+			bareme_vraisemblance = parseInt(data['bareme_exist'][i]['bareme_vraisemblance']);
+			console.log(bareme_vraisemblance);
+			bareme_gravite = parseInt(data['bareme_exist'][i]['bareme_gravite']);
+			console.log(bareme_gravite);
+			bareme_bareme = data['bareme_exist'][i]['bareme_bareme'];
+			console.log(bareme_bareme);
+			
+
+			switch (bareme_gravite) {
+				case 5:
+					$gravite_to_print = 2
+					console.log("$gravite_to_print = 2");
+					break;
+				case 4:
+					$gravite_to_print = 3
+					console.log("$gravite_to_print = 3");
+					break;
+				case 3:
+					$gravite_to_print = 4
+					console.log("$gravite_to_print = 4");
+
+					break;
+				case 2:
+					$gravite_to_print = 5
+					console.log("$gravite_to_print = 5");
+					break;
+				case 1:
+					$gravite_to_print = 6
+					console.log("$gravite_to_print = 6");
+					break;
+			}
+			$vraisemblance_to_print = bareme_vraisemblance + 1;
+
+			$("#dataTable > tbody > tr:nth-child(" + $gravite_to_print + ") > td:nth-child(" + $vraisemblance_to_print + ")").removeClass().addClass(bareme_bareme);
+			console.log($("#dataTable > tbody > tr:nth-child(" + $gravite_to_print + ") > td:nth-child(" + $vraisemblance_to_print + ")"));
+			
+		}
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	for (let i = 2; i <= (parseInt(echelle_vraisemblance)) + 1; i++) {
 		// console.log('gravite: ' + i);
 
-		for (let j = 1; j <= (parseInt(echelle_vraisemblance)); j++) {
+		for (let j = 2; j <= (parseInt(echelle_vraisemblance)) + 1; j++) {
+			// console.log('vraisemblance: ' + j);
 
-			console.log('vraisemblance: ' + j);
+			$("#dataTable > tbody > tr:nth-child(" + i + ") > td:nth-child(" + j + ")").on('click', function () {
 
-			
-			console.log(document.getElementById("dataTable").rows[i].cells[j]);
-			document.getElementById("dataTable").rows[i].cells[j].addEventListener('click', function () {
-				
-				var case_echelle_gravite = i
-				console.log(case_echelle_gravite);
-				
-				var case_echelle_vraisemblance = j
-				console.log(case_echelle_vraisemblance);
-				
 				sleep(100).then(() => {
-					var case_couleur = document.getElementById("dataTable").rows[i].cells[j].classList[0]
-					console.log(case_couleur);
-					
-					
-					
+
+					$color_to_send = $("#dataTable > tbody > tr:nth-child(" + i + ") > td:nth-child(" + j + ")")[0].classList[0];
+
+					switch (i) {
+						case 2:
+							$gravite_to_send = 5
+							break;
+						case 3:
+							$gravite_to_send = 4
+							break;
+						case 4:
+							$gravite_to_send = 3
+							break;
+						case 5:
+							$gravite_to_send = 2
+							break;
+						case 6:
+							$gravite_to_send = 1
+							break;
+					}
+					console.log($color_to_send);
+
 					$.ajax({
 						url: 'content/php/atelier5b/ajax-heatmap.php',
 						type: 'POST',
 						data: {
-							case_echelle_gravite: case_echelle_gravite,
-							case_echelle_vraisemblance: case_echelle_vraisemblance,
-							case_couleur: case_couleur
+							case_echelle_gravite: $gravite_to_send,
+							case_echelle_vraisemblance: j - 1,
+							case_couleur: $color_to_send
 						},
 						success: function () {
 							console.log('traitement du barème fait');
 						}
 					});
-					
 				});
-			})
+
+			});
+
 		}
 	}
+
+
 })
 
-$('table').on('click', "td", function () {
+$('#dataTable').on('click', "td", function () {
 	if ($(this).hasClass('fond-vert')) {
+		// console.log($(this)[0].parentNode.firstElementChild.textContent);
 		$(this).removeClass('fond-vert').addClass('fond-orange');
 	} else if ($(this).hasClass('fond-orange')) {
+		// console.log($(this)[0].parentNode.firstElementChild.textContent);
 		$(this).removeClass('fond-orange').addClass('fond-rouge');
 	} else if ($(this).hasClass('fond-rouge')) {
+		// console.log($(this)[0].parentNode.firstElementChild.textContent);
 		$(this).removeClass('fond-rouge').addClass('fond-vert');
 	}
 });

@@ -18,13 +18,13 @@ echo $descriptionbs;
 $inserebs = $bdd->prepare('INSERT INTO K_bien_support(id_bien_support, nom_bien_support, description_bien_support, id_atelier, id_projet) VALUES (?,?,?,?,?)');
 
 // Verification du nom du bien support
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $biensupport)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $biensupport)) {
   $results["error"] = true;
   $_SESSION['message_error_3'] = "Nom invalide";
 }
 
 // Verification de la description du bien support
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,1000}$/", $descriptionbs)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $descriptionbs)) {
   $results["error"] = true;
   $_SESSION['message_error_3'] = "Description invalide";
 }

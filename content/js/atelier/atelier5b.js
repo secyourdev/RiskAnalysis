@@ -1,8 +1,15 @@
 /*------------------------------ VARIABLES ----------------------------------*/
-var button = document.getElementsByClassName('tabledit-edit-button')
-var save_button = document.getElementsByClassName('tabledit-save-button')
-var j=0;
+var accordionSidebar = document.getElementById("accordionSidebar");
+var sidebarToggle = document.getElementById("sidebarToggle");
 
+var nom_mesure = document.getElementById('nommesure')
+var description_mesure = document.getElementById('descriptionmesure')
+
+var label_nom = document.getElementById('nommesure').previousSibling.previousSibling
+var label_description = document.getElementById('descriptionmesure').previousSibling.previousSibling
+
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{0,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,1000}$/
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
 sidebarToggleTop.addEventListener('click', show_sub_content,false);
@@ -63,29 +70,24 @@ $(document).ready(function () {
 
     });
 });
-
 /*--------------------------- SORT & FILTER TABLES --------------------------*/
-// setSortTable('editable_table');
-// OURJQUERYFN.setFilterTable("#rechercher_tableau","#editable_table tbody tr")
 setSortTable('editable_table');
 OURJQUERYFN.setFilterTable("#rechercher_pacs","#editable_table tbody tr")
-
-/*------------------ AJOUT DE LA VERIFICATION DES TABLEAUX ------------------*/
-sleep(100).then(() => {
-    for(let i=0;i<editable_table.rows.length-1;i++){
-        j=i+1;
-        button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table'+','+'9'+')')
-    }
-});
-
-
-
-
 /*--------------------------- Couleurs pacs > statut --------------------------*/
-$("#pacs > tbody > tr > td:nth-child(9)").each(function () {
-
+$("#editable_table > tbody > tr > td:nth-child(9)").each(function () {
     if ($(this)[0].innerText == "Terminé") { $(this)[0].classList.add('fond-vert'); }
     if ($(this)[0].innerText == "En cours") { $(this)[0].classList.add('fond-orange'); }
     if ($(this)[0].innerText == "A lancer") { $(this)[0].classList.add('fond-rouge'); }
 
 });
+/*------------------------------ LABELS CACHES ------------------------------*/
+label_nom.style.display="none"
+/*-------------------------- VERIFICATION DES CHAMPS ------------------------*/
+nom_mesure.addEventListener('keyup',function(event){
+    verify_input(nom_mesure.value,regex_nom,nom_mesure)
+    activate_label(nom_mesure.value,label_nom)
+}) 
+
+description_mesure.addEventListener('keyup',function(event){
+    verify_textarea(description_mesure.value,regex_description,description_mesure)
+})

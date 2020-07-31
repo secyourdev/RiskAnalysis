@@ -1,3 +1,6 @@
+/*------------------------------- VARIABLES ----------------------------------*/
+var accordionSidebar = document.getElementById("accordionSidebar");
+var sidebarToggle = document.getElementById("sidebarToggle");
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
 sidebarToggleTop.addEventListener('click', show_sub_content,false);

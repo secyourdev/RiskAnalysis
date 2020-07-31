@@ -29,12 +29,7 @@ $(document).ready(function () {
         },
         restoreButton: false,
         editButton: false,
-        deleteButton: false,
-        onSuccess: function (data, textStatus, jqXHR) {
-            if (data.action == 'delete') {
-                $('#' + data.id_bien_support).remove();
-            }
-        }
+        deleteButton: false
     });
 });
 $(document).ready(function () {
@@ -46,12 +41,7 @@ $(document).ready(function () {
         },
         restoreButton: false,
         editButton: false,
-        deleteButton: false,
-        onSuccess: function (data, textStatus, jqXHR) {
-            if (data.action == 'delete') {
-                $('#' + data.id_valeur_metier).remove();
-            }
-        }
+        deleteButton: false
     });
 });
 $(document).ready(function () {
@@ -63,12 +53,7 @@ $(document).ready(function () {
         },
         restoreButton: false,
         editButton: false,
-        deleteButton: false,
-        onSuccess: function (data, textStatus, jqXHR) {
-            if (data.action == 'delete') {
-                $('#' + data.id_mission).remove();
-            }
-        }
+        deleteButton: false
     });
 });
 

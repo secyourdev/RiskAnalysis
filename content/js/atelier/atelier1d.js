@@ -17,8 +17,8 @@ var description = document.getElementById("description");
 var label_id_regle = document.getElementById("id_regle").previousSibling.previousSibling
 
 
-var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,100}$/
-var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,1000}$/
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,1000}$/
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
 sidebarToggleTop.addEventListener('click', show_sub_content, false);
@@ -54,32 +54,6 @@ $(document).ready(function () {
         }
     });
 });
-$(document).ready(function () {
-    $('#editable_table_ecart').Tabledit({
-        url: 'content/php/atelier1d/modification_regle.php',
-        sortable: true,
-        columns: {
-            identifier: [0, 'id_ecarts'],
-            editable: [
-                // [1, 'id_regle'],
-                // [2, 'titre'],
-                // [3, 'description'],
-                [4, 'etat_de_la_regle', '{"Non traité" : "Non traité" , "Conforme" : "Conforme" , "Partiellement conforme" : "Partiellement conforme" ,  "Non conforme" : "Non conforme", "Non applicable" : "Non applicable"}'],
-                [5, 'justification_ecart'],
-                [6, 'nom'],
-                // [7, 'date']
-            ],
-
-            dateeditable: [[7, 'date']]
-        },
-        restoreButton: false,
-        onSuccess: function (data, textStatus, jqXHR) {
-            if (data.action == 'delete') {
-                $('#' + data.id_ecarts).remove();
-            }
-        }
-    });
-});
 
 /*--------------------------- SORT & FILTER TABLES --------------------------*/
 setSortTable('editable_table_socle');
@@ -94,7 +68,7 @@ label_nomreferentiel.style.display="none"
 label_commentaire.style.display="none"
 label_id_regle.style.display="none"
 
-/*----------------------- ENREGISTREMENT DES COOKIES ------------------------*/
+/*----------------------- -- VERIFICATION DES CHAMPS -- ------------------------*/
 typereferentiel.addEventListener('keyup',function(event){
     verify_input(typereferentiel.value,regex_nom,typereferentiel)
     activate_label(typereferentiel.value,label_typereferentiel)

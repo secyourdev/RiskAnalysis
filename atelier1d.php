@@ -14,11 +14,16 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
   $reqproject->execute(array($getidproject));
   $projectinfo = $reqproject->fetch();
 
-  $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.a"');
+  $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.d"');
   $reqdroit->bindParam(1, $getid);
   $reqdroit->bindParam(2, $getidproject);
   $reqdroit->execute();
   $userdroit = $reqdroit->fetch();
+
+  $reqdroit_chef_de_projet = $bdd->prepare('SELECT id_utilisateur FROM F_projet WHERE id_projet = ?');
+  $reqdroit_chef_de_projet->bindParam(1, $getidproject);
+  $reqdroit_chef_de_projet->execute();
+  $userdroit_chef_de_projet = $reqdroit_chef_de_projet->fetch();
 ?>
 
   <?php include("content/php/atelier1d/selection.php"); ?>
@@ -40,13 +45,10 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <!-- CSS -->
     <link href="content/css/bootstrap.css" rel="stylesheet">
     <link href="content/css/main.css" rel="stylesheet">
-    <!-- <link href="content/vendor/jquery-ui/jquery-ui.css" rel="stylesheet">
-    <link href="content/vendor/jquery-ui/style.css" rel="stylesheet"> -->
 
     <!-- JS -->
     <script src="content/vendor/jquery/jquery.js"></script>
     <script src="content/vendor/jquery-tabledit/jquery.tabledit1d.js"></script>
-    <!-- <script src="content/vendor/jquery-ui/jquery-ui.js"></script> -->
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
@@ -54,8 +56,9 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
   </head>
 
   <?php
-  if (isset($_SESSION['id_utilisateur']) and $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur']) {
-    if (isset($userdroit['ecriture'])) {
+  if (isset($_SESSION['id_utilisateur']) and $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur'])
+  {
+    if(isset($userdroit['ecriture'])||$userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
   ?>
 
       <body id="page-top">
@@ -564,17 +567,38 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             }
                         ?>
                         </div>
-
-                        <div class="row">
-                          <!-- bouton Ajouter une nouvelle ligne -->
-                          <div class="text-center col-lg-6">
-                            <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite">Importer un nouveau référentiel de sécurité</button>
-                          </div>
-                          <!-- bouton Ajouter une nouvelle ligne -->
-                          <div class="text-center col-lg-6">
-                            <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite_main">Créer un nouveau référentiel de sécurité</button>
-                          </div>
-                        </div>
+                        
+                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                        ?> 
+                                <div class="row">
+                                  <!-- bouton Ajouter une nouvelle ligne -->
+                                  <div class="text-center col-lg-6">
+                                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite">Importer un nouveau référentiel de sécurité</button>
+                                  </div>
+                                  <!-- bouton Ajouter une nouvelle ligne -->
+                                  <div class="text-center col-lg-6">
+                                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite_main">Créer un nouveau référentiel de sécurité</button>
+                                  </div>
+                                </div>
+                        <?php
+                              }
+                              else if (isset($userdroit['ecriture'])){
+                                if($userdroit['ecriture']=='Réalisation'){
+                        ?>   
+                                  <div class="row">
+                                    <!-- bouton Ajouter une nouvelle ligne -->
+                                    <div class="text-center col-lg-6">
+                                      <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite">Importer un nouveau référentiel de sécurité</button>
+                                    </div>
+                                    <!-- bouton Ajouter une nouvelle ligne -->
+                                    <div class="text-center col-lg-6">
+                                      <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_socle_de_securite_main">Créer un nouveau référentiel de sécurité</button>
+                                    </div>
+                                  </div>
+                          <?php
+                                }
+                              }                          
+                          ?>
                       </div>
                     </div>
                   </div>
@@ -643,10 +667,25 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         ?>
                         </div>
 
-                        <!-- bouton Ajouter une nouvelle ligne -->
-                        <div class="text-center">
-                          <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_ecart">Ajouter une nouvelle règle</button>
-                        </div>
+                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                        ?> 
+                                <!-- bouton Ajouter une nouvelle ligne -->
+                                <div class="text-center">
+                                  <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_ecart">Ajouter une nouvelle règle</button>
+                                </div>
+                        <?php
+                              }
+                              else if (isset($userdroit['ecriture'])){
+                                if($userdroit['ecriture']=='Réalisation'){
+                        ?>   
+                                <!-- bouton Ajouter une nouvelle ligne -->
+                                <div class="text-center">
+                                  <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_ecart">Ajouter une nouvelle règle</button>
+                                </div> 
+                        <?php
+                                }
+                              }                          
+                        ?>
                       </div>
                     </div>
                   </div>
@@ -681,6 +720,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
               <i class="fas fa-bars"></i>
           </a>
 
+<?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid||(isset($userdroit['ecriture'])&&$userdroit['ecriture']=='Réalisation')){ 
+?> 
 <!------------------------------------------------------------------------------------------------------------------ 
 --------------------------------------- modal ajout socle de sécurité ----------------------------------------------
 -------------------------------------------------------------------------------------------------------------------->
@@ -820,11 +861,12 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     </fieldset>
                   </form>
                 </div>
-
               </div>
             </div>
           </div>
-
+<?php
+}
+?>
 
           <!-- Logout Modal-->
           <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -868,11 +910,32 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <script src="content/js/modules/fixed_page.js"></script>
           <script src="content/js/modules/realtime.js"></script>
           <script src="content/js/modules/set_filter_sort_table.js"></script>
-          <script src="content/js/atelier/atelier1d.js"></script>
+          <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
+          ?>
+                  <script src="content/js/atelier/atelier1d.js"></script>
+                  <script src="content/js/modules/browse.js"></script>
+                  <script src="content/js/modules/parser.js"></script>
+                  <script src="content/js/modules/socle_pour_regle.js"></script>
+          <?php
+                }
+                else if(isset($userdroit['ecriture'])){
+                  if($userdroit['ecriture']=='Réalisation'){
+          ?>   
+                    <script src="content/js/atelier/atelier1d.js"></script>
+                    <script src="content/js/modules/browse.js"></script>
+                    <script src="content/js/modules/parser.js"></script>
+                    <script src="content/js/modules/socle_pour_regle.js"></script>
+          <?php 
+                  }
+                  else{
+          ?>     
+                    <script src="content/js/atelier/atelier1d_no_modification.js"></script>
+                    <script src="content/js/modules/socle_pour_regle_no_modification.js"></script>
+          <?php
+                  }
+                }        
+          ?>
           <script src="content/js/modules/sort_table.js"></script>
-          <script src="content/js/modules/socle_pour_regle.js"></script>
-          <script src="content/js/modules/browse.js"></script>
-          <script src="content/js/modules/parser.js"></script>
       </body>
   <?php
     }

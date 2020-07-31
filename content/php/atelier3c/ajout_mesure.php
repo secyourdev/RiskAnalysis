@@ -16,12 +16,12 @@ $id_traitement = "id_traitement";
 $id_atelier = '3.c';
 
   // Verification du nom_mesure
-  if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $nom_mesure)) {
+  if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $nom_mesure)) {
     $results["error"] = true;
     $_SESSION['message_error'] = "Nom mesure de sécurité invalide";
   }
   // Verification du description_mesure
-  if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $description_mesure)) {
+  if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $description_mesure)) {
     $results["error"] = true;
     $_SESSION['message_error'] = "Description mesure de sécurité invalide";
   }
@@ -153,5 +153,5 @@ if ($results["error"] === false && isset($_POST['validermesure1'])) {
   $_SESSION['message_success'] = "La mesure a bien été ajoutée !";
 }
 
-header('Location: ../../../atelier-3c&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
+header('Location: ../../../atelier-3c&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#mesure_de_securite');
 ?>

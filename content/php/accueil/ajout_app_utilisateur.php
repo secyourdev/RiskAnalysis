@@ -42,7 +42,7 @@ include("../bdd/connexion.php");
     }
 
     // Verification du email
-    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s.,-@]{1,100}$/", $email)){
+    if(!preg_match("/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/", $email)){
         $results["error"] = true;
         $_SESSION['message_error_4'] = "E-mail invalide";
     }
@@ -91,7 +91,7 @@ include("../bdd/connexion.php");
 
         $insertutilisateur->execute();
 
-        $_SESSION['message_success_4'] = "La personne a bien été ajoutée !";
+        $_SESSION['message_success_4'] = "L'utilisateur a bien été ajouté !";
     }
 
     header('Location: ../../../index&'.$_SESSION['id_utilisateur']);

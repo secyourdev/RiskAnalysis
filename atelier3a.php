@@ -14,13 +14,17 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
   $reqproject->execute(array($getidproject));
   $projectinfo = $reqproject->fetch();
 
-  $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.a"');
+  $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="3.a"');
   $reqdroit->bindParam(1, $getid);
   $reqdroit->bindParam(2, $getidproject);
   $reqdroit->execute();
   $userdroit = $reqdroit->fetch();
-?>
 
+  $reqdroit_chef_de_projet = $bdd->prepare('SELECT id_utilisateur FROM F_projet WHERE id_projet = ?');
+  $reqdroit_chef_de_projet->bindParam(1, $getidproject);
+  $reqdroit_chef_de_projet->execute();
+  $userdroit_chef_de_projet = $reqdroit_chef_de_projet->fetch();
+?>
 
   <?php include("content/php/atelier3a/selection.php"); ?>
   <!DOCTYPE html>
@@ -55,8 +59,9 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
   </head>
 
   <?php
-  if (isset($_SESSION['id_utilisateur']) and $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur']) {
-    if (isset($userdroit['ecriture'])) {
+  if (isset($_SESSION['id_utilisateur']) and $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur']) 
+  {
+    if(isset($userdroit['ecriture'])||$userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
   ?>
 
       <body id="page-top">
@@ -537,7 +542,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
                       <!-- Card Body -->
                       <div class="card-body">
-
+                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                        ?>
                         <form method="post" action="content/php/atelier3a/ajout_seuil.php" class="user" id="formeseuil">
                           <fieldset>
                             <div class="form-group">
@@ -576,7 +582,70 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </div>
                           </fieldset>
                         </form>
+                        <?php
+                              }
+                              else if (isset($userdroit['ecriture'])){
+                                if($userdroit['ecriture']=='Réalisation'){
+                        ?>
+                              <form method="post" action="content/php/atelier3a/ajout_seuil.php" class="user" id="formeseuil">
+                                <fieldset>
+                                  <div class="form-group">
+                                    <label class="titre_input" for="seuil_danger">Seuil de danger</label>
+                                    <input type="text" class="perso_form shadow-none form-control form-control-user" name="seuil_danger" id="seuil_danger" placeholder="Seuil de danger" required>
+                                  </div>
+                                  <div class="form-group">
+                                    <label class="titre_input" for="seuil_controle">Seuil de contrôle</label>
+                                    <input type="text" class="perso_form shadow-none form-control form-control-user" name="seuil_controle" id="seuil_controle" placeholder="Seuil de contrôle" required>
+                                  </div>
+                                  <div class="form-group">
+                                    <label class="titre_input" for="seuil_veille">Seuil de veille</label>
+                                    <input type="text" class="perso_form shadow-none form-control form-control-user" name="seuil_veille" id="seuil_veille" placeholder="Seuil de veille" required>
+                                  </div>
 
+                                  <div class='message_success'>
+                                  <?php 
+                                      if(isset($_SESSION['message_success'])){
+                                        echo $_SESSION['message_success'];
+                                        unset($_SESSION['message_success']);
+                                      }
+                                  ?>
+                                  </div> 
+                                  <div class='message_error'>
+                                  <?php                
+                                      if(isset($_SESSION['message_error'])){
+                                          echo $_SESSION['message_error'];
+                                          unset($_SESSION['message_error']);
+                                      }
+                                  ?>
+                                  </div>
+
+                                  <!-- bouton Ajouter -->
+                                  <div class="text-center">
+                                    <button type="submit" name="validerseuil" class="btn perso_btn_primary perso_btn_spacing shadow-none">Valider le seuil</button>
+                                  </div>
+                                </fieldset>
+                              </form>
+                        <?php
+                                }
+                                else {                       
+                        ?>
+                                  <div class="form-group">
+                                    <label class="titre_input" for="seuil_danger">Seuil de danger :</label>
+                                    <label class="no_modification" id="seuil_danger"></label>
+                                  </div>
+                                  <div class="form-group">
+                                    <label class="titre_input" for="seuil_controle">Seuil de contrôle : </label>
+                                    <label class="no_modification" id="seuil_controle"></label>
+                                  </div>
+                                  <div class="form-group">
+                                    <label class="titre_input" for="seuil_veille">Seuil de veille :</label>
+                                    <label class="no_modification" id="seuil_veille"></label>
+                                  </div>
+
+                        <?php
+                                }
+                              }                          
+                        ?>
                       </div>
                     </div>
                   </div>
@@ -655,10 +724,25 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         ?>
                         </div>
 
-                        <!-- bouton Ajouter une nouvelle ligne -->
-                        <div class="text-center">
-                          <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_partie_prenante">Ajouter une partie prenante</button>
-                        </div>
+                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                        ?> 
+                                <!-- bouton Ajouter une nouvelle ligne -->
+                                <div class="text-center">
+                                  <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_partie_prenante">Ajouter une partie prenante</button>
+                                </div>
+                        <?php
+                              }
+                              else if (isset($userdroit['ecriture'])){
+                                if($userdroit['ecriture']=='Réalisation'){
+                        ?>
+                                  <!-- bouton Ajouter une nouvelle ligne -->
+                                  <div class="text-center">
+                                    <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_partie_prenante">Ajouter une partie prenante</button>
+                                  </div>
+                        <?php
+                                }
+                              }                          
+                        ?>
                       </div>
                     </div>
                   </div>
@@ -715,7 +799,9 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <a class="open_menu rounded">
               <i class="fas fa-bars"></i>
           </a>
-
+          
+          <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid||(isset($userdroit['ecriture'])&&$userdroit['ecriture']=='Réalisation')){ 
+          ?> 
           <!---------------------------------------------------------------------------------------------------------------- 
           ----------------------------------------- modal ajout de ligne ----------------------------------------------------
           --------------------------------------------------------------------------------------------------------------- -->
@@ -867,11 +953,12 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     </fieldset>
                   </form>
                 </div>
-
-
               </div>
             </div>
           </div>
+          <?php
+          }
+          ?>
 
 
           <!-- Logout Modal-->
@@ -915,7 +1002,24 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <script src="content/js/modules/fixed_page.js"></script>
           <script src="content/js/modules/realtime.js"></script>
           <script src="content/js/modules/set_filter_sort_table.js"></script>
-          <script src="content/js/atelier/atelier3a.js"></script>
+          <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
+          ?>
+              <script src="content/js/atelier/atelier3a.js"></script>
+          <?php
+              }
+              else if(isset($userdroit['ecriture'])){
+                  if($userdroit['ecriture']=='Réalisation'){
+          ?>
+                      <script src="content/js/atelier/atelier3a.js"></script>
+          <?php 
+                  }
+                  else{
+          ?>
+                      <script src="content/js/atelier/atelier3a_no_modification.js"></script>
+          <?php
+                  }
+              }        
+          ?>
           <script src="content/js/modules/sort_table.js"></script>
           <script src="content/js/modules/3a_carto.js"></script>
       </body>

@@ -12,17 +12,17 @@ $id_source_de_risque = $_POST['id_source_de_risque'];
 $id_evenement_redoute = $_POST['id_evenement_redoute'];
 
 // Verification du nom_scenario_strategique
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $nom_scenario_strategique)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $nom_scenario_strategique)) {
   $results["error"] = true;
   $_SESSION['message_error'] = "Nom scénario strategique invalide";
 }
 // Verification du id_source_de_risque
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $id_source_de_risque)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $id_source_de_risque)) {
   $results["error"] = true;
   $_SESSION['message_error'] = "Identifiant source de risque invalide";
 }
 // Verification du id_evenement_redoute
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{1,100}$/", $id_evenement_redoute)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $id_evenement_redoute)) {
   $results["error"] = true;
   $_SESSION['message_error'] = "Identifiant événement redouté invalide";
 }
@@ -61,5 +61,5 @@ if ($results["error"] === false && isset($_POST['validerscenario'])) {
     $_SESSION['message_error'] = "Le scénario stratégique entré existe déjà !";
   }
 }
-header('Location: ../../../atelier-3b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']);
+header('Location: ../../../atelier-3b&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#scenario_strategique');
 ?>

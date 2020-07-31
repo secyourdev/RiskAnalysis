@@ -7,12 +7,8 @@ var nom = document.getElementById("nom_partie_prenante");
 var label_categorie = document.getElementById("categorie_partie_prenante").previousSibling.previousSibling
 var label_nom = document.getElementById("nom_partie_prenante").previousSibling.previousSibling
 
-var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,100}$/
-var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,1000}$/
-
-var button = document.getElementsByClassName('tabledit-edit-button')
-var save_button = document.getElementsByClassName('tabledit-save-button')
-var j=0;
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,1000}$/
 
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
@@ -25,7 +21,7 @@ function show_sub_content(){
         Atelier1.classList.add('show')
     }
 }
-
+/*--------------------------------- TABLES JS -------------------------------*/
 $(document).ready(function () {
     $('#editable_table').Tabledit({
         url: 'content/php/atelier3a/modification.php',
@@ -63,18 +59,7 @@ $(document).ready(function () {
 /*--------------------------- SORT & FILTER TABLES --------------------------*/
 setSortTable('editable_table');
 OURJQUERYFN.setFilterTable("#rechercher_evenement_redoute","#editable_table tbody tr")
-
-
-/*------------------ AJOUT DE LA VERIFICATION DES TABLEAUX ------------------*/
-// sleep(100).then(() => {
-//     for(let i=0;i<editable_table.rows.length-1;i++){
-//         j=i+1;
-//         button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table'+','+'15'+')')
-//     }
-// });
-
-
-
+/*-------------------------------- FONCTIONS --------------------------------*/
 function get_database_seuil() {
     $.ajax({
         url: 'content/php/atelier3a/selection_seuil.php',
@@ -104,7 +89,7 @@ get_database_seuil()
 label_nom.style.display="none"
 label_categorie.style.display="none"
 
-/*----------------------- ENREGISTREMENT DES COOKIES ------------------------*/
+/*------------------------- VERIFICATION DES CHAMPS -------------------------*/
 categorie.addEventListener('keyup',function(event){
     verify_input(categorie.value,regex_nom,categorie)
     activate_label(categorie.value,label_categorie)

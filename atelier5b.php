@@ -14,14 +14,19 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
   $reqproject->execute(array($getidproject));
   $projectinfo = $reqproject->fetch();
 
-  $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.a"');
+  $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="5.b"');
   $reqdroit->bindParam(1, $getid);
   $reqdroit->bindParam(2, $getidproject);
   $reqdroit->execute();
   $userdroit = $reqdroit->fetch();
+
+  $reqdroit_chef_de_projet = $bdd->prepare('SELECT id_utilisateur FROM F_projet WHERE id_projet = ?');
+  $reqdroit_chef_de_projet->bindParam(1, $getidproject);
+  $reqdroit_chef_de_projet->execute();
+  $userdroit_chef_de_projet = $reqdroit_chef_de_projet->fetch();
 ?>
 
-<?php include("content/php/atelier5b/selection.php");?>
+  <?php include("content/php/atelier5b/selection.php"); ?>
   <!DOCTYPE html>
   <html lang="fr">
 
@@ -52,7 +57,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
   <?php
   if (isset($_SESSION['id_utilisateur']) and $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur']) {
-    if (isset($userdroit['ecriture'])) {
+    if(isset($userdroit['ecriture'])||$userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
   ?>
 
       <body id="page-top">
@@ -391,61 +396,49 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <!-- Right Sidebar -->
           <ul id=menu>
             <li>
-                <a class="nav-link collapse-right-item menu_float" href="#cartographie_risque_initial">
-                    <i>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
-                            <g transform="translate(-1230 -689)">
-                                <path class="number_activity active"
-                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
-                                    transform="translate(1230 689)" fill="#ffffffcc" />
-                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
-                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
-                                    font-weight="700">
-                                    <tspan x="-3.432" y="0">1</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                    </i>
-                    <span class="nom_sous_menu">Cartographie du risque initial</span>
-                </a>
+              <a class="nav-link collapse-right-item menu_float" href="#cartographie_risque_initial">
+                <i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                    <g transform="translate(-1230 -689)">
+                      <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                      <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                        <tspan x="-3.432" y="0">1</tspan>
+                      </text>
+                    </g>
+                  </svg>
+                </i>
+                <span class="nom_sous_menu">Cartographie du risque initial</span>
+              </a>
             </li>
             <li>
-                <a class="nav-link collapse-right-item menu_float" href="#mesure_de_securite">
-                    <i>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
-                            <g transform="translate(-1230 -689)">
-                                <path class="number_activity active"
-                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
-                                    transform="translate(1230 689)" fill="#ffffffcc" />
-                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
-                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
-                                    font-weight="700">
-                                    <tspan x="-3.432" y="0">2</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                    </i>
-                    <span class="nom_sous_menu">Mesure de sécurité</span>
-                </a>
+              <a class="nav-link collapse-right-item menu_float" href="#mesure_de_securite">
+                <i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                    <g transform="translate(-1230 -689)">
+                      <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                      <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                        <tspan x="-3.432" y="0">2</tspan>
+                      </text>
+                    </g>
+                  </svg>
+                </i>
+                <span class="nom_sous_menu">Mesure de sécurité</span>
+              </a>
             </li>
             <li>
-                <a class="nav-link collapse-right-item menu_float" href="#plan_amelioration_continue_de_la_securite">
-                    <i>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
-                            <g transform="translate(-1230 -689)">
-                                <path class="number_activity active"
-                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
-                                    transform="translate(1230 689)" fill="#ffffffcc" />
-                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
-                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
-                                    font-weight="700">
-                                    <tspan x="-3.432" y="0">3</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                    </i>
-                    <span class="nom_sous_menu">Plan d'amélioration continue de la sécurité</span>
-                </a>
+              <a class="nav-link collapse-right-item menu_float" href="#plan_amelioration_continue_de_la_securite">
+                <i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                    <g transform="translate(-1230 -689)">
+                      <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                      <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
+                        <tspan x="-3.432" y="0">3</tspan>
+                      </text>
+                    </g>
+                  </svg>
+                </i>
+                <span class="nom_sous_menu">Plan d'amélioration continue de la sécurité</span>
+              </a>
             </li>
           </ul>
           <!-- End of Right Sidebar -->
@@ -664,13 +657,10 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                           </table>
                         </div>
                         <?php
-                            while($row = mysqli_fetch_array($resultlegende))
-                            {
-                              echo 
-                              $row["id_risque"].' : '.$row["nom_chemin_d_attaque_strategique"]."<br/>"
-                              ;
-                            }
-                            ?>
+                        while ($row = mysqli_fetch_array($resultlegende)) {
+                          echo '<div>' . $row["id_risque"] . ' : ' . $row["nom_chemin_d_attaque_strategique"] . '</div>';
+                        }
+                        ?>
                       </div>
                     </div>
                   </div>
@@ -678,16 +668,16 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   <!-- <div id="mesure_de_securite" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4"> -->
 
-                      <!-- Card Header - Dropdown -->
-                      <!-- <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <!-- Card Header - Dropdown -->
+                  <!-- <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0">Mesure de sécurité</h6>
                       </div> -->
 
-                      <!-- Card Body -->
-                      <!-- <div class="card-body"> -->
+                  <!-- Card Body -->
+                  <!-- <div class="card-body"> -->
 
-                        <!--text-->
-                        <!-- <div class="table-responsive">
+                  <!--text-->
+                  <!-- <div class="table-responsive">
                         <input type="text" class="rechercher_input" id="rechercher_tableau" placeholder="Rechercher">
                           <table id="editable_table" class="table table-bordered table-striped">
                             <thead>
@@ -755,8 +745,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                           </table>
                         </div>  -->
 
-                        <!-- bouton Ajouter une nouvelle ligne -->
-                        <!-- <div class="text-center">
+                  <!-- bouton Ajouter une nouvelle ligne -->
+                  <!-- <div class="text-center">
                           <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_tableau">Ajouter une nouvelle ligne</button>
                         </div> 
                       </div>
@@ -774,7 +764,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       <div class="card-body">
                         <!--text-->
                         <div class="table-responsive">
-                        <input type="text" class="rechercher_input" id="rechercher_pacs" placeholder="Rechercher">
+                          <input type="text" class="rechercher_input" id="rechercher_pacs" placeholder="Rechercher">
                           <table id="editable_table" class="table table-bordered table-striped">
                             <thead>
                               <tr>
@@ -787,38 +777,68 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <th id="cout">Coût</th>
                                 <th id="echeance">Échéance</th>
                                 <th id="Statut">Statut</th>
-                                
+
                               </tr>
                             </thead>
-                              
+
                             <tbody>
-                            <?php
-                            while($row = mysqli_fetch_array($result_pacs))
-                            {
-                              echo '
+                              <?php
+                              while ($row = mysqli_fetch_array($result_pacs)) {
+                                echo '
                               <tr>
-                              <td>'.$row["id_traitement_de_securite"].'</td>
-                              <td>'.$row["nom_mesure"].'</td>
-                              <td>'.$row["id_risque"].'</td>
-                              <td>'.$row["principe_de_securite"].'</td>
-                              <td>'.$row["responsable"].'</td>
-                              <td>'.$row["difficulte_traitement_de_securite"].'</td>
-                              <td>'.$row["cout_traitement_de_securite"].'</td>
-                              <td>'.$row["date_traitement_de_securite"].'</td>
-                              <td>'.$row["statut"].'</td>
+                              <td>' . $row["id_traitement_de_securite"] . '</td>
+                              <td>' . $row["nom_mesure"] . '</td>
+                              <td>' . $row["id_risque"] . '</td>
+                              <td>' . $row["principe_de_securite"] . '</td>
+                              <td>' . $row["responsable"] . '</td>
+                              <td>' . $row["difficulte_traitement_de_securite"] . '</td>
+                              <td>' . $row["cout_traitement_de_securite"] . '</td>
+                              <td>' . $row["date_traitement_de_securite"] . '</td>
+                              <td>' . $row["statut"] . '</td>
                               </tr>
                               ';
-                            }
-                            ?>
+                              }
+                              ?>
                             </tbody>
                           </table>
-                        </div>    
-                        <!-- bouton Ajouter une nouvelle ligne -->
-                         <div class="text-center">
-                          <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_tableau">Ajouter une nouvelle ligne</button>
                         </div>
 
+                        <div class='message_success'>
+                          <?php
+                          if (isset($_SESSION['message_success'])) {
+                            echo $_SESSION['message_success'];
+                            unset($_SESSION['message_success']);
+                          }
+                          ?>
+                        </div>
+                        <div class='message_error'>
+                          <?php
+                          if (isset($_SESSION['message_error'])) {
+                            echo $_SESSION['message_error'];
+                            unset($_SESSION['message_error']);
+                          }
+                          ?>
+                        </div>  
 
+                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                        ?> 
+                              <!-- bouton Ajouter une nouvelle ligne -->
+                              <div class="text-center">
+                                <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_tableau">Ajouter une nouvelle ligne</button>
+                              </div>
+                        <?php
+                              }
+                              else if (isset($userdroit['ecriture'])){
+                                if($userdroit['ecriture']=='Réalisation'){
+                        ?>    
+                                  <!-- bouton Ajouter une nouvelle ligne -->
+                                  <div class="text-center">
+                                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_tableau">Ajouter une nouvelle ligne</button>
+                                  </div>
+                        <?php
+                                }
+                              }                          
+                        ?>
                       </div>
                     </div>
                   </div>
@@ -852,51 +872,53 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           </a>
           <!-- Open the right menu-->
           <a class="open_menu rounded">
-              <i class="fas fa-bars"></i>
+            <i class="fas fa-bars"></i>
           </a>
 
-<!-- -------------------------------------------------------------------------------------------------------------- 
+<?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid||(isset($userdroit['ecriture'])&&$userdroit['ecriture']=='Réalisation')){ 
+?> 
+<!---------------------------------------------------------------------------------------------------------------- 
 ----------------------------------------- modal ajout de ligne ----------------------------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
-<div class="modal fade" id="ajout_ligne_tableau" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modification des mesures de sécurité</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body perso_modal_body">
-        <form method="post" action="content/php/atelier5b/ajout.php" class="user" id="formecartPop">
-          <fieldset>
-            <div class="row">
-              <div class="form-group col-12">
-                <label for="chemin">Chemin d'attaque stratégique</label>
-                <select class="form-control" id="chemin", name="chemin">
-                  <option value="" selected>...</option>
-                  <?php
-                  while ($row = mysqli_fetch_array($resultchemin)) //selection.php
-                  {
-                    echo '
+          <div class="modal fade" id="ajout_ligne_tableau" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modification des mesures de sécurité</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body perso_modal_body">
+                  <form method="post" action="content/php/atelier5b/ajout.php" class="user" id="formecartPop">
+                    <fieldset>
+                      <div class="row">
+                        <div class="form-group col-12">
+                          <label for="chemin">Chemin d'attaque stratégique</label>
+                          <select class="form-control" id="chemin" , name="chemin">
+                            <option value="" selected>...</option>
+                            <?php
+                            while ($row = mysqli_fetch_array($resultchemin)) //selection.php
+                            {
+                              echo '
                         <option id="id_chemin" value="' . $row["id_chemin_d_attaque_strategique"] . '">' . $row["nom_chemin_d_attaque_strategique"] . '</option>
                         ';
-                  }
-                  ?>
-                </select>
-              </div>
-              <div class="form-group col-12">
-                <input type="text" class="perso_form shadow-none form-control form-control-user" name="nommesure" id="nommesure" placeholder="Nom de la mesure de sécurité" required>
-              </div>
+                            }
+                            ?>
+                          </select>
+                        </div>
+                        <div class="form-group col-12">
+                        <label for="nommesure">Chemin d'attaque stratégique</label>
+                          <input type="text" class="perso_form shadow-none form-control form-control-user" name="nommesure" id="nommesure" placeholder="Nom de la mesure de sécurité" required>
+                        </div>
 
-              <div class="form-group col-12">
-                <label for="descriptionmesure">Description de la mesure de sécurité</label>
-                <textarea class="form-control perso_text_area" name="descriptionmesure" id="descriptionmesure" rows="3"></textarea>
-              </div>
-              
-            </div>
-            <!-- <div class="row">
+                        <div class="form-group col-12">
+                          <label for="descriptionmesure">Description de la mesure de sécurité</label>
+                          <textarea class="form-control perso_text_area" name="descriptionmesure" id="descriptionmesure" rows="3"></textarea>
+                        </div>
+
+                      </div>
+                      <!-- <div class="row">
               <div class=" col-6">
                 <div class="choix-valeur">
                   <div>Dépendance</div>
@@ -982,16 +1004,19 @@ aria-hidden="true">
                 </div>
               </div>
             </div> -->
-            <!-- bouton Valider -->
-            <div class="modal-footer perso_middle_modal_footer">
-              <input type="submit" name="ajouterregle" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
+                      <!-- bouton Valider -->
+                      <div class="modal-footer perso_middle_modal_footer">
+                        <input type="submit" name="ajouterregle" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
+              </div>
             </div>
-          </fieldset>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+          </div>
+<?php
+  }
+?>
 
           <!-- Logout Modal-->
           <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1033,11 +1058,28 @@ aria-hidden="true">
           <script src="content/js/modules/float_menu.js"></script>
           <script src="content/js/modules/fixed_page.js"></script>
           <script src="content/js/atelier/atelier5a.js"></script>
-          <script src="content/js/atelier/5btableauheatmap.js"></script>
           <script src="content/js/modules/realtime.js"></script>
           <script src="content/js/modules/set_filter_sort_table.js"></script>
-          <script src="content/js/atelier/atelier5b.js"></script>
+          <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
+          ?>
+              <script src="content/js/atelier/atelier5b.js"></script>
+          <?php
+              }
+              else if(isset($userdroit['ecriture'])){
+                  if($userdroit['ecriture']=='Réalisation'){
+          ?>
+                      <script src="content/js/atelier/atelier5b.js"></script>
+          <?php 
+                  }
+                  else{
+          ?>
+                      <script src="content/js/atelier/atelier5b_no_modification.js"></script>
+          <?php
+                  }
+              }        
+          ?>
           <script src="content/js/modules/sort_table.js"></script>
+          <script src="content/js/atelier/5btableauheatmap.js"></script>
       </body>
   <?php
     }

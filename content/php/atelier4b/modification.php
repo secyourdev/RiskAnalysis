@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("../bdd/connexion_sqli.php");
 
 $input = filter_input_array(INPUT_POST);
@@ -17,8 +18,8 @@ if ($input["action"] === 'edit' && $results["error"] === false) {
     SET vraisemblance = '".$vraisemblance."'
     WHERE id_scenario_operationnel = '".$input["id_scenario_operationnel"]."'
     ";
-    echo $query;
     mysqli_query($connect, $query);
+    $_SESSION['message_success'] = "La vraisemblance du scénario opérationnel a été bien modifiée !";
 }
 
 

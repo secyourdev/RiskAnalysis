@@ -32,16 +32,17 @@ var prenom_utilisateur = document.getElementById('prenom_utilisateur');
 var poste_utilisateur = document.getElementById('poste_utilisateur');
 var email_utilisateur = document.getElementById('email_utilisateur');
 
-var label_nom_utilisateur =document.getElementById('nom_utilisateur').previousSibling.previousSibling
+var label_nom_utilisateur = document.getElementById('nom_utilisateur').previousSibling.previousSibling
 var label_prenom_utilisateur = document.getElementById('prenom_utilisateur').previousSibling.previousSibling
 var label_poste_utilisateur = document.getElementById('poste_utilisateur').previousSibling.previousSibling
 var label_email_utilisateur = document.getElementById('email_utilisateur').previousSibling.previousSibling
 
 var lenght_reinitialiser_mdp = reinitialiser_mdp.length;
 
-var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{1,100}$/
-var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,1000}$/
-var regex_email = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"@]{1,100}$/
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{0,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,1000}$/
+//var regex_email = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"@]{0,100}$/
+var regex_email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 button_add_user_in_grp.style.display='none'
 grp_user_card.style.display="none"
@@ -127,6 +128,15 @@ function chargement_onglet(onglet1,onglet2,onglet3,onglet4){
         onglet3.style.display="none"
         onglet4.style.display="none"
 }
+
+/*------------------------------ LABELS CACHES ------------------------------*/
+label_nom_etude.style.display="none"
+label_groupe_utilisateur.style.display="none"
+label_prenom_utilisateur.style.display="none"
+label_nom_utilisateur.style.display="none"
+label_poste_utilisateur.style.display="none"
+label_email_utilisateur.style.display="none"
+
 /*------------------------ CHARGEMENT DES GRP UTILISATEURS  ------------------------*/
 $.ajax({
     url: 'content/php/accueil/selection_json_grp_user.php',
@@ -415,15 +425,7 @@ function suppression_projet(){
     }
 }
 
-/*------------------------------ LABELS CACHES ------------------------------*/
-label_nom_etude.style.display="none"
-label_groupe_utilisateur.display="none"
-label_prenom_utilisateur.display="none"
-label_nom_utilisateur.display="none"
-label_poste_utilisateur.display="none"
-label_email_utilisateurdisplay="none"
-
-/*----------------------- ENREGISTREMENT DES COOKIES ------------------------*/
+/*----------------------- -- VERIFICATION DES CHAMPS -- ------------------------*/
 nom_etude.addEventListener('keyup',function(event){
     verify_input(nom_etude.value,regex_nom,nom_etude)
     activate_label(nom_etude.value,label_nom_etude)

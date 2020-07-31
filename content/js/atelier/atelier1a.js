@@ -22,10 +22,10 @@ var find_raci_value;
 
 var nombre_atelier = raci.rows.length
 
-var regex_nom_etude = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,100}$/
-var regex_description_etude = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,1000}$/
-var regex_objectif_atteindre = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,1000}$/
-var regex_cadre_temporel = /^[0-9\s-]{1,100}$/
+var regex_nom_etude = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,100}$/
+var regex_description_etude = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,1000}$/
+var regex_objectif_atteindre = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,1000}$/
+var regex_cadre_temporel = /^[0-9\s-]{0,100}$/
 
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
@@ -113,7 +113,7 @@ get_database_raci()
 update_database_raci()
 /*------------------------ RECUPERATION & MODIFICATION ----------------------*/
 get_database_project_info()
-/*----------------------- ENREGISTREMENT DES COOKIES ------------------------*/
+/*----------------------- -- VERIFICATION DES CHAMPS -- ------------------------*/
 nom_etude.addEventListener('keyup',function(event){
     verify_input(nom_etude.value,regex_nom_etude,nom_etude)
     activate_label(nom_etude.value,label_nom_etude)

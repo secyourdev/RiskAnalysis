@@ -4,12 +4,7 @@ var sidebarToggle = document.getElementById("sidebarToggle");
 
 var modeope = document.getElementById("modeope");
 
-var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{1,1000}$/
-var button = document.getElementsByClassName('tabledit-edit-button')
-var save_button = document.getElementsByClassName('tabledit-save-button')
-var j=0;
-var k=0;
-var l=0;
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,1000}$/
 
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
@@ -76,32 +71,10 @@ OURJQUERYFN.setFilterTable("#rechercher_ope","#tableau_ope tbody tr")
 setSortTable('tableau_mode_ope');
 OURJQUERYFN.setFilterTable("#rechercher_mode_ope","#tableau_mode_ope tbody tr")
 
-/*------------------ AJOUT DE LA VERIFICATION DES TABLEAUX ------------------*/
-// sleep(100).then(() => {
-//     for(let i=0;i<tableau_ope.rows.length-1;i++){
-//         j=i+1;
-//         button[i].setAttribute('onclick','tableau_verification('+j+','+'tableau_ope'+','+'4'+')')
-//     }
-// });
-
-// sleep(100).then(() => {
-//     for(let i=tableau_ope.rows.length-1;i<tableau_mode_ope.rows.length+tableau_ope.rows.length-2;i++){
-//         k++;
-//         button[i].setAttribute('onclick','tableau_verification('+k+','+'tableau_mode_ope'+','+'3'+')')
-//     }
-// });
-// sleep(100).then(() => {
-//     for(let i=editable_table.rows.length+tableau_vm.rows.length-2;i<editable_table.rows.length+tableau_vm.rows.length+tableau_bs.rows.length-3;i++){
-//         l++;
-//         button[i].setAttribute('onclick','tableau_verification('+l+','+'tableau_bs'+','+'7'+')')
-//     }
-// });
-
+/*-------------------------- VERIFICATION DES CHAMPS -----------------------*/
 modeope.addEventListener('keyup',function(event){
     verify_textarea(modeope.value,regex_description,modeope)
 })
-
-
 /*--------------------------- Couleurs scénario > gravité --------------------------*/
 $("#editable_table > tbody > tr > td:nth-child(8)").each(function () {
 
