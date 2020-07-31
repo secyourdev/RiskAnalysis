@@ -16,7 +16,7 @@ $results["error"] = false;
 $results["message"] = [];
 
 // Verification du type de l'attaquant
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $nom_mesure_securite)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $nom_mesure_securite)) {
     $results["error"] = true;
     $results["message"]["type_attaquant"] = "Nom de la mesure invalide";
     ?>
@@ -25,7 +25,7 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $nom_mes
 }
 
 // Verification du profil de l'attaquant
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $description_mesure_securite)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,1000}$/", $description_mesure_securite)) {
     $results["error"] = true;
     $results["message"]["Profil de l'attaquant"] = "Description de la mesure invalide";
     ?>

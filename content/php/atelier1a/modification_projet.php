@@ -9,7 +9,7 @@ if(isset($_POST['nom_etude'])){
     $update_projet = $bdd->prepare("UPDATE F_projet SET nom_projet = ? WHERE id_projet=?");
     $update_projet->bindParam(1, $nom_etude);
     $update_projet->bindParam(2, $getid_projet);
-    if(preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $nom_etude)){
+    if(preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $nom_etude)){
       $update_projet->execute();
     }
 }
@@ -19,7 +19,7 @@ if(isset($_POST['description_etude'])){
   $update_projet = $bdd->prepare("UPDATE F_projet SET description_projet = ? WHERE id_projet=?");
   $update_projet->bindParam(1, $description_etude);
   $update_projet->bindParam(2, $getid_projet);
-  if(preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $description_etude)){
+  if(preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,1000}$/", $description_etude)){
     $update_projet->execute();
   }
 }
@@ -30,7 +30,7 @@ if(isset($_POST['objectif_atteindre'])){
     $update_projet = $bdd->prepare("UPDATE F_projet SET objectif_projet = ? WHERE id_projet=?");
     $update_projet->bindParam(1, $objectif_atteindre);
     $update_projet->bindParam(2, $getid_projet);
-    if(preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $objectif_atteindre)){
+    if(preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,1000}$/", $objectif_atteindre)){
       $update_projet->execute();
     }
 }

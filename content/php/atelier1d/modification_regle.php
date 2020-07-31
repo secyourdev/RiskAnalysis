@@ -20,27 +20,27 @@ $results["message"] = [];
 if ($input["action"] === 'edit') {
 
     // Verification du id_regle_affichage
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $id_regle_affichage)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,1000}$/", $id_regle_affichage)) {
         $results["error"] = true;
         $_SESSION['message_error_2'] = "ID règle invalide";
     }
     // Verification du titre
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $titre)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,1000}$/", $titre)) {
         $results["error"] = true;
         $_SESSION['message_error_2'] = "Titre invalide";
     }
     // Verification du description
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $description)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,1000}$/", $description)) {
         $results["error"] = true;
         $_SESSION['message_error_2'] = "Description invalide";
     }
     // Verification du justification_ecart
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $justification_ecart)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,1000}$/", $justification_ecart)) {
         $results["error"] = true;
         $_SESSION['message_error_2'] = "Justification écart invalide";
     }
     // Verification du responsable
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $responsable)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,1000}$/", $responsable)) {
         $results["error"] = true;
         $results["message"]["responsable"] = "Responsable invalide";
     }

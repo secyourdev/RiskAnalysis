@@ -12,7 +12,7 @@
   $updateutilisateur = $bdd->prepare('UPDATE A_utilisateur SET poste = ?, email = ? WHERE id_utilisateur = ?');
 
     // Verification du poste
-    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $poste)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $poste)){
       $results["error"] = true;
       $_SESSION['message_error'] = "Poste invalide";
     }

@@ -4,7 +4,7 @@ var sidebarToggle = document.getElementById("sidebarToggle");
 
 var modeope = document.getElementById("modeope");
 
-var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,1000}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
 
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
