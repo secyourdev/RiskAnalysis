@@ -23,7 +23,7 @@ $insere_niveau_4 = $bdd->prepare('INSERT INTO `DA_niveau`(`id_niveau`, `descript
 $insere_niveau_5 = $bdd->prepare('INSERT INTO `DA_niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`) VALUES (NULL, NULL, 5,?)');
 
   // Verification du nom de l'echelle
-  if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $nom_echelle)){
+  if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $nom_echelle)){
     $results["error"] = true;
     $_SESSION['message_error'] = "Nom de l'échelle invalide";
   }

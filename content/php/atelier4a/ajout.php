@@ -14,7 +14,7 @@ $id_mode_operatoire = "id_mode_operatoire";
 $insere = $bdd->prepare('INSERT INTO `W_mode_operatoire`(`id_mode_operatoire`, `mode_operatoire`, `id_scenario_operationnel`) VALUES (?,?,?)');
 
 // Verification du mode operatoire
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $modeope)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $modeope)) {
   $results["error"] = true;
   $_SESSION['message_error_2'] = "Mode opératoire invalide";
 }

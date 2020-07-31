@@ -11,7 +11,7 @@ if ($input["action"] === 'edit') {
     $results["error"] = false;
 
     // Verification du type de l'attaquant
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $modeope)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $modeope)) {
         $results["error"] = true;
         $_SESSION['message_error_2'] = "Mode opératoire invalide";
     }

@@ -25,7 +25,7 @@ function selectSocle(selected_value){
                     editable: [
                         [1, 'id_regle_affichage'],
                         [2, 'titre'],
-                        [3, 'justification_ecart'],
+                        [3, 'description'],
                         [4, 'etat_de_la_regle', '{"Non traité" : "Non traité" , "Conforme" : "Conforme" , "Partiellement conforme" : "Partiellement conforme" ,  "Non conforme" : "Non conforme", "Non applicable" : "Non applicable"}'],
                         [5, 'justification_ecart'],
                         [6, 'responsable'],                    

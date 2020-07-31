@@ -18,25 +18,25 @@ if ($input["action"] === 'edit') {
     $nom_responsable_bs = mysqli_real_escape_string($connect, $input["nom_responsable_bs"]);
 
     // Verification de la mission
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $nom_mission)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $nom_mission)) {
         $results["error"] = true;
         $_SESSION['message_error'] = "Nom invalide";
     }
 
     // Verification du responsable de la mission
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $responsable)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $responsable)) {
         $results["error"] = true;
         $_SESSION['message_error'] = "Responsable mission invalide";
     }
 
     // Verification du responsable de la valeur métier
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $nom_responsable_vm)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $nom_responsable_vm)) {
         $results["error"] = true;
         $_SESSION['message_error'] = "Responsable valeur métier invalide";
     }
 
     // Verification du responsable du bien support
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $nom_responsable_bs)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $nom_responsable_bs)) {
         $results["error"] = true;
         $_SESSION['message_error'] = "Nom bien support invalide";
     }

@@ -10,7 +10,7 @@ $description_scenario_operationnel = mysqli_real_escape_string($connect, $input[
 $results["error"] = false;
 
 // Verification du type de l'attaquant
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $description_scenario_operationnel)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $description_scenario_operationnel)) {
     $results["error"] = true;
     $_SESSION['message_error'] = "Scénario opérationnel invalide";
 }

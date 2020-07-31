@@ -24,19 +24,19 @@ include("../bdd/connexion.php");
     }
 
     // Verification du nom
-    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $nom)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{1,100}$/", $nom)){
       $results["error"] = true;
       $_SESSION['message_error_4'] = "Nom invalide";
     }
 
     // Verification du prenom
-    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $prenom)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{1,100}$/", $prenom)){
       $results["error"] = true;
       $_SESSION['message_error_4'] = "Prenom invalide";
     }
 
     // Verification du poste
-    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{1,100}$/", $poste)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{1,100}$/", $poste)){
       $results["error"] = true;
       $_SESSION['message_error_4'] = "Poste invalide";
     }
