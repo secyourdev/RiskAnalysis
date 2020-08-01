@@ -42,7 +42,6 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $('#editable_table_mesure').Tabledit({
-        url: 'content/php/atelier3c/modification_mesure1.php',
         sortable: true,
         columns: {
             identifier: [0, 'id_mesure'],
@@ -56,7 +55,6 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $('#editable_table_mesure2').Tabledit({
-        url: 'content/php/atelier3c/modification_mesure2.php',
         sortable: true,
         columns: {
             identifier: [0, 'id_partie_prenante'],

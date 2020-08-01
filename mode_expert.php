@@ -14,14 +14,19 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
   $reqproject->execute(array($getidproject));
   $projectinfo = $reqproject->fetch();
 
-  $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ? AND id_atelier="1.a"');
+  $reqdroit = $bdd->prepare('SELECT * FROM H_RACI WHERE id_utilisateur = ? AND id_projet = ?');
   $reqdroit->bindParam(1, $getid);
   $reqdroit->bindParam(2, $getidproject);
   $reqdroit->execute();
   $userdroit = $reqdroit->fetch();
+
+  $reqdroit_chef_de_projet = $bdd->prepare('SELECT id_utilisateur FROM F_projet WHERE id_projet = ?');
+  $reqdroit_chef_de_projet->bindParam(1, $getidproject);
+  $reqdroit_chef_de_projet->execute();
+  $userdroit_chef_de_projet = $reqdroit_chef_de_projet->fetch();
 ?>
 
-  <?php include("testimageselection.php"); ?>
+  <?php include("content/php/mode_expert/selection.php"); ?>
   <!DOCTYPE html>
   <html lang="fr">
 
@@ -31,11 +36,11 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <meta name="description" content="CyberRiskManager">
     <meta name="author" content="SecYourDev">
 
-    <title>CyberRiskManager | Atelier 3.b</title>
+    <title>CyberRiskManager | Mode expert</title>
 
     <!-- Fonts-->
     <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="content/fonts/nunito.css" rel="stylesheet">
 
     <!-- CSS -->
     <link href="content/css/bootstrap.css" rel="stylesheet">
@@ -43,7 +48,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
     <!-- JS -->
     <script src="content/vendor/jquery/jquery.js"></script>
-    <!-- <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script> -->
+    <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
@@ -52,7 +57,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
   <?php
   if (isset($_SESSION['id_utilisateur']) and $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur']) {
-    if (isset($userdroit['ecriture'])) {
+    if(isset($userdroit['ecriture'])||$userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
   ?>
 
       <body id="page-top">
@@ -61,7 +66,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <div id="wrapper">
 
           <!-- Sidebar -->
-          <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+          <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion side_bar_scroll" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
               <!-- Logo -->
@@ -79,6 +84,16 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
               <a class="nav-link" href="index.php">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Tableau de Bord</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="mode_expert&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-tasks"></i>
+                    <span>Mode expert</span></a>
             </li>
 
             <!-- Divider -->
@@ -217,12 +232,12 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                 </div>
               </div>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier3" aria-expanded="true" aria-controls="Atelier3">
                 <i>
                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
                     <g transform="translate(-1230 -689)">
-                      <path class="number_activity active" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
+                      <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z" transform="translate(1230 689)" fill="#ffffffcc" />
                       <text class="number_activity_text" data-name="3" transform="translate(1242.5 706.19)" fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700">
                         <tspan x="-3.432" y="0">3</tspan>
                       </text>
@@ -393,15 +408,11 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             <!-- Main Content -->
             <div id="content">
               <!-- Topbar -->
-              <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+              <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top fixed-top shadow" id="barre_info">
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                   <i class="fa fa-bars"></i>
                 </button>
-
-                <div id="top_bar_1" class="top_bar_name_1"><?php echo $projectinfo['nom_projet']; ?></div>
-                <div id="top_bar_2" class="top_bar_name_2">Atelier 3</div>
-                <div id="top_bar_3" class="top_bar_name_3">Activité 3.b - Élaborer des scénarios stratégiques</div>
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -438,270 +449,157 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
               <!-- End of Topbar -->
 
               <!-- Begin Page Content -->
-              <div class="container-fluid">
+              <div id="fixed_page" class="container-fluid">
                 <!-- Content Row -->
-                <div class="row fondu">
-
-
+                <div class="row fondu">               
                   <!-- Area Card -->
-                  <div class="col-xl-12 col-lg-12">
-                    <div class="card shadow mb-4">
-                      <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Schéma des scénarios stratégiques</h6>
-                      </div>
-                      <!-- Card Body -->
-                      <div class="card-body">
-                        <!--text-->
+                    <div id="mesure_de_securite" class="col-xl-12 col-lg-12">
+                        <div class="card shadow mb-4">
 
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0">Tableau récapitulatif</h6>
+                            </div>
 
-                        <span id="success_message"></span>
-                        <form method="POST" id="sample_form" action="testimagephp.php" enctype="multipart/form-data">
+                            <!-- Card Body -->
+                            <div class="card-body">
 
-                          <label for="nom_scenario_operationnel">Nom du scénario opérationnel</label>
-                          <select class="form-control" name="nom_scenario_operationnel" id="nom_scenario_operationnel">
-                            <option value="" selected>...</option>
-                            <?php
-                            // print 'bonjour';
-                            // print_r($result_scenario_op);
-                            while ($row = mysqli_fetch_array($result_scenario_op)) //selection.php
-                            {
-                              // print_r($row);
-                              echo '<option id="scenario_operationnel" value="' . $row['id_scenario_operationnel'] . '">' . $row['nom_scenario_operationnel'] . '</option>';
-                            }
-                            ?>
-                          </select>
-
-                          <br>
-
-                          <div class="custom-file">
-                            <input name="inpFile" id="inpFile" class="custom-file-input" type="file">
-                            <label class="custom-file-label" for="inpFile">Choisir un fichier au format image</label>
-                          </div>
-
-                          <div class="form-group" align="center">
-                            <input type="submit" name="file_submit" id="file_submit" class="btn perso_btn_primary shadow-none" value="Ajouter une image" />
-                          </div>
-                        </form>
-
-                        <?php
-                        // print_r($result);
-                        while ($row = mysqli_fetch_array($result)) {
-                          echo "<div class='image-preview' id='imagePreview'>";
-                          echo "<img class='image-preview__image' src='image/" . $row['image'] . "' >";
-                          echo "<span class='image-preview__default-text'>Image Preview</span>";
-                          // echo "<p>".$row['image_text']."</p>";
-                          echo "</div>";
-                        }
-                        ?>
-
-
-
-
-                      </div>
+                                <!--text-->
+                                <div class="table-responsive">
+                                    <input type="text" class="rechercher_input" id="rechercher_tableau" placeholder="Rechercher">
+                                    <table id="editable_table" class="table table-bordered table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th id="id">ID</th>
+                                            <th id="valeur_metier">Valeur Métier</th>
+                                            <th id="evenement_redoute">Événement redouté</th>
+                                            <th id="impact">Impact</th>
+                                            <th id="gravite">Gravité</th>
+                                            <th id="source_de_risque">Source de risque</th>
+                                            <th id="objectif_vise">Objectif visé</th>
+                                            <th id="pertinence">Pertinence</th>
+                                            <th id="numero_risque">N° Risque</th>
+                                            <th id="chemin_attaque_strategique">Chemin d'attaque stratégique</th>
+                                            <th id="partie_prenante">Partie prenante</th>
+                                            <th id="menace">Niveau de menace initial</th>
+                                            <th id="dependance_residuelle">Dependance résiduelle</th>
+                                            <th id="penetration_residuelle">Penetration résiduelle</th>
+                                            <th id="maturite_residuelle">Maturite résiduelle</th>
+                                            <th id="confiance_residuelle">Confiance résiduelle</th>
+                                            <th id="menace_residuelle">Niveau de menace résiduel</th>
+                                            <th id="scenario_operationnel">Scenario opérationnel</th>
+                                            <th id="vraisemblance">Vraisemblance</th>
+                                            <th id="risque">Risque</th>
+                                            <th id="mesure">Mesure de sécurité</th>
+                                            <th id="description_mesure">Description de la mesure</th>
+                                            
+                                        </tr>
+                                        </thead>
+                                        
+                                        <tbody>
+                                        <?php
+                                        while($row = mysqli_fetch_array($result))
+                                        {
+                                        $risque = $row["niveau_de_gravite"] * $row["vraisemblance"];
+                                        echo '
+                                        <tr>
+                                        <td>'.$row["id_mesure"].'</td>
+                                        <td>'.$row["nom_valeur_metier"].'</td>
+                                        <td>'.$row["nom_evenement_redoute"].'</td>
+                                        <td>'.$row["impact"].'</td>
+                                        <td>'.$row["niveau_de_gravite"].'</td>
+                                        <td>'.$row["description_source_de_risque"].'</td>
+                                        <td>'.$row["objectif_vise"].'</td>
+                                        <td>'.$row["pertinence"].'</td>
+                                        <td>'.$row["id_risque"].'</td>
+                                        <td>'.$row["nom_chemin_d_attaque_strategique"].'</td>
+                                        <td>'.$row["nom_partie_prenante"].'</td>
+                                        <td>'.$row["niveau_de_menace_partie_prenante"].'</td>
+                                        <td>'.$row["dependance_residuelle"].'</td>
+                                        <td>'.$row["penetration_residuelle"].'</td>
+                                        <td>'.$row["maturite_residuelle"].'</td>
+                                        <td>'.$row["confiance_residuelle"].'</td>
+                                        <td>'.$row["niveau_de_menace_residuelle"].'</td>
+                                        <td>'.$row["description_scenario_operationnel"].'</td>
+                                        <td>'.$row["vraisemblance"].'</td>
+                                        <td>'.$risque.'</td>
+                                        <td>'.$row["nom_mesure"].'</td>
+                                        <td>'.$row["description_mesure"].'</td>
+                                        </tr>
+                                        ';
+                                        }
+                                        ?>
+                                        </tbody>
+                                    </table>
+                                </div> 
+                            </div>
+                        </div>
                     </div>
+                </div>
+            </div>
+              <!-- End of Main Content -->
+
+              <!-- Footer -->
+              <footer id="footer" class="sticky-footer bg-white">
+                <div class="container my-auto">
+                  <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
                   </div>
                 </div>
-              </div>
-
-
+              </footer>
+              <!-- End of Footer -->
 
             </div>
-            <!-- End of Main Content -->
+            <!-- End of Content Wrapper -->
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-              <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                  <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
+          </div>
+          <!-- End of Page Wrapper -->
+
+          <!-- Scroll to Top Button-->
+          <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+          </a>
+
+          <!-- Logout Modal-->
+          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Êtes-vous prêt à quitter l'application ?</h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div class="modal-body">Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à terminer votre session
+                  en cours.</div>
+                <div class="modal-footer">
+                  <form method="post" action="content/php/deconnexion/logs.php">
+                    <fieldset>
+                      <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                      <input type="submit" name="deconnexion" value="Déconnexion" class="btn btn-primary"></input>
+                      <fieldset>
+                  </form>
                 </div>
               </div>
-            </footer>
-            <!-- End of Footer -->
-
-          </div>
-          <!-- End of Content Wrapper -->
-
-        </div>
-        <!-- End of Page Wrapper -->
-
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-          <i class="fas fa-angle-up"></i>
-        </a>
-
-        <!-- -------------------------------------------------------------------------------------------------------------- 
------------------------------------------ modal ajout de ligne ----------------------------------------------------
---------------------------------------------------------------------------------------------------------------- -->
-        <div class="modal fade" id="ajout_ligne_scenario_strategique" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ajout d'un scénario stratégique</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body perso_modal_body">
-                <form method="post" action="content/php/atelier3b/ajout_scenario.php" class="user" id="form_scenario_strategique">
-                  <fieldset>
-
-                    <div class=" form-group col-12">
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_scenario_strategique" id="nom_scenario_strategique" placeholder="Nom du scénario stratégique" required>
-                    </div>
-
-                    <div class="form-group col-12">
-                      <label for="Select_source_de_risque">Source de risque</label>
-                      <select class="form-control" name="id_source_de_risque" id="Select_source_de_risque">
-                        <option value="" selected>...</option>
-                        <?php
-                        while ($row = mysqli_fetch_array($result_id_source_de_risque)) //selection.php
-                        {
-                          echo '
-                        <option id="id_source_de_risque" value="' . $row["id_source_de_risque"] . '">' . $row["description_source_de_risque"] . ' | ' . $row["objectif_vise"] . '</option>
-                        ';
-                        }
-                        ?>
-                      </select>
-                    </div>
-
-                    <div class="form-group col-12">
-                      <label for="Select_evenement_redoute">Événement redouté</label>
-                      <select class="form-control" name="id_evenement_redoute" id="Select_evenement_redoute">
-                        <option value="" selected>...</option>
-                        <?php
-                        while ($row = mysqli_fetch_array($result_id_evenement_redoute)) //selection.php
-                        {
-                          echo '
-                        <option id="id_evenement_redoute" value="' . $row["id_evenement_redoute"] . '">' . $row["nom_evenement_redoute"] . '</option>
-                        ';
-                        }
-                        ?>
-                      </select>
-                    </div>
-
-
-                    <!-- bouton Ajouter -->
-                    <div class="modal-footer perso_middle_modal_footer">
-                      <input type="submit" name="validerscenario" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
-                    </div>
-                  </fieldset>
-                </form>
-              </div>
-
-
             </div>
           </div>
-        </div>
 
+          <!-- Bootstrap core JavaScript-->
+          <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
-        <!-- -------------------------------------------------------------------------------------------------------------- 
------------------------------------------ modal ajout de ligne ----------------------------------------------------
---------------------------------------------------------------------------------------------------------------- -->
-        <div class="modal fade" id="ajout_ligne_chemin_attaque" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ajout d'un chemin d'attaque stratégique</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body perso_modal_body">
-                <form method="post" action="content/php/atelier3b/ajout_chemin.php" class="user" id="form_chemin_attaque">
-                  <fieldset>
+          <!-- Core plugin JavaScript-->
+          <script src="content/vendor/jquery-easing/jquery.easing.js"></script>
 
-                    <div class=" form-group col-12">
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_risque" id="id_risque" placeholder="ID du risque" required>
-                    </div>
+          <!-- Custom scripts for all pages-->
+          <script src="content/js/bootstrap.js"></script>
 
-                    <div class="form-group col-12">
-                      <label for="Chemin d'attaque stratégique">Chemin d'attaque stratégique</label>
-                      <textarea class="form-control perso_text_area" name="chemin_d_attaque_strategique" id="chemin_d_attaque_strategique" rows="5"></textarea>
-                    </div>
-
-                    <div class="form-group col-12">
-                      <label for="Select_nom_scenario_strategique">Scénario stratégique</label>
-                      <select class="form-control" name="nom_scenario_strategique" id="Select_nom_scenario_strategique">
-                        <option value="" selected>...</option>
-                        <?php
-                        while ($row = mysqli_fetch_array($result_id_scenario_strategique)) //selection.php
-                        {
-                          echo '
-                        <option id="nom_scenario_strategique" value="' . $row["nom_scenario_strategique"] . '">' . $row["nom_scenario_strategique"] . '</option>
-                        ';
-                        }
-                        ?>
-                      </select>
-                    </div>
-
-                    <div class="form-group col-12">
-                      <label for="Select_nom_scenario_strategique">Partie prenante</label>
-                      <select class="form-control" name="nom_partie_prenante" id="nom_partie_prenante">
-                        <option value="" selected>...</option>
-                        <?php
-                        while ($row = mysqli_fetch_array($result_id_partie_prenante)) //selection.php
-                        {
-                          echo '
-                        <option id="partie_prenante" value="' . $row["nom_partie_prenante"] . '">' . $row["nom_partie_prenante"] . '</option>
-                        ';
-                        }
-                        ?>
-                      </select>
-                    </div>
-
-                    <!-- bouton Ajouter -->
-                    <div class="modal-footer perso_middle_modal_footer">
-                      <input type="submit" name="validerchemin" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
-                    </div>
-                  </fieldset>
-                </form>
-              </div>
-
-
-            </div>
-          </div>
-        </div>
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-              <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bootstrap core JavaScript-->
-        <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-
-        <!-- Core plugin JavaScript-->
-        <script src="content/vendor/jquery-easing/jquery.easing.js"></script>
-
-        <!-- Custom scripts for all pages-->
-        <script src="content/js/bootstrap.js"></script>
-
-        <!-- Our JS -->
-        <script src="content/js/modules/dark_mode.js"></script>
-        <script src="content/js/modules/top_bar.js"></script>
-        <script src="content/js/modules/side_bar.js"></script>
-        <!-- <script src="content/js/modules/help_button.js"></script> -->
-        <!-- <script src="content/js/modules/gravite.js"></script> -->
-        <!-- <script src="content/js/modules/realtime.js"></script> -->
-        <!-- <script src="content/js/modules/set_filter_sort_table.js"></script> -->
-        <!-- <script src="content/js/atelier/atelier3b.js"></script> -->
-        <!-- <script src="content/js/modules/sort_table.js"></script> -->
-        <script src="content/js/modules/browse_img.js"></script>
-        <script src="test.js"></script>
+          <!-- Our JS -->
+          <script src="content/js/modules/dark_mode.js"></script>
+          <script src="content/js/modules/side_bar.js"></script>
+          <script src="content/js/modules/fixed_page.js"></script>
+          <script src="content/js/modules/set_filter_sort_table.js"></script>
+          <script src="content/js/modules/mode_expert.js"></script>
+          <script src="content/js/modules/sort_table.js"></script>
       </body>
   <?php
     }

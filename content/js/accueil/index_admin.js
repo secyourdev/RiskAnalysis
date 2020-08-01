@@ -40,8 +40,7 @@ var label_email_utilisateur = document.getElementById('email_utilisateur').previ
 var lenght_reinitialiser_mdp = reinitialiser_mdp.length;
 
 var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{0,100}$/
-var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,1000}$/
-//var regex_email = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"@]{0,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
 var regex_email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 button_add_user_in_grp.style.display='none'
@@ -71,7 +70,7 @@ $(document).ready(function(){
      url:'content/php/accueil/modification_app_utilisateur.php',
      columns:{
       identifier:[0, "id_utilisateur"],
-      editable:[[1, 'nom'], [2, 'prenom'], [3, 'poste'], [4, 'email'], [5, 'type_compte','{"Administrateur Logiciel":"Administrateur Logiciel","Chef de Projet":"Chef de Projet","Utilisateur":"Utilisateur"}']]
+      editable:[[1, 'nom'], [2, 'prenom'], [3, 'poste'], [5, 'type_compte','{"Administrateur Logiciel":"Administrateur Logiciel","Utilisateur":"Utilisateur"}']]
      },
      restoreButton:false,
      onSuccess:function(data, textStatus, jqXHR)
@@ -302,15 +301,6 @@ function compteur_anim() {
             $(this).text(Math.ceil(now));
         },
     });
-    // $('#bdd.compteur b').animate({
-    //     bdd: bdd,
-    // }, {
-    //     duration: 2000,
-    //     easing: 'swing',
-    //     step: function (now) {
-    //         $(this).text(Math.ceil(now));
-    //     },
-    // });
 };
 
 

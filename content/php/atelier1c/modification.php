@@ -18,25 +18,25 @@ if ($input["action"] === 'edit'){
     $results["error"] = false;
 
     // Verification du nom_evenement_redoutes
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $nom_evenement_redoute)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $nom_evenement_redoute)) {
         $results["error"] = true;
         $_SESSION['message_error_3'] = "Nom de l'événement redouté invalide";
     }
 
     // Verification du description_evenement_redoutes
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $description_evenement_redoutes)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,1000}$/", $description_evenement_redoutes)) {
         $results["error"] = true;
         $_SESSION['message_error_3'] = "Description événement redouté invalide";
     }
 
     // Verification du impact
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $impact)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,1000}$/", $impact)) {
         $results["error"] = true;
         $_SESSION['message_error_3'] = "Impact invalide";
     }
 
     // Verification du niveau_de_gravite
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $niveau_de_gravite)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $niveau_de_gravite)) {
         $results["error"] = true;
         $_SESSION['message_error_3'] = "Niveau de gravité invalide";
     }
@@ -55,8 +55,6 @@ if ($input["action"] === 'edit'){
         niveau_de_gravite = '" . $niveau_de_gravite . "'
         WHERE id_evenement_redoute = '" . $input["id_evenement_redoute"] . "'
         ";
-        echo $query;
-
         mysqli_query($connect, $query);
         $_SESSION['message_success_3'] = "L'événement redouté a été modifié !";
     }
@@ -67,7 +65,6 @@ if ($input["action"] === 'delete') {
     DELETE FROM M_evenement_redoute 
     WHERE id_evenement_redoute = '".$input["id_evenement_redoute"]."'
     ";
-    echo $query;
     mysqli_query($connect, $query);
     $_SESSION['message_success_3'] = "L'événement redouté a été supprimé !";
 }

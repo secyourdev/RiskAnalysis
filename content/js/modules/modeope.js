@@ -2,8 +2,6 @@
 const selectscenar = document.getElementById('nomscenar');
 
 selectscenar.addEventListener('change', (event) => {
-  //   const result = document.querySelector('.result');
-    console.log(`Valeur  ${selectscenar.value}`);
   $.ajax({
     url: 'content/php/atelier4a/modeope.php',
     type: 'POST',
@@ -11,7 +9,6 @@ selectscenar.addEventListener('change', (event) => {
       id_scenar: selectscenar.value
     },
     success: function (data) {
-        console.log(data);
       document.getElementById('ecrire_mode').innerHTML = data;
       $('#tableau_mode_ope').Tabledit({
         url:'content/php/atelier4a/modificationmodeope.php',

@@ -1,14 +1,4 @@
-﻿
-console.log('5a-testtableauheatmap.js');
-
-$.post("heatmap-getdata_apres.php", function (data) {
-
-	console.log('bonjour');
-	// console.log(data);
-	// console.log(data['data_dim']);
-	// console.log(data['data_cell']);
-
-
+﻿$.post("heatmap-getdata_apres.php", function (data) {
 	for (i = 0; i < data['data_dim'].length; i++) {
 		echelle_vraisemblance = data['data_dim'][i]['echelle_vraisemblance'];
 		echelle_gravite = data['data_dim'][i]['echelle_gravite'];
@@ -199,17 +189,9 @@ $.post("heatmap-getdata_apres.php", function (data) {
 
 	for (i = 0; i < data['data_cell'].length; i++) {
 		vraisemblance = data['data_cell'][i]["vraisemblance"];
-		// console.log("vraisemblance: ");
-		// console.log(vraisemblance);
-
 		gravite = data['data_cell'][i]["niveau_de_gravite"];
-		// console.log("gravite: ");
-		// console.log(gravite);
-
 		id_risque = data['data_cell'][i]["id_risque"];
-		// console.log("id_risque: ");
-		// console.log(id_risque);
-		// dataTable_apresau
+
 
 		var br = document.createElement("br");
 		switch (gravite) {
@@ -218,8 +200,6 @@ $.post("heatmap-getdata_apres.php", function (data) {
 					case '1':
 						parent = document.querySelector("#dataTable_apres > tbody > tr:nth-child(6) > td:nth-child(2) > div")
 						parent.append(id_risque, br)
-						console.log(id_risque, br);
-
 						break;
 					case '2':
 						parent = document.querySelector("#dataTable_apres > tbody > tr:nth-child(6) > td:nth-child(3) > div")
@@ -237,8 +217,6 @@ $.post("heatmap-getdata_apres.php", function (data) {
 						parent = document.querySelector("#dataTable_apres > tbody > tr:nth-child(6) > td:nth-child(6) > div")
 						parent.append(id_risque, br)
 						break;
-					// default:
-					// 	console.log(`Sorry, we are out of ${expr}.`);
 				}
 				break;
 			case '2':
@@ -263,8 +241,6 @@ $.post("heatmap-getdata_apres.php", function (data) {
 						parent = document.querySelector("#dataTable_apres > tbody > tr:nth-child(5) > td:nth-child(6) > div")
 						parent.append(id_risque, br)
 						break;
-					// default:
-					// 	console.log(`Sorry, we are out of ${expr}.`);
 				}
 				break;
 			case '3':
@@ -289,8 +265,6 @@ $.post("heatmap-getdata_apres.php", function (data) {
 						parent = document.querySelector("#dataTable_apres > tbody > tr:nth-child(4) > td:nth-child(6) > div")
 						parent.append(id_risque, br)
 						break;
-					// default:
-					// 	console.log(`Sorry, we are out of ${expr}.`);
 				}
 				break;
 			case '4':
@@ -315,8 +289,6 @@ $.post("heatmap-getdata_apres.php", function (data) {
 						parent = document.querySelector("#dataTable_apres > tbody > tr:nth-child(3) > td:nth-child(6) > div")
 						parent.append(id_risque, br)
 						break;
-					// default:
-					// 	console.log(`Sorry, we are out of ${expr}.`);
 				}
 				break;
 			case '5':
@@ -341,64 +313,38 @@ $.post("heatmap-getdata_apres.php", function (data) {
 						parent = document.querySelector("#dataTable_apres > tbody > tr:nth-child(2) > td:nth-child(6) > div")
 						parent.append(id_risque, br)
 						break;
-					// default:
-					// 	console.log(`Sorry, we are out of ${expr}.`);
 				}
 				break;
-			// default:
-			// 	console.log(`Sorry, we are out of ${expr}.`);
 		}
 
 	}
 
-	console.log(parseInt(echelle_gravite));
-	console.log(parseInt(echelle_vraisemblance));
-
-
-
-
-
 	if (data['bareme_exist']) {
-		console.log("if (data['bareme_exist']) : ");
-
 		for (i = 0; i < data['bareme_exist'].length; i++) {
-			console.log(data['bareme_exist'][i]);
-
 			bareme_vraisemblance = parseInt(data['bareme_exist'][i]['bareme_vraisemblance']);
-			console.log(bareme_vraisemblance);
 			bareme_gravite = parseInt(data['bareme_exist'][i]['bareme_gravite']);
-			console.log(bareme_gravite);
 			bareme_bareme = data['bareme_exist'][i]['bareme_bareme'];
-			console.log(bareme_bareme);
-
 
 			switch (bareme_gravite) {
 				case 5:
 					$gravite_to_print = 2
-					console.log("$gravite_to_print = 2");
 					break;
 				case 4:
 					$gravite_to_print = 3
-					console.log("$gravite_to_print = 3");
 					break;
 				case 3:
 					$gravite_to_print = 4
-					console.log("$gravite_to_print = 4");
-
 					break;
 				case 2:
 					$gravite_to_print = 5
-					console.log("$gravite_to_print = 5");
 					break;
 				case 1:
 					$gravite_to_print = 6
-					console.log("$gravite_to_print = 6");
 					break;
 			}
 			$vraisemblance_to_print = bareme_vraisemblance + 1;
 
 			$("#dataTable_apres > tbody > tr:nth-child(" + $gravite_to_print + ") > td:nth-child(" + $vraisemblance_to_print + ")").removeClass().addClass(bareme_bareme);
-			console.log($("#dataTable_apres > tbody > tr:nth-child(" + $gravite_to_print + ") > td:nth-child(" + $vraisemblance_to_print + ")"));
 
 		}
 

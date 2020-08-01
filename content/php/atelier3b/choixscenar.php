@@ -10,11 +10,7 @@ $queryer->execute();
 
 $srov = $querysrov->fetchAll(PDO::FETCH_ASSOC);
 $er = $queryer->fetchAll(PDO::FETCH_ASSOC);
-// echo "[";
-// echo json_encode($srov);
-// echo ",";
-echo json_encode($er);
-// echo "]";
 
-// print_r($srov);
+echo json_encode($er);
+
 print_r($er);

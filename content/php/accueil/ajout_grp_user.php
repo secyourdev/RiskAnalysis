@@ -9,7 +9,7 @@ include("../bdd/connexion.php");
   $inseregrpuser = $bdd->prepare('INSERT INTO `B_grp_utilisateur`(`nom_grp_utilisateur`) VALUES (?)');
 
   // Verification du nom du groupe utilisateur
-    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $nom_grp_user)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $nom_grp_user)){
       $results["error"] = true;
       $_SESSION['message_error_2'] = "Nom invalide";
     }

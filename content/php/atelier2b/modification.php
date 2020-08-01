@@ -81,15 +81,12 @@ if ($input["action"] === 'edit'){
             echo $motivation;
             if (($ressources === "1" && $motivation === "1") || ($ressources === "1" && $motivation === "2") || ($ressources === "2" && $motivation === "1")) {
                 $pertinence = "Faible";
-                echo "Faible";
             }
             elseif (($ressources === "3" && $motivation === "1") || ($ressources === "2" && $motivation === "2") || ($ressources === "1" && $motivation === "3")) {
                 $pertinence = "Moyenne";
-                echo "Moyenne";
             }
             else {
                 $pertinence = "Élevée";
-                echo "Élevée";
             }
         }
         
@@ -106,7 +103,6 @@ if ($input["action"] === 'edit'){
         choix_source_de_risque = '".$choix_sr."'
         WHERE id_source_de_risque = '".$input["id_source_de_risque"]."'
         ";
-        echo $query;
         mysqli_query($connect, $query);
         $_SESSION['message_success'] = "L'évaluation de la source de risque a été ajouté !";
     }

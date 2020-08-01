@@ -23,7 +23,8 @@ var label_ancien_mdp = document.getElementById('ancien_mdp').previousSibling.pre
 var label_nouveau_mdp = document.getElementById('nouveau_mdp').previousSibling.previousSibling
 var label_confirmation = document.getElementById('confirmation_nouveau_mdp').previousSibling.previousSibling
 
-var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{0,100}$/
+var regex = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{1,100}$/
+var regex_email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 var lenght_user
 /*------------------------- CHARGEMENT DES INFORMATIONS UTILISATEUR  --------------------*/
@@ -44,6 +45,10 @@ $.ajax({
         poste.value=user_JSON[0][2]
         email.value=user_JSON[0][3]
         email_modif_mdp.value=user_JSON[0][3]
+        verify_input(poste.value,regex,poste)
+        activate_label(poste.value,label_poste)
+        verify_input(email.value,regex_email,email)
+        activate_label(email.value,label_email)
     },
     error: function (erreur) {
         alert('ERROR :' + erreur);
@@ -51,10 +56,6 @@ $.ajax({
 });
 
 /*------------------------------ LABELS CACHES ------------------------------*/
-// label_nom.style.display="none"
-// label_prenom.style.display="none"
-// label.style.display="none"
-// label_email.style.display="none"
 label_email_modif_mdp.style.display="none"
 label_ancien_mdp.style.display="none"
 label_nouveau_mdp.style.display="none"
@@ -62,41 +63,38 @@ label_confirmation.style.display="none"
 
 /*----------------------- ENREGISTREMENT DES COOKIES ------------------------*/
 nom.addEventListener('keyup',function(event){
-    verify_input(nom.value,regex_nom,nom)
+    verify_input(nom.value,regex,nom)
     activate_label(nom.value,label_nom)
 }) 
 
 prenom.addEventListener('keyup',function(event){
-    verify_input(prenom.value,regex_nom,prenom)
+    verify_input(prenom.value,regex,prenom)
     activate_label(prenom.value,label_prenom)
 })
 
 poste.addEventListener('keyup',function(event){
-    verify_input(poste.value,regex_nom,poste)
+    verify_input(poste.value,regex,poste)
     activate_label(poste.value,label_poste)
 })
 
 email.addEventListener('keyup',function(event){
-    verify_input(email.value,regex_nom,email)
+    verify_input(email.value,regex_email,email)
     activate_label(email.value,label_email)
 })
 
 email_modif_mdp.addEventListener('keyup',function(event){
-    verify_input(email_modif_mdp.value,regex_nom,email_modif_mdp)
+    verify_input(email_modif_mdp.value,regex_email,email_modif_mdp)
     activate_label(email_modif_mdp.value,label_email_modif_mdp)
 })
 
 ancien_mdp.addEventListener('keyup',function(event){
-    verify_input(ancien_mdp.value,regex_nom,ancien_mdp)
     activate_label(ancien_mdp.value,label_ancien_mdp)
 })
 
 nouveau_mdp.addEventListener('keyup',function(event){
-    verify_input(nouveau_mdp.value,regex_nom,nouveau_mdp)
     activate_label(nouveau_mdp.value,label_nouveau_mdp)
 })
 
 confirmation.addEventListener('keyup',function(event){
-    verify_input(confirmation.value,regex_nom,confirmation)
     activate_label(confirmation.value,label_confirmation)
 })

@@ -6,15 +6,8 @@ var nommesure = document.getElementById("nommesure");
 var descriptionmesure = document.getElementById("descriptionmesure");
 var label_mesure = document.getElementById("nommesure").previousSibling.previousSibling
 
-var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,100}$/
-var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,1000}$/
-
-var button = document.getElementsByClassName('tabledit-edit-button')
-var save_button = document.getElementsByClassName('tabledit-save-button')
-var j=0;
-var k=0;
-var l=0;
-var m=0;
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
 
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
@@ -112,15 +105,6 @@ OURJQUERYFN.setFilterTable("#rechercher_scenario_strategique", "#editable_table_
 /*--------------------------- SORT & FILTER TABLES --------------------------*/
 setSortTable('editable_table_mesure');
 OURJQUERYFN.setFilterTable("#rechercher_mesure", "#editable_table_mesure tbody tr")
-
-/*------------------ AJOUT DE LA VERIFICATION DES TABLEAUX ------------------*/
-sleep(100).then(() => {
-    for(let i=0;i<editable_table_mesure.rows.length-1;i++){
-        j=i+1;
-        button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table_mesure'+','+'11'+')')
-    }
-});
-
 /*------------------------------ LABELS CACHES ------------------------------*/
 label_mesure.style.display="none"
 
@@ -133,3 +117,11 @@ nommesure.addEventListener('keyup',function(event){
 descriptionmesure.addEventListener('keyup',function(event){
     verify_textarea(descriptionmesure.value,regex_description,descriptionmesure)
 })
+
+
+$("#editable_table > tbody > tr > td:nth-child(10)").each(function () {
+    if ($(this)[0].innerText == "Peu critique") { $(this)[0].classList.add('fond-vert'); }
+    if ($(this)[0].innerText == "Moyennement critique") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "Très critique") { $(this)[0].classList.add('fond-rouge'); }
+
+});

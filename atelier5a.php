@@ -64,7 +64,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <div id="wrapper">
 
           <!-- Sidebar -->
-          <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion" id="accordionSidebar">
+          <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion side_bar_scroll" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
               <!-- Logo -->
@@ -82,6 +82,16 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
               <a class="nav-link" href="index.php">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Tableau de Bord</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="mode_expert&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-tasks"></i>
+                    <span>Mode expert</span></a>
             </li>
 
             <!-- Divider -->

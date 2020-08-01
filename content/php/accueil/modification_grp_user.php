@@ -10,7 +10,7 @@ if($input["action"] === 'edit'){
     $nom_grp_utilisateur = mysqli_real_escape_string($connect, $input["nom_grp_utilisateur"]);
     
     // Verification du nom
-    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $nom_grp_utilisateur)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $nom_grp_utilisateur)){
         $results["error"] = true;
         $_SESSION['message_error_2'] = "Nom invalide";
     }

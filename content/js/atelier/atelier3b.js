@@ -9,8 +9,8 @@ var id_risque = document.getElementById("id_risque");
 var cheminattaque = document.getElementById("chemin_d_attaque_strategique")
 var label_id_risque = document.getElementById("id_risque").previousSibling.previousSibling
 
-var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,100}$/
-var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,1000}$/
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
 
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
@@ -31,12 +31,6 @@ $(document).ready(function () {
         columns: {
             identifier: [0, 'id_evenement_redoutes'],
             editable: [],
-            // checkboxeditable: [
-            //     [5, 'confidentialite'],
-            //     [6, 'integrite'],
-            //     [7, 'disponibilite'],
-            //     [8, 'tracabilite']
-            // ]
         },
         eventType: 'none',
         restoreButton: false,
@@ -62,11 +56,6 @@ $(document).ready(function () {
         url: 'content/php/atelier3b/choixscenar.php',
         type: 'POST',
         success: function(data){
-            // console.log(data);
-            // var SROV = data[0];
-            // var ER = data[1];
-            // console.log(SROV);
-            // console.log(ER);
         }
     })
     $('#editable_table_scenario_strategique').Tabledit({
@@ -76,8 +65,6 @@ $(document).ready(function () {
             identifier: [0, 'id_scenario_strategique'],
             editable: [
                 [1, 'nom_scenario_strategique'],
-                // [2, 'id_source_de_risque'],
-                // [3, 'id_evenement_redoute'],
             ],
             checkboxeditable: []
         },

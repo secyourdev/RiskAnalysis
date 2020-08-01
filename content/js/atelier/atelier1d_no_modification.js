@@ -16,8 +16,6 @@ function show_sub_content() {
 /*--------------------------------- TABLES JS -------------------------------*/
 $(document).ready(function () {
     $('#editable_table_socle').Tabledit({
-        url: 'content/php/atelier1d/modification_socle.php',
-        sortable: true,
         columns: {
             identifier: [0, 'id_socle_securite'],
             editable: [],

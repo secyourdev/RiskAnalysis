@@ -11,11 +11,7 @@ $query_interne3c = "SELECT * FROM R_partie_prenante WHERE type = 'Interne' AND i
 $query_externe3c = "SELECT * FROM R_partie_prenante WHERE type = 'Externe' AND id_projet = $getid_projet ORDER BY id_partie_prenante";
 $query_seuil = "SELECT id_seuil, seuil_danger, seuil_controle, seuil_veille, id_projet, id_atelier FROM Q_seuil WHERE id_projet = $getid_projet ORDER BY id_seuil";
 
-// print $query_interne3a;//ok
-// print $query_externe3a;//ok
-// print $query_interne3c;//ok
-// print $query_externe3c;//ok
-// print $query_seuil;//ok
+
 
 
 $result_interne3a = mysqli_query($connect, $query_interne3a);
@@ -24,34 +20,21 @@ $result_interne3c = mysqli_query($connect, $query_interne3c);
 $result_externe3c = mysqli_query($connect, $query_externe3c);
 $result_seuil = mysqli_query($connect, $query_seuil);
 
-// print_r($result_interne3a);//ok
-// print_r($result_externe3a);//ok
-// print_r($result_interne3c);//ok
-// var_dump($result_externe3c);//ok
+
 
 
 
 $bool_result_interne3a = (mysqli_fetch_array($result_interne3a) != null);
-// print($bool_result_interne3a); // 1 
 $bool_result_externe3a = (mysqli_fetch_array($result_externe3a) != null);
-// print($bool_result_externe3a); // 1 
 $bool_result_interne3c = (mysqli_fetch_array($result_interne3c) != null);
-// print($bool_result_interne3c); // 1 
 $bool_result_externe3c = (mysqli_fetch_array($result_externe3c) != null);
-// print($bool_result_externe3c); // 1 
 
 
-
-
-
-
-// print_r($result_seuil);//ok
 if ($bool_result_interne3a) {
 
   $data_interne3a = array();
   foreach ($result_interne3a as $row) {
     $menace = $row['niveau_de_menace_partie_prenante'];
-    // print 'menace: ' . $menace;
     $exposition = ($row['dependance_partie_prenante'] * $row['ponderation_dependance'] * $row['penetration_partie_prenante'] * $row['ponderation_penetration']);
     $fiabilite = ($row['maturite_partie_prenante']  * $row['ponderation_maturite'] * $row['confiance_partie_prenante'] * $row['ponderation_confiance']);
     $nom_partie_prenante = $row['nom_partie_prenante'];
@@ -68,7 +51,6 @@ if ($bool_result_externe3a) {
   $data_externe3a = array();
   foreach ($result_externe3a as $row) {
     $menace = $row['niveau_de_menace_partie_prenante'];
-    // print 'menace: ' . $menace;
     $exposition = ($row['dependance_partie_prenante'] * $row['ponderation_dependance'] * $row['penetration_partie_prenante'] * $row['ponderation_penetration']);
     $fiabilite = ($row['maturite_partie_prenante']  * $row['ponderation_maturite'] * $row['confiance_partie_prenante'] * $row['ponderation_confiance']);
     $nom_partie_prenante = $row["nom_partie_prenante"];
@@ -91,7 +73,6 @@ if ($bool_result_interne3c) {
 
   foreach ($result_interne3c as $row) {
     $menace = $row['niveau_de_menace_residuelle'];
-    // print 'menace: ' . $menace;
     $exposition = ($row['dependance_residuelle'] * $row['penetration_residuelle']);
     $fiabilite = ($row['maturite_residuelle'] * $row['confiance_residuelle']);
 
@@ -117,7 +98,6 @@ if ($bool_result_externe3c) {
 
   foreach ($result_externe3c as $row) {
     $menace = $row['niveau_de_menace_residuelle'];
-    // print 'menace: ' . $menace;
     $exposition = ($row['dependance_residuelle'] * $row['penetration_residuelle']);
     $fiabilite = ($row['maturite_residuelle'] * $row['confiance_residuelle']);
 
@@ -149,14 +129,6 @@ foreach ($result_seuil as $row) {
   );
 }
 
-
-// $data = array(
-//   'data_interne3a' => $data_interne3a,
-//   'data_externe3a' => $data_externe3a,
-//   'data_interne3c' => $data_interne3c,
-//   'data_externe3c' => $data_externe3c,
-//   'data_seuil' => $data_seuil
-// );
 
 
 

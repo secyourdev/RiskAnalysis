@@ -66,7 +66,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <div id="wrapper">
 
           <!-- Sidebar -->
-          <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion" id="accordionSidebar">
+          <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion side_bar_scroll" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
               <!-- Logo -->
@@ -84,6 +84,16 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
               <a class="nav-link" href="index.php">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Tableau de Bord</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="mode_expert&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-tasks"></i>
+                    <span>Mode expert</span></a>
             </li>
 
             <!-- Divider -->
@@ -664,95 +674,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       </div>
                     </div>
                   </div>
-                  <!-- Area Card -->
-                  <!-- <div id="mesure_de_securite" class="col-xl-12 col-lg-12">
-                    <div class="card shadow mb-4"> -->
-
-                  <!-- Card Header - Dropdown -->
-                  <!-- <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Mesure de sécurité</h6>
-                      </div> -->
-
-                  <!-- Card Body -->
-                  <!-- <div class="card-body"> -->
-
-                  <!--text-->
-                  <!-- <div class="table-responsive">
-                        <input type="text" class="rechercher_input" id="rechercher_tableau" placeholder="Rechercher">
-                          <table id="editable_table" class="table table-bordered table-striped">
-                            <thead>
-                              <tr>
-                                <th id="id">ID</th>
-                                <th id="valeur_metier">Valeur Métier</th>
-                                <th id="evenement_redoute">Événement redouté</th>
-                                <th id="impact">Impact</th>
-                                <th id="gravite">Gravité</th>
-                                <th id="source_de_risque">Source de risque</th>
-                                <th id="objectif_vise">Objectif visé</th>
-                                <th id="pertinence">Pertinence</th>
-                                <th id="numero_risque">N° Risque</th>
-                                <th id="chemin_attaque_strategique">Chemin d'attaque stratégique</th>
-                                <th id="partie_prenante">Partie prenante</th>
-                                <th id="menace">Niveau de menace initial</th>
-                                <th id="dependance_residuelle">Dependance résiduelle</th>
-                                <th id="penetration_residuelle">Penetration résiduelle</th>
-                                <th id="maturite_residuelle">Maturite résiduelle</th>
-                                <th id="confiance_residuelle">Confiance résiduelle</th>
-                                <th id="menace_residuelle">Niveau de menace résiduel</th>
-                                <th id="scenario_operationnel">Scenario opérationnel</th>
-                                <th id="vraisemblance">Vraisemblance</th>
-                                <th id="risque">Risque</th>
-                                <th id="mesure">Mesure de sécurité</th>
-                                <th id="description_mesure">Description de la mesure</th>
-                                
-                              </tr>
-                            </thead>
-                              
-                            <tbody>
-                            <?php
-                            // while($row = mysqli_fetch_array($result))
-                            // {
-                            //   $risque = $row["niveau_de_gravite"] * $row["vraisemblance"];
-                            //   echo '
-                            //   <tr>
-                            //   <td>'.$row["id_mesure"].'</td>
-                            //   <td>'.$row["nom_valeur_metier"].'</td>
-                            //   <td>'.$row["nom_evenement_redoute"].'</td>
-                            //   <td>'.$row["impact"].'</td>
-                            //   <td>'.$row["niveau_de_gravite"].'</td>
-                            //   <td>'.$row["description_source_de_risque"].'</td>
-                            //   <td>'.$row["objectif_vise"].'</td>
-                            //   <td>'.$row["pertinence"].'</td>
-                            //   <td>'.$row["id_risque"].'</td>
-                            //   <td>'.$row["nom_chemin_d_attaque_strategique"].'</td>
-                            //   <td>'.$row["nom_partie_prenante"].'</td>
-                            //   <td>'.$row["niveau_de_menace_partie_prenante"].'</td>
-                            //   <td>'.$row["dependance_residuelle"].'</td>
-                            //   <td>'.$row["penetration_residuelle"].'</td>
-                            //   <td>'.$row["maturite_residuelle"].'</td>
-                            //   <td>'.$row["confiance_residuelle"].'</td>
-                            //   <td>'.$row["niveau_de_menace_residuelle"].'</td>
-                            //   <td>'.$row["description_scenario_operationnel"].'</td>
-                            //   <td>'.$row["vraisemblance"].'</td>
-                            //   <td>'.$risque.'</td>
-                            //   <td>'.$row["nom_mesure"].'</td>
-                            //   <td>'.$row["description_mesure"].'</td>
-                            //   </tr>
-                            //   ';
-                            // }
-                            ?>
-                            </tbody>
-                          </table>
-                        </div>  -->
-
-                  <!-- bouton Ajouter une nouvelle ligne -->
-                  <!-- <div class="text-center">
-                          <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_tableau">Ajouter une nouvelle ligne</button>
-                        </div> 
-                      </div>
-                    </div>
-                  </div> -->
-
+                  
                   <!-- Area Card -->
                   <div id="plan_amelioration_continue_de_la_securite" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
@@ -918,92 +840,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         </div>
 
                       </div>
-                      <!-- <div class="row">
-              <div class=" col-6">
-                <div class="choix-valeur">
-                  <div>Dépendance</div>
-                  <div>
-                    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Motivation">
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="dependance" autocomplete="off" value="1"> 1
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="dependance" autocomplete="off" value="2"> 2
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="dependance" autocomplete="off" value="3"> 3
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="dependance" autocomplete="off" value="4"> 4
-                      </label>
-                    </div>
-                  </div>
-                </div>
 
-
-
-                <div class="choix-valeur">
-                  <div>Penetration</div>
-                  <div>
-                    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Ressources">
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="penetration" autocomplete="off" value="1"> 1
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="penetration" autocomplete="off" value="2"> 2
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="penetration" autocomplete="off" value="3"> 3
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="penetration" autocomplete="off" value="4"> 4
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class=" col-6">
-                <div class="choix-valeur">
-                  <div>Maturité</div>
-                  <div>
-
-                    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Activité">
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="maturite" autocomplete="off" value="1"> 1
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="maturite" autocomplete="off" value="2"> 2
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="maturite" autocomplete="off" value="3"> 3
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="maturite" autocomplete="off" value="4"> 4
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="choix-valeur">
-                  <div>Confiance</div>
-                  <div>
-                    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons" id="Choix">
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="confiance" autocomplete="off" value="1"> 1
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="confiance" autocomplete="off" value="2"> 2
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="confiance" autocomplete="off" value="3"> 3
-                      </label>
-                      <label class="btn perso_checkbox shadow-none">
-                        <input type="radio" name="confiance" autocomplete="off" value="4"> 4
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> -->
                       <!-- bouton Valider -->
                       <div class="modal-footer perso_middle_modal_footer">
                         <input type="submit" name="ajouterregle" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>

@@ -16,19 +16,19 @@ if ($input["action"] === 'edit') {
     $results["message"] = [];
 
     // Verification du principe
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $principe)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $principe)) {
         $results["error"] = true;
         $_SESSION['message_error'] = "Principe invalide";
     }
 
     // Verification du responsable
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $responsable)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,1000}$/", $responsable)) {
         $results["error"] = true;
         $_SESSION['message_error'] = "Responsable invalide";
     }
 
     // Verification des difficultés
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $difficulte)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $difficulte)) {
         $results["error"] = true;
         $_SESSION['message_error'] = "Difficulté invalide";
     }
@@ -46,7 +46,7 @@ if ($input["action"] === 'edit') {
     }
 
     // Verification du statut
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $statut)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $statut)) {
         $results["error"] = true;
         $_SESSION['message_error'] = "Statut invalide";
     }

@@ -5,10 +5,8 @@ $(document).ready(function () {
 
         var fd = new FormData();
         var files = $('#import_image_file')[0].files[0];
-        console.log(files);
 
         fd.append('userfile', files);
-        console.log(fd);
 
         $.ajax({
             url: "content/php/import_image/import.php",

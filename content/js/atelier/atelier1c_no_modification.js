@@ -15,7 +15,6 @@ function show_sub_content(){
 /*--------------------------------- TABLES JS -------------------------------*/
 $(document).ready(function(){  
     $('#editable_table').Tabledit({
-     url:'content/php/echelle/modificationechelle.php',
      columns:{
       identifier:[0, 'id_echelle'],
       editable:[]

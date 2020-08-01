@@ -3,14 +3,12 @@ session_start();
 include("../bdd/connexion_sqli.php");
 $input = filter_input_array(INPUT_POST);
 
-// $id_risque = mysqli_real_escape_string($connect, $input['id_risque']);
-// $chemin_d_attaque_strategique = mysqli_real_escape_string($connect, $input['chemin_d_attaque_strategique']);
 $description_scenario_operationnel = mysqli_real_escape_string($connect, $input['description_scenario_operationnel']);
 
 $results["error"] = false;
 
 // Verification du type de l'attaquant
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $description_scenario_operationnel)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $description_scenario_operationnel)) {
     $results["error"] = true;
     $_SESSION['message_error'] = "Scénario opérationnel invalide";
 }

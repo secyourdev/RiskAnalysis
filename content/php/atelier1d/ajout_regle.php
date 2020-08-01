@@ -29,19 +29,19 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $nom_referent
 }
 
 // Verification du id_regle_affichage
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $id_regle_affichage)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $id_regle_affichage)) {
   $results["error"] = true;
   $_SESSION['message_error_2'] = "ID de la règle invalide";
 }
 
 // Verification du titre
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $titre)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,1000}$/", $titre)) {
   $results["error"] = true;
   $_SESSION['message_error_2'] = "Titre de la règle invalide";
 }
 
 // Verification du description
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,1000}$/", $description)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,1000}$/", $description)) {
   $results["error"] = true;
   $_SESSION['message_error_2'] = "Description invalide";
 }
@@ -51,7 +51,6 @@ if ($results["error"] === false && isset($_POST['validerecart'])) {
   $recupere_id_socle->bindParam(1, $nom_referentiel);
   $recupere_id_socle->execute();
   $id_socle_securite = $recupere_id_socle->fetch();
-  print $id_socle_securite[0];
 
   $insere_regle->bindParam(1, $id_regle_affichage);
   $insere_regle->bindParam(2, $titre);

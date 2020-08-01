@@ -3,7 +3,6 @@ const selectechelle = document.getElementById('nomechelle');
 
 selectechelle.selectedIndex = sessionStorage.getItem('selectechelle')
 selectEchelle(selectechelle.value);
-console.log(selectechelle.value);
 
 selectechelle.addEventListener('change', (event) => {
   sessionStorage.setItem('selectechelle',selectechelle.selectedIndex);

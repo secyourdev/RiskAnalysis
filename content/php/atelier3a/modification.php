@@ -18,6 +18,7 @@ if ($input["action"] === 'edit') {
     $ponderation_penetration = mysqli_real_escape_string($connect, $input['ponderation_penetration']);
     $ponderation_maturite = mysqli_real_escape_string($connect, $input['ponderation_maturite']);
     $ponderation_confiance = mysqli_real_escape_string($connect, $input['ponderation_confiance']);
+    $criticite = mysqli_real_escape_string($connect, $input['criticite']);
     $niveau_de_menace_partie_prenante = round(($dependance_partie_prenante*$ponderation_dependance * $penetration_partie_prenante*$ponderation_penetration) / ($maturite_partie_prenante*$ponderation_maturite * $confiance_partie_prenante*$ponderation_confiance), 2);
 
     $id_atelier = '3.a';
@@ -25,17 +26,17 @@ if ($input["action"] === 'edit') {
     $results["error"] = false;
 
     // Verification du categorie_partie_prenante
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $categorie_partie_prenante)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $categorie_partie_prenante)) {
         $results["error"] = true;
         $_SESSION['message_error_2'] = "Catégorie partie prenante invalide";
     }
     // Verification du nom_partie_prenante
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $nom_partie_prenante)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $nom_partie_prenante)) {
         $results["error"] = true;
         $_SESSION['message_error_2'] = "Nom partie prenante invalide";
     }
     // Verification du type
-    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $type)) {
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $type)) {
         $results["error"] = true;
         $_SESSION['message_error_2'] = "Type invalide";
     }
@@ -95,12 +96,12 @@ if ($input["action"] === 'edit') {
         ponderation_maturite = $ponderation_maturite,
         confiance_partie_prenante = '" . $confiance_partie_prenante . "',
         ponderation_confiance = $ponderation_confiance,
-        niveau_de_menace_partie_prenante = '" . $niveau_de_menace_partie_prenante . "'
+        niveau_de_menace_partie_prenante = '" . $niveau_de_menace_partie_prenante . "',
+        criticite = '" . $criticite . "'
         WHERE id_partie_prenante = '" . $input["id_partie_prenante"] . "'
         AND id_projet = $getid_projet
         AND id_atelier = '$id_atelier'
         ";
-
         mysqli_query($connect, $query);
 
         $_SESSION['message_success_2'] = "La partie prenante a bien été modifiée !";

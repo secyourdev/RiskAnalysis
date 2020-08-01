@@ -51,7 +51,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion side_bar_scroll" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <!-- Logo -->
@@ -677,7 +677,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                     <select class="form-control" id="type_compte_utilisateur" name="type_compte" placeholder="Type de compte" required>
                                         <option value="" selected>...</option>
                                         <option>Administrateur Logiciel</option>
-                                        <option>Chef de Projet</option>
                                         <option>Utilisateur</option>
                                     </select>
                                 </div>

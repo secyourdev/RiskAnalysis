@@ -66,7 +66,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion side_bar_scroll" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <!-- Logo -->
@@ -84,6 +84,16 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Tableau de Bord</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="mode_expert&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-tasks"></i>
+                    <span>Mode expert</span></a>
             </li>
 
             <!-- Divider -->
@@ -877,10 +887,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                 </br>
                                     <?php
                                             }
-                                            else { 
-                                    ?>
-                                    <?php
-                                            }
                                         }   
                                     ?>   
 
@@ -977,6 +983,23 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                     }
                                                     ?>
                                                 </tr>
+                                                <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){                                     
+                                                ?>
+                                                        <tr>
+                                                            <th scope="col">Modification générale</th>
+                                                        </tr>
+                                                <?php
+                                                        }
+                                                        else if(isset($userdroit['ecriture'])){
+                                                            if($userdroit['ecriture']=='Réalisation'){
+                                                ?>
+                                                                <tr>
+                                                                    <th scope="col">Modification générale</th>
+                                                                </tr>
+                                                <?php
+                                                            }
+                                                        }   
+                                                ?> 
                                             </thead>
 
                                             <tbody class="raci_th">

@@ -7,8 +7,8 @@ var nom = document.getElementById("nom_partie_prenante");
 var label_categorie = document.getElementById("categorie_partie_prenante").previousSibling.previousSibling
 var label_nom = document.getElementById("nom_partie_prenante").previousSibling.previousSibling
 
-var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,100}$/
-var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,1000}$/
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
 
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
@@ -43,7 +43,8 @@ $(document).ready(function () {
                 [9, 'ponderation_maturite'],
                 
                 [10, 'confiance_partie_prenante', '{ "1": "1", "2": "2", "3": "3", "4": "4" }'],
-                [11, 'ponderation_confiance']
+                [11, 'ponderation_confiance'],
+                [13, 'criticite', '{"Peu critique" : "Peu critique", "Moyennement critique" : "Moyennement critique", "Très critique" : "Très critique"}']
                 
             ]
         },
@@ -66,13 +67,8 @@ function get_database_seuil() {
         type: 'POST',
         dataType: 'html',
         success: function (resultat) {
-            // console.log(resultat);
-            
             var seuil = JSON.parse(resultat);
-            console.log('seuil');
-            
-            console.log(seuil);
-            
+           
             seuil_danger.value = seuil[0]["seuil_danger"]
             seuil_controle.value = seuil[0]["seuil_controle"]
             seuil_veille.value = seuil[0]["seuil_veille"]
@@ -99,3 +95,11 @@ nom.addEventListener('keyup',function(event){
     verify_input(nom.value,regex_nom,nom)
     activate_label(nom.value,label_nom)
 }) 
+
+
+$("#editable_table > tbody > tr > td:nth-child(14)").each(function () {
+    if ($(this)[0].innerText == "Peu critique") { $(this)[0].classList.add('fond-vert'); }
+    if ($(this)[0].innerText == "Moyennement critique") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "Très critique") { $(this)[0].classList.add('fond-rouge'); }
+
+});

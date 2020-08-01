@@ -27,7 +27,6 @@ $(document).ready(function(){
     });
 
     $('#tableau_ope').Tabledit({
-     url:'content/php/atelier4a/modification.php',
      deleteButton: false,
      columns:{
       identifier:[0, "id_scenario_operationnel"],
@@ -39,7 +38,6 @@ $(document).ready(function(){
     });
 
     $('#tableau_mode_ope').Tabledit({
-     url:'content/php/atelier4a/modificationmodeope.php',
      columns:{
       identifier:[0, "id_mode_operatoire"],
       editable:[]

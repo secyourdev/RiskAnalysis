@@ -5,10 +5,8 @@ $(document).ready(function () {
 
         var fd = new FormData();
         var files = $('#import_bdd_file')[0].files[0];
-        console.log(files);
 
         fd.append('userfile', files);
-        console.log(fd);
 
         $.ajax({
             url: "content/php/import_bdd/import.php",
@@ -24,7 +22,7 @@ $(document).ready(function () {
                 $('#ajax-loader').css('display', 'none');
                 $('#file_submit').attr('disabled', false);
                 $('#success_message').html("<div class='alert alert-success'>Base de données importée</div>");
-                // location.reload();
+                location.reload();
             }
         })
 

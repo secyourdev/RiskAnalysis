@@ -1,6 +1,3 @@
-/*------------------------------- VARIABLES ----------------------------------*/
-var button = document.getElementsByClassName('tabledit-edit-button')
-var save_button = document.getElementsByClassName('tabledit-save-button')
 /*--------------------------------- TABLES JS -------------------------------*/
 $(document).ready(function(){  
     $('#editable_table').Tabledit({

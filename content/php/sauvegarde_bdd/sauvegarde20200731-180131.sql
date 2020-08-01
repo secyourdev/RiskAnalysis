@@ -17,7 +17,9 @@ CREATE TABLE `A_utilisateur` (
 INSERT INTO `A_utilisateur` VALUES ('1','ANTON RAVEENDRAN','Joyston','Ingénieur Cybersécurité','joyston.antonraveendran@edu.esiee.fr','$2y$10$sqqoKZH/ldSJpDEE.B71r.iK2R8Dg.13CxekMorR.ngxghY2VU6Kq','Administrateur Logiciel');
 INSERT INTO `A_utilisateur` VALUES ('2','MICHEL','Guillaume','Ingénieur Logiciel','guillaume.michel@edu.esiee.fr','$2y$10$0kxHtETUPqWhCP2wnIEp8.CgGJn2ovkPKxQQInBwcV91N1Iyo7Oce','Administrateur Logiciel');
 INSERT INTO `A_utilisateur` VALUES ('3','LAFOURCADE','Anthony','Ingénieur Logiciel','anthony.lafourcade@edu.esiee.fr','$2y$10$R/AiwRPtTNN1YXalpn063uwrfudevj2zSn65uCCdgF2v1RipRXEn6','Administrateur Logiciel');
-INSERT INTO `A_utilisateur` VALUES ('4','PINTO','Carlos','Ingénieur sécurité','carlos.pinto5@wanadoo.fr','$2y$10$MV8n.ZZn32.qUcR0FZxXXOZs21oZSvXPjAfJntM0UQ9iE7xUoDbWS','Administrateur Logiciel');
+INSERT INTO `A_utilisateur` VALUES ('4','ANTON','Tony','Ingénieur Logiciel','a.tjoyston@outlook.com','$2y$10$jTN1Whaz3DNRzeyAqVFgcuRrDUwYilyLtOfV9LZ7BRK4KYERtLZYi','Utilisateur');
+INSERT INTO `A_utilisateur` VALUES ('6','PINTO','Carlos','Ingénieur sécurité','carlos.pinto5@wanadoo.fr','$2y$10$MV8n.ZZn32.qUcR0FZxXXOZs21oZSvXPjAfJntM0UQ9iE7xUoDbWS','Administrateur Logiciel');
+INSERT INTO `A_utilisateur` VALUES ('8','Eponge','Bob','Zero','carlospinto4949@hotmail.com','$2y$10$nnjn9PTO6q2hVdkwqX9PqOe1CUO/sXv7HTZuXibNCfg9KpMkFnt2i','Utilisateur');
 
 
 DROP TABLE IF EXISTS `B_grp_utilisateur`;
@@ -26,6 +28,12 @@ CREATE TABLE `B_grp_utilisateur` (
   `nom_grp_utilisateur` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_grp_utilisateur`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `B_grp_utilisateur` VALUES ('1','a');
+INSERT INTO `B_grp_utilisateur` VALUES ('2','Groupe de Joyston');
+INSERT INTO `B_grp_utilisateur` VALUES ('3','CarlosTeam');
+INSERT INTO `B_grp_utilisateur` VALUES ('5','Groupe Test Final');
+
 
 DROP TABLE IF EXISTS `C_impliquer`;
 CREATE TABLE `C_impliquer` (
@@ -37,6 +45,19 @@ CREATE TABLE `C_impliquer` (
   CONSTRAINT `C_impliquer_B_grp_utilisateur_FK` FOREIGN KEY (`id_grp_utilisateur`) REFERENCES `B_grp_utilisateur` (`id_grp_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO `C_impliquer` VALUES ('1','1');
+INSERT INTO `C_impliquer` VALUES ('1','3');
+INSERT INTO `C_impliquer` VALUES ('2','1');
+INSERT INTO `C_impliquer` VALUES ('2','2');
+INSERT INTO `C_impliquer` VALUES ('2','4');
+INSERT INTO `C_impliquer` VALUES ('3','1');
+INSERT INTO `C_impliquer` VALUES ('3','6');
+INSERT INTO `C_impliquer` VALUES ('3','8');
+INSERT INTO `C_impliquer` VALUES ('5','1');
+INSERT INTO `C_impliquer` VALUES ('5','2');
+INSERT INTO `C_impliquer` VALUES ('5','3');
+
+
 DROP TABLE IF EXISTS `DA_echelle`;
 CREATE TABLE `DA_echelle` (
   `id_echelle` int(11) NOT NULL AUTO_INCREMENT,
@@ -47,6 +68,8 @@ CREATE TABLE `DA_echelle` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `DA_echelle` VALUES ('1','Standard','5','5');
+INSERT INTO `DA_echelle` VALUES ('2','MonEchelle','0','5');
+
 
 DROP TABLE IF EXISTS `DA_evaluer`;
 CREATE TABLE `DA_evaluer` (
@@ -74,7 +97,13 @@ INSERT INTO `DA_niveau` VALUES ('1','Conséquences négligeables pour l''organis
 INSERT INTO `DA_niveau` VALUES ('2','Conséquences significatives mais limitées pour l''organisation. Dégradation des performances de l’activité sans impact sur la sécurité des personnes et des biens. L''organisation surmontera la situation malgré quelques difficultés (fonctionnement en mode dégradé).','2','1');
 INSERT INTO `DA_niveau` VALUES ('3','Conséquences importantes pour l''organisation. Forte dégradation des performances de l''activité, avec d’éventuels impacts significatifs sur la sécurité des personnes et des biens. L''organisation surmontera la situation avec de sérieuses difficultés (fonctionnement en mode très dégradé), sans impact sectoriel ou étatique.','3','1');
 INSERT INTO `DA_niveau` VALUES ('4','Conséquences désastreuses pour l''organisation avec d''éventuels impacts sur l''écosystème. Incapacité pour l''organisation d''assurer la totalité ou une partie de son activité, avec d''éventuels impacts graves sur la sécurité des personnes et des biens. L''organisation ne surmontera vraisemblablement pas la situation (sa survie est menacée), les secteurs d''activité ou étatiques dans lesquels elle opère seront susceptibles d’être légèrement impactés, sans conséquences durables.','4','1');
-INSERT INTO `DA_niveau` VALUES ('5','Conséquences sectorielles ou régaliennes au-delà de l’organisation. Écosystème(s) sectoriel(s) impacté(s) de façon importante, avec des conséquences éventuellement durables. Et/ou : difficulté pour l’État, voire incapacité, d’assurer une fonction régalienne ou une de ses missions d’importance vitale. Et/ou : impacts critiques sur la sécurité des personnes et des biens (crise sanitaire, pollution environnementale majeure, destruction d’infrastructures essentielles, etc.).	\r\n','5','1');
+INSERT INTO `DA_niveau` VALUES ('5','Peu grave','1','2');
+INSERT INTO `DA_niveau` VALUES ('6',NULL,'2','2');
+INSERT INTO `DA_niveau` VALUES ('7',NULL,'3','2');
+INSERT INTO `DA_niveau` VALUES ('8',NULL,'4','2');
+INSERT INTO `DA_niveau` VALUES ('9',NULL,'5','2');
+INSERT INTO `DA_niveau` VALUES ('11',NULL,'5','1');
+
 
 DROP TABLE IF EXISTS `DB_bareme_risque`;
 CREATE TABLE `DB_bareme_risque` (

@@ -1,9 +1,6 @@
 /*------------------------------- VARIABLES ----------------------------------*/
 var accordionSidebar = document.getElementById("accordionSidebar");
 var sidebarToggle = document.getElementById("sidebarToggle");
-
-var j=0;
-
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
 sidebarToggleTop.addEventListener('click', show_sub_content,false);
@@ -29,8 +26,6 @@ $(document).ready(function () {
         restoreButton: false,
     });
 });
-
-
 /*--------------------------- SORT & FILTER TABLES --------------------------*/
 setSortTable('editable_table');
 OURJQUERYFN.setFilterTable("#rechercher_srov","#editable_table tbody tr")

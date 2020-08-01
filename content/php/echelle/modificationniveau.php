@@ -10,7 +10,7 @@ if($input["action"] === 'edit'){
     $results["error"] = false;
 
     // Verification de la description
-    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\s\-.:,'\"]{0,100}$/", $description_niveau)){
+    if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $description_niveau)){
         $results["error"] = true;
         $_SESSION['message_error_2'] = "Description invalide";
     }
@@ -21,7 +21,6 @@ if($input["action"] === 'edit'){
         SET description_niveau = '".$description_niveau."'
         WHERE id_niveau = '".$input["id_niveau"]."'
         ";
-        echo $query;
         mysqli_query($connect, $query);
         $_SESSION['message_success_2'] = "Les niveaux de l'échelle ont bien été modifiés !";
     }

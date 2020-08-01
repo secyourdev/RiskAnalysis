@@ -1,9 +1,6 @@
 /*------------------------------- VARIABLES ----------------------------------*/
 var accordionSidebar = document.getElementById("accordionSidebar");
 var sidebarToggle = document.getElementById("sidebarToggle");
-
-var j=0;
-
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
 sidebarToggleTop.addEventListener('click', show_sub_content,false);
@@ -18,7 +15,6 @@ function show_sub_content(){
 /*--------------------------------- TABLES JS -------------------------------*/
 $(document).ready(function () {
     $('#editable_table').Tabledit({
-        url: 'content/php/atelier2b/modification.php',
         columns: {
             identifier: [0, 'id_source_de_risque'],
             editable: [],

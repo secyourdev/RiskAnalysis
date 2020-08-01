@@ -1,7 +1,3 @@
-var button = document.getElementsByClassName('tabledit-edit-button')
-var save_button = document.getElementsByClassName('tabledit-save-button')
-var j=0;
-var k=0;
 /*--------------------------------- TABLES JS -------------------------------*/
 $(document).ready(function(){  
     

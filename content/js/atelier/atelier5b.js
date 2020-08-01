@@ -8,8 +8,8 @@ var description_mesure = document.getElementById('descriptionmesure')
 var label_nom = document.getElementById('nommesure').previousSibling.previousSibling
 var label_description = document.getElementById('descriptionmesure').previousSibling.previousSibling
 
-var regex_nom = /^[a-zA-Z0-9éèàêâùïüëç\s-./:,'"]{0,100}$/
-var regex_description = /^[a-zA-Z0-9éèàêâùïüëç\s-.:,'"]{0,1000}$/
+var regex_nom = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
+var regex_description = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
 sidebarToggleTop.addEventListener('click', show_sub_content,false);
@@ -22,31 +22,6 @@ function show_sub_content(){
     }
 }
 /*--------------------------------- TABLES JS -------------------------------*/
-
-// $(document).ready(function () {
-//     $('#editable_table').Tabledit({
-//         url: 'content/php/atelier5b/modificationtableau.php',
-//         columns: {
-//             identifier: [0, 'id_mesure'],
-//             editable: [
-//             [12, 'dependance_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
-//             [13, 'penetration_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
-//             [14, 'maturite_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
-//             [15, 'confiance_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
-//             [20, 'nom_mesure_securite'],
-//             [21, 'description_mesure_securite']
-//         ],
-//         dateeditable: [] 
-//         },
-//         restoreButton: false,
-//         // onSuccess: function (data, textStatus, jqXHR) {
-//         //     if (data.action == 'delete') {
-//         //         $('#' + data.id_source_de_risque).remove();
-//         //     }
-//         // }
-//     });
-// });
-
 $(document).ready(function () {
 
     $('#editable_table').Tabledit({
@@ -58,10 +33,7 @@ $(document).ready(function () {
                 [4, "responsable"],
                 [5, "difficulte_traitement_de_securite"],
                 [6, "cout_traitement_de_securite", '{"+" : "+", "++" : "++", "+++" : "+++"}'],
-                // [7, "date_traitement_de_securite"],
                 [8, "statut", '{"A lancer" : "A lancer", "En cours" : "En cours", "Terminé" : "Terminé"}']],
-
-            // editable:[[4, "vraisemblance", '{"1" : "1 (Invraisemblable)", "2" : "2 (Peu vraisemblable)", "3" : "3 (Vraisemblable)", "4" : "4 (Très vraisemblable)", "5" : "5 (Quasi certain)"}']]
             dateeditable: [[7, 'date_traitement_de_securite']]
 
         },

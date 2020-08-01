@@ -22,7 +22,6 @@ inpFile.addEventListener("change", function () {
         previewContainer.style.border = "none";
 
         reader.addEventListener("load", function () {
-           console.log(this);
             previewImage.setAttribute("src", this.result);
         });
         

@@ -30,10 +30,9 @@ $(document).ready(function(){
                 valeurs = '{"1" : "1 (Invraisemblable)", "2" : "2 (Peu vraisemblable)", "3" : "3 (Vraisemblable)", "4" : "4 (Très vraisemblable)", "5" : "5 (Quasi certain)"}';
             }
             $('#editable_table').Tabledit({
-                url:'content/php/atelier4b/modification.php',
              columns:{
-              identifier:[0, 'id_scenario_operationnel'],
-              editable:[]
+                identifier:[0, 'id_scenario_operationnel'],
+                editable:[]
              },
              restoreButton:false,
              editButton: false,
