@@ -738,12 +738,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </tbody>
                           </table>
                         </div>
-                        <?php
-                        while ($row = mysqli_fetch_array($resultlegendeavant)) {
-                          echo
-                            $row["id_risque"] . ' : ' . $row["nom_chemin_d_attaque_strategique"] . "<br/>";
-                        }
-                        ?>
                       </div>
                     </div>
                   </div>
@@ -883,17 +877,9 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <td class="perso_border">5</td>
                                 <td class="perso_border texte-gauche">Vraisemblance</td>
                               </tr>
-
-
                             </tbody>
                           </table>
                         </div>
-                        <?php
-                        while ($row = mysqli_fetch_array($resultlegendeapres)) {
-                          echo
-                            $row["id_risque"] . ' : ' . $row["nom_chemin_d_attaque_strategique"] . "<br/>";
-                        }
-                        ?>
                       </div>
                     </div>
                   </div>
