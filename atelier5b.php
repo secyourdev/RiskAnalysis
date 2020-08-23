@@ -904,11 +904,16 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <?php 
                   }
                   else{
+                    ?>
+                                <script src="content/js/atelier/atelier5b_no_modification.js"></script>
+                    <?php
+                  }  
+              }
+              else{
           ?>
                       <script src="content/js/atelier/atelier5b_no_modification.js"></script>
           <?php
-                  }
-              }        
+              }     
           ?>
           <script src="content/js/modules/sort_table.js"></script>
           <script src="content/js/atelier/5btableauheatmap.js"></script>

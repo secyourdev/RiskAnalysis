@@ -902,7 +902,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             <footer id="footer" class="sticky-footer bg-white">
               <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                  <span>Copyright &copy; CYBER RISK MANAGER 2020</span>
+                  <span>Copyright &copy; CYBER RISK MANAGER 2020 by SecYourDev</span>
                 </div>
               </div>
             </footer>

@@ -11,7 +11,8 @@ $echelle_gravite=$_POST['echelle_gravite'];
 $echelle_vraisemblance= '0';
 $id_echelle="id_echelle";
 
-$insere = $bdd->prepare('INSERT INTO `DA_echelle`(`id_echelle`, `nom_echelle`, `echelle_gravite`, `echelle_vraisemblance`) VALUES (?,?,?,0)');
+// Par défaut le niveau de vraisemblance d'une échelle est de 5
+$insere = $bdd->prepare('INSERT INTO `DA_echelle`(`id_echelle`, `nom_echelle`, `echelle_gravite`, `echelle_vraisemblance`) VALUES (?,?,?,5)');
 $recupere = $bdd->prepare('SELECT id_echelle AS LAST FROM DA_echelle ORDER BY id_echelle DESC LIMIT 1');
 $insereevaluer = $bdd->prepare('INSERT INTO `DA_evaluer`(`id_echelle`, `id_projet`) VALUES (?,?)');
 
