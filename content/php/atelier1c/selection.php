@@ -5,7 +5,7 @@ include("content/php/bdd/connexion_sqli.php");
 $query = "SELECT * FROM M_evenement_redoute INNER JOIN J_valeur_metier on M_evenement_redoute.id_valeur_metier = J_valeur_metier.id_valeur_metier WHERE M_evenement_redoute.id_projet = $getid_projet";
 $queryvm = "SELECT id_valeur_metier, nom_valeur_metier FROM J_valeur_metier WHERE id_projet = $getid_projet";
 
-$query1 = "SELECT * FROM DA_echelle NATURAL JOIN DA_evaluer WHERE id_projet=$getid_projet";
+$query1 = "SELECT * FROM DA_echelle NATURAL JOIN DA_evaluer WHERE id_projet=$getid_projet EXCEPT SELECT * FROM DA_echelle NATURAL JOIN DA_evaluer WHERE id_projet=$getid_projet AND DA_evaluer.id_echelle=1";
 $query2 = "SELECT * FROM DA_niveau NATURAL JOIN DA_echelle NATURAL JOIN DA_evaluer WHERE id_projet=$getid_projet";
 $queryechelle = "SELECT id_echelle,nom_echelle FROM DA_echelle NATURAL JOIN DA_evaluer WHERE id_projet=$getid_projet";
 

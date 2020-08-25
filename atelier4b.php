@@ -24,6 +24,11 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $reqdroit_chef_de_projet->bindParam(1, $getidproject);
     $reqdroit_chef_de_projet->execute();
     $userdroit_chef_de_projet = $reqdroit_chef_de_projet->fetch();
+
+    $getidechelle = $bdd->prepare('SELECT id_echelle FROM DA_echelle NATURAL JOIN F_projet WHERE id_projet = ?');
+    $getidechelle->bindParam(1, $getidproject);
+    $getidechelle->execute();
+    $echelleinfo = $getidechelle->fetch();
 ?>
 
 <?php include("content/php/atelier4b/selection.php");?>
@@ -475,13 +480,40 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="SelectNaturePop">Choix de la vraisemblance à utiliser pour le projet</label>
-                    <select class="form-control" name="valeurvraisemblance" id="valeurvraisemblance">
-                      <option value="" selected>...</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                    </select>
+                    <label for="SelectNaturePop">Choix de la vraisemblance à utiliser pour le projet :</label>
+                    <?php if($echelleinfo['id_echelle']=='1'){ 
+                    ?> 
+                            <label name="valeurvraisemblance" id="valeurvraisemblance"></label>
+                    <?php 
+                          }
+                          else if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                    ?> 
+                            <select class="form-control" name="valeurvraisemblance" id="valeurvraisemblance">
+                              <option value="" selected>...</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                            </select>
+                    <?php
+                          }
+                          else if (isset($userdroit['ecriture'])){
+                            if($userdroit['ecriture']=='Réalisation'){
+                    ?>
+                      <select class="form-control" name="valeurvraisemblance" id="valeurvraisemblance">
+                        <option value="" selected>...</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>     
+                    <?php
+                            }
+                            else{                         
+                    ?>
+                      <label name="valeurvraisemblance" id="valeurvraisemblance"></label>
+                    <?php
+                            }
+                          }                  
+                    ?>                
                   </div>
+                  
                   <script src="content/js/modules/vraisemblance.js"></script>
                   <!--text-->
                   <div class="table-responsive">

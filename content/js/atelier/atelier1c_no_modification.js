@@ -74,7 +74,7 @@ $.ajax({
     dataType: 'html',
     success: function (resultat) {
         var echelle_projet_JSON = JSON.parse(resultat);
-        nomechelleprojet.value = echelle_projet_JSON[0][0]       
+        nomechelleprojet.innerText = echelle_projet_JSON[0][1]       
     },
     error: function (erreur) {
         alert('ERROR :' + erreur);

@@ -1,7 +1,6 @@
 const selectechelle = document.getElementById('nomechelle');
 
 selectechelle.selectedIndex = sessionStorage.getItem('selectechelle')
-
 selectEchelle(selectechelle.value);
 
 selectechelle.addEventListener('change', (event) => {
@@ -19,8 +18,6 @@ function selectEchelle(selected_value){
     success: function (data) {
       document.getElementById('ecrire_niveau').innerHTML = data;
       $('#tableau_niveau').Tabledit({
-        deleteButton: false,
-        editButton:true,
         url: 'content/php/echelle/modificationniveau.php',
         columns: {
           identifier: [0, "id_niveau"],
@@ -28,12 +25,7 @@ function selectEchelle(selected_value){
         },
         editButton: false,
         deleteButton: false,
-        restoreButton: false,
-        onSuccess: function (data, textStatus, jqXHR) {
-          if (data.action == 'delete') {
-            $('#' + data.id_niveau).remove();
-          }
-        }
+        restoreButton: false
       });
     }
   })

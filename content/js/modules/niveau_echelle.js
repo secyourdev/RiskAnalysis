@@ -2,11 +2,16 @@
 const selectechelle = document.getElementById('nomechelle');
 
 selectechelle.selectedIndex = sessionStorage.getItem('selectechelle')
-selectEchelle(selectechelle.value);
+if(selectechelle.value!=1) selectEchelle(selectechelle.value);
+else selectEchelleNoModification(selectechelle.value);
 
 selectechelle.addEventListener('change', (event) => {
   sessionStorage.setItem('selectechelle',selectechelle.selectedIndex);
-  selectEchelle(selectechelle.options[selectechelle.options.selectedIndex].value);
+  if(selectechelle.value!=1) selectEchelle(selectechelle.options[selectechelle.options.selectedIndex].value);
+  else {
+    location.reload();
+    selectEchelleNoModification(selectechelle.options[selectechelle.options.selectedIndex].value);
+  }
 });
 
 function selectEchelle(selected_value){
@@ -27,11 +32,29 @@ function selectEchelle(selected_value){
           editable: [[2, 'description_niveau']]
         },
         restoreButton: false,
-        onSuccess: function (data, textStatus, jqXHR) {
-          if (data.action == 'delete') {
-            $('#' + data.id_niveau).remove();
-          }
-        }
+      });
+    }
+  })
+}
+
+function selectEchelleNoModification(selected_value){
+  $.ajax({
+    url: 'content/php/echelle/niveau.php',
+    type: 'POST',
+    data: {
+      nom_echelle: selected_value
+    },
+    success: function (data) {
+      document.getElementById('ecrire_niveau').innerHTML = data;
+      $('#tableau_niveau').Tabledit({
+        url: 'content/php/echelle/modificationniveau.php',
+        columns: {
+          identifier: [0, "id_niveau"],
+          editable: []
+        },
+        editButton: false,
+        deleteButton: false,
+        restoreButton: false,
       });
     }
   })

@@ -44,7 +44,7 @@ $(document).ready(function () {
                 
                 [10, 'confiance_partie_prenante', '{ "1": "1", "2": "2", "3": "3", "4": "4" }'],
                 [11, 'ponderation_confiance'],
-                [13, 'criticite', '{"Peu critique" : "Peu critique", "Moyennement critique" : "Moyennement critique", "Très critique" : "Très critique"}']
+                [13, 'criticite', '{"Pas critique" : "Pas critique", "Critique" : "Critique"}']
                 
             ]
         },
@@ -98,8 +98,7 @@ nom.addEventListener('keyup',function(event){
 
 
 $("#editable_table > tbody > tr > td:nth-child(14)").each(function () {
-    if ($(this)[0].innerText == "Peu critique") { $(this)[0].classList.add('fond-vert'); }
-    if ($(this)[0].innerText == "Moyennement critique") { $(this)[0].classList.add('fond-orange'); }
-    if ($(this)[0].innerText == "Très critique") { $(this)[0].classList.add('fond-rouge'); }
+    if ($(this)[0].innerText == "Pas critique") { $(this)[0].classList.add('fond-vert'); }
+    if ($(this)[0].innerText == "Critique") { $(this)[0].classList.add('fond-rouge'); }
 
 });

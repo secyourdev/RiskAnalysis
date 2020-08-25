@@ -42,18 +42,29 @@ $(document).ready(function(){
 
             /*--------------------------- SORT & FILTER TABLES --------------------------*/
             setSortTable('editable_table');
-            OURJQUERYFN.setFilterTable("#rechercher_chemin","#editable_table tbody tr")
-
-            /*------------------ AJOUT DE LA VERIFICATION DES TABLEAUX ------------------*/
-            sleep(100).then(() => {
-                for(let i=0;i<editable_table.rows.length-1;i++){
-                    j=i+1;
-                    button[i].setAttribute('onclick','tableau_verification('+j+','+'editable_table'+','+'5'+')')
-                }
-            });
+            OURJQUERYFN.setFilterTable("#rechercher_chemin","#editable_table tbody tr");
         }      
     })    
 });
+
+/*------------------------- AUTO-CHARGEMENT DROP-DOWN ----------------------*/
+var valeurvraisemblance = document.getElementById('valeurvraisemblance');
+$.ajax({
+    url: 'content/php/atelier4b/selection_vraisemblance.php',
+    type: 'POST',
+    dataType: 'html',
+    success: function (resultat) {
+        var echelle_projet_JSON = JSON.parse(resultat);
+        if(echelle_projet_JSON[0][0]!=1)
+            valeurvraisemblance.value = echelle_projet_JSON[0][1]       
+        else
+            valeurvraisemblance.innerText = echelle_projet_JSON[0][1]       
+    },
+    error: function (erreur) {
+        alert('ERROR :' + erreur);
+    }
+});
+
 
 $("#editable_table > tbody > tr > td:nth-child(5)").each(function () {
     if ($(this)[0].innerText == "1") { $(this)[0].classList.add('fond-vert'); }

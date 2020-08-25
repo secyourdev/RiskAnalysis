@@ -686,18 +686,45 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="SelectNaturePop">Choix de l'échelle à utiliser pour le projet</label>
-                    <select class="form-control" name="nomechelleprojet" id="nomechelleprojet">
-                      <option value="" selected>...</option>
-                      <?php
-                          while($row = mysqli_fetch_array($resultechelle2))
-                          {
-                            echo '
-                            <option value="'.$row["id_echelle"].'">'.$row["nom_echelle"].'</option>
-                            ';
-                          }  
-                      ?>
-                    </select>
+                    <label for="nomechelleprojet">Choix de l'échelle à utiliser pour le projet :</label>
+                    <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                    ?> 
+                      <select class="form-control" name="nomechelleprojet" id="nomechelleprojet">
+                        <option value="" selected>...</option>
+                        <?php
+                            while($row = mysqli_fetch_array($resultechelle2))
+                            {
+                              echo '
+                              <option value="'.$row["id_echelle"].'">'.$row["nom_echelle"].'</option>
+                              ';
+                            }  
+                        ?>
+                      </select>
+                    <?php
+                        }
+                        else if (isset($userdroit['ecriture'])){
+                            if($userdroit['ecriture']=='Réalisation'){
+                    ?>        
+                      <select class="form-control" name="nomechelleprojet" id="nomechelleprojet">
+                        <option value="" selected>...</option>
+                        <?php
+                            while($row = mysqli_fetch_array($resultechelle2))
+                            {
+                              echo '
+                              <option value="'.$row["id_echelle"].'">'.$row["nom_echelle"].'</option>
+                              ';
+                            }  
+                        ?>
+                      </select>
+                    <?php
+                            }
+                            else{                         
+                    ?>
+                      <label name="nomechelleprojet" id="nomechelleprojet"></label>
+                    <?php
+                            }
+                          }                    
+                    ?>
                   </div>
                   <script src="content/js/modules/echelle_projet.js"></script>
                   <!--tableau-->
