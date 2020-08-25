@@ -16,6 +16,8 @@ var projets = document.getElementById('projets')
 var button_add_user_in_grp = document.getElementById('button_add_user_in_grp')
 var ajouter_user = document.getElementById('ajouter_user')
 
+var float_menu = document.getElementById('float_menu')
+
 var email_modif_mdp = document.getElementById('email_modif_mdp')
 var reinitialiser_mdp = document.getElementsByClassName('reinitialiser_mdp')
 var generer_mdp = document.getElementsByClassName('generer_mdp')
@@ -47,6 +49,7 @@ button_add_user_in_grp.style.display='none'
 grp_user_card.style.display="none"
 apps_card.style.display="none"
 bdd_card.style.display="none"
+float_menu.style.display="none"
 /*--------------------------------- TABLES JS -------------------------------*/
 $(document).ready(function() {
     $('#editable_table').Tabledit({
@@ -95,15 +98,19 @@ OURJQUERYFN.setFilterTable("#rechercher_app_utilisateur","#table_app_user tbody 
 switch (sessionStorage.getItem('button')){
     case 'project_card':
         chargement_onglet(project_card,grp_user_card,apps_card,bdd_card);
+        float_menu.style.display="none"
         break;
     case 'grp_user_card':
         chargement_onglet(grp_user_card,project_card,apps_card,bdd_card);
+        float_menu.style.display="inline"
         break;
     case 'apps_card':
         chargement_onglet(apps_card,project_card,grp_user_card,bdd_card);
+        float_menu.style.display="none"
         break;
     case 'bdd_card':
         chargement_onglet(bdd_card,project_card,grp_user_card,apps_card);
+        float_menu.style.display="none"
         break;
     default :
         chargement_onglet(project_card,grp_user_card,apps_card,bdd_card);
@@ -118,6 +125,8 @@ function selection_onglet(onglet1,onglet2,onglet3,onglet4,button,cookies_value){
     button.addEventListener('click',function(){
         sessionStorage.setItem('button',cookies_value);
         chargement_onglet(onglet1,onglet2,onglet3,onglet4)
+        if(button==tableau_de_bord_grp_user) float_menu.style.display="inline"
+        else float_menu.style.display="none"
     })
 }
 

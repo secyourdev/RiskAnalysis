@@ -6,6 +6,7 @@ $input = filter_input_array(INPUT_POST);
 
 if ($input["action"] === 'edit') {
     $chemin_d_attaque_strategique = mysqli_real_escape_string($connect, $input['chemin_d_attaque_strategique']);
+    $description = mysqli_real_escape_string($connect, $input['description']);
 
     $results["error"] = false;
     $results["message"] = [];
@@ -16,11 +17,18 @@ if ($input["action"] === 'edit') {
         $_SESSION['message_error_3'] = "Chemin d'attaque stratégique invalide";
     }
 
+    // Verification de la description
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $description)) {
+        $results["error"] = true;
+        $_SESSION['message_error_3'] = "Description invalide";
+    }
+
     if ($results["error"] === false) {
         $query = "
         UPDATE T_chemin_d_attaque_strategique 
         SET 
-        nom_chemin_d_attaque_strategique = '" . $chemin_d_attaque_strategique . "'
+        nom_chemin_d_attaque_strategique = '" . $chemin_d_attaque_strategique . "',
+        description_chemin_d_attaque_strategique = '" . $description . "'
         WHERE id_chemin_d_attaque_strategique = '" . $input["id_chemin_d_attaque_strategique"] . "'
         ";
 

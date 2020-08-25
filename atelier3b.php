@@ -853,6 +853,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <th>ID du risque</th>
                                 <th>Nom du scénario stratégique</th>
                                 <th>Chemin d'attaque stratégique</th>
+                                <th>Description</th>
                                 <th>Partie prenante</th>
                               </tr>
                             </thead>
@@ -865,6 +866,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <td>' . $row["id_risque"] . '</td>
                                 <td>' . $row["nom_scenario_strategique"] . '</td>
                                 <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
+                                <td>' . $row["description_chemin_d_attaque_strategique"] . '</td>
                                 <td>' . $row["nom_partie_prenante"] . '</td>
                                 </tr>
                                 ';
@@ -947,7 +949,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid||(isset($userdroit['ecriture'])&&$userdroit['ecriture']=='Réalisation')){ 
 ?> 
 <!----------------------------------------------------------------------------------------------------------------- 
------------------------------------------ modal ajout de ligne ----------------------------------------------------
+-------------------------------------- modal Ajout d'un scénario stratégique --------------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
         <div class="modal fade" id="ajout_ligne_scenario_strategique" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
@@ -1011,7 +1013,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
 
 <!---------------------------------------------------------------------------------------------------------------- 
------------------------------------------ modal ajout de ligne ----------------------------------------------------
+----------------------------------- modal Ajout d'un chemin d'attaque stratégique --------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
         <div class="modal fade" id="ajout_ligne_chemin_attaque" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
@@ -1032,8 +1034,13 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     </div>
 
                     <div class="form-group col-12">
-                      <label for="Chemin d'attaque stratégique">Chemin d'attaque stratégique</label>
-                      <textarea class="form-control perso_text_area" name="chemin_d_attaque_strategique" id="chemin_d_attaque_strategique" rows="5"></textarea>
+                      <label for="chemin_d_attaque_strategique">Chemin d'attaque stratégique</label>
+                      <textarea class="form-control perso_text_area" name="chemin_d_attaque_strategique" id="chemin_d_attaque_strategique" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group col-12">
+                      <label for="description">Description</label>
+                      <textarea class="form-control perso_text_area" name="description" id="description" rows="3"></textarea>
                     </div>
 
                     <div class="form-group col-12">

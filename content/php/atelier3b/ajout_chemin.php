@@ -9,6 +9,7 @@ $results["message"] = [];
 
 $id_risque = $_POST['id_risque'];
 $chemin_d_attaque_strategique = $_POST['chemin_d_attaque_strategique'];
+$description = $_POST['description'];
 $id_scenario_strategique = $_POST['nom_scenario_strategique'];
 $id_partie_prenante = $_POST['nom_partie_prenante'];
 $id_chemin_d_attaque = "id_chemin";
@@ -25,6 +26,11 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $id_risque)) 
 if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $chemin_d_attaque_strategique)) {
   $results["error"] = true;
   $_SESSION['message_error_3'] = "Chemin d'attaque stratégique invalide";
+}
+// Verification de la description
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $description)) {
+  $results["error"] = true;
+  $_SESSION['message_error_3'] = "Description invalide";
 }
 // Verification du id_scenario_strategique
 if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $id_scenario_strategique)) {
@@ -52,7 +58,7 @@ $insere = $bdd->prepare(
   id_partie_prenante, 
   id_projet, 
   id_atelier) VALUES 
-  (?,?,?,NULL,?,?,$get_id_projet,'3.b')"
+  (?,?,?,?,?,?,$get_id_projet,'3.b')"
 );
 $insere_reeval = $bdd->prepare(
   'INSERT INTO 
@@ -104,8 +110,9 @@ if ($results["error"] === false && isset($_POST['validerchemin'])) {
       $insere->bindParam(1, $id_chemin_d_attaque);
       $insere->bindParam(2, $id_risque);
       $insere->bindParam(3, $chemin_d_attaque_strategique);
-      $insere->bindParam(4, $id_scenario_strategique);
-      $insere->bindParam(5, $id_partie_prenante);
+      $insere->bindParam(4, $description);
+      $insere->bindParam(5, $id_scenario_strategique);
+      $insere->bindParam(6, $id_partie_prenante);
       $insere->execute();
  
 

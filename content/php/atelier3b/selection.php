@@ -27,6 +27,7 @@ $query_chemin_d_attaque =
 "SELECT T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique, 
 T_chemin_d_attaque_strategique.id_risque, 
 T_chemin_d_attaque_strategique.nom_chemin_d_attaque_strategique, 
+T_chemin_d_attaque_strategique.description_chemin_d_attaque_strategique, 
 T_chemin_d_attaque_strategique.id_scenario_strategique, 
 S_scenario_strategique.nom_scenario_strategique, 
 nom_partie_prenante
