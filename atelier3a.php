@@ -776,6 +776,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             <canvas height="450" width="480" id="myChart_externe"></canvas>
                           </div>
 
+                          <img class="img_legende" src="content/img/legende_carto.png">
 
                         </div>
                       </div>
@@ -864,9 +865,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             <label for="criticite">Criticité</label>
                             <select class="form-control" name="criticite" id="criticite">
                               <option value="" selected>...</option>
-                              <option value="Peu critique">Peu critique</option>
-                              <option value="Moyennement critique">Moyennement critique</option>
-                              <option value="Très critique">Très critique</option>
+                              <option value="Pas critique">Pas critique</option>
+                              <option value="Critique">Critique</option>
                             </select>
                           </div>
 

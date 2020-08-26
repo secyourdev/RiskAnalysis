@@ -27,15 +27,15 @@ $.post("content/php/atelier3c/chart.php", function (data) {
     var labels = [];
 
     for (var i in data['data_interne3a']) {
+        console.log(data['data_interne3a'])
         menace.push(data['data_interne3a'][i].menace); //valeur de menace - pronfondeur en axe y
         exposition.push(data['data_interne3a'][i].exposition); //taille du points
         taille_point_hover.push((data['data_interne3a'][i].exposition) / 2 + 1); //taille du points en hover
         taille_point.push((data['data_interne3a'][i].exposition) / 2 + 2); //taille du points en hover
         fiabilite.push(data['data_interne3a'][i].fiabilite);
+        labels.push(data['data_interne3a'][i].nom_partie_prenante)
     }
-    for (let i = 0; i < menace.length; i++) {
-        labels.push('R' + i);
-    }
+
     var maxmenace = Math.max(...menace) + 1.99999;
 
 
@@ -46,6 +46,7 @@ $.post("content/php/atelier3c/chart.php", function (data) {
     var fiabilite_interne_residuelle = [];
 
     for (var i in data['data_interne3c']) {
+        console.log(data['data_interne3c'])
         menace_interne_residuelle.push(data['data_interne3c'][i].menace_interne_residuelle); //valeur de menace_interne_residuelle - pronfondeur en axe y
         exposition_interne_residuelle.push(data['data_interne3c'][i].exposition_interne_residuelle); //taille du points
         taille_point_hover_interne_residuelle.push((data['data_interne3c'][i].exposition_interne_residuelle) / 2 + 1); //taille du points en hover
@@ -65,7 +66,7 @@ $.post("content/php/atelier3c/chart.php", function (data) {
                 data_fiabilite: fiabilite, //couleur points
                 label: 'Parties prenantes initiales',
                 responsive: true,
-                backgroundColor: 'rgb(255, 99, 132)',
+                //backgroundColor: 'rgb(255, 99, 132)',
                 fill: false,
                 borderWidth: 0,
                 pointRadius: taille_point,
@@ -96,7 +97,7 @@ $.post("content/php/atelier3c/chart.php", function (data) {
                 data_fiabilite: fiabilite_interne_residuelle, //couleur points
                 label: 'Parties prenantes résiduelles',
                 responsive: true,
-                backgroundColor: 'rgb(255, 99, 132)',
+                //backgroundColor: 'rgb(255, 99, 132)',
                 fill: false,
                 borderWidth: 0,
                 pointRadius: taille_point_interne_residuelle,
@@ -177,9 +178,7 @@ $.post("content/php/atelier3c/chart.php", function (data) {
         taille_point_hover.push((data['data_externe3a'][i].exposition) / 2 + 1); //taille du points en hover
         taille_point.push((data['data_externe3a'][i].exposition) / 2 + 2); //taille du points en hover
         fiabilite.push(data['data_externe3a'][i].fiabilite);
-    }
-    for (let i = 0; i < menace.length; i++) {
-        labels.push('R' + i);
+        labels.push(data['data_externe3a'][i].nom_partie_prenante)
     }
     var maxmenace = Math.max(...menace) + 1.99999;
 
@@ -209,7 +208,7 @@ $.post("content/php/atelier3c/chart.php", function (data) {
                 data_fiabilite: fiabilite, //couleur points
                 label: 'Parties prenantes initiales',
                 responsive: true,
-                backgroundColor: 'rgb(255, 99, 132)',
+                //backgroundColor: 'rgb(255, 99, 132)',
                 fill: false,
                 borderWidth: 0,
                 pointRadius: taille_point,
@@ -240,7 +239,7 @@ $.post("content/php/atelier3c/chart.php", function (data) {
                 data_fiabilite: fiabilite_externe_residuelle, //couleur points
                 label: 'Parties prenantes résiduelles',
                 responsive: true,
-                backgroundColor: 'rgb(255, 99, 132)',
+                //backgroundColor: 'rgb(255, 99, 132)',
                 fill: false,
                 borderWidth: 0,
                 pointRadius: taille_point_externe_residuelle,

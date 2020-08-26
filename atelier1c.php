@@ -548,6 +548,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <div class="card-body">
                   <!--tableau-->
                   <div class="table-responsive">
+                    <label>L'échelle Standard est : 5 pour la Gravité et 5 pour la Vraisemblance. </label></br>
                     <input type="text" class="rechercher_input" id="rechercher_echelle" placeholder="Rechercher">
                     <table id="editable_table" class="table table-bordered table-striped">
                       <thead>

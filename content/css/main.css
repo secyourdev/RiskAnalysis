@@ -50,7 +50,7 @@ body {
     --icon-color-hover           : #B0B7CA;
     --placeholder-idle           : #64789A;
     --placeholder-focus          : #999BB0;
-    --font-color                 : #EAF1EB;
+    --font-color                 : #060706;
     --reverse-font-color         : #EAF1EB;
     --shadow-color               : rgba(0, 0, 0, 0.2);
     --top-bar-color              : #fff;
@@ -1464,3 +1464,33 @@ h6 {
     font-weight: 800;
 }
 
+/*Image perso*/
+.img_legende{
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (min-width: 0px) {
+    .img_legende{
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 611px) {
+    .img_legende{
+        max-width: 75%;
+    }
+}
+
+@media (min-width: 971px) {
+    .img_legende{
+        max-width: 60%;
+    }
+}
+
+@media (min-width: 1261px) {
+    .img_legende{
+        max-width: 50%;
+    }
+}

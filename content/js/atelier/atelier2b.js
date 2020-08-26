@@ -45,3 +45,11 @@ $("#editable_table > tbody > tr > td:nth-child(13)").each(function () {
     if ($(this)[0].innerText == "Moyenne") { $(this)[0].classList.add('fond-orange'); }
     if ($(this)[0].innerText == "Élevée") { $(this)[0].classList.add('fond-rouge'); }
 });
+
+/*-------------------------- CHOIX AUTO PERTINENCE -------------------------*/  
+sleep(100).then(() => {
+    var length_pertinence = document.getElementsByName('pertinence').length; 
+    for(let i=0;i<length_pertinence;i++){
+        document.getElementsByName('pertinence')[i].selectedIndex=0
+    }
+})

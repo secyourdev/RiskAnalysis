@@ -21,9 +21,6 @@ $result_externe3c = mysqli_query($connect, $query_externe3c);
 $result_seuil = mysqli_query($connect, $query_seuil);
 
 
-
-
-
 $bool_result_interne3a = (mysqli_fetch_array($result_interne3a) != null);
 $bool_result_externe3a = (mysqli_fetch_array($result_externe3a) != null);
 $bool_result_interne3c = (mysqli_fetch_array($result_interne3c) != null);
@@ -64,8 +61,6 @@ if ($bool_result_externe3a) {
   }
 }
 
-
-
 if ($bool_result_interne3c) {
   $array_menace_interne = array();
   $array_exposition_interne = array();
@@ -75,20 +70,23 @@ if ($bool_result_interne3c) {
     $menace = $row['niveau_de_menace_residuelle'];
     $exposition = ($row['dependance_residuelle'] * $row['penetration_residuelle']);
     $fiabilite = ($row['maturite_residuelle'] * $row['confiance_residuelle']);
+    $nom_partie_prenante = $row["nom_partie_prenante"];
 
-    $array_menace_interne[] = $menace;
-    $array_exposition_interne[] = $exposition;
-    $array_fiabilite_interne[] = $fiabilite;
+    // $array_menace_interne[] = $menace;
+    // $array_exposition_interne[] = $exposition;
+    // $array_fiabilite_interne[] = $fiabilite;
+  
+    // $menace_interne_residuelle = max($array_menace_interne);
+    // $exposition_interne_residuelle = max($array_exposition_interne);
+    // $fiabilite_interne_residuelle = min($array_fiabilite_interne);
+
+    $data_interne3c[] = array(
+      "menace_interne_residuelle" => $menace,
+      "exposition_interne_residuelle" => $exposition,
+      "fiabilite_interne_residuelle" => $fiabilite,
+      "nom_partie_prenante" => $nom_partie_prenante
+    );
   }
-  $menace_interne_residuelle = max($array_menace_interne);
-  $exposition_interne_residuelle = max($array_exposition_interne);
-  $fiabilite_interne_residuelle = min($array_fiabilite_interne);
-
-  $data_interne3c[] = array(
-    "menace_interne_residuelle" => $menace_interne_residuelle,
-    "exposition_interne_residuelle" => $exposition_interne_residuelle,
-    "fiabilite_interne_residuelle" => $fiabilite_interne_residuelle
-  );
 }
 
 if ($bool_result_externe3c) {
@@ -100,20 +98,23 @@ if ($bool_result_externe3c) {
     $menace = $row['niveau_de_menace_residuelle'];
     $exposition = ($row['dependance_residuelle'] * $row['penetration_residuelle']);
     $fiabilite = ($row['maturite_residuelle'] * $row['confiance_residuelle']);
+    $nom_partie_prenante = $row["nom_partie_prenante"];
 
-    $array_menace_externe[] = $menace;
-    $array_exposition_externe[] = $exposition;
-    $array_fiabilite_externe[] = $fiabilite;
+    // $array_menace_externe[] = $menace;
+    // $array_exposition_externe[] = $exposition;
+    // $array_fiabilite_externe[] = $fiabilite;
+  
+    // $menace_externe_residuelle = max($array_menace_externe);
+    // $exposition_externe_residuelle = max($array_exposition_externe);
+    // $fiabilite_externe_residuelle = min($array_fiabilite_externe);
+
+    $data_externe3c[] = array(
+      "menace_externe_residuelle" => $menace,
+      "exposition_externe_residuelle" => $exposition,
+      "fiabilite_externe_residuelle" => $fiabilite,
+      "nom_partie_prenante" => $nom_partie_prenante
+    );
   }
-  $menace_externe_residuelle = max($array_menace_externe);
-  $exposition_externe_residuelle = max($array_exposition_externe);
-  $fiabilite_externe_residuelle = min($array_fiabilite_externe);
-
-  $data_externe3c[] = array(
-    "menace_externe_residuelle" => $menace_externe_residuelle,
-    "exposition_externe_residuelle" => $exposition_externe_residuelle,
-    "fiabilite_externe_residuelle" => $fiabilite_externe_residuelle
-  );
 }
 
 $data_seuil = array();
@@ -128,10 +129,6 @@ foreach ($result_seuil as $row) {
     "seuil_veille" => $seuil_veille
   );
 }
-
-
-
-
 
 $data = array();
 if ($bool_result_interne3a) {

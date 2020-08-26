@@ -120,8 +120,6 @@ descriptionmesure.addEventListener('keyup',function(event){
 
 
 $("#editable_table > tbody > tr > td:nth-child(10)").each(function () {
-    if ($(this)[0].innerText == "Peu critique") { $(this)[0].classList.add('fond-vert'); }
-    if ($(this)[0].innerText == "Moyennement critique") { $(this)[0].classList.add('fond-orange'); }
-    if ($(this)[0].innerText == "Très critique") { $(this)[0].classList.add('fond-rouge'); }
-
+    if ($(this)[0].innerText == "Pas critique") { $(this)[0].classList.add('fond-vert'); }
+    if ($(this)[0].innerText == "Critique") { $(this)[0].classList.add('fond-rouge'); }
 });

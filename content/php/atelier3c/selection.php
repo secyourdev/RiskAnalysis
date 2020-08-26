@@ -38,7 +38,8 @@ $result_scenario_strategique = mysqli_query($connect, $query_scenario_strategiqu
 $query_mesure1 = "SELECT
 Y_mesure.id_mesure,
 nom_partie_prenante, 
-nom_chemin_d_attaque_strategique,
+T_chemin_d_attaque_strategique.id_risque,
+T_chemin_d_attaque_strategique.nom_chemin_d_attaque_strategique,
 Y_mesure.nom_mesure,
 Y_mesure.description_mesure
 FROM T_chemin_d_attaque_strategique
@@ -50,7 +51,7 @@ INNER JOIN R_partie_prenante
 ON T_chemin_d_attaque_strategique.id_partie_prenante = R_partie_prenante.id_partie_prenante
 WHERE T_chemin_d_attaque_strategique.id_projet = $getid_projet";
 
-$query_mesure2 = "SELECT
+$query_mesure2 = "SELECT DISTINCT 
 R_partie_prenante.id_partie_prenante,
 nom_partie_prenante, 
 niveau_de_menace_partie_prenante,

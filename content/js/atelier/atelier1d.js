@@ -3,7 +3,7 @@ var accordionSidebar = document.getElementById("accordionSidebar");
 var sidebarToggle = document.getElementById("sidebarToggle");
 
 var typereferentiel = document.getElementById("type_referenciel");
-var nomreferentiel = document.getElementById("nom_referentiel");
+var nom_referentiel = document.getElementById("nom_referentiel");
 var commentaire = document.getElementById("commentaire");
 
 var label_typereferentiel = document.getElementById("type_referenciel").previousSibling.previousSibling
@@ -15,6 +15,8 @@ var titre_regle = document.getElementById("titre_regle");
 var description = document.getElementById("description");
 
 var label_id_regle = document.getElementById("id_regle").previousSibling.previousSibling
+
+var select_nom_referentiel = document.getElementById('selectnomreferentiel');
 
 var regex_nom = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
 var regex_description = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
@@ -69,9 +71,9 @@ typereferentiel.addEventListener('keyup',function(event){
     activate_label(typereferentiel.value,label_typereferentiel)
 }) 
 
-nomreferentiel.addEventListener('keyup',function(event){
-    verify_input(nomreferentiel.value,regex_nom,nomreferentiel)
-    activate_label(nomreferentiel.value,label_nomreferentiel)
+nom_referentiel.addEventListener('keyup',function(event){
+    verify_input(nom_referentiel.value,regex_nom,nom_referentiel)
+    activate_label(nom_referentiel.value,label_nomreferentiel)
 }) 
 
 commentaire.addEventListener('keyup',function(event){
@@ -102,8 +104,6 @@ $("#editable_table_socle > tbody > tr > td:nth-child(4)").each(function () {
 
 });
 
-
-
 /*--------------------------- Couleurs regle --------------------------*/
 $("#editable_table_ecart > tbody > tr > td:nth-child(5)").on().each(function () {
     if ($(this)[0].innerText == "Conforme") { $(this)[0].classList.add('fond-vert'); }
@@ -111,3 +111,5 @@ $("#editable_table_ecart > tbody > tr > td:nth-child(5)").on().each(function () 
     if ($(this)[0].innerText == "Non conforme") { $(this)[0].classList.add('fond-rouge'); }
 });
 
+/*------------------------- AUTO-COMPLETION ---------------------------*/
+select_nom_referentiel.selectedIndex = sessionStorage.getItem('selectsocle')

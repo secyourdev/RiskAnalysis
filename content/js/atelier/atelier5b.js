@@ -29,6 +29,8 @@ $(document).ready(function () {
         columns: {
             identifier: [0, 'id_traitement_de_securite'],
             editable: [
+                [1, "nom_mesure"],
+                [2, "id_risque"],
                 [3, 'principe_de_securite', '{"Gouvernance" : "Gouvernance", "Protection" : "Protection", "Defense" : "Defense", "Resilience" : "Resilience"}'],
                 [4, "responsable"],
                 [5, "difficulte_traitement_de_securite"],

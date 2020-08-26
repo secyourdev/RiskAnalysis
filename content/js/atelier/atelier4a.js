@@ -85,3 +85,6 @@ $("#editable_table > tbody > tr > td:nth-child(8)").each(function () {
     if ($(this)[0].innerText == "5") { $(this)[0].classList.add('fond-rouge'); }
 
 });
+/*------------------------------- MERGE LINE --------------------------------*/
+merge_line_on_table('#editable_table',1,5)
+merge_line_on_table('#editable_table',7,8)

@@ -74,3 +74,7 @@ OURJQUERYFN.setFilterTable("#rechercher_scenario_strategique", "#editable_table_
 setSortTable('editable_table_mesure');
 OURJQUERYFN.setFilterTable("#rechercher_mesure", "#editable_table_mesure tbody tr")
 
+$("#editable_table > tbody > tr > td:nth-child(10)").each(function () {
+    if ($(this)[0].innerText == "Pas critique") { $(this)[0].classList.add('fond-vert'); }
+    if ($(this)[0].innerText == "Critique") { $(this)[0].classList.add('fond-rouge'); }
+});

@@ -670,6 +670,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <tr>
                                 <th>ID</th>
                                 <th>Partie prenante</th>
+                                <th>ID Risque</th>
                                 <th>Chemin d'attaque stratégique</th>
                                 <th>Nom mesure de sécurité</th>
                                 <th>Description mesure de sécurité</th>
@@ -682,6 +683,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <tr>
                         <td>' . $row["id_mesure"] . '</td>
                         <td>' . $row["nom_partie_prenante"] . '</td>
+                        <td>' . $row["id_risque"] . '</td>
                         <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
                         <td>' . $row["nom_mesure"] . '</td>
                         <td>' . $row["description_mesure"] . '</td>
@@ -817,6 +819,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             <canvas height="450" width="480" id="myChart_externe"></canvas>
                           </div>
 
+                          <img class="img_legende" src="content/img/legende_carto.png">
 
                         </div>
                       </div>

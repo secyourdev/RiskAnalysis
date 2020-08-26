@@ -5,6 +5,8 @@ include("../bdd/connexion_sqli.php");
 $input = filter_input_array(INPUT_POST);
 
 if ($input["action"] === 'edit') {
+    $nom_mesure = mysqli_real_escape_string($connect, $input['nom_mesure']);
+    $id_risque = mysqli_real_escape_string($connect, $input['id_risque']);
     $principe = mysqli_real_escape_string($connect, $input['principe_de_securite']);
     $responsable = mysqli_real_escape_string($connect, $input['responsable']);
     $difficulte = mysqli_real_escape_string($connect, $input['difficulte_traitement_de_securite']);
@@ -14,6 +16,18 @@ if ($input["action"] === 'edit') {
 
     $results["error"] = false;
     $results["message"] = [];
+
+    // Verification de la mesure
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $nom_mesure)) {
+        $results["error"] = true;
+        $_SESSION['message_error'] = "Mesure invalide";
+    }
+
+    // Verification de l'ID Risque
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $id_risque)) {
+        $results["error"] = true;
+        $_SESSION['message_error'] = "Identifiant risque invalide";
+    }
 
     // Verification du principe
     if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $principe)) {
@@ -54,8 +68,9 @@ if ($input["action"] === 'edit') {
     if ($results["error"] === false) {
         
         $query = "
-        UPDATE ZA_traitement_de_securite 
-        SET principe_de_securite = '".$principe."',
+        UPDATE ZA_traitement_de_securite
+        SET 
+        principe_de_securite = '".$principe."',
         responsable = '".$responsable."',
         difficulte_traitement_de_securite = '".$difficulte."',
         cout_traitement_de_securite = '".$cout."',

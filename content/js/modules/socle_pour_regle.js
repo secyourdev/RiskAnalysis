@@ -7,6 +7,7 @@ selectSocle(selectsocle.value);
 selectsocle.addEventListener('change', (event) => {
     sessionStorage.setItem('selectsocle',selectsocle.selectedIndex);
     selectSocle(selectsocle.options[selectsocle.options.selectedIndex].value);
+    location.reload();
 });
 
 function selectSocle(selected_value){

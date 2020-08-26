@@ -836,8 +836,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                     <fieldset>
 
                       <div class="form-group">
-                        <label for="nomreferentiel">Nom du référentiel de sécurité</label>
-                        <select class="form-control" name="nomreferentiel" id="nomreferentiel">
+                        <label for="selectnomreferentiel">Nom du référentiel de sécurité</label>
+                        <select class="form-control" name="selectnomreferentiel" id="selectnomreferentiel">
                           <option value="" selected>...</option>
                           <?php
                           while ($row = mysqli_fetch_array($result_nom_referentiel2)) //selection.php
