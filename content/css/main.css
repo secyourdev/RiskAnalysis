@@ -50,7 +50,7 @@ body {
     --icon-color-hover           : #B0B7CA;
     --placeholder-idle           : #64789A;
     --placeholder-focus          : #999BB0;
-    --font-color                 : #060706;
+    --font-color                 : #EAF1EB;
     --reverse-font-color         : #EAF1EB;
     --shadow-color               : rgba(0, 0, 0, 0.2);
     --top-bar-color              : #fff;
@@ -1493,4 +1493,13 @@ h6 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+/*Aide*/
+.align_justify{
+    text-align: justify;
+}
+
+.align_center{
+    text-align: center;
 }

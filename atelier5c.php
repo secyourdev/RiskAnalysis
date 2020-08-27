@@ -491,6 +491,10 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
                         Paramètres
                       </a>
+                      <a class="dropdown-item" href="aide&<?php echo $_SESSION['id_utilisateur'];?>">
+                        <i class="fas fa-question-circle fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Aide
+                      </a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -1049,41 +1053,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <script src="content/js/modules/sort_table.js"></script>
           <script src="content/js/atelier/5cheatmapavant.js"></script>
           <script src="content/js/atelier/5cheatmapapres.js"></script>
-          
-          <!-- <script>
-            $(function(){
-
-              for(let i=1;i<3;i++){
-                //assumption: the column that you wish to rowspan is sorted.
-
-                //this is where you put in your settings
-                var indexOfColumnToRowSpan = i;
-                var $table = $('#editable_table');
-
-
-                //this is the code to do spanning, should work for any table
-                var rowSpanMap = {};
-                $table.find('tr').each(function(){
-                  var valueOfTheSpannableCell = $($(this).children('td')[indexOfColumnToRowSpan]).text();
-                  $($(this).children('td')[indexOfColumnToRowSpan]).attr('data-original-value', valueOfTheSpannableCell);
-                  rowSpanMap[valueOfTheSpannableCell] = true;
-                });
-
-                for(var rowGroup in rowSpanMap){
-                  var $cellsToSpan = $('td[data-original-value="'+rowGroup+'"]');
-                  var numberOfRowsToSpan = $cellsToSpan.length;
-                  $cellsToSpan.each(function(index){
-                    if(index==0){
-                      $(this).attr('rowspan', numberOfRowsToSpan);
-                    }else{
-                      $(this).hide();
-                    }
-                  });
-                }
-              }
-            });
-          </script> -->
-
       </body>
   <?php
     }
