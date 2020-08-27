@@ -586,7 +586,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                 <!--GROUPE UTILISATEUR-->
                                 <div class="form-group">
                                     <label for="SelectGrpUser">Groupe d'utilisateur</label>
-                                    <select class="form-control" name="id_grp_utilisateur" id="SelectGrpUser" required> 
+                                    <select class="form-control" name="id_grp_utilisateur" id="SelectGrpUser"> 
                                         <option value="" selected>...</option>
                                         <?php
                                         while($row = mysqli_fetch_array($result_grp_user_creation))

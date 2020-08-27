@@ -57,8 +57,8 @@ $(document).ready(function () {
         columns: {
             identifier: [0, 'id_mesure'],
             editable: [
-                [3, 'nom_mesure_securite'],
-                [4, 'description_mesure_securite']
+                [4, 'nom_mesure_securite'],
+                [5, 'description_mesure_securite']
             ]
         },
         restoreButton: false,
@@ -118,8 +118,74 @@ descriptionmesure.addEventListener('keyup',function(event){
     verify_textarea(descriptionmesure.value,regex_description,descriptionmesure)
 })
 
-
 $("#editable_table > tbody > tr > td:nth-child(10)").each(function () {
     if ($(this)[0].innerText == "Pas critique") { $(this)[0].classList.add('fond-vert'); }
     if ($(this)[0].innerText == "Critique") { $(this)[0].classList.add('fond-rouge'); }
 });
+
+/*------------------------------- MERGE LINE --------------------------------*/
+merge_line_on_table('#editable_table',1,2)
+merge_line_on_table('#editable_table_mesure',1,4)
+
+/*-------------------------------- CANVAS -----------------------------------*/
+myChart_interne = document.getElementById("myChart_interne")
+myChart_interne_residuelle = document.getElementById("myChart_interne_residuelle")
+myChart_externe = document.getElementById("myChart_externe")
+myChart_externe_residuelle = document.getElementById("myChart_externe_residuelle")
+
+button_pp_interne= document.getElementById("button_pp_interne")
+button_pp_externe= document.getElementById("button_pp_externe")
+
+myChart_externe.style.display="none"
+myChart_externe_residuelle.style.display="none"
+button_pp_externe.style.backgroundColor='#64789A'
+button_pp_externe.style.border='#64789A'
+fleche_externe.style.display="none"
+
+fleche_interne = document.getElementById('fleche_interne')
+fleche_externe = document.getElementById('fleche_externe')
+
+button_pp_interne.addEventListener("click",function(){
+    myChart_interne.style.display="inline"
+    myChart_interne_residuelle.style.display="inline"
+    myChart_externe.style.display="none"
+    myChart_externe_residuelle.style.display="none"
+    button_pp_interne.style.backgroundColor='#394C7A'
+    button_pp_interne.style.border='#394C7A'
+    button_pp_externe.style.backgroundColor='#64789A'
+    button_pp_externe.style.border='#64789A'
+    fleche_interne.style.display="flex"
+    fleche_externe.style.display="none"
+})
+
+button_pp_externe.addEventListener("click",function(){
+    myChart_externe.style.display="inline"
+    myChart_externe_residuelle.style.display="inline"
+    myChart_interne.style.display="none"
+    myChart_interne_residuelle.style.display="none"
+    button_pp_externe.style.backgroundColor='#394C7A'
+    button_pp_externe.style.border='#394C7A'
+    button_pp_interne.style.backgroundColor='#64789A'
+    button_pp_interne.style.border='#64789A'
+    fleche_interne.style.display="none"
+    fleche_externe.style.display="flex"
+})
+
+window.addEventListener('resize', fleche_resize, false);
+
+function fleche_resize(){
+    if((window.matchMedia("(max-width: 577px)").matches)&&(window.matchMedia("(min-width: 0px)").matches)){
+        fleche_interne.style.display="none"
+        fleche_externe.style.display="none"
+    }
+    else{
+        if(button_pp_interne.style.backgroundColor=='rgb(100, 120, 154)'){
+            fleche_interne.style.display="none"
+            fleche_externe.style.display="flex"
+        }
+        else if (button_pp_externe.style.backgroundColor=='rgb(100, 120, 154)'){
+            fleche_interne.style.display="flex"
+            fleche_externe.style.display="none"
+        }
+    }
+}

@@ -808,15 +808,36 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       <!-- Card Body -->
                       <div class="card-body">
                         <div class="row perso_no_margin">
-
-                          <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                            <h6>Parties prenantes internes</h6>
-                            <canvas height="450" width="480" id="myChart_interne"></canvas>
+                          <div class="card-header col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                              <h6 class="m-0">Parties prenantes</h6>
+                          </div>
+                          <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                              <button id="button_pp_externe" type="button" class="btn perso_btn perso_btn_parametre shadow-none">Externe</button>
+                              <button id="button_pp_interne" type="button" class="btn perso_btn perso_btn_parametre shadow-none">Interne</button>
                           </div>
 
-                          <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                            <h6>Parties prenantes externes</h6>
+                          <div class="card-header col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+                            <canvas height="450" width="480" id="myChart_interne"></canvas>
+                          </div>
+                          <div id="fleche_interne" class="centreVerticalement card-header col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                            <div>
+                              <img class="img_legende" src="content/img/fleche.png">
+                            </div>
+                          </div>  
+                          <div class="card-header col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+                            <canvas height="450" width="480" id="myChart_interne_residuelle"></canvas>
+                          </div>
+
+                          <div class="card-header col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
                             <canvas height="450" width="480" id="myChart_externe"></canvas>
+                          </div>
+                          <div id="fleche_externe" class="centreVerticalement card-header col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                            <div>
+                              <img class="img_legende" src="content/img/fleche.png">
+                            </div>
+                          </div>        
+                          <div class="card-header col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+                            <canvas height="450" width="480" id="myChart_externe_residuelle"></canvas>
                           </div>
 
                           <img class="img_legende" src="content/img/legende_carto.png">
@@ -962,6 +983,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <script src="content/js/modules/fixed_page.js"></script>
         <script src="content/js/modules/realtime.js"></script>
         <script src="content/js/modules/set_filter_sort_table.js"></script>
+        <script src="content/js/modules/merge_line_on_table.js"></script>
         <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
         ?>
             <script src="content/js/atelier/atelier3c.js"></script>

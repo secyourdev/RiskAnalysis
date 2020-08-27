@@ -7,6 +7,7 @@ var label_scenariostrategique = document.getElementById("nom_scenario_strategiqu
 
 var id_risque = document.getElementById("id_risque");
 var cheminattaque = document.getElementById("chemin_d_attaque_strategique")
+var cheminattaque_description = document.getElementById("description")
 var label_id_risque = document.getElementById("id_risque").previousSibling.previousSibling
 
 var regex_nom = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
@@ -122,9 +123,12 @@ id_risque.addEventListener('keyup',function(event){
 }) 
 
 cheminattaque.addEventListener('keyup',function(event){
-    verify_textarea(cheminattaque.value,regex_description,cheminattaque)
+    verify_textarea(cheminattaque.value,regex_nom,cheminattaque)
 })
 
+cheminattaque_description.addEventListener('keyup',function(event){
+    verify_textarea(cheminattaque_description.value,regex_description,cheminattaque_description)
+})
 /*--------------------------- Couleurs 1.c > gravité --------------------------*/
 $("#editable_table > tbody > tr > td:nth-child(10)").each(function () {
     if ($(this)[0].innerText == "1") { $(this)[0].classList.add('fond-vert'); }

@@ -687,6 +687,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <tr>
                                 <th id="id_traitement_de_securite">ID traitement de sécurité</th>
                                 <th id="mesure">Mesure de sécurité</th>
+                                <th id="description_mesure">Description mesure de sécurité</th>
                                 <th id="scenario_risques_associes">Scénario des risques associés</th>
                                 <th id="principe">Principe de sécurité</th>
                                 <th id="responsable">Responsable</th>
@@ -705,6 +706,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <tr>
                               <td>' . $row["id_traitement_de_securite"] . '</td>
                               <td>' . $row["nom_mesure"] . '</td>
+                              <td>' . $row["description_mesure"] . '</td>
                               <td>' . $row["id_risque"] . '</td>
                               <td>' . $row["principe_de_securite"] . '</td>
                               <td>' . $row["responsable"] . '</td>
@@ -801,7 +803,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Modification des mesures de sécurité</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Ajout des mesures de sécurité</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -815,10 +817,10 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                           <select class="form-control" id="chemin" , name="chemin">
                             <option value="" selected>...</option>
                             <?php
-                            while ($row = mysqli_fetch_array($resultchemin)) //selection.php
+                            while ($row = mysqli_fetch_array($resultchemin)) 
                             {
                               echo '
-                        <option id="id_chemin" value="' . $row["id_chemin_d_attaque_strategique"] . '">' . $row["nom_chemin_d_attaque_strategique"] . '</option>
+                        <option id="id_chemin" value="' . $row["id_chemin_d_attaque_strategique"] . '">'.$row["id_risque"].'-'.$row["nom_chemin_d_attaque_strategique"].'</option>
                         ';
                             }
                             ?>
@@ -892,6 +894,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <script src="content/js/atelier/atelier5a.js"></script>
           <script src="content/js/modules/realtime.js"></script>
           <script src="content/js/modules/set_filter_sort_table.js"></script>
+          <script src="content/js/modules/merge_line_on_table.js"></script>
           <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
           ?>
               <script src="content/js/atelier/atelier5b.js"></script>

@@ -92,7 +92,7 @@ $.post("content/php/atelier3c/chart.php", function (data) {
                 data: menace, //valeur de menace - pronfondeur en axe y
                 data_exposition: exposition, //taille du points
                 data_fiabilite: fiabilite, //couleur points
-                label: 'Parties prenantes initiales',
+                label: 'Parties prenantes interne initiales',
                 responsive: true,
                 //backgroundColor: 'rgb(255, 99, 132)',
                 fill: false,
@@ -118,14 +118,19 @@ $.post("content/php/atelier3c/chart.php", function (data) {
                 pointBorderColor: 'rgb(255, 255, 255)',
                 pointHoverRadius: taille_point_hover,
                 borderColor: 'rgb(255, 255, 255, 0)',
-            },
+            }
+        ]
+    };
+
+    var chartdata_interne_residuelle = {
+        labels: labels,
+        datasets: [
             {
                 data: menace_interne_residuelle, //valeur de menace_interne_residuelle - pronfondeur en axe y
                 data_exposition: exposition_interne_residuelle, //taille du points
                 data_fiabilite: fiabilite_interne_residuelle, //couleur points
-                label: 'Parties prenantes résiduelles',
+                label: 'Parties prenantes interne résiduelles',
                 responsive: true,
-                //backgroundColor: 'rgb(255, 99, 132)',
                 fill: false,
                 borderWidth: 0,
                 pointRadius: taille_point_interne_residuelle,
@@ -262,9 +267,8 @@ $.post("content/php/atelier3c/chart.php", function (data) {
                 data: menace, //valeur de menace - pronfondeur en axe y
                 data_exposition: exposition, //taille du points
                 data_fiabilite: fiabilite, //couleur points
-                label: 'Parties prenantes initiales',
+                label: 'Parties prenantes externe initiales',
                 responsive: true,
-                //backgroundColor: 'rgb(255, 99, 132)',
                 fill: false,
                 borderWidth: 0,
                 pointRadius: taille_point,
@@ -288,14 +292,19 @@ $.post("content/php/atelier3c/chart.php", function (data) {
                 pointBorderColor: 'rgb(255, 255, 255)',
                 pointHoverRadius: taille_point_hover,
                 borderColor: 'rgb(255, 255, 255, 0)',
-            },
+            }
+        ]
+    };
+
+    var chartdata_externe_residuelle = {
+        labels: labels,
+        datasets: [
             {
                 data: menace_externe_residuelle, //valeur de menace_externe_residuelle - pronfondeur en axe y
                 data_exposition: exposition_externe_residuelle, //taille du points
                 data_fiabilite: fiabilite_externe_residuelle, //couleur points
-                label: 'Parties prenantes résiduelles',
+                label: 'Parties prenantes externe résiduelles',
                 responsive: true,
-                //backgroundColor: 'rgb(255, 99, 132)',
                 fill: false,
                 borderWidth: 0,
                 pointRadius: taille_point_externe_residuelle,
@@ -365,7 +374,9 @@ $.post("content/php/atelier3c/chart.php", function (data) {
 
     // CREATION DES CANVAS
     var graphTarget_interne = document.getElementById('myChart_interne').getContext('2d');
+    var graphTarget_interne_residuelle = document.getElementById('myChart_interne_residuelle').getContext('2d');
     var graphTarget_externe = document.getElementById('myChart_externe').getContext('2d');
+    var graphTarget_externe_residuelle = document.getElementById('myChart_externe_residuelle').getContext('2d');
 
     chart_interne = new Chart(graphTarget_interne, {
         // The type of chart we want to create
@@ -373,6 +384,16 @@ $.post("content/php/atelier3c/chart.php", function (data) {
 
         // The data for our dataset
         data: chartdata_interne,
+        // Configuration options go here
+        options: chartoption_interne
+    });
+
+    chart_interne_residuelle = new Chart(graphTarget_interne_residuelle, {
+        // The type of chart we want to create
+        type: 'radar',
+
+        // The data for our dataset
+        data: chartdata_interne_residuelle,
         // Configuration options go here
         options: chartoption_interne
     });
@@ -386,6 +407,14 @@ $.post("content/php/atelier3c/chart.php", function (data) {
         // Configuration options go here
         options: chartoption_externe
     });
-    // });
 
+    chart_externe = new Chart(graphTarget_externe_residuelle, {
+        // The type of chart we want to create
+        type: 'radar',
+
+        // The data for our dataset
+        data: chartdata_externe_residuelle,
+        // Configuration options go here
+        options: chartoption_externe
+    });
 });
