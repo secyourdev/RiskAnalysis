@@ -55,4 +55,4 @@ setSortTable('editable_table');
 OURJQUERYFN.setFilterTable("#rechercher_srov","#editable_table tbody tr")
 
 /*------------------------------- MERGE LINE --------------------------------*/
-merge_line_on_table('#editable_table',1,5)
+merge_line_on_table('#editable_table',1,2)
