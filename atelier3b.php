@@ -1039,17 +1039,17 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
                     <div class="form-group col-12">
                       <label for="chemin_d_attaque_strategique">Chemin d'attaque stratégique</label>
-                      <textarea class="form-control perso_text_area" name="chemin_d_attaque_strategique" id="chemin_d_attaque_strategique" rows="3"></textarea>
+                      <textarea class="form-control perso_text_area" name="chemin_d_attaque_strategique" id="chemin_d_attaque_strategique" rows="3" required></textarea>
                     </div>
 
                     <div class="form-group col-12">
                       <label for="description">Description</label>
-                      <textarea class="form-control perso_text_area" name="description" id="description" rows="3"></textarea>
+                      <textarea class="form-control perso_text_area" name="description" id="description" rows="3" required></textarea>
                     </div>
 
                     <div class="form-group col-12">
                       <label for="Select_nom_scenario_strategique">Scénario stratégique</label>
-                      <select class="form-control" name="nom_scenario_strategique" id="Select_nom_scenario_strategique">
+                      <select class="form-control" name="nom_scenario_strategique" id="Select_nom_scenario_strategique" required>
                         <option value="" selected>...</option>
                         <?php
                         while ($row = mysqli_fetch_array($result_id_scenario_strategique)) //selection.php
@@ -1070,7 +1070,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
                     <div class="form-group col-12">
                       <label for="Select_nom_scenario_strategique">Partie prenante</label>
-                      <select class="form-control" name="nom_partie_prenante" id="nom_partie_prenante">
+                      <select class="form-control" name="nom_partie_prenante" id="nom_partie_prenante" required>
                         <option value="">...</option>
                         <?php
                         while ($row = mysqli_fetch_array($result_id_partie_prenante)) //selection.php

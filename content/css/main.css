@@ -1503,3 +1503,9 @@ h6 {
 .align_center{
     text-align: center;
 }
+
+
+/*Table2Excel*/
+.download_table_button{
+    cursor: pointer;
+}
