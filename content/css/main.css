@@ -50,7 +50,7 @@ body {
     --icon-color-hover           : #B0B7CA;
     --placeholder-idle           : #64789A;
     --placeholder-focus          : #999BB0;
-    --font-color                 : #060706;
+    --font-color                 : #EAF1EB;
     --reverse-font-color         : #EAF1EB;
     --shadow-color               : rgba(0, 0, 0, 0.2);
     --top-bar-color              : #fff;
@@ -898,13 +898,6 @@ h6 {
 /* -------------------------------------------------------------------------------------------------------------- */
 /* ----------------------------------- Gestion icone modif/suppr ------------------------------------------------ */
 /* -------------------------------------------------------------------------------------------------------------- */
-.centreVerticalement {
-    display       : inline-block;
-    vertical-align: middle;
-    float         : none;
-    padding-top   : 10px;
-}
-
 .crayon,
 .poubelle {
     width  : 2rem;
@@ -1493,4 +1486,26 @@ h6 {
     .img_legende{
         max-width: 50%;
     }
+}
+
+/*Centrage*/
+.centreVerticalement{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/*Aide*/
+.align_justify{
+    text-align: justify;
+}
+
+.align_center{
+    text-align: center;
+}
+
+
+/*Table2Excel*/
+.download_table_button{
+    cursor: pointer;
 }

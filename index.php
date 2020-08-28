@@ -35,6 +35,8 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     <!-- JS -->
     <script src="content/vendor/jquery/jquery.js"></script>
     <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
+    <script src="content/vendor/sheet-js/xlsx.full.min.js"></script>
+    <script src="content/vendor/sheet-js/FileSaver.js"></script>
     
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
@@ -82,48 +84,53 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         </ul>
         <!-- End of Sidebar -->
 
-        <!-- Right Sidebar -->
-        <ul id=menu>
-            <li>
-                <a class="nav-link collapse-right-item menu_float" href="#groupes_utilisateur">
-                    <i>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
-                            <g transform="translate(-1230 -689)">
-                                <path class="number_activity active"
-                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
-                                    transform="translate(1230 689)" fill="#ffffffcc" />
-                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
-                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
-                                    font-weight="700">
-                                    <tspan x="-3.432" y="0">1</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                    </i>
-                    <span class="nom_sous_menu">Groupes d'utilisateur</span>
-                </a>
-            </li>
-            <li>
-                <a class="nav-link collapse-right-item menu_float" href="#utilisateurs">
-                    <i>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
-                            <g transform="translate(-1230 -689)">
-                                <path class="number_activity active"
-                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
-                                    transform="translate(1230 689)" fill="#ffffffcc" />
-                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
-                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
-                                    font-weight="700">
-                                    <tspan x="-3.432" y="0">2</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                    </i>
-                    <span class="nom_sous_menu">Utilisateurs</span>
-                </a>
-            </li>
-        </ul>
-        <!-- End of Right Sidebar -->
+        <?php if($userinfo['type_compte']=='Administrateur Logiciel'){ 
+        ?>  
+            <!-- Right Sidebar -->
+            <ul id=menu>
+                <li>
+                    <a class="nav-link collapse-right-item menu_float" href="#groupes_utilisateur">
+                        <i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                                <g transform="translate(-1230 -689)">
+                                    <path class="number_activity active"
+                                        d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
+                                        transform="translate(1230 689)" fill="#ffffffcc" />
+                                    <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
+                                        fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
+                                        font-weight="700">
+                                        <tspan x="-3.432" y="0">1</tspan>
+                                    </text>
+                                </g>
+                            </svg>
+                        </i>
+                        <span class="nom_sous_menu">Groupes d'utilisateur</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link collapse-right-item menu_float" href="#utilisateurs">
+                        <i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                                <g transform="translate(-1230 -689)">
+                                    <path class="number_activity active"
+                                        d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
+                                        transform="translate(1230 689)" fill="#ffffffcc" />
+                                    <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
+                                        fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
+                                        font-weight="700">
+                                        <tspan x="-3.432" y="0">2</tspan>
+                                    </text>
+                                </g>
+                            </svg>
+                        </i>
+                        <span class="nom_sous_menu">Utilisateurs</span>
+                    </a>
+                </li>
+            </ul>
+            <!-- End of Right Sidebar -->
+        <?php
+            }
+        ?>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -161,6 +168,10 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                 <a class="dropdown-item" href="parametres&<?php echo $_SESSION['id_utilisateur'];?>">
                                     <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Paramètres
+                                </a>
+                                <a class="dropdown-item" href="aide&<?php echo $_SESSION['id_utilisateur'];?>">
+                                    <i class="fas fa-question-circle fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Aide
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -291,8 +302,15 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <div id="groupes_utilisateur"></div>
                         <div class="card shadow mb-4">
                             <!-- Card Header - Dropdown -->
-                            <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0">Groupes d'utilisateur</h6>
+                            <div class="row perso_no_margin">
+                                <div class="card-header col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                    <h6 class="m-0">Groupes d'utilisateur</h6>
+                                </div>
+                                <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                  <a class="download_table_button" id="button_download_groupes_utilisateur">
+                                    <i class="fas fa-download fa-lg text-gray-400"></i>
+                                  </a>
+                                </div>    
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
@@ -417,8 +435,15 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     <div id="apps_card" class="col-xl-12 col-lg-12 fondu">
                         <div class="card shadow mb-4">
                             <!-- Card Header - Dropdown -->
-                            <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0">Compte Utilisateur</h6>
+                            <div class="row perso_no_margin">
+                                <div class="card-header col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                    <h6 class="m-0">Comptes Utilisateurs</h6>
+                                </div>
+                                <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                  <a class="download_table_button" id="button_download_comptes_utilisateurs">
+                                    <i class="fas fa-download fa-lg text-gray-400"></i>
+                                  </a>
+                                </div>    
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
@@ -530,10 +555,15 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             <i class="fas fa-angle-up"></i>
         </a>
 
-        <!-- Open the right menu-->
-        <a id="float_menu" class="open_menu rounded">
-            <i class="fas fa-bars"></i>
-        </a>
+        <?php if($userinfo['type_compte']=='Administrateur Logiciel'){ 
+        ?>
+            <!-- Open the right menu-->
+            <a id="float_menu" class="open_menu rounded">
+                <i class="fas fa-bars"></i>
+            </a>
+        <?php
+            }
+        ?>
         
         <?php if($userinfo['type_compte']=='Administrateur Logiciel'){ 
         ?>   
@@ -586,7 +616,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                 <!--GROUPE UTILISATEUR-->
                                 <div class="form-group">
                                     <label for="SelectGrpUser">Groupe d'utilisateur</label>
-                                    <select class="form-control" name="id_grp_utilisateur" id="SelectGrpUser" required> 
+                                    <select class="form-control" name="id_grp_utilisateur" id="SelectGrpUser"> 
                                         <option value="" selected>...</option>
                                         <?php
                                         while($row = mysqli_fetch_array($result_grp_user_creation))
@@ -1049,7 +1079,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <script src="content/js/modules/fixed_page.js"></script>
         <script src="content/js/modules/float_menu.js"></script>
         <script src="content/js/modules/realtime.js"></script>                            
-            
+        <script src="content/js/modules/export_table_to_excel.js"></script> 
         <?php if($userinfo['type_compte']=='Utilisateur'){
         ?>
                 <script src="content/js/accueil/index_utilisateur.js"></script>

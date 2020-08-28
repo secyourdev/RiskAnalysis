@@ -49,8 +49,9 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <!-- JS -->
     <script src="content/vendor/jquery/jquery.js"></script>
     <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
-    <!-- <link rel="stylesheet" href="content/vendor/bootstrap-select-1.13.14/dist/css/bootstrap-select.css"> -->
-
+    <script src="content/vendor/sheet-js/xlsx.full.min.js"></script>
+    <script src="content/vendor/sheet-js/FileSaver.js"></script>
+    
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
     <link rel="icon" href="content/img/logo_cyber_risk_manager.png" type="image/png">
@@ -523,6 +524,10 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
                         Paramètres
                       </a>
+                      <a class="dropdown-item" href="aide&<?php echo $_SESSION['id_utilisateur'];?>">
+                        <i class="fas fa-question-circle fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Aide
+                      </a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -561,8 +566,15 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   <div id="evenements_redoutes" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Liste des évènements redoutés établis à l'atelier 1.c</h6>
+                      <div class="row perso_no_margin">
+                          <div class="card-header col-8 col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+                              <h6 class="m-0">Liste des évènements redoutés établis à l'atelier 1.c</h6>
+                          </div>
+                          <div class="card-header perso_header_right col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                            <a class="download_table_button" id="button_download_evenements_redoutes">
+                              <i class="fas fa-download fa-lg text-gray-400"></i>
+                            </a>
+                          </div>    
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
@@ -613,8 +625,15 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   <div id="srov" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Liste des couples sources de risques / objectifs visés retenus établis à l'atelier 2</h6>
+                      <div class="row perso_no_margin">
+                          <div class="card-header col-10 col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                              <h6 class="m-0">Liste des couples sources de risques / objectifs visés retenus établis à l'atelier 2</h6>
+                          </div>
+                          <div class="card-header perso_header_right col-2 col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                            <a class="download_table_button" id="button_download_SROV">
+                              <i class="fas fa-download fa-lg text-gray-400"></i>
+                            </a>
+                          </div>    
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
@@ -658,9 +677,15 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   <div id="scenario_strategique" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Scénarios stratégiques</h6>
-
+                      <div class="row perso_no_margin">
+                          <div class="card-header col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                              <h6 class="m-0">Scénarios stratégiques</h6>
+                          </div>
+                          <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <a class="download_table_button" id="button_download_scenarios_strategiques">
+                              <i class="fas fa-download fa-lg text-gray-400"></i>
+                            </a>
+                          </div>    
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
@@ -741,7 +766,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0">Schéma des scénarios stratégiques</h6>
-
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
@@ -838,8 +862,15 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   <div id="chemin_dattaque" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Chemins d'attaque</h6>
+                      <div class="row perso_no_margin">
+                          <div class="card-header col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                              <h6 class="m-0">Chemins d'attaque</h6>
+                          </div>
+                          <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <a class="download_table_button" id="button_download_chemins_d_attaque">
+                              <i class="fas fa-download fa-lg text-gray-400"></i>
+                            </a>
+                          </div>    
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
@@ -1035,17 +1066,17 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
                     <div class="form-group col-12">
                       <label for="chemin_d_attaque_strategique">Chemin d'attaque stratégique</label>
-                      <textarea class="form-control perso_text_area" name="chemin_d_attaque_strategique" id="chemin_d_attaque_strategique" rows="3"></textarea>
+                      <textarea class="form-control perso_text_area" name="chemin_d_attaque_strategique" id="chemin_d_attaque_strategique" rows="3" required></textarea>
                     </div>
 
                     <div class="form-group col-12">
                       <label for="description">Description</label>
-                      <textarea class="form-control perso_text_area" name="description" id="description" rows="3"></textarea>
+                      <textarea class="form-control perso_text_area" name="description" id="description" rows="3" required></textarea>
                     </div>
 
                     <div class="form-group col-12">
                       <label for="Select_nom_scenario_strategique">Scénario stratégique</label>
-                      <select class="form-control" name="nom_scenario_strategique" id="Select_nom_scenario_strategique">
+                      <select class="form-control" name="nom_scenario_strategique" id="Select_nom_scenario_strategique" required>
                         <option value="" selected>...</option>
                         <?php
                         while ($row = mysqli_fetch_array($result_id_scenario_strategique)) //selection.php
@@ -1066,7 +1097,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
                     <div class="form-group col-12">
                       <label for="Select_nom_scenario_strategique">Partie prenante</label>
-                      <select class="form-control" name="nom_partie_prenante" id="nom_partie_prenante">
+                      <select class="form-control" name="nom_partie_prenante" id="nom_partie_prenante" required>
                         <option value="">...</option>
                         <?php
                         while ($row = mysqli_fetch_array($result_id_partie_prenante)) //selection.php
@@ -1137,6 +1168,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <script src="content/js/modules/fixed_page.js"></script>
         <script src="content/js/modules/realtime.js"></script>
         <script src="content/js/modules/set_filter_sort_table.js"></script>
+        <script src="content/js/modules/export_table_to_excel.js"></script>
         <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
         ?>
             <script src="content/js/atelier/atelier3b.js"></script>

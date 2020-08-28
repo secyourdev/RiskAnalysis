@@ -84,3 +84,5 @@ descriptionsr.addEventListener('keyup',function(event){
 descriptionov.addEventListener('keyup',function(event){
     verify_textarea(descriptionov.value,regex_description,descriptionov)
 })
+/*----------------------------- EXPORT EXCEL --------------------------------*/
+export_table_to_excel('editable_table','#button_download_SROV','SROV.xlsx')

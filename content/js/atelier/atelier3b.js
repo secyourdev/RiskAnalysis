@@ -7,6 +7,7 @@ var label_scenariostrategique = document.getElementById("nom_scenario_strategiqu
 
 var id_risque = document.getElementById("id_risque");
 var cheminattaque = document.getElementById("chemin_d_attaque_strategique")
+var cheminattaque_description = document.getElementById("description")
 var label_id_risque = document.getElementById("id_risque").previousSibling.previousSibling
 
 var regex_nom = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
@@ -122,9 +123,12 @@ id_risque.addEventListener('keyup',function(event){
 }) 
 
 cheminattaque.addEventListener('keyup',function(event){
-    verify_textarea(cheminattaque.value,regex_description,cheminattaque)
+    verify_textarea(cheminattaque.value,regex_nom,cheminattaque)
 })
 
+cheminattaque_description.addEventListener('keyup',function(event){
+    verify_textarea(cheminattaque_description.value,regex_description,cheminattaque_description)
+})
 /*--------------------------- Couleurs 1.c > gravité --------------------------*/
 $("#editable_table > tbody > tr > td:nth-child(10)").each(function () {
     if ($(this)[0].innerText == "1") { $(this)[0].classList.add('fond-vert'); }
@@ -142,3 +146,8 @@ $("#editable_table_scenario_strategique > tbody > tr > td:nth-child(5)").each(fu
     if ($(this)[0].innerText == "4") { $(this)[0].classList.add('fond-rouge'); }
     if ($(this)[0].innerText == "5") { $(this)[0].classList.add('fond-rouge'); }
 });
+/*----------------------------- EXPORT EXCEL --------------------------------*/
+export_table_to_excel('editable_table','#button_download_evenements_redoutes','evenements_redoutes.xlsx')
+export_table_to_excel('editable_table_SROV','#button_download_SROV','SROV.xlsx')
+export_table_to_excel('editable_table_scenario_strategique','#button_download_scenarios_strategiques','scenarios_strategiques.xlsx')
+export_table_to_excel('editable_table_chemin_d_attaque','#button_download_chemins_d_attaque','chemins_d_attaque.xlsx')

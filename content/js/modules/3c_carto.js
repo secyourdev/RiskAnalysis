@@ -30,8 +30,22 @@ $.post("content/php/atelier3c/chart.php", function (data) {
         console.log(data['data_interne3a'])
         menace.push(data['data_interne3a'][i].menace); //valeur de menace - pronfondeur en axe y
         exposition.push(data['data_interne3a'][i].exposition); //taille du points
-        taille_point_hover.push((data['data_interne3a'][i].exposition) / 2 + 1); //taille du points en hover
-        taille_point.push((data['data_interne3a'][i].exposition) / 2 + 2); //taille du points en hover
+        if(data['data_interne3a'][i].exposition < 3){
+            taille_point_hover.push(5); //taille du points en hover
+            taille_point.push(5); //taille du points en hover
+        }
+        else if(data['data_interne3a'][i].exposition>=3 && data['data_interne3a'][i].exposition<=6){
+            taille_point_hover.push(10); //taille du points en hover
+            taille_point.push(10); //taille du points en hover
+        }
+        else if(data['data_interne3a'][i].exposition>=7 && data['data_interne3a'][i].exposition<=9){
+            taille_point_hover.push(13); //taille du points en hover
+            taille_point.push(13); //taille du points en hover
+        }
+        else if(data['data_interne3a'][i].exposition>9){
+            taille_point_hover.push(17); //taille du points en hover
+            taille_point.push(17); //taille du points en hover
+        }
         fiabilite.push(data['data_interne3a'][i].fiabilite);
         labels.push(data['data_interne3a'][i].nom_partie_prenante)
     }
@@ -49,8 +63,22 @@ $.post("content/php/atelier3c/chart.php", function (data) {
         console.log(data['data_interne3c'])
         menace_interne_residuelle.push(data['data_interne3c'][i].menace_interne_residuelle); //valeur de menace_interne_residuelle - pronfondeur en axe y
         exposition_interne_residuelle.push(data['data_interne3c'][i].exposition_interne_residuelle); //taille du points
-        taille_point_hover_interne_residuelle.push((data['data_interne3c'][i].exposition_interne_residuelle) / 2 + 1); //taille du points en hover
-        taille_point_interne_residuelle.push((data['data_interne3c'][i].exposition_interne_residuelle) / 2 + 2); //taille du points en hover
+        if(data['data_interne3c'][i].exposition_interne_residuelle < 3){
+            taille_point_hover_interne_residuelle.push(5); //taille du points en hover
+            taille_point_interne_residuelle.push(5); //taille du points en hover
+        }
+        else if(data['data_interne3c'][i].exposition_interne_residuelle>=3 && data['data_interne3c'][i].exposition_interne_residuelle<=6){
+            taille_point_hover_interne_residuelle.push(10); //taille du points en hover
+            taille_point_interne_residuelle.push(10); //taille du points en hover
+        }
+        else if(data['data_interne3c'][i].exposition_interne_residuelle>=7 && data['data_interne3c'][i].exposition_interne_residuelle<=9){
+            taille_point_hover_interne_residuelle.push(13); //taille du points en hover
+            taille_point_interne_residuelle.push(13); //taille du points en hover
+        }
+        else if(data['data_interne3c'][i].exposition_interne_residuelle>9){
+            taille_point_hover_interne_residuelle.push(17); //taille du points en hover
+            taille_point_interne_residuelle.push(17); //taille du points en hover
+        }
         fiabilite_interne_residuelle.push(data['data_interne3c'][i].fiabilite_interne_residuelle);
     }
 
@@ -64,7 +92,7 @@ $.post("content/php/atelier3c/chart.php", function (data) {
                 data: menace, //valeur de menace - pronfondeur en axe y
                 data_exposition: exposition, //taille du points
                 data_fiabilite: fiabilite, //couleur points
-                label: 'Parties prenantes initiales',
+                label: 'Parties prenantes interne initiales',
                 responsive: true,
                 //backgroundColor: 'rgb(255, 99, 132)',
                 fill: false,
@@ -90,14 +118,19 @@ $.post("content/php/atelier3c/chart.php", function (data) {
                 pointBorderColor: 'rgb(255, 255, 255)',
                 pointHoverRadius: taille_point_hover,
                 borderColor: 'rgb(255, 255, 255, 0)',
-            },
+            }
+        ]
+    };
+
+    var chartdata_interne_residuelle = {
+        labels: labels,
+        datasets: [
             {
                 data: menace_interne_residuelle, //valeur de menace_interne_residuelle - pronfondeur en axe y
                 data_exposition: exposition_interne_residuelle, //taille du points
                 data_fiabilite: fiabilite_interne_residuelle, //couleur points
-                label: 'Parties prenantes résiduelles',
+                label: 'Parties prenantes interne résiduelles',
                 responsive: true,
-                //backgroundColor: 'rgb(255, 99, 132)',
                 fill: false,
                 borderWidth: 0,
                 pointRadius: taille_point_interne_residuelle,
@@ -175,8 +208,22 @@ $.post("content/php/atelier3c/chart.php", function (data) {
     for (var i in data['data_externe3a']) {
         menace.push(data['data_externe3a'][i].menace); //valeur de menace - pronfondeur en axe y
         exposition.push(data['data_externe3a'][i].exposition); //taille du points
-        taille_point_hover.push((data['data_externe3a'][i].exposition) / 2 + 1); //taille du points en hover
-        taille_point.push((data['data_externe3a'][i].exposition) / 2 + 2); //taille du points en hover
+        if(data['data_externe3a'][i].exposition < 3){
+            taille_point_hover.push(5); //taille du points en hover
+            taille_point.push(5); //taille du points en hover
+        }
+        else if(data['data_externe3a'][i].exposition>=3 && data['data_externe3a'][i].exposition<=6){
+            taille_point_hover.push(10); //taille du points en hover
+            taille_point.push(10); //taille du points en hover
+        }
+        else if(data['data_externe3a'][i].exposition>=7 && data['data_externe3a'][i].exposition<=9){
+            taille_point_hover.push(13); //taille du points en hover
+            taille_point.push(13); //taille du points en hover
+        }
+        else if(data['data_externe3a'][i].exposition>9){
+            taille_point_hover.push(17); //taille du points en hover
+            taille_point.push(17); //taille du points en hover
+        }
         fiabilite.push(data['data_externe3a'][i].fiabilite);
         labels.push(data['data_externe3a'][i].nom_partie_prenante)
     }
@@ -192,8 +239,22 @@ $.post("content/php/atelier3c/chart.php", function (data) {
     for (var i in data['data_externe3c']) {
         menace_externe_residuelle.push(data['data_externe3c'][i].menace_externe_residuelle); //valeur de menace_externe_residuelle - pronfondeur en axe y
         exposition_externe_residuelle.push(data['data_externe3c'][i].exposition_externe_residuelle); //taille du points
-        taille_point_hover_externe_residuelle.push((data['data_externe3c'][i].exposition_externe_residuelle) / 2 + 1); //taille du points en hover
-        taille_point_externe_residuelle.push((data['data_externe3c'][i].exposition_externe_residuelle) / 2 + 2); //taille du points en hover
+        if(data['data_externe3c'][i].exposition_externe_residuelle < 3){
+            taille_point_hover_externe_residuelle.push(5); //taille du points en hover
+            taille_point_externe_residuelle.push(5); //taille du points en hover
+        }
+        else if(data['data_externe3c'][i].exposition_externe_residuelle>=3 && data['data_externe3c'][i].exposition_externe_residuelle<=6){
+            taille_point_hover_externe_residuelle.push(10); //taille du points en hover
+            taille_point_externe_residuelle.push(10); //taille du points en hover
+        }
+        else if(data['data_externe3c'][i].exposition_externe_residuelle>=7 && data['data_externe3c'][i].exposition_externe_residuelle<=9){
+            taille_point_hover_externe_residuelle.push(13); //taille du points en hover
+            taille_point_externe_residuelle.push(13); //taille du points en hover
+        }
+        else if(data['data_externe3c'][i].exposition_externe_residuelle>9){
+            taille_point_hover_externe_residuelle.push(17); //taille du points en hover
+            taille_point_externe_residuelle.push(17); //taille du points en hover
+        }
         fiabilite_externe_residuelle.push(data['data_externe3c'][i].fiabilite_externe_residuelle);
     }
 
@@ -206,9 +267,8 @@ $.post("content/php/atelier3c/chart.php", function (data) {
                 data: menace, //valeur de menace - pronfondeur en axe y
                 data_exposition: exposition, //taille du points
                 data_fiabilite: fiabilite, //couleur points
-                label: 'Parties prenantes initiales',
+                label: 'Parties prenantes externe initiales',
                 responsive: true,
-                //backgroundColor: 'rgb(255, 99, 132)',
                 fill: false,
                 borderWidth: 0,
                 pointRadius: taille_point,
@@ -232,14 +292,19 @@ $.post("content/php/atelier3c/chart.php", function (data) {
                 pointBorderColor: 'rgb(255, 255, 255)',
                 pointHoverRadius: taille_point_hover,
                 borderColor: 'rgb(255, 255, 255, 0)',
-            },
+            }
+        ]
+    };
+
+    var chartdata_externe_residuelle = {
+        labels: labels,
+        datasets: [
             {
                 data: menace_externe_residuelle, //valeur de menace_externe_residuelle - pronfondeur en axe y
                 data_exposition: exposition_externe_residuelle, //taille du points
                 data_fiabilite: fiabilite_externe_residuelle, //couleur points
-                label: 'Parties prenantes résiduelles',
+                label: 'Parties prenantes externe résiduelles',
                 responsive: true,
-                //backgroundColor: 'rgb(255, 99, 132)',
                 fill: false,
                 borderWidth: 0,
                 pointRadius: taille_point_externe_residuelle,
@@ -309,7 +374,9 @@ $.post("content/php/atelier3c/chart.php", function (data) {
 
     // CREATION DES CANVAS
     var graphTarget_interne = document.getElementById('myChart_interne').getContext('2d');
+    var graphTarget_interne_residuelle = document.getElementById('myChart_interne_residuelle').getContext('2d');
     var graphTarget_externe = document.getElementById('myChart_externe').getContext('2d');
+    var graphTarget_externe_residuelle = document.getElementById('myChart_externe_residuelle').getContext('2d');
 
     chart_interne = new Chart(graphTarget_interne, {
         // The type of chart we want to create
@@ -317,6 +384,16 @@ $.post("content/php/atelier3c/chart.php", function (data) {
 
         // The data for our dataset
         data: chartdata_interne,
+        // Configuration options go here
+        options: chartoption_interne
+    });
+
+    chart_interne_residuelle = new Chart(graphTarget_interne_residuelle, {
+        // The type of chart we want to create
+        type: 'radar',
+
+        // The data for our dataset
+        data: chartdata_interne_residuelle,
         // Configuration options go here
         options: chartoption_interne
     });
@@ -330,6 +407,14 @@ $.post("content/php/atelier3c/chart.php", function (data) {
         // Configuration options go here
         options: chartoption_externe
     });
-    // });
 
+    chart_externe = new Chart(graphTarget_externe_residuelle, {
+        // The type of chart we want to create
+        type: 'radar',
+
+        // The data for our dataset
+        data: chartdata_externe_residuelle,
+        // Configuration options go here
+        options: chartoption_externe
+    });
 });

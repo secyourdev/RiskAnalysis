@@ -97,7 +97,7 @@ label_responsable.style.display="none"
 label_responsablebs.style.display="none"
 label_responsablevm.style.display="none"
 
-/*----------------------- -- VERIFICATION DES CHAMPS -- ------------------------*/
+/*-------------------------- VERIFICATION DES CHAMPS ---------------------------*/
 biensupport.addEventListener('keyup',function(event){
     verify_input(biensupport.value,regex_nom,biensupport)
     activate_label(biensupport.value,label_biensupport)
@@ -136,3 +136,8 @@ responsablebs.addEventListener('keyup',function(event){
     verify_input(responsablebs.value,regex_nom,responsablebs)
     activate_label(responsablebs.value,label_responsablebs)
 })
+
+/*----------------------------- EXPORT EXCEL --------------------------------*/
+export_table_to_excel('editable_table','#button_download_mission','mission.xlsx')
+export_table_to_excel('tableau_vm','#button_download_vm','valeur_metier.xlsx')
+export_table_to_excel('tableau_bs','#button_download_bs','bien_support.xlsx')

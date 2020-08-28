@@ -74,3 +74,6 @@ $("#editable_table > tbody > tr > td:nth-child(5)").each(function () {
     if ($(this)[0].innerText == "5") { $(this)[0].classList.add('fond-rouge'); }
 
 });
+
+/*----------------------------- EXPORT EXCEL --------------------------------*/
+export_table_to_excel('editable_table','#button_download_vraisemblance','vraisemblance.xlsx')

@@ -49,6 +49,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <!-- JS -->
     <script src="content/vendor/jquery/jquery.js"></script>
     <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
+    <script src="content/vendor/sheet-js/xlsx.full.min.js"></script>
+    <script src="content/vendor/sheet-js/FileSaver.js"></script>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
@@ -524,6 +526,10 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
                         Paramètres
                       </a>
+                      <a class="dropdown-item" href="aide&<?php echo $_SESSION['id_utilisateur'];?>">
+                        <i class="fas fa-question-circle fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Aide
+                      </a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -562,8 +568,15 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   <div id="parties_prenantes" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Liste des parties prenantes établis à l'atelier 3.a</h6>
+                      <div class="row perso_no_margin">
+                          <div class="card-header col-8 col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+                              <h6 class="m-0">Liste des parties prenantes établis à l'atelier 3.a</h6>
+                          </div>
+                          <div class="card-header perso_header_right col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                            <a class="download_table_button" id="button_download_parties_prenantes">
+                              <i class="fas fa-download fa-lg text-gray-400"></i>
+                            </a>
+                          </div>    
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
@@ -615,8 +628,15 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   <div id="scenarios_strategiques" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Liste des scénarios stratégiques établis à l'atelier 3.b</h6>
+                      <div class="row perso_no_margin">
+                          <div class="card-header col-8 col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+                              <h6 class="m-0">Liste des scénarios stratégiques établis à l'atelier 3.b</h6>
+                          </div>
+                          <div class="card-header perso_header_right col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                            <a class="download_table_button" id="button_download_scenarios_strategiques">
+                              <i class="fas fa-download fa-lg text-gray-400"></i>
+                            </a>
+                          </div>    
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
@@ -656,9 +676,15 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   <div id="mesure_de_securite" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Mesure de sécurité</h6>
-
+                      <div class="row perso_no_margin">
+                          <div class="card-header col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                              <h6 class="m-0">Mesure de sécurité</h6>
+                          </div>
+                          <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <a class="download_table_button" id="button_download_mesure_de_securite">
+                              <i class="fas fa-download fa-lg text-gray-400"></i>
+                            </a>
+                          </div>    
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
@@ -740,9 +766,15 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   <div id="evaluation" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Évaluation</h6>
-
+                      <div class="row perso_no_margin">
+                          <div class="card-header col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                              <h6 class="m-0">Évaluation</h6>
+                          </div>
+                          <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <a class="download_table_button" id="button_download_evaluation">
+                              <i class="fas fa-download fa-lg text-gray-400"></i>
+                            </a>
+                          </div>    
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
@@ -808,15 +840,36 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       <!-- Card Body -->
                       <div class="card-body">
                         <div class="row perso_no_margin">
-
-                          <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                            <h6>Parties prenantes internes</h6>
-                            <canvas height="450" width="480" id="myChart_interne"></canvas>
+                          <div class="card-header col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                              <h6 class="m-0">Parties prenantes</h6>
+                          </div>
+                          <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                              <button id="button_pp_externe" type="button" class="btn perso_btn perso_btn_parametre shadow-none">Externe</button>
+                              <button id="button_pp_interne" type="button" class="btn perso_btn perso_btn_parametre shadow-none">Interne</button>
                           </div>
 
-                          <div class="card-header col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                            <h6>Parties prenantes externes</h6>
+                          <div class="card-header col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+                            <canvas height="450" width="480" id="myChart_interne"></canvas>
+                          </div>
+                          <div id="fleche_interne" class="centreVerticalement card-header col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                            <div>
+                              <img class="img_legende" src="content/img/fleche.png">
+                            </div>
+                          </div>  
+                          <div class="card-header col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+                            <canvas height="450" width="480" id="myChart_interne_residuelle"></canvas>
+                          </div>
+
+                          <div class="card-header col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
                             <canvas height="450" width="480" id="myChart_externe"></canvas>
+                          </div>
+                          <div id="fleche_externe" class="centreVerticalement card-header col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                            <div>
+                              <img class="img_legende" src="content/img/fleche.png">
+                            </div>
+                          </div>        
+                          <div class="card-header col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+                            <canvas height="450" width="480" id="myChart_externe_residuelle"></canvas>
                           </div>
 
                           <img class="img_legende" src="content/img/legende_carto.png">
@@ -962,6 +1015,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <script src="content/js/modules/fixed_page.js"></script>
         <script src="content/js/modules/realtime.js"></script>
         <script src="content/js/modules/set_filter_sort_table.js"></script>
+        <script src="content/js/modules/merge_line_on_table.js"></script>
+        <script src="content/js/modules/export_table_to_excel.js"></script>
         <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
         ?>
             <script src="content/js/atelier/atelier3c.js"></script>

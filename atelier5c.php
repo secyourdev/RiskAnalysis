@@ -49,6 +49,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <!-- JS -->
     <script src="content/vendor/jquery/jquery.js"></script>
     <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
+    <script src="content/vendor/sheet-js/xlsx.full.min.js"></script>
+    <script src="content/vendor/sheet-js/FileSaver.js"></script>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
@@ -491,6 +493,10 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
                         Paramètres
                       </a>
+                      <a class="dropdown-item" href="aide&<?php echo $_SESSION['id_utilisateur'];?>">
+                        <i class="fas fa-question-circle fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Aide
+                      </a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -528,10 +534,16 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   <div id="evaluation_risques_residuels" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Évaluation et documentation des risques résiduels</h6>
+                      <div class="row perso_no_margin">
+                          <div class="card-header col-8 col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+                              <h6 class="m-0">Évaluation et documentation des risques résiduels</h6>
+                          </div>
+                          <div class="card-header perso_header_right col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                            <a class="download_table_button" id="button_download_evaluation_documentation_risques_risiduels">
+                              <i class="fas fa-download fa-lg text-gray-400"></i>
+                            </a>
+                          </div>    
                       </div>
-
                       <!-- Card Body -->
                       <div class="card-body">
                         <div class="table-responsive">
@@ -1030,6 +1042,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <script src="content/js/modules/realtime.js"></script>
           <script src="content/js/modules/set_filter_sort_table.js"></script>
           <script src="content/js/modules/merge_line_on_table.js"></script>
+          <script src="content/js/modules/export_table_to_excel.js"></script>
           <?php if ($userinfo['type_compte'] == 'Administrateur Logiciel' || $userdroit_chef_de_projet['id_utilisateur'] == $getid) {
           ?>
             <script src="content/js/atelier/atelier5c.js"></script>
@@ -1049,41 +1062,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <script src="content/js/modules/sort_table.js"></script>
           <script src="content/js/atelier/5cheatmapavant.js"></script>
           <script src="content/js/atelier/5cheatmapapres.js"></script>
-          
-          <!-- <script>
-            $(function(){
-
-              for(let i=1;i<3;i++){
-                //assumption: the column that you wish to rowspan is sorted.
-
-                //this is where you put in your settings
-                var indexOfColumnToRowSpan = i;
-                var $table = $('#editable_table');
-
-
-                //this is the code to do spanning, should work for any table
-                var rowSpanMap = {};
-                $table.find('tr').each(function(){
-                  var valueOfTheSpannableCell = $($(this).children('td')[indexOfColumnToRowSpan]).text();
-                  $($(this).children('td')[indexOfColumnToRowSpan]).attr('data-original-value', valueOfTheSpannableCell);
-                  rowSpanMap[valueOfTheSpannableCell] = true;
-                });
-
-                for(var rowGroup in rowSpanMap){
-                  var $cellsToSpan = $('td[data-original-value="'+rowGroup+'"]');
-                  var numberOfRowsToSpan = $cellsToSpan.length;
-                  $cellsToSpan.each(function(index){
-                    if(index==0){
-                      $(this).attr('rowspan', numberOfRowsToSpan);
-                    }else{
-                      $(this).hide();
-                    }
-                  });
-                }
-              }
-            });
-          </script> -->
-
       </body>
   <?php
     }

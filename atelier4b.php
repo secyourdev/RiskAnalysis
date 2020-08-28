@@ -54,6 +54,8 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
   <!-- JS -->
   <script src="content/vendor/jquery/jquery.js"></script>
   <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
+  <script src="content/vendor/sheet-js/xlsx.full.min.js"></script>
+  <script src="content/vendor/sheet-js/FileSaver.js"></script>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
@@ -436,6 +438,10 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                   <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
                   Paramètres
                 </a>
+                <a class="dropdown-item" href="aide&<?php echo $_SESSION['id_utilisateur'];?>">
+                  <i class="fas fa-question-circle fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Aide
+                </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -473,9 +479,15 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             <div id="evaluation_vraissemblance" class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Évaluation de la vraisemblance</h6>
-          
+                <div class="row perso_no_margin">
+                    <div class="card-header col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                        <h6 class="m-0">Évaluation de la vraisemblance</h6>
+                    </div>
+                    <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                      <a class="download_table_button" id="button_download_vraisemblance">
+                        <i class="fas fa-download fa-lg text-gray-400"></i>
+                      </a>
+                    </div>    
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -640,6 +652,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   <script src="content/js/modules/fixed_page.js"></script>
   <script src="content/js/modules/realtime.js"></script>
   <script src="content/js/modules/set_filter_sort_table.js"></script>
+  <script src="content/js/modules/export_table_to_excel.js"></script>
   <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
   ?>
       <script src="content/js/atelier/atelier4b.js"></script>

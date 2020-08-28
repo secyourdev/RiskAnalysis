@@ -18,7 +18,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     <meta name="description" content="RiskManager">
     <meta name="author" content="SecYourDev">
 
-    <title>RiskManager | Paramètres</title>
+    <title>RiskManager | Aide</title>
 
     <!-- Fonts-->
     <link href="content/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -139,46 +139,30 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                 <div class="row perso_no_margin">
                                     <!-- Card Header - Dropdown -->
                                     <div class="card-header col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                        <h6 class="m-0">Paramètres</h6>
+                                        <h6 class="m-0">Aide</h6>
                                     </div>
                                     <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                        <button type="button" data-toggle="modal" data-target="#modifier_mdp_user" class="btn perso_btn perso_btn_parametre_mdp shadow-none">Modifier le mot de passe</button>
-                                        <button type="button" data-toggle="modal" data-target="#modifier_user" class="btn perso_btn perso_btn_parametre shadow-none">Modifier le profil</button>
-                                    </div>
-                                    <div class='message_success col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12'>
-                                    <?php 
-                                        if(isset($_SESSION['message_success'])){
-                                        echo $_SESSION['message_success'];
-                                        unset($_SESSION['message_success']);
-                                        }
-                                    ?>
-                                    </div> 
-                                    <div class='message_error col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12'>
-                                    <?php                
-                                        if(isset($_SESSION['message_error'])){
-                                            echo $_SESSION['message_error'];
-                                            unset($_SESSION['message_error']);
-                                        }
-                                    ?>
-                                    </div>
-                                    <div class="card-header div_photo_user col-12 col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                        <img class="img-profile rounded-circle user_photo" src="content/img/undraw_profile_pic.svg">
-                                    </div>
-                                    <div class="card-header div_info_user col-12 col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                        <label id="nom_user_parametre"></label>
-                                        <label id="poste_user_parametre"></label>
-                                        <label id="type_compte_user_parametre"></label>
-                                        <label id="email_user_parametre"></label>  
-                                    </div>
+                                        <button for="licenses" type="button" class="btn perso_btn perso_btn_parametre shadow-none">Licenses</button>
+                                        <button for="politique_confidentialite" type="button" class="btn perso_btn perso_btn_parametre shadow-none">Politique de confidentialité</button>
+                                        <button for="condition_utilisation" type="button" class="btn perso_btn perso_btn_parametre shadow-none">Condition d'utilisation</button>
+                                    </div>    
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    
+                                    <div id="licenses" class="align_justify card-header col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <h6 class="align_center m-0">Licenses</h6></br>
+                                        <p>Bootstrap - Use MIT License - We have a permission to modify, to distribute, to use on private case and to sell.</p>
+                                        <p>jQuery - Use MIT License - We have a permission to modify, to distribute, to use on private case and to sell.</p>
+                                        <p>jQuery TableEdit - Use MIT License - We have a permission to modify, to distribute, to use on private case and to sell.</p>
+                                        <p>Chart.js - Use MIT License - We have a permission to modify, to distribute, to use on private case and to sell.</p>
+                                        <p>SheetJS - Use Apache License 2.0 - We have a permission to modify, to distribute, to use on private case and to sell.</p>
+                                        <p>Font Awesome Code - Use MIT License - We have a permission to modify, to distribute, to use on private case and to sell.</p>
+                                        <p>Font Awesome Icons - Use CC BY 4.0 License -  We have a permission to share an icone and to adapt this one with a remix, transformation, and build upon the material for any purpose, even commercially etc...</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <!-- End of Main Content -->
                 </br>
@@ -199,114 +183,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
-        </a>
-        
-        <!-------------------------------------------------------------------------------------------------------------- 
-        ------------------------------------------- modal modification du profil ---------------------------------------
-        ---------------------------------------------------------------------------------------------------------------->
-        <div class="modal fade" id="modifier_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modification du profil</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body perso_modal_body">
-                        <form method="post" action="content/php/parametres/modification_user.php">
-                            <fieldset>
-                                <!--NOM-->
-                                <div class="form-group">
-                                    <label class="titre_input" for="nom">Nom</label>
-                                    <input type="text" class="perso_form shadow-none form-control form-control-user"
-                                        name="nom" id="nom" placeholder="Nom" readonly></input>
-                                </div>
-                                <!--PRENOM-->
-                                <div class="form-group">
-                                    <label class="titre_input" for="prenom">Prénom</label>
-                                    <input type="text" class="perso_form shadow-none form-control form-control-user"
-                                        name="prenom" id="prenom" placeholder="Prénom" readonly></input>
-                                </div>
-                                <!--POSTE-->
-                                <div class="form-group">
-                                    <label class="titre_input" for="poste">Poste</label>
-                                    <input type="text" class="perso_form shadow-none form-control form-control-user"
-                                        name="poste" id="poste" placeholder="Poste" required></input>
-                                </div>
-                                <!--EMAIL-->
-                                <div class="form-group">
-                                    <label class="titre_input" for="email">E-mail</label>
-                                    <input type="text" class="perso_form shadow-none form-control form-control-user"
-                                        name="email" id="email" placeholder="E-mail" required></input>
-                                </div>
-
-                                <div class="modal-footer perso_middle_modal_footer">
-                                    <input type="submit" name="modifier_user" value="Modifier"
-                                        class="btn perso_btn shadow-none"></input>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-------------------------------------------------------------------------------------------------------------- 
-        ------------------------------------- modal modification du mot de passe ---------------------------------------
-        ---------------------------------------------------------------------------------------------------------------->
-        <div class="modal fade" id="modifier_mdp_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modification du mot de passe</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body perso_modal_body">
-                        <form method="post" action="content/php/parametres/modification_mdp_user.php">
-                            <fieldset>
-                                <!--EMAIL-->
-                                <div class="form-group">
-                                    <label class="titre_input" for="email_modif_mdp">E-mail</label>
-                                    <input type="text" class="perso_form shadow-none form-control form-control-user"
-                                        name="email_modif_mdp" id="email_modif_mdp" placeholder="E-mail" readonly></input>
-                                </div>
-
-                                <!--Ancien Mot de passe-->
-                                <div class="form-group">
-                                    <label class="titre_input" for="ancien_mdp">Ancien mot de passe</label>
-                                    <input type="password" class="perso_form shadow-none form-control form-control-user"
-                                        name="ancien_mdp" id="ancien_mdp" placeholder="Ancien mot de passe" required></input>
-                                </div>
-
-                                <!--Nouveau mot de passe-->
-                                <div class="form-group">
-                                    <label class="titre_input" for="nouveau_mdp">Nouveau mot de passe</label>
-                                    <input type="password" class="perso_form shadow-none form-control form-control-user"
-                                        name="nouveau_mdp" id="nouveau_mdp" placeholder="Nouveau mot de passe" required></input>
-                                </div>
-                                
-                                <!--Confirmation nouveau Mot de passe-->
-                                <div class="form-group">
-                                    <label class="titre_input" for="confirmation_nouveau_mdp">Confirmez votre nouveau mot de passe</label>
-                                    <input type="password" class="perso_form shadow-none form-control form-control-user"
-                                        name="confirmation_nouveau_mdp" id="confirmation_nouveau_mdp" placeholder="Confirmez votre nouveau mot de passe" required></input>
-                                </div>
-
-                                <div class="modal-footer perso_middle_modal_footer">
-                                    <input type="submit" name="modifier_mdp_user" value="Modifier"
-                                        class="btn perso_btn shadow-none"></input>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </a>      
 
         <!-- Logout Modal-->
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -348,7 +225,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <script src="content/js/modules/fixed_page.js"></script>
         <script src="content/js/modules/realtime.js"></script>
         <script src="content/js/modules/set_filter_sort_table.js"></script>
-        <script src='content/js/parametres/parametres.js'> </script>
         <script src="content/js/modules/sort_table.js"></script>
 </body>
 <?php

@@ -99,3 +99,8 @@ $("#editable_table_scenario_strategique > tbody > tr > td:nth-child(5)").each(fu
     if ($(this)[0].innerText == "4") { $(this)[0].classList.add('fond-rouge'); }
     if ($(this)[0].innerText == "5") { $(this)[0].classList.add('fond-rouge'); }
 });
+/*----------------------------- EXPORT EXCEL --------------------------------*/
+export_table_to_excel('editable_table','#button_download_evenements_redoutes','evenements_redoutes.xlsx')
+export_table_to_excel('editable_table_SROV','#button_download_SROV','SROV.xlsx')
+export_table_to_excel('editable_table_scenario_strategique','#button_download_scenarios_strategiques','scenarios_strategiques.xlsx')
+export_table_to_excel('editable_table_chemin_d_attaque','#button_download_chemins_d_attaque','chemins_d_attaque.xlsx')

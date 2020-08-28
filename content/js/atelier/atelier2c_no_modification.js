@@ -27,3 +27,5 @@ $(document).ready(function () {
 /*--------------------------- SORT & FILTER TABLES --------------------------*/
 setSortTable('editable_table');
 OURJQUERYFN.setFilterTable("#rechercher_srov","#editable_table tbody tr")
+/*----------------------------- EXPORT EXCEL --------------------------------*/
+export_table_to_excel('editable_table','#button_download_choix_SR','choix_SR.xlsx')

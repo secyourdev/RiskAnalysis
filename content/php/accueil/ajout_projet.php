@@ -12,6 +12,7 @@ include("../bdd/connexion.php");
   $id_echelle_projet = '1';
 
   $insereprojet = $bdd->prepare('INSERT INTO `F_projet`(`nom_projet`, `description_projet`, `id_grp_utilisateur`, `id_utilisateur`, `id_echelle` ) VALUES (?,?,?,?,?)');
+  $insereprojet_2 = $bdd->prepare('INSERT INTO `F_projet`(`nom_projet`, `description_projet`, `id_utilisateur`, `id_echelle` ) VALUES (?,?,?,?)');
 
   // Verification du nom du projet
     if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $nom_etude)){
@@ -26,12 +27,21 @@ include("../bdd/connexion.php");
     }
 
     if ($results["error"] === false && isset($_POST['ajouter_projet'])){
-      $insereprojet->bindParam(1, $nom_etude);
-      $insereprojet->bindParam(2, $description_etude);
-      $insereprojet->bindParam(3, $id_grp_utilisateur);
-      $insereprojet->bindParam(4, $chef_de_projet);
-      $insereprojet->bindParam(5, $id_echelle_projet);
-      $insereprojet->execute();
+      if($id_grp_utilisateur!=""){
+        $insereprojet->bindParam(1, $nom_etude);
+        $insereprojet->bindParam(2, $description_etude);
+        $insereprojet->bindParam(3, $id_grp_utiliseur);
+        $insereprojet->bindParam(4, $chef_de_projet);
+        $insereprojet->bindParam(5, $id_echelle_projet);
+        $insereprojet->execute();
+      }
+      else{
+        $insereprojet_2->bindParam(1, $nom_etude);
+        $insereprojet_2->bindParam(2, $description_etude);
+        $insereprojet_2->bindParam(3, $chef_de_projet);
+        $insereprojet_2->bindParam(4, $id_echelle_projet);
+        $insereprojet_2->execute();
+      }
 
       $recupereprojet = $bdd->prepare("SELECT id_projet FROM F_projet WHERE nom_projet=? AND description_projet=?");
       $recupereprojet->bindParam(1, $nom_etude);

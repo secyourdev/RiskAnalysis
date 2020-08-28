@@ -49,6 +49,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <!-- JS -->
     <script src="content/vendor/jquery/jquery.js"></script>
     <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
+    <script src="content/vendor/sheet-js/xlsx.full.min.js"></script>
+    <script src="content/vendor/sheet-js/FileSaver.js"></script>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
@@ -523,6 +525,10 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
                         Paramètres
                       </a>
+                      <a class="dropdown-item" href="aide&<?php echo $_SESSION['id_utilisateur'];?>">
+                        <i class="fas fa-question-circle fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Aide
+                      </a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -560,8 +566,15 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   <div id='scenarios_strategiques' class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Liste des scénarios stratégiques établis lors de l'atelier 3.b</h6>
+                      <div class="row perso_no_margin">
+                          <div class="card-header col-8 col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+                              <h6 class="m-0">Liste des scénarios stratégiques établis lors de l'atelier 3.b</h6>
+                          </div>
+                          <div class="card-header perso_header_right col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                            <a class="download_table_button" id="button_download_scenarios_strategiques">
+                              <i class="fas fa-download fa-lg text-gray-400"></i>
+                            </a>
+                          </div>    
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
@@ -611,9 +624,15 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   <div id="scenario_operationnel" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Scénario opérationnel</h6>
-
+                      <div class="row perso_no_margin">
+                          <div class="card-header col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                              <h6 class="m-0">Scénario opérationnel</h6>
+                          </div>
+                          <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <a class="download_table_button" id="button_download_scenario_operationnel">
+                              <i class="fas fa-download fa-lg text-gray-400"></i>
+                            </a>
+                          </div>    
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
@@ -670,9 +689,15 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   <div id="mode_operatoire" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Mode opératoire</h6>
-
+                      <div class="row perso_no_margin">
+                          <div class="card-header col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                              <h6 class="m-0">Mode opératoire</h6>
+                          </div>
+                          <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <a class="download_table_button" id="button_download_mode_operatoire">
+                              <i class="fas fa-download fa-lg text-gray-400"></i>
+                            </a>
+                          </div>    
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
@@ -967,6 +992,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <script src="content/js/modules/realtime.js"></script>
         <script src="content/js/modules/set_filter_sort_table.js"></script>
         <script src="content/js/modules/merge_line_on_table.js"></script>
+        <script src="content/js/modules/export_table_to_excel.js"></script>
         <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
         ?>
             <script src="content/js/atelier/atelier4a.js"></script>

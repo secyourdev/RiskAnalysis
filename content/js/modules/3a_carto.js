@@ -32,8 +32,22 @@ $.post("content/php/atelier3a/chart.php", function (data) {
     for (var i in data['data_interne']) {
         menace.push(data['data_interne'][i].menace); //valeur de menace - pronfondeur en axe y
         exposition.push(data['data_interne'][i].exposition); //taille du points
-        taille_point_hover.push((data['data_interne'][i].exposition) / 2 + 1); //taille du points en hover
-        taille_point.push((data['data_interne'][i].exposition) / 2 + 2); //taille du points en hover
+        if(data['data_interne'][i].exposition < 3){
+            taille_point_hover.push(5); //taille du points en hover
+            taille_point.push(5); //taille du points en hover
+        }
+        else if(data['data_interne'][i].exposition>=3 && data['data_interne'][i].exposition<=6){
+            taille_point_hover.push(10); //taille du points en hover
+            taille_point.push(10); //taille du points en hover
+        }
+        else if(data['data_interne'][i].exposition>=7 && data['data_interne'][i].exposition<=9){
+            taille_point_hover.push(13); //taille du points en hover
+            taille_point.push(13); //taille du points en hover
+        }
+        else if(data['data_interne'][i].exposition>9){
+            taille_point_hover.push(17); //taille du points en hover
+            taille_point.push(17); //taille du points en hover
+        }
         fiabilite.push(data['data_interne'][i].fiabilite);
         labels.push(data['data_interne'][i].nom_partie_prenante)
     }
@@ -120,8 +134,22 @@ $.post("content/php/atelier3a/chart.php", function (data) {
     for (var i in data['data_externe']) {
         menace.push(data['data_externe'][i].menace); //valeur de menace - pronfondeur en axe y
         exposition.push(data['data_externe'][i].exposition); //taille du points
-        taille_point_hover.push((data['data_externe'][i].exposition) / 2 + 1); //taille du points en hover
-        taille_point.push((data['data_externe'][i].exposition) / 2 + 2); //taille du points en hover
+        if(data['data_externe'][i].exposition < 3){
+            taille_point_hover.push(5); //taille du points en hover
+            taille_point.push(5); //taille du points en hover
+        }
+        else if(data['data_externe'][i].exposition>=3 && data['data_externe'][i].exposition<=6){
+            taille_point_hover.push(10); //taille du points en hover
+            taille_point.push(10); //taille du points en hover
+        }
+        else if(data['data_externe'][i].exposition>=7 && data['data_externe'][i].exposition<=9){
+            taille_point_hover.push(13); //taille du points en hover
+            taille_point.push(13); //taille du points en hover
+        }
+        else if(data['data_externe'][i].exposition>9){
+            taille_point_hover.push(17); //taille du points en hover
+            taille_point.push(17); //taille du points en hover
+        }
         fiabilite.push(data['data_externe'][i].fiabilite);
         labels.push(data['data_externe'][i].nom_partie_prenante)
     }

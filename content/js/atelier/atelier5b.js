@@ -29,13 +29,14 @@ $(document).ready(function () {
         columns: {
             identifier: [0, 'id_traitement_de_securite'],
             editable: [
-                [1, "nom_mesure"],
-                [2, "id_risque"],
-                [3, 'principe_de_securite', '{"Gouvernance" : "Gouvernance", "Protection" : "Protection", "Defense" : "Defense", "Resilience" : "Resilience"}'],
-                [4, "responsable"],
-                [5, "difficulte_traitement_de_securite"],
-                [6, "cout_traitement_de_securite", '{"+" : "+", "++" : "++", "+++" : "+++"}'],
-                [8, "statut", '{"A lancer" : "A lancer", "En cours" : "En cours", "Terminé" : "Terminé"}']],
+                // [1, "nom_mesure"],
+                // [2, "description_mesure"],
+                // [3, "id_risque"],
+                [4, 'principe_de_securite', '{"Gouvernance" : "Gouvernance", "Protection" : "Protection", "Defense" : "Defense", "Resilience" : "Resilience"}'],
+                [5, "responsable"],
+                [6, "difficulte_traitement_de_securite"],
+                [8, "cout_traitement_de_securite", '{"+" : "+", "++" : "++", "+++" : "+++"}'],
+                [9, "statut", '{"A lancer" : "A lancer", "En cours" : "En cours", "Terminé" : "Terminé"}']],
             dateeditable: [[7, 'date_traitement_de_securite']]
 
         },
@@ -48,7 +49,7 @@ $(document).ready(function () {
 setSortTable('editable_table');
 OURJQUERYFN.setFilterTable("#rechercher_pacs","#editable_table tbody tr")
 /*--------------------------- Couleurs pacs > statut --------------------------*/
-$("#editable_table > tbody > tr > td:nth-child(9)").each(function () {
+$("#editable_table > tbody > tr > td:nth-child(10)").each(function () {
     if ($(this)[0].innerText == "Terminé") { $(this)[0].classList.add('fond-vert'); }
     if ($(this)[0].innerText == "En cours") { $(this)[0].classList.add('fond-orange'); }
     if ($(this)[0].innerText == "A lancer") { $(this)[0].classList.add('fond-rouge'); }
@@ -65,3 +66,5 @@ nom_mesure.addEventListener('keyup',function(event){
 description_mesure.addEventListener('keyup',function(event){
     verify_textarea(description_mesure.value,regex_description,description_mesure)
 })
+/*----------------------------- EXPORT EXCEL --------------------------------*/
+export_table_to_excel('editable_table','#button_download_PACS','PACS.xlsx')

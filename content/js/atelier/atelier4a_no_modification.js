@@ -70,3 +70,7 @@ $("#editable_table > tbody > tr > td:nth-child(8)").each(function () {
     if ($(this)[0].innerText == "5") { $(this)[0].classList.add('fond-rouge'); }
 
 });
+/*----------------------------- EXPORT EXCEL --------------------------------*/
+export_table_to_excel('editable_table','#button_download_scenarios_strategiques','scenarios_strategiques.xlsx')
+export_table_to_excel('tableau_ope','#button_download_scenario_operationnel','scenario_operationnel.xlsx')
+export_table_to_excel('tableau_mode_ope','#button_download_mode_operatoire','mode_operatoire.xlsx')

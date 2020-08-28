@@ -47,6 +47,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
     <!-- JS -->
     <script src="content/vendor/jquery/jquery.js"></script>
+    <script src="content/vendor/sheet-js/xlsx.full.min.js"></script>
+    <script src="content/vendor/sheet-js/FileSaver.js"></script>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
@@ -463,6 +465,10 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
                         Paramètres
                       </a>
+                      <a class="dropdown-item" href="aide&<?php echo $_SESSION['id_utilisateur'];?>">
+                        <i class="fas fa-question-circle fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Aide
+                      </a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -705,6 +711,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <script src="content/js/modules/side_bar.js"></script>
           <script src="content/js/modules/float_menu.js"></script>
           <script src="content/js/modules/fixed_page.js"></script>
+          <script src="content/js/modules/export_table_to_excel.js"></script>
           <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
           ?>
               <script src="content/js/atelier/atelier5a.js"></script>
