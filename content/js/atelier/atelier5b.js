@@ -66,3 +66,5 @@ nom_mesure.addEventListener('keyup',function(event){
 description_mesure.addEventListener('keyup',function(event){
     verify_textarea(description_mesure.value,regex_description,description_mesure)
 })
+/*----------------------------- EXPORT EXCEL --------------------------------*/
+export_table_to_excel('editable_table','#button_download_PACS','PACS.xlsx')

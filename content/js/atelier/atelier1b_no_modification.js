@@ -55,3 +55,7 @@ OURJQUERYFN.setFilterTable("#rechercher_valeur_metier", "#tableau_vm tbody tr")
 setSortTable('tableau_bs');
 OURJQUERYFN.setFilterTable("#rechercher_bien_support", "#tableau_bs tbody tr")
 
+/*----------------------------- EXPORT EXCEL --------------------------------*/
+export_table_to_excel('editable_table','#button_download_mission','mission.xlsx')
+export_table_to_excel('tableau_vm','#button_download_vm','valeur_metier.xlsx')
+export_table_to_excel('tableau_bs','#button_download_bs','bien_support.xlsx')

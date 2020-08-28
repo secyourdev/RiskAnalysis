@@ -459,3 +459,6 @@ email_utilisateur.addEventListener('keyup',function(event){
     activate_label(email_utilisateur.value,label_email_utilisateur)
 })
 
+/*----------------------------- EXPORT EXCEL --------------------------------*/
+export_table_to_excel('editable_table','#button_download_groupes_utilisateur','groupes_utilisateur.xlsx')
+export_table_to_excel('table_app_user','#button_download_comptes_utilisateurs','comptes_utilisateurs.xlsx')

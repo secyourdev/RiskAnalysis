@@ -47,3 +47,5 @@ $("#editable_table_ecart > tbody > tr > td:nth-child(5)").on().each(function () 
     if ($(this)[0].innerText == "Non conforme") { $(this)[0].classList.add('fond-rouge'); }
 });
 
+/*----------------------------- EXPORT EXCEL --------------------------------*/
+export_table_to_excel('editable_table_socle','#button_download_socle_de_securite','socle_de_securite.xlsx')

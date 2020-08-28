@@ -49,9 +49,8 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
   <!-- JS -->
   <script src="content/vendor/jquery/jquery.js"></script>
   <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
-
-  <script lang="javascript" src="xlsx.full.min.js"></script>
-  <script lang="javascript" src="FileSaver.js"></script>
+  <script src="content/vendor/sheet-js/xlsx.full.min.js"></script>
+  <script src="content/vendor/sheet-js/FileSaver.js"></script>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
@@ -551,7 +550,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="row perso_no_margin">
-                    <!-- Card Header - Dropdown -->
                     <div class="card-header col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <h6 class="m-0">Mission</h6>
                     </div>
@@ -642,8 +640,15 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             <div id="valeur_metier" class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
-                <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Valeur métier</h6>
+                <div class="row perso_no_margin">
+                    <div class="card-header col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                        <h6 class="m-0">Valeur métier</h6>
+                    </div>
+                    <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                      <a class="download_table_button" id="button_download_vm">
+                        <i class="fas fa-download fa-lg text-gray-400"></i>
+                      </a>
+                    </div>    
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -721,8 +726,15 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             <div id="bien_support" class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
-                <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0">Bien support</h6>
+                <div class="row perso_no_margin">
+                    <div class="card-header col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                        <h6 class="m-0">Bien support</h6>
+                    </div>
+                    <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                      <a class="download_table_button" id="button_download_bs">
+                        <i class="fas fa-download fa-lg text-gray-400"></i>
+                      </a>
+                    </div>    
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">

@@ -53,3 +53,6 @@ sleep(100).then(() => {
         document.getElementsByName('pertinence')[i].selectedIndex=0
     }
 })
+
+/*----------------------------- EXPORT EXCEL --------------------------------*/
+export_table_to_excel('editable_table','#button_download_evaluation_SROV','evaluation_SROV.xlsx')

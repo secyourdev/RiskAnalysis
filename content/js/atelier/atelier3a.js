@@ -102,3 +102,6 @@ $("#editable_table > tbody > tr > td:nth-child(14)").each(function () {
     if ($(this)[0].innerText == "Critique") { $(this)[0].classList.add('fond-rouge'); }
 
 });
+
+/*----------------------------- EXPORT EXCEL --------------------------------*/
+export_table_to_excel('editable_table','#button_download_parties_prenantes','parties_prenantes.xlsx')
