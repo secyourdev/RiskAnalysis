@@ -31,4 +31,6 @@ $(document).ready(function () {
 setSortTable('editable_table');
 OURJQUERYFN.setFilterTable("#rechercher_srov","#editable_table tbody tr")
 /*----------------------------- EXPORT EXCEL --------------------------------*/
-export_table_to_excel('editable_table','#button_download_SROV','SROV.xlsx')
+var d = new Date();
+
+export_table_to_excel('editable_table','#button_download_SROV','SROV_'+d.YYYYMMDDHHMMSS()+'.xlsx')

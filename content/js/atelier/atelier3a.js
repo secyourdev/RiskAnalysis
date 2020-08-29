@@ -104,4 +104,6 @@ $("#editable_table > tbody > tr > td:nth-child(14)").each(function () {
 });
 
 /*----------------------------- EXPORT EXCEL --------------------------------*/
-export_table_to_excel('editable_table','#button_download_parties_prenantes','parties_prenantes.xlsx')
+var d = new Date();
+
+export_table_to_excel('editable_table','#button_download_parties_prenantes','parties_prenantes_'+d.YYYYMMDDHHMMSS()+'.xlsx')

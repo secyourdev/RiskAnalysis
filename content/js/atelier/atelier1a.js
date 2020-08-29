@@ -325,4 +325,5 @@ function update_database_grp_user_1a(nom_grp_utilisateur){
 }
 
 /*----------------------------- EXPORT EXCEL --------------------------------*/
-export_table_to_excel('editable_table','#button_download_acteurs','acteurs.xlsx')
+var d = new Date();
+export_table_to_excel('editable_table','#button_download_acteurs','acteurs_'+d.YYYYMMDDHHMMSS()+'.xlsx')

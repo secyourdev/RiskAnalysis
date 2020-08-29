@@ -34,4 +34,6 @@ $("#editable_table > tbody > tr > td:nth-child(13)").each(function () {
     if ($(this)[0].innerText == "Élevée") { $(this)[0].classList.add('fond-rouge'); }
 });
 /*----------------------------- EXPORT EXCEL --------------------------------*/
-export_table_to_excel('editable_table','#button_download_evaluation_SROV','evaluation_SROV.xlsx')
+var d = new Date();
+
+export_table_to_excel('editable_table','#button_download_evaluation_SROV','evaluation_SROV_'+d.YYYYMMDDHHMMSS()+'.xlsx')

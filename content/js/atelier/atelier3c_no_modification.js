@@ -145,7 +145,9 @@ function fleche_resize(){
 }
 
 /*----------------------------- EXPORT EXCEL --------------------------------*/
-export_table_to_excel('editable_table','#button_download_parties_prenantes','parties_prenantes.xlsx')
-export_table_to_excel('editable_table_scenario_strategique','#button_download_scenarios_strategiques','scenarios_strategiques.xlsx')
-export_table_to_excel('editable_table_mesure','#button_download_mesure_de_securite','mesure_de_securite.xlsx')
-export_table_to_excel('editable_table_mesure2','#button_download_evaluation','evaluation.xlsx')
+var d = new Date();
+
+export_table_to_excel('editable_table','#button_download_parties_prenantes','parties_prenantes_'+d.YYYYMMDDHHMMSS()+'.xlsx')
+export_table_to_excel('editable_table_scenario_strategique','#button_download_scenarios_strategiques','scenarios_strategiques_'+d.YYYYMMDDHHMMSS()+'.xlsx')
+export_table_to_excel('editable_table_mesure','#button_download_mesure_de_securite','mesure_de_securite_'+d.YYYYMMDDHHMMSS()+'.xlsx')
+export_table_to_excel('editable_table_mesure2','#button_download_evaluation','evaluation_'+d.YYYYMMDDHHMMSS()+'.xlsx')

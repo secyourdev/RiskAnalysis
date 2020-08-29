@@ -115,4 +115,6 @@ $("#editable_table_ecart > tbody > tr > td:nth-child(5)").on().each(function () 
 select_nom_referentiel.selectedIndex = sessionStorage.getItem('selectsocle')
 
 /*----------------------------- EXPORT EXCEL --------------------------------*/
-export_table_to_excel('editable_table_socle','#button_download_socle_de_securite','socle_de_securite.xlsx')
+var d = new Date();
+
+export_table_to_excel('editable_table_socle','#button_download_socle_de_securite','socle_de_securite_'+d.YYYYMMDDHHMMSS()+'.xlsx')

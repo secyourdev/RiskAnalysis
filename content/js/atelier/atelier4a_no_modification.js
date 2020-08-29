@@ -71,6 +71,8 @@ $("#editable_table > tbody > tr > td:nth-child(8)").each(function () {
 
 });
 /*----------------------------- EXPORT EXCEL --------------------------------*/
-export_table_to_excel('editable_table','#button_download_scenarios_strategiques','scenarios_strategiques.xlsx')
-export_table_to_excel('tableau_ope','#button_download_scenario_operationnel','scenario_operationnel.xlsx')
-export_table_to_excel('tableau_mode_ope','#button_download_mode_operatoire','mode_operatoire.xlsx')
+var d = new Date();
+
+export_table_to_excel('editable_table','#button_download_scenarios_strategiques','scenarios_strategiques_'+d.YYYYMMDDHHMMSS()+'.xlsx')
+export_table_to_excel('tableau_ope','#button_download_scenario_operationnel','scenario_operationnel_'+d.YYYYMMDDHHMMSS()+'.xlsx')
+export_table_to_excel('tableau_mode_ope','#button_download_mode_operatoire','mode_operatoire_'+d.YYYYMMDDHHMMSS()+'.xlsx')

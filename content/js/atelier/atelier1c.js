@@ -139,5 +139,7 @@ $("#tableau_er > tbody > tr > td:nth-child(10)").each(function () {
 
 });
 /*----------------------------- EXPORT EXCEL --------------------------------*/
-export_table_to_excel('editable_table','#button_download_echelle','echelle.xlsx')
-export_table_to_excel('tableau_er','#button_download_evenements_redoutes','evenements_redoutes.xlsx')
+var d = new Date();
+
+export_table_to_excel('editable_table','#button_download_echelle','echelle_'+d.YYYYMMDDHHMMSS()+'.xlsx')
+export_table_to_excel('tableau_er','#button_download_evenements_redoutes','evenements_redoutes_'+d.YYYYMMDDHHMMSS()+'.xlsx')

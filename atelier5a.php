@@ -711,6 +711,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <script src="content/js/modules/side_bar.js"></script>
           <script src="content/js/modules/float_menu.js"></script>
           <script src="content/js/modules/fixed_page.js"></script>
+          <script src="content/js/modules/dateString.js"></script>
           <script src="content/js/modules/export_table_to_excel.js"></script>
           <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
           ?>

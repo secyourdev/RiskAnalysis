@@ -76,4 +76,6 @@ $("#editable_table > tbody > tr > td:nth-child(5)").each(function () {
 });
 
 /*----------------------------- EXPORT EXCEL --------------------------------*/
-export_table_to_excel('editable_table','#button_download_vraisemblance','vraisemblance.xlsx')
+var d = new Date();
+
+export_table_to_excel('editable_table','#button_download_vraisemblance','vraisemblance_'+d.YYYYMMDDHHMMSS()+'.xlsx')
