@@ -115,7 +115,7 @@ $.post("content/php/atelier3c/chart.php", function (data) {
 
                 },
                 pointBorderWidth: 1,
-                pointBorderColor: 'rgb(255, 255, 255)',
+                pointBorderColor: 'rgb(0, 0, 0)',
                 pointHoverRadius: taille_point_hover,
                 borderColor: 'rgb(255, 255, 255, 0)',
             }
@@ -150,7 +150,6 @@ $.post("content/php/atelier3c/chart.php", function (data) {
                     }
 
                 },
-                pointStyle: 'rectRot',
                 pointBorderWidth: 1,
                 pointBorderColor: 'rgb(0, 0, 0)',
                 pointHoverRadius: taille_point_hover_interne_residuelle,
@@ -289,7 +288,7 @@ $.post("content/php/atelier3c/chart.php", function (data) {
 
                 },
                 pointBorderWidth: 1,
-                pointBorderColor: 'rgb(255, 255, 255)',
+                pointBorderColor: 'rgb(0, 0, 0)',
                 pointHoverRadius: taille_point_hover,
                 borderColor: 'rgb(255, 255, 255, 0)',
             }
@@ -324,7 +323,6 @@ $.post("content/php/atelier3c/chart.php", function (data) {
                     }
 
                 },
-                pointStyle: 'rectRot',
                 pointBorderWidth: 1,
                 pointBorderColor: 'rgb(0, 0, 0)',
                 pointHoverRadius: taille_point_hover_externe_residuelle,
