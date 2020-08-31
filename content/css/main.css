@@ -1509,3 +1509,8 @@ h6 {
 .download_table_button{
     cursor: pointer;
 }
+
+/*Schéma*/
+#schema{
+    height: 500px;
+}
