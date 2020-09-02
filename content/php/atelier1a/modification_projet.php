@@ -55,6 +55,46 @@ if(isset($_POST['cadre_temporel'])){
     }
 }
 
+if(isset($_POST['cadre_temporel_etape_2'])){
+  $cadre_temporel_etape_2 = $_POST['cadre_temporel_etape_2'];
+  $update_projet = $bdd->prepare("UPDATE F_projet SET cadre_temporel_etape_2 = ? WHERE id_projet=?");
+  $update_projet->bindParam(1, $cadre_temporel_etape_2);
+  $update_projet->bindParam(2, $getid_projet);
+  if(preg_match("/^[0-9\s-]{0,100}$/", $cadre_temporel_etape_2)){
+    $update_projet->execute();
+  }
+}
+
+if(isset($_POST['cadre_temporel_etape_3'])){
+  $cadre_temporel_etape_3 = $_POST['cadre_temporel_etape_3'];
+  $update_projet = $bdd->prepare("UPDATE F_projet SET cadre_temporel_etape_3 = ? WHERE id_projet=?");
+  $update_projet->bindParam(1, $cadre_temporel_etape_3);
+  $update_projet->bindParam(2, $getid_projet);
+  if(preg_match("/^[0-9\s-]{0,100}$/", $cadre_temporel_etape_3)){
+    $update_projet->execute();
+  }
+}
+
+if(isset($_POST['cadre_temporel_etape_4'])){
+  $cadre_temporel_etape_4 = $_POST['cadre_temporel_etape_4'];
+  $update_projet = $bdd->prepare("UPDATE F_projet SET cadre_temporel_etape_4 = ? WHERE id_projet=?");
+  $update_projet->bindParam(1, $cadre_temporel_etape_4);
+  $update_projet->bindParam(2, $getid_projet);
+  if(preg_match("/^[0-9\s-]{0,100}$/", $cadre_temporel_etape_4)){
+    $update_projet->execute();
+  }
+}
+
+if(isset($_POST['cadre_temporel_etape_5'])){
+  $cadre_temporel_etape_5 = $_POST['cadre_temporel_etape_5'];
+  $update_projet = $bdd->prepare("UPDATE F_projet SET cadre_temporel_etape_5 = ? WHERE id_projet=?");
+  $update_projet->bindParam(1, $cadre_temporel_etape_5);
+  $update_projet->bindParam(2, $getid_projet);
+  if(preg_match("/^[0-9\s-]{0,100}$/", $cadre_temporel_etape_5)){
+    $update_projet->execute();
+  }
+}
+
 if(isset($_POST['nom_grp_utilisateur'])){
   $nom_grp_utilisateur = $_POST['nom_grp_utilisateur'];
   $search_id_grp_utilisateur = $bdd->prepare("SELECT `id_grp_utilisateur` FROM `B_grp_utilisateur` WHERE `nom_grp_utilisateur`=?");

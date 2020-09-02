@@ -621,6 +621,7 @@ h6 {
 
 .titre_input {
     margin-bottom: 0px;
+    padding-top  : 4px;
 }
 
 .titre_textarea {

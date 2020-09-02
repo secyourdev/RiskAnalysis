@@ -715,33 +715,146 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                     }
                                                 }
                                             ?>                    
-                                        <!--CADRE TEMPOREL ETUDE-->
+                                        <!--CADRE TEMPOREL ETUDE-->                            
                                         <div class="form-group">
                                             <label class="titre_input" for="cadre_temporel">Cadre Temporel</label>
-                                            <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
-                                            ?>
-                                                <input type="date" class="perso_form shadow-none form-control form-control-user"
-                                                id="cadre_temporel" placeholder="Cadre temporel" required>
-                                        </div>
-                                            <?php
-                                                }
-                                                else if(isset($userdroit['ecriture'])){
-                                                    if($userdroit['ecriture']=='Réalisation'){
-                                            ?>
-                                                        <input type="date" class="perso_form shadow-none form-control form-control-user"
-                                                        id="cadre_temporel" placeholder="Cadre temporel" required>
-                                        </div>
+                                            </br>
+                                            <!-- Etape 1 -->
+                                            <div class="container ">
+                                                <form>
+                                                    <div class="row ">  
+                                                        <label class="titre_input" for="cadre_temporel">Etape 1 : </label>
+                                                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
+                                                        ?>
+                                                        <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px" 
+                                                                    id="cadre_temporel" placeholder="Cadre temporel" required>                                                           
+                                                    </div>
+                                                        <?php
+                                                            }
+                                                            else if(isset($userdroit['ecriture'])){
+                                                                if($userdroit['ecriture']=='Réalisation'){
+                                                        ?>
+                                                                    <input type="date" class="perso_form shadow-none form-control form-control-user style="width:150px"
+                                                                    id="cadre_temporel" placeholder="Cadre temporel" required>                                                                
+                                                    </div>
+                                                        <?php
+                                                                }
+                                                                else { 
+                                                        ?>
+                                                        </br>
+                                                        <label id="cadre_temporel" class="no_modification"></label>
+                                                    </div>
+                                                        <?php
+                                                                }
+                                                            }
+                                                        ?>
+                                                    <div class="row ">  
+                                                        <label class="titre_input" for="cadre_temporel">Etape 2 : </label>
+                                                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
+                                                        ?>
+                                                            <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px" 
+                                                                    id="cadre_temporel_etape_2" placeholder="Cadre temporel" required>                                                           
+                                                    </div>
+                                                        <?php
+                                                            }
+                                                            else if(isset($userdroit['ecriture'])){
+                                                                if($userdroit['ecriture']=='Réalisation'){
+                                                        ?>
+                                                                    <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px" 
+                                                                    id="cadre_temporel_etape_2" placeholder="Cadre temporel" required>                                                                
+                                                    </div>
                                             <?php
                                                     }
                                                     else { 
                                             ?>
                                                         </br>
-                                                        <label id="cadre_temporel" class="no_modification"></label>
-                                        </div>
+                                                        <label id="cadre_temporel_etape_2" class="no_modification"></label>
+                                                    </div>                                       
                                             <?php
                                                     }
                                                 }
-                                            ?>  
+                                            ?>
+                                                    <div class="row ">  
+                                                        <label class="titre_input" for="cadre_temporel">Etape 3 : </label>
+                                                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
+                                                        ?>
+                                                            <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px" 
+                                                                    id="cadre_temporel_etape_3" placeholder="Cadre temporel" required>                                                           
+                                                    </div>
+                                                        <?php
+                                                            }
+                                                            else if(isset($userdroit['ecriture'])){
+                                                                if($userdroit['ecriture']=='Réalisation'){
+                                                        ?>
+                                                                    <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px"
+                                                                    id="cadre_temporel_etape_3" placeholder="Cadre temporel" required>                                                                
+                                                    </div>
+                                            <?php
+                                                    }
+                                                    else { 
+                                            ?>
+                                                        </br>
+                                                        <label id="cadre_temporel_etape_3" class="no_modification"></label>
+                                                    </div>                                       
+                                            <?php
+                                                    }
+                                                }
+                                            ?>
+                                                    <div class="row ">  
+                                                        <label class="titre_input" for="cadre_temporel">Etape 4 : </label>
+                                                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
+                                                        ?>
+                                                            <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px" 
+                                                                    id="cadre_temporel_etape_4" placeholder="Cadre temporel" required>                                                           
+                                                    </div>
+                                                        <?php
+                                                            }
+                                                            else if(isset($userdroit['ecriture'])){
+                                                                if($userdroit['ecriture']=='Réalisation'){
+                                                        ?>
+                                                                    <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px"
+                                                                    id="cadre_temporel_etape_4" placeholder="Cadre temporel" required>                                                                
+                                                    </div>
+                                            <?php
+                                                    }
+                                                    else { 
+                                            ?>
+                                                        </br>
+                                                        <label id="cadre_temporel_etape_4" class="no_modification"></label>
+                                                    </div>                                       
+                                            <?php
+                                                    }
+                                                }
+                                            ?>
+                                                    <div class="row ">  
+                                                        <label class="titre_input" for="cadre_temporel">Etape 5 : </label>
+                                                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
+                                                        ?>
+                                                            <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px" 
+                                                                    id="cadre_temporel_etape_5" placeholder="Cadre temporel" required>                                                           
+                                                    </div>
+                                                        <?php
+                                                            }
+                                                            else if(isset($userdroit['ecriture'])){
+                                                                if($userdroit['ecriture']=='Réalisation'){
+                                                        ?>
+                                                                    <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px"
+                                                                    id="cadre_temporel_etape_5" placeholder="Cadre temporel" required>                                                                
+                                                    </div>
+                                            <?php
+                                                    }
+                                                    else { 
+                                            ?>
+                                                        </br>
+                                                        <label id="cadre_temporel_etape_5" class="no_modification"></label>
+                                                    </div>                                       
+                                            <?php
+                                                    }
+                                                }
+                                            ?>
+                                                </form>
+                                            </div>
+                                        </div>  
                                         <!--RISQUE ETUDE-->
                                         <div class="form-group">
                                             <label class="titre_input" for="respo_acceptation_risque">Personne responsable d'accepter

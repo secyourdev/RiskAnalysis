@@ -4,7 +4,7 @@ $getid_utilisateur = $_SESSION['id_utilisateur'];
 
 include("../bdd/connexion.php");
 
-$search_projet = $bdd->prepare("SELECT DISTINCT F_projet.id_projet, nom_projet,description_projet,cadre_temporel FROM H_RACI INNER JOIN F_projet ON H_RACI.id_projet = F_projet.id_projet WHERE H_RACI.id_utilisateur=?");
+$search_projet = $bdd->prepare("SELECT DISTINCT F_projet.id_projet, nom_projet,description_projet, cadre_temporel, cadre_temporel_etape_2, cadre_temporel_etape_3, cadre_temporel_etape_4, cadre_temporel_etape_5 FROM H_RACI INNER JOIN F_projet ON H_RACI.id_projet = F_projet.id_projet WHERE H_RACI.id_utilisateur=?");
 $search_projet->bindParam(1, $getid_utilisateur);
 $search_projet->execute();
 
@@ -15,7 +15,7 @@ while($ecriture = $search_projet->fetch()){
 }
 
 if($array==null){
-    $search_projet = $bdd->prepare("SELECT DISTINCT F_projet.id_projet, nom_projet,description_projet,cadre_temporel FROM F_projet WHERE F_projet.id_utilisateur=?");
+    $search_projet = $bdd->prepare("SELECT DISTINCT F_projet.id_projet, nom_projet,description_projet,cadre_temporel, cadre_temporel_etape_2, cadre_temporel_etape_3, cadre_temporel_etape_4, cadre_temporel_etape_5 FROM F_projet WHERE F_projet.id_utilisateur=?");
     $search_projet->bindParam(1, $getid_utilisateur);
     $search_projet->execute();
 

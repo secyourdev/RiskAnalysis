@@ -5,11 +5,20 @@ var sidebarToggle = document.getElementById("sidebarToggle");
 var nom_etude = document.getElementById('nom_etude');
 var objectif_atteindre = document.getElementById('objectif_atteindre');
 var cadre_temporel = document.getElementById('cadre_temporel');
+var cadre_temporel_etape_2 = document.getElementById('cadre_temporel_etape_2');
+var cadre_temporel_etape_3 = document.getElementById('cadre_temporel_etape_3');
+var cadre_temporel_etape_4 = document.getElementById('cadre_temporel_etape_4');
+var cadre_temporel_etape_5 = document.getElementById('cadre_temporel_etape_5');
 
 var valider_acteur = document.getElementsByName('valider')[0]
 
 var label_nom_etude = document.getElementById('nom_etude').previousSibling.previousSibling
 var label_cadre_temporel = document.getElementById('cadre_temporel').previousSibling.previousSibling
+var label_cadre_temporel_etape_2 = document.getElementById('cadre_temporel_etape_2').previousSibling.previousSibling
+var label_cadre_temporel_etape_3 = document.getElementById('cadre_temporel_etape_3').previousSibling.previousSibling
+var label_cadre_temporel_etape_4 = document.getElementById('cadre_temporel_etape_4').previousSibling.previousSibling
+var label_cadre_temporel_etape_5 = document.getElementById('cadre_temporel_etape_5').previousSibling.previousSibling
+
 var raci = document.getElementById('raci')
 var acteur_id_raci = document.getElementById('acteur_id_raci')
 var respo_acceptation_risque = document.getElementById('respo_acceptation_risque')
@@ -77,8 +86,7 @@ setSortTable('editable_table');
 OURJQUERYFN.setFilterTable("#rechercher_acteur","#editable_table tbody tr")
 /*------------------------------ LABELS CACHES ------------------------------*/
 label_nom_etude.style.display="none"
-label_cadre_temporel.style.display="none"
-/*-------------------------- INITIALISATION RACI --------------------------- */
+
 for(let i=3;i<nombre_atelier;i++){
     var nombre_acteur = raci.rows[0].children.length-1
     while(nombre_acteur!=0){
@@ -156,6 +164,30 @@ cadre_temporel.addEventListener('change',function(event){
     verify_input(cadre_temporel.value,regex_cadre_temporel,cadre_temporel)
     activate_label(cadre_temporel.value,label_cadre_temporel)
     update_database_cadre_temporel(cadre_temporel.value)
+})
+
+cadre_temporel_etape_2.addEventListener('change',function(event){
+    verify_input(cadre_temporel_etape_2.value,regex_cadre_temporel,cadre_temporel_etape_2)
+    activate_label(cadre_temporel_etape_2.value,label_cadre_temporel_etape_2)
+    update_database_cadre_temporel_etape_2(cadre_temporel_etape_2.value)
+})
+
+cadre_temporel_etape_3.addEventListener('change',function(event){
+    verify_input(cadre_temporel_etape_3.value,regex_cadre_temporel,cadre_temporel_etape_3)
+    activate_label(cadre_temporel_etape_3.value,label_cadre_temporel_etape_3)
+    update_database_cadre_temporel_etape_3(cadre_temporel_etape_3.value)
+})
+
+cadre_temporel_etape_4.addEventListener('change',function(event){
+    verify_input(cadre_temporel_etape_4.value,regex_cadre_temporel,cadre_temporel_etape_4)
+    activate_label(cadre_temporel_etape_4.value,label_cadre_temporel_etape_4)
+    update_database_cadre_temporel_etape_4(cadre_temporel_etape_4.value)
+})
+
+cadre_temporel_etape_5.addEventListener('change',function(event){
+    verify_input(cadre_temporel_etape_5.value,regex_cadre_temporel,cadre_temporel_etape_5)
+    activate_label(cadre_temporel_etape_5.value,label_cadre_temporel_etape_5)
+    update_database_cadre_temporel_etape_5(cadre_temporel_etape_5.value)
 })
 
 respo_acceptation_risque.addEventListener('change',function(event){
@@ -245,19 +277,26 @@ function get_database_project_info(){
             var projet_info = JSON.parse(resultat);
             nom_etude.value = projet_info[0][1]
             objectif_atteindre.value = projet_info[0][2]
-            if(projet_info[0][4]!=null)        
-                respo_acceptation_risque.value=projet_info[0][4]        
+            if(projet_info[0][8]!=null)        
+                respo_acceptation_risque.value=projet_info[0][8]        
             else 
                 respo_acceptation_risque.selectedIndex=0    
             cadre_temporel.value = projet_info[0][3]
+            cadre_temporel_etape_2.value = projet_info[0][4]
+            cadre_temporel_etape_3.value = projet_info[0][5]
+            cadre_temporel_etape_4.value = projet_info[0][6]
+            cadre_temporel_etape_5.value = projet_info[0][7]
 
             verify_input(nom_etude.value,regex_nom_etude,nom_etude)
             verify_textarea(objectif_atteindre.value,regex_objectif_atteindre,objectif_atteindre)
             verify_input(cadre_temporel.value,regex_cadre_temporel,cadre_temporel)
+            verify_input(cadre_temporel_etape_2.value,regex_cadre_temporel,cadre_temporel_etape_2)
+            verify_input(cadre_temporel_etape_3.value,regex_cadre_temporel,cadre_temporel_etape_3)
+            verify_input(cadre_temporel_etape_4.value,regex_cadre_temporel,cadre_temporel_etape_4)
+            verify_input(cadre_temporel_etape_5.value,regex_cadre_temporel,cadre_temporel_etape_5)
             verify_select(respo_acceptation_risque)
             activate_label(nom_etude.value,label_nom_etude)
-            activate_label(cadre_temporel.value,label_cadre_temporel)
-        },
+         },
         error : function(erreur){
             alert('ERROR :'+erreur);
         }
@@ -310,6 +349,46 @@ function update_database_cadre_temporel(cadre_temporel){
         type: 'POST',
         data: {
             cadre_temporel: cadre_temporel
+        },
+    }); 
+}
+
+function update_database_cadre_temporel_etape_2(cadre_temporel){
+    $.ajax({
+        url: 'content/php/atelier1a/modification_projet.php',
+        type: 'POST',
+        data: {
+            cadre_temporel_etape_2: cadre_temporel
+        },
+    }); 
+}
+
+function update_database_cadre_temporel_etape_3(cadre_temporel){
+    $.ajax({
+        url: 'content/php/atelier1a/modification_projet.php',
+        type: 'POST',
+        data: {
+            cadre_temporel_etape_3: cadre_temporel
+        },
+    }); 
+}
+
+function update_database_cadre_temporel_etape_4(cadre_temporel){
+    $.ajax({
+        url: 'content/php/atelier1a/modification_projet.php',
+        type: 'POST',
+        data: {
+            cadre_temporel_etape_4: cadre_temporel
+        },
+    }); 
+}
+
+function update_database_cadre_temporel_etape_5(cadre_temporel){
+    $.ajax({
+        url: 'content/php/atelier1a/modification_projet.php',
+        type: 'POST',
+        data: {
+            cadre_temporel_etape_5: cadre_temporel
         },
     }); 
 }

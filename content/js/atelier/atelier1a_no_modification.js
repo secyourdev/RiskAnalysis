@@ -5,9 +5,18 @@ var sidebarToggle = document.getElementById("sidebarToggle");
 var nom_etude = document.getElementById('nom_etude');
 var objectif_atteindre = document.getElementById('objectif_atteindre');
 var cadre_temporel = document.getElementById('cadre_temporel');
+var cadre_temporel_etape_2 = document.getElementById('cadre_temporel_etape_2');
+var cadre_temporel_etape_3 = document.getElementById('cadre_temporel_etape_3');
+var cadre_temporel_etape_4 = document.getElementById('cadre_temporel_etape_4');
+var cadre_temporel_etape_5 = document.getElementById('cadre_temporel_etape_5');
 
 var label_nom_etude = document.getElementById('nom_etude').previousSibling.previousSibling
 var label_cadre_temporel = document.getElementById('cadre_temporel').previousSibling.previousSibling
+var label_cadre_temporel_etape_2 = document.getElementById('cadre_temporel_etape_2').previousSibling.previousSibling
+var label_cadre_temporel_etape_3 = document.getElementById('cadre_temporel_etape_3').previousSibling.previousSibling
+var label_cadre_temporel_etape_4 = document.getElementById('cadre_temporel_etape_4').previousSibling.previousSibling
+var label_cadre_temporel_etape_5 = document.getElementById('cadre_temporel_etape_5').previousSibling.previousSibling
+
 var raci = document.getElementById('raci')
 var acteur_id_raci = document.getElementById('acteur_id_raci')
 var respo_acceptation_risque = document.getElementById('respo_acceptation_risque')
@@ -44,7 +53,6 @@ setSortTable('editable_table');
 OURJQUERYFN.setFilterTable("#rechercher_acteur","#editable_table tbody tr")
 /*------------------------------ LABELS CACHES ------------------------------*/
 label_nom_etude.style.display="none"
-label_cadre_temporel.style.display="none"
 /*-------------------------- INITIALISATION RACI --------------------------- */
 for(let i=2;i<nombre_atelier;i++){
     var nombre_acteur = raci.rows[0].children.length-1
@@ -96,17 +104,31 @@ function get_database_project_info(){
                 objectif_atteindre.innerText = projet_info[0][2]
             else 
                 objectif_atteindre.innerText= "A définir"  
-            if(projet_info[0][5]!=null)
-                respo_acceptation_risque.innerText= projet_info[0][5]+" "+ projet_info[0][6]
+            if(projet_info[0][9]!=null)
+                respo_acceptation_risque.innerText= projet_info[0][9]+" "+ projet_info[0][10]
             else 
                 respo_acceptation_risque.innerText= "A définir"
             if(projet_info[0][3]!=null)
                 cadre_temporel.innerText = projet_info[0][3]          
             else 
                 cadre_temporel.innerText= "A définir"  
-            
+            if(projet_info[0][4]!=null)
+                cadre_temporel_etape_2.innerText = projet_info[0][4]          
+            else 
+                cadre_temporel_etape_2.innerText= "A définir"  
+            if(projet_info[0][5]!=null)
+                cadre_temporel_etape_3.innerText = projet_info[0][5]          
+            else 
+                cadre_temporel_etape_3.innerText= "A définir" 
+            if(projet_info[0][6]!=null)
+                cadre_temporel_etape_4.innerText = projet_info[0][6]          
+            else 
+                cadre_temporel_etape_4.innerText= "A définir"  
+            if(projet_info[0][7]!=null)
+                cadre_temporel_etape_5.innerText = projet_info[0][7]          
+            else 
+                cadre_temporel_etape_5.innerText= "A définir" 
             activate_label(nom_etude.innerText,label_nom_etude)
-            activate_label(cadre_temporel.innerText,label_cadre_temporel)
         },
         error : function(erreur){
             alert('ERROR :'+erreur);
