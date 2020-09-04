@@ -734,7 +734,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                             else if(isset($userdroit['ecriture'])){
                                                                 if($userdroit['ecriture']=='Réalisation'){
                                                         ?>
-                                                                    <input type="date" class="perso_form shadow-none form-control form-control-user style="width:150px"
+                                                                    <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px"
                                                                     id="cadre_temporel" placeholder="Cadre temporel" required>                                                                
                                                     </div>
                                                         <?php
@@ -855,6 +855,108 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                 </form>
                                             </div>
                                         </div>  
+
+                                       <!-- Duree des cycles stratégiques et oprétionnels-->                            
+                                       <div class="form-group">
+                                            <label class="titre_input" for="duree_cycles">Durée des cycles stratégiques et opérationnels</label>
+                                            </br>
+                                            <!-- Cycle strategique -->
+                                            <div class="container ">
+                                                <form>
+                                                    <div class="row ">  
+                                                        <label class="titre_input" for="duree_cycles">Durée des cycles stratégiques : </label>
+                                                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
+                                                        ?>
+                                                        <input type="text" class="perso_form shadow-none form-control form-control-user" style="width:200px" 
+                                                                    id="cycle_strategique" placeholder="Durée des cycles stratégiques" required>                                                           
+                                                    </div>
+                                                        <?php
+                                                            }
+                                                            else if(isset($userdroit['ecriture'])){
+                                                                if($userdroit['ecriture']=='Réalisation'){
+                                                        ?>
+                                                                    <input type="text" class="perso_form shadow-none form-control form-control-user" style="width:200px"
+                                                                    id="cycle_strategique" placeholder="Durée des cycles stratégiques" required>                                                                
+                                                    </div>
+                                                        <?php
+                                                                }
+                                                                else { 
+                                                        ?>
+                                                        </br>
+                                                        <label id="cycle_strategique" class="no_modification"></label>
+                                                    </div>
+                                                        <?php
+                                                                }
+                                                            }
+                                                        ?>
+                                                    <div class="row ">  
+                                                        <label class="titre_input" for="duree_cycles">Durée des cycles opérationnels : </label>
+                                                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
+                                                        ?>
+                                                            <input type="text" class="perso_form shadow-none form-control form-control-user" style="width:200px" 
+                                                                    id="cycle_operationnel" placeholder="Durée des cycles opérationnels" required>                                                           
+                                                    </div>
+                                                        <?php
+                                                            }
+                                                            else if(isset($userdroit['ecriture'])){
+                                                                if($userdroit['ecriture']=='Réalisation'){
+                                                        ?>
+                                                                    <input type="text" class="perso_form shadow-none form-control form-control-user" style="width:200px" 
+                                                                    id="cycle_operationnel" placeholder="Durée des cycles opérationnels" required>                                                                
+                                                    </div>
+                                            <?php
+                                                    }
+                                                    else { 
+                                            ?>
+                                                        </br>
+                                                        <label id="cycle_operationnel" class="no_modification"></label>
+                                                    </div>                                       
+                                            <?php
+                                                    }
+                                                }
+                                            ?> 
+                                                </form>
+                                            </div>
+                                        </div>  
+
+                                        <!--Confidentialite-->
+                                        <div class="form-group">
+                                            <label class="titre_input" for="confidentialite"> Niveau de confidentialité</label>
+                                            <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
+                                            ?>
+                                            <select class="form-control" id="confidentialite">
+                                                <option value="" selected>...</option>
+                                                <option value="Non protégée">Non protégée</option>
+                                                <option value="Sensible">Sensible</option>
+                                                <option value="Confidentiel">Confidentiel</option>
+                                                <option value="Secret">Secret</option>
+                                            </select>
+                                        </div>
+                                            <?php
+                                                }
+                                                else if(isset($userdroit['ecriture'])){
+                                                    if($userdroit['ecriture']=='Réalisation'){
+                                            ?>
+                                            <select class="form-control" id="confidentialite">
+                                                <option value="" selected>...</option>
+                                                <option value="Non protégée">Non protégée</option>
+                                                <option value="Sensible">Sensible</option>
+                                                <option value="Confidentiel">Confidentiel</option>
+                                                <option value="Secret">Secret</option>
+                                            </select>
+                                        </div>
+                                            <?php
+                                                    }
+                                                    else { 
+                                            ?>
+                                                    </br>
+                                                    <label id="confidentialite" class="no_modification"></label>
+                                        </div>
+                                            <?php
+                                                    }
+                                                }
+                                            ?>  
+
                                         <!--RISQUE ETUDE-->
                                         <div class="form-group">
                                             <label class="titre_input" for="respo_acceptation_risque">Personne responsable d'accepter

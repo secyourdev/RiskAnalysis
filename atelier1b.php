@@ -569,6 +569,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <tr>
                           <th id="id_mission">ID_mission</th>
                           <th id="nom_mission">Nom de la mission</th>
+                          <th id="description_mission">Description de la mission</th>
                           <th id="responsable_mission">Responsable</th>
                           <th id="valeur_metier">Valeur métier</th>
                           <th id="responsable_valeur_metier">Responsable de la valeur métier</th>
@@ -583,6 +584,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <tr>
                         <td>' . $row["id_mission"] . '</td>
                         <td>' . $row["nom_mission"] . '</td>
+                        <td>' . $row["description_mission"] . '</td>
                         <td>' . $row["responsable"] . '</td>
                         <td>' . $row["nom_valeur_metier"] . '</td>
                         <td>' . $row["nom_responsable_vm"] . '</td>
@@ -937,10 +939,10 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
           <div class="modal-body perso_modal_body">
             <form method="post" action="content/php/atelier1b/ajoutmission.php" class="user" id="formMission">
               <fieldset>
-                <!-- MISSION -->
+                <!-- NOM MISSION -->
                 
                 <div class="form-group">
-                  <label class="titre_input" for="nommission">Mission</label>
+                  <label class="titre_input" for="nommission">Nom Mission</label>
                   <input type="text" class="perso_arrow perso_form shadow-none form-control" list="Mission" name="nom_mission" id="nommission" placeholder="Mission" required>
                   <datalist id="Mission">
                       <?php
@@ -951,6 +953,13 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                       }
                       ?>
                   </datalist>
+                </div>
+
+                  <!-- DESCRIPTION MISSION -->
+                
+                <div class="form-group">
+                  <label for="DescriptionMission">Description Mission</label>
+                  <textarea class="form-control perso_text_area" name="description_mission" id="descriptionmission" rows="3"></textarea>
                 </div>
                 
                 <!-- RESPONSABLE -->

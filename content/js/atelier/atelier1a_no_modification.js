@@ -9,6 +9,9 @@ var cadre_temporel_etape_2 = document.getElementById('cadre_temporel_etape_2');
 var cadre_temporel_etape_3 = document.getElementById('cadre_temporel_etape_3');
 var cadre_temporel_etape_4 = document.getElementById('cadre_temporel_etape_4');
 var cadre_temporel_etape_5 = document.getElementById('cadre_temporel_etape_5');
+var confidentialite = document.getElementById('confidentialite');
+var cycle_strategique = document.getElementById('cycle_strategique');
+var cycle_operationnel = document.getElementById('cycle_operationnel');
 
 var label_nom_etude = document.getElementById('nom_etude').previousSibling.previousSibling
 var label_cadre_temporel = document.getElementById('cadre_temporel').previousSibling.previousSibling
@@ -16,6 +19,9 @@ var label_cadre_temporel_etape_2 = document.getElementById('cadre_temporel_etape
 var label_cadre_temporel_etape_3 = document.getElementById('cadre_temporel_etape_3').previousSibling.previousSibling
 var label_cadre_temporel_etape_4 = document.getElementById('cadre_temporel_etape_4').previousSibling.previousSibling
 var label_cadre_temporel_etape_5 = document.getElementById('cadre_temporel_etape_5').previousSibling.previousSibling
+var label_confidentialite = document.getElementById('confidentialite').previousSibling.previousSibling
+var label_cycle_strategique = document.getElementById('cycle_strategique').previousSibling.previousSibling
+var label_cycle_operationnel = document.getElementById('cycle_operationnel').previousSibling.previousSibling
 
 var raci = document.getElementById('raci')
 var acteur_id_raci = document.getElementById('acteur_id_raci')
@@ -104,8 +110,8 @@ function get_database_project_info(){
                 objectif_atteindre.innerText = projet_info[0][2]
             else 
                 objectif_atteindre.innerText= "A définir"  
-            if(projet_info[0][9]!=null)
-                respo_acceptation_risque.innerText= projet_info[0][9]+" "+ projet_info[0][10]
+            if(projet_info[0][12]!=null)
+                respo_acceptation_risque.innerText= projet_info[0][12]+" "+ projet_info[0][13]
             else 
                 respo_acceptation_risque.innerText= "A définir"
             if(projet_info[0][3]!=null)
@@ -128,6 +134,18 @@ function get_database_project_info(){
                 cadre_temporel_etape_5.innerText = projet_info[0][7]          
             else 
                 cadre_temporel_etape_5.innerText= "A définir" 
+            if(projet_info[0][8]!=null)
+                confidentialite.innerText = projet_info[0][8]          
+            else 
+                confidentialite.innerText= "A définir" 
+            if(projet_info[0][9]!=null)
+                cycle_strategique.innerText = projet_info[0][9]          
+            else 
+                cycle_strategique.innerText= "A définir" 
+            if(projet_info[0][10]!=null)
+                cycle_operationnel.innerText = projet_info[0][10]          
+            else 
+                cycle_operationnel.innerText= "A définir" 
             activate_label(nom_etude.innerText,label_nom_etude)
         },
         error : function(erreur){

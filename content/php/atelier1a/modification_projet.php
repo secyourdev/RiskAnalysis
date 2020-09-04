@@ -95,6 +95,36 @@ if(isset($_POST['cadre_temporel_etape_5'])){
   }
 }
 
+if(isset($_POST['confidentialite'])){
+  $confidentialite = $_POST['confidentialite'];
+  $update_projet = $bdd->prepare("UPDATE F_projet SET confidentialite = ? WHERE id_projet=?");
+  $update_projet->bindParam(1, $confidentialite);
+  $update_projet->bindParam(2, $getid_projet);
+  if(preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $confidentialite)){
+    $update_projet->execute();
+  }
+}
+
+if(isset($_POST['cycle_strategique'])){
+  $cycle_strategique = $_POST['cycle_strategique'];
+  $update_projet = $bdd->prepare("UPDATE F_projet SET duree_strategique  = ? WHERE id_projet=?");
+  $update_projet->bindParam(1, $cycle_strategique);
+  $update_projet->bindParam(2, $getid_projet);
+  if(preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,1000}$/", $cycle_strategique)){
+    $update_projet->execute();
+  }
+}
+
+if(isset($_POST['cycle_operationnel'])){
+  $cycle_operationnel = $_POST['cycle_operationnel'];
+  $update_projet = $bdd->prepare("UPDATE F_projet SET duree_operationnel  = ? WHERE id_projet=?");
+  $update_projet->bindParam(1, $cycle_operationnel);
+  $update_projet->bindParam(2, $getid_projet);
+  if(preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,1000}$/", $cycle_operationnel)){
+    $update_projet->execute();
+  }
+}
+
 if(isset($_POST['nom_grp_utilisateur'])){
   $nom_grp_utilisateur = $_POST['nom_grp_utilisateur'];
   $search_id_grp_utilisateur = $bdd->prepare("SELECT `id_grp_utilisateur` FROM `B_grp_utilisateur` WHERE `nom_grp_utilisateur`=?");

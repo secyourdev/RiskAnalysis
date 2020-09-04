@@ -13,6 +13,7 @@ $id_projet = $_SESSION['id_projet'];;
 if ($input["action"] === 'edit') {
 
     $nom_mission = mysqli_real_escape_string($connect, $input["nom_mission"]);
+    $description_mission = mysqli_real_escape_string($connect, $input["description_mission"]);
     $responsable = mysqli_real_escape_string($connect, $input["responsable"]);
     $nom_responsable_vm = mysqli_real_escape_string($connect, $input["nom_responsable_vm"]);
     $nom_responsable_bs = mysqli_real_escape_string($connect, $input["nom_responsable_bs"]);
@@ -21,6 +22,12 @@ if ($input["action"] === 'edit') {
     if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $nom_mission)) {
         $results["error"] = true;
         $_SESSION['message_error'] = "Nom invalide";
+    }
+
+    // Verification de la description de la mission
+    if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,1000}$/", $description_mission)) {
+        $results["error"] = true;
+        $_SESSION['message_error'] = "Description mission invalide";
     }
 
     // Verification du responsable de la mission
@@ -44,7 +51,7 @@ if ($input["action"] === 'edit') {
     if($results["error"] === false){
     $query = 
     "UPDATE I_mission 
-    SET nom_mission = '" . $nom_mission . "',
+    SET nom_mission = '" . $nom_mission . "', description_mission = '" . $description_mission . "',
     responsable = '".$responsable."'
     WHERE id_mission = '" . $input["id_mission"] . "'
     AND id_atelier = '" . $id_atelier . "'

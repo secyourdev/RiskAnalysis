@@ -11,10 +11,12 @@ var descriptionvm = document.getElementById("descriptionvm");
 var label_valeurmetier = document.getElementById("nomvm").previousSibling.previousSibling
 
 var nommission = document.getElementById("nommission");
+var descriptionmission = document.getElementById("descriptionmission");
 var responsable = document.getElementById("responsable");
 var responsablevm = document.getElementById("responsable_vm");
 var responsablebs = document.getElementById("responsable_bs");
 var label_mission = document.getElementById("nommission").previousSibling.previousSibling
+var label_descriptionmission = document.getElementById("descriptionmission").previousSibling.previousSibling
 var label_responsable = document.getElementById("responsable").previousSibling.previousSibling
 var label_responsablevm = document.getElementById("responsable_vm").previousSibling.previousSibling
 var label_responsablebs = document.getElementById("responsable_bs").previousSibling.previousSibling
@@ -70,7 +72,7 @@ $(document).ready(function () {
         url: 'content/php/atelier1b/modificationmission.php',
         columns: {
             identifier: [0, 'id_mission'],
-            editable: [[1, 'nom_mission'], [2, "responsable"], [4, "nom_responsable_vm"], [6, "nom_responsable_bs"]]
+            editable: [[1, 'nom_mission'], [2, 'description_mission'], [3, "responsable"], [5, "nom_responsable_vm"], [7, "nom_responsable_bs"]]
         },
         restoreButton: false,
         onSuccess: function (data, textStatus, jqXHR) {
@@ -121,6 +123,10 @@ nommission.addEventListener('keyup',function(event){
     verify_input(nommission.value,regex_nom_mission,nommission)
     activate_label(nommission.value,label_mission)
 }) 
+
+descriptionmission.addEventListener('keyup',function(event){
+    verify_textarea(descriptionmission.value,regex_description,descriptionmission)
+})
 
 responsable.addEventListener('keyup',function(event){
     verify_input(responsable.value,regex_nom,responsable)

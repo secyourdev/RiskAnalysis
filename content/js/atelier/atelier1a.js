@@ -9,6 +9,9 @@ var cadre_temporel_etape_2 = document.getElementById('cadre_temporel_etape_2');
 var cadre_temporel_etape_3 = document.getElementById('cadre_temporel_etape_3');
 var cadre_temporel_etape_4 = document.getElementById('cadre_temporel_etape_4');
 var cadre_temporel_etape_5 = document.getElementById('cadre_temporel_etape_5');
+var confidentialite = document.getElementById('confidentialite');
+var cycle_strategique = document.getElementById('cycle_strategique');
+var cycle_operationnel = document.getElementById('cycle_operationnel');
 
 var valider_acteur = document.getElementsByName('valider')[0]
 
@@ -18,6 +21,10 @@ var label_cadre_temporel_etape_2 = document.getElementById('cadre_temporel_etape
 var label_cadre_temporel_etape_3 = document.getElementById('cadre_temporel_etape_3').previousSibling.previousSibling
 var label_cadre_temporel_etape_4 = document.getElementById('cadre_temporel_etape_4').previousSibling.previousSibling
 var label_cadre_temporel_etape_5 = document.getElementById('cadre_temporel_etape_5').previousSibling.previousSibling
+var label_confidentialite = document.getElementById('confidentialite').previousSibling.previousSibling
+var label_cycle_strategique = document.getElementById('cycle_strategique').previousSibling.previousSibling
+var label_cycle_operationnel = document.getElementById('cycle_operationnel').previousSibling.previousSibling
+
 
 var raci = document.getElementById('raci')
 var acteur_id_raci = document.getElementById('acteur_id_raci')
@@ -32,7 +39,7 @@ var regex_nom_etude = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"
 var regex_description_etude = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{1,100}$/
 var regex_objectif_atteindre = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{1,100}$/
 var regex_cadre_temporel = /^[0-9\s-]{0,100}$/
-
+var regex_cycle = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{1,100}$/
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
 sidebarToggleTop.addEventListener('click', show_sub_content,false);
@@ -190,6 +197,21 @@ cadre_temporel_etape_5.addEventListener('change',function(event){
     update_database_cadre_temporel_etape_5(cadre_temporel_etape_5.value)
 })
 
+cycle_strategique.addEventListener('keyup',function(event){
+    verify_input(cycle_strategique.value,regex_cycle,cycle_strategique)
+    update_database_cycle_strategique(cycle_strategique.value)
+})
+
+cycle_operationnel.addEventListener('keyup',function(event){
+    verify_input(cycle_operationnel.value,regex_cycle,cycle_operationnel)
+    update_database_cycle_operationnel(cycle_operationnel.value)
+})
+
+confidentialite.addEventListener('change',function(event){
+    verify_select(confidentialite)
+    update_database_confidentialite(confidentialite.options[confidentialite.selectedIndex].value)
+})
+
 respo_acceptation_risque.addEventListener('change',function(event){
     verify_select(respo_acceptation_risque)
     update_database_respo_acceptation_risque(respo_acceptation_risque.options[respo_acceptation_risque.selectedIndex].value)
@@ -277,8 +299,8 @@ function get_database_project_info(){
             var projet_info = JSON.parse(resultat);
             nom_etude.value = projet_info[0][1]
             objectif_atteindre.value = projet_info[0][2]
-            if(projet_info[0][8]!=null)        
-                respo_acceptation_risque.value=projet_info[0][8]        
+            if(projet_info[0][11]!=null)        
+                respo_acceptation_risque.value=projet_info[0][11]        
             else 
                 respo_acceptation_risque.selectedIndex=0    
             cadre_temporel.value = projet_info[0][3]
@@ -286,6 +308,9 @@ function get_database_project_info(){
             cadre_temporel_etape_3.value = projet_info[0][5]
             cadre_temporel_etape_4.value = projet_info[0][6]
             cadre_temporel_etape_5.value = projet_info[0][7]
+            confidentialite.value = projet_info[0][8]
+            cycle_strategique.value = projet_info[0][9]
+            cycle_operationnel.value = projet_info[0][10]
 
             verify_input(nom_etude.value,regex_nom_etude,nom_etude)
             verify_textarea(objectif_atteindre.value,regex_objectif_atteindre,objectif_atteindre)
@@ -294,7 +319,10 @@ function get_database_project_info(){
             verify_input(cadre_temporel_etape_3.value,regex_cadre_temporel,cadre_temporel_etape_3)
             verify_input(cadre_temporel_etape_4.value,regex_cadre_temporel,cadre_temporel_etape_4)
             verify_input(cadre_temporel_etape_5.value,regex_cadre_temporel,cadre_temporel_etape_5)
+            verify_select(confidentialite)
             verify_select(respo_acceptation_risque)
+            verify_input(cycle_operationnel.value,regex_cycle,cycle_operationnel)
+            verify_input(cycle_strategique.value,regex_cycle,cycle_strategique)
             activate_label(nom_etude.value,label_nom_etude)
          },
         error : function(erreur){
@@ -389,6 +417,36 @@ function update_database_cadre_temporel_etape_5(cadre_temporel){
         type: 'POST',
         data: {
             cadre_temporel_etape_5: cadre_temporel
+        },
+    }); 
+}
+
+function update_database_confidentialite(confidentialite){
+    $.ajax({
+        url: 'content/php/atelier1a/modification_projet.php',
+        type: 'POST',
+        data: {
+            confidentialite: confidentialite
+        },
+    }); 
+}
+
+function update_database_cycle_strategique(cycle_strategique){
+    $.ajax({
+        url: 'content/php/atelier1a/modification_projet.php',
+        type: 'POST',
+        data: {
+            cycle_strategique: cycle_strategique
+        },
+    }); 
+}
+
+function update_database_cycle_operationnel(cycle_operationnel){
+    $.ajax({
+        url: 'content/php/atelier1a/modification_projet.php',
+        type: 'POST',
+        data: {
+            cycle_operationnel: cycle_operationnel
         },
     }); 
 }
