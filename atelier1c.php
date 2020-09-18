@@ -957,7 +957,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     <div class="form-group">
                       <label for="Select_valeur_metier">Confidentialité</label>
                       <select class="form-control" name="confidentialite" id="confidentialite">
-                        <option value="" selected>...</option>
+                        <option value="" selected>0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -966,7 +966,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     <div class="form-group">
                       <label for="Select_valeur_metier">Intégrité</label>
                       <select class="form-control" name="integrite" id="integrite">
-                        <option value="" selected>...</option>
+                        <option value="" selected>0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -977,7 +977,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     <div class="form-group">
                       <label for="Select_valeur_metier">Disponibilité</label>
                       <select class="form-control" name="disponibilite" id="disponibilite">
-                        <option value="" selected>...</option>
+                        <option value="" selected>0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -986,7 +986,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                     <div class="form-group">
                       <label for="Select_valeur_metier">Traçabilité</label>
                       <select class="form-control" name="tracabilite" id="tracabilite">
-                        <option value="" selected>...</option>
+                        <option value="" selected>0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
