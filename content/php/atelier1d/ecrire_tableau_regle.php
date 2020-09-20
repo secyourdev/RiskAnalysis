@@ -34,6 +34,5 @@ if (isset($_POST['nom_referentiel'])) {
             <td>' . $row["dates"] . '</td>
             </tr>
             ';
-            // }
           }
         }

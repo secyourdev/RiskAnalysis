@@ -17,12 +17,12 @@ $id_traitement = "id_traitement";
 $id_atelier = '3.c';
 
   // Verification du nom_mesure
-  if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $nom_mesure)) {
+  if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $nom_mesure)) {
     $results["error"] = true;
     $_SESSION['message_error'] = "Nom mesure de sécurité invalide";
   }
   // Verification du description_mesure
-  if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $description_mesure)) {
+  if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $description_mesure)) {
     $results["error"] = true;
     $_SESSION['message_error'] = "Description mesure de sécurité invalide";
   }

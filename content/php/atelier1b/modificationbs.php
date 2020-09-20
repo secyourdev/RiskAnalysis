@@ -1,7 +1,7 @@
 <?php  
 session_start();
 
-include("../bdd/connexion_sqli.php");
+include("../bdd/connexion.php");
 
 $input = filter_input_array(INPUT_POST);
 
@@ -11,10 +11,8 @@ $id_atelier = "1.b";
 $id_projet = $_SESSION['id_projet'];;
 
 if($input["action"] === 'edit'){
-    $nom_bien_support = mysqli_real_escape_string($connect, $input["nom_bien_support"]);
-    $description_bien_support = mysqli_real_escape_string($connect, $input["description_bien_support"]);
-    echo $nom_bien_support;
-    echo $description_bien_support;
+    $nom_bien_support =  $_POST["nom_bien_support"];
+    $description_bien_support =  $_POST["description_bien_support"];
 
     // Verification du nom du bien support
     if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $nom_bien_support)){
@@ -29,28 +27,25 @@ if($input["action"] === 'edit'){
     }
 
     if($results["error"] === false){
-        $querybs = 
-        "UPDATE K_bien_support 
-        SET nom_bien_support = '".$nom_bien_support."', 
-        description_bien_support = '".$description_bien_support."'
-        WHERE id_bien_support = '".$input["id_bien_support"]. "'
-        AND id_atelier = '" . $id_atelier . "'
-        AND id_projet = " . $id_projet . "
-        ";
-        mysqli_query($connect, $querybs);
-        
+        $update = $bdd->prepare("UPDATE `K_bien_support` SET `nom_bien_support`=?, `description_bien_support`=? WHERE `id_bien_support`=? AND `id_atelier`=? AND `id_projet`=?");
+        $update->bindParam(1, $nom_bien_support);
+        $update->bindParam(2, $description_bien_support);
+        $update->bindParam(3, $input["id_bien_support"]);
+        $update->bindParam(4, $id_atelier);
+        $update->bindParam(5, $id_projet);
+        $update->execute();
+
+
         $_SESSION['message_success_3'] = "Le bien support a bien été modifié !";
     }
 }
 
 if($input["action"] === 'delete'){
-    $query = 
-    "DELETE FROM K_bien_support 
-    WHERE id_bien_support = '".$input["id_bien_support"]. "'
-    AND id_atelier = '" . $id_atelier . "'
-    AND id_projet = " . $id_projet . "
-    ";
-    mysqli_query($connect, $query);
+    $delete = $bdd->prepare("DELETE FROM `K_bien_support` WHERE `id_bien_support`=? AND `id_atelier`=? AND `id_projet`=?");
+    $delete->bindParam(1, $input["id_bien_support"]);
+    $delete->bindParam(2, $id_atelier);
+    $delete->bindParam(3, $id_projet);
+    $delete->execute();
 
     $_SESSION['message_success_3'] = "Le bien support a bien été supprimé !";
 }

@@ -25,14 +25,15 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–
   $_SESSION['message_error_3'] = "Nom de l'événement redouté invalide";
 }
 
+
 // Verification du description_evenement_redoutes
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $description_evenement_redoutes)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,1000}$/", $description_evenement_redoutes)) {
   $results["error"] = true;
   $_SESSION['message_error_3'] = "Description événement redouté invalide";
 }
 
 // Verification du impact
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $impact)) {
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,1000}$/", $impact)) {
   $results["error"] = true;
   $_SESSION['message_error_3'] = "Impact invalide";
 }
