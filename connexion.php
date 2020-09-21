@@ -79,7 +79,7 @@ else{
                 placeholder="Entrer une adresse email" required>
             </div>
             <div class="form-group">
-              <input type="password" class="perso_form shadow-none form-control form-control-user" id="exampleInputPassword" name="mot_de_passe" placeholder="Mot de passe" required>
+              <input type="password" class="perso_form shadow-none form-control form-control-user" id="exampleInputPassword" name="mot_de_passe" placeholder="Mot de passe" autocomplete="off" required>
             </div>
             <div class="perso_motdepass_center">
               <a class="perso_color_dark_blue" href="mot_de_passe_oublie.php">Mot de passe oublié?</a>

@@ -280,21 +280,21 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                 <div class="form-group">
                                     <label class="titre_input" for="ancien_mdp">Ancien mot de passe</label>
                                     <input type="password" class="perso_form shadow-none form-control form-control-user"
-                                        name="ancien_mdp" id="ancien_mdp" placeholder="Ancien mot de passe" required></input>
+                                        name="ancien_mdp" id="ancien_mdp" placeholder="Ancien mot de passe" autocomplete="off" required></input>
                                 </div>
 
                                 <!--Nouveau mot de passe-->
                                 <div class="form-group">
                                     <label class="titre_input" for="nouveau_mdp">Nouveau mot de passe</label>
                                     <input type="password" class="perso_form shadow-none form-control form-control-user"
-                                        name="nouveau_mdp" id="nouveau_mdp" placeholder="Nouveau mot de passe" required></input>
+                                        name="nouveau_mdp" id="nouveau_mdp" placeholder="Nouveau mot de passe" autocomplete="off" required></input>
                                 </div>
                                 
                                 <!--Confirmation nouveau Mot de passe-->
                                 <div class="form-group">
                                     <label class="titre_input" for="confirmation_nouveau_mdp">Confirmez votre nouveau mot de passe</label>
                                     <input type="password" class="perso_form shadow-none form-control form-control-user"
-                                        name="confirmation_nouveau_mdp" id="confirmation_nouveau_mdp" placeholder="Confirmez votre nouveau mot de passe" required></input>
+                                        name="confirmation_nouveau_mdp" id="confirmation_nouveau_mdp" placeholder="Confirmez votre nouveau mot de passe" autocomplete="off" required></input>
                                 </div>
 
                                 <div class="modal-footer perso_middle_modal_footer">
