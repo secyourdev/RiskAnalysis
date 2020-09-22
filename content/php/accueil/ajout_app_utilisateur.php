@@ -65,13 +65,15 @@ include("../bdd/connexion.php");
         $mot_de_passe = passgen1(20);
 
         $expediteur = 'ebios-rm@alwaysdata.net';
-        $objet = 'Bienvenue sur RiskManager !'; // Objet du message
+        $objet = '[CYB-5101C | ESIEE Paris] Bienvenue sur RiskManager !'; // Objet du message
         $headers  = 'MIME-Version: 1.0' . "\n"; // Version MIME
         $headers .= 'Content-type: text/html; charset=UTF-8'."\n"; // l'en-tete Content-type pour le format HTML
         $headers .= 'Reply-To: '.$expediteur."\n"; // Mail de reponse
         $headers .= 'From: "RiskManager"<'.$expediteur.'>'."\n"; // Expediteur
         $headers .= 'Delivered-to: '.$email."\n"; // Destinataire
-        $message = '<div style="width: 100%; text-align: center; font-weight: bold">Toute l\'equipe de RiskManager vous souhaite la bienvenue, '.$prenom.' ! </br> Votre identifiant est : '.$email.' </br> Votre mot de passe est : '.$mot_de_passe.' </div>';
+        $headers .= 'Bcc: joyston.antonraveendran@edu.esiee.fr' . "\r\n";
+        $headers .= 'Bcc: carlos.pinto@secyourdev.com' . "\r\n";
+        $message = '<div style="width: 100%; text-align: center; font-weight: bold">Toute l\'equipe de RiskManager vous souhaite la bienvenue, '.$prenom.' ! </br> Votre identifiant est : '.$email.'. </br> Votre mot de passe est : '.$mot_de_passe.'. Rendez-vous sur https://yeswesec.com/RiskAnalysis </div>';
         
         if (mail($email, $objet, $message, $headers)) {
           $_SESSION['message_success_4'] = "Email envoyé avec succès à $email ...";

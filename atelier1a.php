@@ -723,7 +723,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                             <div class="container ">
                                                 <form>
                                                     <div class="row ">  
-                                                        <label class="titre_input" for="cadre_temporel">Etape 1 : </label>
+                                                        <label class="titre_input" for="cadre_temporel">Atelier 1 : </label>
                                                         <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
                                                         ?>
                                                         <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px" 
@@ -749,7 +749,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                             }
                                                         ?>
                                                     <div class="row ">  
-                                                        <label class="titre_input" for="cadre_temporel">Etape 2 : </label>
+                                                        <label class="titre_input" for="cadre_temporel">Atelier 2 : </label>
                                                         <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
                                                         ?>
                                                             <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px" 
@@ -775,7 +775,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                 }
                                             ?>
                                                     <div class="row ">  
-                                                        <label class="titre_input" for="cadre_temporel">Etape 3 : </label>
+                                                        <label class="titre_input" for="cadre_temporel">Atelier 3 : </label>
                                                         <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
                                                         ?>
                                                             <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px" 
@@ -801,7 +801,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                 }
                                             ?>
                                                     <div class="row ">  
-                                                        <label class="titre_input" for="cadre_temporel">Etape 4 : </label>
+                                                        <label class="titre_input" for="cadre_temporel">Atelier 4 : </label>
                                                         <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
                                                         ?>
                                                             <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px" 
@@ -827,7 +827,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                 }
                                             ?>
                                                     <div class="row ">  
-                                                        <label class="titre_input" for="cadre_temporel">Etape 5 : </label>
+                                                        <label class="titre_input" for="cadre_temporel">Atelier 5 : </label>
                                                         <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
                                                         ?>
                                                             <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px" 
@@ -1004,8 +1004,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                 }
                                             ?>  
                                     </form>
-                                    <img src="content/img/task.svg" class="img-fluid perso_img">
-
                                 </div>
                             </div>
 

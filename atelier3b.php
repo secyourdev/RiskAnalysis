@@ -55,46 +55,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
     <link rel="icon" href="content/img/logo_cyber_risk_manager.png" type="image/png">
-
-    <!-- required modeler styles -->
-    <link rel="stylesheet" href="https://unpkg.com/bpmn-js@7.3.0/dist/assets/diagram-js.css">
-    <link rel="stylesheet" href="https://unpkg.com/bpmn-js@7.3.0/dist/assets/bpmn-font/css/bpmn.css">
-
-    <!-- modeler distro -->
-    <script src="https://unpkg.com/bpmn-js@7.3.0/dist/bpmn-modeler.development.js"></script>
-
-    <!-- needed for this example only -->
-    <!-- <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.js"></script> -->
-    <!-- example styles -->
-    <style>
-      #canvas {
-        height: 100%;
-        padding: 0;
-        margin: 0;
-      }
-
-      .diagram-note {
-        background-color: rgba(66, 180, 21, 0.7);
-        color: White;
-        border-radius: 5px;
-        font-family: Arial;
-        font-size: 12px;
-        padding: 5px;
-        min-height: 16px;
-        width: 50px;
-        text-align: center;
-      }
-
-      .needs-discussion:not(.djs-connection) .djs-visual > :nth-child(1) {
-        stroke: rgba(66, 180, 21, 0.7) !important; /* color elements as red */
-      }
-
-      #save-button {
-        position: fixed;
-        bottom: 20px;
-        left: 20px;
-      }
-    </style>
   </head>
 
   <?php
@@ -810,89 +770,90 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       <!-- Card Body -->
                       <div class="card-body">
                         <!--text-->
-                        
+                        <span id="success_message"></span>
+                        <form method="POST" id="sample_form" action="content/php/atelier3b/insert_image.php" enctype="multipart/form-data">
 
-
-                        <div id="schema" class="card-header col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                          <div id="canvas"></div>
-
-                          <button>print to console</button>
-
-                          <script>
-
-                            var diagramUrl = 'https://cdn.staticaly.com/gh/bpmn-io/bpmn-js-examples/dfceecba/starter/diagram.bpmn';
-
-                            // modeler instance
-                            var bpmnModeler = new BpmnJS({
-                              container: '#canvas',
-                              keyboard: {
-                                bindTo: window
-                              }
-                            });
-
-                            /**
-                             * Save diagram contents and print them to the console.
-                             */
-                            async function exportDiagram() {
-
-                              try {
-
-                                var result = await bpmnModeler.saveXML({ format: true });
-
-                                alert('Diagram exported. Check the developer tools!');
-
-                                console.log('DIAGRAM', result.xml);
-                              } catch (err) {
-
-                                console.error('could not save BPMN 2.0 diagram', err);
-                              }
+                          <label for="select_nom_scenario_strategique">Nom du scénario stratégiques</label>
+                          <select class="form-control" name="select_nom_scenario_strategique" id="select_nom_scenario_strategique">
+                            <option value="" selected>...</option>
+                            <?php
+                            while ($row = mysqli_fetch_array($result_scenario_op)) 
+                            {
+                              echo '<option id="scenario_strategique" value="' . $row['id_scenario_strategique'] . '">' . $row['nom_scenario_strategique'] . '</option>';
                             }
+                            ?>
+                          </select>
+                          </br>
+                          <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                          ?> 
+                                  <div class="custom-file">
+                                    <input name="inpFile" id="inpFile" class="custom-file-input" type="file">
+                                    <label class="custom-file-label" for="inpFile">Choisir un fichier au format image</label>
+                                  </div>
+                                  
+                                  <div class='message_success'>
+                                  <?php 
+                                      if(isset($_SESSION['message_success_2'])){
+                                        echo $_SESSION['message_success_2'];
+                                        unset($_SESSION['message_success_2']);
+                                      }
+                                  ?>
+                                  </div> 
+                                  <div class='message_error'>
+                                  <?php                
+                                      if(isset($_SESSION['message_error_2'])){
+                                          echo $_SESSION['message_error_2'];
+                                          unset($_SESSION['message_error_2']);
+                                      }
+                                  ?>
+                                  </div>
 
-                            /**
-                             * Open diagram in our modeler instance.
-                             *
-                             * @param {String} bpmnXML diagram to display
-                             */
-                            async function openDiagram(bpmnXML) {
+                                  <div class="form-group" align="center">
+                                    <input type="submit" name="file_submit" id="file_submit" class="btn perso_btn_primary shadow-none" value="Ajouter une image" />
+                                  </div>
+                          <?php
+                                }
+                                else if (isset($userdroit['ecriture'])){
+                                    if($userdroit['ecriture']=='Réalisation'){
+                          ?>
+                                      <div class="custom-file">
+                                        <input name="inpFile" id="inpFile" class="custom-file-input" type="file">
+                                        <label class="custom-file-label" for="inpFile">Choisir un fichier au format image</label>
+                                      </div>
+                                      
+                                      <div class='message_success'>
+                                      <?php 
+                                          if(isset($_SESSION['message_success_2'])){
+                                            echo $_SESSION['message_success_2'];
+                                            unset($_SESSION['message_success_2']);
+                                          }
+                                      ?>
+                                      </div> 
+                                      <div class='message_error'>
+                                      <?php                
+                                          if(isset($_SESSION['message_error_2'])){
+                                              echo $_SESSION['message_error_2'];
+                                              unset($_SESSION['message_error_2']);
+                                          }
+                                      ?>
+                                      </div>
 
-                              // import diagram
-                              try {
-
-                                await bpmnModeler.importXML(bpmnXML);
-
-                                // access modeler components
-                                var canvas = bpmnModeler.get('canvas');
-                                var overlays = bpmnModeler.get('overlays');
-
-
-                                // zoom to fit full viewport
-                                canvas.zoom('fit-viewport');
-
-                                // attach an overlay to a node
-                                overlays.add('SCAN_OK', 'note', {
-                                  position: {
-                                    bottom: 0,
-                                    right: 0
-                                  },
-                                  html: '<div class="diagram-note">Mixed up the labels?</div>'
-                                });
-
-                                // add marker
-                                canvas.addMarker('SCAN_OK', 'needs-discussion');
-                              } catch (err) {
-
-                                console.error('could not import BPMN 2.0 diagram', err);
-                              }
-                            }
+                                      <div class="form-group" align="center">
+                                        <input type="submit" name="file_submit" id="file_submit" class="btn perso_btn_primary shadow-none" value="Ajouter une image" />
+                                      </div>
+                          <?php
+                                    }
+                                }                          
+                          ?>
+                        </form>
 
 
-                            // load external diagram file via AJAX and open it
-                            $.get(diagramUrl, openDiagram, 'text');
-
-                            // wire save button
-                            $('#save-button').click(exportDiagram);
-                          </script>
+                        <div class='image-preview' id='imagePreview'>
+                          <img class='image-preview__image' src='image/'>
+                          <span class='image-preview__default-text'>Image Preview</span>
+                          <!-- <p>".$row['image_text']."</p> -->
                         </div>
+
                       </div>
                     </div>
                   </div>
@@ -1228,7 +1189,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             }        
         ?>
         <script src="content/js/modules/sort_table.js"></script>
-        <!-- <script src="content/js/modules/browse_img.js"></script> -->
+        <script src="content/js/modules/browse_img.js"></script>
         <script src="content/js/modules/ajax_pour_image.js"></script>
       </body>
   <?php
