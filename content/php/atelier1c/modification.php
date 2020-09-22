@@ -52,7 +52,6 @@ if ($input["action"] === 'edit'){
         $update->bindParam(7, $tracabilite);
         $update->bindParam(8, $niveau_de_gravite);
         $update->bindParam(9, $input["id_evenement_redoute"]);
-
         $update->execute();
         
         $_SESSION['message_success_3'] = "L'événement redouté a été modifié !";
