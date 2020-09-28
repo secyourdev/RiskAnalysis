@@ -408,25 +408,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <!-- Right Sidebar -->
     <ul id=menu>
       <li>
-          <a class="nav-link collapse-right-item menu_float" href="#mission">
-              <i>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
-                      <g transform="translate(-1230 -689)">
-                          <path class="number_activity active"
-                              d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
-                              transform="translate(1230 689)" fill="#ffffffcc" />
-                          <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
-                              fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
-                              font-weight="700">
-                              <tspan x="-3.432" y="0">1</tspan>
-                          </text>
-                      </g>
-                  </svg>
-              </i>
-              <span class="nom_sous_menu">Mission</span>
-          </a>
-      </li>
-      <li>
           <a class="nav-link collapse-right-item menu_float" href="#valeur_metier">
               <i>
                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
@@ -437,7 +418,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                           <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
                               fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
                               font-weight="700">
-                              <tspan x="-3.432" y="0">2</tspan>
+                              <tspan x="-3.432" y="0">1</tspan>
                           </text>
                       </g>
                   </svg>
@@ -456,12 +437,31 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                           <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
                               fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
                               font-weight="700">
-                              <tspan x="-3.432" y="0">3</tspan>
+                              <tspan x="-3.432" y="0">2</tspan>
                           </text>
                       </g>
                   </svg>
               </i>
               <span class="nom_sous_menu">Bien Support</span>
+          </a>
+      </li>
+      <li>
+          <a class="nav-link collapse-right-item menu_float" href="#mission">
+              <i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                      <g transform="translate(-1230 -689)">
+                          <path class="number_activity active"
+                              d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
+                              transform="translate(1230 689)" fill="#ffffffcc" />
+                          <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
+                              fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
+                              font-weight="700">
+                              <tspan x="-3.432" y="0">3</tspan>
+                          </text>
+                      </g>
+                  </svg>
+              </i>
+              <span class="nom_sous_menu">Mission</span>
           </a>
       </li>
     </ul>
@@ -544,99 +544,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
               </div>
             </div>
 
-            <!-- Area Card -->
-            <div id="mission" class="col-xl-12 col-lg-12">
-              <!-- Mission -->
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="row perso_no_margin">
-                    <div class="card-header col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                        <h6 class="m-0">Mission</h6>
-                    </div>
-                    <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                      <a class="download_table_button" id="button_download_mission">
-                        <i class="fas fa-download fa-lg text-gray-400"></i>
-                      </a>
-                    </div>    
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <!--tableau-->
-                  <div class="table-responsive">
-                    <input type="text" class="rechercher_input" id="rechercher_mission" placeholder="Rechercher">
-                    <table id="editable_table" class="table table-bordered table-striped">
-                      <thead>
-                        <tr>
-                          <th id="id_mission">ID_mission</th>
-                          <th id="nom_mission">Nom de la mission</th>
-                          <th id="description_mission">Description de la mission</th>
-                          <th id="responsable_mission">Responsable</th>
-                          <th id="valeur_metier">Valeur métier</th>
-                          <th id="responsable_valeur_metier">Responsable de la valeur métier</th>
-                          <th id="bien_support">Bien Support</th>
-                          <th id="responsable_bien_support">Responsable du bien support</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php
-                        while ($row = mysqli_fetch_array($result1)) {
-                          echo '
-                        <tr>
-                        <td>' . $row["id_mission"] . '</td>
-                        <td>' . $row["nom_mission"] . '</td>
-                        <td>' . $row["description_mission"] . '</td>
-                        <td>' . $row["responsable"] . '</td>
-                        <td>' . $row["nom_valeur_metier"] . '</td>
-                        <td>' . $row["nom_responsable_vm"] . '</td>
-                        <td>' . $row["nom_bien_support"] . '</td>
-                        <td>' . $row["nom_responsable_bs"] . '</td>
-                        </tr>
-                        ';
-                        }
-                        ?>
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <div class='message_success'>
-                  <?php 
-                      if(isset($_SESSION['message_success'])){
-                        echo $_SESSION['message_success'];
-                        unset($_SESSION['message_success']);
-                      }
-                  ?>
-                  </div> 
-                  <div class='message_error'>
-                  <?php                
-                      if(isset($_SESSION['message_error'])){
-                          echo $_SESSION['message_error'];
-                          unset($_SESSION['message_error']);
-                      }
-                  ?>
-                  </div>
-
-                  <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
-                  ?> 
-                          <!-- bouton Ajouter une nouvelle ligne -->
-                          <div class="text-center">
-                            <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_mission">Ajouter une mission</button>
-                          </div>
-                  <?php
-                        }
-                        else if (isset($userdroit['ecriture'])){
-                            if($userdroit['ecriture']=='Réalisation'){
-                  ?>        
-                              <!-- bouton Ajouter une nouvelle ligne -->
-                              <div class="text-center">
-                                <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_mission">Ajouter une mission</button>
-                              </div>
-                  <?php
-                            }
-                        }                          
-                  ?>
-                </div>
-              </div>
-            </div>
 
             <!-- Area Card -->
             <div id="valeur_metier" class="col-xl-12 col-lg-12">
@@ -806,6 +713,101 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </div>
               </div>
             </div>
+
+            <!-- Area Card -->
+            <div id="mission" class="col-xl-12 col-lg-12">
+              <!-- Mission -->
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="row perso_no_margin">
+                    <div class="card-header col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                        <h6 class="m-0">Mission</h6>
+                    </div>
+                    <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                      <a class="download_table_button" id="button_download_mission">
+                        <i class="fas fa-download fa-lg text-gray-400"></i>
+                      </a>
+                    </div>    
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <!--tableau-->
+                  <div class="table-responsive">
+                    <input type="text" class="rechercher_input" id="rechercher_mission" placeholder="Rechercher">
+                    <table id="editable_table" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th id="id_mission">ID_mission</th>
+                          <th id="nom_mission">Nom de la mission</th>
+                          <th id="description_mission">Description de la mission</th>
+                          <th id="responsable_mission">Responsable</th>
+                          <th id="valeur_metier">Valeur métier</th>
+                          <th id="responsable_valeur_metier">Responsable de la valeur métier</th>
+                          <th id="bien_support">Bien Support</th>
+                          <th id="responsable_bien_support">Responsable du bien support</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                        while ($row = mysqli_fetch_array($result1)) {
+                          echo '
+                        <tr>
+                        <td>' . $row["id_mission"] . '</td>
+                        <td>' . $row["nom_mission"] . '</td>
+                        <td>' . $row["description_mission"] . '</td>
+                        <td>' . $row["responsable"] . '</td>
+                        <td>' . $row["nom_valeur_metier"] . '</td>
+                        <td>' . $row["nom_responsable_vm"] . '</td>
+                        <td>' . $row["nom_bien_support"] . '</td>
+                        <td>' . $row["nom_responsable_bs"] . '</td>
+                        </tr>
+                        ';
+                        }
+                        ?>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class='message_success'>
+                  <?php 
+                      if(isset($_SESSION['message_success'])){
+                        echo $_SESSION['message_success'];
+                        unset($_SESSION['message_success']);
+                      }
+                  ?>
+                  </div> 
+                  <div class='message_error'>
+                  <?php                
+                      if(isset($_SESSION['message_error'])){
+                          echo $_SESSION['message_error'];
+                          unset($_SESSION['message_error']);
+                      }
+                  ?>
+                  </div>
+
+                  <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                  ?> 
+                          <!-- bouton Ajouter une nouvelle ligne -->
+                          <div class="text-center">
+                            <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_mission">Ajouter une mission</button>
+                          </div>
+                  <?php
+                        }
+                        else if (isset($userdroit['ecriture'])){
+                            if($userdroit['ecriture']=='Réalisation'){
+                  ?>        
+                              <!-- bouton Ajouter une nouvelle ligne -->
+                              <div class="text-center">
+                                <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_mission">Ajouter une mission</button>
+                              </div>
+                  <?php
+                            }
+                        }                          
+                  ?>
+                </div>
+              </div>
+            </div>
+
 
           </div>
         </div>

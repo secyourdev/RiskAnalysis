@@ -1,11 +1,11 @@
 <?php  
 session_start();
-include("../bdd/connexion_sqli.php");
+include("../bdd/connexion.php");
 
 $input = filter_input_array(INPUT_POST);
 
 if($input["action"] === 'edit'){
-    $description_niveau = mysqli_real_escape_string($connect, $input["description_niveau"]);
+    $description_niveau = $_POST["description_niveau"];
 
     $results["error"] = false;
 
@@ -16,12 +16,11 @@ if($input["action"] === 'edit'){
     }
 
     if($results["error"] === false){
-        $query = "
-        UPDATE DA_niveau 
-        SET description_niveau = '".$description_niveau."'
-        WHERE id_niveau = '".$input["id_niveau"]."'
-        ";
-        mysqli_query($connect, $query);
+        $update = $bdd->prepare("UPDATE `DA_niveau` SET `description_niveau`=? WHERE `id_niveau`=?");
+        $update->bindParam(1, $description_niveau);
+        $update->bindParam(2, $input["id_niveau"]);
+        $update->execute();
+
         $_SESSION['message_success_2'] = "Les niveaux de l'échelle ont bien été modifiés !";
     }
 }
