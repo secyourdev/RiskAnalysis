@@ -700,6 +700,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <th>Source de risque / Objectif visé</th>
                                 <th>Nom de l'événement redouté</th>
                                 <th>Niveau de gravite</th>
+                                <th>Schéma</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -712,6 +713,10 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <td>' . $row["description_source_de_risque"] . ' / ' . $row["objectif_vise"] . '</td>
                         <td>' . $row["nom_evenement_redoute"] . '</td>
                         <td>' . $row["niveau_de_gravite"] . '</td>
+                        <td>  <a class="schema_button" data-toggle="modal" data-target="#button_schema_scenarios_strategiques"">
+                                <i class="fas fa-project-diagram fa-md "></i>
+                              </a>
+                        </td>
                         </tr>
                         ';
                               }
@@ -1043,6 +1048,195 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         </div>
 
 
+<!----------------------------------------------------------------------------------------------------------------- 
+-------------------------------------- modal Ajout d'un schéma du scénario stratégique --------------------------------------
+--------------------------------------------------------------------------------------------------------------- -->
+<div class="modal fade right" id="button_schema_scenarios_strategiques" tabindex="-1" role="dialog" aria-labelledby="exampleModalPreviewLabel" aria-hidden="true">
+    <div class="modal-dialog-full-width modal-dialog momodel modal-fluid" role="document">
+        <div class="modal-content-full-width modal-content ">
+            <div class=" modal-header-full-width   modal-header text-center">
+                <h5 class="modal-title w-100" id="exampleModalPreviewLabel">Schéma du scénario stratégique</h5>
+                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                    <span style="font-size: 1.3em;" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <link rel="stylesheet" href="dist/assets/diagram-js.css">
+                <link rel="stylesheet" href="dist/assets/bpmn-font/css/bpmn.css">
+                <script src="dist/bpmn-modeler.development.js"></script>
+                <!-- <script src="dist/jquery.js"></script> -->
+                <style>
+                  #canvas {
+                    height: 100%;
+                    padding: 0;
+                    margin: 0;
+                  }
+
+                  .diagram-note {
+                    background-color: rgba(66, 180, 21, 0.7);
+                    color: White;
+                    border-radius: 5px;
+                    font-family: Arial;
+                    font-size: 12px;
+                    padding: 5px;
+                    min-height: 16px;
+                    width: 50px;
+                    text-align: center;
+                  }
+
+                  .needs-discussion:not(.djs-connection) .djs-visual > :nth-child(1) {
+                    stroke: rgba(66, 180, 21, 0.7) !important; /* color elements as red */
+                  }
+
+                  #save-button {
+                    position: fixed;
+                    bottom: 20px;
+                    left: 20px;
+                  }
+
+                  #savefile {
+                    position: fixed;
+                    bottom: 20px;
+                    left:145px;
+                  }
+
+                  #inpFile {
+                    position: fixed;
+                    bottom: 20px;
+                    left:250px;
+                  }
+                </style>
+                <div id="canvas"></div>
+
+                <button id="save-button">print to console</button>
+                <button id="savefile">Save to file</button>
+                <input type="file" id="inpFile" class="custom-file-input">
+
+                <script>
+                  var fileName_path;
+                  var fileName;
+
+                  var diagramUrl = fileName;
+                  
+                  $('.custom-file-input').on('change', function () {
+                      fileName_path = $(this).val()
+                      fileName = fileName_path.substring(fileName_path.lastIndexOf('\\') + 1)
+                      
+                      $(this).next('.custom-file-label').addClass("selected").html(fileName)
+
+                      $.get(fileName, openDiagram, 'text');
+                  })
+                  
+                  // modeler instance
+                  var bpmnModeler = new BpmnJS({
+                    container: '#canvas',
+                    keyboard: {
+                      bindTo: window
+                    }
+                  });
+
+                  /**
+                  * Save diagram contents and print them to the console.
+                  */
+                  async function exportDiagram() {
+
+                    try {
+
+                      var result = await bpmnModeler.saveXML({ format: true });
+
+                      alert('Diagram exported. Check the developer tools!');
+
+                      console.log('DIAGRAM', result.xml);
+                    } catch (err) {
+
+                      console.error('could not save BPMN 2.0 diagram', err);
+                    }
+                  }
+
+                  /**
+                  * Open diagram in our modeler instance.
+                  *
+                  * @param {String} bpmnXML diagram to display
+                  */
+                  async function openDiagram(bpmnXML) {
+
+                    // import diagram
+                    try {
+
+                      await bpmnModeler.importXML(bpmnXML);
+
+                      // access modeler components
+                      var canvas = bpmnModeler.get('canvas');
+                      var overlays = bpmnModeler.get('overlays');
+
+
+                      // zoom to fit full viewport
+                      canvas.zoom('fit-viewport');
+
+                      // attach an overlay to a node
+                      overlays.add('SCAN_OK', 'note', {
+                        position: {
+                          bottom: 0,
+                          right: 0
+                        },
+                        html: '<div class="diagram-note">Mixed up the labels?</div>'
+                      });
+
+                      // add marker
+                      canvas.addMarker('SCAN_OK', 'needs-discussion');
+                    } catch (err) {
+
+                      //console.error('could not import BPMN 2.0 diagram', err);
+                    }
+                  }
+
+
+                  // load external diagram file via AJAX and open it
+                  if(diagramUrl!=null)
+                    $.get(diagramUrl, openDiagram, 'text');
+
+                  // wire save button
+                  $('#save-button').click(exportDiagram);
+
+                  function saveData(data, fileName) {
+                    var a = document.createElement("a");
+                    document.body.appendChild(a);
+                    a.style = "display: none";
+
+                    var json = JSON.stringify(data),
+                        blob = new Blob([data], {type: "text/plain;charset=utf-8"}),
+                        url = window.URL.createObjectURL(blob);
+                    a.href = url;
+                    a.download = fileName;
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+
+                  }
+
+                  function main() {
+                    var savefile = document.getElementById("savefile")
+                    savefile.addEventListener("click", saveFile, false)
+                  }
+
+                  async function saveFile(e) {
+                    var result = await bpmnModeler.saveXML({ format: true });
+                    //var input = document.getElementById("input")
+                    saveData(result.xml, "test.bpmn");
+                    
+                    e.preventDefault()
+                  }
+
+                  window.onload = main
+
+                </script>
+            </div>
+            <div class="modal-footer-full-width  modal-footer">
+                <button type="button" class="btn btn-danger btn-md btn-rounded" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary btn-md btn-rounded">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div> 
 <!---------------------------------------------------------------------------------------------------------------- 
 ----------------------------------- modal Ajout d'un chemin d'attaque stratégique --------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
@@ -1088,13 +1282,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         ?>
                       </select>
                     </div>
-
-
-                    <!-- <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-                    <script src="content/vendor/bootstrap-select-1.13.14/dist/js/bootstrap-select.js"></script> -->
-                    <!-- <link rel="stylesheet" href="content/vendor/bootstrap-select-1.13.14/dist/css/bootstrap-select.css"> -->
-
-
                     <div class="form-group col-12">
                       <label for="Select_nom_scenario_strategique">Partie prenante</label>
                       <select class="form-control" name="nom_partie_prenante" id="nom_partie_prenante" required>
