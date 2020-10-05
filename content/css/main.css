@@ -132,7 +132,7 @@ body {
 
 
 /* -------------------------------------------------------------------------------------------------------------- */
-/*------------------------------------ overwrite des classes bootstrap -------------------------------------------*/
+/*------------------------------------ Overwrite des classes bootstrap -------------------------------------------*/
 /* -------------------------------------------------------------------------------------------------------------- */
 #fixed_page {
     padding-left : 15.5rem;
@@ -287,10 +287,23 @@ h6 {
     content         : "Parcourir";
 }
 
+/* -------------------------------------------------------------------------------------------------------------- */
+/*---------------------------------------------- CSS Perso -------------------------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------------- */
+/*------------------------------------------------------------------------------ */
+/*------------------------------- Centrage ------------------------------------- */
+.centreVerticalement{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-/* -------------------------------------------------------------------------------------------------------------- */
-/*---------------------------------------------- Page login-------------------------------------------------------*/
-/* -------------------------------------------------------------------------------------------------------------- */
+.centreHorizontalement {
+    display: flex;
+}
+
+/*------------------------------------------------------------------------------ */
+/*--------------------------------- Page login --------------------------------- */
 .logo {
     height: 75px;
     width : 75px;
@@ -371,10 +384,253 @@ h6 {
     resize: both;
 }
 
-/* -------------------------------------------------------------------------------------------------------------- */
-/*---------------------------------------------- CSS Perso -------------------------------------------------------*/
-/* -------------------------------------------------------------------------------------------------------------- */
 
+
+@media (min-width: 576px) {
+
+    /* page login */
+    .perso_card {
+        width         : 20rem;
+        padding-top   : 2rem;
+        padding-right : 1.5rem;
+        padding-left  : 1.5rem;
+        padding-bottom: 0.5rem;
+        font-size     : 62% !important;
+    }
+
+
+    /* css perso */
+    ::placeholder {
+        font-size: 63% !important;
+    }
+
+    ::-webkit-input-placeholder {
+        font-size: 63% !important;
+    }
+
+    :-moz-placeholder {
+        /* Firefox 18- */
+        font-size: 63% !important;
+    }
+
+    ::-moz-placeholder {
+        /* Firefox 19+ */
+        font-size: 63% !important;
+    }
+
+    :-ms-input-placeholder {
+        font-size: 63% !important;
+    }
+
+    .perso_btn_primary {
+        font-size: 90% !important;
+    }
+
+    .theme-switch-wrapper {
+        top: -1rem;
+    }
+
+    .perso_img {
+        padding: 1rem 2rem;
+    }
+
+    .perso_img_full_screen_div {
+        /* padding: 1rem 2rem; */
+        max-width: 70%;
+    }
+
+    .card-columns {
+        -moz-column-count: 1;
+        column-count     : 1;
+    }
+
+    .perso_text_img {
+        display  : flex;
+        flex-flow: wrap;
+    }
+}
+
+@media (min-width: 768px) {
+
+    /* Page login */
+    .perso_card {
+        width         : 25rem;
+        padding-top   : 3rem;
+        padding-right : 2.2rem;
+        padding-left  : 2.2rem;
+        padding-bottom: 0.5rem;
+        font-size     : 75% !important;
+    }
+
+
+    /* CSS perso */
+    ::placeholder {
+        font-size: 76% !important;
+    }
+
+    ::-webkit-input-placeholder {
+        font-size: 76% !important;
+    }
+
+    :-moz-placeholder {
+        /* Firefox 18- */
+        font-size: 76% !important;
+    }
+
+    ::-moz-placeholder {
+        /* Firefox 19+ */
+        font-size: 76% !important;
+    }
+
+    :-ms-input-placeholder {
+        font-size: 76% !important;
+    }
+
+    .perso_btn_primary {
+        font-size: 90% !important;
+    }
+
+    .theme-switch-wrapper {
+        top  : -2rem;
+        right: -1rem;
+    }
+
+    .perso_img {
+        padding: 1rem 1rem;
+    }
+
+    .perso_img_full_screen_div {
+        /* padding: 1rem 4rem; */
+        max-width: 50%;
+    }
+
+    .card-columns {
+        -moz-column-count: 2;
+        column-count     : 2;
+    }
+
+    .perso_text_img {
+        display  : flex;
+        flex-flow: wrap;
+    }
+
+    .perso_card_half_screen {
+        min-height: 49rem;
+    }
+}
+
+@media (min-width: 992px) {
+
+    /* Page login */
+    .perso_card {
+        width         : 30rem;
+        padding-top   : 5rem;
+        padding-right : 3rem;
+        padding-left  : 3rem;
+        padding-bottom: 0.5rem;
+        font-size     : 80% !important;
+    }
+
+
+    /* CSS Perso */
+    ::placeholder {
+        font-size: 82% !important;
+    }
+
+    ::-webkit-input-placeholder {
+        font-size: 82% !important;
+    }
+
+    :-moz-placeholder {
+        /* Firefox 18- */
+        font-size: 82% !important;
+    }
+
+    ::-moz-placeholder {
+        /* Firefox 19+ */
+        font-size: 82% !important;
+    }
+
+    :-ms-input-placeholder {
+        font-size: 82% !important;
+    }
+
+    .perso_btn_primary {
+        font-size: 100% !important;
+    }
+
+    .theme-switch-wrapper {
+        top: -3rem;
+    }
+
+    .perso_img {
+        padding: 1rem 1rem;
+    }
+
+    .perso_img_full_screen_div {
+        /*     padding: 1rem 1rem; */
+        max-width: 50%;
+    }
+
+    .card-columns {
+        -moz-column-count: 2;
+        column-count     : 2;
+    }
+
+    .perso_text_img {
+        display  : flex;
+        flex-flow: nowrap;
+    }
+
+    .perso_card_half_screen {
+        min-height: 48rem;
+    }
+}
+
+@media (min-width: 1043px) {
+    .perso_card_half_screen {
+        min-height: 47rem;
+    }
+}
+
+@media (min-width: 1142px) {
+    .perso_card_half_screen {
+        min-height: 46rem;
+    }
+}
+
+@media (min-width: 1225px) {
+    .perso_card_half_screen {
+        min-height: 43rem;
+    }
+
+    .perso_img {
+        padding: 1rem 3rem;
+    }
+
+    .perso_img_full_screen_div {
+        padding  : 0rem 1rem;
+        max-width: 40%;
+    }
+}
+
+@media (min-width: 1296px) {
+    .perso_img {
+        padding: 1rem 7rem;
+    }
+
+    .perso_img_full_screen_div {
+        /*     padding: 0rem 3rem; */
+        max-width: 40%;
+    }
+
+    .perso_img_full_screen_div2 {
+        padding  : 0rem 3rem;
+        max-width: 50%;
+    }
+}
+/*------------------------------------------------------------------------------ */
+/*------------------------- Gestion aspect responsif --------------------------- */
 .container {
     height: 100%;
 }
@@ -648,257 +904,8 @@ h6 {
     width  : 100%;
 }
 
-/* -------------------------------------------------------------------------------------------------------------- */
-/* --------------------------------------Gestion aspect responsif------------------------------------------------ */
-/* -------------------------------------------------------------------------------------------------------------- */
-
-@media (min-width: 576px) {
-
-    /* page login */
-    .perso_card {
-        width         : 20rem;
-        padding-top   : 2rem;
-        padding-right : 1.5rem;
-        padding-left  : 1.5rem;
-        padding-bottom: 0.5rem;
-        font-size     : 62% !important;
-    }
-
-
-    /* css perso */
-    ::placeholder {
-        font-size: 63% !important;
-    }
-
-    ::-webkit-input-placeholder {
-        font-size: 63% !important;
-    }
-
-    :-moz-placeholder {
-        /* Firefox 18- */
-        font-size: 63% !important;
-    }
-
-    ::-moz-placeholder {
-        /* Firefox 19+ */
-        font-size: 63% !important;
-    }
-
-    :-ms-input-placeholder {
-        font-size: 63% !important;
-    }
-
-    .perso_btn_primary {
-        font-size: 90% !important;
-    }
-
-    .theme-switch-wrapper {
-        top: -1rem;
-    }
-
-    .perso_img {
-        padding: 1rem 2rem;
-    }
-
-    .perso_img_full_screen_div {
-        /* padding: 1rem 2rem; */
-        max-width: 70%;
-    }
-
-    .card-columns {
-        -moz-column-count: 1;
-        column-count     : 1;
-    }
-
-    .perso_text_img {
-        display  : flex;
-        flex-flow: wrap;
-    }
-}
-
-@media (min-width: 768px) {
-
-    /* Page login */
-    .perso_card {
-        width         : 25rem;
-        padding-top   : 3rem;
-        padding-right : 2.2rem;
-        padding-left  : 2.2rem;
-        padding-bottom: 0.5rem;
-        font-size     : 75% !important;
-    }
-
-
-    /* CSS perso */
-    ::placeholder {
-        font-size: 76% !important;
-    }
-
-    ::-webkit-input-placeholder {
-        font-size: 76% !important;
-    }
-
-    :-moz-placeholder {
-        /* Firefox 18- */
-        font-size: 76% !important;
-    }
-
-    ::-moz-placeholder {
-        /* Firefox 19+ */
-        font-size: 76% !important;
-    }
-
-    :-ms-input-placeholder {
-        font-size: 76% !important;
-    }
-
-    .perso_btn_primary {
-        font-size: 90% !important;
-    }
-
-    .theme-switch-wrapper {
-        top  : -2rem;
-        right: -1rem;
-    }
-
-    .perso_img {
-        padding: 1rem 1rem;
-    }
-
-    .perso_img_full_screen_div {
-        /* padding: 1rem 4rem; */
-        max-width: 50%;
-    }
-
-    .card-columns {
-        -moz-column-count: 2;
-        column-count     : 2;
-    }
-
-    .perso_text_img {
-        display  : flex;
-        flex-flow: wrap;
-    }
-
-    .perso_card_half_screen {
-        min-height: 49rem;
-    }
-}
-
-@media (min-width: 992px) {
-
-    /* Page login */
-    .perso_card {
-        width         : 30rem;
-        padding-top   : 5rem;
-        padding-right : 3rem;
-        padding-left  : 3rem;
-        padding-bottom: 0.5rem;
-        font-size     : 80% !important;
-    }
-
-
-    /* CSS Perso */
-    ::placeholder {
-        font-size: 82% !important;
-    }
-
-    ::-webkit-input-placeholder {
-        font-size: 82% !important;
-    }
-
-    :-moz-placeholder {
-        /* Firefox 18- */
-        font-size: 82% !important;
-    }
-
-    ::-moz-placeholder {
-        /* Firefox 19+ */
-        font-size: 82% !important;
-    }
-
-    :-ms-input-placeholder {
-        font-size: 82% !important;
-    }
-
-    .perso_btn_primary {
-        font-size: 100% !important;
-    }
-
-    .theme-switch-wrapper {
-        top: -3rem;
-    }
-
-    .perso_img {
-        padding: 1rem 1rem;
-    }
-
-    .perso_img_full_screen_div {
-        /*     padding: 1rem 1rem; */
-        max-width: 50%;
-    }
-
-    .card-columns {
-        -moz-column-count: 2;
-        column-count     : 2;
-    }
-
-    .perso_text_img {
-        display  : flex;
-        flex-flow: nowrap;
-    }
-
-    .perso_card_half_screen {
-        min-height: 48rem;
-    }
-}
-
-@media (min-width: 1043px) {
-    .perso_card_half_screen {
-        min-height: 47rem;
-    }
-}
-
-@media (min-width: 1142px) {
-    .perso_card_half_screen {
-        min-height: 46rem;
-    }
-}
-
-@media (min-width: 1225px) {
-    .perso_card_half_screen {
-        min-height: 43rem;
-    }
-
-    .perso_img {
-        padding: 1rem 3rem;
-    }
-
-    .perso_img_full_screen_div {
-        padding  : 0rem 1rem;
-        max-width: 40%;
-    }
-}
-
-@media (min-width: 1296px) {
-    .perso_img {
-        padding: 1rem 7rem;
-    }
-
-    .perso_img_full_screen_div {
-        /*     padding: 0rem 3rem; */
-        max-width: 40%;
-    }
-
-    .perso_img_full_screen_div2 {
-        padding  : 0rem 3rem;
-        max-width: 50%;
-    }
-}
-
-/* -------------------------------------------------------------------------------------------------------------- */
-/* ----------------------------------- Gestion icone modif/suppr ------------------------------------------------ */
-/* -------------------------------------------------------------------------------------------------------------- */
+/*------------------------------------------------------------------------------ */
+/*------------------------- Gestion icone modif/suppr -------------------------- */
 .crayon,
 .poubelle {
     width  : 2rem;
@@ -948,50 +955,6 @@ h6 {
     scrollbar-width: thin;
     overflow-x: hidden;
 }
-/*------------------------------------------------------------------------------ */
-/*---------------------------------- Connexion --------------------------------- */
-.centreHorizontalement {
-    display: flex;
-}
-
-
-/*------------------------------------------------------------------------------ */
-/*----------------------------------- Atelier ---------------------------------- */
-.number_activity {
-    fill: var(--reverse-font-color-fainted-3);
-}
-
-.number_activity.active {
-    fill: var(--reverse-font-color) !important;
-}
-
-.number_activity_text {
-    font-style: normal !important;
-}
-
-.number_sub_activity {
-    fill: var(--button-color);
-}
-
-.number_sub_activity_text {
-    font-style: normal !important;
-    color     : #fff
-}
-
-@media (min-width: 768px) {
-    .nom_atelier {
-        font-size: 0.7em !important;
-    }
-}
-
-.nom_atelier2 {
-    font-size: 0.8em !important;
-}
-
-.nom_sous_menu {
-    font-size: 0.7em !important;
-}
-
 
 /*------------------------------------------------------------------------------ */
 /*----------------------------------- Top Bar ---------------------------------- */
@@ -1057,7 +1020,108 @@ h6 {
     text-align      : center;
 }
 
-/*---------------------------------- Popup atelier 2--------------------------------- */
+/*------------------------------------------------------------------------------ */
+/*------------------------------- Right SideBar -------------------------------- */
+#menu {
+    position: fixed;
+    right: 0.8rem;
+    top: 8.5rem;
+    width: auto;
+    margin: 3px 3px 3px 3px;
+    font-weight: bold;
+    text-align: left;
+    text-indent: 10px;
+    color : #fff;
+    border-radius: 10px 10px 10px 10px;
+    background: rgba(90, 92, 105, 0.75);
+    z-index: 2;
+    padding : 5px 0px 5px 0px;
+    list-style: none;
+  }
+ 
+#menu li {
+    margin: 0; 
+  }
+  
+#menu a {
+    text-decoration: none;
+	color: inherit;
+}
+
+:target{
+    padding-top: 5em; 
+    margin-top: -5em;
+}
+
+.menu_float{
+    padding: 0px 8px 0px 0px;
+}
+
+.open_menu{
+    position: fixed;
+    right: 1rem;
+    top: 5.5rem;
+    display: none;
+    width: 2.75rem;
+    height: 2.75rem;
+    text-align: center;
+    color: #fff !important;
+    background: rgba(90, 92, 105, 0.5);
+    line-height: 46px;
+    cursor : pointer;
+}
+
+.open_menu:focus, .open_menu:hover {
+    color: white;
+}
+
+.open_menu:hover {
+    background: #5a5c69;
+}
+
+.open_menu i {
+    font-weight: 800;
+}
+
+/*------------------------------------------------------------------------------ */
+/*---------------------------------- Ateliers ---------------------------------- */
+.number_activity {
+    fill: var(--reverse-font-color-fainted-3);
+}
+
+.number_activity.active {
+    fill: var(--reverse-font-color) !important;
+}
+
+.number_activity_text {
+    font-style: normal !important;
+}
+
+.number_sub_activity {
+    fill: var(--button-color);
+}
+
+.number_sub_activity_text {
+    font-style: normal !important;
+    color     : #fff
+}
+
+@media (min-width: 768px) {
+    .nom_atelier {
+        font-size: 0.7em !important;
+    }
+}
+
+.nom_atelier2 {
+    font-size: 0.8em !important;
+}
+
+.nom_sous_menu {
+    font-size: 0.7em !important;
+}
+
+/*------------------------------------------------------------------------------ */
+/*----------------------------- Popup atelier 2--------------------------------- */
 .colonne {
     width  : 49%;
     float  : left;
@@ -1069,12 +1133,9 @@ h6 {
     margin-bottom: 3rem;
 }
 
-
-
 .btn-bougé {
     margin: 1rem;
 }
-
 
 .cercle-vert {
     width        : 25px;
@@ -1104,17 +1165,14 @@ h6 {
 }
 
 /*------------------------------------------------------------------------------ */
-/*---------------------------------- Popup atelier 3--------------------------------- */
-
-
+/*----------------------------- Popup atelier 3--------------------------------- */
 .choix-valeur {
     text-align: center;
     margin    : 0rem;
 }
 
 /*------------------------------------------------------------------------------ */
-/*---------------------------------- Popup atelier 4--------------------------------- */
-
+/*----------------------------- Popup atelier 4--------------------------------- */
 .centre-vraisemblance {
     text-align: center;
 }
@@ -1125,8 +1183,7 @@ h6 {
 }
 
 /*------------------------------------------------------------------------------ */
-/*---------------------------------- Atelier 5 --------------------------------- */
-
+/*------------------------------- Atelier 5 ------------------------------------ */
 .texte-droite {
     text-align: right !important;
 }
@@ -1169,8 +1226,8 @@ h6 {
     padding: 1rem;
 }
 
-
-/*Back-end*/
+/*------------------------------------------------------------------------------ */
+/*-------------------------------- Back-end ------------------------------------ */
 .suppression_donnee {
     text-align: center;
 }
@@ -1181,7 +1238,8 @@ h6 {
     color           : var(--top-bar-color);
 }
 
-/*Table*/
+/*------------------------------------------------------------------------------ */
+/*--------------------------------- Table -------------------------------------- */
 .perso_toolbar {
     justify-content: center;
 }
@@ -1234,7 +1292,8 @@ h6 {
     margin-top   : 3px;
 }
 
-/*Tableau de Bord*/
+/*------------------------------------------------------------------------------ */
+/*----------------------------- Tableau de Bord -------------------------------- */
 .tableau_de_bord_card {
     height: 117px;
 }
@@ -1341,7 +1400,8 @@ h6 {
     }
 }
 
-/*Paramètres*/
+/*------------------------------------------------------------------------------ */
+/*------------------------------- Paramètres ----------------------------------- */
 .user_photo {
     height      : 200px;
     width       : 200px;
@@ -1383,7 +1443,8 @@ h6 {
     }
 }
 
-/*Message erreur*/
+/*------------------------------------------------------------------------------ */
+/*------------------------------- Message erreur ------------------------------- */
 .message_success {
     text-align : center;
     font-weight: 800;
@@ -1396,69 +1457,8 @@ h6 {
     color:#FF6565;
 }
 
-/*Right SideBar*/
-#menu {
-    position: fixed;
-    right: 0.8rem;
-    top: 8.5rem;
-    width: auto;
-    margin: 3px 3px 3px 3px;
-    font-weight: bold;
-    text-align: left;
-    text-indent: 10px;
-    color : #fff;
-    border-radius: 10px 10px 10px 10px;
-    background: rgba(90, 92, 105, 0.75);
-    z-index: 2;
-    padding : 5px 0px 5px 0px;
-    list-style: none;
-  }
- 
-#menu li {
-    margin: 0; 
-  }
-  
-#menu a {
-    text-decoration: none;
-	color: inherit;
-}
-
-:target{
-    padding-top: 5em; 
-    margin-top: -5em;
-}
-
-.menu_float{
-    padding: 0px 8px 0px 0px;
-}
-
-.open_menu{
-    position: fixed;
-    right: 1rem;
-    top: 5.5rem;
-    display: none;
-    width: 2.75rem;
-    height: 2.75rem;
-    text-align: center;
-    color: #fff !important;
-    background: rgba(90, 92, 105, 0.5);
-    line-height: 46px;
-    cursor : pointer;
-}
-
-.open_menu:focus, .open_menu:hover {
-    color: white;
-}
-
-.open_menu:hover {
-    background: #5a5c69;
-}
-
-.open_menu i {
-    font-weight: 800;
-}
-
-/*Image perso*/
+/*------------------------------------------------------------------------------ */
+/*------------------------------- Image perso ---------------------------------- */
 .img_legende{
     height: auto;
     display: block;
@@ -1489,14 +1489,8 @@ h6 {
     }
 }
 
-/*Centrage*/
-.centreVerticalement{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-/*Aide*/
+/*------------------------------------------------------------------------------ */
+/*-------------------------------- Aide ---------------------------------------- */
 .align_justify{
     text-align: justify;
 }
@@ -1505,13 +1499,14 @@ h6 {
     text-align: center;
 }
 
-
-/*Table2Excel*/
+/*------------------------------------------------------------------------------ */
+/*---------------------------- Table2Excel ------------------------------------- */
 .download_table_button{
     cursor: pointer;
 }
 
-/*Schema*/
+/*------------------------------------------------------------------------------ */
+/*------------------ Système de modélisation de schéma ------------------------- */
 .schema_button{
     cursor: pointer;
 }
@@ -1550,3 +1545,24 @@ h6 {
     height: 100%;
     box-shadow: 0px 0px 4px white;
 }
+
+.diagram-note {
+    background-color: rgba(66, 180, 21, 0.7);
+    color: White;
+    border-radius: 5px;
+    font-family: Arial;
+    font-size: 12px;
+    padding: 5px;
+    min-height: 16px;
+    width: 50px;
+    text-align: center;
+  }
+
+  .needs-discussion:not(.djs-connection) .djs-visual > :nth-child(1) {
+    stroke: rgba(66, 180, 21, 0.7) !important; /* color elements as red */
+  }
+
+  #save-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
