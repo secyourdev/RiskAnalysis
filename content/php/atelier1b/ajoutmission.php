@@ -19,7 +19,7 @@ $responsable_bs = $_POST['responsable_bs'];
 $id_mission = "id_mission";
 $id_atelier = "1.b";
 
-$inseremission = $bdd->prepare('INSERT INTO I_mission(id_mission, nom_mission,description_mission, responsable, id_atelier, id_projet) VALUES (?,?,?,?,?,?)');
+$inseremission = $bdd->prepare('INSERT INTO I_mission(id_mission, nom_mission, description_mission, responsable, id_atelier, id_projet) VALUES (?,?,?,?,?,?)');
 
 // Verification du nom de la mission
 if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $nom_mission)) {

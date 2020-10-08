@@ -1,27 +1,25 @@
 <?php
 session_start();
 $getid_projet = $_SESSION['id_projet'];
-include("../bdd/connexion_sqli.php");
+include("../bdd/connexion.php");
 
 $input = filter_input_array(INPUT_POST);
+$id_atelier = '3.a';
 
 if ($input["action"] === 'edit') {
-    $categorie_partie_prenante = mysqli_real_escape_string($connect, $input['categorie_partie_prenante']);
-    $nom_partie_prenante = mysqli_real_escape_string($connect, $input['nom_partie_prenante']);
-    $type = mysqli_real_escape_string($connect, $input['type']);
-    $dependance_partie_prenante = mysqli_real_escape_string($connect, $input['dependance_partie_prenante']);
-    $penetration_partie_prenante = mysqli_real_escape_string($connect, $input['penetration_partie_prenante']);
-    $maturite_partie_prenante = mysqli_real_escape_string($connect, $input['maturite_partie_prenante']);
-    $confiance_partie_prenante = mysqli_real_escape_string($connect, $input['confiance_partie_prenante']);
-
-    $ponderation_dependance = mysqli_real_escape_string($connect, $input['ponderation_dependance']);
-    $ponderation_penetration = mysqli_real_escape_string($connect, $input['ponderation_penetration']);
-    $ponderation_maturite = mysqli_real_escape_string($connect, $input['ponderation_maturite']);
-    $ponderation_confiance = mysqli_real_escape_string($connect, $input['ponderation_confiance']);
-    $criticite = mysqli_real_escape_string($connect, $input['criticite']);
+    $categorie_partie_prenante = $_POST['categorie_partie_prenante'];
+    $nom_partie_prenante = $_POST['nom_partie_prenante'];
+    $type = $_POST['type'];
+    $dependance_partie_prenante = $_POST['dependance_partie_prenante'];
+    $penetration_partie_prenante = $_POST['penetration_partie_prenante'];
+    $maturite_partie_prenante = $_POST['maturite_partie_prenante'];
+    $confiance_partie_prenante = $_POST['confiance_partie_prenante'];
+    $ponderation_dependance = $_POST['ponderation_dependance'];
+    $ponderation_penetration = $_POST['ponderation_penetration'];
+    $ponderation_maturite = $_POST['ponderation_maturite'];
+    $ponderation_confiance = $_POST['ponderation_confiance'];
+    $criticite = $_POST['criticite'];
     $niveau_de_menace_partie_prenante = round(($dependance_partie_prenante*$ponderation_dependance * $penetration_partie_prenante*$ponderation_penetration) / ($maturite_partie_prenante*$ponderation_maturite * $confiance_partie_prenante*$ponderation_confiance), 2);
-
-    $id_atelier = '3.a';
 
     $results["error"] = false;
 
@@ -82,40 +80,38 @@ if ($input["action"] === 'edit') {
     }
 
     if ($results["error"] === false) {
-        $query =
-            "UPDATE R_partie_prenante 
-        SET 
-        categorie_partie_prenante = '" . $categorie_partie_prenante . "',
-        nom_partie_prenante = '" . $nom_partie_prenante . "',
-        type = '" . $type . "',
-        dependance_partie_prenante = '" . $dependance_partie_prenante . "',
-        ponderation_dependance = $ponderation_dependance,
-        penetration_partie_prenante = '" . $penetration_partie_prenante . "',
-        ponderation_penetration = $ponderation_penetration,
-        maturite_partie_prenante = '" . $maturite_partie_prenante . "',
-        ponderation_maturite = $ponderation_maturite,
-        confiance_partie_prenante = '" . $confiance_partie_prenante . "',
-        ponderation_confiance = $ponderation_confiance,
-        niveau_de_menace_partie_prenante = '" . $niveau_de_menace_partie_prenante . "',
-        criticite = '" . $criticite . "'
-        WHERE id_partie_prenante = '" . $input["id_partie_prenante"] . "'
-        AND id_projet = $getid_projet
-        AND id_atelier = '$id_atelier'
-        ";
-        mysqli_query($connect, $query);
+        $update = $bdd->prepare("UPDATE `R_partie_prenante` SET `categorie_partie_prenante`=?, `nom_partie_prenante`=?, `type`=?, `dependance_partie_prenante`=?, `ponderation_dependance`=?, `penetration_partie_prenante`=?, `ponderation_penetration`=?, `maturite_partie_prenante`=?, `ponderation_maturite`=?, `confiance_partie_prenante`=?, `ponderation_confiance`=?, `niveau_de_menace_partie_prenante`=?, `criticite`=? WHERE `id_partie_prenante`=? AND `id_projet`=? AND `id_atelier`=?");
+        $update->bindParam(1, $categorie_partie_prenante);
+        $update->bindParam(2, $nom_partie_prenante);
+        $update->bindParam(3, $type);
+        $update->bindParam(4, $dependance_partie_prenante);
+        $update->bindParam(5, $ponderation_dependance);
+        $update->bindParam(6, $penetration_partie_prenante);
+        $update->bindParam(7, $ponderation_penetration);
+        $update->bindParam(8, $maturite_partie_prenante);
+        $update->bindParam(9, $ponderation_maturite);
+        $update->bindParam(10, $confiance_partie_prenante);
+        $update->bindParam(11, $ponderation_confiance);
+        $update->bindParam(12, $niveau_de_menace_partie_prenante);
+        $update->bindParam(13, $criticite);
+        $update->bindParam(14, $input["id_partie_prenante"]);
+        $update->bindParam(15, $getid_projet);
+        $update->bindParam(16, $id_atelier);
+        $update->execute();
+
 
         $_SESSION['message_success_2'] = "La partie prenante a bien été modifiée !";
     }
 }
 if ($input["action"] === 'delete') {
-    $query = 
-    "DELETE FROM R_partie_prenante 
-    WHERE id_partie_prenante = '" . $input["id_partie_prenante"] . "'
-    AND id_projet = $getid_projet
-    AND id_atelier = '$id_atelier'
-    ";
-    mysqli_query($connect, $query);
-    $_SESSION['message_success_2'] = "La partie prenante a bien été supprimé !";
+    $delete = $bdd->prepare("DELETE FROM `R_partie_prenante` WHERE `id_partie_prenante`=? AND `id_projet`=? AND `id_atelier`=?");
+    $delete->bindParam(1, $input["id_partie_prenante"]);
+    $delete->bindParam(2, $getid_projet);
+    $delete->bindParam(3, $id_atelier);
+
+    $delete->execute();
+      
+    $_SESSION['message_success_2'] = "La partie prenante a bien été supprimée !";
 }
 
 

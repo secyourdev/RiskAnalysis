@@ -106,7 +106,7 @@ OURJQUERYFN.setFilterTable("#rechercher_mesure", "#editable_table_mesure tbody t
 setSortTable('editable_table_mesure2');
 OURJQUERYFN.setFilterTable("#rechercher_mesure2", "#editable_table_mesure2 tbody tr")
 /*------------------------------ LABELS CACHES ------------------------------*/
-label_mesure.style.display="none"
+//label_mesure.style.display="none"
 
 /*----------------------- -- VERIFICATION DES CHAMPS -- ------------------------*/
 nommesure.addEventListener('keyup',function(event){

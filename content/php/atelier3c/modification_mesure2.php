@@ -1,15 +1,15 @@
 <?php
 session_start();
-include("../bdd/connexion_sqli.php");
+include("../bdd/connexion.php");
 
 $input = filter_input_array(INPUT_POST);
 
 if ($input["action"] === 'edit'){
-    $dependance_residuelle = mysqli_real_escape_string($connect, $input['dependance_residuelle']);
-    $penetration_residuelle = mysqli_real_escape_string($connect, $input['penetration_residuelle']);
-    $maturite_residuelle = mysqli_real_escape_string($connect, $input['maturite_residuelle']);
-    $confiance_residuelle = mysqli_real_escape_string($connect, $input['confiance_residuelle']);
-    $id_partie_prenante = mysqli_real_escape_string($connect, $input['id_partie_prenante']);
+    $dependance_residuelle = $_POST['dependance_residuelle'];
+    $penetration_residuelle = $_POST['penetration_residuelle'];
+    $maturite_residuelle = $_POST['maturite_residuelle'];
+    $confiance_residuelle = $_POST['confiance_residuelle'];
+    $id_partie_prenante = $_POST['id_partie_prenante'];
 
     $results["error"] = false;
     $results["message"] = [];
@@ -37,29 +37,30 @@ if ($input["action"] === 'edit'){
     }
 
     if ($results["error"] === false){
-        // recupere les valeurs de ponderation
-        $recupere_ponderation = "SELECT ponderation_dependance, ponderation_penetration, ponderation_maturite, ponderation_confiance FROM R_partie_prenante WHERE id_partie_prenante = $id_partie_prenante";
-        $result_ponderation = mysqli_query($connect, $recupere_ponderation);
-        $row = mysqli_fetch_array($result_ponderation);
-        $ponderation_dependance = $row["ponderation_dependance"];
-        $ponderation_penetration = $row["ponderation_penetration"];
-        $ponderation_maturite = $row["ponderation_maturite"];
-        $ponderation_confiance = $row["ponderation_confiance"];
+        // recupere les valeurs de ponderation      
+        $update = $bdd->prepare("SELECT `ponderation_dependance`, `ponderation_penetration`, `ponderation_maturite`, `ponderation_confiance` FROM `R_partie_prenante` WHERE `id_partie_prenante`=?");
+        $update->bindParam(1, $id_partie_prenante);
+        $update->execute();
+        $row = $update->fetch();
+        $ponderation_dependance = $row['ponderation_dependance'];
+        $ponderation_penetration = $row['ponderation_penetration'];
+        $ponderation_maturite = $row['ponderation_maturite'];
+        $ponderation_confiance = $row['ponderation_confiance'];
         
         $menace_residuelle = round(($dependance_residuelle*$ponderation_dependance * $penetration_residuelle*$ponderation_penetration) / ($maturite_residuelle*$ponderation_maturite * $confiance_residuelle*$ponderation_confiance), 2);
         
-        //update les valeurs résiduelles du chemin
-        $updatechemin = 
-        "UPDATE R_partie_prenante
-        SET dependance_residuelle = $dependance_residuelle,
-        penetration_residuelle = $penetration_residuelle,
-        maturite_residuelle = $maturite_residuelle,
-        confiance_residuelle = $confiance_residuelle,
-        niveau_de_menace_residuelle = $menace_residuelle
-        WHERE id_partie_prenante = $id_partie_prenante" ;
-        mysqli_query($connect, $updatechemin);
-        
+        //update les valeurs résiduelles du chemin      
+        $update = $bdd->prepare("UPDATE `R_partie_prenante` SET `dependance_residuelle`=?, `penetration_residuelle`=?, `maturite_residuelle`=?, `confiance_residuelle`=?, `niveau_de_menace_residuelle`=?  WHERE `id_partie_prenante`=?");
+        $update->bindParam(1, $dependance_residuelle);
+        $update->bindParam(2, $penetration_residuelle);
+        $update->bindParam(3, $maturite_residuelle);
+        $update->bindParam(4, $confiance_residuelle);
+        $update->bindParam(5, $menace_residuelle);
+        $update->bindParam(6, $id_partie_prenante);
+        $update->execute();
+
         $_SESSION['message_success_2'] = "L'évaluation de la menace en fonction des mesures appliquées a bien été ajoutée !";
+
     }
 }
 

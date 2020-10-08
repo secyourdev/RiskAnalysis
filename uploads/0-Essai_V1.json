@@ -1,0 +1,17 @@
+{
+  "Réf de sécurité": {
+    "name": "Essai",
+    "Exigence": [
+      {
+        "id": "1",
+        "Titre": "Former les équipes opérationnelles à la sécurité des systèmes d’information",
+        "Description": "/ standard<BR />Les équipes opérationnelles (administrateurs réseau, sécurité et système, chefs de projet, développeurs, RSSI) ont des accès privilégiés au système d’information. Elles peuvent, par inadvertance ou par méconnaissance des conséquences de certaines pratiques, réaliser des opérations génératrices de vulnérabilités. <BR />Citons par exemple l’affectation de comptes disposant de trop nombreux privilèges par rapport à la tâche à réaliser, l’utilisation de comptes personnels pour exécuter des services ou tâches périodiques, ou encore le choix de mots de passe peu robustes donnant accès à des comptes privilégiés.<BR />Les équipes opérationnelles, pour être à l’état de l’art de la sécurité des systèmes d’information, doivent donc suivre - à leur prise de poste puis à intervalles réguliers - des formations sur : <UL> <LI> la législation en vigueur ;</LI><LI> les principaux risques et menaces ;</LI><UL>"
+      },
+      {
+        "id": "2",
+        "Titre": "Sensibiliser les utilisateurs aux bonnes pratiques élémentaires de sécurité informatique",
+        "Description": "/ standard<BR /> Ligne 2"
+      }
+    ]
+  }
+}

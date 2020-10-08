@@ -1,12 +1,12 @@
 <?php
 session_start();
-include("../bdd/connexion_sqli.php");
+include("../bdd/connexion.php");
 
 $input = filter_input_array(INPUT_POST);
 
 if ($input["action"] === 'edit') {
-    $nomscenar = mysqli_real_escape_string($connect, $input['scenario_operationnel']);
-    $modeope = mysqli_real_escape_string($connect, $input['mode_operatoire']);
+    $nomscenar = $_POST['scenario_operationnel'];
+    $modeope = $_POST['mode_operatoire'];
 
     $results["error"] = false;
 
@@ -17,22 +17,20 @@ if ($input["action"] === 'edit') {
     }
 
     if ($results["error"] === false) {
-        $query = "
-        UPDATE W_mode_operatoire 
-        SET mode_operatoire = '".$modeope."'
-        WHERE id_mode_operatoire = '".$input["id_mode_operatoire"]."'
-        ";
-        mysqli_query($connect, $query);
+        $update = $bdd->prepare("UPDATE `W_mode_operatoire` SET `mode_operatoire`=? WHERE `id_mode_operatoire`=?");
+        $update->bindParam(1, $modeope);
+        $update->bindParam(2, $input["id_mode_operatoire"]);
+        $update->execute();
+
         $_SESSION['message_success_2'] = "Le mode opératoire a été bien modifié !";
     }
 }
 
 if ($input["action"] === 'delete') {
-    $query = "
-    DELETE FROM W_mode_operatoire 
-    WHERE id_mode_operatoire = '".$input["id_mode_operatoire"]."'
-    ";
-    mysqli_query($connect, $query);
+    $delete = $bdd->prepare("DELETE FROM `W_mode_operatoire` WHERE `id_mode_operatoire`=?");
+    $delete->bindParam(1, $input["id_mode_operatoire"]);
+    $delete->execute();
+
     $_SESSION['message_success_2'] = "Le mode opératoire a été bien supprimé !";
 }
 

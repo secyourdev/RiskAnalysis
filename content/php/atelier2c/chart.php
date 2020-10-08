@@ -15,7 +15,7 @@ foreach ($result_SROV as $row) {
   if ($row['pertinence'] === "Faible"){
     $pertinence = "1";
   }
-  elseif ($row['pertinence'] === "Moyen"){
+  elseif ($row['pertinence'] === "Moyenne"){
     $pertinence = "2";
   }
   else{
