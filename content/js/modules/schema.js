@@ -2,14 +2,30 @@ var fileName_path;
 var fileName;
 
 var diagramUrl = fileName;
+const inpFile = document.getElementById("inpFile");
 
 $('.custom-file-input').on('change', function () {
     fileName_path = $(this).val()
     fileName = fileName_path.substring(fileName_path.lastIndexOf('\\') + 1)
-    
-    $(this).next('.custom-file-label').addClass("selected").html(fileName)
 
-    $.get(fileName, openDiagram, 'text');
+    $(this).next('.custom-file-label').addClass("selected").html(fileName)
+})
+
+inpFile.addEventListener("change", function () {
+    const file = this.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+
+        reader.addEventListener("load", function () {
+            $.get(this.result, openDiagram, 'text');
+        });
+        
+        reader.readAsDataURL(file);
+    }else{
+        console.log("erreur!")
+    }
+
 })
 
 // modeler instance
@@ -78,7 +94,7 @@ try {
 
 // load external diagram file via AJAX and open it
 if(diagramUrl!=null)
-$.get(diagramUrl, openDiagram, 'text');            
+    $.get(diagramUrl, openDiagram, 'text');            
 
 // wire save button
 $('#save-button').click(exportDiagram);
