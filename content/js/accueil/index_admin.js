@@ -11,6 +11,7 @@ var tableau_de_bord_projet = document.getElementById('tableau_de_bord_projet')
 var tableau_de_bord_grp_user = document.getElementById('tableau_de_bord_grp_user')
 var tableau_de_bord_app = document.getElementById('tableau_de_bord_app')
 var tableau_de_bord_bdd = document.getElementById('tableau_de_bord_bdd')
+var table = document.getElementById('table_app_user')
 
 var projets = document.getElementById('projets')
 var button_add_user_in_grp = document.getElementById('button_add_user_in_grp')
@@ -94,7 +95,16 @@ OURJQUERYFN.setFilterTable("#rechercher_user","#tableau_user tbody tr")
 
 setSortTable('table_app_user');
 OURJQUERYFN.setFilterTable("#rechercher_app_utilisateur","#table_app_user tbody tr")
-/*----------------------------- CHARGEMENT DES ONGLETS ----------------------------*/
+
+/*--------------------- REORGANISATION VALEURS ID BOUTON --------------------*/
+var table_cells_length = table.rows[0].cells.length; 
+for(let i=0;i<table_cells_length;i++){
+    table.rows[0].cells[i].addEventListener('click',function(){
+        reinitialiser_mdp_fn()
+        generer_mdp_fn()
+    })
+}
+/*------------------------- CHARGEMENT DES ONGLETS --------------------------*/
 switch (sessionStorage.getItem('button')){
     case 'project_card':
         chargement_onglet(project_card,grp_user_card,apps_card,bdd_card);
@@ -281,6 +291,9 @@ $.ajax({
         alert('ERROR :' + erreur);
     }
 });
+/*--------------------- REINISTIALISER & GENERER LE MOT DE PASSE ------------------*/  
+reinitialiser_mdp_fn()
+generer_mdp_fn()
 /*----------------------------------- FONCTIONS -----------------------------------*/
 function compteur_anim() {
     $('#prj.compteur b').animate({
@@ -333,40 +346,42 @@ ajouter_user.addEventListener('click', (event) => {
 
 
 /*-------------------------- REINISTIALISER LE MOT DE PASSE ------------------------*/  
-for(let i=0;i<lenght_reinitialiser_mdp;i++){
-  reinitialiser_mdp[i].addEventListener('click',function(){
-
-    $.ajax({
-        url: 'content/php/accueil/selection_user_modif_mdp.php',
-        type: 'POST',
-        data: {
-              id_utilisateur: reinitialiser_mdp[i].parentNode.parentNode.id
-        },
-        dataType: 'html',
-        success: function (resultat) {
-            var user_JSON = JSON.parse(resultat);
-            email_modif_mdp.value = user_JSON[0][0]
-        }
-      })
-  });
+function reinitialiser_mdp_fn(){
+    for(let i=0;i<lenght_reinitialiser_mdp;i++){
+    reinitialiser_mdp[i].addEventListener('click',function(){
+        $.ajax({
+            url: 'content/php/accueil/selection_user_modif_mdp.php',
+            type: 'POST',
+            data: {
+                id_utilisateur: reinitialiser_mdp[i].parentNode.parentNode.id
+            },
+            dataType: 'html',
+            success: function (resultat) {
+                var user_JSON = JSON.parse(resultat);
+                email_modif_mdp.value = user_JSON[0][0]
+            }
+        })
+    });
+    }
 }
-
 /*----------------------------- GENERER LE MOT DE PASSE --------------------------*/  
-for(let i=0;i<lenght_reinitialiser_mdp;i++){
-    generer_mdp[i].addEventListener('click',function(){
-    console.log(generer_mdp[i].parentNode.parentNode.id);
+function generer_mdp_fn(){
+    for(let i=0;i<lenght_reinitialiser_mdp;i++){
+        generer_mdp[i].addEventListener('click',function(){
+        console.log(generer_mdp[i].parentNode.parentNode.id);
 
-    $.ajax({
-        url: 'content/php/accueil/generer_mdp.php',
-        type: 'POST',
-        data: {
-              id_utilisateur: generer_mdp[i].parentNode.parentNode.id
-        },
-        success: function (data) {
-            location.reload();
-        }
-      })
-  });
+        $.ajax({
+            url: 'content/php/accueil/generer_mdp.php',
+            type: 'POST',
+            data: {
+                id_utilisateur: generer_mdp[i].parentNode.parentNode.id
+            },
+            success: function (data) {
+                location.reload();
+            }
+        })
+    });
+    }
 }
 /*------------------------- MODIFICATION & SUPPRESSION PROJET ----------------------*/
 function modification_projet(){
