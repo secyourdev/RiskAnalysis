@@ -45,12 +45,15 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <!-- CSS -->
     <link href="content/css/bootstrap.css" rel="stylesheet">
     <link href="content/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="content/vendor/bpmn-schema/assets/diagram-js.css">
+    <link rel="stylesheet" href="content/vendor/bpmn-schema/assets/bpmn-font/css/bpmn.css">
 
     <!-- JS -->
     <script src="content/vendor/jquery/jquery.js"></script>
     <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
     <script src="content/vendor/sheet-js/xlsx.full.min.js"></script>
     <script src="content/vendor/sheet-js/FileSaver.js"></script>
+    <script src="content/vendor/bpmn-schema/bpmn-modeler.development.js"></script>
     
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
@@ -700,6 +703,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <th>Source de risque / Objectif visé</th>
                                 <th>Nom de l'événement redouté</th>
                                 <th>Niveau de gravite</th>
+                                <th>Schéma</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -712,6 +716,10 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <td>' . $row["description_source_de_risque"] . ' / ' . $row["objectif_vise"] . '</td>
                         <td>' . $row["nom_evenement_redoute"] . '</td>
                         <td>' . $row["niveau_de_gravite"] . '</td>
+                        <td>  <a class="schema_button" data-toggle="modal" data-target="#button_schema_scenarios_strategiques"">
+                                <i class="fas fa-project-diagram fa-md "></i>
+                              </a>
+                        </td>
                         </tr>
                         ';
                               }
@@ -759,105 +767,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       </div>
                     </div>
                   </div>
-
-                  <!-- Area Card -->
-                  <div id="schemas_scenarios_strategiques" class="col-xl-12 col-lg-12">
-                    <div class="card shadow mb-4">
-                      <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Schéma des scénarios stratégiques</h6>
-                      </div>
-                      <!-- Card Body -->
-                      <div class="card-body">
-                        <!--text-->
-                        <span id="success_message"></span>
-                        <form method="POST" id="sample_form" action="content/php/atelier3b/insert_image.php" enctype="multipart/form-data">
-
-                          <label for="select_nom_scenario_strategique">Nom du scénario stratégiques</label>
-                          <select class="form-control" name="select_nom_scenario_strategique" id="select_nom_scenario_strategique">
-                            <option value="" selected>...</option>
-                            <?php
-                            while ($row = mysqli_fetch_array($result_scenario_op)) 
-                            {
-                              echo '<option id="scenario_strategique" value="' . $row['id_scenario_strategique'] . '">' . $row['nom_scenario_strategique'] . '</option>';
-                            }
-                            ?>
-                          </select>
-                          </br>
-                          <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
-                          ?> 
-                                  <div class="custom-file">
-                                    <input name="inpFile" id="inpFile" class="custom-file-input" type="file">
-                                    <label class="custom-file-label" for="inpFile">Choisir un fichier au format image</label>
-                                  </div>
-                                  
-                                  <div class='message_success'>
-                                  <?php 
-                                      if(isset($_SESSION['message_success_2'])){
-                                        echo $_SESSION['message_success_2'];
-                                        unset($_SESSION['message_success_2']);
-                                      }
-                                  ?>
-                                  </div> 
-                                  <div class='message_error'>
-                                  <?php                
-                                      if(isset($_SESSION['message_error_2'])){
-                                          echo $_SESSION['message_error_2'];
-                                          unset($_SESSION['message_error_2']);
-                                      }
-                                  ?>
-                                  </div>
-
-                                  <div class="form-group" align="center">
-                                    <input type="submit" name="file_submit" id="file_submit" class="btn perso_btn_primary shadow-none" value="Ajouter une image" />
-                                  </div>
-                          <?php
-                                }
-                                else if (isset($userdroit['ecriture'])){
-                                    if($userdroit['ecriture']=='Réalisation'){
-                          ?>
-                                      <div class="custom-file">
-                                        <input name="inpFile" id="inpFile" class="custom-file-input" type="file">
-                                        <label class="custom-file-label" for="inpFile">Choisir un fichier au format image</label>
-                                      </div>
-                                      
-                                      <div class='message_success'>
-                                      <?php 
-                                          if(isset($_SESSION['message_success_2'])){
-                                            echo $_SESSION['message_success_2'];
-                                            unset($_SESSION['message_success_2']);
-                                          }
-                                      ?>
-                                      </div> 
-                                      <div class='message_error'>
-                                      <?php                
-                                          if(isset($_SESSION['message_error_2'])){
-                                              echo $_SESSION['message_error_2'];
-                                              unset($_SESSION['message_error_2']);
-                                          }
-                                      ?>
-                                      </div>
-
-                                      <div class="form-group" align="center">
-                                        <input type="submit" name="file_submit" id="file_submit" class="btn perso_btn_primary shadow-none" value="Ajouter une image" />
-                                      </div>
-                          <?php
-                                    }
-                                }                          
-                          ?>
-                        </form>
-
-
-                        <div class='image-preview' id='imagePreview'>
-                          <img class='image-preview__image' src='image/'>
-                          <span class='image-preview__default-text'>Image Preview</span>
-                          <!-- <p>".$row['image_text']."</p> -->
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
+                  
                   <!-- Area Card -->
                   <div id="chemin_dattaque" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
@@ -1043,6 +953,30 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         </div>
 
 
+<!----------------------------------------------------------------------------------------------------------------- 
+-------------------------------------- modal Ajout d'un schéma du scénario stratégique --------------------------------------
+--------------------------------------------------------------------------------------------------------------- -->
+<div class="modal fade right" id="button_schema_scenarios_strategiques" tabindex="-1" role="dialog" aria-labelledby="exampleModalPreviewLabel" aria-hidden="true">
+    <div class="modal-dialog-full-width modal-dialog momodel modal-fluid" role="document">
+        <div class="modal-content-full-width modal-content ">
+            <div class=" modal-header-full-width   modal-header text-center">
+                <h5 class="modal-title w-100" id="exampleModalPreviewLabel">Schéma du scénario stratégique</h5>
+                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                    <span style="font-size: 1.3em;" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="canvas"></div>
+              </div>
+              <div class="modal-footer-full-width  modal-footer">
+                  <!-- <button id="save-button" type="button" class="btn btn-primary btn-md btn-rounded">print to console</button> -->
+                  <button id="browseFile" type="button" class="btn btn-primary btn-md btn-rounded" onclick="document.getElementById('inpFile').click();">Parcourir</button>
+                  <button id="savefile" type="button" class="btn btn-primary btn-md btn-rounded">Enregistrer</button>
+                  <input id="inpFile" class="custom-file-input" type="file" style="display:none;">
+              </div>
+        </div>
+    </div>
+</div> 
 <!---------------------------------------------------------------------------------------------------------------- 
 ----------------------------------- modal Ajout d'un chemin d'attaque stratégique --------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
@@ -1088,13 +1022,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         ?>
                       </select>
                     </div>
-
-
-                    <!-- <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-                    <script src="content/vendor/bootstrap-select-1.13.14/dist/js/bootstrap-select.js"></script> -->
-                    <!-- <link rel="stylesheet" href="content/vendor/bootstrap-select-1.13.14/dist/css/bootstrap-select.css"> -->
-
-
                     <div class="form-group col-12">
                       <label for="Select_nom_scenario_strategique">Partie prenante</label>
                       <select class="form-control" name="nom_partie_prenante" id="nom_partie_prenante" required>
@@ -1151,9 +1078,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <!-- Bootstrap core JavaScript-->
         <script src="content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
-        <!-- bootstrap-select js -->
-        <!-- <script src="content/vendor/bootstrap-select-1.13.14/dist/js/bootstrap-select.js"></script> -->
-
         <!-- Core plugin JavaScript-->
         <script src="content/vendor/jquery-easing/jquery.easing.js"></script>
 
@@ -1170,6 +1094,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <script src="content/js/modules/set_filter_sort_table.js"></script>
         <script src="content/js/modules/dateString.js"></script>
         <script src="content/js/modules/export_table_to_excel.js"></script>
+        <script src="content/js/modules/schema.js"></script>
         <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
         ?>
             <script src="content/js/atelier/atelier3b.js"></script>
@@ -1189,7 +1114,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             }        
         ?>
         <script src="content/js/modules/sort_table.js"></script>
-        <script src="content/js/modules/browse_img.js"></script>
+        <!-- <script src="content/js/modules/browse_img.js"></script> -->
         <script src="content/js/modules/ajax_pour_image.js"></script>
       </body>
   <?php
