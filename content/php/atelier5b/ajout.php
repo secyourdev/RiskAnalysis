@@ -56,35 +56,37 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $description_
 
 
 if ($results["error"] === false && isset($_POST['ajouterregle'])) {
-
-
-
+  // Insérer mesure
   $insere_mesure->bindParam(1, $nom_mesure);
   $insere_mesure->bindParam(2, $description_mesure);
   $insere_mesure->bindParam(3, $get_id_projet);
   $insere_mesure->bindParam(4, $id_atelier);
   $insere_mesure->execute();
 
+  // Récupérer id de la mesure
   $recupere_mesure->bindParam(1, $nom_mesure);
   $recupere_mesure->bindParam(2, $description_mesure);
   $recupere_mesure->execute();
   $id_mesure = $recupere_mesure->fetch();
 
+  // Recupérer id du risque
   $recupere_risque->bindParam(1, $id_chemin);
   $recupere_risque->execute();
   $id_risque = $recupere_risque->fetch();
 
+  // Ajouter mesure à un chemin
   $insere2->bindParam(1, $id_mesure[0]);
   $insere2->bindParam(2, $id_chemin);
   $insere2->bindParam(3, $id_risque[0]);
   $insere2->execute();
 
+  // Insérer un traitement de mesure
   $insere_traitement->bindParam(1, $id_traitement);
   $insere_traitement->bindParam(2, $id_atelier);
   $insere_traitement->bindparam(3, $get_id_projet);
   $insere_traitement->bindParam(4, $id_mesure[0]);
   $insere_traitement->execute();
-  $_SESSION['message_success'] = "Le plan d'amélioration continue de la sécurité a été correctement entré !";
+  $_SESSION['message_success'] = "La mesure de sécurité a été correctement ajoutée!";
 } 
 
 header('Location: ../../../atelier5b.php?id_utilisateur=' . $_SESSION['id_utilisateur'] . '&id_projet=' . $_SESSION['id_projet'] . '#plan_amelioration_continue_de_la_securite');

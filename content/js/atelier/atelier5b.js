@@ -29,8 +29,8 @@ $(document).ready(function () {
         columns: {
             identifier: [0, 'id_traitement_de_securite'],
             editable: [
-                // [1, "nom_mesure"],
-                // [2, "description_mesure"],
+                [1, "nom_mesure"],
+                [2, "description_mesure"],
                 // [3, "id_risque"],
                 [4, 'principe_de_securite', '{"Gouvernance" : "Gouvernance", "Protection" : "Protection", "Defense" : "Defense", "Resilience" : "Resilience"}'],
                 [5, "responsable"],
@@ -38,16 +38,26 @@ $(document).ready(function () {
                 [7, "cout_traitement_de_securite", '{"+" : "+", "++" : "++", "+++" : "+++"}'],
                 [9, "statut", '{"A lancer" : "A lancer", "En cours" : "En cours", "Terminé" : "Terminé"}']],
             dateeditable: [[8, 'date_traitement_de_securite']]
-
         },
         restoreButton: false,
-        deleteButton: false
-
+        onSuccess: function (data, textStatus, jqXHR) {
+            /*if (data.action == 'delete') {
+                $('#' + data.id_evenement_redoutes).remove();
+            
+            }*/
+            //console.log(data.action);
+        },
+        onFail: function (data, textStatus, jqXHR) {
+            /*if (data.action == 'delete') {
+                $('#' + data.id_evenement_redoutes).remove();
+            
+            }*/
+            //console.log(data.action);
+        }
     });
 });
 /*--------------------------- SORT & FILTER TABLES --------------------------*/
-setSortTable('editable_table');
-OURJQUERYFN.setFilterTable("#rechercher_pacs","#editable_table tbody tr")
+
 /*--------------------------- Couleurs pacs > statut --------------------------*/
 $("#editable_table > tbody > tr > td:nth-child(10)").each(function () {
     if ($(this)[0].innerText == "Terminé") { $(this)[0].classList.add('fond-vert'); }
