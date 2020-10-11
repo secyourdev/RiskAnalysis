@@ -1,5 +1,6 @@
 var fileName_path;
 var fileName;
+var result_input_file;
 
 var diagramUrl = fileName;
 const inpFile = document.getElementById("inpFile");
@@ -19,6 +20,7 @@ inpFile.addEventListener("change", function () {
 
         reader.addEventListener("load", function () {
             $.get(this.result, openDiagram, 'text');
+            result_input_file=this.result//ENVOYER SUR LA BASE DE DONNEE
         });
         
         reader.readAsDataURL(file);
@@ -27,6 +29,28 @@ inpFile.addEventListener("change", function () {
     }
 
 })
+var modifier_schema = document.getElementsByClassName('schema_button')
+var lenght_modifier_schema = modifier_schema.length;
+
+function modifier_schema_fn(){
+    for(let i=0;i<lenght_modifier_schema;i++){
+        modifier_schema[i].addEventListener('click',function(){
+            console.log(modifier_schema[i].parentNode.parentNode.id)
+            console.log(result_input_file)
+            $.ajax({
+                url: 'content/php/atelier3b/ajout_schema.php',
+                type: 'POST',
+                data: {
+                    id_scenario_strategique: modifier_schema[i].parentNode.parentNode.id,
+                    schema : result_input_file
+                },
+                success: function (resultat) {
+               
+                }
+            })
+        });
+    }
+}
 
 // modeler instance
 var bpmnModeler = new BpmnJS({
