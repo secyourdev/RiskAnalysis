@@ -78,10 +78,10 @@ $(document).ready(function () {
             identifier: [0, 'id_partie_prenante'],
             editable: [
 
-                [3, 'dependance_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
-                [4, 'penetration_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
-                [5, 'maturite_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
-                [6, 'confiance_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}']
+                [7, 'dependance_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
+                [8, 'penetration_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
+                [9, 'maturite_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}'],
+                [10, 'confiance_residuelle', '{"1" : "1", "2" : "2", "3" : "3", "4" : "4"}']
             ]
         },
         deleteButton: false,

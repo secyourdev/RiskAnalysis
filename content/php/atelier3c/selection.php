@@ -54,6 +54,10 @@ WHERE T_chemin_d_attaque_strategique.id_projet = $getid_projet";
 $query_mesure2 = "SELECT DISTINCT 
 R_partie_prenante.id_partie_prenante,
 nom_partie_prenante, 
+dependance_partie_prenante,
+penetration_partie_prenante,
+maturite_partie_prenante,
+confiance_partie_prenante, 
 niveau_de_menace_partie_prenante,
 dependance_residuelle,
 penetration_residuelle,

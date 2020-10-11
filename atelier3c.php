@@ -786,6 +786,10 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <tr>
                                 <th>ID</th>
                                 <th>Partie prenante</th>
+                                <th>Dépendance initiale</th>
+                                <th>Pénétration initiale</th>
+                                <th>Maturité initiale</th>
+                                <th>Confiance initiale</th>
                                 <th>Menace initiale</th>
                                 <th>Dépendance résiduelle</th>
                                 <th>Pénétration résiduelle</th>
@@ -801,6 +805,10 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <tr>
                         <td>' . $row["id_partie_prenante"] . '</td>
                         <td>' . $row["nom_partie_prenante"] . '</td>
+                        <td>' . $row["dependance_partie_prenante"] . '</td>
+                        <td>' . $row["penetration_partie_prenante"] . '</td>
+                        <td>' . $row["maturite_partie_prenante"] . '</td>
+                        <td>' . $row["confiance_partie_prenante"] . '</td>
                         <td>' . $row["niveau_de_menace_partie_prenante"] . '</td>
                         <td>' . $row["dependance_residuelle"] . '</td>
                         <td>' . $row["penetration_residuelle"] . '</td>
