@@ -114,7 +114,7 @@ function saveData(data, fileName) {
 async function saveFile(e) {
     var result = await bpmnModeler.saveXML({ format: true });
     saveData(result.xml, "test.bpmn");
-
+    $('#button_schema_scenarios_strategiques').modal('hide');
     e.preventDefault()
 }
 
@@ -122,6 +122,7 @@ async function saveFileBDD(e) {
     var result = await bpmnModeler.saveXML({ format: true });
     var url = 'data:application/xml,' + encodeURIComponent(result.xml);
     enregistrement_schema_fn(url);
+    $('#button_schema_scenarios_strategiques').modal('hide');
     e.preventDefault()
 }
 /*---------------------------- OPEN SCHEMA ---------------------------------*/
