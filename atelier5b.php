@@ -697,6 +697,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <th id="id_traitement_de_securite">ID traitement de sécurité</th>
                                 <th id="mesure">Mesure de sécurité</th>
                                 <th id="description_mesure">Description mesure de sécurité</th>
+                                <th id="atelier">Atelier</th>
                                 <th id="scenario_risques_associes">Scénario des risques associés</th>
                                 <th id="principe">Principe de sécurité</th>
                                 <th id="responsable">Responsable</th>
@@ -716,6 +717,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <td>' . $row["id_traitement_de_securite"] . '</td>
                               <td>' . $row["nom_mesure"] . '</td>
                               <td>' . $row["description_mesure"] . '</td>
+                              <td>' . $row["Y_id_atelier"] . '</td>
                               <td>' . $row["id_risque"] . '</td>
                               <td>' . $row["principe_de_securite"] . '</td>
                               <td>' . $row["responsable"] . '</td>

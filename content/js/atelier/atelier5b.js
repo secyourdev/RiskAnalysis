@@ -32,12 +32,12 @@ $(document).ready(function () {
                 [1, "nom_mesure"],
                 [2, "description_mesure"],
                 // [3, "id_risque"],
-                [4, 'principe_de_securite', '{"Gouvernance" : "Gouvernance", "Protection" : "Protection", "Defense" : "Defense", "Resilience" : "Resilience"}'],
-                [5, "responsable"],
-                [6, "difficulte_traitement_de_securite"],
-                [7, "cout_traitement_de_securite", '{"+" : "+", "++" : "++", "+++" : "+++"}'],
-                [9, "statut", '{"A lancer" : "A lancer", "En cours" : "En cours", "Terminé" : "Terminé"}']],
-            dateeditable: [[8, 'date_traitement_de_securite']]
+                [5, 'principe_de_securite', '{"Gouvernance" : "Gouvernance", "Protection" : "Protection", "Defense" : "Defense", "Resilience" : "Resilience"}'],
+                [6, "responsable"],
+                [7, "difficulte_traitement_de_securite"],
+                [8, "cout_traitement_de_securite", '{"+" : "+", "++" : "++", "+++" : "+++"}'],
+                [10, "statut", '{"A lancer" : "A lancer", "En cours" : "En cours", "Terminé" : "Terminé"}']],
+            dateeditable: [[9, 'date_traitement_de_securite']]
         },
         restoreButton: false,
         onSuccess: function (data, textStatus, jqXHR) {

@@ -2,7 +2,7 @@
 $getid_projet = intval($_GET['id_projet']);
 include("content/php/bdd/connexion_sqli.php");
 
-$query_pacs = "SELECT * 
+$query_pacs = "SELECT * , Y_mesure.id_atelier AS Y_id_atelier
 FROM ZA_traitement_de_securite, ZB_comporter_2, Y_mesure, T_chemin_d_attaque_strategique
 WHERE ZA_traitement_de_securite.id_mesure = Y_mesure.id_mesure
 AND Y_mesure.id_mesure = ZB_comporter_2.id_mesure
