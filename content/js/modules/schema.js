@@ -8,6 +8,8 @@ var modifier_schema = document.getElementsByClassName('schema_button')
 
 var lenght_modifier_schema = modifier_schema.length
 
+var id_scenario_strategique_schema;
+
 /*----------------------------------------------------------------------------*/
 /*------------------------------- TRAITEMENT ---------------------------------*/
 /*-------------------------- RECUPERATION DU PATH ----------------------------*/
@@ -40,7 +42,7 @@ window.onload = main
 recuperation_schema_fn()
 /*--------------------- ENREGISTREMENT en BDD DU SCHEMA -----------------------------*/
 /*A FAIRE*/
-
+enregistrement_schema_fn()
 /*------------------------ CREATION en BDD DU SCHEMA --------------------------------*/
 /*CREE UN SCHEMA LORS DE LA CREATION DU SCENARIO*/
 
@@ -61,31 +63,24 @@ function recuperation_schema_fn(){
                 success: function (resultat) {
                     var schema_JSON = JSON.parse(resultat);
                     $.get(schema_JSON[0][0], openDiagram, 'text');
+                    id_scenario_strategique_schema = modifier_schema[i].parentNode.parentNode.id
                 }
             })
         });
     }
 }
 /*----------------------- AJOUT DU SCHEMA SUR BDD ----------------------------*/
-// function modifier_schema_fn(schema_file){
-//     for(let i=0;i<lenght_modifier_schema;i++){
-//         modifier_schema[i].addEventListener('click',function(){
-
-//             $.ajax({
-//                 url: 'content/php/atelier3b/ajout_schema.php',
-//                 type: 'POST',
-//                 data: {
-//                     id_scenario_strategique: modifier_schema[i].parentNode.parentNode.id,
-//                     schema : schema_file
-//                 }
-//             })
-//         });
-//     }
-// }
-function enregistrement_schema_fn(){}
-/*A FAIRE*/
+function enregistrement_schema_fn(schema_file){     
+        $.ajax({
+            url: 'content/php/atelier3b/ajout_schema.php',
+            type: 'POST',
+            data: {
+                id_scenario_strategique: id_scenario_strategique_schema,
+                schema : schema_file
+            }
+        })
+}
 /*--------------------------- INSTANCE BPMN ---------------------------------*/
-// modeler instance
 var bpmnModeler = new BpmnJS({
 container: '#canvas',
     keyboard: {
@@ -95,14 +90,9 @@ container: '#canvas',
 /*---------------------------- EXPORT FILE ---------------------------------*/
 async function exportDiagram() {
     try {
-
         var result = await bpmnModeler.saveXML({ format: true });
-
-        alert('Diagram exported. Check the developer tools!');
-
         console.log('DIAGRAM', result.xml);
     } catch (err) {
-
         console.error('could not save BPMN 2.0 diagram', err);
     }
 }
@@ -127,21 +117,22 @@ async function saveFile(e) {
 
     e.preventDefault()
 }
+
+async function saveFileBDD(e) {
+    var result = await bpmnModeler.saveXML({ format: true });
+    var url = 'data:application/xml,' + encodeURIComponent(result.xml);
+    enregistrement_schema_fn(url);
+    e.preventDefault()
+}
 /*---------------------------- OPEN SCHEMA ---------------------------------*/
 async function openDiagram(bpmnXML) {
 
-    // import diagram
     try {
-
         await bpmnModeler.importXML(bpmnXML);
 
         // access modeler components
         var canvas = bpmnModeler.get('canvas');
         var overlays = bpmnModeler.get('overlays');
-
-
-        // zoom to fit full viewport
-        //canvas.zoom('fit-viewport');
 
         // attach an overlay to a node
         overlays.add('SCAN_OK', 'note', {
@@ -162,7 +153,9 @@ async function openDiagram(bpmnXML) {
 /*----------------------------- MAIN -------------------------------------*/
 function main() {
     var savefile = document.getElementById("savefile")
+    var savefilebdd = document.getElementById('savefilebdd')
     savefile.addEventListener("click", saveFile, false)
+    savefilebdd.addEventListener('click',saveFileBDD,false)
 }
 
 

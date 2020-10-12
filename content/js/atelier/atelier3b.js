@@ -13,7 +13,6 @@ var label_id_risque = document.getElementById("id_risque").previousSibling.previ
 var regex_nom = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
 var regex_description = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
 
-var table_scenario_strategique = document.getElementById('editable_table_scenario_strategique')
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
 sidebarToggleTop.addEventListener('click', show_sub_content,false);
@@ -107,14 +106,6 @@ OURJQUERYFN.setFilterTable("#rechercher_srov","#editable_table_SROV tbody tr")
 // OURJQUERYFN.setFilterTable("#rechercher_scenario_strategique","#editable_table_scenario_strategique tbody tr")
 setSortTable('editable_table_chemin_d_attaque');
 OURJQUERYFN.setFilterTable("#rechercher_chemin_d_attaque","#editable_table_chemin_d_attaque tbody tr")
-
-// var table_cells_length = table_scenario_strategique.rows[0].cells.length; 
-// for(let i=0;i<table_cells_length;i++){
-//     table_scenario_strategique.rows[0].cells[i].addEventListener('click',function(){
-//         modifier_ordre_schema_fn()
-//         modifier_schema_fn('content/js/atelier/diagram.bpmn')
-//     })
-// }
 /*------------------------------ LABELS CACHES ------------------------------*/
 label_scenariostrategique.style.display="none"
 label_id_risque.style.display="none"
@@ -161,14 +152,3 @@ export_table_to_excel('editable_table','#button_download_evenements_redoutes','e
 export_table_to_excel('editable_table_SROV','#button_download_SROV','SROV_'+d.YYYYMMDDHHMMSS()+'.xlsx')
 export_table_to_excel('editable_table_scenario_strategique','#button_download_scenarios_strategiques','scenarios_strategiques_'+d.YYYYMMDDHHMMSS()+'.xlsx')
 export_table_to_excel('editable_table_chemin_d_attaque','#button_download_chemins_d_attaque','chemins_d_attaque_'+d.YYYYMMDDHHMMSS()+'.xlsx')
-/*------------------------ MODIFIER ORDRE SCHEMA ----------------------------*/
-//modifier_ordre_schema_fn()
-
-// function modifier_ordre_schema_fn(){
-//     for(let i=0;i<lenght_modifier_schema;i++){
-//         modifier_schema[i].addEventListener('click',function(){
-//             console.log('ok')
-//             //$.get('content/js/atelier/diagram.bpmn', openDiagram, 'text');
-//         });
-//     }
-// }

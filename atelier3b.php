@@ -971,7 +971,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
               <div class="modal-footer-full-width  modal-footer">
                   <!-- <button id="save-button" type="button" class="btn btn-primary btn-md btn-rounded">print to console</button> -->
                   <button id="browseFile" type="button" class="btn btn-primary btn-md btn-rounded" onclick="document.getElementById('inpFile').click();">Parcourir</button>
-                  <button id="savefile" type="button" class="btn btn-primary btn-md btn-rounded">Enregistrer</button>
+                  <button id="savefile" type="button" class="btn btn-primary btn-md btn-rounded">Enregistrer en local</button>
+                  <button id="savefilebdd" type="button" class="btn btn-primary btn-md btn-rounded">Enregistrer sur serveur</button>
                   <input id="inpFile" class="custom-file-input" type="file" style="display:none;">
               </div>
         </div>
