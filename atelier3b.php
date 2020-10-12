@@ -694,7 +694,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       <div class="card-body">
                         <!--text-->
                         <div class="table-responsive">
-                          <input type="text" class="rechercher_input" id="rechercher_scenario_strategique" placeholder="Rechercher">
+                          <!-- <input type="text" class="rechercher_input" id="rechercher_scenario_strategique" placeholder="Rechercher"> -->
                           <table id="editable_table_scenario_strategique" class="table table-bordered table-striped">
                             <thead>
                               <tr>
