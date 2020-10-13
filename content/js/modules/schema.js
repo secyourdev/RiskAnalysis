@@ -5,6 +5,7 @@ var diagramUrl = fileName;
 
 const inpFile = document.getElementById("inpFile")
 var modifier_schema = document.getElementsByClassName('schema_button')
+var titre_schema = document.getElementById('titre_schema')
 
 var lenght_modifier_schema = modifier_schema.length
 
@@ -41,11 +42,7 @@ window.onload = main
 /*---------------------- RECUPERATION en BDD DU SCHEMA ------------------------------*/
 recuperation_schema_fn()
 /*--------------------- ENREGISTREMENT en BDD DU SCHEMA -----------------------------*/
-/*A FAIRE*/
 enregistrement_schema_fn()
-/*------------------------ CREATION en BDD DU SCHEMA --------------------------------*/
-/*CREE UN SCHEMA LORS DE LA CREATION DU SCENARIO*/
-
 /*----------------------------------------------------------------------------*/
 /*------------------------------- FONCTIONS ----------------------------------*/
 /*----------------------- RECUPERATION DU SCHEMA SUR BDD ---------------------*/
@@ -64,6 +61,7 @@ function recuperation_schema_fn(){
                     var schema_JSON = JSON.parse(resultat);
                     $.get(schema_JSON[0][0], openDiagram, 'text');
                     id_scenario_strategique_schema = modifier_schema[i].parentNode.parentNode.id
+                    titre_schema.innerText='Schéma du scénario stratégique - '+modifier_schema[i].parentNode.parentNode.childNodes[3].innerText
                 }
             })
         });
@@ -131,11 +129,9 @@ async function openDiagram(bpmnXML) {
     try {
         await bpmnModeler.importXML(bpmnXML);
 
-        // access modeler components
         var canvas = bpmnModeler.get('canvas');
         var overlays = bpmnModeler.get('overlays');
 
-        // attach an overlay to a node
         overlays.add('SCAN_OK', 'note', {
         position: {
             bottom: 0,
@@ -144,7 +140,6 @@ async function openDiagram(bpmnXML) {
         html: '<div class="diagram-note">Mixed up the labels?</div>'
         });
 
-        // add marker
         canvas.addMarker('SCAN_OK', 'needs-discussion');
     } catch (err) {
 

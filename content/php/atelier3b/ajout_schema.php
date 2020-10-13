@@ -23,7 +23,7 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.;:,'\"�
     $_SESSION['message_error_2'] = "Schéma invalide";
 }
   
-$insere = $bdd->prepare("UPDATE S_scenario_strategique SET image = ? WHERE id_projet = ? AND id_atelier = '3.b' AND id_scenario_strategique = ?");
+$insere = $bdd->prepare("UPDATE S_scenario_strategique SET images = ? WHERE id_projet = ? AND id_atelier = '3.b' AND id_scenario_strategique = ?");
 
 if (isset($id_scenario_strategique)) {
     $insere->bindParam(1, $schema);

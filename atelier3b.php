@@ -960,7 +960,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <div class="modal-dialog-full-width modal-dialog momodel modal-fluid" role="document">
         <div class="modal-content-full-width modal-content ">
             <div class=" modal-header-full-width   modal-header text-center">
-                <h5 class="modal-title w-100" id="exampleModalPreviewLabel">Schéma du scénario stratégique</h5>
+                <h5 class="modal-title w-100" id="titre_schema">Schéma du scénario stratégique</h5>
                 <button type="button" class="close " data-dismiss="modal" aria-label="Close">
                     <span style="font-size: 1.3em;" aria-hidden="true">&times;</span>
                 </button>
@@ -1115,8 +1115,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             }        
         ?>
         <script src="content/js/modules/sort_table.js"></script>
-        <!-- <script src="content/js/modules/browse_img.js"></script> -->
-        <script src="content/js/modules/ajax_pour_image.js"></script>
       </body>
   <?php
     }

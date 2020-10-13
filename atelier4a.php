@@ -646,7 +646,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <th id="numero_risque">N° Risque</th>
                                 <th id="chemin_attaque_strategique">Chemin d'attaque stratégique</th>
                                 <th id="scenario_operationnel">Scénario opérationnel</th>
-
+                                <!--RAJOUTER LE SYSTEME DE MODELISATION DE SCHEMA-->
                               </tr>
                             </thead>
 
@@ -830,91 +830,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </tbody>
                           </table>
                         </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Area Card -->
-                  <div id="schema_scenarios_operationnels" class="col-xl-12 col-lg-12">
-                    <div class="card shadow mb-4">
-                      <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0">Schéma des scénarios opérationnels</h6>
-
-                      </div>
-                      <!-- Card Body -->
-                      <div class="card-body">
-                        <!--text-->
-
-                        <span id="success_message"></span>
-                        <form method="POST" id="sample_form" action="content/php/atelier4a/insert_image.php" enctype="multipart/form-data">
-
-                          <label for="select_nom_scenario_operationnel">Nom du scénario opérationnel</label>
-                          <select class="form-control" name="select_nom_scenario_operationnel" id="select_nom_scenario_operationnel">
-                            <option value="" selected>...</option>
-                            <?php
-                            while ($row = mysqli_fetch_array($result_scenario_op)) 
-                            {
-                              echo '<option id="scenario_operationnel" value="' . $row['id_scenario_operationnel'] . '">' . $row['description_scenario_operationnel'] . '</option>';
-                            }
-                            ?>
-                          </select>
-                          </br>
-
-                          <div class='message_success'>
-                            <?php
-                            if (isset($_SESSION['message_success_3'])) {
-                              echo $_SESSION['message_success_3'];
-                              unset($_SESSION['message_success_3']);
-                            }
-                            ?>
-                          </div>
-                          <div class='message_error'>
-                            <?php
-                            if (isset($_SESSION['message_error_3'])) {
-                              echo $_SESSION['message_error_3'];
-                              unset($_SESSION['message_error_3']);
-                            }
-                            ?>
-                          </div>
-                          
-                          <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
-                          ?> 
-                                  <div class="custom-file">
-                                    <input name="inpFile" id="inpFile" class="custom-file-input" type="file">
-                                    <label class="custom-file-label" for="inpFile">Choisir un fichier au format image</label>
-                                  </div>
-
-                                  <div class="form-group" align="center">
-                                    <input type="submit" name="file_submit" id="file_submit" class="btn perso_btn_primary shadow-none" value="Ajouter une image" />
-                                  </div>
-                          <?php
-                                }
-                                else if (isset($userdroit['ecriture'])){
-                                  if($userdroit['ecriture']=='Réalisation'){
-                          ?>
-                                    <div class="custom-file">
-                                      <input name="inpFile" id="inpFile" class="custom-file-input" type="file">
-                                      <label class="custom-file-label" for="inpFile">Choisir un fichier au format image</label>
-                                    </div>
-
-                                    <div class="form-group" align="center">
-                                      <input type="submit" name="file_submit" id="file_submit" class="btn perso_btn_primary shadow-none" value="Ajouter une image" />
-                                    </div>
-                          <?php
-                                  } 
-                                }                          
-                          ?>
-                        </form>
-
-
-                        <div class='image-preview' id='imagePreview'>
-                          <img class='image-preview__image' src='image/'>
-                          <span class='image-preview__default-text'>Image Preview</span>
-                          <!-- <p>".$row['image_text']."</p> -->
-                        </div>
-
                       </div>
                     </div>
                   </div>
@@ -1013,8 +928,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             }        
         ?>
         <script src="content/js/modules/sort_table.js"></script>
-        <script src="content/js/modules/browse_img.js"></script>
-        <script src="content/js/modules/ajax_pour_image.js"></script>
       </body>
   <?php
     }

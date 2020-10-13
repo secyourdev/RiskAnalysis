@@ -18,12 +18,12 @@ if ($_FILES['inpFile']['size'] != 0) {
     //if selection d'un scénario stratégique ou operationnel
     if (isset($_POST['select_nom_scenario_strategique'])) {
         $id_scenario = $_POST['select_nom_scenario_strategique'];
-        $sql = "UPDATE S_scenario_strategique SET image = '$image' WHERE id_projet = $getid_projet AND id_atelier = '3.b' AND id_scenario_strategique = $id_scenario";
+        $sql = "UPDATE S_scenario_strategique SET images = '$image' WHERE id_projet = $getid_projet AND id_atelier = '3.b' AND id_scenario_strategique = $id_scenario";
         $header = 'Location: ../../../atelier-3b&' . $_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#schemas_scenarios_strategiques';
     }
     if (isset($_POST['select_nom_scenario_operationnel'])) {
         $id_scenario = $_POST['select_nom_scenario_operationnel'];
-        $sql = "UPDATE U_scenario_operationnel SET image = '$image' WHERE id_projet = $getid_projet AND id_atelier = '4.a' AND id_scenario_operationnel = $id_scenario";
+        $sql = "UPDATE U_scenario_operationnel SET images = '$image' WHERE id_projet = $getid_projet AND id_atelier = '4.a' AND id_scenario_operationnel = $id_scenario";
         $header = 'Location: ../../../atelier-4a&' . $_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet'].'#schema_scenarios_operationnels';
     }
 

@@ -90,7 +90,7 @@ AND S_scenario_strategique.id_projet = $get_id_projet
 AND T_chemin_d_attaque_strategique.id_scenario_strategique = S_scenario_strategique.id_scenario_strategique");
 
 $insereope = $bdd->prepare("INSERT INTO U_scenario_operationnel
-(id_scenario_operationnel, nom_scenario_operationnel, description_scenario_operationnel, vraisemblance, image, id_atelier, id_chemin_d_attaque_strategique, id_risque, id_evenement_redoute, id_projet) 
+(id_scenario_operationnel, nom_scenario_operationnel, description_scenario_operationnel, vraisemblance, images, id_atelier, id_chemin_d_attaque_strategique, id_risque, id_evenement_redoute, id_projet) 
 VALUES (?,NULL,?,NULL,NULL,?,?,?,?,?)");
 
 
