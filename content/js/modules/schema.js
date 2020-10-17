@@ -111,8 +111,19 @@ function saveData(data, fileName) {
 
 async function saveFile(e) {
     var result = await bpmnModeler.saveXML({ format: true });
-    saveData(result.xml, "test.bpmn");
-    $('#button_schema_scenarios_strategiques').modal('hide');
+    saveData(result.xml, "schema.xml");
+    e.preventDefault()
+}
+
+async function saveSVG(e) {
+    var result = await bpmnModeler.saveSVG({ format: true });
+    saveData(result.svg, "schema.svg");
+    e.preventDefault()
+}
+
+async function saveImage(e) {
+    var result = await bpmnModeler.saveSVG({ format: true });
+    
     e.preventDefault()
 }
 
@@ -121,37 +132,25 @@ async function saveFileBDD(e) {
     var url = 'data:application/xml,' + encodeURIComponent(result.xml);
     enregistrement_schema_fn(url);
     $('#button_schema_scenarios_strategiques').modal('hide');
+    alert('Bien enregistré sur le serveur !')
     e.preventDefault()
 }
 /*---------------------------- OPEN SCHEMA ---------------------------------*/
 async function openDiagram(bpmnXML) {
-
-    try {
-        await bpmnModeler.importXML(bpmnXML);
-
-        var canvas = bpmnModeler.get('canvas');
-        var overlays = bpmnModeler.get('overlays');
-
-        overlays.add('SCAN_OK', 'note', {
-        position: {
-            bottom: 0,
-            right: 0
-        },
-        html: '<div class="diagram-note">Mixed up the labels?</div>'
-        });
-
-        canvas.addMarker('SCAN_OK', 'needs-discussion');
+    try {              
+       await bpmnModeler.importXML(bpmnXML);
     } catch (err) {
-
-        //console.error('could not import BPMN 2.0 diagram', err);
+        console.error('Could not import BPMN 2.0 diagram !', err);
     }
 }
 /*----------------------------- MAIN -------------------------------------*/
 function main() {
     var savefile = document.getElementById("savefile")
     var savefilebdd = document.getElementById('savefilebdd')
+    var saveimage = document.getElementById('saveimage')
     savefile.addEventListener("click", saveFile, false)
     savefilebdd.addEventListener('click',saveFileBDD,false)
+    saveimage.addEventListener('click',saveSVG,false)
 }
 
 
