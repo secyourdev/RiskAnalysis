@@ -6,6 +6,7 @@ var diagramUrl = fileName;
 const inpFile = document.getElementById("inpFile")
 var modifier_schema = document.getElementsByClassName('schema_button')
 var titre_schema = document.getElementById('titre_schema')
+var name_file;
 
 var lenght_modifier_schema = modifier_schema.length
 
@@ -62,6 +63,7 @@ function recuperation_schema_fn(){
                     $.get(schema_JSON[0][0], openDiagram, 'text');
                     id_scenario_strategique_schema = modifier_schema[i].parentNode.parentNode.id
                     titre_schema.innerText='Schéma du scénario stratégique - '+modifier_schema[i].parentNode.parentNode.childNodes[3].innerText
+                    name_file = suppression_espace(name_schema(id_projet,modifier_schema[i].parentNode.parentNode.childNodes[3].innerText.toLowerCase()))
                 }
             })
         });
@@ -111,19 +113,19 @@ function saveData(data, fileName) {
 
 async function saveFile(e) {
     var result = await bpmnModeler.saveXML({ format: true });
-    saveData(result.xml, "schema.xml");
+    saveData(result.xml, name_file+".xml");
     e.preventDefault()
 }
 
 async function saveSVG(e) {
     var result = await bpmnModeler.saveSVG({ format: true });
-    saveData(result.svg, "schema.svg");
+    saveData(result.svg, name_file+".svg");
     e.preventDefault()
 }
 
 async function saveImage(e) {
     var result = await bpmnModeler.saveSVG({ format: true });
-    
+    //CODE A FAIRE 
     e.preventDefault()
 }
 
@@ -143,7 +145,15 @@ async function openDiagram(bpmnXML) {
         console.error('Could not import BPMN 2.0 diagram !', err);
     }
 }
-/*----------------------------- MAIN -------------------------------------*/
+/*---------------------------- NOM SCHEMA ---------------------------------*/
+function name_schema(id_projet,nom_scenario){
+    var d = new Date();
+    return "projet_"+id_projet+"_schema_"+nom_scenario+"_"+d.YYYYMMDDHHMMSS()
+}
+function suppression_espace(value){
+    return value.replace(/ /g, '_');
+}
+/*------------------------------- MAIN ------------------------------------*/
 function main() {
     var savefile = document.getElementById("savefile")
     var savefilebdd = document.getElementById('savefilebdd')
