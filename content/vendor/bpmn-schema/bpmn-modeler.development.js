@@ -15383,7 +15383,7 @@
 	  function drawLine(parentGfx, waypoints, attrs) {
 	    attrs = computeStyle(attrs, [ 'no-fill' ], {
 	      stroke: 'black',
-	      strokeWidth: 2,
+	      strokeWidth: 0,
 	      fill: 'none'
 	    });
 
@@ -16181,27 +16181,15 @@
 
 	      var expandedPool = isExpanded(element);
 
-	      if (expandedPool) {
-	        drawLine(parentGfx, [
-	          { x: 30, y: 0 },
-	          { x: 30, y: element.height }
-	        ], {
-	          stroke: getStrokeColor(element, defaultStrokeColor)
-	        });
-	        var text = getSemantic(element).name;
-	        renderLaneLabel(parentGfx, text, element);
-	      } else {
-
-	        // Collapsed pool draw text inline
-	        var text2 = getSemantic(element).name;
-	        renderLabel(parentGfx, text2, {
-	          box: element, align: 'center-middle',
-	          style: {
-	            fill: getStrokeColor(element, defaultStrokeColor)
-	          }
-	        });
-	      }
-
+		  // Collapsed pool draw text inline
+		  var text2 = getSemantic(element).name;
+		  renderLabel(parentGfx, text2, {
+			box: element, align: 'center-middle',
+			style: {
+			fill: getStrokeColor(element, defaultStrokeColor)
+			}
+		  });
+	
 	      var participantMultiplicity = !!(getSemantic(element).participantMultiplicity);
 
 	      if (participantMultiplicity) {
@@ -16219,10 +16207,10 @@
 
 	      var semantic = getSemantic(element);
 
-	      if (semantic.$type === 'bpmn:Lane') {
-	        var text = semantic.name;
-	        renderLaneLabel(parentGfx, text, element);
-	      }
+	    //   if (semantic.$type === 'bpmn:Lane') {
+	    //     var text = semantic.name;
+	    //     renderLaneLabel(parentGfx, text, element);
+	    //   }
 
 	      return rect;
 	    },
@@ -29892,20 +29880,20 @@
 	 *
 	 * @returns {SVGElement}
 	 */
-	ConnectionPreview.prototype.createNoopConnection = function(start, end) {
-	  var connection = create('polyline');
+	// ConnectionPreview.prototype.createNoopConnection = function(start, end) {
+	//   var connection = create('polyline');
 
-	  attr$1(connection, {
-	    'stroke': '#333',
-	    'strokeDasharray': [ 1 ],
-	    'strokeWidth': 2,
-	    'pointer-events': 'none'
-	  });
+	//   attr$1(connection, {
+	//     'stroke': '#333',
+	//     'strokeDasharray': [ 1 ],
+	//     'strokeWidth': 2,
+	//     'pointer-events': 'none'
+	//   });
 
-	  attr$1(connection, { 'points': [ start.x, start.y, end.x, end.y ] });
+	//   attr$1(connection, { 'points': [ start.x, start.y, end.x, end.y ] });
 
-	  return connection;
-	};
+	//   return connection;
+	// };
 
 	// helpers //////////
 
@@ -34519,20 +34507,18 @@
 
 	var PARTICIPANT = [
 	  {
-	    label: 'Expanded Pool',
+	    label: 'Zone de travail',
 	    actionName: 'replace-with-expanded-pool',
-	    className: 'bpmn-icon-participant',
+	    className: 'bpmn-icon-lane',
 	    target: {
 	      type: 'bpmn:Participant',
 	      isExpanded: true
 	    }
 	  },
 	  {
-	    label: 'Collapsed Pool',
+	    label: 'Zone de texte',
 	    actionName: 'replace-with-collapsed-pool',
-
-	    // TODO(@janstuemmel): maybe design new icon
-	    className: 'bpmn-icon-lane',
+	    className: 'bpmn-icon-script',
 	    target: {
 	      type: 'bpmn:Participant',
 	      isExpanded: false
@@ -35566,7 +35552,7 @@
 	  }
 
 
-	  if (isAny(businessObject, [ 'bpmn:Lane', 'bpmn:Participant' ]) && isExpanded(businessObject)) {
+	  /* if (isAny(businessObject, [ 'bpmn:Lane', 'bpmn:Participant' ]) && isExpanded(businessObject)) {
 
 	    var childLanes = getChildLanes(element);
 
@@ -35625,7 +35611,7 @@
 	      }
 	    });
 
-	  }
+	  } */
 
 	  if (is$1(businessObject, 'bpmn:FlowNode')) {
 
@@ -37424,10 +37410,10 @@
 	  });
 
 	  // add label hit
-	  this._interactionEvents.createBoxHit(gfx, 'all', {
-	    width: LABEL_WIDTH,
-	    height: element.height
-	  });
+	//   this._interactionEvents.createBoxHit(gfx, 'all', {
+	//     width: LABEL_WIDTH,
+	//     height: element.height
+	//   });
 
 	  // indicate that we created a hit
 	  return true;
@@ -54547,13 +54533,13 @@
 	    // },
 	    'create.participant-expanded': {
 	      group: 'collaboration',
-	      className: 'bpmn-icon-participant',
-	      title: translate('Create Pool/Participant'),
+	      className: 'bpmn-icon-lane',
+	      title: translate('Zone de travail'),
 	      action: {
 	        dragstart: createParticipant,
 	        click: createParticipant
 	      }
-	    },
+		},
 	    // 'create.group': createAction(
 	    //   'bpmn:Group', 'artifact', 'bpmn-icon-group',
 	    //   translate('Create Group')
