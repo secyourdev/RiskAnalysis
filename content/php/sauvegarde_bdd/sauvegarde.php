@@ -253,9 +253,9 @@ class BackupMySQL extends mysqli {
 // Instance de la classe ( a copier autant que necessaire, mais attention au timeout )
 // Rq: pour les parametres, reprendre une ou plusieurs cles de $default ( dans la methode __construct() )
 new BackupMySQL(array(
-	'username' => 'ebios-rm',
-	'passwd' => 'hLLFL\bsF|&[8=m8q-$j',
-	'dbname' => 'ebios-rm_v28',
+	'username' => 'ebios-rm_admin',
+	'passwd' => '2HW8RYULUtnjkCD0pRtngaigq9J0',
+	'dbname' => 'ebios-rm_v29',
 	'host' => 'mysql-ebios-rm.alwaysdata.net',
 	'nbr_fichiers' => 2,
 	'nom_fichier' => 'sauvegarde'
