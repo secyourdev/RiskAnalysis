@@ -7,6 +7,9 @@ var grp_user_card = document.getElementById('grp_user_card')
 var apps_card = document.getElementById('apps_card')
 var bdd_card = document.getElementById('bdd_card')
 
+var menu_grp_user = document.getElementById('menu_grp_user')
+var menu_projet = document.getElementById('menu_projet')
+
 var tableau_de_bord_projet = document.getElementById('tableau_de_bord_projet')
 var tableau_de_bord_grp_user = document.getElementById('tableau_de_bord_grp_user')
 var tableau_de_bord_app = document.getElementById('tableau_de_bord_app')
@@ -15,7 +18,9 @@ var table = document.getElementById('table_app_user')
 
 var projets = document.getElementById('projets')
 var button_add_user_in_grp = document.getElementById('button_add_user_in_grp')
+var button_add_version = document.getElementById('button_add_version')
 var ajouter_user = document.getElementById('ajouter_user')
+var ajouter_version = document.getElementById('ajouter_version')
 
 var float_menu = document.getElementById('float_menu')
 
@@ -51,6 +56,8 @@ grp_user_card.style.display="none"
 apps_card.style.display="none"
 bdd_card.style.display="none"
 float_menu.style.display="none"
+menu_grp_user.style.display="none"
+menu_projet.style.display="none"
 /*--------------------------------- TABLES JS -------------------------------*/
 $(document).ready(function() {
     $('#editable_table').Tabledit({
@@ -93,6 +100,9 @@ OURJQUERYFN.setFilterTable("#rechercher_grp_user","#editable_table tbody tr")
 setSortTable('tableau_user');
 OURJQUERYFN.setFilterTable("#rechercher_user","#tableau_user tbody tr")
 
+setSortTable('tableau_version');
+OURJQUERYFN.setFilterTable("#rechercher_version","#tableau_version tbody tr")
+
 setSortTable('table_app_user');
 OURJQUERYFN.setFilterTable("#rechercher_app_utilisateur","#table_app_user tbody tr")
 
@@ -108,11 +118,13 @@ for(let i=0;i<table_cells_length;i++){
 switch (sessionStorage.getItem('button')){
     case 'project_card':
         chargement_onglet(project_card,grp_user_card,apps_card,bdd_card);
-        float_menu.style.display="none"
+        float_menu.style.display="inline"
+        menu_projet.style.display="inline"
         break;
     case 'grp_user_card':
         chargement_onglet(grp_user_card,project_card,apps_card,bdd_card);
         float_menu.style.display="inline"
+        menu_grp_user.style.display="inline"
         break;
     case 'apps_card':
         chargement_onglet(apps_card,project_card,grp_user_card,bdd_card);
@@ -135,8 +147,19 @@ function selection_onglet(onglet1,onglet2,onglet3,onglet4,button,cookies_value){
     button.addEventListener('click',function(){
         sessionStorage.setItem('button',cookies_value);
         chargement_onglet(onglet1,onglet2,onglet3,onglet4)
-        if(button==tableau_de_bord_grp_user) float_menu.style.display="inline"
-        else float_menu.style.display="none"
+        if(button==tableau_de_bord_grp_user) {
+            float_menu.style.display="inline"
+            menu_grp_user.style.display="inline"
+            menu_projet.style.display="none"
+        }
+        else if (button==tableau_de_bord_projet) {
+            float_menu.style.display="inline"
+            menu_projet.style.display="inline"
+            menu_grp_user.style.display="none"
+        }
+        else {
+            float_menu.style.display="none"
+        }
     })
 }
 
@@ -340,6 +363,25 @@ ajouter_user.addEventListener('click', (event) => {
         });
         location.reload();
         $('#ajout_user').modal('hide');
+      }
+    })
+  });
+
+  ajouter_version.addEventListener('click', (event) => {
+    $.ajax({
+      url: 'content/php/accueil/ajout_version.php',
+      type: 'POST',
+      data: {
+            id_projet: nomprojet.value,
+            num_version: num_version.value,
+            version_description: version_description.value
+      },
+      success: function (data) {
+        $('.modal-content').html('');
+        $('#ajout_version').on('hidden.bs.modal', function () {
+        });
+        location.reload();
+        $('#ajout_version').modal('hide');
       }
     })
   });

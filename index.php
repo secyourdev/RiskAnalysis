@@ -12,6 +12,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
 <?php 
     include("content/php/accueil/selection_grp_user.php");
     include("content/php/accueil/selection_user.php");
+    include("content/php/accueil/selection_projet2.php");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -86,8 +87,10 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
         <?php if($userinfo['type_compte']=='Administrateur Logiciel'){ 
         ?>  
-            <!-- Right Sidebar -->
+
+         <!-- Right Sidebar -->
             <ul id=menu>
+                <div id=menu_grp_user>
                 <li>
                     <a class="nav-link collapse-right-item menu_float" href="#groupes_utilisateur">
                         <i>
@@ -126,7 +129,49 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         <span class="nom_sous_menu">Utilisateurs</span>
                     </a>
                 </li>
+                </div>
+                <div id=menu_projet>
+                <li>
+                    <a class="nav-link collapse-right-item menu_float" href="#projets">
+                        <i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                                <g transform="translate(-1230 -689)">
+                                    <path class="number_activity active"
+                                        d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
+                                        transform="translate(1230 689)" fill="#ffffffcc" />
+                                    <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
+                                        fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
+                                        font-weight="700">
+                                        <tspan x="-3.432" y="0">1</tspan>
+                                    </text>
+                                </g>
+                            </svg>
+                        </i>
+                        <span class="nom_sous_menu">Projets</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link collapse-right-item menu_float" href="#versions">
+                        <i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                                <g transform="translate(-1230 -689)">
+                                    <path class="number_activity active"
+                                        d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
+                                        transform="translate(1230 689)" fill="#ffffffcc" />
+                                    <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
+                                        fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
+                                        font-weight="700">
+                                        <tspan x="-3.432" y="0">2</tspan>
+                                    </text>
+                                </g>
+                            </svg>
+                        </i>
+                        <span class="nom_sous_menu">Versions des projets</span>
+                    </a>
+                </li>
+                </div>
             </ul>
+            
             <!-- End of Right Sidebar -->
         <?php
             }
@@ -265,7 +310,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         ?>
                     </div>
                     
-
                     <div id="project_card" class="fondu">                       
                         <?php if($userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){
                         ?>
@@ -294,6 +338,68 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         ?>
                     </br>
                         <div class="row" id="projets"> </div>
+
+                        <!-- Area Card -->
+                        <div id="versions"> </div>
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0">Versions</h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="SelectProjetPop">Projets</label>
+                                    <select class="form-control" name="nomprojet" id="nomprojet">
+                                        <option value="" selected>...</option>
+                                        <?php
+                                            while($var_projet = $search_projet->fetch()){
+                                                echo '<option value="'.$var_projet['id_projet'].'">'.$var_projet['id_projet']."-".$var_projet['nom_projet'].'</option>';
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                <!--tableau-->
+                                <div class="table-responsive">
+                                    <input type="text" class="rechercher_input" id="rechercher_version"
+                                        placeholder="Rechercher">
+                                    <table id="tableau_version" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Numéro de version</th>
+                                                <th>Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="ecrire_version">
+                                        </tbody>
+                                    </table>
+                                    <div class='message_success'>
+                                    <?php 
+                                        if(isset($_SESSION['message_success_5'])){
+                                        echo $_SESSION['message_success_5'];
+                                        unset($_SESSION['message_success_5']);
+                                        }
+                                    ?>
+                                    </div> 
+                                    <div class='message_error'>
+                                    <?php                
+                                        if(isset($_SESSION['message_error_5'])){
+                                            echo $_SESSION['message_error_5'];
+                                            unset($_SESSION['message_error_5']);
+                                        }
+                                    ?>
+                                    </div>
+                                </div>
+                        
+                                <!-- bouton Ajouter une nouvelle ligne -->
+                                <div class="text-center">
+                                    <button id='button_add_version' type="button"
+                                        class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal"
+                                        data-target="#ajout_version">Ajouter une version</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <?php if($userinfo['type_compte']=='Administrateur Logiciel'){ 
@@ -665,9 +771,48 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                 </div>
 
                                 <div class="modal-footer perso_middle_modal_footer">
-                                    <input type="submit" name="ajouter_grp_user" value="Ajouter"
+                                <input type="submit" name="ajouter_grp_user" value="Ajouter"
                                         class="btn perso_btn shadow-none"></input>
                                 </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-------------------------------------------------------------------------------------------------------------- 
+        --------------------------------------------- modal ajout d'une version ----------------------------------------
+        ---------------------------------------------------------------------------------------------------------------->
+        <div class="modal fade" id="ajout_version" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ajout d'une version</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body perso_modal_body">
+                        <form>
+                            <fieldset>
+                                <!--Numéro de version-->
+                                <div class="form-group">
+                                    <label class="titre_input" for="version">Numéro de la version</label>
+                                    <input type="text" class="perso_form shadow-none form-control form-control-user"
+                                        name="num_version" id="num_version" placeholder="1" required></input>
+                               
+                                <!--Description de la version-->
+                                
+                                    <label class="titre_input" for="version">Description de la version</label>
+                                    <input type="text" class="perso_form shadow-none form-control form-control-user"
+                                        name="version_description" id="version_description" placeholder="Description de la version" required></input>
+                                </div>
+
+                                <div class="modal-footer perso_middle_modal_footer">
+                                    <button type="button" id='ajouter_version' name="ajouter_version"
+                                        class="btn perso_btn_primary perso_btn_spacing shadow-none">Ajouter Version</button>
+                                </div> 
                             </fieldset>
                         </form>
                     </div>
@@ -1092,6 +1237,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <script src="content/js/modules/importer_image.js"></script>
                 <script src="content/js/modules/browse.js"></script>
                 <script src="content/js/accueil/recherche_utilisateur.js"></script>
+                <script src="content/js/accueil/recherche_version.js"></script>
                 <script src="content/js/accueil/index_admin.js"></script>
                 
         <?php
