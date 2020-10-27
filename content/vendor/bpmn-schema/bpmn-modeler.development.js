@@ -15383,7 +15383,7 @@
 	  function drawLine(parentGfx, waypoints, attrs) {
 	    attrs = computeStyle(attrs, [ 'no-fill' ], {
 	      stroke: 'black',
-	      strokeWidth: 2,
+	      strokeWidth: 0,
 	      fill: 'none'
 	    });
 
@@ -16181,27 +16181,15 @@
 
 	      var expandedPool = isExpanded(element);
 
-	      if (expandedPool) {
-	        drawLine(parentGfx, [
-	          { x: 30, y: 0 },
-	          { x: 30, y: element.height }
-	        ], {
-	          stroke: getStrokeColor(element, defaultStrokeColor)
-	        });
-	        var text = getSemantic(element).name;
-	        renderLaneLabel(parentGfx, text, element);
-	      } else {
-
-	        // Collapsed pool draw text inline
-	        var text2 = getSemantic(element).name;
-	        renderLabel(parentGfx, text2, {
-	          box: element, align: 'center-middle',
-	          style: {
-	            fill: getStrokeColor(element, defaultStrokeColor)
-	          }
-	        });
-	      }
-
+		  // Collapsed pool draw text inline
+		  var text2 = getSemantic(element).name;
+		  renderLabel(parentGfx, text2, {
+			box: element, align: 'center-middle',
+			style: {
+			fill: getStrokeColor(element, defaultStrokeColor)
+			}
+		  });
+	
 	      var participantMultiplicity = !!(getSemantic(element).participantMultiplicity);
 
 	      if (participantMultiplicity) {
@@ -16219,10 +16207,10 @@
 
 	      var semantic = getSemantic(element);
 
-	      if (semantic.$type === 'bpmn:Lane') {
-	        var text = semantic.name;
-	        renderLaneLabel(parentGfx, text, element);
-	      }
+	    //   if (semantic.$type === 'bpmn:Lane') {
+	    //     var text = semantic.name;
+	    //     renderLaneLabel(parentGfx, text, element);
+	    //   }
 
 	      return rect;
 	    },
@@ -29892,20 +29880,20 @@
 	 *
 	 * @returns {SVGElement}
 	 */
-	ConnectionPreview.prototype.createNoopConnection = function(start, end) {
-	  var connection = create('polyline');
+	// ConnectionPreview.prototype.createNoopConnection = function(start, end) {
+	//   var connection = create('polyline');
 
-	  attr$1(connection, {
-	    'stroke': '#333',
-	    'strokeDasharray': [ 1 ],
-	    'strokeWidth': 2,
-	    'pointer-events': 'none'
-	  });
+	//   attr$1(connection, {
+	//     'stroke': '#333',
+	//     'strokeDasharray': [ 1 ],
+	//     'strokeWidth': 2,
+	//     'pointer-events': 'none'
+	//   });
 
-	  attr$1(connection, { 'points': [ start.x, start.y, end.x, end.y ] });
+	//   attr$1(connection, { 'points': [ start.x, start.y, end.x, end.y ] });
 
-	  return connection;
-	};
+	//   return connection;
+	// };
 
 	// helpers //////////
 
@@ -34166,30 +34154,30 @@
 	];
 
 	var TASK = [
-	  {
-	    label: 'Task',
-	    actionName: 'replace-with-task',
-	    className: 'bpmn-icon-task',
-	    target: {
-	      type: 'bpmn:Task'
-	    }
-	  },
-	  {
-	    label: 'Send Task',
-	    actionName: 'replace-with-send-task',
-	    className: 'bpmn-icon-send',
-	    target: {
-	      type: 'bpmn:SendTask'
-	    }
-	  },
-	  {
-	    label: 'Receive Task',
-	    actionName: 'replace-with-receive-task',
-	    className: 'bpmn-icon-receive',
-	    target: {
-	      type: 'bpmn:ReceiveTask'
-	    }
-	  },
+	//   {
+	//     label: 'Task',
+	//     actionName: 'replace-with-task',
+	//     className: 'bpmn-icon-task',
+	//     target: {
+	//       type: 'bpmn:Task'
+	//     }
+	//   },
+	//   {
+	//     label: 'Send Task',
+	//     actionName: 'replace-with-send-task',
+	//     className: 'bpmn-icon-send',
+	//     target: {
+	//       type: 'bpmn:SendTask'
+	//     }
+	//   },
+	//   {
+	//     label: 'Receive Task',
+	//     actionName: 'replace-with-receive-task',
+	//     className: 'bpmn-icon-receive',
+	//     target: {
+	//       type: 'bpmn:ReceiveTask'
+	//     }
+	//   },
 	  {
 	    label: 'User Task',
 	    actionName: 'replace-with-user-task',
@@ -34206,14 +34194,14 @@
 	      type: 'bpmn:ManualTask'
 	    }
 	  },
-	  {
-	    label: 'Business Rule Task',
-	    actionName: 'replace-with-rule-task',
-	    className: 'bpmn-icon-business-rule',
-	    target: {
-	      type: 'bpmn:BusinessRuleTask'
-	    }
-	  },
+	//   {
+	//     label: 'Business Rule Task',
+	//     actionName: 'replace-with-rule-task',
+	//     className: 'bpmn-icon-business-rule',
+	//     target: {
+	//       type: 'bpmn:BusinessRuleTask'
+	//     }
+	//   },
 	  {
 	    label: 'Service Task',
 	    actionName: 'replace-with-service-task',
@@ -34230,32 +34218,32 @@
 	      type: 'bpmn:ScriptTask'
 	    }
 	  },
-	  {
-	    label: 'Call Activity',
-	    actionName: 'replace-with-call-activity',
-	    className: 'bpmn-icon-call-activity',
-	    target: {
-	      type: 'bpmn:CallActivity'
-	    }
-	  },
-	  {
-	    label: 'Sub Process (collapsed)',
-	    actionName: 'replace-with-collapsed-subprocess',
-	    className: 'bpmn-icon-subprocess-collapsed',
-	    target: {
-	      type: 'bpmn:SubProcess',
-	      isExpanded: false
-	    }
-	  },
-	  {
-	    label: 'Sub Process (expanded)',
-	    actionName: 'replace-with-expanded-subprocess',
-	    className: 'bpmn-icon-subprocess-expanded',
-	    target: {
-	      type: 'bpmn:SubProcess',
-	      isExpanded: true
-	    }
-	  }
+	//   {
+	//     label: 'Call Activity',
+	//     actionName: 'replace-with-call-activity',
+	//     className: 'bpmn-icon-call-activity',
+	//     target: {
+	//       type: 'bpmn:CallActivity'
+	//     }
+	//   },
+	//   {
+	//     label: 'Sub Process (collapsed)',
+	//     actionName: 'replace-with-collapsed-subprocess',
+	//     className: 'bpmn-icon-subprocess-collapsed',
+	//     target: {
+	//       type: 'bpmn:SubProcess',
+	//       isExpanded: false
+	//     }
+	//   },
+	//   {
+	//     label: 'Sub Process (expanded)',
+	//     actionName: 'replace-with-expanded-subprocess',
+	//     className: 'bpmn-icon-subprocess-expanded',
+	//     target: {
+	//       type: 'bpmn:SubProcess',
+	//       isExpanded: true
+	//     }
+	//   }
 	];
 
 	var BOUNDARY_EVENT = [
@@ -34519,20 +34507,18 @@
 
 	var PARTICIPANT = [
 	  {
-	    label: 'Expanded Pool',
+	    label: 'Zone de travail',
 	    actionName: 'replace-with-expanded-pool',
-	    className: 'bpmn-icon-participant',
+	    className: 'bpmn-icon-lane',
 	    target: {
 	      type: 'bpmn:Participant',
 	      isExpanded: true
 	    }
 	  },
 	  {
-	    label: 'Collapsed Pool',
+	    label: 'Zone de texte',
 	    actionName: 'replace-with-collapsed-pool',
-
-	    // TODO(@janstuemmel): maybe design new icon
-	    className: 'bpmn-icon-lane',
+	    className: 'bpmn-icon-script',
 	    target: {
 	      type: 'bpmn:Participant',
 	      isExpanded: false
@@ -34952,38 +34938,38 @@
 
 
 	  var loopEntries = [
-	    {
-	      id: 'toggle-parallel-mi',
-	      className: 'bpmn-icon-parallel-mi-marker',
-	      title: translate('Parallel Multi Instance'),
-	      active: isParallel,
-	      action: toggleLoopEntry,
-	      options: {
-	        loopCharacteristics: 'bpmn:MultiInstanceLoopCharacteristics',
-	        isSequential: false
-	      }
-	    },
-	    {
-	      id: 'toggle-sequential-mi',
-	      className: 'bpmn-icon-sequential-mi-marker',
-	      title: translate('Sequential Multi Instance'),
-	      active: isSequential,
-	      action: toggleLoopEntry,
-	      options: {
-	        loopCharacteristics: 'bpmn:MultiInstanceLoopCharacteristics',
-	        isSequential: true
-	      }
-	    },
-	    {
-	      id: 'toggle-loop',
-	      className: 'bpmn-icon-loop-marker',
-	      title: translate('Loop'),
-	      active: isLoop,
-	      action: toggleLoopEntry,
-	      options: {
-	        loopCharacteristics: 'bpmn:StandardLoopCharacteristics'
-	      }
-	    }
+	    // {
+	    //   id: 'toggle-parallel-mi',
+	    //   className: 'bpmn-icon-parallel-mi-marker',
+	    //   title: translate('Parallel Multi Instance'),
+	    //   active: isParallel,
+	    //   action: toggleLoopEntry,
+	    //   options: {
+	    //     loopCharacteristics: 'bpmn:MultiInstanceLoopCharacteristics',
+	    //     isSequential: false
+	    //   }
+	    // },
+	    // {
+	    //   id: 'toggle-sequential-mi',
+	    //   className: 'bpmn-icon-sequential-mi-marker',
+	    //   title: translate('Sequential Multi Instance'),
+	    //   active: isSequential,
+	    //   action: toggleLoopEntry,
+	    //   options: {
+	    //     loopCharacteristics: 'bpmn:MultiInstanceLoopCharacteristics',
+	    //     isSequential: true
+	    //   }
+	    // },
+	    // {
+	    //   id: 'toggle-loop',
+	    //   className: 'bpmn-icon-loop-marker',
+	    //   title: translate('Loop'),
+	    //   active: isLoop,
+	    //   action: toggleLoopEntry,
+	    //   options: {
+	    //     loopCharacteristics: 'bpmn:StandardLoopCharacteristics'
+	    //   }
+	    // }
 	  ];
 	  return loopEntries;
 	};
@@ -35566,7 +35552,7 @@
 	  }
 
 
-	  if (isAny(businessObject, [ 'bpmn:Lane', 'bpmn:Participant' ]) && isExpanded(businessObject)) {
+	  /* if (isAny(businessObject, [ 'bpmn:Lane', 'bpmn:Participant' ]) && isExpanded(businessObject)) {
 
 	    var childLanes = getChildLanes(element);
 
@@ -35625,7 +35611,7 @@
 	      }
 	    });
 
-	  }
+	  } */
 
 	  if (is$1(businessObject, 'bpmn:FlowNode')) {
 
@@ -35685,26 +35671,26 @@
 	        !isEventSubProcess(businessObject)) {
 
 	      assign(actions, {
-	        'append.end-event': appendAction(
-	          'bpmn:EndEvent',
-	          'bpmn-icon-end-event-none',
-	          translate('Append EndEvent')
-	        ),
-	        'append.gateway': appendAction(
-	          'bpmn:ExclusiveGateway',
-	          'bpmn-icon-gateway-none',
-	          translate('Append Gateway')
-	        ),
-	        'append.append-task': appendAction(
-	          'bpmn:Task',
-	          'bpmn-icon-task',
-	          translate('Append Task')
-	        ),
-	        'append.intermediate-event': appendAction(
-	          'bpmn:IntermediateThrowEvent',
-	          'bpmn-icon-intermediate-event-none',
-	          translate('Append Intermediate/Boundary Event')
-	        )
+	        // 'append.end-event': appendAction(
+	        //   'bpmn:EndEvent',
+	        //   'bpmn-icon-end-event-none',
+	        //   translate('Append EndEvent')
+	        // ),
+	        // 'append.gateway': appendAction(
+	        //   'bpmn:ExclusiveGateway',
+	        //   'bpmn-icon-gateway-none',
+	        //   translate('Append Gateway')
+	        // ),
+	        // 'append.append-task': appendAction(
+	        //   'bpmn:Task',
+	        //   'bpmn-icon-task',
+	        //   translate('Append Task')
+	        // ),
+	        // 'append.intermediate-event': appendAction(
+	        //   'bpmn:IntermediateThrowEvent',
+	        //   'bpmn-icon-intermediate-event-none',
+	        //   translate('Append Intermediate/Boundary Event')
+	        // )
 	      });
 	    }
 	  }
@@ -35739,7 +35725,7 @@
 	  ])) {
 
 	    assign(actions, {
-	      'append.text-annotation': appendAction('bpmn:TextAnnotation', 'bpmn-icon-text-annotation'),
+	      //'append.text-annotation': appendAction('bpmn:TextAnnotation', 'bpmn-icon-text-annotation'),
 
 	      'connect': {
 	        group: 'connect',
@@ -37424,10 +37410,10 @@
 	  });
 
 	  // add label hit
-	  this._interactionEvents.createBoxHit(gfx, 'all', {
-	    width: LABEL_WIDTH,
-	    height: element.height
-	  });
+	//   this._interactionEvents.createBoxHit(gfx, 'all', {
+	//     width: LABEL_WIDTH,
+	//     height: element.height
+	//   });
 
 	  // indicate that we created a hit
 	  return true;
@@ -54504,56 +54490,60 @@
 	      group: 'tools',
 	      separator: true
 	    },
-	    'create.start-event': createAction(
-	      'bpmn:StartEvent', 'event', 'bpmn-icon-start-event-none',
-	      translate('Create StartEvent')
-	    ),
-	    'create.intermediate-event': createAction(
-	      'bpmn:IntermediateThrowEvent', 'event', 'bpmn-icon-intermediate-event-none',
-	      translate('Create Intermediate/Boundary Event')
-	    ),
-	    'create.end-event': createAction(
-	      'bpmn:EndEvent', 'event', 'bpmn-icon-end-event-none',
-	      translate('Create EndEvent')
-	    ),
-	    'create.exclusive-gateway': createAction(
-	      'bpmn:ExclusiveGateway', 'gateway', 'bpmn-icon-gateway-none',
-	      translate('Create Gateway')
-	    ),
+	    // 'create.start-event': createAction(
+	    //   'bpmn:StartEvent', 'event', 'bpmn-icon-start-event-none',
+	    //   translate('Create StartEvent')
+	    // ),
+	    // 'create.intermediate-event': createAction(
+	    //   'bpmn:IntermediateThrowEvent', 'event', 'bpmn-icon-intermediate-event-none',
+	    //   translate('Create Intermediate/Boundary Event')
+	    // ),
+	    // 'create.end-event': createAction(
+	    //   'bpmn:EndEvent', 'event', 'bpmn-icon-end-event-none',
+	    //   translate('Create EndEvent')
+	    // ),
+	    // 'create.exclusive-gateway': createAction(
+	    //   'bpmn:ExclusiveGateway', 'gateway', 'bpmn-icon-gateway-none',
+	    //   translate('Create Gateway')
+	    // ),
 	    'create.task': createAction(
 	      'bpmn:Task', 'activity', 'bpmn-icon-task',
 	      translate('Create Task')
-	    ),
-	    'create.data-object': createAction(
-	      'bpmn:DataObjectReference', 'data-object', 'bpmn-icon-data-object',
-	      translate('Create DataObjectReference')
-	    ),
-	    'create.data-store': createAction(
-	      'bpmn:DataStoreReference', 'data-store', 'bpmn-icon-data-store',
-	      translate('Create DataStoreReference')
-	    ),
-	    'create.subprocess-expanded': {
-	      group: 'activity',
-	      className: 'bpmn-icon-subprocess-expanded',
-	      title: translate('Create expanded SubProcess'),
-	      action: {
-	        dragstart: createSubprocess,
-	        click: createSubprocess
-	      }
-	    },
+		),
+		'create.user': createAction(
+			'bpmn:UserTask', 'user', 'bpmn-icon-user',
+			translate('Create User')
+		),
+	    // 'create.data-object': createAction(
+	    //   'bpmn:DataObjectReference', 'data-object', 'bpmn-icon-data-object',
+	    //   translate('Create DataObjectReference')
+	    // ),
+	    // 'create.data-store': createAction(
+	    //   'bpmn:DataStoreReference', 'data-store', 'bpmn-icon-data-store',
+	    //   translate('Create DataStoreReference')
+	    // ),
+	    // 'create.subprocess-expanded': {
+	    //   group: 'activity',
+	    //   className: 'bpmn-icon-subprocess-expanded',
+	    //   title: translate('Create expanded SubProcess'),
+	    //   action: {
+	    //     dragstart: createSubprocess,
+	    //     click: createSubprocess
+	    //   }
+	    // },
 	    'create.participant-expanded': {
 	      group: 'collaboration',
-	      className: 'bpmn-icon-participant',
-	      title: translate('Create Pool/Participant'),
+	      className: 'bpmn-icon-lane',
+	      title: translate('Zone de travail'),
 	      action: {
 	        dragstart: createParticipant,
 	        click: createParticipant
 	      }
-	    },
-	    'create.group': createAction(
-	      'bpmn:Group', 'artifact', 'bpmn-icon-group',
-	      translate('Create Group')
-	    ),
+		},
+	    // 'create.group': createAction(
+	    //   'bpmn:Group', 'artifact', 'bpmn-icon-group',
+	    //   translate('Create Group')
+	    // ),
 	  });
 
 	  return actions;

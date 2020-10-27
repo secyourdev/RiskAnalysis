@@ -927,7 +927,7 @@ h6 {
 ::-webkit-scrollbar {
     width     : 8px;
     height    : 8px;
-    background: var(---card-divider);
+    background: var(--card-divider);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -1567,3 +1567,9 @@ h6 {
     bottom: 20px;
     left: 20px;
   }
+
+/*   polyline{
+    fill: none !important;
+    stroke: none !important;
+    stroke-width: 0px!important;
+  }OVERRIDE */
