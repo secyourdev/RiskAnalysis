@@ -37404,10 +37404,10 @@
 	  });
 
 	  // add label hit
-	  this._interactionEvents.createBoxHit(gfx, 'all', {
-	    width: element.width,
-	    height: element.height
-	  });
+	//   this._interactionEvents.createBoxHit(gfx, 'all', {
+	//     width: LABEL_WIDTH,
+	//     height: element.height
+	//   });
 
 	  // indicate that we created a hit
 	  return true;
@@ -54546,9 +54546,7 @@
 	    // 'create.group': createAction(
 	    //   'bpmn:Group', 'artifact', 'bpmn-icon-group',
 	    //   translate('Create Group')
-	    // ),
-	  });
-
+		});
 	  return actions;
 	};
 
