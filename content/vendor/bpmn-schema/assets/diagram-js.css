@@ -258,7 +258,7 @@ svg.new-parent {
 marker.djs-dragger circle,
 marker.djs-dragger path,
 marker.djs-dragger polygon,
-marker.djs-dragger polyline,
+/*marker.djs-dragger polyline,*/
 marker.djs-dragger rect {
   fill: var(--element-dragger-color) !important;
   stroke: none !important;
