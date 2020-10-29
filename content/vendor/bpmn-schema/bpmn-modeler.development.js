@@ -15929,32 +15929,7 @@
 	    'bpmn:ServiceTask': function(parentGfx, element) {
 	      var task = renderer('bpmn:Task')(parentGfx, element);
 
-	      var pathDataBG = pathMap.getScaledPath('TASK_TYPE_SERVICE', {
-	        abspos: {
-	          x: 12,
-	          y: 18
-	        }
-	      });
-
-	      /* service bg */ drawPath(parentGfx, pathDataBG, {
-	        strokeWidth: 1,
-	        fill: getFillColor(element, defaultFillColor),
-	        stroke: getStrokeColor(element, defaultStrokeColor)
-	      });
-
-	      var fillPathData = pathMap.getScaledPath('TASK_TYPE_SERVICE_FILL', {
-	        abspos: {
-	          x: 17.2,
-	          y: 18
-	        }
-	      });
-
-	      /* service fill */ drawPath(parentGfx, fillPathData, {
-	        strokeWidth: 0,
-	        fill: getFillColor(element, defaultFillColor)
-	      });
-
-	      var pathData = pathMap.getScaledPath('TASK_TYPE_SERVICE', {
+	      var pathData = pathMap.getScaledPath('USER', {
 	        abspos: {
 	          x: 17,
 	          y: 22
@@ -15962,8 +15937,8 @@
 	      });
 
 	      /* service */ drawPath(parentGfx, pathData, {
-	        strokeWidth: 1,
-	        fill: getFillColor(element, defaultFillColor),
+	        strokeWidth: 0.25,
+			fill: 0,
 	        stroke: getStrokeColor(element, defaultStrokeColor)
 	      });
 
@@ -17681,7 +17656,7 @@
 	        '-4.20799998,3.36699999 -4.20699998,4.34799999 z'
 		},
 		'VALEUR_METIER' : {
-		  d: "M 50 18.8 c -15.4 0 -27.9 12.4 -27.9 27.7 S 34.6 74.3 50 74.3 s 27.9 -12.4 27.9 -27.7 S 65.4 18.8 50 18.8 z M 50 67.1 c -11.4 0 -20.7 -9.2 -20.7 -20.6 c 0 -11.4 9.2 -20.6 20.7 -20.6 c 11.4 0 20.7 9.2 20.7 20.6 C 70.7 57.9 61.4 67.1 50 67.1 z M 50 32.2 c -7.9 0 -14.4 6.4 -14.4 14.3 S 42.1 60.8 50 60.8 s 14.4 -6.4 14.4 -14.3 S 57.9 32.2 50 32.2 z M 50 53.7 c -4 0 -7.2 -3.2 -7.2 -7.2 s 3.2 -7.2 7.2 -7.2 s 7.2 3.2 7.2 7.2 S 54 53.7 50 53.7 z"
+		  d: "M 49.9 26.3 c -11.1 0 -20.1 8.9 -20.1 19.8 S 38.8 66 49.9 66 S 70 57.1 70 46.2 S 61 26.3 49.9 26.3 z M 49.9 60.9 c -8.2 0 -14.9 -6.6 -14.9 -14.7 s 6.7 -14.7 14.9 -14.7 s 14.9 6.6 14.9 14.7 S 58.2 60.9 49.9 60.9 z M 49.9 35.9 c -5.7 0 -10.4 4.6 -10.4 10.2 s 4.6 10.2 10.4 10.2 s 10.4 -4.6 10.4 -10.2 S 55.6 35.9 49.9 35.9 z M 49.9 51.3 c -2.9 0 -5.2 -2.3 -5.2 -5.1 s 2.3 -5.1 5.2 -5.1 s 5.2 2.3 5.2 5.1 C 55.1 49 52.8 51.3 49.9 51.3 z"
 		}, 
 	    'TASK_TYPE_MANUAL': {
 	      d: 'm {mx},{my} c 0.234,-0.01 5.604,0.008 8.029,0.004 0.808,0 1.271,-0.172 1.417,-0.752 0.227,-0.898 ' +
@@ -17699,7 +17674,10 @@
 	    },
 	    'TASK_TYPE_INSTANTIATING_SEND': {
 	      d: 'm {mx},{my} l 0,8.4 l 12.6,0 l 0,-8.4 z l 6.3,3.6 l 6.3,-3.6'
-	    },
+		},
+		'USER' : {
+		  d: "M 49.9 46.2 c 5.3 0 9.6 -4.4 9.6 -9.9 s -4.3 -9.9 -9.6 -9.9 s -9.6 4.4 -9.6 9.9 S 44.6 46.2 49.9 46.2 z M 56.6 48.6 h -1.2 c -1.7 0.8 -3.5 1.2 -5.5 1.2 c -1.9 0 -3.8 -0.4 -5.5 -1.2 h -1.2 c -5.5 0 -10 4.7 -10 10.4 v 3.2 c 0 2.1 1.6 3.7 3.6 3.7 h 26.3 c 2 0 3.6 -1.7 3.6 -3.7 v -3.2 C 66.7 53.3 62.2 48.6 56.6 48.6 z"
+		},
 	    'TASK_TYPE_SERVICE': {
 	      d: 'm {mx},{my} v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 ' +
 	        '0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 ' +
@@ -30023,7 +30001,7 @@
 	  options = this.options = options || {};
 
 	  style = this.style = style || {};
-	  console.log(style)
+
 	  var parentStyle = pick(style, [
 	    'width',
 	    'height',
@@ -54479,7 +54457,7 @@
 		},
 		'create.participant-expanded': {
 			group: 'collaboration',
-			className: 'far fa-square',
+			className: 'fas fa-vector-square',
 			title: translate('Conteneur'),
 			action: {
 			  dragstart: createParticipant,
@@ -54512,13 +54490,17 @@
 	    //   'bpmn:ExclusiveGateway', 'gateway', 'bpmn-icon-gateway-none',
 	    //   translate('Create Gateway')
 	    // ),
-	    // 'create.user': createAction(
-		// 	'bpmn:UserTask', 'user', 'fas fa-user-secret',
-		// 	translate('Attaquant')
-		// ),
-		'create.task': createAction(
-			'bpmn:Task', 'activity', 'fas fa-user-alt',
+	    'create.hacker': createAction(
+			'bpmn:UserTask', 'user', 'fas fa-user-secret',
+			translate('Attaquant')
+		),
+		'create.user': createAction(
+			'bpmn:ServiceTask', 'user', 'fas fa-user',
 			translate('Partie prenante')
+		),
+		'create.task': createAction(
+			'bpmn:Task', 'activity', 'far fa-square',
+			translate('Zone de texte')
 		),		
 		'create.value': createAction(
 			'bpmn:ManualTask', 'user', 'fas fa-bullseye',
