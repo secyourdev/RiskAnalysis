@@ -152,12 +152,13 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                     <div id="licenses" class="align_justify card-header col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                         <h6 class="align_center m-0">Licenses</h6></br>
                                         <p>Bootstrap - Use MIT License - We have a permission to modify, to distribute, to use on private case and to sell.</p>
-                                        <p>jQuery - Use MIT License - We have a permission to modify, to distribute, to use on private case and to sell.</p>
-                                        <p>jQuery TableEdit - Use MIT License - We have a permission to modify, to distribute, to use on private case and to sell.</p>
+                                        <p>BPMN - Use BPMN License - We have a permission to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software.</p>
                                         <p>Chart.js - Use MIT License - We have a permission to modify, to distribute, to use on private case and to sell.</p>
-                                        <p>SheetJS - Use Apache License 2.0 - We have a permission to modify, to distribute, to use on private case and to sell.</p>
                                         <p>Font Awesome Code - Use MIT License - We have a permission to modify, to distribute, to use on private case and to sell.</p>
                                         <p>Font Awesome Icons - Use CC BY 4.0 License -  We have a permission to share an icone and to adapt this one with a remix, transformation, and build upon the material for any purpose, even commercially etc...</p>
+                                        <p>jQuery - Use MIT License - We have a permission to modify, to distribute, to use on private case and to sell.</p>
+                                        <p>jQuery TableEdit - Use MIT License - We have a permission to modify, to distribute, to use on private case and to sell.</p>
+                                        <p>SheetJS - Use Apache License 2.0 - We have a permission to modify, to distribute, to use on private case and to sell.</p>
                                     </div>
                                 </div>
                             </div>

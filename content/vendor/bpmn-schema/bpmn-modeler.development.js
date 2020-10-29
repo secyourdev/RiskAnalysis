@@ -13990,16 +13990,16 @@
 	var lightbox;
 
 	function open() {
-
+	var button_schema_scenarios_strategiques = document.getElementById('button_schema_scenarios_strategiques')
 	  if (!lightbox) {
 	    lightbox = domify(LIGHTBOX_MARKUP);
 
 	    delegateEvents.bind(lightbox, '.backdrop', 'click', function(event) {
-	      document.body.removeChild(lightbox);
+			button_schema_scenarios_strategiques.removeChild(lightbox);
 	    });
 	  }
 
-	  document.body.appendChild(lightbox);
+	  button_schema_scenarios_strategiques.appendChild(lightbox);
 	}
 
 	/**
