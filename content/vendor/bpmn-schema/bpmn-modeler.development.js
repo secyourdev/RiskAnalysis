@@ -15180,32 +15180,50 @@
 
 	  function createMarker(id, type, fill, stroke) {
 
+		if (type === 'sequenceflow-start') {
+			var sequenceflowStart = create('path');
+			attr$1(sequenceflowStart, { d: 'm 9 5 l 0 -3 l -7 3 l 7 3 z'});
+  
+			
+			addMarker(id, {
+			  element: sequenceflowStart,
+			  //scale: 0.75,
+			  attrs: {
+				fill: fill,
+				stroke: stroke,
+	          	strokeLinecap: 'butt'
+			  },
+			  ref: { x: 2, y: 5 }
+			});
+		}
+
 	    if (type === 'sequenceflow-end') {
 	      var sequenceflowEnd = create('path');
-	      attr$1(sequenceflowEnd, { d: 'M 1 5 L 11 10 L 1 15 Z' });
+	      attr$1(sequenceflowEnd, { d: 'm 1 5 l 0 -3 l 7 3 l -7 3 z' });
 
 	      addMarker(id, {
 	        element: sequenceflowEnd,
-	        ref: { x: 11, y: 10 },
-	        scale: 0.5,
 	        attrs: {
-	          fill: stroke,
-	          stroke: stroke
-	        }
+	            fill: fill,
+				stroke: stroke,
+	          	strokeLinecap: 'butt'
+			},
+			ref: { x: 8.5, y: 5 }
 	      });
-	    }
+		}
 
 	    if (type === 'messageflow-start') {
-	      var messageflowStart = create('circle');
-	      attr$1(messageflowStart, { cx: 6, cy: 6, r: 3.5 });
+	      var messageflowStart = create('path');
+	      attr$1(messageflowStart, { d: 'm 9 5 l 0 -3 l -7 3 l 7 3 z'});
 
 	      addMarker(id, {
 	        element: messageflowStart,
 	        attrs: {
 	          fill: fill,
-	          stroke: stroke
+			  stroke: stroke,
+			  strokeLinecap: 'butt'
 	        },
-	        ref: { x: 6, y: 6 }
+	        ref: { x: 1, y: 5 }
 	      });
 	    }
 
@@ -15954,48 +15972,20 @@
 	    'bpmn:UserTask': function(parentGfx, element) {
 	      var task = renderer('bpmn:Task')(parentGfx, element);
 
-	      var x = 15;
-	      var y = 12;
-
-	      var pathData = pathMap.getScaledPath('TASK_TYPE_USER_1', {
+	      var pathData = pathMap.getScaledPath('HACKER', {
 	        abspos: {
-	          x: x,
-	          y: y
-	        }
+				x: 17,
+				y: 15
+			}
 	      });
 
 	      /* user path */ drawPath(parentGfx, pathData, {
-	        strokeWidth: 0.5,
-	        fill: getFillColor(element, defaultFillColor),
+			strokeWidth: 0.25,
+			fill: 0,
 	        stroke: getStrokeColor(element, defaultStrokeColor)
 	      });
 
-	      var pathData2 = pathMap.getScaledPath('TASK_TYPE_USER_2', {
-	        abspos: {
-	          x: x,
-	          y: y
-	        }
-	      });
-
-	      /* user2 path */ drawPath(parentGfx, pathData2, {
-	        strokeWidth: 0.5,
-	        fill: getFillColor(element, defaultFillColor),
-	        stroke: getStrokeColor(element, defaultStrokeColor)
-	      });
-
-	      var pathData3 = pathMap.getScaledPath('TASK_TYPE_USER_3', {
-	        abspos: {
-	          x: x,
-	          y: y
-	        }
-	      });
-
-	      /* user3 path */ drawPath(parentGfx, pathData3, {
-	        strokeWidth: 0.5,
-	        fill: getStrokeColor(element, defaultStrokeColor),
-	        stroke: getStrokeColor(element, defaultStrokeColor)
-	      });
-
+	     
 	      return task;
 	    },
 	    'bpmn:ManualTask': function(parentGfx, element) {
@@ -16382,8 +16372,10 @@
 	          stroke = getStrokeColor(element, defaultStrokeColor);
 
 	      var attrs = {
-	        strokeLinejoin: 'round',
-	        markerEnd: marker('sequenceflow-end', fill, stroke),
+			//strokeLinejoin: 'round',
+			markerEnd: marker('sequenceflow-end', fill, stroke),
+			markerStart: marker('sequenceflow-start', fill, stroke),
+			strokeWidth: '1.5px',
 	        stroke: getStrokeColor(element, defaultStrokeColor)
 	      };
 
@@ -16468,9 +16460,9 @@
 	      var attrs = {
 	        markerEnd: marker('messageflow-end', fill, stroke),
 	        markerStart: marker('messageflow-start', fill, stroke),
-	        strokeDasharray: '10, 12',
-	        strokeLinecap: 'round',
-	        strokeLinejoin: 'round',
+	        //strokeDasharray: '10, 12',
+	        //strokeLinecap: 'round',
+	        //strokeLinejoin: 'round',
 	        strokeWidth: '1.5px',
 	        stroke: getStrokeColor(element, defaultStrokeColor)
 	      };
@@ -17249,7 +17241,7 @@
 	    }
 
 	    var tspan = create('tspan');
-	    attr$1(tspan, { x: x, y: y });
+	    attr$1(tspan, { x: x, y: 25 });
 
 	    tspan.textContent = line.text;
 
@@ -17668,7 +17660,10 @@
 	      width:  12.6,
 	      heightElements: [6, 14],
 	      widthElements: [10.5, 21]
-	    },
+		},
+		'HACKER' : {
+		  d:"M 17.003906 13.292969 L 18.058594 10.59375 C 18.238281 10.140625 17.898438 9.660156 17.398438 9.660156 L 14.804688 9.660156 C 15.292969 8.84375 15.59375 7.910156 15.59375 6.898438 L 15.59375 6.886719 C 17.332031 6.550781 18.429688 6.0625 18.429688 5.519531 C 18.429688 4.945312 17.21875 4.4375 15.324219 4.097656 C 14.917969 2.683594 14.128906 1.257812 13.527344 0.527344 C 13.105469 0.0117188 12.378906 -0.148438 11.777344 0.148438 L 10.554688 0.742188 C 10.15625 0.933594 9.6875 0.933594 9.285156 0.742188 L 8.066406 0.148438 C 7.460938 -0.148438 6.738281 0.0117188 6.316406 0.527344 C 5.71875 1.257812 4.925781 2.683594 4.515625 4.097656 C 2.625 4.4375 1.417969 4.945312 1.417969 5.519531 C 1.417969 6.0625 2.515625 6.550781 4.25 6.886719 L 4.25 6.898438 C 4.25 7.910156 4.550781 8.84375 5.039062 9.660156 L 2.492188 9.660156 C 1.984375 9.660156 1.644531 10.164062 1.84375 10.621094 L 2.984375 13.214844 C 1.210938 14.21875 0 16.070312 0 18.214844 L 0 20.144531 C 0 21.210938 0.890625 22.078125 1.984375 22.078125 L 17.855469 22.078125 C 18.953125 22.078125 19.839844 21.210938 19.839844 20.144531 L 19.839844 18.214844 C 19.839844 16.125 18.699219 14.316406 17.003906 13.292969 Z M 7.796875 20.699219 L 5.953125 12.417969 L 8.148438 13.796875 L 9.210938 15.523438 Z M 12.046875 20.699219 L 10.628906 15.523438 L 11.691406 13.796875 L 13.890625 12.417969 Z M 13.894531 7.828125 C 13.71875 8.339844 13.582031 8.886719 13.160156 9.265625 C 12.714844 9.667969 11.035156 10.230469 10.328125 8.1875 C 10.203125 7.828125 9.644531 7.828125 9.519531 8.1875 C 8.765625 10.351562 7.039062 9.585938 6.683594 9.265625 C 6.261719 8.886719 6.121094 8.339844 5.953125 7.828125 C 5.917969 7.71875 5.671875 7.578125 5.671875 7.574219 L 5.671875 7.109375 C 6.925781 7.265625 8.375 7.359375 9.925781 7.359375 C 11.476562 7.359375 12.921875 7.269531 14.175781 7.109375 L 14.175781 7.574219 C 14.171875 7.578125 13.929688 7.714844 13.894531 7.828125 Z M 13.894531 7.828125"
+		},
 	    'TASK_TYPE_USER_1': {
 	      d: 'm {mx},{my} c 0.909,-0.845 1.594,-2.049 1.594,-3.385 0,-2.554 -1.805,-4.62199999 ' +
 	        '-4.357,-4.62199999 -2.55199998,0 -4.28799998,2.06799999 -4.28799998,4.62199999 0,1.348 ' +
@@ -29996,7 +29991,7 @@
 	  this.autoResize = bind(this.autoResize, this);
 	  this.handlePaste = bind(this.handlePaste, this);
 	}
-
+	
 
 	/**
 	 * Create a text box with the given position, size, style and text content
@@ -30025,7 +30020,7 @@
 	  options = this.options = options || {};
 
 	  style = this.style = style || {};
-
+	  console.log(style)
 	  var parentStyle = pick(style, [
 	    'width',
 	    'height',
@@ -30045,7 +30040,7 @@
 	    'transform'
 	  ]);
 
-	  assign(parent.style, {
+	  assign(parent.style, {		
 	    width: bounds.width + 'px',
 	    height: bounds.height + 'px',
 	    maxWidth: bounds.maxWidth + 'px',
@@ -30061,7 +30056,8 @@
 	    boxSizing: 'border-box',
 	    wordWrap: 'normal',
 	    textAlign: 'center',
-	    outline: 'none'
+		outline: 'none'
+		
 	  }, parentStyle);
 
 	  var contentStyle = pick(style, [
@@ -34178,22 +34174,22 @@
 	//       type: 'bpmn:ReceiveTask'
 	//     }
 	//   },
-	  {
-	    label: 'User Task',
-	    actionName: 'replace-with-user-task',
-	    className: 'bpmn-icon-user',
-	    target: {
-	      type: 'bpmn:UserTask'
-	    }
-	  },
-	  {
-	    label: 'Manual Task',
-	    actionName: 'replace-with-manual-task',
-	    className: 'bpmn-icon-manual',
-	    target: {
-	      type: 'bpmn:ManualTask'
-	    }
-	  },
+	//   {
+	//     label: 'User Task',
+	//     actionName: 'replace-with-user-task',
+	//     className: 'bpmn-icon-user',
+	//     target: {
+	//       type: 'bpmn:UserTask'
+	//     }
+	//   },
+	//   {
+	//     label: 'Manual Task',
+	//     actionName: 'replace-with-manual-task',
+	//     className: 'bpmn-icon-manual',
+	//     target: {
+	//       type: 'bpmn:ManualTask'
+	//     }
+	//   },
 	//   {
 	//     label: 'Business Rule Task',
 	//     actionName: 'replace-with-rule-task',
@@ -34202,22 +34198,22 @@
 	//       type: 'bpmn:BusinessRuleTask'
 	//     }
 	//   },
-	  {
-	    label: 'Service Task',
-	    actionName: 'replace-with-service-task',
-	    className: 'bpmn-icon-service',
-	    target: {
-	      type: 'bpmn:ServiceTask'
-	    }
-	  },
-	  {
-	    label: 'Script Task',
-	    actionName: 'replace-with-script-task',
-	    className: 'bpmn-icon-script',
-	    target: {
-	      type: 'bpmn:ScriptTask'
-	    }
-	  },
+	//   {
+	//     label: 'Service Task',
+	//     actionName: 'replace-with-service-task',
+	//     className: 'bpmn-icon-service',
+	//     target: {
+	//       type: 'bpmn:ServiceTask'
+	//     }
+	//   },
+	//   {
+	//     label: 'Script Task',
+	//     actionName: 'replace-with-script-task',
+	//     className: 'bpmn-icon-script',
+	//     target: {
+	//       type: 'bpmn:ScriptTask'
+	//     }
+	//   },
 	//   {
 	//     label: 'Call Activity',
 	//     actionName: 'replace-with-call-activity',
@@ -35698,23 +35694,23 @@
 	  if (!popupMenu.isEmpty(element, 'bpmn-replace')) {
 
 	    // Replace menu entry
-	    assign(actions, {
-	      'replace': {
-	        group: 'edit',
-	        className: 'bpmn-icon-screw-wrench',
-	        title: translate('Change type'),
-	        action: {
-	          click: function(event, element) {
+	    // assign(actions, {
+	    //   'replace': {
+	    //     group: 'edit',
+	    //     className: 'bpmn-icon-screw-wrench',
+	    //     title: translate('Change type'),
+	    //     action: {
+	    //       click: function(event, element) {
 
-	            var position = assign(getReplaceMenuPosition(element), {
-	              cursor: { x: event.x, y: event.y }
-	            });
+	    //         var position = assign(getReplaceMenuPosition(element), {
+	    //           cursor: { x: event.x, y: event.y }
+	    //         });
 
-	            popupMenu.open(element, 'bpmn-replace', position);
-	          }
-	        }
-	      }
-	    });
+	    //         popupMenu.open(element, 'bpmn-replace', position);
+	    //       }
+	    //     }
+	    //   }
+	    // });
 	  }
 
 	  if (isAny(businessObject, [
@@ -35729,10 +35725,8 @@
 
 	      'connect': {
 	        group: 'connect',
-	        className: 'bpmn-icon-connection-multi',
-	        title: translate('Connect using ' +
-	                  (businessObject.isForCompensation ? '' : 'Sequence/MessageFlow or ') +
-	                  'Association'),
+	        className: 'fas fa-arrows-alt-h',
+	        title: translate('Évènement'),
 	        action: {
 	          click: startConnect,
 	          dragstart: startConnect
@@ -35774,7 +35768,7 @@
 	    assign(actions, {
 	      'delete': {
 	        group: 'edit',
-	        className: 'bpmn-icon-trash',
+	        className: 'fas fa-trash-alt',
 	        title: translate('Remove'),
 	        action: {
 	          click: removeElement
@@ -47964,7 +47958,7 @@
 
 	  if (is$1(semantic, 'bpmn:Participant')) {
 	    if (isExpanded(semantic)) {
-	      return { width: 600, height: 250 };
+	      return { width: 330, height: 640 };
 	    } else {
 	      return { width: 400, height: 60 };
 	    }
@@ -54448,8 +54442,8 @@
 	  assign(actions, {
 	    'hand-tool': {
 	      group: 'tools',
-	      className: 'bpmn-icon-hand-tool',
-	      title: translate('Activate the hand tool'),
+	      className: 'far fa-hand-paper',
+	      title: translate('Déplacer la page courante'),
 	      action: {
 	        click: function(event) {
 	          handTool.activateHand(event);
@@ -54458,35 +54452,25 @@
 	    },
 	    'lasso-tool': {
 	      group: 'tools',
-	      className: 'bpmn-icon-lasso-tool',
-	      title: translate('Activate the lasso tool'),
+	      className: 'far fa-object-group',
+	      title: translate('Sélecteur'),
 	      action: {
 	        click: function(event) {
 	          lassoTool.activateSelection(event);
 	        }
 	      }
 	    },
-	    'space-tool': {
-	      group: 'tools',
-	      className: 'bpmn-icon-space-tool',
-	      title: translate('Activate the create/remove space tool'),
-	      action: {
-	        click: function(event) {
-	          spaceTool.activateSelection(event);
-	        }
-	      }
-	    },
-	    'global-connect-tool': {
-	      group: 'tools',
-	      className: 'bpmn-icon-connection-multi',
-	      title: translate('Activate the global connect tool'),
-	      action: {
-	        click: function(event) {
-	          globalConnect.toggle(event);
-	        }
-	      }
-	    },
-	    'tool-separator': {
+	    // 'space-tool': {
+	    //   group: 'tools',
+	    //   className: 'bpmn-icon-space-tool',
+	    //   title: translate('Activate the create/remove space tool'),
+	    //   action: {
+	    //     click: function(event) {
+	    //       spaceTool.activateSelection(event);
+	    //     }
+	    //   }
+		// },
+		'tool-separator': {
 	      group: 'tools',
 	      separator: true
 	    },
@@ -54507,12 +54491,12 @@
 	    //   translate('Create Gateway')
 	    // ),
 	    'create.task': createAction(
-	      'bpmn:Task', 'activity', 'bpmn-icon-task',
-	      translate('Create Task')
+	      'bpmn:Task', 'activity', 'fas fa-user-alt',
+	      translate('Partie prenante')
 		),
 		'create.user': createAction(
-			'bpmn:UserTask', 'user', 'bpmn-icon-user',
-			translate('Create User')
+			'bpmn:UserTask', 'user', 'fas fa-user-secret',
+			translate('Attaquant')
 		),
 	    // 'create.data-object': createAction(
 	    //   'bpmn:DataObjectReference', 'data-object', 'bpmn-icon-data-object',
@@ -54533,19 +54517,36 @@
 	    // },
 	    'create.participant-expanded': {
 	      group: 'collaboration',
-	      className: 'bpmn-icon-lane',
-	      title: translate('Zone de travail'),
+	      className: 'far fa-square',
+	      title: translate('Conteneur'),
 	      action: {
 	        dragstart: createParticipant,
 	        click: createParticipant
 	      }
 		},
+		'global-connect-tool': {
+			group: 'collaboration',
+			className: 'fas fa-arrows-alt-h',
+			title: translate('Évènement'),
+			action: {
+			  click: function(event) {
+				globalConnect.toggle(event);
+			  }
+			}
+		  }
+		/* 'create.participant-collasped': {
+			group: 'collaboration',
+			className: 'bpmn-icon-script',
+			title: translate('Zone de texte'),
+			action: {
+			   dragstart: createParticipant,
+			   click: createParticipant
+			}
+		}, */
 	    // 'create.group': createAction(
 	    //   'bpmn:Group', 'artifact', 'bpmn-icon-group',
 	    //   translate('Create Group')
-	    // ),
-	  });
-
+		});
 	  return actions;
 	};
 
