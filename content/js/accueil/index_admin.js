@@ -425,6 +425,18 @@ function generer_mdp_fn(){
     });
     }
 }
+
+
+
+function remSelOpt(sel1)
+{
+ len1 = sel1.options.length;
+ for (i=0;i<len1 ;i++ )  {
+   sel1.remove(0);
+  }
+}
+
+
 /*------------------------- MODIFICATION & SUPPRESSION PROJET ----------------------*/
 function modification_projet(){
     var modif_icon = document.getElementsByClassName('modif_icon');
@@ -433,9 +445,32 @@ function modification_projet(){
     var nom_etude_modif = document.getElementById('nom_etude_modif')
     var description_etude_modif = document.getElementById('description_etude_modif')
     var chef_de_projet_modif = document.getElementById('chef_de_projet_modif')
+    var id_num_version_modif = document.getElementById('id_num_version_modif')
     var id_grp_utilisateur_modif = document.getElementById('id_grp_utilisateur_modif')
     for(let i=0;i<lenght_modif_icon;i++){
         modif_icon[i].addEventListener('click',function(){
+            $.ajax({
+                url: 'content/php/accueil/selection_projet_admin_modification_version_icon.php',
+                type: 'POST',
+                data: {
+                      id_projet: modif_icon[i].parentNode.previousSibling.id
+                },
+                dataType: 'html',
+                success: function (resultat) {
+                    // Récuépration de la list des versions
+                    var projet_JSON = JSON.parse(resultat);
+                    console.log(projet_JSON)
+                    // Effacement des options si elle existe
+                    remSelOpt(id_num_version_modif);
+                    // Récupération du nombre de versions
+                    for (let j = 0; j < projet_JSON.length; j++) {
+                        var opt = document.createElement("option");
+                        opt.setAttribute("value", projet_JSON[j][0]);
+                        opt.text = projet_JSON[j][0];
+                        id_num_version_modif.appendChild(opt);
+                    }
+                }
+              })
             $.ajax({
                 url: 'content/php/accueil/selection_projet_admin_modification_icon.php',
                 type: 'POST',
@@ -451,6 +486,8 @@ function modification_projet(){
                     description_etude_modif.value = projet_JSON[0][2]
                     chef_de_projet_modif.value = projet_JSON[0][3]
                     id_grp_utilisateur_modif.value = projet_JSON[0][4]
+                   // id_num_version.value = projet_JSON[0][5]
+
                 }
               })
         })    

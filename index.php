@@ -1014,7 +1014,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                             }
                                         ?>
                                     </select>
-                                </div>           
+                                </div>        
 
                                 <!--GROUPE UTILISATEUR-->
                                 <div class="form-group">
@@ -1032,10 +1032,26 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                     </select>
                                 </div>
 
+                                <!--NUMERO DE VERSION-->
+                                <div class="form-group">
+                                    <label for="num_version_modif">Numéro de version</label>
+                                    <select class="form-control" name="id_num_version_modif" id="id_num_version_modif">
+                                        <option value="" selected>...</option>
+                                        <?php
+                                        while($row = mysqli_fetch_array($result_chef_de_projet_modification))
+                                            {
+                                                echo '
+                                                <option value="'.$row["id_utilisateur"].'">'.$row["nom"].' '.$row["prenom"].'</option>
+                                                ';
+                                            }
+                                        ?>
+                                    </select>
+                                </div> 
+
                                 <div class="modal-footer perso_middle_modal_footer">
                                     <input type="submit" name="modifier_projet" value="Modifier"
                                         class="btn perso_btn shadow-none"></input>
-                                </div>
+                                </div>  
                             </fieldset>
                         </form>
                     </div>
