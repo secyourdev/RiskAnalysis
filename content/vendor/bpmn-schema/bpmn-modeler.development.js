@@ -15991,7 +15991,7 @@
 	    'bpmn:ManualTask': function(parentGfx, element) {
 	      var task = renderer('bpmn:Task')(parentGfx, element);
 
-	      var pathData = pathMap.getScaledPath('TASK_TYPE_MANUAL', {
+	      var pathData = pathMap.getScaledPath('VALEUR_METIER', {
 	        abspos: {
 	          x: 17,
 	          y: 15
@@ -15999,8 +15999,8 @@
 	      });
 
 	      /* manual path */ drawPath(parentGfx, pathData, {
-	        strokeWidth: 0.5, // 0.25,
-	        fill: getFillColor(element, defaultFillColor),
+	        strokeWidth: 0.25,
+	        fill: 0,
 	        stroke: getStrokeColor(element, defaultStrokeColor)
 	      });
 
@@ -17241,7 +17241,7 @@
 	    }
 
 	    var tspan = create('tspan');
-	    attr$1(tspan, { x: x, y: 25 });
+	    attr$1(tspan, { x: x, y: 15 });
 
 	    tspan.textContent = line.text;
 
@@ -17662,7 +17662,7 @@
 	      widthElements: [10.5, 21]
 		},
 		'HACKER' : {
-		  d:"M 17.003906 13.292969 L 18.058594 10.59375 C 18.238281 10.140625 17.898438 9.660156 17.398438 9.660156 L 14.804688 9.660156 C 15.292969 8.84375 15.59375 7.910156 15.59375 6.898438 L 15.59375 6.886719 C 17.332031 6.550781 18.429688 6.0625 18.429688 5.519531 C 18.429688 4.945312 17.21875 4.4375 15.324219 4.097656 C 14.917969 2.683594 14.128906 1.257812 13.527344 0.527344 C 13.105469 0.0117188 12.378906 -0.148438 11.777344 0.148438 L 10.554688 0.742188 C 10.15625 0.933594 9.6875 0.933594 9.285156 0.742188 L 8.066406 0.148438 C 7.460938 -0.148438 6.738281 0.0117188 6.316406 0.527344 C 5.71875 1.257812 4.925781 2.683594 4.515625 4.097656 C 2.625 4.4375 1.417969 4.945312 1.417969 5.519531 C 1.417969 6.0625 2.515625 6.550781 4.25 6.886719 L 4.25 6.898438 C 4.25 7.910156 4.550781 8.84375 5.039062 9.660156 L 2.492188 9.660156 C 1.984375 9.660156 1.644531 10.164062 1.84375 10.621094 L 2.984375 13.214844 C 1.210938 14.21875 0 16.070312 0 18.214844 L 0 20.144531 C 0 21.210938 0.890625 22.078125 1.984375 22.078125 L 17.855469 22.078125 C 18.953125 22.078125 19.839844 21.210938 19.839844 20.144531 L 19.839844 18.214844 C 19.839844 16.125 18.699219 14.316406 17.003906 13.292969 Z M 7.796875 20.699219 L 5.953125 12.417969 L 8.148438 13.796875 L 9.210938 15.523438 Z M 12.046875 20.699219 L 10.628906 15.523438 L 11.691406 13.796875 L 13.890625 12.417969 Z M 13.894531 7.828125 C 13.71875 8.339844 13.582031 8.886719 13.160156 9.265625 C 12.714844 9.667969 11.035156 10.230469 10.328125 8.1875 C 10.203125 7.828125 9.644531 7.828125 9.519531 8.1875 C 8.765625 10.351562 7.039062 9.585938 6.683594 9.265625 C 6.261719 8.886719 6.121094 8.339844 5.953125 7.828125 C 5.917969 7.71875 5.671875 7.578125 5.671875 7.574219 L 5.671875 7.109375 C 6.925781 7.265625 8.375 7.359375 9.925781 7.359375 C 11.476562 7.359375 12.921875 7.269531 14.175781 7.109375 L 14.175781 7.574219 C 14.171875 7.578125 13.929688 7.714844 13.894531 7.828125 Z M 13.894531 7.828125"
+		  d:"M 67.4 52.2 l 2.7 -6.8 c 0.5 -1.1 -0.4 -2.4 -1.7 -2.4 h -6.7 c 1.3 -2 2 -4.4 2 -6.9 v 0 c 4.5 -0.8 7.4 -2.1 7.4 -3.4 c 0 -1.4 -3.1 -2.7 -8.1 -3.6 c -1.1 -3.6 -3.1 -7.1 -4.7 -9 c -1.1 -1.3 -3 -1.7 -4.5 -1 l -3.2 1.5 c -1 0.5 -2.3 0.5 -3.3 0 l -3.2 -1.5 c -1.6 -0.7 -3.4 -0.3 -4.5 1 c -1.6 1.8 -3.6 5.4 -4.7 9 c -4.9 0.9 -8 2.1 -8 3.6 c 0 1.4 2.9 2.6 7.4 3.4 v 0 c 0 2.5 0.8 4.9 2 6.9 h -6.6 c -1.3 0 -2.2 1.3 -1.7 2.4 l 3 6.5 c -4.6 2.5 -7.7 7.2 -7.7 12.6 v 4.9 c 0 2.7 2.3 4.9 5.2 4.9 h 41.2 c 2.8 0 5.2 -2.2 5.2 -4.9 v -4.9 C 74.8 59.3 71.8 54.7 67.4 52.2 z M 43.5 70.8 L 38.7 50 l 5.7 3.5 l 2.8 4.3 L 43.5 70.8 z M 54.5 70.8 l -3.7 -13 l 2.8 -4.3 l 5.7 -3.5 L 54.5 70.8 z M 59.3 38.4 c -0.4 1.3 -0.8 2.7 -1.9 3.6 c -1.2 1 -5.5 2.4 -7.4 -2.7 c -0.3 -0.9 -1.8 -0.9 -2.1 0 c -2 5.4 -6.4 3.5 -7.4 2.7 c -1.1 -1 -1.5 -2.3 -1.9 -3.6 c -0.1 -0.3 -0.7 -0.6 -0.7 -0.6 v -1.2 c 3.3 0.4 7 0.6 11 0.6 s 7.8 -0.2 11 -0.6 v 1.2 C 60 37.8 59.4 38.1 59.3 38.4 z"
 		},
 	    'TASK_TYPE_USER_1': {
 	      d: 'm {mx},{my} c 0.909,-0.845 1.594,-2.049 1.594,-3.385 0,-2.554 -1.805,-4.62199999 ' +
@@ -17679,7 +17679,10 @@
 	      d: 'm {mx},{my} m -6.9,-3.80 c 0,0 2.25099998,-2.358 4.27399998,-1.177 2.024,1.181 4.221,1.537 ' +
 	        '4.124,0.965 -0.098,-0.57 -0.117,-3.79099999 -4.191,-4.13599999 -3.57499998,0.001 ' +
 	        '-4.20799998,3.36699999 -4.20699998,4.34799999 z'
-	    },
+		},
+		'VALEUR_METIER' : {
+		  d: "M 50 18.8 c -15.4 0 -27.9 12.4 -27.9 27.7 S 34.6 74.3 50 74.3 s 27.9 -12.4 27.9 -27.7 S 65.4 18.8 50 18.8 z M 50 67.1 c -11.4 0 -20.7 -9.2 -20.7 -20.6 c 0 -11.4 9.2 -20.6 20.7 -20.6 c 11.4 0 20.7 9.2 20.7 20.6 C 70.7 57.9 61.4 67.1 50 67.1 z M 50 32.2 c -7.9 0 -14.4 6.4 -14.4 14.3 S 42.1 60.8 50 60.8 s 14.4 -6.4 14.4 -14.3 S 57.9 32.2 50 32.2 z M 50 53.7 c -4 0 -7.2 -3.2 -7.2 -7.2 s 3.2 -7.2 7.2 -7.2 s 7.2 3.2 7.2 7.2 S 54 53.7 50 53.7 z"
+		}, 
 	    'TASK_TYPE_MANUAL': {
 	      d: 'm {mx},{my} c 0.234,-0.01 5.604,0.008 8.029,0.004 0.808,0 1.271,-0.172 1.417,-0.752 0.227,-0.898 ' +
 	        '-0.334,-1.314 -1.338,-1.316 -2.467,-0.01 -7.886,-0.004 -8.108,-0.004 -0.014,-0.079 0.016,-0.533 0,-0.61 ' +
@@ -37404,10 +37407,10 @@
 	  });
 
 	  // add label hit
-	//   this._interactionEvents.createBoxHit(gfx, 'all', {
-	//     width: LABEL_WIDTH,
-	//     height: element.height
-	//   });
+	  this._interactionEvents.createBoxHit(gfx, 'all', {
+	    width: element.width,
+	    height: element.height
+	  });
 
 	  // indicate that we created a hit
 	  return true;
@@ -37427,7 +37430,7 @@
 	  // add label hit
 	  this._interactionEvents.createBoxHit(gfx, 'all', {
 	    width: element.width,
-	    height: LABEL_HEIGHT
+	    height: element.height
 	  });
 
 	  // indicate that we created a hit
@@ -54473,7 +54476,26 @@
 		'tool-separator': {
 	      group: 'tools',
 	      separator: true
-	    },
+		},
+		'create.participant-expanded': {
+			group: 'collaboration',
+			className: 'far fa-square',
+			title: translate('Conteneur'),
+			action: {
+			  dragstart: createParticipant,
+			  click: createParticipant
+			}
+		},
+		'global-connect-tool': {
+			group: 'collaboration',
+			className: 'fas fa-arrows-alt-h',
+			title: translate('Évènement'),
+			action: {
+			click: function(event) {
+				globalConnect.toggle(event);
+			}
+			}
+		},
 	    // 'create.start-event': createAction(
 	    //   'bpmn:StartEvent', 'event', 'bpmn-icon-start-event-none',
 	    //   translate('Create StartEvent')
@@ -54490,14 +54512,18 @@
 	    //   'bpmn:ExclusiveGateway', 'gateway', 'bpmn-icon-gateway-none',
 	    //   translate('Create Gateway')
 	    // ),
-	    'create.task': createAction(
-	      'bpmn:Task', 'activity', 'fas fa-user-alt',
-	      translate('Partie prenante')
-		),
-		'create.user': createAction(
-			'bpmn:UserTask', 'user', 'fas fa-user-secret',
-			translate('Attaquant')
-		),
+	    // 'create.user': createAction(
+		// 	'bpmn:UserTask', 'user', 'fas fa-user-secret',
+		// 	translate('Attaquant')
+		// ),
+		'create.task': createAction(
+			'bpmn:Task', 'activity', 'fas fa-user-alt',
+			translate('Partie prenante')
+		),		
+		'create.value': createAction(
+			'bpmn:ManualTask', 'user', 'fas fa-bullseye',
+			translate('Valeur Métier')
+		)
 	    // 'create.data-object': createAction(
 	    //   'bpmn:DataObjectReference', 'data-object', 'bpmn-icon-data-object',
 	    //   translate('Create DataObjectReference')
@@ -54515,25 +54541,6 @@
 	    //     click: createSubprocess
 	    //   }
 	    // },
-	    'create.participant-expanded': {
-	      group: 'collaboration',
-	      className: 'far fa-square',
-	      title: translate('Conteneur'),
-	      action: {
-	        dragstart: createParticipant,
-	        click: createParticipant
-	      }
-		},
-		'global-connect-tool': {
-			group: 'collaboration',
-			className: 'fas fa-arrows-alt-h',
-			title: translate('Évènement'),
-			action: {
-			  click: function(event) {
-				globalConnect.toggle(event);
-			  }
-			}
-		  }
 		/* 'create.participant-collasped': {
 			group: 'collaboration',
 			className: 'bpmn-icon-script',
