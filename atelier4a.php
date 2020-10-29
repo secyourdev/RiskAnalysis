@@ -45,12 +45,18 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <!-- CSS -->
     <link href="content/css/bootstrap.css" rel="stylesheet">
     <link href="content/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="content/vendor/bpmn-schema/assets/diagram-js.css">
+    <link rel="stylesheet" href="content/vendor/bpmn-schema/assets/bpmn-font/css/bpmn.css">
 
     <!-- JS -->
     <script src="content/vendor/jquery/jquery.js"></script>
     <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
     <script src="content/vendor/sheet-js/xlsx.full.min.js"></script>
     <script src="content/vendor/sheet-js/FileSaver.js"></script>
+    <script src="content/vendor/bpmn-schema/bpmn-modeler.development.js"></script>
+    <script type="text/javascript"> 
+      var id_projet='<?php echo $_SESSION['id_projet'];?>' 
+    </script>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
@@ -646,7 +652,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <th id="numero_risque">N° Risque</th>
                                 <th id="chemin_attaque_strategique">Chemin d'attaque stratégique</th>
                                 <th id="scenario_operationnel">Scénario opérationnel</th>
-                                <!--RAJOUTER LE SYSTEME DE MODELISATION DE SCHEMA-->
+                                <th>Schéma</th>
                               </tr>
                             </thead>
 
@@ -659,6 +665,10 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <td>' . $row["id_risque"] . '</td>
                               <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
                               <td>' . $row["description_scenario_operationnel"] . '</td>
+                              <td>  <a class="schema_button" data-toggle="modal" data-target="#button_schema_scenarios_operationnels">
+                                      <i class="fas fa-project-diagram fa-md "></i>
+                                    </a>
+                              </td>
                               </tr>
                               ';
                               }
@@ -864,6 +874,37 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <i class="fas fa-bars"></i>
         </a>                     
 
+<?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid||(isset($userdroit['ecriture'])&&$userdroit['ecriture']=='Réalisation')){ 
+?> 
+<!----------------------------------------------------------------------------------------------------------------- 
+-------------------------------------- modal Ajout d'un schéma du scénario stratégique --------------------------------------
+--------------------------------------------------------------------------------------------------------------- -->
+<div class="modal fade right" id="button_schema_scenarios_operationnels" tabindex="-1" role="dialog" aria-labelledby="exampleModalPreviewLabel" aria-hidden="true">
+    <div class="modal-dialog-full-width modal-dialog momodel modal-fluid" role="document">
+        <div class="modal-content-full-width modal-content ">
+            <div class=" modal-header-full-width   modal-header text-center">
+                <h5 class="modal-title w-100" id="titre_schema">Schéma du scénario opérationnel</h5>
+                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                    <span style="font-size: 1.3em;" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="canvas"></div>
+              </div>
+              <div class="modal-footer-full-width  modal-footer">
+                  <!-- <button id="save-button" type="button" class="btn btn-primary btn-md btn-rounded">print to console</button> -->
+                  <button id="browseFile" type="button" class="btn btn-primary btn-md btn-rounded" onclick="document.getElementById('inpFile').click();">Parcourir</button>
+                  <button id="savefile" type="button" class="btn btn-primary btn-md btn-rounded">Enregistrer en .xml</button>
+                  <button id="saveimage" type="button" class="btn btn-primary btn-md btn-rounded">Enregistrer en .svg</button>
+                  <button id="savefilebdd" type="button" class="btn btn-primary btn-md btn-rounded">Enregistrer sur le serveur</button>
+                  <input id="inpFile" class="custom-file-input" type="file" style="display:none;">
+              </div>
+        </div>
+    </div>
+</div> 
+<?php
+}
+?>
         <!-- Logout Modal-->
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -906,9 +947,9 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <script src="content/js/modules/fixed_page.js"></script>
         <script src="content/js/modules/realtime.js"></script>
         <script src="content/js/modules/set_filter_sort_table.js"></script>
-        <script src="content/js/modules/merge_line_on_table.js"></script>
         <script src="content/js/modules/dateString.js"></script>
         <script src="content/js/modules/export_table_to_excel.js"></script>
+        <script src="content/js/modules/4a_schema.js"></script>
         <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
         ?>
             <script src="content/js/atelier/atelier4a.js"></script>

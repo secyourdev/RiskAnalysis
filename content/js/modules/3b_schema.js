@@ -134,7 +134,7 @@ async function saveFileBDD(e) {
     var url = 'data:application/xml,' + encodeURIComponent(result.xml);
     enregistrement_schema_fn(url);
     $('#button_schema_scenarios_strategiques').modal('hide');
-    alert('Bien enregistré sur le serveur !')
+    alert('Le schéma du scénario stratégique a bien été enregistré !')
     e.preventDefault()
 }
 /*---------------------------- OPEN SCHEMA ---------------------------------*/
