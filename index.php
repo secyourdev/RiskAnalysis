@@ -523,8 +523,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                 <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#config_bdd" >Configurer la base de données</button></br>
                                 <a href="content/php/sauvegarde_bdd/sauvegarde.php" class="btn perso_btn_primary perso_btn_spacing shadow-none">Sauvegarder la base de données</a></br>
                                 <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#import_bdd">Importer la base de données</button></br>  
-                                <a href="content/php/sauvegarde_image/sauvegarde.php" class="btn perso_btn_primary perso_btn_spacing shadow-none">Sauvegarder les schémas</a></br>
-                                <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#import_image">Importer des schémas</button></br>  
                             </div>
                         </div>     
                     </div>
@@ -1089,7 +1087,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         ?>
                 <script src="content/js/modules/set_filter_sort_table.js"></script>
                 <script src="content/js/modules/importer_bdd.js"></script>
-                <script src="content/js/modules/importer_image.js"></script>
                 <script src="content/js/modules/browse.js"></script>
                 <script src="content/js/accueil/recherche_utilisateur.js"></script>
                 <script src="content/js/accueil/index_admin.js"></script>

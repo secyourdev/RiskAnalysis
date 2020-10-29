@@ -719,7 +719,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <td>' . $row["description_source_de_risque"] . ' / ' . $row["objectif_vise"] . '</td>
                         <td>' . $row["nom_evenement_redoute"] . '</td>
                         <td>' . $row["niveau_de_gravite"] . '</td>
-                        <td>  <a class="schema_button" data-toggle="modal" data-target="#button_schema_scenarios_strategiques"">
+                        <td>  <a class="schema_button" data-toggle="modal" data-target="#button_schema_scenarios_strategiques">
                                 <i class="fas fa-project-diagram fa-md "></i>
                               </a>
                         </td>
