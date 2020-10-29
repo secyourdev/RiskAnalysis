@@ -51,7 +51,7 @@ $.ajax({
 
             var h6 = document.createElement('h6')
             h6.setAttribute('class', 'm-0')
-            h6.innerHTML = 'Projet #' + projet_JSON[i][0] + " : " + projet_JSON[i][1]
+            h6.innerHTML = 'Projet #' + projet_JSON[i][11] + " : " + projet_JSON[i][1]
 
             var div4 = document.createElement('div')
             div4.setAttribute('class', 'card-body')

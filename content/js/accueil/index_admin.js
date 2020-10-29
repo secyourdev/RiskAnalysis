@@ -215,6 +215,7 @@ $.ajax({
     dataType: 'html',
     success: function (resultat) {
         var projet_JSON = JSON.parse(resultat);
+        console.log(projet_JSON);
         lenght_projet = projet_JSON.length;
         for (let i = lenght_projet-1; i >= 0; i--) {
             var projets = document.getElementById('projets');
@@ -256,7 +257,7 @@ $.ajax({
             var h6 = document.createElement('h6')
             h6.setAttribute('id', projet_JSON[i][0])
             h6.setAttribute('class', 'm-0')
-            h6.innerHTML = 'Projet #' + projet_JSON[i][0] + " : " + projet_JSON[i][1]
+            h6.innerHTML = 'Projet #' + projet_JSON[i][11] + " : " + projet_JSON[i][1]
 
             var div_modif = document.createElement('div')
             div_modif.setAttribute('class', 'modification')
@@ -277,6 +278,9 @@ $.ajax({
             var label = document.createElement('label')
             label.innerHTML = projet_JSON[i][2]
 
+            var label3 = document.createElement('label')
+            label3.innerHTML = 'Version : '+projet_JSON[i]["num_version"]
+
             var label2 = document.createElement('label')
             if(projet_JSON[i][3]==null)
                 label2.innerHTML = 'Date de fin du projet : A définir'
@@ -284,9 +288,12 @@ $.ajax({
                 label2.innerHTML = 'Date de fin du projet : ' + projet_JSON[i][3]
 
             var br = document.createElement('br')
+            var br1 = document.createElement('br')
 
             div4.appendChild(label)
             div4.appendChild(br)
+            div4.appendChild(label3)
+            div4.appendChild(br1)
             div4.appendChild(label2)
             div3.appendChild(h6)
             div_modif.appendChild(pen)
@@ -306,9 +313,9 @@ $.ajax({
             grp_user = lenght_grp_user; 
             app = lenght_user;
             sleep(100).then(() => {compteur_anim();});
-            modification_projet();
-            suppression_projet();
         }
+        modification_projet();
+        suppression_projet();
     },
     error: function (erreur) {
         alert('ERROR :' + erreur);
@@ -447,6 +454,7 @@ function modification_projet(){
     var chef_de_projet_modif = document.getElementById('chef_de_projet_modif')
     var id_num_version_modif = document.getElementById('id_num_version_modif')
     var id_grp_utilisateur_modif = document.getElementById('id_grp_utilisateur_modif')
+    i = 0;
     for(let i=0;i<lenght_modif_icon;i++){
         modif_icon[i].addEventListener('click',function(){
             $.ajax({
@@ -460,15 +468,21 @@ function modification_projet(){
                     // Récuépration de la list des versions
                     var projet_JSON = JSON.parse(resultat);
                     console.log(projet_JSON)
-                    // Effacement des options si elle existe
+                    // Effacement des options si elles existent
                     remSelOpt(id_num_version_modif);
                     // Récupération du nombre de versions
                     for (let j = 0; j < projet_JSON.length; j++) {
                         var opt = document.createElement("option");
                         opt.setAttribute("value", projet_JSON[j][0]);
-                        opt.text = projet_JSON[j][0];
+                        opt.text = projet_JSON[j][1];
                         id_num_version_modif.appendChild(opt);
+                        // Par défaut, la version choisit est la dernière.
+                        if (j == (projet_JSON.length -1)){
+                            opt.selected  = 'selected';
+                        }
                     }
+
+
                 }
               })
             $.ajax({
@@ -486,8 +500,6 @@ function modification_projet(){
                     description_etude_modif.value = projet_JSON[0][2]
                     chef_de_projet_modif.value = projet_JSON[0][3]
                     id_grp_utilisateur_modif.value = projet_JSON[0][4]
-                   // id_num_version.value = projet_JSON[0][5]
-
                 }
               })
         })    

@@ -337,8 +337,12 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             }
                         ?>
                     </br>
+                        <!-- Zone pour liste des projets -->
                         <div class="row" id="projets"> </div>
 
+                        <?php if($userinfo['type_compte']=='Chef de Projet'||$userinfo['type_compte']=='Administrateur Logiciel'){
+                        ?>
+ 
                         <!-- Area Card -->
                         <div id="versions"> </div>
                         <div class="card shadow mb-4">
@@ -354,7 +358,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         <option value="" selected>...</option>
                                         <?php
                                             while($var_projet = $search_projet->fetch()){
-                                                echo '<option value="'.$var_projet['id_projet'].'">'.$var_projet['id_projet']."-".$var_projet['nom_projet'].'</option>';
+                                                echo '<option value="'.$var_projet['id_projet'].'">'.$var_projet['id_projet_gen']."-".$var_projet['nom_projet'].'</option>';
                                             }
                                         ?>
                                     </select>
@@ -400,6 +404,9 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                 </div>
                             </div>
                         </div>
+                        <?php
+                            }
+                        ?>
                     </div>
 
                     <?php if($userinfo['type_compte']=='Administrateur Logiciel'){ 
@@ -1238,7 +1245,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <!-- Our JS -->
         <script src="content/js/modules/dark_mode.js"></script>
         <script src="content/js/modules/fixed_page.js"></script>
-        <script src="content/js/modules/float_menu.js"></script>
+        
         <script src="content/js/modules/realtime.js"></script>                            
         <script src="content/js/modules/export_table_to_excel.js"></script> 
         <?php if($userinfo['type_compte']=='Utilisateur'){
@@ -1255,6 +1262,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <script src="content/js/accueil/recherche_utilisateur.js"></script>
                 <script src="content/js/accueil/recherche_version.js"></script>
                 <script src="content/js/accueil/index_admin.js"></script>
+                <script src="content/js/modules/float_menu.js"></script>
                 
         <?php
             }

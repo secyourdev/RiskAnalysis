@@ -16,7 +16,8 @@ $ecriture = $search_projet->fetch();
 
 $array = array();
 
-$search_projet = $bdd->prepare("SELECT num_version, description_version FROM ZC_version  WHERE id_projet_gen=?");
+// Récupérer l'ensemble des versions associées à un groupe de projet.
+$search_projet = $bdd->prepare("SELECT id_version, num_version, description_version FROM ZC_version WHERE id_projet_gen=? ORDER BY id_version ASC" );
 $search_projet->bindParam(1,$ecriture[0]);
 $search_projet->execute();
 

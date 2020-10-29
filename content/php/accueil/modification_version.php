@@ -65,6 +65,10 @@ if($input["action"] === 'delete'){
         $update_projet = $bdd->prepare("DELETE FROM `F_projet` WHERE `id_projet`=?");
         $update_projet->bindParam(1, $id_projet);
         $update_projet->execute();
+
+        $update_projet = $bdd->prepare("DELETE FROM `ZC_version` WHERE `id_version`=?");
+        $update_projet->bindParam(1, $id_version);
+        $update_projet->execute();
     }    
 
     // Si la version supprimée est la version courante alors changer de version courante pour la version précédente

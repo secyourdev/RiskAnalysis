@@ -24,19 +24,33 @@ include("../bdd/connexion.php");
 
     if ($results["error"] === false && isset($_POST['id_projet']) && isset($_POST['num_version']) && isset($_POST['version_description'])){
         // Récupérer tous les champs du projet dont on veut faire une nouvelle version
-        $query_projet_get = $bdd->prepare("SELECT * FROM F_projet WHERE id_projet=?");
+        $query_projet_get = $bdd->prepare('SELECT id_projet_gen FROM F_projet WHERE id_projet=?');
+        $query_projet_get->bindParam(1, $id_projet);
+        $query_projet_get->execute();
+        $projet_get_res = $query_projet_get->fetch(PDO::FETCH_ASSOC);
+
+        // Récupérer la derniere version d'un projet - Trier le résultat pour avoir la version la pus récente d'abord
+        $query_id_projet = $bdd->prepare('SELECT `id_projet` FROM `F_projet` WHERE `id_projet_gen`=? ORDER BY `id_projet` DESC');
+        $query_id_projet->bindParam(1, $projet_get_res["id_projet_gen"]);
+        $query_id_projet->execute();     
+        $query_id_projet_res = $query_id_projet->fetch(PDO::FETCH_ASSOC);
+        $id_projet=$query_id_projet_res["id_projet"];
+
+        // Récupérer tous les champs du projet dont on veut faire une nouvelle version
+        $query_projet_get = $bdd->prepare('SELECT * FROM F_projet WHERE id_projet=?');
         $query_projet_get->bindParam(1, $id_projet);
         $query_projet_get->execute();
         $projet_get_res = $query_projet_get->fetch(PDO::FETCH_ASSOC);
 
         // Créer une nouvelle version
-        $query_new_version = $bdd->prepare('INSERT INTO `ZC_version` (`num_version`, `description_version`, `id_projet_gen`) VALUES (?,?,?)');
+        $query_new_version = $bdd->prepare('INSERT INTO `ZC_version` (`num_version`, `description_version`, `id_projet_gen`, `id_projet`) VALUES (?,?,?,?)');
         $query_new_version->bindParam(1, $num_version);
         $query_new_version->bindParam(2, $version_description);
         $query_new_version->bindParam(3, $projet_get_res["id_projet_gen"]);
+        $query_new_version->bindParam(4, $id_projet);
         $query_new_version->execute();
 
-        // Récupérer l'id de la nouvelle version - Trier le résultat pour avoir la version la pus récente d'abord
+        // Récupérer l'id de la nouvelle version - Trier le résultat pour avoir la version la plus récente d'abord
         $query_id_version = $bdd->prepare('SELECT `id_version` FROM `ZC_version` WHERE `id_projet_gen`=? ORDER BY `id_version` DESC');
         $query_id_version->bindParam(1, $projet_get_res["id_projet_gen"]);
         $query_id_version->execute();     
@@ -68,6 +82,18 @@ include("../bdd/connexion.php");
         $query_new_id_projet->bindParam(1, $projet_get_res["id_projet_gen"]);
         $query_new_id_projet->execute();     
         $projet_get_new_id = $query_new_id_projet->fetch(PDO::FETCH_ASSOC);
+
+        // Mettre dans version l'id du nouveau projet
+        $query_version_update = $bdd->prepare('UPDATE ZC_version SET id_projet = ?  WHERE id_version = ?');
+        $query_version_update->bindParam(1, $projet_get_new_id["id_projet"]);
+        $query_version_update->bindParam(2, $projet_get_id_version['id_version']); 
+        $query_version_update->execute();
+
+        // Mettre dans version l'id projet courant avec le nouvel id_projet
+        $query_projet_update = $bdd->prepare('UPDATE ZD_projet_gen SET id_projet_desc_current = ?  WHERE id_projet_gen= ?');
+        $query_projet_update->bindParam(1, $projet_get_new_id["id_projet"]);
+        $query_projet_update->bindParam(2, $projet_get_res["id_projet_gen"]); 
+        $query_projet_update->execute();
 
         // Copier H_RACI
         // 1 - Récupérer la table du RACI de
