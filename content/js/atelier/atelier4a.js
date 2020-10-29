@@ -66,8 +66,8 @@ $(document).ready(function(){
 /*--------------------------- SORT & FILTER TABLES --------------------------*/
 setSortTable('editable_table');
 OURJQUERYFN.setFilterTable("#rechercher_chemin","#editable_table tbody tr")
-setSortTable('tableau_ope');
-OURJQUERYFN.setFilterTable("#rechercher_ope","#tableau_ope tbody tr")
+// setSortTable('tableau_ope');
+// OURJQUERYFN.setFilterTable("#rechercher_ope","#tableau_ope tbody tr")
 setSortTable('tableau_mode_ope');
 OURJQUERYFN.setFilterTable("#rechercher_mode_ope","#tableau_mode_ope tbody tr")
 
