@@ -23,7 +23,7 @@ include("../bdd/connexion.php");
     } 
 
     if ($results["error"] === false && isset($_POST['id_projet']) && isset($_POST['num_version']) && isset($_POST['version_description'])){
-        // Récupérer tous les champs du projet dont on veut faire une nouvelle version
+        // Récupérer l'id_projet_gen dont on veut faire une nouvelle version
         $query_projet_get = $bdd->prepare('SELECT id_projet_gen FROM F_projet WHERE id_projet=?');
         $query_projet_get->bindParam(1, $id_projet);
         $query_projet_get->execute();
