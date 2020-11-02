@@ -15929,7 +15929,7 @@
 	    'bpmn:ServiceTask': function(parentGfx, element) {
 	      var task = renderer('bpmn:Task')(parentGfx, element);
 
-	      var pathData = pathMap.getScaledPath('USER', {
+	      var pathData = pathMap.getScaledPath('LINK', {
 	        abspos: {
 	          x: 17,
 	          y: 22
@@ -15947,7 +15947,7 @@
 	    'bpmn:UserTask': function(parentGfx, element) {
 	      var task = renderer('bpmn:Task')(parentGfx, element);
 
-	      var pathData = pathMap.getScaledPath('HACKER', {
+	      var pathData = pathMap.getScaledPath('POINTER', {
 	        abspos: {
 				x: 17,
 				y: 15
@@ -15966,7 +15966,7 @@
 	    'bpmn:ManualTask': function(parentGfx, element) {
 	      var task = renderer('bpmn:Task')(parentGfx, element);
 
-	      var pathData = pathMap.getScaledPath('VALEUR_METIER', {
+	      var pathData = pathMap.getScaledPath('OBJECTIF_VISE', {
 	        abspos: {
 	          x: 17,
 	          y: 15
@@ -16349,7 +16349,7 @@
 	      var attrs = {
 			//strokeLinejoin: 'round',
 			markerEnd: marker('sequenceflow-end', fill, stroke),
-			markerStart: marker('sequenceflow-start', fill, stroke),
+			//markerStart: marker('sequenceflow-start', fill, stroke),
 			strokeWidth: '1.5px',
 	        stroke: getStrokeColor(element, defaultStrokeColor)
 	      };
@@ -16434,7 +16434,7 @@
 
 	      var attrs = {
 	        markerEnd: marker('messageflow-end', fill, stroke),
-	        markerStart: marker('messageflow-start', fill, stroke),
+	        //markerStart: marker('messageflow-start', fill, stroke),
 	        //strokeDasharray: '10, 12',
 	        //strokeLinecap: 'round',
 	        //strokeLinejoin: 'round',
@@ -17636,8 +17636,8 @@
 	      heightElements: [6, 14],
 	      widthElements: [10.5, 21]
 		},
-		'HACKER' : {
-		  d:"M 67.4 52.2 l 2.7 -6.8 c 0.5 -1.1 -0.4 -2.4 -1.7 -2.4 h -6.7 c 1.3 -2 2 -4.4 2 -6.9 v 0 c 4.5 -0.8 7.4 -2.1 7.4 -3.4 c 0 -1.4 -3.1 -2.7 -8.1 -3.6 c -1.1 -3.6 -3.1 -7.1 -4.7 -9 c -1.1 -1.3 -3 -1.7 -4.5 -1 l -3.2 1.5 c -1 0.5 -2.3 0.5 -3.3 0 l -3.2 -1.5 c -1.6 -0.7 -3.4 -0.3 -4.5 1 c -1.6 1.8 -3.6 5.4 -4.7 9 c -4.9 0.9 -8 2.1 -8 3.6 c 0 1.4 2.9 2.6 7.4 3.4 v 0 c 0 2.5 0.8 4.9 2 6.9 h -6.6 c -1.3 0 -2.2 1.3 -1.7 2.4 l 3 6.5 c -4.6 2.5 -7.7 7.2 -7.7 12.6 v 4.9 c 0 2.7 2.3 4.9 5.2 4.9 h 41.2 c 2.8 0 5.2 -2.2 5.2 -4.9 v -4.9 C 74.8 59.3 71.8 54.7 67.4 52.2 z M 43.5 70.8 L 38.7 50 l 5.7 3.5 l 2.8 4.3 L 43.5 70.8 z M 54.5 70.8 l -3.7 -13 l 2.8 -4.3 l 5.7 -3.5 L 54.5 70.8 z M 59.3 38.4 c -0.4 1.3 -0.8 2.7 -1.9 3.6 c -1.2 1 -5.5 2.4 -7.4 -2.7 c -0.3 -0.9 -1.8 -0.9 -2.1 0 c -2 5.4 -6.4 3.5 -7.4 2.7 c -1.1 -1 -1.5 -2.3 -1.9 -3.6 c -0.1 -0.3 -0.7 -0.6 -0.7 -0.6 v -1.2 c 3.3 0.4 7 0.6 11 0.6 s 7.8 -0.2 11 -0.6 v 1.2 C 60 37.8 59.4 38.1 59.3 38.4 z"
+		'POINTER' : {
+		  d:"M 63.1 51.7 h -8.5 L 59 62.3 c 0.3 0.7 0 1.6 -0.8 1.9 l -4 1.7 c -0.7 0.3 -1.6 0 -1.9 -0.8 L 48.2 55 l -7 7 c -0.9 0.9 -2.4 0.2 -2.4 -1 V 27.5 c 0 -1.3 1.6 -1.9 2.4 -1 l 22.9 22.8 C 65 50.2 64.3 51.7 63.1 51.7 L 63.1 51.7 z"
 		},
 	    'TASK_TYPE_USER_1': {
 	      d: 'm {mx},{my} c 0.909,-0.845 1.594,-2.049 1.594,-3.385 0,-2.554 -1.805,-4.62199999 ' +
@@ -17655,7 +17655,7 @@
 	        '4.124,0.965 -0.098,-0.57 -0.117,-3.79099999 -4.191,-4.13599999 -3.57499998,0.001 ' +
 	        '-4.20799998,3.36699999 -4.20699998,4.34799999 z'
 		},
-		'VALEUR_METIER' : {
+		'OBJECTIF_VISE' : {
 		  d: "M 49.9 26.3 c -11.1 0 -20.1 8.9 -20.1 19.8 S 38.8 66 49.9 66 S 70 57.1 70 46.2 S 61 26.3 49.9 26.3 z M 49.9 60.9 c -8.2 0 -14.9 -6.6 -14.9 -14.7 s 6.7 -14.7 14.9 -14.7 s 14.9 6.6 14.9 14.7 S 58.2 60.9 49.9 60.9 z M 49.9 35.9 c -5.7 0 -10.4 4.6 -10.4 10.2 s 4.6 10.2 10.4 10.2 s 10.4 -4.6 10.4 -10.2 S 55.6 35.9 49.9 35.9 z M 49.9 51.3 c -2.9 0 -5.2 -2.3 -5.2 -5.1 s 2.3 -5.1 5.2 -5.1 s 5.2 2.3 5.2 5.1 C 55.1 49 52.8 51.3 49.9 51.3 z"
 		}, 
 	    'TASK_TYPE_MANUAL': {
@@ -17675,8 +17675,8 @@
 	    'TASK_TYPE_INSTANTIATING_SEND': {
 	      d: 'm {mx},{my} l 0,8.4 l 12.6,0 l 0,-8.4 z l 6.3,3.6 l 6.3,-3.6'
 		},
-		'USER' : {
-		  d: "M 49.9 46.2 c 5.3 0 9.6 -4.4 9.6 -9.9 s -4.3 -9.9 -9.6 -9.9 s -9.6 4.4 -9.6 9.9 S 44.6 46.2 49.9 46.2 z M 56.6 48.6 h -1.2 c -1.7 0.8 -3.5 1.2 -5.5 1.2 c -1.9 0 -3.8 -0.4 -5.5 -1.2 h -1.2 c -5.5 0 -10 4.7 -10 10.4 v 3.2 c 0 2.1 1.6 3.7 3.6 3.7 h 26.3 c 2 0 3.6 -1.7 3.6 -3.7 v -3.2 C 66.7 53.3 62.2 48.6 56.6 48.6 z"
+		'LINK' : {
+		  d: "M 54.9 40.5 c 4.7 4.7 4.6 12.2 0 16.8 c 0 0 0 0 0 0 l -5.2 5.2 c -4.6 4.6 -12.1 4.6 -16.8 0 c -4.6 -4.6 -4.6 -12.2 0 -16.8 l 2.9 -2.9 c 0.8 -0.8 2.1 -0.3 2.1 0.8 c 0.1 1.4 0.3 2.8 0.8 4.1 c 0.2 0.5 0 1 -0.3 1.3 l -1 1 c -2.2 2.2 -2.3 5.8 -0.1 8 c 2.2 2.2 5.8 2.2 8 0 l 5.2 -5.2 c 2.2 -2.2 2.2 -5.8 0 -8 c -0.3 -0.3 -0.6 -0.5 -0.8 -0.7 c -0.3 -0.2 -0.5 -0.6 -0.5 -1 c 0 -0.8 0.3 -1.7 0.9 -2.3 l 1.6 -1.6 c 0.4 -0.4 1.1 -0.5 1.6 -0.1 C 53.9 39.6 54.4 40 54.9 40.5 L 54.9 40.5 z M 65.9 29.5 c -4.6 -4.6 -12.1 -4.6 -16.8 0 l -5.2 5.2 c 0 0 0 0 0 0 c -4.6 4.6 -4.6 12.1 0 16.8 c 0.5 0.5 1 0.9 1.6 1.3 c 0.5 0.3 1.2 0.3 1.6 -0.1 l 1.6 -1.6 c 0.7 -0.7 0.9 -1.5 0.9 -2.3 c 0 -0.4 -0.2 -0.8 -0.5 -1 c -0.2 -0.2 -0.5 -0.4 -0.8 -0.7 c -2.2 -2.2 -2.2 -5.7 0 -8 l 5.2 -5.2 c 2.2 -2.2 5.8 -2.2 8 0 c 2.2 2.2 2.1 5.8 -0.1 8 l -1 1 c -0.3 0.3 -0.4 0.8 -0.3 1.3 c 0.5 1.3 0.7 2.7 0.8 4.1 c 0 1.1 1.4 1.6 2.1 0.8 l 2.9 -2.9 C 70.5 41.7 70.5 34.1 65.9 29.5 L 65.9 29.5 z"
 		},
 	    'TASK_TYPE_SERVICE': {
 	      d: 'm {mx},{my} v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 ' +
@@ -35750,7 +35750,7 @@
 	      'delete': {
 	        group: 'edit',
 	        className: 'fas fa-trash-alt',
-	        title: translate('Remove'),
+	        title: translate('Corbeille'),
 	        action: {
 	          click: removeElement
 	        }
@@ -54490,13 +54490,13 @@
 	    //   'bpmn:ExclusiveGateway', 'gateway', 'bpmn-icon-gateway-none',
 	    //   translate('Create Gateway')
 	    // ),
-	    'create.hacker': createAction(
-			'bpmn:UserTask', 'user', 'fas fa-user-secret',
-			translate('Attaquant')
+	    'create.pointer': createAction(
+			'bpmn:UserTask', 'user', 'fas fa-mouse-pointer',
+			translate('Action élémentaire')
 		),
-		'create.user': createAction(
-			'bpmn:ServiceTask', 'user', 'fas fa-user',
-			translate('Partie prenante')
+		'create.link': createAction(
+			'bpmn:ServiceTask', 'user', 'fas fa-link',
+			translate('Phase')
 		),
 		'create.task': createAction(
 			'bpmn:Task', 'activity', 'far fa-square',
@@ -54504,7 +54504,7 @@
 		),		
 		'create.value': createAction(
 			'bpmn:ManualTask', 'user', 'fas fa-bullseye',
-			translate('Valeur Métier')
+			translate('Objectif visé')
 		)
 	    // 'create.data-object': createAction(
 	    //   'bpmn:DataObjectReference', 'data-object', 'bpmn-icon-data-object',

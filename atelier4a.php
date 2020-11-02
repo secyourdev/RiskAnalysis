@@ -53,7 +53,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
     <script src="content/vendor/sheet-js/xlsx.full.min.js"></script>
     <script src="content/vendor/sheet-js/FileSaver.js"></script>
-    <script src="content/vendor/bpmn-schema/bpmn-modeler.development.js"></script>
+    <script src="content/vendor/bpmn-schema/bpmn-modeler.development_4a.js"></script>
     <script type="text/javascript"> 
       var id_projet='<?php echo $_SESSION['id_projet'];?>' 
     </script>
