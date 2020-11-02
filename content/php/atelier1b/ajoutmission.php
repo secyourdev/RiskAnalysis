@@ -56,12 +56,13 @@ if ($results["error"] === false && isset($_POST['validermission'])) {
     $resultat = $recuperemission->fetch();
 
     if($id_valeur_metier!="" && $id_bien_support!=""){
-      $inserecoupleVMBS = $bdd->prepare('INSERT INTO L_couple_VMBS(id_valeur_metier, id_bien_support, id_mission, nom_responsable_vm, nom_responsable_bs) VALUES (?,?,?,?,?)');
+      $inserecoupleVMBS = $bdd->prepare('INSERT INTO L_couple_VMBS(id_valeur_metier, id_bien_support, id_mission, nom_responsable_vm, nom_responsable_bs, id_projet) VALUES (?,?,?,?,?,?)');
       $inserecoupleVMBS->bindParam(1, $id_valeur_metier);
       $inserecoupleVMBS->bindParam(2, $id_bien_support);
       $inserecoupleVMBS->bindParam(3, $resultat['id_mission']);
       $inserecoupleVMBS->bindParam(4, $responsable_vm);
       $inserecoupleVMBS->bindParam(5, $responsable_bs);
+      $inserecoupleVMBS->bindParam(6, $getid_projet);
       $inserecoupleVMBS->execute();
     }
 

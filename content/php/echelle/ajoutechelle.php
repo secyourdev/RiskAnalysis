@@ -12,15 +12,15 @@ $echelle_vraisemblance= '0';
 $id_echelle="id_echelle";
 
 // Par défaut le niveau de vraisemblance d'une échelle est de 5
-$insere = $bdd->prepare('INSERT INTO `DA_echelle`(`id_echelle`, `nom_echelle`, `echelle_gravite`, `echelle_vraisemblance`) VALUES (?,?,?,5)');
+$insere = $bdd->prepare('INSERT INTO `DA_echelle`(`id_echelle`, `nom_echelle`, `echelle_gravite`, `echelle_vraisemblance`, `id_projet`) VALUES (?,?,?,5,?)');
 $recupere = $bdd->prepare('SELECT id_echelle AS LAST FROM DA_echelle ORDER BY id_echelle DESC LIMIT 1');
 $insereevaluer = $bdd->prepare('INSERT INTO `DA_evaluer`(`id_echelle`, `id_projet`) VALUES (?,?)');
 
-$insere_niveau_1 = $bdd->prepare('INSERT INTO `DA_niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`) VALUES (NULL, NULL, 1,?)');
-$insere_niveau_2 = $bdd->prepare('INSERT INTO `DA_niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`) VALUES (NULL, NULL, 2,?)');
-$insere_niveau_3 = $bdd->prepare('INSERT INTO `DA_niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`) VALUES (NULL, NULL, 3,?)');
-$insere_niveau_4 = $bdd->prepare('INSERT INTO `DA_niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`) VALUES (NULL, NULL, 4,?)');
-$insere_niveau_5 = $bdd->prepare('INSERT INTO `DA_niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`) VALUES (NULL, NULL, 5,?)');
+$insere_niveau_1 = $bdd->prepare('INSERT INTO `DA_niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`, `id_projet`) VALUES (NULL, NULL, 1, ?, ?)');
+$insere_niveau_2 = $bdd->prepare('INSERT INTO `DA_niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`, `id_projet`) VALUES (NULL, NULL, 2,?, ?)');
+$insere_niveau_3 = $bdd->prepare('INSERT INTO `DA_niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`, `id_projet`) VALUES (NULL, NULL, 3,?, ?)');
+$insere_niveau_4 = $bdd->prepare('INSERT INTO `DA_niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`, `id_projet`) VALUES (NULL, NULL, 4,?, ?)');
+$insere_niveau_5 = $bdd->prepare('INSERT INTO `DA_niveau`(`id_niveau`, `description_niveau`, `valeur_niveau`, `id_echelle`, `id_projet`) VALUES (NULL, NULL, 5,?, ?)');
 
   // Verification du nom de l'echelle
   if(!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–]{0,100}$/", $nom_echelle)){
@@ -32,6 +32,7 @@ $insere_niveau_5 = $bdd->prepare('INSERT INTO `DA_niveau`(`id_niveau`, `descript
     $insere->bindParam(1, $id_echelle);
     $insere->bindParam(2, $nom_echelle);
     $insere->bindParam(3, $echelle_gravite);
+    $insere->bindParam(4, $id_projet);
     $insere->execute();
    
     $recupere->execute();
@@ -46,12 +47,18 @@ $insere_niveau_5 = $bdd->prepare('INSERT INTO `DA_niveau`(`id_niveau`, `descript
     $insere_niveau_3->bindParam(1, $id_echelle[0]);
     $insere_niveau_4->bindParam(1, $id_echelle[0]);
 
+    $insere_niveau_1->bindParam(2, $id_projet);
+    $insere_niveau_2->bindParam(2, $id_projet);
+    $insere_niveau_3->bindParam(2, $id_projet);
+    $insere_niveau_4->bindParam(2, $id_projet);
+    
     $insere_niveau_1->execute();
     $insere_niveau_2->execute();
     $insere_niveau_3->execute();
     $insere_niveau_4->execute();
     if ($echelle_gravite === "5"){
       $insere_niveau_5->bindParam(1, $id_echelle[0]);
+      $insere_niveau_5->bindParam(2, $id_projet);
       $insere_niveau_5->execute();
     }
     $_SESSION['message_success'] = "L'échelle a bien été ajoutée !";

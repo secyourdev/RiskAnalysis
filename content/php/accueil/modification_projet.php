@@ -61,7 +61,7 @@ if(isset($_POST['modifier_projet']) && $results["error"] === false ){
     $update_projet->bindParam(2, $id_projet_gen);
     $update_projet->execute();
 
-    $_SESSION['message_success'] = "Le projet $id_etude_modif a été modifié !";
+    $_SESSION['message_success'] = "Le projet $id_projet_gen a été modifié !";
 }
 
 header('Location: ../../../index&'.$_SESSION['id_utilisateur']);

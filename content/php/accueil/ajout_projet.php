@@ -217,6 +217,9 @@ include("../bdd/connexion.php");
       $insereseuil->bindParam(5, $atelier3a);
       $insereseuil->execute();      
 
+      // TODO - Créer l'échelle de gravité par défaut
+
+      // Ajouter l'échelle au projet
       $id_echelle = '1';
       $insereechelle = $bdd->prepare("INSERT INTO DA_evaluer (id_echelle, id_projet) VALUES (?,?)");
       $insereechelle->bindParam(1, $id_echelle);
@@ -225,6 +228,8 @@ include("../bdd/connexion.php");
 
       $_SESSION['message_success'] = "Le projet a bien été crée !";
     }
+
+    // TODO - Créer échelle de vraisemblance par défaut
     
     header('Location: ../../../index&'.$_SESSION['id_utilisateur']);
 

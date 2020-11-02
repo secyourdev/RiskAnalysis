@@ -112,6 +112,21 @@ include("../bdd/connexion.php");
             $query_raci_insert->execute();
         }
 
+     /*   // DA_Echelle
+        // 1 - Récupérer la table des échelles
+        $query_da_evaluer_get = $bdd->prepare('SELECT * FROM `DA_evaluer` WHERE `id_projet`=?');
+        $query_da_evaluer_get->bindParam(1, $id_projet);
+        $query_da_evaluer_get->execute();
+        
+        // 2 - Créer la copie en changeant le numéro de projet
+        while($da_evaluer_get_res = $query_da_evaluer_get->fetch(PDO::FETCH_ASSOC))
+        {
+            $query_da_evaluer_insert = $bdd->prepare('INSERT INTO `DA_evaluer` (`id_projet`, `id_echelle`) VALUES (?, ?)');
+            $query_da_evaluer_insert->bindParam(1, $projet_get_new_id["id_projet"]);
+            $query_da_evaluer_insert->bindParam(2, $da_evaluer_get_res["id_echelle"]);
+            $query_da_evaluer_insert->execute();
+        }*/
+        
         // DA_evaluer
         // 1 - Récupérer la table des échelles
         $query_da_evaluer_get = $bdd->prepare('SELECT * FROM `DA_evaluer` WHERE `id_projet`=?');
@@ -150,16 +165,21 @@ include("../bdd/connexion.php");
         $query_mission_get->execute();
         
         // 2 - Créer la copie en changeant le numéro de projet
+        $mission_array = array();
         while($mission_get_res = $query_mission_get->fetch(PDO::FETCH_ASSOC))
-        {
-            $query_mission_insert = $bdd->prepare('INSERT INTO `I_mission` (`id_projet`, `nom_mission`, `description_mission`, `responsable `, `id_atelier`) VALUES (?, ?, ?, ?, ?)');
-            $query_mission_insert->bindParam(1, $projet_get_new_id["id_projet"]);
-            $query_mission_insert->bindParam(2, $mission_get_res["nom_mission"]);
-            $query_mission_insert->bindParam(3, $mission_get_res["description_mission"]);
-            $query_mission_insert->bindParam(4, $mission_get_res["responsable"]);
-            $query_mission_insert->bindParam(5, $mission_get_res["id_atelier"]);
+        { 
+            $query_mission_insert = $bdd->prepare('INSERT INTO `I_mission` (`nom_mission`, `description_mission`, `responsable`, `id_atelier`, `id_projet`) VALUES (?, ?, ?, ?, ?)');
+            $query_mission_insert->bindParam(1, $mission_get_res["nom_mission"]);
+            $query_mission_insert->bindParam(2, $mission_get_res["description_mission"]);
+            $query_mission_insert->bindParam(3, $mission_get_res["responsable"]);
+            $query_mission_insert->bindParam(4, $mission_get_res["id_atelier"]);
+            $query_mission_insert->bindParam(5, $projet_get_new_id["id_projet"]);
             $query_mission_insert->execute();
+            $id_mission_var = $mission_get_res["id_mission"];
+            $mission_array[$id_mission_var] = $bdd->lastInsertId();
         }
+        
+
         // J_valeur_metier
         // 1 - Récupérer la table
         $query_valeur_metier_get = $bdd->prepare('SELECT * FROM `J_valeur_metier` WHERE `id_projet`=?');
@@ -167,15 +187,18 @@ include("../bdd/connexion.php");
         $query_valeur_metier_get->execute();
         
         // 2 - Créer la copie en changeant le numéro de projet
+        $vm_array = array();
         while($vm_get_res = $query_valeur_metier_get->fetch(PDO::FETCH_ASSOC))
         {
-            $query_valeur_metier_insert = $bdd->prepare('INSERT INTO `J_valeur_metier` (`id_projet`, `nom_valeur_metier`, `nature_valeur_metier`, `description_valeur_metier `, `id_atelier`) VALUES (?, ?, ?, ?, ?)');
+            $query_valeur_metier_insert = $bdd->prepare('INSERT INTO `J_valeur_metier` (`id_projet`, `nom_valeur_metier`, `nature_valeur_metier`, `description_valeur_metier`, `id_atelier`) VALUES (?, ?, ?, ?, ?)');
             $query_valeur_metier_insert->bindParam(1, $projet_get_new_id["id_projet"]);
             $query_valeur_metier_insert->bindParam(2, $vm_get_res["nom_valeur_metier"]);
             $query_valeur_metier_insert->bindParam(3, $vm_get_res["nature_valeur_metier"]);
             $query_valeur_metier_insert->bindParam(4, $vm_get_res["description_valeur_metier"]);
             $query_valeur_metier_insert->bindParam(5, $vm_get_res["id_atelier"]);
             $query_valeur_metier_insert->execute();
+            $id_vm = $vm_get_res['id_valeur_metier'];
+            $vm_array[$id_vm] = $bdd->lastInsertId();
         }
         // K_bien_support
         // 1 - Récupérer la table
@@ -184,17 +207,48 @@ include("../bdd/connexion.php");
         $query_bien_support_get->execute();
         
         // 2 - Créer la copie en changeant le numéro de projet
+        $bs_array = array();
         while($bs_get_res = $query_bien_support_get->fetch(PDO::FETCH_ASSOC))
         {
-            $query_bien_support_insert = $bdd->prepare('INSERT INTO `K_bien_support` (`id_projet`, `nom_bien_support`, `description_bien_support`, `description_valeur_metier `, `id_atelier`) VALUES (?, ?, ?, ?)');
+            $query_bien_support_insert = $bdd->prepare('INSERT INTO `K_bien_support` (`id_projet`, `nom_bien_support`, `description_bien_support`, `id_atelier`) VALUES (?, ?, ?, ?)');
             $query_bien_support_insert->bindParam(1, $projet_get_new_id["id_projet"]);
             $query_bien_support_insert->bindParam(2, $bs_get_res["nom_bien_support"]);
             $query_bien_support_insert->bindParam(3, $bs_get_res["description_bien_support"]);
             $query_bien_support_insert->bindParam(4, $bs_get_res["id_atelier"]);
             $query_bien_support_insert->execute();
+            $id_bs = $bs_get_res['id_bien_support'];
+            $bs_array[$id_bs] = $bdd->lastInsertId();
         }
+
         // L_couple_VMBS
-        // TODO : Compliquer à gérer 
+        // 1 - Récupérer la table des échelles
+        $query_vmbs_get = $bdd->prepare('SELECT * FROM `L_couple_VMBS` WHERE `id_projet`=?');
+        $query_vmbs_get->bindParam(1, $id_projet);
+        $query_vmbs_get->execute();
+
+        // 2 - Créer la copie en changeant le numéro de projet
+        // Gestion des clés étrangères
+        while($vmbs_get_res = $query_vmbs_get->fetch(PDO::FETCH_ASSOC))
+        {
+            // Récuéprer les anciens index
+            $old_id_vm = $vmbs_get_res["id_valeur_metier"];
+            $old_id_bs = $vmbs_get_res["id_bien_support"];
+            $old_id_mission = $vmbs_get_res["id_mission"];
+            // utilsier les tables de translation pour créer les nouveaux index.
+            $new_id_vm = $vm_array[$old_id_vm];
+            $new_id_bs =$bs_array[$old_id_bs];
+            $new_id_mission = $mission_array[$old_id_mission];
+            $query_vmbs_insert = $bdd->prepare('INSERT INTO `L_couple_VMBS` (`id_projet`, `id_valeur_metier`, `id_bien_support`, `id_mission`, `nom_responsable_vm`, `nom_responsable_bs`) VALUES (?, ?, ?, ?, ?, ?)');
+            $query_vmbs_insert->bindParam(1, $projet_get_new_id["id_projet"]);
+            $query_vmbs_insert->bindParam(2, $new_id_vm);
+            $query_vmbs_insert->bindParam(3, $new_id_bs);
+            $query_vmbs_insert->bindParam(4, $new_id_mission);
+            $query_vmbs_insert->bindParam(5, $vmbs_get_res["nom_responsable_vm"]);
+            $query_vmbs_insert->bindParam(6, $vmbs_get_res["nom_responsable_bs"]);
+            $query_vmbs_insert->execute();
+            //$_SESSION['message_success_5'] = " ID projet : ".$projet_get_new_id["id_projet"]."- Id vm : ".$old_id_vm."- Id bs : ".$old_id_bs."- Id mission : ".$old_id_mission."- Id vm : ".$new_id_vm."- Id bs : ".$new_id_bs."- Id mission : ".$new_id_mission." -";
+
+        }
 
         // M_evenement_redoute
         // 1 - Récupérer la table
@@ -522,7 +576,7 @@ include("../bdd/connexion.php");
         $inseregrpuser = $bdd->prepare('INSERT INTO `B_grp_utilisateur`(`nom_grp_utilisateur`) VALUES (?)');
         $inseregrpuser->bindParam(1, $nom_grp_user);
         $inseregrpuser->execute();*/
-        $_SESSION['message_success_5'] = "La version a bien été ajoutée !"."-".$id_projet."-".$num_version."-".$version_description;
+        $_SESSION['message_success_5'] = $_SESSION['message_success_5']."La version a bien été ajoutée !"."-".$id_projet."-".$num_version."-".$version_description;
     }
     //$_SESSION['message_success_5'] = "La version a bien été ajoutée !"."-".$_POST['id_projet']."-".$_POST['num_version']."-".$version_description;
  
