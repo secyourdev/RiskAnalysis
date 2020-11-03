@@ -592,8 +592,8 @@ include("../bdd/connexion.php");
             $query_trait_risk_insert->bindParam(8, $new_id_mesure);
             $query_trait_risk_insert->bindParam(9, $trait_risk_res["id_atelier"]);
             $query_trait_risk_insert->execute();
-        }/*
-        // ZB_comporter_2
+        }
+      /*  // ZB_comporter_2
         // TODO - Gérer les clés étrangères id_scenario_operationnel
         // 1 - Récupérer la table
         $query_comporter2_get = $bdd->prepare('SELECT * FROM `W_mode_operatoire` WHERE `id_projet`=?');
