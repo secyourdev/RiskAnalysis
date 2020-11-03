@@ -474,7 +474,7 @@ include("../bdd/connexion.php");
             $query_che_attaque_insert->bindParam(6, $new_id_pp); 
             $query_che_attaque_insert->bindParam(7, $che_attaque_res["id_atelier"]);
             $query_che_attaque_insert->execute();
-            $id_Che_Stra = $che_attaque_res['id_scenario_strategique'];
+            $id_Che_Stra = $che_attaque_res['id_chemin_d_attaque_strategique'];
             $Che_Stra_array[$id_Che_Stra] = $bdd->lastInsertId();
         }
  /*       // U_scenario_operationnel
@@ -532,7 +532,7 @@ include("../bdd/connexion.php");
             $old_id_che_stra = $re_risk_res["id_chemin_d_attaque_strategique"];
             // Utiliser les tables de translation pour créer les nouveaux index.
             $new_id_sce_stra = $Che_Stra_array[$old_id_che_stra];
-            $id_risque="10";
+            $id_risque="10"; // TODO A changer
             //requête
             $query_re_risk_insert = $bdd->prepare('INSERT INTO `X_revaluation_du_risque` (`id_projet`, `nom_risque_residuelle`, `description_risque_residuelle`, `vraisemblance_residuelle`, `risque_residuel`, `gestion_risque_residuelle`, `id_chemin_d_attaque_strategique`, `id_risque`, `id_atelier`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
             $query_re_risk_insert->bindParam(1, $projet_get_new_id["id_projet"]);
@@ -546,7 +546,7 @@ include("../bdd/connexion.php");
             $query_re_risk_insert->bindParam(9, $re_risk_res["id_atelier"]);
             $query_re_risk_insert->execute();
         }
- /*       // Y_mesure
+        // Y_mesure
         // 1 - Récupérer la table
         $query_mesure_get = $bdd->prepare('SELECT * FROM `Y_mesure` WHERE `id_projet`=?');
         $query_mesure_get->bindParam(1, $id_projet);
@@ -562,6 +562,7 @@ include("../bdd/connexion.php");
             $mesure_insert->bindParam(4, $mesure_res["id_atelier"]); 
             $mesure_insert->execute();
         }
+  /*      
         // ZA_traitement de securite
         // TODO - Gérer les clés étrangères id_mesure
         // 1 - Récupérer la table
