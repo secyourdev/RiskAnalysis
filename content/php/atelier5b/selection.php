@@ -14,8 +14,8 @@ AND T_chemin_d_attaque_strategique.id_projet = $getid_projet
 
 $result_pacs = mysqli_query($connect, $query_pacs);
 
-$querychemin = "SELECT * FROM T_chemin_d_attaque_strategique NATURAL JOIN S_scenario_strategique WHERE id_projet = $getid_projet";
-$querylegende = "SELECT DISTINCT id_risque, nom_chemin_d_attaque_strategique FROM T_chemin_d_attaque_strategique NATURAL JOIN S_scenario_strategique WHERE id_projet = $getid_projet";
+$querychemin = "SELECT * FROM T_chemin_d_attaque_strategique NATURAL JOIN S_scenario_strategique WHERE T_chemin_d_attaque_strategique.id_projet = $getid_projet";
+$querylegende = "SELECT DISTINCT id_risque, nom_chemin_d_attaque_strategique FROM T_chemin_d_attaque_strategique NATURAL JOIN S_scenario_strategique WHERE T_chemin_d_attaque_strategique.id_projet = $getid_projet";
 
 $resultchemin = mysqli_query($connect, $querychemin);
 $query_referentiel = "SELECT * FROM N_socle_de_securite WHERE id_projet = $getid_projet";

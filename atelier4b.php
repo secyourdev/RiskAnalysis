@@ -25,7 +25,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $reqdroit_chef_de_projet->execute();
     $userdroit_chef_de_projet = $reqdroit_chef_de_projet->fetch();
 
-    $getidechelle = $bdd->prepare('SELECT id_echelle FROM DA_echelle NATURAL JOIN F_projet WHERE id_projet = ?');
+    $getidechelle = $bdd->prepare('SELECT id_echelle FROM DA_echelle NATURAL JOIN F_projet WHERE F_projet.id_projet = ?');
     $getidechelle->bindParam(1, $getidproject);
     $getidechelle->execute();
     $echelleinfo = $getidechelle->fetch();

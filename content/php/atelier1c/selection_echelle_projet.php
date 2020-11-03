@@ -4,7 +4,7 @@ $getid_projet = $_SESSION['id_projet'];
 
 include("../bdd/connexion.php");
 
-$search_echelle = $bdd->prepare("SELECT id_echelle,nom_echelle,echelle_vraisemblance FROM F_projet NATURAL JOIN DA_echelle WHERE id_projet = $getid_projet");
+$search_echelle = $bdd->prepare("SELECT id_echelle,nom_echelle,echelle_vraisemblance FROM F_projet NATURAL JOIN DA_echelle WHERE F_projet.id_projet = $getid_projet");
 $search_echelle->execute();
 
 $array = array();

@@ -255,7 +255,8 @@ include("../bdd/connexion.php");
         $query_er_get = $bdd->prepare('SELECT * FROM `M_evenement_redoute` WHERE `id_projet`=?');
         $query_er_get->bindParam(1, $id_projet);
         $query_er_get->execute();
-        
+
+        $ER_array = array();
         // 2 - Créer la copie en changeant le numéro de projet
         while($evt_red_get_res = $query_er_get->fetch(PDO::FETCH_ASSOC))
         {
@@ -263,7 +264,7 @@ include("../bdd/connexion.php");
             $old_id_vm = $evt_red_get_res["id_valeur_metier"];
             // utilsier les tables de translation pour créer les nouveaux index.
             $new_id_vm = $vm_array[$old_id_vm];
-         
+            // Envoyer ER
             $query_er_insert = $bdd->prepare('INSERT INTO `M_evenement_redoute` (`id_projet`, `nom_evenement_redoute`, `description_evenement_redoute`, `confidentialite`, `integrite`, `disponibilite`, `tracabilite`, `impact`, `niveau_de_gravite`, `id_valeur_metier`,`id_atelier`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
             $query_er_insert->bindParam(1, $projet_get_new_id["id_projet"]);
             $query_er_insert->bindParam(2, $evt_red_get_res["nom_evenement_redoute"]);
@@ -277,6 +278,8 @@ include("../bdd/connexion.php");
             $query_er_insert->bindParam(10, $new_id_vm);
             $query_er_insert->bindParam(11, $evt_red_get_res["id_atelier"]);
             $query_er_insert->execute();
+            $id_ER = $evt_red_get_res['id_evenement_redoute'];
+            $ER_array[$id_ER] = $bdd->lastInsertId();
         }
 
         // N_socle_de_securite
@@ -335,7 +338,7 @@ include("../bdd/connexion.php");
         $query_srov_get->bindParam(1, $id_projet);
         $query_srov_get->execute();
         
-        
+        $SR_array = array();
         // 2 - Créer la copie en changeant le numéro de projet
         while($srov_get_res = $query_srov_get->fetch(PDO::FETCH_ASSOC))
         {
@@ -357,6 +360,8 @@ include("../bdd/connexion.php");
             $query_srov_insert->bindParam(15, $srov_get_res["choix_source_de_risque"]);
             $query_srov_insert->bindParam(16, $srov_get_res["id_atelier"]);
             $query_srov_insert->execute();
+            $id_SR = $srov_get_res['id_source_de_risque'];
+            $SR_array[$id_SR] = $bdd->lastInsertId();
         }
 
         // Q_seuil
@@ -376,17 +381,18 @@ include("../bdd/connexion.php");
             $query_seuil_insert->bindParam(5, $seuil_get_res["id_atelier"]);
             $query_seuil_insert->execute();
         }
-/*
+
         // R_partie_prenante
         // 1 - Récupérer la table
         $query_pp_get = $bdd->prepare('SELECT * FROM `R_partie_prenante` WHERE `id_projet`=?');
         $query_pp_get->bindParam(1, $id_projet);
         $query_pp_get->execute();
         
+        $PP_array = array();
         // 2 - Créer la copie en changeant le numéro de projet
         while($pp_get_res = $query_pp_get->fetch(PDO::FETCH_ASSOC))
         {
-            $query_pp_insert = $bdd->prepare('INSERT INTO `R_partie_prenante` (`id_projet`, `categorie_partie_prenante`, `nom_partie_prenante`, `type`, `dependance_partie_prenante`, `penetration_partie_prenante`, `maturite_partie_prenante`, `confiance_partie_prenante`, `niveau_de_menace_partie_prenante`,`ponderation_dependance`, `ponderation_penetration`, `ponderation_maturite`,`ponderation_confiance`, `dependance_residuelle`, `penetration_residuelle`, `maturite_residuelle, `confiance_residuelle, `niveau_de_menace_residuelle, `id_seuil`, `criticite, `id_atelier`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+            $query_pp_insert = $bdd->prepare('INSERT INTO `R_partie_prenante` (`id_projet`, `categorie_partie_prenante`, `nom_partie_prenante`, `type`, `dependance_partie_prenante`, `penetration_partie_prenante`, `maturite_partie_prenante`, `confiance_partie_prenante`, `niveau_de_menace_partie_prenante`,`ponderation_dependance`, `ponderation_penetration`, `ponderation_maturite`,`ponderation_confiance`, `dependance_residuelle`, `penetration_residuelle`, `maturite_residuelle`, `confiance_residuelle`, `niveau_de_menace_residuelle`, `id_seuil`, `criticite`, `id_atelier`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
             $query_pp_insert->bindParam(1, $projet_get_new_id["id_projet"]);
             $query_pp_insert->bindParam(2, $pp_get_res["categorie_partie_prenante"]);
             $query_pp_insert->bindParam(3, $pp_get_res["nom_partie_prenante"]);
@@ -409,46 +415,69 @@ include("../bdd/connexion.php");
             $query_pp_insert->bindParam(20, $pp_get_res["criticite"]);
             $query_pp_insert->bindParam(21, $pp_get_res["id_atelier"]);
             $query_pp_insert->execute();
+            $id_pp = $pp_get_res['id_partie_prenante'];
+            $PP_array[$id_pp] = $bdd->lastInsertId();
         }
         // S_scenario_strategique
-        // TODO - Gérer les clés étrangères id_source_de_risque et id_evenement_redoute
         // 1 - Récupérer la table
         $query_sce_strat_get = $bdd->prepare('SELECT * FROM `S_scenario_strategique` WHERE `id_projet`=?');
         $query_sce_strat_get->bindParam(1, $id_projet);
         $query_sce_strat_get->execute();
-        
+
+        $Sce_Stra_array = array();
         // 2 - Créer la copie en changeant le numéro de projet
         while($sce_strat_get_res = $query_sce_strat_get->fetch(PDO::FETCH_ASSOC))
         {
+            // Récuéprer les anciens index
+            $old_id_SR = $sce_strat_get_res["id_source_de_risque"];
+            $old_id_ER = $sce_strat_get_res["id_evenement_redoute"];
+            // Utiliser les tables de translation pour créer les nouveaux index.
+            $new_id_SR = $SR_array[$old_id_SR];
+            $new_id_ER = $ER_array[$old_id_ER];
+            // Insérer la copie de SR
             $query_sce_strat_insert = $bdd->prepare('INSERT INTO `S_scenario_strategique` (`id_projet`, `nom_scenario_strategique`, `id_atelier`, `id_source_de_risque`, `id_evenement_redoute`) VALUES (?, ?, ?, ?, ?)');
             $query_sce_strat_insert->bindParam(1, $projet_get_new_id["id_projet"]);
             $query_sce_strat_insert->bindParam(2, $sce_strat_get_res["nom_scenario_strategique"]);
             $query_sce_strat_insert->bindParam(3, $sce_strat_get_res["id_atelier"]);
-            $query_sce_strat_insert->bindParam(4, $sce_strat_get_res["id_source_de_risque"]); // TODO
-            $query_sce_strat_insert->bindParam(5, $sce_strat_get_res["id_evenement_redoute"]); // TODO
+            $query_sce_strat_insert->bindParam(4, $new_id_SR);
+            $query_sce_strat_insert->bindParam(5, $new_id_ER);
             $query_sce_strat_insert->execute();
+            $id_Sce_Stra = $sce_strat_get_res['id_scenario_strategique'];
+            $Sce_Stra_array[$id_Sce_Stra] = $bdd->lastInsertId();
         }
+
         // T_chemin_d_attaque_strategique
-        // TODO - Gérer les clés étrangères id_scenario_strategique et id_partie_prenante
         // TODO - Traiter le probléme de id_risque
         // 1 - Récupérer la table
         $query_che_attaque_get = $bdd->prepare('SELECT * FROM `T_chemin_d_attaque_strategique` WHERE `id_projet`=?');
         $query_che_attaque_get->bindParam(1, $id_projet);
         $query_che_attaque_get->execute();
         
+        $Che_stra_array = array();
         // 2 - Créer la copie en changeant le numéro de projet
         while($che_attaque_res = $query_che_attaque_get->fetch(PDO::FETCH_ASSOC))
         {
-            $query_che_attaque_insert = $bdd->prepare('INSERT INTO `T_chemin_d_attaque_strategique` (`id_projet`, `nom_chemin_d_attaque_strategique`, `description_chemin_d_attaque_strategique`, `id_scenario_strategique`, `id_scenario_strategique`, `id_partie_prenante`) VALUES (?, ?, ?, ?, ?, ?)');
+            // Récuéprer les anciens index
+            $old_id_sce_stra = $che_attaque_res["id_scenario_strategique"];
+            $old_id_pp = $che_attaque_res["id_partie_prenante"];
+            // Utiliser les tables de translation pour créer les nouveaux index.
+            $new_id_sce_stra = $Sce_Stra_array[$old_id_sce_stra];
+            $new_id_pp = $PP_array[$old_id_pp];
+            $new_id_risque = "10";//"$projet_get_new_id["id_projet"]"."$new_id_sce_stra"; // TODO - Gérer le problème de l'id risque
+            // Requête
+            $query_che_attaque_insert = $bdd->prepare('INSERT INTO `T_chemin_d_attaque_strategique` (`id_projet`, `id_risque`, `nom_chemin_d_attaque_strategique`, `description_chemin_d_attaque_strategique`, `id_scenario_strategique`, `id_partie_prenante`, `id_atelier`) VALUES (?, ?, ?, ?, ?, ?, ?)');
             $query_che_attaque_insert->bindParam(1, $projet_get_new_id["id_projet"]);
-            $query_che_attaque_insert->bindParam(2, $che_attaque_res["nom_chemin_d_attaque_strategique"]);
-            $query_che_attaque_insert->bindParam(3, $che_attaque_res["description_chemin_d_attaque_strategique"]);
-            $query_che_attaque_insert->bindParam(4, $che_attaque_res["id_scenario_strategique"]); // TODO
-            $query_che_attaque_insert->bindParam(5, $che_attaque_res["id_partie_prenante"]); // TODO
-            $query_che_attaque_insert->bindParam(6, $che_attaque_res["id_atelier"]);
+            $query_che_attaque_insert->bindParam(2, $new_id_risque);
+            $query_che_attaque_insert->bindParam(3, $che_attaque_res["nom_chemin_d_attaque_strategique"]);
+            $query_che_attaque_insert->bindParam(4, $che_attaque_res["description_chemin_d_attaque_strategique"]);
+            $query_che_attaque_insert->bindParam(5, $new_id_sce_stra);
+            $query_che_attaque_insert->bindParam(6, $new_id_pp); 
+            $query_che_attaque_insert->bindParam(7, $che_attaque_res["id_atelier"]);
             $query_che_attaque_insert->execute();
+            $id_Che_Stra = $che_attaque_res['id_scenario_strategique'];
+            $Che_Stra_array[$id_Che_Stra] = $bdd->lastInsertId();
         }
-        // U_scenario_operationnel
+ /*       // U_scenario_operationnel
         // TODO - Gérer les clés étrangères id_chemin_d_attaque_strategique et id_risque et id_evenement_redoute
         // 1 - Récupérer la table
         $query_sce_ope_get = $bdd->prepare('SELECT * FROM `U_scenario_operationnel` WHERE `id_projet`=?');
@@ -470,6 +499,7 @@ include("../bdd/connexion.php");
             $query_sce_op_insert->bindParam(9, $sce_op_res["id_atelier"]);
             $query_sce_op_insert->execute();
         }
+
         // W_mode_operatoire
         // TODO - Gérer les clés étrangères id_scenario_operationnel
         // 1 - Récupérer la table
@@ -486,8 +516,10 @@ include("../bdd/connexion.php");
             $query_mode_op_insert->bindParam(3, $mode_op_res["id_scenario_operationnel"]); // TODO
             $query_mode_op_insert->execute();
         }
+*/
+
         // X_revaluation_du_risque
-        // TODO - Gérer les clés étrangères id_risque et id_chemin_d_attaque_strategique et id_evenement_redoute
+        // TODO - Gérer les clés étrangères id_risque et id_chemin_d_attaque_strategique
         // 1 - Récupérer la table
         $query_re_risk_get = $bdd->prepare('SELECT * FROM `X_revaluation_du_risque` WHERE `id_projet`=?');
         $query_re_risk_get->bindParam(1, $id_projet);
@@ -496,6 +528,12 @@ include("../bdd/connexion.php");
         // 2 - Créer la copie en changeant le numéro de projet
         while($re_risk_res = $query_re_risk_get->fetch(PDO::FETCH_ASSOC))
         {
+            // Récuéprer les anciens index
+            $old_id_che_stra = $re_risk_res["id_chemin_d_attaque_strategique"];
+            // Utiliser les tables de translation pour créer les nouveaux index.
+            $new_id_sce_stra = $Che_Stra_array[$old_id_che_stra];
+            $id_risque="10";
+            //requête
             $query_re_risk_insert = $bdd->prepare('INSERT INTO `X_revaluation_du_risque` (`id_projet`, `nom_risque_residuelle`, `description_risque_residuelle`, `vraisemblance_residuelle`, `risque_residuel`, `gestion_risque_residuelle`, `id_chemin_d_attaque_strategique`, `id_risque`, `id_atelier`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
             $query_re_risk_insert->bindParam(1, $projet_get_new_id["id_projet"]);
             $query_re_risk_insert->bindParam(2, $re_risk_res["nom_risque_residuelle"]);
@@ -503,12 +541,12 @@ include("../bdd/connexion.php");
             $query_re_risk_insert->bindParam(4, $re_risk_res["vraisemblance_residuelle"]); 
             $query_re_risk_insert->bindParam(5, $re_risk_res["risque_residuel"]); 
             $query_re_risk_insert->bindParam(6, $re_risk_res["gestion_risque_residuelle"]); 
-            $query_re_risk_insert->bindParam(7, $re_risk_res["id_chemin_d_attaque_strategique"]); // TODO
-            $query_re_risk_insert->bindParam(8, $re_risk_res["id_risque"]);// TODO
+            $query_re_risk_insert->bindParam(7, $new_id_sce_stra); 
+            $query_re_risk_insert->bindParam(8, $id_risque);// TODO Gérer le problème de l'id risque
             $query_re_risk_insert->bindParam(9, $re_risk_res["id_atelier"]);
             $query_re_risk_insert->execute();
         }
-        // Y_mesure
+ /*       // Y_mesure
         // 1 - Récupérer la table
         $query_mesure_get = $bdd->prepare('SELECT * FROM `Y_mesure` WHERE `id_projet`=?');
         $query_mesure_get->bindParam(1, $id_projet);
@@ -562,32 +600,6 @@ include("../bdd/connexion.php");
             $query_comporter2_insert->bindParam(3, $comporter2_res["id_scenario_operationnel"]); // TODO
             $query_comporter2_insert->execute();
         }*/
-/*
-        if(isset($_POST['id_projet'])){
-             $id_projet = $_POST['id_projet'];
-             $id_projet_gen_query = $bdd->prepare("SELECT id_projet_gen FROM F_projet WHERE id_projet = ?");
-             $id_projet_gen_query->bindParam(1, $id_projet);
-             $id_projet_gen_query->execute();
-             $id_projet_gen = $id_projet_gen_query->fetch();
-             $query->bindParam(1, $id_projet_gen[0]);
-             $query->execute();
-             
-             while($row = $query->fetch(PDO::FETCH_ASSOC))
-             {
-             echo '
-             <tr>
-             <td>'.$row["id_version"].'</td>
-             <td>'.$row["num_version"].'</td>
-             <td>'.$row["description_version"].'</td>
-             </tr>
-             ';
-             }
-         }
- */
-        /*
-        $inseregrpuser = $bdd->prepare('INSERT INTO `B_grp_utilisateur`(`nom_grp_utilisateur`) VALUES (?)');
-        $inseregrpuser->bindParam(1, $nom_grp_user);
-        $inseregrpuser->execute();*/
         $_SESSION['message_success_5'] = $_SESSION['message_success_5']."La version a bien été ajoutée !"."-".$id_projet."-".$num_version."-".$version_description;
     }
     //$_SESSION['message_success_5'] = "La version a bien été ajoutée !"."-".$_POST['id_projet']."-".$_POST['num_version']."-".$version_description;

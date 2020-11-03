@@ -6,7 +6,7 @@ include("content/php/bdd/connexion_sqli.php");
 
 $query_dimension = "SELECT DA_echelle.echelle_vraisemblance, DA_echelle.echelle_gravite 
 FROM DA_echelle, F_projet 
-WHERE id_projet = $getid_projet AND F_projet.id_echelle = DA_echelle.id_echelle";
+WHERE F_projet.id_projet = $getid_projet AND F_projet.id_echelle = DA_echelle.id_echelle";
 
 $exec_dimension = mysqli_query($connect, $query_dimension);
 
