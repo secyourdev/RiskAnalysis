@@ -552,6 +552,7 @@ include("../bdd/connexion.php");
         $query_mesure_get->bindParam(1, $id_projet);
         $query_mesure_get->execute();
         
+        $Mesure_array = array();
         // 2 - Créer la copie en changeant le numéro de projet
         while($mesure_res = $query_mesure_get->fetch(PDO::FETCH_ASSOC))
         {
@@ -561,8 +562,10 @@ include("../bdd/connexion.php");
             $mesure_insert->bindParam(3, $mesure_res["description_mesure"]);
             $mesure_insert->bindParam(4, $mesure_res["id_atelier"]); 
             $mesure_insert->execute();
+            $id_mesure = $mesure_res['id_mesure'];
+            $Mesure_array[$id_mesure] = $bdd->lastInsertId();
         }
-  /*      
+        
         // ZA_traitement de securite
         // TODO - Gérer les clés étrangères id_mesure
         // 1 - Récupérer la table
@@ -573,6 +576,11 @@ include("../bdd/connexion.php");
         // 2 - Créer la copie en changeant le numéro de projet
         while($trait_risk_res = $query_trait_risk_get->fetch(PDO::FETCH_ASSOC))
         {
+            // Récuéprer les anciens index
+            $old_id_mesure = $trait_risk_res["id_mesure"];
+            // Utiliser les tables de translation pour créer les nouveaux index.
+            $new_id_mesure = $Mesure_array[$old_id_mesure];
+            //requete
             $query_trait_risk_insert = $bdd->prepare('INSERT INTO `ZA_traitement_de_securite` (`id_projet`, `principe_de_securite`, `difficulte_traitement_de_securite`, `cout_traitement_de_securite`, `date_traitement_de_securite`, `responsable`, `statut`, `id_mesure`, `id_atelier`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
             $query_trait_risk_insert->bindParam(1, $projet_get_new_id["id_projet"]);
             $query_trait_risk_insert->bindParam(2, $trait_risk_res["principe_de_securite"]);
@@ -581,10 +589,10 @@ include("../bdd/connexion.php");
             $query_trait_risk_insert->bindParam(5, $trait_risk_res["date_traitement_de_securite"]); 
             $query_trait_risk_insert->bindParam(6, $trait_risk_res["responsable"]); 
             $query_trait_risk_insert->bindParam(7, $trait_risk_res["statut"]); 
-            $query_trait_risk_insert->bindParam(8, $trait_risk_res["id_mesure"]);// TODO
+            $query_trait_risk_insert->bindParam(8, $new_id_mesure);
             $query_trait_risk_insert->bindParam(9, $trait_risk_res["id_atelier"]);
             $query_trait_risk_insert->execute();
-        }
+        }/*
         // ZB_comporter_2
         // TODO - Gérer les clés étrangères id_scenario_operationnel
         // 1 - Récupérer la table
