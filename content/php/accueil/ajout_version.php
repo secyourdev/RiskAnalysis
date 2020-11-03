@@ -250,7 +250,7 @@ include("../bdd/connexion.php");
 
         }
 
-  /*      // M_evenement_redoute
+        // M_evenement_redoute
         // 1 - Récupérer la table
         $query_er_get = $bdd->prepare('SELECT * FROM `M_evenement_redoute` WHERE `id_projet`=?');
         $query_er_get->bindParam(1, $id_projet);
@@ -260,11 +260,11 @@ include("../bdd/connexion.php");
         while($evt_red_get_res = $query_er_get->fetch(PDO::FETCH_ASSOC))
         {
             // Récuéprer les anciens index
-            $old_id_vm = $vmbs_get_res["id_valeur_metier"];
+            $old_id_vm = $evt_red_get_res["id_valeur_metier"];
             // utilsier les tables de translation pour créer les nouveaux index.
             $new_id_vm = $vm_array[$old_id_vm];
          
-            $query_er_insert = $bdd->prepare('INSERT INTO `M_evenement_redoute` (`id_projet`, `nom_evenement_redoute`, `description_evenement_redoute`, `confidentialite`, `integrite`, `disponibilite `, `tracabilite`, `impact `, `niveau_de_gravite`, `id_valeur_metier`,`id_atelier`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+            $query_er_insert = $bdd->prepare('INSERT INTO `M_evenement_redoute` (`id_projet`, `nom_evenement_redoute`, `description_evenement_redoute`, `confidentialite`, `integrite`, `disponibilite`, `tracabilite`, `impact`, `niveau_de_gravite`, `id_valeur_metier`,`id_atelier`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
             $query_er_insert->bindParam(1, $projet_get_new_id["id_projet"]);
             $query_er_insert->bindParam(2, $evt_red_get_res["nom_evenement_redoute"]);
             $query_er_insert->bindParam(3, $evt_red_get_res["description_evenement_redoute"]);
@@ -277,7 +277,7 @@ include("../bdd/connexion.php");
             $query_er_insert->bindParam(10, $new_id_vm);
             $query_er_insert->bindParam(11, $evt_red_get_res["id_atelier"]);
             $query_er_insert->execute();
-        }*/
+        }
 
         // N_socle_de_securite
         // 1 - Récupérer la table
