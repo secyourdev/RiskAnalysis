@@ -328,7 +328,7 @@ include("../bdd/connexion.php");
             $query_regle_insert->bindParam(10, $regle_get_res["id_atelier"]);
             $query_regle_insert->execute();
         }
-  /*      
+        
         // P_SROV
         // 1 - Récupérer la table
         $query_srov_get = $bdd->prepare('SELECT * FROM `P_SROV` WHERE `id_projet`=?');
@@ -358,7 +358,7 @@ include("../bdd/connexion.php");
             $query_srov_insert->bindParam(16, $srov_get_res["id_atelier"]);
             $query_srov_insert->execute();
         }
-*/
+
         // Q_seuil
         // 1 - Récupérer la table
         $query_seuil_get = $bdd->prepare('SELECT * FROM `Q_seuil` WHERE `id_projet`=?');
