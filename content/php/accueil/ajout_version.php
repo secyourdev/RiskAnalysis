@@ -250,16 +250,20 @@ include("../bdd/connexion.php");
 
         }
 
-        // M_evenement_redoute
+  /*      // M_evenement_redoute
         // 1 - Récupérer la table
         $query_er_get = $bdd->prepare('SELECT * FROM `M_evenement_redoute` WHERE `id_projet`=?');
         $query_er_get->bindParam(1, $id_projet);
         $query_er_get->execute();
         
         // 2 - Créer la copie en changeant le numéro de projet
-        // TODO - Corriger le problème sur valeur métier
         while($evt_red_get_res = $query_er_get->fetch(PDO::FETCH_ASSOC))
         {
+            // Récuéprer les anciens index
+            $old_id_vm = $vmbs_get_res["id_valeur_metier"];
+            // utilsier les tables de translation pour créer les nouveaux index.
+            $new_id_vm = $vm_array[$old_id_vm];
+         
             $query_er_insert = $bdd->prepare('INSERT INTO `M_evenement_redoute` (`id_projet`, `nom_evenement_redoute`, `description_evenement_redoute`, `confidentialite`, `integrite`, `disponibilite `, `tracabilite`, `impact `, `niveau_de_gravite`, `id_valeur_metier`,`id_atelier`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
             $query_er_insert->bindParam(1, $projet_get_new_id["id_projet"]);
             $query_er_insert->bindParam(2, $evt_red_get_res["nom_evenement_redoute"]);
@@ -270,10 +274,10 @@ include("../bdd/connexion.php");
             $query_er_insert->bindParam(7, $evt_red_get_res["tracabilite"]);
             $query_er_insert->bindParam(8, $evt_red_get_res["impact"]);
             $query_er_insert->bindParam(9, $evt_red_get_res["niveau_de_gravite"]);
-            $query_er_insert->bindParam(10, $evt_red_get_res["id_valeur_metier"]); // TODO - A corriger - clé étrangère
+            $query_er_insert->bindParam(10, $new_id_vm);
             $query_er_insert->bindParam(11, $evt_red_get_res["id_atelier"]);
             $query_er_insert->execute();
-        }
+        }*/
 
         // N_socle_de_securite
         // 1 - Récupérer la table
@@ -281,8 +285,8 @@ include("../bdd/connexion.php");
         $query_socle_get->bindParam(1, $id_projet);
         $query_socle_get->execute();
         
+        $socle_array = array();
         // 2 - Créer la copie en changeant le numéro de projet
-        // TODO - Corriger le problème sur valeur métier
         while($socle_get_res = $query_socle_get->fetch(PDO::FETCH_ASSOC))
         {
             $query_socle_insert = $bdd->prepare('INSERT INTO `N_socle_de_securite` (`id_projet`, `type_referentiel`, `nom_referentiel`, `etat_d_application`, `etat_de_la_conformite`, `id_atelier`) VALUES (?, ?, ?, ?, ?, ?)');
@@ -293,6 +297,8 @@ include("../bdd/connexion.php");
             $query_socle_insert->bindParam(5, $socle_get_res["etat_de_la_conformite"]);
             $query_socle_insert->bindParam(6, $socle_get_res["id_atelier"]);
             $query_socle_insert->execute();
+            $id_socle = $socle_get_res['id_socle'];
+            $socle_array[$id_socle] = $bdd->lastInsertId();
         }
 
         // O_regle
@@ -302,9 +308,13 @@ include("../bdd/connexion.php");
         $query_regle_get->execute();
         
         // 2 - Créer la copie en changeant le numéro de projet
-        // TODO - Corriger le problème sur id_socle - clé étrangère
         while($regle_get_res = $query_regle_get->fetch(PDO::FETCH_ASSOC))
         {
+            // Récuéprer les anciens index
+            $old_id_socle = $socle_get_res["id_socle_securite"];
+            // utilsier les tables de translation pour créer les nouveaux index.
+            $new_id_socle = $socle_array[$old_id_socle];
+            // Insérer la règle
             $query_regle_insert = $bdd->prepare('INSERT INTO `O_regle` (`id_projet`, `id_regle_affichage`, `titre`, `description`, `etat_de_la_regle`, `justification_ecart`, `dates`, `responsable`, `id_socle_securite`, `id_atelier`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
             $query_regle_insert->bindParam(1, $projet_get_new_id["id_projet"]);
             $query_regle_insert->bindParam(2, $regle_get_res["id_regle_affichage"]);
@@ -314,15 +324,17 @@ include("../bdd/connexion.php");
             $query_regle_insert->bindParam(6, $regle_get_res["justification_ecart"]);
             $query_regle_insert->bindParam(7, $regle_get_res["dates"]);
             $query_regle_insert->bindParam(8, $regle_get_res["responsable"]);
-            $query_regle_insert->bindParam(9, $regle_get_res["id_socle_securite"]); // TODO - Gérer clé étrangere
+            $query_regle_insert->bindParam(9, $new_id_socle); 
             $query_regle_insert->bindParam(10, $regle_get_res["id_atelier"]);
             $query_regle_insert->execute();
         }
+  /*      
         // P_SROV
         // 1 - Récupérer la table
         $query_srov_get = $bdd->prepare('SELECT * FROM `P_SROV` WHERE `id_projet`=?');
         $query_srov_get->bindParam(1, $id_projet);
         $query_srov_get->execute();
+        
         
         // 2 - Créer la copie en changeant le numéro de projet
         while($srov_get_res = $query_srov_get->fetch(PDO::FETCH_ASSOC))
@@ -549,10 +561,10 @@ include("../bdd/connexion.php");
             $query_comporter2_insert->bindParam(2, $comporter2_res["id_risque"]);
             $query_comporter2_insert->bindParam(3, $comporter2_res["id_scenario_operationnel"]); // TODO
             $query_comporter2_insert->execute();
-        }
-
+        }*/
+/*
         if(isset($_POST['id_projet'])){
-            /* $id_projet = $_POST['id_projet'];
+             $id_projet = $_POST['id_projet'];
              $id_projet_gen_query = $bdd->prepare("SELECT id_projet_gen FROM F_projet WHERE id_projet = ?");
              $id_projet_gen_query->bindParam(1, $id_projet);
              $id_projet_gen_query->execute();
@@ -569,9 +581,9 @@ include("../bdd/connexion.php");
              <td>'.$row["description_version"].'</td>
              </tr>
              ';
-             }*/
+             }
          }
- 
+ */
         /*
         $inseregrpuser = $bdd->prepare('INSERT INTO `B_grp_utilisateur`(`nom_grp_utilisateur`) VALUES (?)');
         $inseregrpuser->bindParam(1, $nom_grp_user);
