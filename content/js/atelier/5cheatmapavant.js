@@ -354,6 +354,26 @@ $.post("heatmap-getdata.php", function (data) {
 })
 
 
+$(document).ready(function () {
+    var element = $("#dataTable_avant"); // global variable
+    $("#btn-Convert-Html2Image_avant").on('click', function () {
+		html2canvas(element, {
+			onrendered: function (canvas) {
+				Canvas2Image.saveAsPNG(canvas,undefined,undefined,"5c-RisqueInitial");  
+			}
+		});
+    });
+});
 
+$(document).ready(function () {
+    var element = $("#dataTable_apres"); // global variable
+    $("#btn-Convert-Html2Image_apres").on('click', function () {
+		html2canvas(element, {
+			onrendered: function (canvas) {
+				Canvas2Image.saveAsPNG(canvas,undefined,undefined,"5c-RisqueResiduel");  
+			}
+		});
+    });
+});
 
 

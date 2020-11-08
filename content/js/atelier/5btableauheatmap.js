@@ -430,6 +430,16 @@ $('#dataTable').on('click', "td", function () {
 	}
 });
 
+$(document).ready(function () {
+    var element = $("#dataTable"); // global variable
+    $("#btn-Convert-Html2Image").on('click', function () {
+		html2canvas(element, {
+			onrendered: function (canvas) {
+				Canvas2Image.saveAsPNG(canvas,undefined,undefined,"5b-RisqueInitial"); 
+			}
+		});
+    });
+});
 
 
 

@@ -105,7 +105,7 @@ if ($results["error"] === false && isset($_POST['validerchemin'])) {
   
 
   if (!in_array($chemin_d_attaque_strategique, $result_nom_chemin_existant)) {
-    if (!in_array($id_partie_prenante, $result_pp_existant)) {
+    //if (!in_array($id_partie_prenante, $result_pp_existant)) {
 
       $insere->bindParam(1, $id_chemin_d_attaque);
       $insere->bindParam(2, $id_risque);
@@ -144,9 +144,9 @@ if ($results["error"] === false && isset($_POST['validerchemin'])) {
       $insereope->bindParam(7, $get_id_projet);
       $insereope->execute();
       $_SESSION['message_success_3'] = "Le chemin d'attaque a bien été ajouté !";
-    } else {
-      $_SESSION['message_error_3'] = "La partie prenante à déjà un chemin d'attaque !";
-    }
+    //} else {
+      //$_SESSION['message_error_3'] = "La partie prenante à déjà un chemin d'attaque !";
+   // }
   } else {
     $_SESSION['message_error_3'] = "Le chemin d'attaque entré existe déjà !";
   }

@@ -184,12 +184,14 @@ $.post("heatmap-getdata.php", function (data) {
 
 })
 
-$('table').on('click', "td", function () {
-	if ($(this).hasClass('fond-vert')) {
-		$(this).removeClass('fond-vert').addClass('fond-orange');
-	} else if ($(this).hasClass('fond-orange')) {
-		$(this).removeClass('fond-orange').addClass('fond-rouge');
-	} else if ($(this).hasClass('fond-rouge')) {
-		$(this).removeClass('fond-rouge').addClass('fond-vert');
-	}
+$(document).ready(function () {
+    var element = $("#dataTable"); // global variable
+    $("#btn-Convert-Html2Image").on('click', function () {
+		html2canvas(element, {
+			onrendered: function (canvas) {
+				Canvas2Image.saveAsPNG(canvas,undefined,undefined,"5a-RisqueInitial"); 
+			}
+		});
+    });
 });
+

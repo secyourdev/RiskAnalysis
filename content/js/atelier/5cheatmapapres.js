@@ -352,7 +352,17 @@
 
 })
 
-
+$(document).ready(function () {
+    var element = $("#dataTable"); // global variable
+    $("#btn-Convert-Html2Image").on('click', function () {
+		html2canvas(element, {
+			onrendered: function (canvas) {
+				img = canvas.toDataURL();
+				Canvas2Image.saveAsPNG(canvas); 
+			}
+		});
+    });
+});
 
 
 
