@@ -6,11 +6,11 @@ var diagramUrl = fileName;
 const inpFile = document.getElementById("inpFile")
 var modifier_schema = document.getElementsByClassName('schema_button')
 var titre_schema = document.getElementById('titre_schema')
+var text_schema = document.getElementsByClassName('text_schema')
+
 var name_file;
 
 var lenght_modifier_schema = modifier_schema.length
-
-var id_scenario_strategique_schema;
 
 /*----------------------------------------------------------------------------*/
 /*------------------------------- TRAITEMENT ---------------------------------*/
@@ -36,56 +36,36 @@ inpFile.addEventListener("change", function () {
     }
 })
 if(diagramUrl!=null)  
-    $.get(diagramUrl, openDiagram, 'text');           
+    $.get(diagramUrl, openDiagram, 'text');   
+
 /*-------------------- ENREGISTREMENT EN LOCAL DU SCHEMA ----------------------------*/
 $('#save-button').click(exportDiagram);
 window.onload = main
-/*---------------------- RECUPERATION en BDD DU SCHEMA ------------------------------*/
-recuperation_schema_fn()
-/*--------------------- ENREGISTREMENT en BDD DU SCHEMA -----------------------------*/
-enregistrement_schema_fn()
+/*----------------------- MODIFICATION TEXTE SCHEMA --------------------------*/
+for(let h=0;h<modifier_schema.length;h++){
+    modifier_schema[h].addEventListener('click',function(){
+        sleep(500).then(() => {troncate_text_schema();});
+    })
+}    
 /*----------------------------------------------------------------------------*/
 /*------------------------------- FONCTIONS ----------------------------------*/
-/*----------------------- RECUPERATION DU SCHEMA SUR BDD ---------------------*/
-function recuperation_schema_fn(){
-    for(let i=0;i<lenght_modifier_schema;i++){
-        modifier_schema[i].addEventListener('click',function(){
-
-            $.ajax({
-                url: 'content/php/atelier3b/selection_schema.php',
-                type: 'POST',
-                data: {
-                    id_scenario_strategique: modifier_schema[i].parentNode.parentNode.id,
-                },
-                dataType: 'html',
-                success: function (resultat) {
-                    var schema_JSON = JSON.parse(resultat);
-                    $.get(schema_JSON[0][0], openDiagram, 'text');
-                    id_scenario_strategique_schema = modifier_schema[i].parentNode.parentNode.id
-                    titre_schema.innerText='Schéma du scénario stratégique - '+modifier_schema[i].parentNode.parentNode.childNodes[3].innerText
-                    name_file = suppression_espace(name_schema(id_projet,modifier_schema[i].parentNode.parentNode.childNodes[3].innerText.toLowerCase()))
-                }
-            })
-        });
-    }
-}
-/*----------------------- AJOUT DU SCHEMA SUR BDD ----------------------------*/
-function enregistrement_schema_fn(schema_file){     
-        $.ajax({
-            url: 'content/php/atelier3b/ajout_schema.php',
-            type: 'POST',
-            data: {
-                id_scenario_strategique: id_scenario_strategique_schema,
-                schema : schema_file
+/*------------------------- TRONCATURE TEXTE SCHEMA --------------------------*/
+function troncate_text_schema(){
+    for(let i=0;i<text_schema.length;i++){
+        if(text_schema[i].parentNode.childElementCount>1){
+            for(let j=1;j<text_schema[i].parentNode.childElementCount;j++){
+                text_schema[i].parentNode.children[j].style.display='none'
             }
-        })
+            text_schema[i].parentNode.children[0].innerHTML = text_schema[i].parentNode.children[0].innerHTML.substring(0,text_schema[i].parentNode.children[0].innerHTML.length-3)+'...'
+        }
+    }
 }
 /*--------------------------- INSTANCE BPMN ---------------------------------*/
 var bpmnModeler = new BpmnJS({
-container: '#canvas',
-    keyboard: {
-        bindTo: window
-    }
+    container: '#canvas',
+        keyboard: {
+            bindTo: window
+        }
 });
 /*---------------------------- EXPORT FILE ---------------------------------*/
 async function exportDiagram() {
@@ -140,7 +120,7 @@ async function saveFileBDD(e) {
 /*---------------------------- OPEN SCHEMA ---------------------------------*/
 async function openDiagram(bpmnXML) {
     try {              
-       await bpmnModeler.importXML(bpmnXML);
+        await bpmnModeler.importXML(bpmnXML);
     } catch (err) {
         console.error('Could not import BPMN 2.0 diagram !', err);
     }
@@ -162,5 +142,4 @@ function main() {
     savefilebdd.addEventListener('click',saveFileBDD,false)
     saveimage.addEventListener('click',saveSVG,false)
 }
-
 

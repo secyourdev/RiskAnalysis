@@ -644,7 +644,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       <div class="card-body">
                         <!--text-->
                         <div class="table-responsive">
-                          <input type="text" class="rechercher_input" id="rechercher_ope" placeholder="Rechercher">
                           <table id="tableau_ope" class="table table-bordered table-striped">
                             <thead>
                               <tr>
@@ -949,7 +948,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <script src="content/js/modules/set_filter_sort_table.js"></script>
         <script src="content/js/modules/dateString.js"></script>
         <script src="content/js/modules/export_table_to_excel.js"></script>
-        <script src="content/js/modules/4a_schema.js"></script>
+        <script src="content/js/modules/schema.js"></script>
         <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
         ?>
             <script src="content/js/atelier/atelier4a.js"></script>
