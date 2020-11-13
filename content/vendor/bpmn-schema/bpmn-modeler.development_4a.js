@@ -17220,7 +17220,8 @@
 
 	    tspan.textContent = line.text;
 
-	    append(textElement, tspan);
+		append(textElement, tspan);
+		tspan.setAttribute('class','text_schema')
 	  });
 
 	  remove$1(helperText);
@@ -30434,6 +30435,7 @@
 	  this._active = null;
 
 	  this.resizable = undefined;
+	  sleep(200).then(() => {troncate_text_schema();});
 	};
 
 
@@ -30469,6 +30471,7 @@
 	  this._fire('complete');
 
 	  this.close();
+	  sleep(200).then(() => {troncate_text_schema();});
 	};
 
 
