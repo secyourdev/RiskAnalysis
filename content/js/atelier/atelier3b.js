@@ -27,7 +27,6 @@ function show_sub_content(){
     }
 }
 /*--------------------------------- TABLES JS -------------------------------*/
-
 $(document).ready(function () {
     $('#editable_table').Tabledit({
         sortable: true,
@@ -153,9 +152,17 @@ export_table_to_excel('editable_table_scenario_strategique','#button_download_sc
 export_table_to_excel('editable_table_chemin_d_attaque','#button_download_chemins_d_attaque','projet_'+id_projet+'_chemins_d_attaque_'+d.YYYYMMDDHHMMSS()+'.xlsx')
 
 /*------------------------------- SCHEMAS -----------------------------------*/
-/*---------------------- RECUPERATION en BDD DU SCHEMA ----------------------*/
+/*----------------------------- TRAITEMENTS ---------------------------------*/
+/*--------------------- RECUPERATION DU SCHEMA SUR BDD ----------------------*/
 recuperation_schema_fn()
-/*----------------------- RECUPERATION DU SCHEMA SUR BDD --------------------*/
+/*------------- RECUPERATION INFORMATION PROJET POUR SCHEMA -----------------*/
+recuperation_valeur_metier_fn()
+/*----------------- RECUPERATION SROV PROJET POUR SCHEMA --------------------*/
+recuperation_SROV_fn()
+/*---------- RECUPERATION PARTIE PARTANTE PROJET POUR SCHEMA ----------------*/
+recuperation_partie_prenante_fn()
+/*------------------------------- FONCTION ----------------------------------*/
+/*--------------------- RECUPERATION DU SCHEMA SUR BDD ----------------------*/
 function recuperation_schema_fn(){
     for(let i=0;i<lenght_modifier_schema;i++){
         modifier_schema[i].addEventListener('click',function(){
@@ -173,6 +180,66 @@ function recuperation_schema_fn(){
                     id_scenario_strategique_schema = modifier_schema[i].parentNode.parentNode.id
                     titre_schema.innerText='Schéma du scénario stratégique - '+modifier_schema[i].parentNode.parentNode.childNodes[3].innerText
                     name_file = suppression_espace(name_schema(id_projet,modifier_schema[i].parentNode.parentNode.childNodes[3].innerText.toLowerCase()))
+                }
+            })
+        });
+    }
+}
+/*------------ RECUPERATION VALEUR METIER PROJET POUR SCHEMA -----------------*/
+function recuperation_valeur_metier_fn(){
+    for(let i=0;i<lenght_modifier_schema;i++){
+        modifier_schema[i].addEventListener('click',function(){
+
+            $.ajax({
+                url: 'content/php/atelier3b/selection_valeur_metier.php',
+                type: 'POST',
+                data: {
+                    id_scenario_strategique: modifier_schema[i].parentNode.parentNode.id,
+                },
+                dataType: 'html',
+                success: function (resultat) {
+                    var valeur_metier_JSON = JSON.parse(resultat);
+                    console.log("Valeur métier :")
+                    console.log(valeur_metier_JSON)
+                }
+            })
+        });
+    }
+}
+
+/*----------------- RECUPERATION SROV PROJET POUR SCHEMA --------------------*/
+function recuperation_SROV_fn(){
+    for(let i=0;i<lenght_modifier_schema;i++){
+        modifier_schema[i].addEventListener('click',function(){
+
+            $.ajax({
+                url: 'content/php/atelier3b/selection_SROV.php',
+                type: 'POST',
+                data: {
+                    id_scenario_strategique: modifier_schema[i].parentNode.parentNode.id,
+                },
+                dataType: 'html',
+                success: function (resultat) {
+                    var SROV_JSON = JSON.parse(resultat);
+                    console.log("SROV :")
+                    console.log(SROV_JSON)
+                }
+            })
+        });
+    }
+}
+/*---------- RECUPERATION PARTIE PARTANTE PROJET POUR SCHEMA ----------------*/
+function recuperation_partie_prenante_fn(){
+    for(let i=0;i<lenght_modifier_schema;i++){
+        modifier_schema[i].addEventListener('click',function(){
+
+            $.ajax({
+                url: 'content/php/atelier3b/selection_partie_prenante.php',
+                type: 'POST',
+                success: function (resultat) {
+                    var partie_prenante_JSON = JSON.parse(resultat);
+                    console.log("Partie Prenantes :")
+                    console.log(partie_prenante_JSON)
                 }
             })
         });
