@@ -2,7 +2,10 @@
 var accordionSidebar = document.getElementById("accordionSidebar");
 var sidebarToggle = document.getElementById("sidebarToggle");
 
-var valeurvraisemblance = document.getElementById('valeurvraisemblance');
+var nomechelle = document.getElementById("nom_echelle");
+var label_echelle = document.getElementById("nom_echelle").previousSibling.previousSibling
+
+var nomechelleprojet = document.getElementById('nomechelleprojet');
 var valeurs = {};
 
 /*------------------------------- SIDEBAR ----------------------------------*/
@@ -18,12 +21,34 @@ function show_sub_content(){
 }
 /*--------------------------------- TABLES JS -------------------------------*/
 $(document).ready(function(){  
+    $('#editable_table_echelle').Tabledit({
+     url:'content/php/echelle/modification_echelle_vraisemblance.php',
+     columns:{
+      identifier:[0, 'id_echelle'],
+      editable:[[1, 'nom_echelle'], [2, 'nb_niveau_echelle', '{"4" : "4", "5" : "5"}']]
+     },
+     restoreButton:false,
+     onSuccess:function(data, textStatus, jqXHR)
+     {
+      if(data.action == 'delete')
+      {
+       $('#'+data.id_mission).remove();
+      }
+     }
+    });
+});
+
+
+$(document).ready(function(){  
     $.ajax({
         url: 'content/php/atelier4b/vraisemblance.php',
         type: 'POST',
         success: function (data){
-            valeurvraisemblance.value = data;
-            if (data == 4){
+            var projet_JSON = JSON.parse(data);
+            var $id_echelle = projet_JSON[0][0];
+            var $id_nb_niveau_echelle = projet_JSON[0][1];
+            nomechelleprojet.value = $id_echelle;
+            if ($id_nb_niveau_echelle == 4){
                 valeurs = '{"1" : "1 (Invraisemblable)", "2" : "2 (Peu vraisemblable)", "3" : "3 (Vraisemblable)", "4" : "4 (Très vraisemblable)"}';
             }
             else {
@@ -47,18 +72,16 @@ $(document).ready(function(){
     })    
 });
 
+
 /*------------------------- AUTO-CHARGEMENT DROP-DOWN ----------------------*/
-var valeurvraisemblance = document.getElementById('valeurvraisemblance');
+var nomechelleprojet = document.getElementById('nomechelleprojet');
 $.ajax({
-    url: 'content/php/atelier4b/selection_vraisemblance.php',
+    url: 'content/php/atelier4b/selection_echelle_projet_vraisemblance.php',
     type: 'POST',
     dataType: 'html',
     success: function (resultat) {
         var echelle_projet_JSON = JSON.parse(resultat);
-        if(echelle_projet_JSON[0][0]!=1)
-            valeurvraisemblance.value = echelle_projet_JSON[0][1]       
-        else
-            valeurvraisemblance.innerText = echelle_projet_JSON[0][1]       
+        nomechelleprojet.value = echelle_projet_JSON[0][0];       
     },
     error: function (erreur) {
         alert('ERROR :' + erreur);
@@ -77,5 +100,4 @@ $("#editable_table > tbody > tr > td:nth-child(5)").each(function () {
 
 /*----------------------------- EXPORT EXCEL --------------------------------*/
 var d = new Date();
-
 export_table_to_excel('editable_table','#button_download_vraisemblance','vraisemblance_'+d.YYYYMMDDHHMMSS()+'.xlsx')

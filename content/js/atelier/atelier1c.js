@@ -42,6 +42,7 @@ $(document).ready(function(){
      }
     });
 });
+
 $(document).ready(function () {
     var json_gravite = "";
     var gravite ="";

@@ -32,6 +32,8 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
 ?>
 
 <?php include("content/php/atelier4b/selection.php");?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -378,6 +380,44 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
     <!-- Right Sidebar -->
     <ul id=menu>
+    <li>
+          <a class="nav-link collapse-right-item menu_float" href="#echelle">
+              <i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                      <g transform="translate(-1230 -689)">
+                          <path class="number_activity active"
+                              d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
+                              transform="translate(1230 689)" fill="#ffffffcc" />
+                          <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
+                              fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
+                              font-weight="700">
+                              <tspan x="-3.432" y="0">1</tspan>
+                          </text>
+                      </g>
+                  </svg>
+              </i>
+              <span class="nom_sous_menu">Echelle</span>
+          </a>
+      </li>
+      <li>
+          <a class="nav-link collapse-right-item menu_float" href="#niveau">
+              <i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                      <g transform="translate(-1230 -689)">
+                          <path class="number_activity active"
+                              d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
+                              transform="translate(1230 689)" fill="#ffffffcc" />
+                          <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
+                              fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
+                              font-weight="700">
+                              <tspan x="-3.432" y="0">2</tspan>
+                          </text>
+                      </g>
+                  </svg>
+              </i>
+              <span class="nom_sous_menu">Niveau</span>
+          </a>
+      </li>
       <li>
           <a class="nav-link collapse-right-item menu_float" href="#evaluation_vraissemblance">
               <i>
@@ -389,7 +429,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                           <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
                               fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
                               font-weight="700">
-                              <tspan x="-3.432" y="0">1</tspan>
+                              <tspan x="-3.432" y="0">3</tspan>
                           </text>
                       </g>
                   </svg>
@@ -474,7 +514,157 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 </div>
               </div>
             </div>
+            <div id="echelle" class="col-xl-12 col-lg-12">
+              <!-- Area Card -->
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="row perso_no_margin">
+                    <div class="card-header col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                        <h6 class="m-0">Echelle</h6>
+                    </div>
+                    <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                      <a class="download_table_button" id="button_download_echelle">
+                        <i class="fas fa-download fa-lg text-gray-400"></i>
+                      </a>
+                    </div>    
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <!--tableau-->
+                  <div class="table-responsive">
+                    <label>L'échelle Standard est : 5 pour la Gravité et 5 pour la Vraisemblance. </label></br>
+                    <input type="text" class="rechercher_input" id="rechercher_echelle" placeholder="Rechercher">
+                    <table id="editable_table_echelle" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>ID echelle</th>
+                          <th>Nom de l'échelle</th>
+                          <th>Echelle de la gravité</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <?php
+                      while($row = mysqli_fetch_array($result1))
+                      {
+                        echo '
+                        <tr>
+                        <td>'.$row["id_echelle"].'</td>
+                        <td>'.$row["nom_echelle"].'</td>
+                        <td>'.$row["nb_niveau_echelle"].'</td>
+                        </tr>
+                        ';
+                      }
+                      ?>
+                      </tbody>
+                    </table>
+                  </div>
 
+                  <div class='message_success'>
+                  <?php 
+                      if(isset($_SESSION['message_success'])){
+                        echo $_SESSION['message_success'];
+                        unset($_SESSION['message_success']);
+                      }
+                  ?>
+                  </div> 
+                  <div class='message_error'>
+                  <?php                
+                      if(isset($_SESSION['message_error'])){
+                          echo $_SESSION['message_error'];
+                          unset($_SESSION['message_error']);
+                      }
+                  ?>
+                  </div>
+                  
+                  <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                  ?> 
+                          <!-- bouton Ajouter une nouvelle ligne -->
+                          <div class="text-center">
+                            <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_echelle">Ajouter une nouvelle échelle de gravité</button>
+                          </div>
+                  <?php
+                        }
+                        else if (isset($userdroit['ecriture'])){
+                            if($userdroit['ecriture']=='Réalisation'){
+                  ?>        
+                          <!-- bouton Ajouter une nouvelle ligne -->
+                          <div class="text-center">
+                            <button type="button" class="btn perso_btn_primary perso_btn_spacing shadow-none" data-toggle="modal" data-target="#ajout_echelle">Ajouter une nouvelle échelle de gravité</button>
+                          </div>
+                  <?php
+                            }
+                        }                          
+                  ?>
+                </div>
+              </div>
+            </div>
+            <!-- Area Card -->
+            <div id="niveau" class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="row perso_no_margin">
+                    <div class="card-header col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                        <h6 class="m-0">Niveaux des échelles de vraisemblance</h6>
+                    </div>
+                    <!-- <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                      <a class="download_table_button" id="button_download_niveau">
+                        <i class="fas fa-download fa-lg text-gray-400"></i>
+                      </a>
+                    </div>     -->
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="SelectNaturePop">Echelles de vraisemblance</label>
+                    <select class="form-control" name="nomechelle" id="nomechelle">
+                      <option value="" selected>...</option>
+                      <?php
+                          while($row = mysqli_fetch_array($resultechelle))
+                          {
+                            echo '
+                            <option value="'.$row["id_echelle"].'">'.$row["nom_echelle"].'</option>
+                            ';
+                          }
+                      ?>
+                    </select>
+                  </div>
+                  <!--tableau-->
+                  <div class="table-responsive">
+                    <input type="text" class="rechercher_input" id="rechercher_niveau" placeholder="Rechercher">
+                    <table id="tableau_niveau" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th id="id_echelle">ID niveau</th>
+                          <th id="id_niveau">Valeur du niveau</th>
+                          <th id="description_niveau">Description du niveau</th>
+                        </tr>
+                      </thead>
+                      
+                      <tbody id="ecrire_niveau">
+                      </tbody>
+                    </table>
+
+                    <div class='message_success'>
+                    <?php 
+                        if(isset($_SESSION['message_success_2'])){
+                          echo $_SESSION['message_success_2'];
+                          unset($_SESSION['message_success_2']);
+                        }
+                    ?>
+                    </div> 
+                    <div class='message_error'>
+                    <?php                
+                        if(isset($_SESSION['message_error_2'])){
+                            echo $_SESSION['message_error_2'];
+                            unset($_SESSION['message_error_2']);
+                        }
+                    ?>
+                    </div>
+                    
+                  </div> 
+                </div>
+              </div>
+            </div>
             <!-- Area Card -->
             <div id="evaluation_vraissemblance" class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
@@ -492,42 +682,47 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="SelectNaturePop">Choix de la vraisemblance à utiliser pour le projet :</label>
-                    <?php if($echelleinfo['id_echelle']=='1'){ 
+                    <label for="nomechelleprojet">Choix de l'échelle de vraisemblance à utiliser pour le projet :</label>
+                    <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
                     ?> 
-                            <label name="valeurvraisemblance" id="valeurvraisemblance"></label>
-                    <?php 
-                          }
-                          else if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
-                    ?> 
-                            <select class="form-control" name="valeurvraisemblance" id="valeurvraisemblance">
-                              <option value="" selected>...</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                            </select>
-                    <?php
-                          }
-                          else if (isset($userdroit['ecriture'])){
-                            if($userdroit['ecriture']=='Réalisation'){
-                    ?>
-                      <select class="form-control" name="valeurvraisemblance" id="valeurvraisemblance">
+                      <select class="form-control" name="nomechelleprojet" id="nomechelleprojet">
                         <option value="" selected>...</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                      </select>     
+                        <?php
+                            while($row = mysqli_fetch_array($resultechelle2))
+                            {
+                              echo '
+                              <option value="'.$row["id_echelle"].'">'.$row["nom_echelle"].'</option>
+                              ';
+                            }  
+                        ?>
+                      </select>
+                    <?php
+                        }
+                        else if (isset($userdroit['ecriture'])){
+                            if($userdroit['ecriture']=='Réalisation'){
+                    ?>        
+                      <select class="form-control" name="nomechelleprojet" id="nomechelleprojet">
+                        <option value="" selected>...</option>
+                        <?php
+                            while($row = mysqli_fetch_array($resultechelle2))
+                            {
+                              echo '
+                              <option value="'.$row["id_echelle"].'">'.$row["nom_echelle"].'</option>
+                              ';
+                            }  
+                        ?>
+                      </select>
                     <?php
                             }
                             else{                         
                     ?>
-                      <label name="valeurvraisemblance" id="valeurvraisemblance"></label>
+                      <label name="nomechelleprojet" id="nomechelleprojet"></label>
                     <?php
                             }
-                          }                  
-                    ?>                
+                          }                    
+                    ?>
                   </div>
-                  
-                  <script src="content/js/modules/vraisemblance.js"></script>
-                  <!--text-->
+                  <script src="content/js/modules/echelle_projet_vraisemblance.js"></script>                  <!--text-->
                   <div class="table-responsive">
                   <input type="text" class="rechercher_input" id="rechercher_chemin" placeholder="Rechercher">
                     <table id="editable_table" class="table table-bordered table-striped">
@@ -544,7 +739,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         
                       <tbody>
                       <?php
-                      while($row = mysqli_fetch_array($result1))
+                      while($row = mysqli_fetch_array($result3))
                       {
                         echo '
                         <tr>
@@ -610,6 +805,58 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <i class="fas fa-bars"></i>
   </a>
 
+
+  <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid||(isset($userdroit['ecriture'])&&$userdroit['ecriture']=='Réalisation')){ 
+?> 
+<!---------------------------------------------------------------------------------------------------------------- 
+--------------------------------------------- modal ajout d'échelle ----------------------------------------------
+--------------------------------------------------------------------------------------------------------------+--->
+<div class="modal fade" id="ajout_echelle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ajout d'une échelle</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body perso_modal_body">
+          <form method="post" action="content/php/echelle/ajout_echelle_vraisemblance.php" class="user" id="formMission">
+            <fieldset>
+              <div class="form-group">
+                <label class="titre_input" for="nom_echelle">Nom de l'échelle</label>
+                <input type="text" class="perso_form shadow-none form-control form-control-user" name ="nom_echelle" id="nom_echelle"
+                  placeholder="Nom de l'échelle" required>
+              </div>
+
+              <div class="form-group">
+                <label for="SelectNaturePop">Valeur vraisemblance</label>
+                <select class="form-control" name="nb_niveau_echelle" id="nb_niveau_echelle">
+                  <option value="" selected>...</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+
+              <!-- bouton Ajouter -->
+              <div class="modal-footer perso_middle_modal_footer">
+                <input type="submit" name="validerechelle" value="Ajouter" class="btn perso_btn shadow-none"></input>
+              </div>
+            </fieldset>
+            
+          
+          </form>
+        </div>
+        
+        
+      </div>
+    </div>
+  </div>
+<?php
+}
+?>
+
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -656,17 +903,20 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   <script src="content/js/modules/export_table_to_excel.js"></script>
   <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
   ?>
+      <script src="content/js/modules/niveau_echelle_vraisemblance.js"></script>
       <script src="content/js/atelier/atelier4b.js"></script>
   <?php
       }
       else if(isset($userdroit['ecriture'])){
           if($userdroit['ecriture']=='Réalisation'){
   ?>
+              <script src="content/js/modules/niveau_echelle_vraisemblance.js"></script>
               <script src="content/js/atelier/atelier4b.js"></script>
   <?php 
           }
           else{
   ?>
+              <script src="content/js/modules/niveau_echelle_vraisemblance_no_modification.js"></script>
               <script src="content/js/atelier/atelier4b_no_modification.js"></script>
   <?php
           }
