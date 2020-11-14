@@ -895,71 +895,71 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 <!----------------------------------------------------------------------------------------------------------------- 
 -------------------------------------- modal Ajout d'un scénario stratégique --------------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
-        <div class="modal fade" id="ajout_ligne_scenario_strategique" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ajout d'un scénario stratégique</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body perso_modal_body">
-                <form method="post" action="content/php/atelier3b/ajout_scenario.php" class="user" id="form_scenario_strategique">
-                  <fieldset>
+<div class="modal fade" id="ajout_ligne_scenario_strategique" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajout d'un scénario stratégique</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body perso_modal_body">
+        <form method="post" action="content/php/atelier3b/ajout_scenario.php" class="user" id="form_scenario_strategique">
+          <fieldset>
 
-                    <div class=" form-group col-12">
-                    <label class="titre_input" for="nom_scenario_strategique">Nom du scénario stratégique</label>
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_scenario_strategique" id="nom_scenario_strategique" placeholder="Nom du scénario stratégique" required>
-                    </div>
-
-                    <div class="form-group col-12">
-                      <label for="Select_source_de_risque">Source de risque</label>
-                      <select class="form-control" name="id_source_de_risque" id="Select_source_de_risque">
-                        <option value="" selected>...</option>
-                        <?php
-                        while ($row = mysqli_fetch_array($result_id_source_de_risque)) //selection.php
-                        {
-                          echo '
-                        <option id="id_source_de_risque" value="' . $row["id_source_de_risque"] . '">' . $row["profil_de_l_attaquant_source_de_risque"] . ' | ' . $row["objectif_vise"] . '</option>
-                        ';
-                        }
-                        ?>
-                      </select>
-                    </div>
-
-                    <div class="form-group col-12">
-                      <label for="Select_evenement_redoute">Événement redouté</label>
-                      <select class="form-control" name="id_evenement_redoute" id="Select_evenement_redoute">
-                        <option value="" selected>...</option>
-                        <?php
-                        while ($row = mysqli_fetch_array($result_id_evenement_redoute)) //selection.php
-                        {
-                          echo '
-                        <option id="id_evenement_redoute" value="' . $row["id_evenement_redoute"] . '">' . $row["nom_evenement_redoute"] . '</option>
-                        ';
-                        }
-                        ?>
-                      </select>
-                    </div>
-
-
-                    <!-- bouton Ajouter -->
-                    <div class="modal-footer perso_middle_modal_footer">
-                      <input type="submit" name="validerscenario" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
-                    </div>
-                  </fieldset>
-                </form>
-              </div>
+            <div class=" form-group col-12">
+            <label class="titre_input" for="nom_scenario_strategique">Nom du scénario stratégique</label>
+              <input type="text" class="perso_form shadow-none form-control form-control-user" name="nom_scenario_strategique" id="nom_scenario_strategique" placeholder="Nom du scénario stratégique" required>
             </div>
-          </div>
-        </div>
+
+            <div class="form-group col-12">
+              <label for="Select_source_de_risque">Source de risque</label>
+              <select class="form-control" name="id_source_de_risque" id="Select_source_de_risque">
+                <option value="" selected>...</option>
+                <?php
+                while ($row = mysqli_fetch_array($result_id_source_de_risque)) //selection.php
+                {
+                  echo '
+                <option id="id_source_de_risque" value="' . $row["id_source_de_risque"] . '">' . $row["profil_de_l_attaquant_source_de_risque"] . ' | ' . $row["objectif_vise"] . '</option>
+                ';
+                }
+                ?>
+              </select>
+            </div>
+
+            <div class="form-group col-12">
+              <label for="Select_evenement_redoute">Événement redouté</label>
+              <select class="form-control" name="id_evenement_redoute" id="Select_evenement_redoute">
+                <option value="" selected>...</option>
+                <?php
+                while ($row = mysqli_fetch_array($result_id_evenement_redoute)) //selection.php
+                {
+                  echo '
+                <option id="id_evenement_redoute" value="' . $row["id_evenement_redoute"] . '">' . $row["nom_evenement_redoute"] . '</option>
+                ';
+                }
+                ?>
+              </select>
+            </div>
+
+
+            <!-- bouton Ajouter -->
+            <div class="modal-footer perso_middle_modal_footer">
+              <input type="submit" name="validerscenario" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <!----------------------------------------------------------------------------------------------------------------- 
 -------------------------------------- modal Ajout d'un schéma du scénario stratégique --------------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
-<div class="modal fade right" id="button_schema_scenarios_strategiques" tabindex="-1" role="dialog" aria-labelledby="exampleModalPreviewLabel" aria-hidden="true">
+<div class="modal fade right" id="button_schema_scenarios_strategiques" tabindex="-1" role="dialog" aria-labelledby="exampleModalPreviewLabel" aria-hidden="true" style="z-index:1500">
     <div class="modal-dialog-full-width modal-dialog momodel modal-fluid" role="document">
         <div class="modal-content-full-width modal-content ">
             <div class=" modal-header-full-width   modal-header text-center">
@@ -982,6 +982,38 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         </div>
     </div>
 </div> 
+<!----------------------------------------------------------------------------------------------------------------- 
+-------------------------------------- modal Ajout d'un schéma du scénario stratégique --------------------------------------
+--------------------------------------------------------------------------------------------------------------- -->
+<div class="modal fade" id="parametre_schema_scenarios_strategiques" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index:3000">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="titre_parametre_schema">Paramètres du scénario stratégique</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body perso_modal_body">
+        <form method="post" class="user" id="form_choix_value_schema">
+          <fieldset>
+            <div class="form-group col-12">
+              <label for="id_choix_value_schema">Valeur</label>
+              <select class="form-control" name="id_choix_value_schema" id="id_choix_value_schema">
+                <option value="" selected>...</option>
+              </select>
+            </div>
+
+            <!-- bouton Ajouter -->
+            <div class="modal-footer perso_middle_modal_footer">
+              <input type="submit" name="valider_choix_value" value="Modifier" class="btn perso_btn_primary shadow-none"></input>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 <!---------------------------------------------------------------------------------------------------------------- 
 ----------------------------------- modal Ajout d'un chemin d'attaque stratégique --------------------------------
 --------------------------------------------------------------------------------------------------------------- -->

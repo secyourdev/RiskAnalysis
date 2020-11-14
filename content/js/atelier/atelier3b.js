@@ -10,11 +10,22 @@ var cheminattaque = document.getElementById("chemin_d_attaque_strategique")
 var cheminattaque_description = document.getElementById("description")
 var label_id_risque = document.getElementById("id_risque").previousSibling.previousSibling
 
+var parametre_schema_scenarios_strategiques = document.getElementById('parametre_schema_scenarios_strategiques')
+var titre_parametre_schema = document.getElementById('titre_parametre_schema')
+
 var regex_nom = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
 var regex_description = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
 
 var id_scenario_strategique_schema;
 
+var selection;
+var valeur_metier_JSON;
+var partie_prenante_JSON;
+var SROV_JSON;
+
+var id_choix_value_schema = document.getElementById('id_choix_value_schema')
+
+var canvas = document.getElementById('canvas'); 
 /*------------------------------- SIDEBAR ----------------------------------*/
 show_sub_content()
 sidebarToggleTop.addEventListener('click', show_sub_content,false);
@@ -155,12 +166,16 @@ export_table_to_excel('editable_table_chemin_d_attaque','#button_download_chemin
 /*----------------------------- TRAITEMENTS ---------------------------------*/
 /*--------------------- RECUPERATION DU SCHEMA SUR BDD ----------------------*/
 recuperation_schema_fn()
-/*------------- RECUPERATION INFORMATION PROJET POUR SCHEMA -----------------*/
+/*-------------------- RECUPERATION DES DONNEES SUR BDD ---------------------*/
 recuperation_valeur_metier_fn()
-/*----------------- RECUPERATION SROV PROJET POUR SCHEMA --------------------*/
 recuperation_SROV_fn()
-/*---------- RECUPERATION PARTIE PARTANTE PROJET POUR SCHEMA ----------------*/
 recuperation_partie_prenante_fn()
+/*------------------------- SELECTION SUR SCHEMA ----------------------------*/
+canvas.addEventListener('mouseup',function(){
+    selection = selection_box_schema()
+    removeOptions(id_choix_value_schema);
+    choix_donnees();
+})
 /*------------------------------- FONCTION ----------------------------------*/
 /*--------------------- RECUPERATION DU SCHEMA SUR BDD ----------------------*/
 function recuperation_schema_fn(){
@@ -198,9 +213,7 @@ function recuperation_valeur_metier_fn(){
                 },
                 dataType: 'html',
                 success: function (resultat) {
-                    var valeur_metier_JSON = JSON.parse(resultat);
-                    console.log("Valeur métier :")
-                    console.log(valeur_metier_JSON)
+                    valeur_metier_JSON = JSON.parse(resultat);
                 }
             })
         });
@@ -220,14 +233,13 @@ function recuperation_SROV_fn(){
                 },
                 dataType: 'html',
                 success: function (resultat) {
-                    var SROV_JSON = JSON.parse(resultat);
-                    console.log("SROV :")
-                    console.log(SROV_JSON)
+                    SROV_JSON = JSON.parse(resultat);
                 }
             })
         });
     }
 }
+
 /*---------- RECUPERATION PARTIE PARTANTE PROJET POUR SCHEMA ----------------*/
 function recuperation_partie_prenante_fn(){
     for(let i=0;i<lenght_modifier_schema;i++){
@@ -237,9 +249,7 @@ function recuperation_partie_prenante_fn(){
                 url: 'content/php/atelier3b/selection_partie_prenante.php',
                 type: 'POST',
                 success: function (resultat) {
-                    var partie_prenante_JSON = JSON.parse(resultat);
-                    console.log("Partie Prenantes :")
-                    console.log(partie_prenante_JSON)
+                    partie_prenante_JSON = JSON.parse(resultat);
                 }
             })
         });
@@ -251,8 +261,50 @@ function enregistrement_schema_fn(schema_file){
         url: 'content/php/atelier3b/ajout_schema.php',
         type: 'POST',
         data: {
-            id_scenario_operationnel: id_scenario_operationnel_schema,
+            id_scenario_operationnel: id_scenario_strategique_schema,
             schema : schema_file
         }
     })
 }
+
+/*------------------------- SELECTION SUR SCHEMA ----------------------------*/
+function selection_box_schema(){
+    var box_schema = document.getElementsByClassName('box_schema')
+    for(let i=0;i<box_schema.length;i++){
+        if(box_schema[i].parentNode.parentNode.classList[2]=='selected'){
+            return box_schema[i].classList[0]
+        }
+    }
+}
+
+function choix_donnees(){
+    if(selection=='schema_partie_prenante'){
+        titre_parametre_schema.innerHTML = " Choix de la partie partante"
+        modifier_modal_parametres(partie_prenante_JSON)      
+    }
+    else if(selection=='schema_source_de_risque'){
+        titre_parametre_schema.innerHTML = " Choix de la source de risque"
+        modifier_modal_parametres(SROV_JSON)
+    }
+    else if(selection=='schema_valeur_de_metier'){
+        titre_parametre_schema.innerHTML = " Choix de la valeur métier"
+        modifier_modal_parametres(valeur_metier_JSON)
+    }
+}
+
+function removeOptions(selectElement) {
+    var i, L = selectElement.options.length - 1;
+    for(i = L; i >= 0; i--) {
+       selectElement.remove(i);
+    }
+}
+
+function modifier_modal_parametres(table){
+    for(let i=0;i<table.length;i++){
+        var option = document.createElement('option')
+        option.value = table[i][0]
+        option.innerHTML = table[i][0]
+        id_choix_value_schema.appendChild(option)
+    }  
+}
+
