@@ -652,6 +652,22 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         </div>
                        </div>
                     </div>
+                    <div class='message_success'>
+                      <?php
+                      if (isset($_SESSION['message_success'])) {
+                        echo $_SESSION['message_success'];
+                        unset($_SESSION['message_success']);
+                      }
+                      ?>
+                    </div>
+                    <div class='message_error'>
+                      <?php
+                      if (isset($_SESSION['message_error'])) {
+                        echo $_SESSION['message_error'];
+                        unset($_SESSION['message_error']);
+                      }
+                      ?>
+                    </div>
                   </div>
                 </div>
               </div>

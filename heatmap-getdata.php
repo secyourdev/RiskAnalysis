@@ -4,7 +4,7 @@ $getid_projet = $_SESSION['id_projet'];
 header('Content-Type: application/json');
 include("content/php/bdd/connexion_sqli.php");
 
-$query_dimension = "SELECT DA_echelle.echelle_vraisemblance, DA_echelle.echelle_gravite 
+$query_dimension = "SELECT DA_echelle.echelle_gravite 
 FROM DA_echelle, F_projet 
 WHERE F_projet.id_projet = $getid_projet AND F_projet.id_echelle = DA_echelle.id_echelle";
 
@@ -12,8 +12,12 @@ $exec_dimension = mysqli_query($connect, $query_dimension);
 
 $result_dimension = mysqli_fetch_array($exec_dimension);
 
+// Récupérer le nombre de niveau de vraisemblance 
+$query_nb_niveau_vraisemblance = "SELECT `nb_niveau_echelle` FROM `F_projet` INNER JOIN DC_echelle_vraisemblance ON DC_echelle_vraisemblance.id_echelle = id_echelle_vraisemblance WHERE F_projet.id_projet = $getid_projet ";
+$exec_nb_niveau_vraisemblance = mysqli_query($connect, $query_nb_niveau_vraisemblance);
+$result_nb_niveau_vraisemblance = mysqli_fetch_array($exec_nb_niveau_vraisemblance);
 
-
+//$_SESSION['message_success'] = "Message : Projet : ".$getid_projet." - ".$result_nb_niveau_vraisemblance['nb_niveau_echelle'];
 
 $query = "SELECT U_scenario_operationnel.vraisemblance, M_evenement_redoute.niveau_de_gravite, T_chemin_d_attaque_strategique.id_risque
 FROM U_scenario_operationnel INNER JOIN T_chemin_d_attaque_strategique ON U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique INNER JOIN S_scenario_strategique ON T_chemin_d_attaque_strategique.id_scenario_strategique = S_scenario_strategique.id_scenario_strategique  INNER JOIN M_evenement_redoute ON S_scenario_strategique.id_evenement_redoute = M_evenement_redoute.id_evenement_redoute
@@ -22,9 +26,6 @@ AND S_scenario_strategique.id_projet = $getid_projet
 AND U_scenario_operationnel.id_projet = $getid_projet";
 
 $result = mysqli_query($connect, $query);
-
-
-
 
 $query_exist_bareme = "SELECT id_bareme_risque, vraisemblance, gravite, bareme FROM DB_bareme_risque WHERE id_projet = $getid_projet";
 
@@ -51,7 +52,7 @@ if ($bool_exist) {
 }
 
 $data_dim = array();
-$echelle_vraisemblance = $result_dimension['echelle_vraisemblance'];
+$echelle_vraisemblance = $result_nb_niveau_vraisemblance['nb_niveau_echelle'];
 $echelle_gravite = $result_dimension['echelle_gravite'];
 
 $data_dim[] = array(

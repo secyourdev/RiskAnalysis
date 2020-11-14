@@ -7,14 +7,11 @@ if(isset($_POST['nom_echelle'])){
     $nom_echelle = $_POST['nom_echelle'];
     $query->bindParam(1, $nom_echelle);
     $query->execute();
-
-    // récuépérer les infos de l'échelle
-    $row = $query->fetch(PDO::FETCH_ASSOC);
-    // Si échelle à 4 niveau
-    //$i=
-   // while($i!=0))
-   // {
-      echo '
+    $nb_row = $query->rowCount();
+   if ($nb_row > 0) {
+      // récuépérer les infos de l'échelle
+      $row = $query->fetch(PDO::FETCH_ASSOC);
+         echo '
       <tr>
       <td>'.$nom_echelle.";1".'</td>
       <td>'."1".'</td>
@@ -51,8 +48,8 @@ if(isset($_POST['nom_echelle'])){
         </tr>
         ';
       }
-   // }
-}
+   }
+ }
 
 
 ?>

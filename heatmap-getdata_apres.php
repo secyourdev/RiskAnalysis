@@ -12,7 +12,10 @@ $exec_dimension = mysqli_query($connect, $query_dimension);
 
 $result_dimension = mysqli_fetch_array($exec_dimension);
 
-
+// Récupérer le nombre de niveau de vraisemblance 
+$query_nb_niveau_vraisemblance = "SELECT `nb_niveau_echelle` FROM `F_projet` INNER JOIN DC_echelle_vraisemblance ON DC_echelle_vraisemblance.id_echelle = id_echelle_vraisemblance WHERE F_projet.id_projet = $getid_projet ";
+$exec_nb_niveau_vraisemblance = mysqli_query($connect, $query_nb_niveau_vraisemblance);
+$result_nb_niveau_vraisemblance = mysqli_fetch_array($exec_nb_niveau_vraisemblance);
 
 
 $query = "SELECT X_revaluation_du_risque.vraisemblance_residuelle, M_evenement_redoute.niveau_de_gravite, T_chemin_d_attaque_strategique.id_risque
@@ -57,7 +60,7 @@ if ($bool_exist) {
 
 
 $data_dim = array();
-$echelle_vraisemblance = $result_dimension['echelle_vraisemblance'];
+$echelle_vraisemblance = $result_nb_niveau_vraisemblance['nb_niveau_echelle'];
 $echelle_gravite = $result_dimension['echelle_gravite'];
 
 $data_dim[] = array(
