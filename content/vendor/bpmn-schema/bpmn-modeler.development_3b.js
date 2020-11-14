@@ -15941,7 +15941,7 @@
 			fill: 0,
 	        stroke: getStrokeColor(element, defaultStrokeColor)
 	      });
-
+		  task.setAttribute('class','schema_partie_prenante box_schema')
 	      return task;
 	    },
 	    'bpmn:UserTask': function(parentGfx, element) {
@@ -15959,8 +15959,7 @@
 			fill: 0,
 	        stroke: getStrokeColor(element, defaultStrokeColor)
 	      });
-
-	     
+		  task.setAttribute('class','schema_source_de_risque box_schema')
 	      return task;
 	    },
 	    'bpmn:ManualTask': function(parentGfx, element) {
@@ -15978,7 +15977,7 @@
 	        fill: 0,
 	        stroke: getStrokeColor(element, defaultStrokeColor)
 	      });
-
+		  task.setAttribute('class','schema_valeur_de_metier box_schema')
 	      return task;
 	    },
 	    'bpmn:SendTask': function(parentGfx, element) {
@@ -35452,6 +35451,14 @@
 	    modeling.removeElements([ element ]);
 	  }
 
+	  function popup_chose_information() {
+		$('#parametre_schema_scenarios_strategiques').modal('show')
+		var backdrop = document.getElementsByClassName('modal-backdrop')
+		if(backdrop.length>1){
+			backdrop[1].style.zIndex = 2000;
+		}
+	  }
+
 	  function getReplaceMenuPosition(element) {
 
 	    var Y_OFFSET = 5;
@@ -35677,7 +35684,7 @@
 
 	  if (!popupMenu.isEmpty(element, 'bpmn-replace')) {
 
-	    // Replace menu entry
+	    //Replace menu entry
 	    // assign(actions, {
 	    //   'replace': {
 	    //     group: 'edit',
@@ -35704,7 +35711,20 @@
 	    'bpmn:DataStoreReference'
 	  ])) {
 
-	    assign(actions, {
+		assign(actions, {
+			//'append.text-annotation': appendAction('bpmn:TextAnnotation', 'bpmn-icon-text-annotation'),
+  
+			'popup_chose_information': {
+			  group: 'popup_chose_information',
+			  className: 'fas fa-cog',
+			  title: translate('Choisir une valeur depuis la base de données'),
+			  action: {
+				  click: popup_chose_information
+			  }
+			}
+		});
+
+		assign(actions, {
 	      //'append.text-annotation': appendAction('bpmn:TextAnnotation', 'bpmn-icon-text-annotation'),
 
 	      'connect': {
