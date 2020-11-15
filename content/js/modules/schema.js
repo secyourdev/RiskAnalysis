@@ -4,6 +4,7 @@ var fileName;
 var diagramUrl = fileName;
 
 const inpFile = document.getElementById("inpFile")
+var canvas = document.getElementById('canvas'); 
 var modifier_schema = document.getElementsByClassName('schema_button')
 var titre_schema = document.getElementById('titre_schema')
 var text_schema = document.getElementsByClassName('text_schema')
@@ -47,6 +48,10 @@ for(let h=0;h<modifier_schema.length;h++){
         sleep(500).then(() => {troncate_text_schema();});
     })
 }    
+
+canvas.addEventListener('mouseover',function(){
+    sleep(500).then(() => {troncate_text_schema();});
+})
 /*----------------------------------------------------------------------------*/
 /*------------------------------- FONCTIONS ----------------------------------*/
 /*------------------------- TRONCATURE TEXTE SCHEMA --------------------------*/
