@@ -618,7 +618,7 @@ aria-hidden="true">
               
                 <div class="form-group form-colonne">
                 <label class="titre_input" for="profil_attaquant">Profil d'attaquant</label>
-                  <input type="text" class="perso_arrow perso_form shadow-none form-control" list="Profil d'attaquant" name="profil_attaquant" id="profil_attaquant" placeholder="Profil d'attaquant" required>
+                  <input type="text" class="perso_arrow perso_form shadow-none form-control" list="Profil d'attaquant" name="profil_attaquant" id="profil_attaquant" placeholder="Profil d'attaquant" autocomplete="off" required>
                   <datalist id="Profil d'attaquant">
                     <option value="Etatique">
                     <option value="Crime organisé">
@@ -644,7 +644,7 @@ aria-hidden="true">
               </div> -->
               <div class="form-group form-colonne col-12">
               <label class="titre_input" for="objectif_vise">Objectif vise</label>
-                  <input type="text" class="perso_arrow perso_form shadow-none form-control" list="Objectif visé" name="objectif_vise" id="objectif_vise" placeholder="Objectif visé" required>
+                  <input type="text" class="perso_arrow perso_form shadow-none form-control" list="Objectif visé" name="objectif_vise" id="objectif_vise" placeholder="Objectif visé" autocomplete="off" required>
                   <datalist id="Objectif visé">
                     <option value="Espionnage">
                     <option value="Prépositionnement stratégique">

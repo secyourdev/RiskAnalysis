@@ -18,7 +18,7 @@ if(isset($_POST['id_echelle'])){
     $update->bindParam(1, $id_echelle);
     $update->bindParam(2, $id_projet);
     $update->execute();   
-    //Si passage à une echelle de 4 alors mettre tous les vraisemblance des scenario operationnel à 4  
+    //Si passage à une echelle de 4 alors mettre tous les vraisemblance des scenarios operationnels à 4  
     $get_nb_niveau_echelle->bindParam(1, $id_echelle);
     $get_nb_niveau_echelle->execute();
     $vraisemblance = $get_nb_niveau_echelle->fetch();
