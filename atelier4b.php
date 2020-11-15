@@ -757,17 +757,17 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
                     <div class='message_success'>
                       <?php
-                      if (isset($_SESSION['message_success'])) {
-                        echo $_SESSION['message_success'];
-                        unset($_SESSION['message_success']);
+                      if (isset($_SESSION['message_success_3'])) {
+                        echo $_SESSION['message_success_3'];
+                        unset($_SESSION['message_success_3']);
                       }
                       ?>
                     </div>
                     <div class='message_error'>
                       <?php
-                      if (isset($_SESSION['message_error'])) {
-                        echo $_SESSION['message_error'];
-                        unset($_SESSION['message_error']);
+                      if (isset($_SESSION['message_error_3'])) {
+                        echo $_SESSION['message_error_3'];
+                        unset($_SESSION['message_error_3']);
                       }
                       ?>
                     </div>  
