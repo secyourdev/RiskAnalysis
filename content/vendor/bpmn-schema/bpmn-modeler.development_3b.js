@@ -35716,10 +35716,10 @@
   
 			'popup_chose_information': {
 			  group: 'popup_chose_information',
-			  className: 'fas fa-cog',
+			  className: 'fas fa-cog settings_schema',
 			  title: translate('Choisir une valeur depuis la base de données'),
 			  action: {
-				  click: popup_chose_information
+				  click: popup_chose_information,
 			  }
 			}
 		});
@@ -38405,6 +38405,11 @@
 	  eventBus.on('element.dblclick', function(event) {
 	    activateDirectEdit(event.element, true);
 	  });
+
+	//   var settings_schema = document.getElementsByClassName('settings_schema')
+	//   settings_schema.addEventListener('click', function(event){
+	// 	activateDirectEdit(event.element, true);
+	//   })
 
 	  // complete on followup canvas operation
 	  eventBus.on([
