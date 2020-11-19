@@ -180,7 +180,7 @@ canvas.addEventListener('mouseup',function(){
 })
 
 valider_choix_value.addEventListener('click', function(){
-    modifier_value_schema()[0].innerHTML=id_choix_value_schema.selectedOptions[0].innerHTML//modifier le direct editing
+    document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_choix_value_schema.selectedOptions[0].innerHTML
     $('#parametre_schema_scenarios_strategiques').modal('hide')
 })
 /*------------------------------- FONCTION ----------------------------------*/
@@ -268,7 +268,7 @@ function enregistrement_schema_fn(schema_file){
         url: 'content/php/atelier3b/ajout_schema.php',
         type: 'POST',
         data: {
-            id_scenario_operationnel: id_scenario_strategique_schema,
+            id_scenario_strategique: id_scenario_strategique_schema,
             schema : schema_file
         }
     })
@@ -321,4 +321,3 @@ function modifier_value_schema(){
         }
     }
 }
-

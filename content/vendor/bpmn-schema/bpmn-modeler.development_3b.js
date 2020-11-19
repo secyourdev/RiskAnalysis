@@ -35719,7 +35719,7 @@
 			  className: 'fas fa-cog settings_schema',
 			  title: translate('Choisir une valeur depuis la base de données'),
 			  action: {
-				  click: popup_chose_information,
+				  click: popup_chose_information
 			  }
 			}
 		});
@@ -38401,15 +38401,39 @@
 
 	  directEditing.registerProvider(this);
 
-	  // listen to dblclick on non-root elements
-	  eventBus.on('element.dblclick', function(event) {
-	    activateDirectEdit(event.element, true);
-	  });
+	  // listen to dblclick on non-root elements disabled
+	  //   eventBus.on('element.dblclick', function(event) {
+	  // 	activateDirectEdit(event.element, true);
+	  //   });
 
-	//   var settings_schema = document.getElementsByClassName('settings_schema')
-	//   settings_schema.addEventListener('click', function(event){
-	// 	activateDirectEdit(event.element, true);
-	//   })
+	  /*------------------------------- VARIABLES ----------------------------------*/
+	  var canvas = document.getElementById('canvas');
+	  var box_schema = document.getElementsByClassName('box_schema')
+	  var valider_choix_value = document.getElementById('valider_choix_value')
+	  var id_element_selected;
+
+	  /*----------------------------- TRAITEMENTS ---------------------------------*/
+	  eventBus.on("element.click", function(event) {
+		id_element_selected = event.element;
+	  });
+	  
+	  canvas.addEventListener('mouseup',function(){
+		edit_with_database()
+	  })
+
+	  function edit_with_database(){
+		for(let i=0;i<box_schema.length;i++){
+			if(box_schema[i].parentNode.parentNode.classList[2]=='selected'){
+				var settings_schema = document.getElementsByClassName('settings_schema')
+				settings_schema[0].addEventListener('click', function(event){
+					activateDirectEdit(id_element_selected, true);
+					valider_choix_value.addEventListener('click', function(){
+						directEditing.complete();
+					})
+				})
+			}
+		}
+	  }
 
 	  // complete on followup canvas operation
 	  eventBus.on([
