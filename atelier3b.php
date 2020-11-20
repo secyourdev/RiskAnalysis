@@ -983,7 +983,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     </div>
 </div> 
 <!----------------------------------------------------------------------------------------------------------------- 
--------------------------------------- modal Ajout d'un schéma du scénario stratégique --------------------------------------
+---------------------------------------------- modal choix valeur schéma ------------------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
 <div class="modal fade" id="parametre_schema_scenarios_strategiques" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index:3000">
   <div class="modal-dialog modal-lg" role="document">
@@ -995,21 +995,16 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         </button>
       </div>
       <div class="modal-body perso_modal_body">
-        <form method="post" class="user" id="form_choix_value_schema">
-          <fieldset>
-            <div class="form-group col-12">
-              <label for="id_choix_value_schema">Valeur</label>
-              <select class="form-control" name="id_choix_value_schema" id="id_choix_value_schema">
-                <option value="" selected>...</option>
-              </select>
-            </div>
+        <div class="form-group col-12">
+          <label for="id_choix_value_schema">Valeur</label>
+          <select class="form-control" name="id_choix_value_schema" id="id_choix_value_schema">
+            <option value="" selected>...</option>
+          </select>
+        </div>
 
-            <!-- bouton Ajouter -->
-            <div class="modal-footer perso_middle_modal_footer">
-              <input type="submit" name="valider_choix_value" value="Modifier" class="btn perso_btn_primary shadow-none"></input>
-            </div>
-          </fieldset>
-        </form>
+        <div class="modal-footer perso_middle_modal_footer">
+          <button id="valider_choix_value" class="btn perso_btn_primary shadow-none">Modifier</button>
+        </div>
       </div>
     </div>
   </div>

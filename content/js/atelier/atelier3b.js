@@ -23,7 +23,9 @@ var valeur_metier_JSON;
 var partie_prenante_JSON;
 var SROV_JSON;
 
+var box_schema = document.getElementsByClassName('box_schema')
 var id_choix_value_schema = document.getElementById('id_choix_value_schema')
+var valider_choix_value = document.getElementById('valider_choix_value')
 
 var canvas = document.getElementById('canvas'); 
 /*------------------------------- SIDEBAR ----------------------------------*/
@@ -176,6 +178,11 @@ canvas.addEventListener('mouseup',function(){
     removeOptions(id_choix_value_schema);
     choix_donnees();
 })
+
+valider_choix_value.addEventListener('click', function(){
+    document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_choix_value_schema.selectedOptions[0].innerHTML
+    $('#parametre_schema_scenarios_strategiques').modal('hide')
+})
 /*------------------------------- FONCTION ----------------------------------*/
 /*--------------------- RECUPERATION DU SCHEMA SUR BDD ----------------------*/
 function recuperation_schema_fn(){
@@ -261,7 +268,7 @@ function enregistrement_schema_fn(schema_file){
         url: 'content/php/atelier3b/ajout_schema.php',
         type: 'POST',
         data: {
-            id_scenario_operationnel: id_scenario_strategique_schema,
+            id_scenario_strategique: id_scenario_strategique_schema,
             schema : schema_file
         }
     })
@@ -269,7 +276,6 @@ function enregistrement_schema_fn(schema_file){
 
 /*------------------------- SELECTION SUR SCHEMA ----------------------------*/
 function selection_box_schema(){
-    var box_schema = document.getElementsByClassName('box_schema')
     for(let i=0;i<box_schema.length;i++){
         if(box_schema[i].parentNode.parentNode.classList[2]=='selected'){
             return box_schema[i].classList[0]
@@ -308,3 +314,10 @@ function modifier_modal_parametres(table){
     }  
 }
 
+function modifier_value_schema(){
+    for(let i=0;i<box_schema.length;i++){
+        if(box_schema[i].parentNode.parentNode.classList[2]=='selected'){
+            return box_schema[i].parentNode.children[1].children
+        }
+    }
+}
