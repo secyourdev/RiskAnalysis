@@ -67,7 +67,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-        <!-- Sidebar -->
+        <!-- Left Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion side_bar_scroll" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
@@ -96,6 +96,11 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <a class="nav-link" href="mode_expert&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
                     <i class="fas fa-fw fa-tasks"></i>
                     <span>Mode expert</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="planification&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-tasks"></i>
+                    <span>Planification</span></a>
             </li>
 
             <!-- Divider -->
@@ -501,7 +506,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             </div>
 
         </ul>
-        <!-- End of Sidebar -->
+        <!-- End of Left Sidebar -->
 
         <!-- Right Sidebar -->
         <ul id=menu>

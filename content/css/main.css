@@ -140,6 +140,12 @@ body {
     margin-top   : 6rem;
 }
 
+#fixed_page2 {
+    padding-left : 14rem;
+    padding-right: 1.5rem;
+    margin-top   : 6rem;
+}
+
 #barre_info {
     margin-left: 14rem;
 }
