@@ -15925,7 +15925,8 @@
 	      attachTaskMarkers(parentGfx, element);
 
 	      return rect;
-	    },
+		},
+		
 	    'bpmn:ServiceTask': function(parentGfx, element) {
 	      var task = renderer('bpmn:Task')(parentGfx, element);
 
@@ -15943,7 +15944,8 @@
 	      });
 		  task.setAttribute('class','schema_partie_prenante box_schema')
 	      return task;
-	    },
+		},
+		
 	    'bpmn:UserTask': function(parentGfx, element) {
 	      var task = renderer('bpmn:Task')(parentGfx, element);
 
@@ -38402,13 +38404,15 @@
 	  directEditing.registerProvider(this);
 
 	  // listen to dblclick on non-root elements disabled
-	  //   eventBus.on('element.dblclick', function(event) {
-	  // 	activateDirectEdit(event.element, true);
-	  //   });
+	    eventBus.on('element.dblclick', function(event) {
+	  	activateDirectEdit(event.element, true);
+	    });
 
 	  /*------------------------------- VARIABLES ----------------------------------*/
 	  var canvas = document.getElementById('canvas');
-	  var box_schema = document.getElementsByClassName('box_schema')
+	  var djs_shape = document.getElementsByClassName('djs-shape')
+	  var parametre_schema_scenarios_strategiques = document.getElementById('parametre_schema_scenarios_strategiques')
+	  var choix_valeur_schema_close = document.getElementById('choix_valeur_schema_close')	
 	  var valider_choix_value = document.getElementById('valider_choix_value')
 	  var id_element_selected;
 
@@ -38421,9 +38425,24 @@
 		edit_with_database()
 	  })
 
+	  document.onkeydown = function(event){
+        if(event.keyCode==27){
+			directEditing.complete();
+	  }}
+
+	  window.onclick = function(event) {
+		if (event.target == parametre_schema_scenarios_strategiques) {
+			directEditing.complete();
+		}
+	  }
+
+	  choix_valeur_schema_close.addEventListener('click',function(){
+        directEditing.complete();
+      })
+	
 	  function edit_with_database(){
-		for(let i=0;i<box_schema.length;i++){
-			if(box_schema[i].parentNode.parentNode.classList[2]=='selected'){
+		for(let i=0;i<djs_shape.length;i++){
+			if(djs_shape[i].classList[2]=='selected'){
 				var settings_schema = document.getElementsByClassName('settings_schema')
 				settings_schema[0].addEventListener('click', function(event){
 					activateDirectEdit(id_element_selected, true);
@@ -48040,7 +48059,7 @@
 	  if (attrs.isExpanded !== false) {
 	    attrs.processRef = this._bpmnFactory.create('bpmn:Process');
 	  }
-
+	  	 
 	  return this.createShape(attrs);
 	};
 
@@ -54469,7 +54488,7 @@
 	  }
 
 	  function createParticipant(event) {
-	    create.start(event, elementFactory.createParticipantShape());
+		create.start(event, elementFactory.createParticipantShape());
 	  }
 
 	  assign(actions, {
@@ -54550,10 +54569,10 @@
 			'bpmn:ServiceTask', 'user', 'fas fa-user',
 			translate('Partie prenante')
 		),
-		'create.task': createAction(
-			'bpmn:Task', 'activity', 'far fa-square',
-			translate('Zone de texte')
-		),		
+		// 'create.task': createAction(
+		// 	'bpmn:Task', 'activity', 'far fa-square',
+		// 	translate('Zone de texte')
+		// ),		
 		'create.value': createAction(
 			'bpmn:ManualTask', 'user', 'fas fa-bullseye',
 			translate('Valeur Métier')

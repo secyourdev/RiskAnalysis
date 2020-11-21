@@ -23,7 +23,9 @@ var valeur_metier_JSON;
 var partie_prenante_JSON;
 var SROV_JSON;
 
+var djs_shape = document.getElementsByClassName('djs-shape')
 var box_schema = document.getElementsByClassName('box_schema')
+var id_conteneur = document.getElementById('id_conteneur')
 var id_choix_value_schema = document.getElementById('id_choix_value_schema')
 var valider_choix_value = document.getElementById('valider_choix_value')
 
@@ -174,13 +176,17 @@ recuperation_SROV_fn()
 recuperation_partie_prenante_fn()
 /*------------------------- SELECTION SUR SCHEMA ----------------------------*/
 canvas.addEventListener('mouseup',function(){
-    selection = selection_box_schema()
+    selection = selection_conteneur() 
     removeOptions(id_choix_value_schema);
     choix_donnees();
 })
 
 valider_choix_value.addEventListener('click', function(){
-    document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_choix_value_schema.selectedOptions[0].innerHTML
+    if(id_choix_value_schema.style.display!='none')
+        document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_choix_value_schema.selectedOptions[0].innerHTML
+    else if(id_conteneur.style.display!='none'){
+        document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_conteneur.value
+    }
     $('#parametre_schema_scenarios_strategiques').modal('hide')
 })
 /*------------------------------- FONCTION ----------------------------------*/
@@ -275,26 +281,43 @@ function enregistrement_schema_fn(schema_file){
 }
 
 /*------------------------- SELECTION SUR SCHEMA ----------------------------*/
-function selection_box_schema(){
-    for(let i=0;i<box_schema.length;i++){
-        if(box_schema[i].parentNode.parentNode.classList[2]=='selected'){
-            return box_schema[i].classList[0]
+function selection_conteneur(){
+    for(let i=0;i<djs_shape.length;i++){
+        if(djs_shape[i].classList[2]=='selected'){
+            if(djs_shape[i].dataset.elementId.substring(0,11)=='Participant'){
+                return 'conteneur'
+            }
+            else{
+                return djs_shape[i].childNodes[0].childNodes[0].classList[0]
+            }
         }
     }
 }
 
 function choix_donnees(){
     if(selection=='schema_partie_prenante'){
-        titre_parametre_schema.innerHTML = " Choix de la partie partante"
+        id_conteneur.style.display='none'
+        id_choix_value_schema.style.display='inline'
+        titre_parametre_schema.innerHTML = "Choix de la partie partante"
         modifier_modal_parametres(partie_prenante_JSON)      
     }
     else if(selection=='schema_source_de_risque'){
-        titre_parametre_schema.innerHTML = " Choix de la source de risque"
+        id_conteneur.style.display='none'
+        id_choix_value_schema.style.display='inline'
+        titre_parametre_schema.innerHTML = "Choix de la source de risque"
         modifier_modal_parametres(SROV_JSON)
     }
     else if(selection=='schema_valeur_de_metier'){
-        titre_parametre_schema.innerHTML = " Choix de la valeur métier"
+        id_conteneur.style.display='none'
+        id_choix_value_schema.style.display='inline'
+        titre_parametre_schema.innerHTML = "Choix de la valeur métier"
         modifier_modal_parametres(valeur_metier_JSON)
+    }
+    else if(selection=='conteneur'){
+        id_choix_value_schema.style.display='none'
+        id_conteneur.style.display='inline'
+        titre_parametre_schema.innerHTML = "Titre du conteneur"
+        id_conteneur.value=''
     }
 }
 

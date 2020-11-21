@@ -990,13 +990,14 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="titre_parametre_schema">Paramètres du scénario stratégique</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button id="choix_valeur_schema_close" type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body perso_modal_body">
         <div class="form-group col-12">
           <label for="id_choix_value_schema">Valeur</label>
+          <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_conteneur" id="id_conteneur" required>
           <select class="form-control" name="id_choix_value_schema" id="id_choix_value_schema">
             <option value="" selected>...</option>
           </select>
