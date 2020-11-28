@@ -60,7 +60,7 @@
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider" style="margin-top:10px">
+            <hr class="sidebar-divider" style="margin-top:15px">
 
             <!-- Heading -->
             <div class="sidebar-heading">Ateliers</div>
