@@ -38404,9 +38404,9 @@
 	  directEditing.registerProvider(this);
 
 	  // listen to dblclick on non-root elements disabled
-	    // eventBus.on('element.dblclick', function(event) {
-	  	// activateDirectEdit(event.element, true);
-	    // });
+	    eventBus.on('element.dblclick', function(event) {
+		  activateDirectEdit(event.element, true);
+	    });
 
 	  /*------------------------------- VARIABLES ----------------------------------*/
 	  var canvas = document.getElementById('canvas');
