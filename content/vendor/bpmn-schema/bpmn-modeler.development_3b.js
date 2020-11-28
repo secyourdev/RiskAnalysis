@@ -37501,16 +37501,16 @@
 
 	  // search labels
 	  // CTRL + F
-	  addListener('find', function(context) {
+	//   addListener('find', function(context) {
 
-	    var event = context.keyEvent;
+	//     var event = context.keyEvent;
 
-	    if (keyboard.isKey(['f', 'F'], event) && keyboard.isCmd(event)) {
-	      editorActions.trigger('find');
+	//     if (keyboard.isKey(['f', 'F'], event) && keyboard.isCmd(event)) {
+	//       editorActions.trigger('find');
 
-	      return true;
-	    }
-	  });
+	//       return true;
+	//     }
+	//   });
 
 	  // activate space tool
 	  // S
@@ -37582,20 +37582,20 @@
 
 	  // activate direct editing
 	  // E
-	  addListener('directEditing', function(context) {
+	//   addListener('directEditing', function(context) {
 
-	    var event = context.keyEvent;
+	//     var event = context.keyEvent;
 
-	    if (keyboard.hasModifier(event)) {
-	      return;
-	    }
+	//     if (keyboard.hasModifier(event)) {
+	//       return;
+	//     }
 
-	    if (keyboard.isKey(['e', 'E'], event)) {
-	      editorActions.trigger('directEditing');
+	//     if (keyboard.isKey(['e', 'E'], event)) {
+	//       editorActions.trigger('directEditing');
 
-	      return true;
-	    }
-	  });
+	//       return true;
+	//     }
+	//   });
 
 	};
 
@@ -38404,9 +38404,9 @@
 	  directEditing.registerProvider(this);
 
 	  // listen to dblclick on non-root elements disabled
-	    eventBus.on('element.dblclick', function(event) {
-	  	activateDirectEdit(event.element, true);
-	    });
+	    // eventBus.on('element.dblclick', function(event) {
+	  	// activateDirectEdit(event.element, true);
+	    // });
 
 	  /*------------------------------- VARIABLES ----------------------------------*/
 	  var canvas = document.getElementById('canvas');
@@ -54561,10 +54561,10 @@
 	    //   'bpmn:ExclusiveGateway', 'gateway', 'bpmn-icon-gateway-none',
 	    //   translate('Create Gateway')
 	    // ),
-	    'create.hacker': createAction(
-			'bpmn:UserTask', 'user', 'fas fa-user-secret',
-			translate('Attaquant')
-		),
+	    // 'create.hacker': createAction(
+		// 	'bpmn:UserTask', 'user', 'fas fa-user-secret',
+		// 	translate('Attaquant')
+		// ),
 		'create.user': createAction(
 			'bpmn:ServiceTask', 'user', 'fas fa-user',
 			translate('Partie prenante')

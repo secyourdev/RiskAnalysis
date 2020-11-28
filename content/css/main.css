@@ -1579,3 +1579,11 @@ h6 {
     stroke: none !important;
     stroke-width: 0px!important;
   }OVERRIDE */
+
+/*------------------------------------------------------------------------------ */
+/*------------------ Système de plannification - Gantt ------------------------- */
+#gantt{
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+    border: none;
+}

@@ -294,6 +294,19 @@ function selection_conteneur(){
     }
 }
 
+function selection_sr(){
+    canvas.addEventListener('mouseup',function(event){
+        for(let i=0;i<djs_shape.length;i++){
+            if(djs_shape[i].classList[2]=='selected'){
+                if(djs_shape[i].childNodes[0].childNodes[0].classList[0]=='schema_source_de_risque'){
+                    document.getElementsByClassName('entry fas fa-trash-alt')[0].parentNode.style.display='none'
+                    //disableEnterKey(event)
+            }
+        }
+    }
+    })
+}
+
 function choix_donnees(){
     if(selection=='schema_partie_prenante'){
         id_conteneur.style.display='none'
@@ -343,4 +356,17 @@ function modifier_value_schema(){
             return box_schema[i].parentNode.children[1].children
         }
     }
+}
+
+function disableEnterKey(event) {
+	var event = event || window.event;
+	if(event.keyCode==46) {
+		if (event.preventDefault) {
+			event.preventDefault();
+			event.stopPropagation();
+		} else {
+			event.returnValue = false;
+			event.cancelBubble = true;
+		}		
+	}
 }
