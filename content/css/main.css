@@ -1583,7 +1583,12 @@ h6 {
 /*------------------------------------------------------------------------------ */
 /*------------------ Système de plannification - Gantt ------------------------- */
 #gantt{
-    height: -webkit-fill-available;
-    width: -webkit-fill-available;
+    height: 750px;
+
+    width: 100%;
+    width: -moz-available;          /* WebKit-based browsers will ignore this. */
+    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    width: fill-available;
+
     border: none;
 }
