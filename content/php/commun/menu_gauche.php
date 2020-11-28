@@ -34,29 +34,33 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">Projet</div>
-            <ul>
-                <a style="text-decoration:none" class="nav-item" href="planification&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i style="color:rgba(255, 255, 255, 0.8);" class="fas fa-fw fa-tasks"></i>
-                    <span style="color:rgba(255, 255, 255, 0.8);" x="-7.5" y="-1.5">Planification</span></a>
-            </ul>
-            <ul>
-                <a style="text-decoration:none" class="nav-item" href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i style="color:white;"  class="fas fa-fw fa-file-alt"></i>
-                    <span style="color:rgba(255, 255, 255, 0.8);">Index documentaire</span></a>
-            </ul>
-            <ul>
-                <a class="nav-item" href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i style="color:white;"  class="fas fa-fw fa-code-branch"></i>
-                    <span style="color:rgba(255, 255, 255, 0.8);">Version du produit</span></a>
-            </ul>
-            <ul>
-                <a class="nav-item" href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i style="color:white;"  class="fas fa-fw fas fa-sitemap"></i>
-                    <span style="color:rgba(255, 255, 255, 0.8);">Architecture</span></a>
-            </ul>
+
+            <li class="nav-item">
+                <a class="nav-link projet_link" style="margin-top:10px" href="planification&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-tasks"></i>
+                    <span>Planification</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link projet_link" href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-file-alt"></i>
+                    <span>Index documentaire</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link projet_link" href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-code-branch"></i>
+                    <span>Version du produit</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link projet_link" href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fas fa-sitemap"></i>
+                    <span>Architecture</span></a>
+            </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block" style="margin-top:10px">
+            <hr class="sidebar-divider" style="margin-top:10px">
 
             <!-- Heading -->
             <div class="sidebar-heading">Ateliers</div>
@@ -453,7 +457,7 @@
             <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
+            <div id="rounded_button" class="text-center">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 

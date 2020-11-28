@@ -1,4 +1,6 @@
 var length_sous_atelier=16
+var side_bar_scroll = document.getElementsByClassName('side_bar_scroll')
+var rounded_button = document.getElementById('rounded_button')
 
 for(let i=1;i<length_sous_atelier;i++){
     var nom_sous_atelier = document.getElementById("nom_sous_atelier_"+i)
@@ -10,3 +12,16 @@ for(let i=1;i<length_sous_atelier;i++){
         nom_sous_atelier.innerHTML=modified_nom_sous_atelier
     }
 }
+
+if(window.innerHeight<769)
+        rounded_button.style.display='none'
+else
+        rounded_button.style.display='inline'
+
+window.addEventListener('resize', function(){
+    accordionSidebar.classList.remove('toggled')
+    if(window.innerHeight<769)
+        rounded_button.style.display='none'
+    else
+        rounded_button.style.display='inline'
+})
