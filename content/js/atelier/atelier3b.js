@@ -182,11 +182,20 @@ canvas.addEventListener('mouseup',function(){
 })
 
 valider_choix_value.addEventListener('click', function(){
-    if(id_choix_value_schema.style.display!='none')
+    if(id_choix_value_schema.style.display!='none'){
         document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_choix_value_schema.selectedOptions[0].innerHTML
+        $.ajax({
+            url: 'content/php/atelier3b/ajout_data_schema.php',
+            type: 'POST',
+            data: {
+                valeur: id_choix_value_schema.selectedOptions[0].innerHTML
+            }
+        })
+    }
     else if(id_conteneur.style.display!='none'){
         document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_conteneur.value
     }
+
     $('#parametre_schema_scenarios_strategiques').modal('hide')
 })
 /*------------------------------- FONCTION ----------------------------------*/
