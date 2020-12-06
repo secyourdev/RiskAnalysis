@@ -184,13 +184,27 @@ canvas.addEventListener('mouseup',function(){
 valider_choix_value.addEventListener('click', function(){
     if(id_choix_value_schema.style.display!='none'){
         document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_choix_value_schema.selectedOptions[0].innerHTML
-        $.ajax({
-            url: 'content/php/atelier3b/ajout_data_schema.php',
-            type: 'POST',
-            data: {
-                valeur: id_choix_value_schema.selectedOptions[0].innerHTML
-            }
-        })
+
+        if(selection=='schema_partie_prenante'){
+            $.ajax({
+                url: 'content/php/atelier3b/ajout_schema_lien_SS_PP.php',
+                type: 'POST',
+                data: {
+                    id_scenario_strategique: id_scenario_strategique_schema,
+                    id_partie_prenante : id_choix_value_schema.selectedOptions[0].value
+                }
+            })
+        }
+        else if(selection=='schema_valeur_de_metier'){
+            $.ajax({
+                url: 'content/php/atelier3b/ajout_schema_lien_SS_VM.php',
+                type: 'POST',
+                data: {
+                    id_scenario_strategique: id_scenario_strategique_schema,
+                    id_valeur_metier : id_choix_value_schema.selectedOptions[0].value
+                }
+            })
+        }       
     }
     else if(id_conteneur.style.display!='none'){
         document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_conteneur.value
@@ -354,7 +368,7 @@ function modifier_modal_parametres(table){
     for(let i=0;i<table.length;i++){
         var option = document.createElement('option')
         option.value = table[i][0]
-        option.innerHTML = table[i][0]
+        option.innerHTML = table[i][1]
         id_choix_value_schema.appendChild(option)
     }  
 }
