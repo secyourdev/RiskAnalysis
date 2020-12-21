@@ -30798,7 +30798,7 @@
 	      html.appendChild(container);
 	    }
 
-	    container.appendChild(control);
+		container.appendChild(control);
 
 	    if (entry.className) {
 	      addClasses(control, entry.className);
@@ -35540,191 +35540,25 @@
 	    };
 	  }
 
+		assign(actions, {
+			//'append.text-annotation': appendAction('bpmn:TextAnnotation', 'bpmn-icon-text-annotation'),
 
-	  /* if (isAny(businessObject, [ 'bpmn:Lane', 'bpmn:Participant' ]) && isExpanded(businessObject)) {
-
-	    var childLanes = getChildLanes(element);
-
-	    assign(actions, {
-	      'lane-insert-above': {
-	        group: 'lane-insert-above',
-	        className: 'bpmn-icon-lane-insert-above',
-	        title: translate('Add Lane above'),
-	        action: {
-	          click: function(event, element) {
-	            modeling.addLane(element, 'top');
-	          }
-	        }
-	      }
-	    });
-
-	    if (childLanes.length < 2) {
-
-	      if (element.height >= 120) {
-	        assign(actions, {
-	          'lane-divide-two': {
-	            group: 'lane-divide',
-	            className: 'bpmn-icon-lane-divide-two',
-	            title: translate('Divide into two Lanes'),
-	            action: {
-	              click: splitLaneHandler(2)
-	            }
-	          }
-	        });
-	      }
-
-	      if (element.height >= 180) {
-	        assign(actions, {
-	          'lane-divide-three': {
-	            group: 'lane-divide',
-	            className: 'bpmn-icon-lane-divide-three',
-	            title: translate('Divide into three Lanes'),
-	            action: {
-	              click: splitLaneHandler(3)
-	            }
-	          }
-	        });
-	      }
-	    }
-
-	    assign(actions, {
-	      'lane-insert-below': {
-	        group: 'lane-insert-below',
-	        className: 'bpmn-icon-lane-insert-below',
-	        title: translate('Add Lane below'),
-	        action: {
-	          click: function(event, element) {
-	            modeling.addLane(element, 'bottom');
-	          }
-	        }
-	      }
-	    });
-
-	  } */
-
-	  if (is$1(businessObject, 'bpmn:FlowNode')) {
-
-	    if (is$1(businessObject, 'bpmn:EventBasedGateway')) {
-
-	      assign(actions, {
-	        'append.receive-task': appendAction(
-	          'bpmn:ReceiveTask',
-	          'bpmn-icon-receive-task',
-	          translate('Append ReceiveTask')
-	        ),
-	        'append.message-intermediate-event': appendAction(
-	          'bpmn:IntermediateCatchEvent',
-	          'bpmn-icon-intermediate-event-catch-message',
-	          translate('Append MessageIntermediateCatchEvent'),
-	          { eventDefinitionType: 'bpmn:MessageEventDefinition' }
-	        ),
-	        'append.timer-intermediate-event': appendAction(
-	          'bpmn:IntermediateCatchEvent',
-	          'bpmn-icon-intermediate-event-catch-timer',
-	          translate('Append TimerIntermediateCatchEvent'),
-	          { eventDefinitionType: 'bpmn:TimerEventDefinition' }
-	        ),
-	        'append.condition-intermediate-event': appendAction(
-	          'bpmn:IntermediateCatchEvent',
-	          'bpmn-icon-intermediate-event-catch-condition',
-	          translate('Append ConditionIntermediateCatchEvent'),
-	          { eventDefinitionType: 'bpmn:ConditionalEventDefinition' }
-	        ),
-	        'append.signal-intermediate-event': appendAction(
-	          'bpmn:IntermediateCatchEvent',
-	          'bpmn-icon-intermediate-event-catch-signal',
-	          translate('Append SignalIntermediateCatchEvent'),
-	          { eventDefinitionType: 'bpmn:SignalEventDefinition' }
-	        )
-	      });
-	    } else
-
-	    if (isEventType(businessObject, 'bpmn:BoundaryEvent', 'bpmn:CompensateEventDefinition')) {
-
-	      assign(actions, {
-	        'append.compensation-activity':
-	            appendAction(
-	              'bpmn:Task',
-	              'bpmn-icon-task',
-	              translate('Append compensation activity'),
-	              {
-	                isForCompensation: true
-	              }
-	            )
-	      });
-	    } else
-
-	    if (!is$1(businessObject, 'bpmn:EndEvent') &&
-	        !businessObject.isForCompensation &&
-	        !isEventType(businessObject, 'bpmn:IntermediateThrowEvent', 'bpmn:LinkEventDefinition') &&
-	        !isEventSubProcess(businessObject)) {
-
-	      assign(actions, {
-	        // 'append.end-event': appendAction(
-	        //   'bpmn:EndEvent',
-	        //   'bpmn-icon-end-event-none',
-	        //   translate('Append EndEvent')
-	        // ),
-	        // 'append.gateway': appendAction(
-	        //   'bpmn:ExclusiveGateway',
-	        //   'bpmn-icon-gateway-none',
-	        //   translate('Append Gateway')
-	        // ),
-	        // 'append.append-task': appendAction(
-	        //   'bpmn:Task',
-	        //   'bpmn-icon-task',
-	        //   translate('Append Task')
-	        // ),
-	        // 'append.intermediate-event': appendAction(
-	        //   'bpmn:IntermediateThrowEvent',
-	        //   'bpmn-icon-intermediate-event-none',
-	        //   translate('Append Intermediate/Boundary Event')
-	        // )
-	      });
-	    }
-	  }
-
-	  if (!popupMenu.isEmpty(element, 'bpmn-replace')) {
-
-	    //Replace menu entry
-	    // assign(actions, {
-	    //   'replace': {
-	    //     group: 'edit',
-	    //     className: 'bpmn-icon-screw-wrench',
-	    //     title: translate('Change type'),
-	    //     action: {
-	    //       click: function(event, element) {
-
-	    //         var position = assign(getReplaceMenuPosition(element), {
-	    //           cursor: { x: event.x, y: event.y }
-	    //         });
-
-	    //         popupMenu.open(element, 'bpmn-replace', position);
-	    //       }
-	    //     }
-	    //   }
-	    // });
-	  }
+			'popup_chose_information': {
+			group: 'popup_chose_information',
+			className: 'fas fa-cog settings_schema',
+			title: translate('Choisir une valeur depuis la base de données'),
+			action: {
+				click: popup_chose_information
+			}
+			}
+		});
 
 	  if (isAny(businessObject, [
-	    'bpmn:FlowNode',
+		'bpmn:FlowNode',
 	    'bpmn:InteractionNode',
 	    'bpmn:DataObjectReference',
 	    'bpmn:DataStoreReference'
 	  ])) {
-
-		assign(actions, {
-			//'append.text-annotation': appendAction('bpmn:TextAnnotation', 'bpmn-icon-text-annotation'),
-  
-			'popup_chose_information': {
-			  group: 'popup_chose_information',
-			  className: 'fas fa-cog settings_schema',
-			  title: translate('Choisir une valeur depuis la base de données'),
-			  action: {
-				  click: popup_chose_information
-			  }
-			}
-		});
 
 		assign(actions, {
 	      //'append.text-annotation': appendAction('bpmn:TextAnnotation', 'bpmn-icon-text-annotation'),
@@ -35733,20 +35567,6 @@
 	        group: 'connect',
 	        className: 'fas fa-arrows-alt-h',
 	        title: translate('Évènement'),
-	        action: {
-	          click: startConnect,
-	          dragstart: startConnect
-	        }
-	      }
-	    });
-	  }
-
-	  if (isAny(businessObject, [ 'bpmn:DataObjectReference', 'bpmn:DataStoreReference' ])) {
-	    assign(actions, {
-	      'connect': {
-	        group: 'connect',
-	        className: 'bpmn-icon-connection-multi',
-	        title: translate('Connect using DataInputAssociation'),
 	        action: {
 	          click: startConnect,
 	          dragstart: startConnect
@@ -38404,13 +38224,13 @@
 	  directEditing.registerProvider(this);
 
 	  // listen to dblclick on non-root elements disabled
-	    eventBus.on('element.dblclick', function(event) {
-		  activateDirectEdit(event.element, true);
-	    });
+	  // eventBus.on('element.dblclick', function(event) {
+	  //   activateDirectEdit(event.element, true);
+	  // });
 
 	  /*------------------------------- VARIABLES ----------------------------------*/
 	  var canvas = document.getElementById('canvas');
-	  var djs_shape = document.getElementsByClassName('djs-shape')
+	  var djs_element = document.getElementsByClassName('djs-element')
 	  var parametre_schema_scenarios_strategiques = document.getElementById('parametre_schema_scenarios_strategiques')
 	  var choix_valeur_schema_close = document.getElementById('choix_valeur_schema_close')	
 	  var valider_choix_value = document.getElementById('valider_choix_value')
@@ -38441,8 +38261,8 @@
       })
 	
 	  function edit_with_database(){
-		for(let i=0;i<djs_shape.length;i++){
-			if(djs_shape[i].classList[2]=='selected'){
+		for(let i=0;i<djs_element.length;i++){
+			if(djs_element[i].classList[2]=='selected'){
 				var settings_schema = document.getElementsByClassName('settings_schema')
 				settings_schema[0].addEventListener('click', function(event){
 					activateDirectEdit(id_element_selected, true);

@@ -23,7 +23,7 @@ var valeur_metier_JSON;
 var partie_prenante_JSON;
 var SROV_JSON;
 
-var djs_shape = document.getElementsByClassName('djs-shape')
+var djs_element = document.getElementsByClassName('djs-element')
 var box_schema = document.getElementsByClassName('box_schema')
 var id_conteneur = document.getElementById('id_conteneur')
 var id_choix_value_schema = document.getElementById('id_choix_value_schema')
@@ -305,13 +305,16 @@ function enregistrement_schema_fn(schema_file){
 
 /*------------------------- SELECTION SUR SCHEMA ----------------------------*/
 function selection_conteneur(){
-    for(let i=0;i<djs_shape.length;i++){
-        if(djs_shape[i].classList[2]=='selected'){
-            if(djs_shape[i].dataset.elementId.substring(0,11)=='Participant'){
+    for(let i=0;i<djs_element.length;i++){
+        if(djs_element[i].classList[2]=='selected'){
+            if(djs_element[i].dataset.elementId.substring(0,11)=='Participant'){
                 return 'conteneur'
             }
+            else if (djs_element[i].dataset.elementId.substring(0,4)=='Flow'){
+                return 'fleche'
+            }
             else{
-                return djs_shape[i].childNodes[0].childNodes[0].classList[0]
+                return djs_element[i].childNodes[0].childNodes[0].classList[0]
             }
         }
     }
@@ -353,6 +356,12 @@ function choix_donnees(){
         id_choix_value_schema.style.display='none'
         id_conteneur.style.display='inline'
         titre_parametre_schema.innerHTML = "Titre du conteneur"
+        id_conteneur.value=''
+    }
+    else if(selection=='fleche'){
+        id_choix_value_schema.style.display='none'
+        id_conteneur.style.display='inline'
+        titre_parametre_schema.innerHTML = "Titre de la relation"
         id_conteneur.value=''
     }
 }
