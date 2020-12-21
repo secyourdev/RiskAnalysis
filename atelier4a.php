@@ -53,7 +53,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
     <script src="content/vendor/sheet-js/xlsx.full.min.js"></script>
     <script src="content/vendor/sheet-js/FileSaver.js"></script>
-    <script src="content/vendor/bpmn-schema/bpmn-modeler.development_4a.js"></script>
+    <script src="content/vendor/bpmn-schema/bpmn-modeler.development.js"></script>
     <script type="text/javascript"> 
       var id_projet='<?php echo $_SESSION['id_projet'];?>' 
     </script>
@@ -566,6 +566,34 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         </div>
     </div>
 </div> 
+<!----------------------------------------------------------------------------------------------------------------- 
+---------------------------------------------- modal choix valeur schéma ------------------------------------------
+--------------------------------------------------------------------------------------------------------------- -->
+<div class="modal fade" id="parametre_schema_scenarios_operationnels" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index:3000">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="titre_parametre_schema">Paramètres du scénario opérationnel</h5>
+        <button id="choix_valeur_schema_close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body perso_modal_body">
+        <div class="form-group col-12">
+          <label for="id_choix_value_schema">Valeur</label>
+          <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_conteneur" id="id_conteneur" required>
+          <select class="form-control" name="id_choix_value_schema" id="id_choix_value_schema">
+            <option value="" selected>...</option>
+          </select>
+        </div>
+
+        <div class="modal-footer perso_middle_modal_footer">
+          <button id="valider_choix_value" class="btn perso_btn_primary shadow-none">Modifier</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <?php
 }
 ?>

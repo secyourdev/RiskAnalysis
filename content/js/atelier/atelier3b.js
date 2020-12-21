@@ -389,16 +389,3 @@ function modifier_value_schema(){
         }
     }
 }
-
-function disableEnterKey(event) {
-	var event = event || window.event;
-	if(event.keyCode==46) {
-		if (event.preventDefault) {
-			event.preventDefault();
-			event.stopPropagation();
-		} else {
-			event.returnValue = false;
-			event.cancelBubble = true;
-		}		
-	}
-}
