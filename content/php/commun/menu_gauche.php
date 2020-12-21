@@ -62,8 +62,8 @@
             <div class="sidebar-heading">Ateliers</div>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier1"
+            <li class="nav-item py-1">
+                <a class="nav-link collapsed py-1" href="#" data-toggle="collapse" data-target="#Atelier1"
                     aria-expanded="true" aria-controls="Atelier1">
                     <i>
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
@@ -158,8 +158,8 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier2"
+            <li class="nav-item py-1">
+                <a class="nav-link collapsed py-1" href="#" data-toggle="collapse" data-target="#Atelier2"
                     aria-expanded="true" aria-controls="Atelier2">
                     <i>
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
@@ -230,8 +230,8 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier3"
+            <li class="nav-item py-1">
+                <a class="nav-link collapsed py-1" href="#" data-toggle="collapse" data-target="#Atelier3"
                     aria-expanded="true" aria-controls="Atelier3">
                     <i>
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
@@ -310,8 +310,8 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier4"
+            <li class="nav-item py-1">
+                <a class="nav-link collapsed py-1" href="#" data-toggle="collapse" data-target="#Atelier4"
                     aria-expanded="true" aria-controls="Atelier4">
                     <i>
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
@@ -370,8 +370,8 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier5"
+            <li class="nav-item py-1">
+                <a class="nav-link collapsed py-1" href="#" data-toggle="collapse" data-target="#Atelier5"
                     aria-expanded="true" aria-controls="Atelier5">
                     <i>
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
