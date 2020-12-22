@@ -47,6 +47,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <link href="content/css/main.css" rel="stylesheet">
     <link rel="stylesheet" href="content/vendor/bpmn-schema/assets/diagram-js.css">
     <link rel="stylesheet" href="content/vendor/bpmn-schema/assets/bpmn-font/css/bpmn.css">
+    <link rel="stylesheet" href="content/vendor/multiselect/bootstrap-multiselect.css">
 
     <!-- JS -->
     <script src="content/vendor/jquery/jquery.js"></script>
@@ -54,6 +55,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     <script src="content/vendor/sheet-js/xlsx.full.min.js"></script>
     <script src="content/vendor/sheet-js/FileSaver.js"></script>
     <script src="content/vendor/bpmn-schema/bpmn-modeler.development.js"></script>
+    <script src="content/vendor/multiselect/bootstrap-multiselect.js"></script>
     <script type="text/javascript"> 
       var id_projet='<?php echo $_SESSION['id_projet'];?>' 
     </script>
@@ -370,8 +372,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <th>ID</th>
                                 <th>Nom du scénario strategique</th>
                                 <th>Source de risque / Objectif visé</th>
-                                <th>Nom de l'événement redouté</th>
-                                <th>Niveau de gravite</th>
                                 <th>Schéma</th>
                               </tr>
                             </thead>
@@ -383,8 +383,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <td>' . $row["id_scenario_strategique"] . '</td>
                         <td>' . $row["nom_scenario_strategique"] . '</td>
                         <td>' . $row["description_source_de_risque"] . ' / ' . $row["objectif_vise"] . '</td>
-                        <td>' . $row["nom_evenement_redoute"] . '</td>
-                        <td>' . $row["niveau_de_gravite"] . '</td>
                         <td>  <a class="schema_button" data-toggle="modal" data-target="#button_schema_scenarios_strategiques">
                                 <i class="fas fa-project-diagram fa-md "></i>
                               </a>
@@ -580,35 +578,19 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             </div>
 
             <div class="form-group col-12">
-              <label for="Select_source_de_risque">Source de risque</label>
+              <label for="Select_source_de_risque">Source de risque / Objectif visé</label>
               <select class="form-control" name="id_source_de_risque" id="Select_source_de_risque">
                 <option value="" selected>...</option>
                 <?php
                 while ($row = mysqli_fetch_array($result_id_source_de_risque)) //selection.php
                 {
                   echo '
-                <option id="id_source_de_risque" value="' . $row["id_source_de_risque"] . '">' . $row["profil_de_l_attaquant_source_de_risque"] . ' | ' . $row["objectif_vise"] . '</option>
+                <option id="id_source_de_risque" value="' . $row["id_source_de_risque"] . '">' . $row["profil_de_l_attaquant_source_de_risque"] . ' / ' . $row["objectif_vise"] . '</option>
                 ';
                 }
                 ?>
               </select>
             </div>
-
-            <div class="form-group col-12">
-              <label for="Select_evenement_redoute">Événement redouté</label>
-              <select class="form-control" name="id_evenement_redoute" id="Select_evenement_redoute">
-                <option value="" selected>...</option>
-                <?php
-                while ($row = mysqli_fetch_array($result_id_evenement_redoute)) //selection.php
-                {
-                  echo '
-                <option id="id_evenement_redoute" value="' . $row["id_evenement_redoute"] . '">' . $row["nom_evenement_redoute"] . '</option>
-                ';
-                }
-                ?>
-              </select>
-            </div>
-
 
             <!-- bouton Ajouter -->
             <div class="modal-footer perso_middle_modal_footer">
@@ -667,6 +649,61 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <select class="form-control" name="id_choix_value_schema" id="id_choix_value_schema">
             <option value="" selected>...</option>
           </select>
+          
+          <label class='id_label_choix_multiple_value_schema' for="id_choix_multiple_value_schema">Chemin</label>
+          <select class="form-control" id="id_choix_multiple_value_schema" name="id_choix_multiple_value_schema[]" multiple="multiple">
+            <option value="1">Chemin 1</option>
+            <option value="2">Chemin 2</option>
+            <option value="3">Chemin 3</option>
+            <option value="4">Chemin 4</option>
+            <option value="5">Chemin 5</option>
+            <option value="6">Chemin 6</option>
+            <option value="7">Chemin 7</option>
+            <option value="8">Chemin 8</option>
+            <option value="9">Chemin 9</option>
+            <option value="10">Chemin 10</option>
+          </select>
+          <script type="text/javascript">
+              $(document).ready(function() {
+                  $('#id_choix_multiple_value_schema').multiselect({
+                    buttonWidth: '100%'
+                  })
+                  
+                  $('#choix_valeur_schema_close').on('click', function() {
+                     $('option', $('#id_choix_multiple_value_schema')).each(function(element) {
+                        $(this).removeAttr('selected').prop('selected', false);
+                        $('#id_choix_multiple_value_schema').multiselect('refresh');
+                     });
+                  });
+
+                  $('#valider_choix_value').on('click', function() {
+                     $('option', $('#id_choix_multiple_value_schema')).each(function(element) {
+                        $(this).removeAttr('selected').prop('selected', false);
+                        $('#id_choix_multiple_value_schema').multiselect('refresh');
+                     });
+                  });
+
+                  document.onkeydown = function(event){
+                    if(event.keyCode==27){
+                      $('option', $('#id_choix_multiple_value_schema')).each(function(element) {
+                        $(this).removeAttr('selected').prop('selected', false);
+                        $('#id_choix_multiple_value_schema').multiselect('refresh');
+                      });
+                    }
+                  }
+
+                  window.onclick = function(event) {
+                    if (event.target == document.getElementById('parametre_schema_scenarios_strategiques')) {
+                      $('option', $('#id_choix_multiple_value_schema')).each(function(element) {
+                        $(this).removeAttr('selected').prop('selected', false);
+                        $('#id_choix_multiple_value_schema').multiselect('refresh');
+                      });
+                    }
+                  }
+              });
+
+              
+          </script>
         </div>
 
         <div class="modal-footer perso_middle_modal_footer">
