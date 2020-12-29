@@ -1180,6 +1180,10 @@ h6 {
     margin    : 0rem;
 }
 
+.id_label_choix_multiple_value_schema{
+    margin-top: 2rem;
+}
+
 /*------------------------------------------------------------------------------ */
 /*----------------------------- Popup atelier 4--------------------------------- */
 .centre-vraisemblance {
@@ -1577,16 +1581,16 @@ h6 {
     left: 20px;
   }
 
-/*   polyline{
-    fill: none !important;
-    stroke: none !important;
-    stroke-width: 0px!important;
-  }OVERRIDE */
-
 /*------------------------------------------------------------------------------ */
 /*------------------ Système de plannification - Gantt ------------------------- */
 #gantt{
     width: 100% !important;
     width: -webkit-fill-available; 
     border: none;
+}
+
+/*------------------------------------------------------------------------------ */
+/*----------------------------- Multiselect ------------------------------------ */
+.multiselect-container{ /*Overwrite*/
+    width : 100%
 }

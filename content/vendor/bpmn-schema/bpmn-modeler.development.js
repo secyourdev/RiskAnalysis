@@ -15925,171 +15925,100 @@
 	      attachTaskMarkers(parentGfx, element);
 
 	      return rect;
-		},
-		
+		},	
 	    'bpmn:ServiceTask': function(parentGfx, element) {
-	      var task = renderer('bpmn:Task')(parentGfx, element);
-
-	      var pathData = pathMap.getScaledPath('USER', {
-	        abspos: {
-	          x: 17,
-	          y: 22
-	        }
-	      });
+		  var task = renderer('bpmn:Task')(parentGfx, element);
+		  var top_bar_3 = document.getElementById('top_bar_3')
+	  		if(top_bar_3.innerText=='Activité 3.b - Élaborer des scénarios stratégiques'){
+				var pathData = pathMap.getScaledPath('USER', {
+					abspos: {
+						x: 17,
+						y: 22
+					}
+				});
+			}
+			else if(top_bar_3.innerText=='Activité 4.a - Élaborer les scénarios opérationnels'){
+				var pathData = pathMap.getScaledPath('LINK', {
+					abspos: {
+						x: 17,
+						y: 22
+					}
+				});
+			}
 
 	      /* service */ drawPath(parentGfx, pathData, {
 	        strokeWidth: 0.25,
 			fill: 0,
 	        stroke: getStrokeColor(element, defaultStrokeColor)
-	      });
-		  task.setAttribute('class','schema_partie_prenante box_schema')
+		  });
+		  if(top_bar_3.innerText=='Activité 3.b - Élaborer des scénarios stratégiques'){
+			  task.setAttribute('class','schema_partie_prenante box_schema')
+		  }
 	      return task;
 		},
 		
 	    'bpmn:UserTask': function(parentGfx, element) {
 	      var task = renderer('bpmn:Task')(parentGfx, element);
-
-	      var pathData = pathMap.getScaledPath('HACKER', {
-	        abspos: {
-				x: 17,
-				y: 15
-			}
-	      });
+		  var top_bar_3 = document.getElementById('top_bar_3')
+		  if(top_bar_3.innerText=='Activité 3.b - Élaborer des scénarios stratégiques'){
+			var pathData = pathMap.getScaledPath('HACKER', {
+				abspos: {
+					x: 17,
+					y: 15
+				}
+			});
+		  }
+		  else if(top_bar_3.innerText=='Activité 4.a - Élaborer les scénarios opérationnels'){
+			var pathData = pathMap.getScaledPath('POINTER', {
+				abspos: {
+					x: 17,
+					y: 15
+				}
+			});
+		  }
 
 	      /* user path */ drawPath(parentGfx, pathData, {
 			strokeWidth: 0.25,
 			fill: 0,
 	        stroke: getStrokeColor(element, defaultStrokeColor)
-	      });
-		  task.setAttribute('class','schema_source_de_risque box_schema')
+		  });
+		  if(top_bar_3.innerText=='Activité 3.b - Élaborer des scénarios stratégiques'){
+			  task.setAttribute('class','schema_source_de_risque box_schema')
+		  }
 	      return task;
-	    },
+		},
+		
 	    'bpmn:ManualTask': function(parentGfx, element) {
 	      var task = renderer('bpmn:Task')(parentGfx, element);
-
-	      var pathData = pathMap.getScaledPath('VALEUR_METIER', {
-	        abspos: {
-	          x: 17,
-	          y: 15
-	        }
-	      });
+		  var top_bar_3 = document.getElementById('top_bar_3')
+		  if(top_bar_3.innerText=='Activité 3.b - Élaborer des scénarios stratégiques'){
+			var pathData = pathMap.getScaledPath('VALEUR_METIER', {
+				abspos: {
+				x: 17,
+				y: 15
+				}
+			});
+		  }
+		  else if(top_bar_3.innerText=='Activité 4.a - Élaborer les scénarios opérationnels'){
+			var pathData = pathMap.getScaledPath('OBJECTIF_VISE', {
+				abspos: {
+				  x: 17,
+				  y: 15
+				}
+			  });
+		  }
 
 	      /* manual path */ drawPath(parentGfx, pathData, {
 	        strokeWidth: 0.25,
 	        fill: 0,
 	        stroke: getStrokeColor(element, defaultStrokeColor)
-	      });
-		  task.setAttribute('class','schema_valeur_de_metier box_schema')
+		  });
+		  if(top_bar_3.innerText=='Activité 3.b - Élaborer des scénarios stratégiques'){
+			task.setAttribute('class','schema_valeur_de_metier box_schema')
+		  }
 	      return task;
-	    },
-	    'bpmn:SendTask': function(parentGfx, element) {
-	      var task = renderer('bpmn:Task')(parentGfx, element);
-
-	      var pathData = pathMap.getScaledPath('TASK_TYPE_SEND', {
-	        xScaleFactor: 1,
-	        yScaleFactor: 1,
-	        containerWidth: 21,
-	        containerHeight: 14,
-	        position: {
-	          mx: 0.285,
-	          my: 0.357
-	        }
-	      });
-
-	      /* send path */ drawPath(parentGfx, pathData, {
-	        strokeWidth: 1,
-	        fill: getStrokeColor(element, defaultStrokeColor),
-	        stroke: getFillColor(element, defaultFillColor)
-	      });
-
-	      return task;
-	    },
-	    'bpmn:ReceiveTask' : function(parentGfx, element) {
-	      var semantic = getSemantic(element);
-
-	      var task = renderer('bpmn:Task')(parentGfx, element);
-	      var pathData;
-
-	      if (semantic.instantiate) {
-	        drawCircle(parentGfx, 28, 28, 20 * 0.22, { strokeWidth: 1 });
-
-	        pathData = pathMap.getScaledPath('TASK_TYPE_INSTANTIATING_SEND', {
-	          abspos: {
-	            x: 7.77,
-	            y: 9.52
-	          }
-	        });
-	      } else {
-
-	        pathData = pathMap.getScaledPath('TASK_TYPE_SEND', {
-	          xScaleFactor: 0.9,
-	          yScaleFactor: 0.9,
-	          containerWidth: 21,
-	          containerHeight: 14,
-	          position: {
-	            mx: 0.3,
-	            my: 0.4
-	          }
-	        });
-	      }
-
-	      /* receive path */ drawPath(parentGfx, pathData, {
-	        strokeWidth: 1,
-	        fill: getFillColor(element, defaultFillColor),
-	        stroke: getStrokeColor(element, defaultStrokeColor)
-	      });
-
-	      return task;
-	    },
-	    'bpmn:ScriptTask': function(parentGfx, element) {
-	      var task = renderer('bpmn:Task')(parentGfx, element);
-
-	      var pathData = pathMap.getScaledPath('TASK_TYPE_SCRIPT', {
-	        abspos: {
-	          x: 15,
-	          y: 20
-	        }
-	      });
-
-	      /* script path */ drawPath(parentGfx, pathData, {
-	        strokeWidth: 1,
-	        stroke: getStrokeColor(element, defaultStrokeColor)
-	      });
-
-	      return task;
-	    },
-	    'bpmn:BusinessRuleTask': function(parentGfx, element) {
-	      var task = renderer('bpmn:Task')(parentGfx, element);
-
-	      var headerPathData = pathMap.getScaledPath('TASK_TYPE_BUSINESS_RULE_HEADER', {
-	        abspos: {
-	          x: 8,
-	          y: 8
-	        }
-	      });
-
-	      var businessHeaderPath = drawPath(parentGfx, headerPathData);
-	      attr$1(businessHeaderPath, {
-	        strokeWidth: 1,
-	        fill: getFillColor(element, '#aaaaaa'),
-	        stroke: getStrokeColor(element, defaultStrokeColor)
-	      });
-
-	      var headerData = pathMap.getScaledPath('TASK_TYPE_BUSINESS_RULE_MAIN', {
-	        abspos: {
-	          x: 8,
-	          y: 8
-	        }
-	      });
-
-	      var businessPath = drawPath(parentGfx, headerData);
-	      attr$1(businessPath, {
-	        strokeWidth: 1,
-	        stroke: getStrokeColor(element, defaultStrokeColor)
-	      });
-
-	      return task;
-	    },
+		},
+		
 	    'bpmn:SubProcess': function(parentGfx, element, attrs) {
 	      attrs = assign({
 	        fill: getFillColor(element, defaultFillColor),
@@ -17396,323 +17325,24 @@
 	   * </p>
 	   */
 	  this.pathMap = {
-	    'EVENT_MESSAGE': {
-	      d: 'm {mx},{my} l 0,{e.y1} l {e.x1},0 l 0,-{e.y1} z l {e.x0},{e.y0} l {e.x0},-{e.y0}',
-	      height: 36,
-	      width:  36,
-	      heightElements: [6, 14],
-	      widthElements: [10.5, 21]
-	    },
-	    'EVENT_SIGNAL': {
-	      d: 'M {mx},{my} l {e.x0},{e.y0} l -{e.x1},0 Z',
-	      height: 36,
-	      width: 36,
-	      heightElements: [18],
-	      widthElements: [10, 20]
-	    },
-	    'EVENT_ESCALATION': {
-	      d: 'M {mx},{my} l {e.x0},{e.y0} l -{e.x0},-{e.y1} l -{e.x0},{e.y1} Z',
-	      height: 36,
-	      width: 36,
-	      heightElements: [20, 7],
-	      widthElements: [8]
-	    },
-	    'EVENT_CONDITIONAL': {
-	      d: 'M {e.x0},{e.y0} l {e.x1},0 l 0,{e.y2} l -{e.x1},0 Z ' +
-	         'M {e.x2},{e.y3} l {e.x0},0 ' +
-	         'M {e.x2},{e.y4} l {e.x0},0 ' +
-	         'M {e.x2},{e.y5} l {e.x0},0 ' +
-	         'M {e.x2},{e.y6} l {e.x0},0 ' +
-	         'M {e.x2},{e.y7} l {e.x0},0 ' +
-	         'M {e.x2},{e.y8} l {e.x0},0 ',
-	      height: 36,
-	      width:  36,
-	      heightElements: [8.5, 14.5, 18, 11.5, 14.5, 17.5, 20.5, 23.5, 26.5],
-	      widthElements:  [10.5, 14.5, 12.5]
-	    },
-	    'EVENT_LINK': {
-	      d: 'm {mx},{my} 0,{e.y0} -{e.x1},0 0,{e.y1} {e.x1},0 0,{e.y0} {e.x0},-{e.y2} -{e.x0},-{e.y2} z',
-	      height: 36,
-	      width: 36,
-	      heightElements: [4.4375, 6.75, 7.8125],
-	      widthElements: [9.84375, 13.5]
-	    },
-	    'EVENT_ERROR': {
-	      d: 'm {mx},{my} {e.x0},-{e.y0} {e.x1},-{e.y1} {e.x2},{e.y2} {e.x3},-{e.y3} -{e.x4},{e.y4} -{e.x5},-{e.y5} z',
-	      height: 36,
-	      width: 36,
-	      heightElements: [0.023, 8.737, 8.151, 16.564, 10.591, 8.714],
-	      widthElements: [0.085, 6.672, 6.97, 4.273, 5.337, 6.636]
-	    },
-	    'EVENT_CANCEL_45': {
-	      d: 'm {mx},{my} -{e.x1},0 0,{e.x0} {e.x1},0 0,{e.y1} {e.x0},0 ' +
-	        '0,-{e.y1} {e.x1},0 0,-{e.y0} -{e.x1},0 0,-{e.y1} -{e.x0},0 z',
-	      height: 36,
-	      width: 36,
-	      heightElements: [4.75, 8.5],
-	      widthElements: [4.75, 8.5]
-	    },
-	    'EVENT_COMPENSATION': {
-	      d: 'm {mx},{my} {e.x0},-{e.y0} 0,{e.y1} z m {e.x1},-{e.y2} {e.x2},-{e.y3} 0,{e.y1} -{e.x2},-{e.y3} z',
-	      height: 36,
-	      width: 36,
-	      heightElements: [6.5, 13, 0.4, 6.1],
-	      widthElements: [9, 9.3, 8.7]
-	    },
-	    'EVENT_TIMER_WH': {
-	      d: 'M {mx},{my} l {e.x0},-{e.y0} m -{e.x0},{e.y0} l {e.x1},{e.y1} ',
-	      height: 36,
-	      width:  36,
-	      heightElements: [10, 2],
-	      widthElements: [3, 7]
-	    },
-	    'EVENT_TIMER_LINE': {
-	      d:  'M {mx},{my} ' +
-	          'm {e.x0},{e.y0} l -{e.x1},{e.y1} ',
-	      height: 36,
-	      width:  36,
-	      heightElements: [10, 3],
-	      widthElements: [0, 0]
-	    },
-	    'EVENT_MULTIPLE': {
-	      d:'m {mx},{my} {e.x1},-{e.y0} {e.x1},{e.y0} -{e.x0},{e.y1} -{e.x2},0 z',
-	      height: 36,
-	      width:  36,
-	      heightElements: [6.28099, 12.56199],
-	      widthElements: [3.1405, 9.42149, 12.56198]
-	    },
-	    'EVENT_PARALLEL_MULTIPLE': {
-	      d:'m {mx},{my} {e.x0},0 0,{e.y1} {e.x1},0 0,{e.y0} -{e.x1},0 0,{e.y1} ' +
-	        '-{e.x0},0 0,-{e.y1} -{e.x1},0 0,-{e.y0} {e.x1},0 z',
-	      height: 36,
-	      width:  36,
-	      heightElements: [2.56228, 7.68683],
-	      widthElements: [2.56228, 7.68683]
-	    },
-	    'GATEWAY_EXCLUSIVE': {
-	      d:'m {mx},{my} {e.x0},{e.y0} {e.x1},{e.y0} {e.x2},0 {e.x4},{e.y2} ' +
-	                    '{e.x4},{e.y1} {e.x2},0 {e.x1},{e.y3} {e.x0},{e.y3} ' +
-	                    '{e.x3},0 {e.x5},{e.y1} {e.x5},{e.y2} {e.x3},0 z',
-	      height: 17.5,
-	      width:  17.5,
-	      heightElements: [8.5, 6.5312, -6.5312, -8.5],
-	      widthElements:  [6.5, -6.5, 3, -3, 5, -5]
-	    },
-	    'GATEWAY_PARALLEL': {
-	      d:'m {mx},{my} 0,{e.y1} -{e.x1},0 0,{e.y0} {e.x1},0 0,{e.y1} {e.x0},0 ' +
-	        '0,-{e.y1} {e.x1},0 0,-{e.y0} -{e.x1},0 0,-{e.y1} -{e.x0},0 z',
-	      height: 30,
-	      width:  30,
-	      heightElements: [5, 12.5],
-	      widthElements: [5, 12.5]
-	    },
-	    'GATEWAY_EVENT_BASED': {
-	      d:'m {mx},{my} {e.x0},{e.y0} {e.x0},{e.y1} {e.x1},{e.y2} {e.x2},0 z',
-	      height: 11,
-	      width:  11,
-	      heightElements: [-6, 6, 12, -12],
-	      widthElements: [9, -3, -12]
-	    },
-	    'GATEWAY_COMPLEX': {
-	      d:'m {mx},{my} 0,{e.y0} -{e.x0},-{e.y1} -{e.x1},{e.y2} {e.x0},{e.y1} -{e.x2},0 0,{e.y3} ' +
-	        '{e.x2},0  -{e.x0},{e.y1} l {e.x1},{e.y2} {e.x0},-{e.y1} 0,{e.y0} {e.x3},0 0,-{e.y0} {e.x0},{e.y1} ' +
-	        '{e.x1},-{e.y2} -{e.x0},-{e.y1} {e.x2},0 0,-{e.y3} -{e.x2},0 {e.x0},-{e.y1} -{e.x1},-{e.y2} ' +
-	        '-{e.x0},{e.y1} 0,-{e.y0} -{e.x3},0 z',
-	      height: 17.125,
-	      width:  17.125,
-	      heightElements: [4.875, 3.4375, 2.125, 3],
-	      widthElements: [3.4375, 2.125, 4.875, 3]
-	    },
-	    'DATA_OBJECT_PATH': {
-	      d:'m 0,0 {e.x1},0 {e.x0},{e.y0} 0,{e.y1} -{e.x2},0 0,-{e.y2} {e.x1},0 0,{e.y0} {e.x0},0',
-	      height: 61,
-	      width:  51,
-	      heightElements: [10, 50, 60],
-	      widthElements: [10, 40, 50, 60]
-	    },
-	    'DATA_OBJECT_COLLECTION_PATH': {
-	      d:'m {mx}, {my} ' +
-	        'm  0 15  l 0 -15 ' +
-	        'm  4 15  l 0 -15 ' +
-	        'm  4 15  l 0 -15 ',
-	      height: 61,
-	      width:  51,
-	      heightElements: [12],
-	      widthElements: [1, 6, 12, 15]
-	    },
-	    'DATA_ARROW': {
-	      d:'m 5,9 9,0 0,-3 5,5 -5,5 0,-3 -9,0 z',
-	      height: 61,
-	      width:  51,
-	      heightElements: [],
-	      widthElements: []
-	    },
-	    'DATA_STORE': {
-	      d:'m  {mx},{my} ' +
-	        'l  0,{e.y2} ' +
-	        'c  {e.x0},{e.y1} {e.x1},{e.y1}  {e.x2},0 ' +
-	        'l  0,-{e.y2} ' +
-	        'c -{e.x0},-{e.y1} -{e.x1},-{e.y1} -{e.x2},0' +
-	        'c  {e.x0},{e.y1} {e.x1},{e.y1}  {e.x2},0 ' +
-	        'm  -{e.x2},{e.y0}' +
-	        'c  {e.x0},{e.y1} {e.x1},{e.y1} {e.x2},0' +
-	        'm  -{e.x2},{e.y0}' +
-	        'c  {e.x0},{e.y1} {e.x1},{e.y1}  {e.x2},0',
-	      height: 61,
-	      width:  61,
-	      heightElements: [7, 10, 45],
-	      widthElements:  [2, 58, 60]
-	    },
-	    'TEXT_ANNOTATION': {
-	      d: 'm {mx}, {my} m 10,0 l -10,0 l 0,{e.y0} l 10,0',
-	      height: 30,
-	      width: 10,
-	      heightElements: [30],
-	      widthElements: [10]
-	    },
-	    'MARKER_SUB_PROCESS': {
-	      d: 'm{mx},{my} m 7,2 l 0,10 m -5,-5 l 10,0',
-	      height: 10,
-	      width: 10,
-	      heightElements: [],
-	      widthElements: []
-	    },
-	    'MARKER_PARALLEL': {
-	      d: 'm{mx},{my} m 3,2 l 0,10 m 3,-10 l 0,10 m 3,-10 l 0,10',
-	      height: 10,
-	      width: 10,
-	      heightElements: [],
-	      widthElements: []
-	    },
-	    'MARKER_SEQUENTIAL': {
-	      d: 'm{mx},{my} m 0,3 l 10,0 m -10,3 l 10,0 m -10,3 l 10,0',
-	      height: 10,
-	      width: 10,
-	      heightElements: [],
-	      widthElements: []
-	    },
-	    'MARKER_COMPENSATION': {
-	      d: 'm {mx},{my} 7,-5 0,10 z m 7.1,-0.3 6.9,-4.7 0,10 -6.9,-4.7 z',
-	      height: 10,
-	      width: 21,
-	      heightElements: [],
-	      widthElements: []
-	    },
-	    'MARKER_LOOP': {
-	      d: 'm {mx},{my} c 3.526979,0 6.386161,-2.829858 6.386161,-6.320661 0,-3.490806 -2.859182,-6.320661 ' +
-	        '-6.386161,-6.320661 -3.526978,0 -6.38616,2.829855 -6.38616,6.320661 0,1.745402 ' +
-	        '0.714797,3.325567 1.870463,4.469381 0.577834,0.571908 1.265885,1.034728 2.029916,1.35457 ' +
-	        'l -0.718163,-3.909793 m 0.718163,3.909793 -3.885211,0.802902',
-	      height: 13.9,
-	      width: 13.7,
-	      heightElements: [],
-	      widthElements: []
-	    },
-	    'MARKER_ADHOC': {
-	      d: 'm {mx},{my} m 0.84461,2.64411 c 1.05533,-1.23780996 2.64337,-2.07882 4.29653,-1.97997996 2.05163,0.0805 ' +
-	        '3.85579,1.15803 5.76082,1.79107 1.06385,0.34139996 2.24454,0.1438 3.18759,-0.43767 0.61743,-0.33642 ' +
-	        '1.2775,-0.64078 1.7542,-1.17511 0,0.56023 0,1.12046 0,1.6807 -0.98706,0.96237996 -2.29792,1.62393996 ' +
-	        '-3.6918,1.66181996 -1.24459,0.0927 -2.46671,-0.2491 -3.59505,-0.74812 -1.35789,-0.55965 ' +
-	        '-2.75133,-1.33436996 -4.27027,-1.18121996 -1.37741,0.14601 -2.41842,1.13685996 -3.44288,1.96782996 z',
-	      height: 4,
-	      width: 15,
-	      heightElements: [],
-	      widthElements: []
-	    },
-	    'TASK_TYPE_SEND': {
-	      d: 'm {mx},{my} l 0,{e.y1} l {e.x1},0 l 0,-{e.y1} z l {e.x0},{e.y0} l {e.x0},-{e.y0}',
-	      height: 14,
-	      width:  21,
-	      heightElements: [6, 14],
-	      widthElements: [10.5, 21]
-	    },
-	    'TASK_TYPE_SCRIPT': {
-	      d: 'm {mx},{my} c 9.966553,-6.27276 -8.000926,-7.91932 2.968968,-14.938 l -8.802728,0 ' +
-	        'c -10.969894,7.01868 6.997585,8.66524 -2.968967,14.938 z ' +
-	        'm -7,-12 l 5,0 ' +
-	        'm -4.5,3 l 4.5,0 ' +
-	        'm -3,3 l 5,0' +
-	        'm -4,3 l 5,0',
-	      height: 15,
-	      width:  12.6,
-	      heightElements: [6, 14],
-	      widthElements: [10.5, 21]
-		},
 		'HACKER' : {
 		  d:"M 67.4 52.2 l 2.7 -6.8 c 0.5 -1.1 -0.4 -2.4 -1.7 -2.4 h -6.7 c 1.3 -2 2 -4.4 2 -6.9 v 0 c 4.5 -0.8 7.4 -2.1 7.4 -3.4 c 0 -1.4 -3.1 -2.7 -8.1 -3.6 c -1.1 -3.6 -3.1 -7.1 -4.7 -9 c -1.1 -1.3 -3 -1.7 -4.5 -1 l -3.2 1.5 c -1 0.5 -2.3 0.5 -3.3 0 l -3.2 -1.5 c -1.6 -0.7 -3.4 -0.3 -4.5 1 c -1.6 1.8 -3.6 5.4 -4.7 9 c -4.9 0.9 -8 2.1 -8 3.6 c 0 1.4 2.9 2.6 7.4 3.4 v 0 c 0 2.5 0.8 4.9 2 6.9 h -6.6 c -1.3 0 -2.2 1.3 -1.7 2.4 l 3 6.5 c -4.6 2.5 -7.7 7.2 -7.7 12.6 v 4.9 c 0 2.7 2.3 4.9 5.2 4.9 h 41.2 c 2.8 0 5.2 -2.2 5.2 -4.9 v -4.9 C 74.8 59.3 71.8 54.7 67.4 52.2 z M 43.5 70.8 L 38.7 50 l 5.7 3.5 l 2.8 4.3 L 43.5 70.8 z M 54.5 70.8 l -3.7 -13 l 2.8 -4.3 l 5.7 -3.5 L 54.5 70.8 z M 59.3 38.4 c -0.4 1.3 -0.8 2.7 -1.9 3.6 c -1.2 1 -5.5 2.4 -7.4 -2.7 c -0.3 -0.9 -1.8 -0.9 -2.1 0 c -2 5.4 -6.4 3.5 -7.4 2.7 c -1.1 -1 -1.5 -2.3 -1.9 -3.6 c -0.1 -0.3 -0.7 -0.6 -0.7 -0.6 v -1.2 c 3.3 0.4 7 0.6 11 0.6 s 7.8 -0.2 11 -0.6 v 1.2 C 60 37.8 59.4 38.1 59.3 38.4 z"
-		},
-	    'TASK_TYPE_USER_1': {
-	      d: 'm {mx},{my} c 0.909,-0.845 1.594,-2.049 1.594,-3.385 0,-2.554 -1.805,-4.62199999 ' +
-	        '-4.357,-4.62199999 -2.55199998,0 -4.28799998,2.06799999 -4.28799998,4.62199999 0,1.348 ' +
-	        '0.974,2.562 1.89599998,3.405 -0.52899998,0.187 -5.669,2.097 -5.794,4.7560005 v 6.718 ' +
-	        'h 17 v -6.718 c 0,-2.2980005 -5.5279996,-4.5950005 -6.0509996,-4.7760005 z' +
-	        'm -8,6 l 0,5.5 m 11,0 l 0,-5'
-	    },
-	    'TASK_TYPE_USER_2': {
-	      d: 'm {mx},{my} m 2.162,1.009 c 0,2.4470005 -2.158,4.4310005 -4.821,4.4310005 ' +
-	        '-2.66499998,0 -4.822,-1.981 -4.822,-4.4310005 '
-	    },
-	    'TASK_TYPE_USER_3': {
-	      d: 'm {mx},{my} m -6.9,-3.80 c 0,0 2.25099998,-2.358 4.27399998,-1.177 2.024,1.181 4.221,1.537 ' +
-	        '4.124,0.965 -0.098,-0.57 -0.117,-3.79099999 -4.191,-4.13599999 -3.57499998,0.001 ' +
-	        '-4.20799998,3.36699999 -4.20699998,4.34799999 z'
 		},
 		'VALEUR_METIER' : {
 		  d: "M 49.9 26.3 c -11.1 0 -20.1 8.9 -20.1 19.8 S 38.8 66 49.9 66 S 70 57.1 70 46.2 S 61 26.3 49.9 26.3 z M 49.9 60.9 c -8.2 0 -14.9 -6.6 -14.9 -14.7 s 6.7 -14.7 14.9 -14.7 s 14.9 6.6 14.9 14.7 S 58.2 60.9 49.9 60.9 z M 49.9 35.9 c -5.7 0 -10.4 4.6 -10.4 10.2 s 4.6 10.2 10.4 10.2 s 10.4 -4.6 10.4 -10.2 S 55.6 35.9 49.9 35.9 z M 49.9 51.3 c -2.9 0 -5.2 -2.3 -5.2 -5.1 s 2.3 -5.1 5.2 -5.1 s 5.2 2.3 5.2 5.1 C 55.1 49 52.8 51.3 49.9 51.3 z"
 		}, 
-	    'TASK_TYPE_MANUAL': {
-	      d: 'm {mx},{my} c 0.234,-0.01 5.604,0.008 8.029,0.004 0.808,0 1.271,-0.172 1.417,-0.752 0.227,-0.898 ' +
-	        '-0.334,-1.314 -1.338,-1.316 -2.467,-0.01 -7.886,-0.004 -8.108,-0.004 -0.014,-0.079 0.016,-0.533 0,-0.61 ' +
-	        '0.195,-0.042 8.507,0.006 9.616,0.002 0.877,-0.007 1.35,-0.438 1.353,-1.208 0.003,-0.768 -0.479,-1.09 ' +
-	        '-1.35,-1.091 -2.968,-0.002 -9.619,-0.013 -9.619,-0.013 v -0.591 c 0,0 5.052,-0.016 7.225,-0.016 ' +
-	        '0.888,-0.002 1.354,-0.416 1.351,-1.193 -0.006,-0.761 -0.492,-1.196 -1.361,-1.196 -3.473,-0.005 ' +
-	        '-10.86,-0.003 -11.0829995,-0.003 -0.022,-0.047 -0.045,-0.094 -0.069,-0.139 0.3939995,-0.319 ' +
-	        '2.0409995,-1.626 2.4149995,-2.017 0.469,-0.4870005 0.519,-1.1650005 0.162,-1.6040005 -0.414,-0.511 ' +
-	        '-0.973,-0.5 -1.48,-0.236 -1.4609995,0.764 -6.5999995,3.6430005 -7.7329995,4.2710005 -0.9,0.499 ' +
-	        '-1.516,1.253 -1.882,2.19 -0.37000002,0.95 -0.17,2.01 -0.166,2.979 0.004,0.718 -0.27300002,1.345 ' +
-	        '-0.055,2.063 0.629,2.087 2.425,3.312 4.859,3.318 4.6179995,0.014 9.2379995,-0.139 13.8569995,-0.158 ' +
-	        '0.755,-0.004 1.171,-0.301 1.182,-1.033 0.012,-0.754 -0.423,-0.969 -1.183,-0.973 -1.778,-0.01 ' +
-	        '-5.824,-0.004 -6.04,-0.004 10e-4,-0.084 0.003,-0.586 10e-4,-0.67 z'
-	    },
-	    'TASK_TYPE_INSTANTIATING_SEND': {
-	      d: 'm {mx},{my} l 0,8.4 l 12.6,0 l 0,-8.4 z l 6.3,3.6 l 6.3,-3.6'
-		},
 		'USER' : {
 		  d: "M 49.9 46.2 c 5.3 0 9.6 -4.4 9.6 -9.9 s -4.3 -9.9 -9.6 -9.9 s -9.6 4.4 -9.6 9.9 S 44.6 46.2 49.9 46.2 z M 56.6 48.6 h -1.2 c -1.7 0.8 -3.5 1.2 -5.5 1.2 c -1.9 0 -3.8 -0.4 -5.5 -1.2 h -1.2 c -5.5 0 -10 4.7 -10 10.4 v 3.2 c 0 2.1 1.6 3.7 3.6 3.7 h 26.3 c 2 0 3.6 -1.7 3.6 -3.7 v -3.2 C 66.7 53.3 62.2 48.6 56.6 48.6 z"
 		},
-	    'TASK_TYPE_SERVICE': {
-	      d: 'm {mx},{my} v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 ' +
-	        '0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 ' +
-	        '-1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 ' +
-	        'v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 ' +
-	        '-0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 ' +
-	        '-1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 ' +
-	        'h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 ' +
-	        '-0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 ' +
-	        'c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 ' +
-	        'l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 ' +
-	        '0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 ' +
-	        'c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z ' +
-	        'm 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 ' +
-	        '0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 ' +
-	        '0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z'
-	    },
-	    'TASK_TYPE_SERVICE_FILL': {
-	      d: 'm {mx},{my} c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 ' +
-	        '0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 ' +
-	        '0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z'
-	    },
-	    'TASK_TYPE_BUSINESS_RULE_HEADER': {
-	      d: 'm {mx},{my} 0,4 20,0 0,-4 z'
-	    },
-	    'TASK_TYPE_BUSINESS_RULE_MAIN': {
-	      d: 'm {mx},{my} 0,12 20,0 0,-12 z' +
-	        'm 0,8 l 20,0 ' +
-	        'm -13,-4 l 0,8'
-	    },
-	    'MESSAGE_FLOW_MARKER': {
-	      d: 'm {mx},{my} m -10.5 ,-7 l 0,14 l 21,0 l 0,-14 z l 10.5,6 l 10.5,-6'
-	    }
+		'POINTER' : {
+		  d:"M 63.1 51.7 h -8.5 L 59 62.3 c 0.3 0.7 0 1.6 -0.8 1.9 l -4 1.7 c -0.7 0.3 -1.6 0 -1.9 -0.8 L 48.2 55 l -7 7 c -0.9 0.9 -2.4 0.2 -2.4 -1 V 27.5 c 0 -1.3 1.6 -1.9 2.4 -1 l 22.9 22.8 C 65 50.2 64.3 51.7 63.1 51.7 L 63.1 51.7 z"
+		},
+		'OBJECTIF_VISE' : {
+		  d: "M 49.9 26.3 c -11.1 0 -20.1 8.9 -20.1 19.8 S 38.8 66 49.9 66 S 70 57.1 70 46.2 S 61 26.3 49.9 26.3 z M 49.9 60.9 c -8.2 0 -14.9 -6.6 -14.9 -14.7 s 6.7 -14.7 14.9 -14.7 s 14.9 6.6 14.9 14.7 S 58.2 60.9 49.9 60.9 z M 49.9 35.9 c -5.7 0 -10.4 4.6 -10.4 10.2 s 4.6 10.2 10.4 10.2 s 10.4 -4.6 10.4 -10.2 S 55.6 35.9 49.9 35.9 z M 49.9 51.3 c -2.9 0 -5.2 -2.3 -5.2 -5.1 s 2.3 -5.1 5.2 -5.1 s 5.2 2.3 5.2 5.1 C 55.1 49 52.8 51.3 49.9 51.3 z"
+		}, 
+		'LINK' : {
+		  d: "M 54.9 40.5 c 4.7 4.7 4.6 12.2 0 16.8 c 0 0 0 0 0 0 l -5.2 5.2 c -4.6 4.6 -12.1 4.6 -16.8 0 c -4.6 -4.6 -4.6 -12.2 0 -16.8 l 2.9 -2.9 c 0.8 -0.8 2.1 -0.3 2.1 0.8 c 0.1 1.4 0.3 2.8 0.8 4.1 c 0.2 0.5 0 1 -0.3 1.3 l -1 1 c -2.2 2.2 -2.3 5.8 -0.1 8 c 2.2 2.2 5.8 2.2 8 0 l 5.2 -5.2 c 2.2 -2.2 2.2 -5.8 0 -8 c -0.3 -0.3 -0.6 -0.5 -0.8 -0.7 c -0.3 -0.2 -0.5 -0.6 -0.5 -1 c 0 -0.8 0.3 -1.7 0.9 -2.3 l 1.6 -1.6 c 0.4 -0.4 1.1 -0.5 1.6 -0.1 C 53.9 39.6 54.4 40 54.9 40.5 L 54.9 40.5 z M 65.9 29.5 c -4.6 -4.6 -12.1 -4.6 -16.8 0 l -5.2 5.2 c 0 0 0 0 0 0 c -4.6 4.6 -4.6 12.1 0 16.8 c 0.5 0.5 1 0.9 1.6 1.3 c 0.5 0.3 1.2 0.3 1.6 -0.1 l 1.6 -1.6 c 0.7 -0.7 0.9 -1.5 0.9 -2.3 c 0 -0.4 -0.2 -0.8 -0.5 -1 c -0.2 -0.2 -0.5 -0.4 -0.8 -0.7 c -2.2 -2.2 -2.2 -5.7 0 -8 l 5.2 -5.2 c 2.2 -2.2 5.8 -2.2 8 0 c 2.2 2.2 2.1 5.8 -0.1 8 l -1 1 c -0.3 0.3 -0.4 0.8 -0.3 1.3 c 0.5 1.3 0.7 2.7 0.8 4.1 c 0 1.1 1.4 1.6 2.1 0.8 l 2.9 -2.9 C 70.5 41.7 70.5 34.1 65.9 29.5 L 65.9 29.5 z"
+		}
 	  };
 
 	  this.getRawPath = function getRawPath(pathId) {
@@ -30798,7 +30428,7 @@
 	      html.appendChild(container);
 	    }
 
-	    container.appendChild(control);
+		container.appendChild(control);
 
 	    if (entry.className) {
 	      addClasses(control, entry.className);
@@ -35454,7 +35084,11 @@
 	  }
 
 	  function popup_chose_information() {
-		$('#parametre_schema_scenarios_strategiques').modal('show')
+		var top_bar_3 = document.getElementById('top_bar_3')
+		if(top_bar_3.innerText=='Activité 3.b - Élaborer des scénarios stratégiques')
+			$('#parametre_schema_scenarios_strategiques').modal('show')
+		else if(top_bar_3.innerText=='Activité 4.a - Élaborer les scénarios opérationnels')
+			$('#parametre_schema_scenarios_operationnels').modal('show')
 		var backdrop = document.getElementsByClassName('modal-backdrop')
 		if(backdrop.length>1){
 			backdrop[1].style.zIndex = 2000;
@@ -35540,191 +35174,25 @@
 	    };
 	  }
 
+		assign(actions, {
+			//'append.text-annotation': appendAction('bpmn:TextAnnotation', 'bpmn-icon-text-annotation'),
 
-	  /* if (isAny(businessObject, [ 'bpmn:Lane', 'bpmn:Participant' ]) && isExpanded(businessObject)) {
-
-	    var childLanes = getChildLanes(element);
-
-	    assign(actions, {
-	      'lane-insert-above': {
-	        group: 'lane-insert-above',
-	        className: 'bpmn-icon-lane-insert-above',
-	        title: translate('Add Lane above'),
-	        action: {
-	          click: function(event, element) {
-	            modeling.addLane(element, 'top');
-	          }
-	        }
-	      }
-	    });
-
-	    if (childLanes.length < 2) {
-
-	      if (element.height >= 120) {
-	        assign(actions, {
-	          'lane-divide-two': {
-	            group: 'lane-divide',
-	            className: 'bpmn-icon-lane-divide-two',
-	            title: translate('Divide into two Lanes'),
-	            action: {
-	              click: splitLaneHandler(2)
-	            }
-	          }
-	        });
-	      }
-
-	      if (element.height >= 180) {
-	        assign(actions, {
-	          'lane-divide-three': {
-	            group: 'lane-divide',
-	            className: 'bpmn-icon-lane-divide-three',
-	            title: translate('Divide into three Lanes'),
-	            action: {
-	              click: splitLaneHandler(3)
-	            }
-	          }
-	        });
-	      }
-	    }
-
-	    assign(actions, {
-	      'lane-insert-below': {
-	        group: 'lane-insert-below',
-	        className: 'bpmn-icon-lane-insert-below',
-	        title: translate('Add Lane below'),
-	        action: {
-	          click: function(event, element) {
-	            modeling.addLane(element, 'bottom');
-	          }
-	        }
-	      }
-	    });
-
-	  } */
-
-	  if (is$1(businessObject, 'bpmn:FlowNode')) {
-
-	    if (is$1(businessObject, 'bpmn:EventBasedGateway')) {
-
-	      assign(actions, {
-	        'append.receive-task': appendAction(
-	          'bpmn:ReceiveTask',
-	          'bpmn-icon-receive-task',
-	          translate('Append ReceiveTask')
-	        ),
-	        'append.message-intermediate-event': appendAction(
-	          'bpmn:IntermediateCatchEvent',
-	          'bpmn-icon-intermediate-event-catch-message',
-	          translate('Append MessageIntermediateCatchEvent'),
-	          { eventDefinitionType: 'bpmn:MessageEventDefinition' }
-	        ),
-	        'append.timer-intermediate-event': appendAction(
-	          'bpmn:IntermediateCatchEvent',
-	          'bpmn-icon-intermediate-event-catch-timer',
-	          translate('Append TimerIntermediateCatchEvent'),
-	          { eventDefinitionType: 'bpmn:TimerEventDefinition' }
-	        ),
-	        'append.condition-intermediate-event': appendAction(
-	          'bpmn:IntermediateCatchEvent',
-	          'bpmn-icon-intermediate-event-catch-condition',
-	          translate('Append ConditionIntermediateCatchEvent'),
-	          { eventDefinitionType: 'bpmn:ConditionalEventDefinition' }
-	        ),
-	        'append.signal-intermediate-event': appendAction(
-	          'bpmn:IntermediateCatchEvent',
-	          'bpmn-icon-intermediate-event-catch-signal',
-	          translate('Append SignalIntermediateCatchEvent'),
-	          { eventDefinitionType: 'bpmn:SignalEventDefinition' }
-	        )
-	      });
-	    } else
-
-	    if (isEventType(businessObject, 'bpmn:BoundaryEvent', 'bpmn:CompensateEventDefinition')) {
-
-	      assign(actions, {
-	        'append.compensation-activity':
-	            appendAction(
-	              'bpmn:Task',
-	              'bpmn-icon-task',
-	              translate('Append compensation activity'),
-	              {
-	                isForCompensation: true
-	              }
-	            )
-	      });
-	    } else
-
-	    if (!is$1(businessObject, 'bpmn:EndEvent') &&
-	        !businessObject.isForCompensation &&
-	        !isEventType(businessObject, 'bpmn:IntermediateThrowEvent', 'bpmn:LinkEventDefinition') &&
-	        !isEventSubProcess(businessObject)) {
-
-	      assign(actions, {
-	        // 'append.end-event': appendAction(
-	        //   'bpmn:EndEvent',
-	        //   'bpmn-icon-end-event-none',
-	        //   translate('Append EndEvent')
-	        // ),
-	        // 'append.gateway': appendAction(
-	        //   'bpmn:ExclusiveGateway',
-	        //   'bpmn-icon-gateway-none',
-	        //   translate('Append Gateway')
-	        // ),
-	        // 'append.append-task': appendAction(
-	        //   'bpmn:Task',
-	        //   'bpmn-icon-task',
-	        //   translate('Append Task')
-	        // ),
-	        // 'append.intermediate-event': appendAction(
-	        //   'bpmn:IntermediateThrowEvent',
-	        //   'bpmn-icon-intermediate-event-none',
-	        //   translate('Append Intermediate/Boundary Event')
-	        // )
-	      });
-	    }
-	  }
-
-	  if (!popupMenu.isEmpty(element, 'bpmn-replace')) {
-
-	    //Replace menu entry
-	    // assign(actions, {
-	    //   'replace': {
-	    //     group: 'edit',
-	    //     className: 'bpmn-icon-screw-wrench',
-	    //     title: translate('Change type'),
-	    //     action: {
-	    //       click: function(event, element) {
-
-	    //         var position = assign(getReplaceMenuPosition(element), {
-	    //           cursor: { x: event.x, y: event.y }
-	    //         });
-
-	    //         popupMenu.open(element, 'bpmn-replace', position);
-	    //       }
-	    //     }
-	    //   }
-	    // });
-	  }
+			'popup_chose_information': {
+			group: 'popup_chose_information',
+			className: 'fas fa-cog settings_schema',
+			title: translate('Choisir une valeur depuis la base de données'),
+			action: {
+				click: popup_chose_information
+			}
+			}
+		});
 
 	  if (isAny(businessObject, [
-	    'bpmn:FlowNode',
+		'bpmn:FlowNode',
 	    'bpmn:InteractionNode',
 	    'bpmn:DataObjectReference',
 	    'bpmn:DataStoreReference'
 	  ])) {
-
-		assign(actions, {
-			//'append.text-annotation': appendAction('bpmn:TextAnnotation', 'bpmn-icon-text-annotation'),
-  
-			'popup_chose_information': {
-			  group: 'popup_chose_information',
-			  className: 'fas fa-cog settings_schema',
-			  title: translate('Choisir une valeur depuis la base de données'),
-			  action: {
-				  click: popup_chose_information
-			  }
-			}
-		});
 
 		assign(actions, {
 	      //'append.text-annotation': appendAction('bpmn:TextAnnotation', 'bpmn-icon-text-annotation'),
@@ -35733,20 +35201,6 @@
 	        group: 'connect',
 	        className: 'fas fa-arrows-alt-h',
 	        title: translate('Évènement'),
-	        action: {
-	          click: startConnect,
-	          dragstart: startConnect
-	        }
-	      }
-	    });
-	  }
-
-	  if (isAny(businessObject, [ 'bpmn:DataObjectReference', 'bpmn:DataStoreReference' ])) {
-	    assign(actions, {
-	      'connect': {
-	        group: 'connect',
-	        className: 'bpmn-icon-connection-multi',
-	        title: translate('Connect using DataInputAssociation'),
 	        action: {
 	          click: startConnect,
 	          dragstart: startConnect
@@ -38403,53 +37857,67 @@
 
 	  directEditing.registerProvider(this);
 
-	  // listen to dblclick on non-root elements disabled
-	    eventBus.on('element.dblclick', function(event) {
-		  activateDirectEdit(event.element, true);
-	    });
+	  var top_bar_3 = document.getElementById('top_bar_3')
+	  if(top_bar_3.innerText=='Activité 3.b - Élaborer des scénarios stratégiques'){
+		/*------------------------------- VARIABLES ----------------------------------*/
+		var canvas = document.getElementById('canvas');
+		var djs_element = document.getElementsByClassName('djs-element')
+		var parametre_schema_scenarios_strategiques = document.getElementById('parametre_schema_scenarios_strategiques')
+		var choix_valeur_schema_close = document.getElementById('choix_valeur_schema_close')	
+		var valider_choix_value = document.getElementById('valider_choix_value')
+		var id_element_selected;
 
-	  /*------------------------------- VARIABLES ----------------------------------*/
-	  var canvas = document.getElementById('canvas');
-	  var djs_shape = document.getElementsByClassName('djs-shape')
-	  var parametre_schema_scenarios_strategiques = document.getElementById('parametre_schema_scenarios_strategiques')
-	  var choix_valeur_schema_close = document.getElementById('choix_valeur_schema_close')	
-	  var valider_choix_value = document.getElementById('valider_choix_value')
-	  var id_element_selected;
+		/*----------------------------- TRAITEMENTS ---------------------------------*/
+		eventBus.on("element.click", function(event) {
+			id_element_selected = event.element;
+		});
+		
+		canvas.addEventListener('mouseup',function(){
+			edit_with_database()
+		})
 
-	  /*----------------------------- TRAITEMENTS ---------------------------------*/
-	  eventBus.on("element.click", function(event) {
-		id_element_selected = event.element;
-	  });
-	  
-	  canvas.addEventListener('mouseup',function(){
-		edit_with_database()
-	  })
+		document.onkeydown = function(event){
+			if(event.keyCode==27){
+				directEditing.complete();
+		}}
 
-	  document.onkeydown = function(event){
-        if(event.keyCode==27){
+		window.onclick = function(event) {
+			if (event.target == parametre_schema_scenarios_strategiques) {
+				directEditing.complete();
+			}
+		}
+
+		choix_valeur_schema_close.addEventListener('click',function(){
 			directEditing.complete();
-	  }}
-
-	  window.onclick = function(event) {
-		if (event.target == parametre_schema_scenarios_strategiques) {
-			directEditing.complete();
+		})
+		
+		function edit_with_database(){
+			for(let i=0;i<djs_element.length;i++){
+				if(djs_element[i].classList[2]=='selected'){
+					var settings_schema = document.getElementsByClassName('settings_schema')
+					settings_schema[0].addEventListener('click', function(event){
+						activateDirectEdit(id_element_selected, true);
+						valider_choix_value.addEventListener('click', function(){
+							directEditing.complete();
+						})
+					})
+				}
+			}
 		}
 	  }
+	  else if(top_bar_3.innerText=='Activité 4.a - Élaborer les scénarios opérationnels'){
+		eventBus.on("element.click", function(event) {
+			id_element_selected = event.element;
+		});
 
-	  choix_valeur_schema_close.addEventListener('click',function(){
-        directEditing.complete();
-      })
-	
-	  function edit_with_database(){
-		for(let i=0;i<djs_shape.length;i++){
-			if(djs_shape[i].classList[2]=='selected'){
-				var settings_schema = document.getElementsByClassName('settings_schema')
-				settings_schema[0].addEventListener('click', function(event){
-					activateDirectEdit(id_element_selected, true);
-					valider_choix_value.addEventListener('click', function(){
-						directEditing.complete();
-					})
-				})
+		document.onkeydown = function(event){
+			if(event.keyCode==27){
+				directEditing.complete();
+		}}
+
+		window.onclick = function(event) {
+			if (event.target == parametre_schema_scenarios_strategiques) {
+				directEditing.complete();
 			}
 		}
 	  }
@@ -54428,7 +53896,6 @@
 	  'translate'
 	];
 
-
 	PaletteProvider.prototype.getPaletteEntries = function(element) {
 
 	  var actions = {},
@@ -54491,122 +53958,121 @@
 		create.start(event, elementFactory.createParticipantShape());
 	  }
 
-	  assign(actions, {
-	    'hand-tool': {
-	      group: 'tools',
-	      className: 'far fa-hand-paper',
-	      title: translate('Déplacer la page courante'),
-	      action: {
-	        click: function(event) {
-	          handTool.activateHand(event);
-	        }
-	      }
-	    },
-	    'lasso-tool': {
-	      group: 'tools',
-	      className: 'far fa-object-group',
-	      title: translate('Sélecteur'),
-	      action: {
-	        click: function(event) {
-	          lassoTool.activateSelection(event);
-	        }
-	      }
-	    },
-	    // 'space-tool': {
-	    //   group: 'tools',
-	    //   className: 'bpmn-icon-space-tool',
-	    //   title: translate('Activate the create/remove space tool'),
-	    //   action: {
-	    //     click: function(event) {
-	    //       spaceTool.activateSelection(event);
-	    //     }
-	    //   }
-		// },
-		'tool-separator': {
-	      group: 'tools',
-	      separator: true
-		},
-		'create.participant-expanded': {
-			group: 'collaboration',
-			className: 'fas fa-vector-square',
-			title: translate('Conteneur'),
+	  var top_bar_3 = document.getElementById('top_bar_3')
+	  if(top_bar_3.innerText=='Activité 3.b - Élaborer des scénarios stratégiques'){
+		assign(actions, {
+			'hand-tool': {
+			group: 'tools',
+			className: 'far fa-hand-paper',
+			title: translate('Déplacer la page courante'),
 			action: {
-			  dragstart: createParticipant,
-			  click: createParticipant
+				click: function(event) {
+				handTool.activateHand(event);
+				}
 			}
-		},
-		'global-connect-tool': {
-			group: 'collaboration',
-			className: 'fas fa-arrows-alt-h',
-			title: translate('Évènement'),
+			},
+			'lasso-tool': {
+			group: 'tools',
+			className: 'far fa-object-group',
+			title: translate('Sélecteur'),
 			action: {
-			click: function(event) {
-				globalConnect.toggle(event);
+				click: function(event) {
+				lassoTool.activateSelection(event);
+				}
 			}
-			}
-		},
-	    // 'create.start-event': createAction(
-	    //   'bpmn:StartEvent', 'event', 'bpmn-icon-start-event-none',
-	    //   translate('Create StartEvent')
-	    // ),
-	    // 'create.intermediate-event': createAction(
-	    //   'bpmn:IntermediateThrowEvent', 'event', 'bpmn-icon-intermediate-event-none',
-	    //   translate('Create Intermediate/Boundary Event')
-	    // ),
-	    // 'create.end-event': createAction(
-	    //   'bpmn:EndEvent', 'event', 'bpmn-icon-end-event-none',
-	    //   translate('Create EndEvent')
-	    // ),
-	    // 'create.exclusive-gateway': createAction(
-	    //   'bpmn:ExclusiveGateway', 'gateway', 'bpmn-icon-gateway-none',
-	    //   translate('Create Gateway')
-	    // ),
-	    // 'create.hacker': createAction(
-		// 	'bpmn:UserTask', 'user', 'fas fa-user-secret',
-		// 	translate('Attaquant')
-		// ),
-		'create.user': createAction(
-			'bpmn:ServiceTask', 'user', 'fas fa-user',
-			translate('Partie prenante')
-		),
-		// 'create.task': createAction(
-		// 	'bpmn:Task', 'activity', 'far fa-square',
-		// 	translate('Zone de texte')
-		// ),		
-		'create.value': createAction(
-			'bpmn:ManualTask', 'user', 'fas fa-bullseye',
-			translate('Valeur Métier')
-		)
-	    // 'create.data-object': createAction(
-	    //   'bpmn:DataObjectReference', 'data-object', 'bpmn-icon-data-object',
-	    //   translate('Create DataObjectReference')
-	    // ),
-	    // 'create.data-store': createAction(
-	    //   'bpmn:DataStoreReference', 'data-store', 'bpmn-icon-data-store',
-	    //   translate('Create DataStoreReference')
-	    // ),
-	    // 'create.subprocess-expanded': {
-	    //   group: 'activity',
-	    //   className: 'bpmn-icon-subprocess-expanded',
-	    //   title: translate('Create expanded SubProcess'),
-	    //   action: {
-	    //     dragstart: createSubprocess,
-	    //     click: createSubprocess
-	    //   }
-	    // },
-		/* 'create.participant-collasped': {
-			group: 'collaboration',
-			className: 'bpmn-icon-script',
-			title: translate('Zone de texte'),
-			action: {
-			   dragstart: createParticipant,
-			   click: createParticipant
-			}
-		}, */
-	    // 'create.group': createAction(
-	    //   'bpmn:Group', 'artifact', 'bpmn-icon-group',
-	    //   translate('Create Group')
+			},
+			'tool-separator': {
+			group: 'tools',
+			separator: true
+			},
+			'create.participant-expanded': {
+				group: 'collaboration',
+				className: 'fas fa-vector-square',
+				title: translate('Conteneur'),
+				action: {
+				dragstart: createParticipant,
+				click: createParticipant
+				}
+			},
+			'global-connect-tool': {
+				group: 'collaboration',
+				className: 'fas fa-arrows-alt-h',
+				title: translate('Évènement'),
+				action: {
+				click: function(event) {
+					globalConnect.toggle(event);
+				}
+				}
+			},
+			'create.user': createAction(
+				'bpmn:ServiceTask', 'user', 'fas fa-user',
+				translate('Partie prenante')
+			),
+			'create.value': createAction(
+				'bpmn:ManualTask', 'user', 'fas fa-bullseye',
+				translate('Valeur Métier')
+			)
+		});	
+	  }
+	  else if(top_bar_3.innerText=='Activité 4.a - Élaborer les scénarios opérationnels'){
+		assign(actions, {
+			'hand-tool': {
+			  group: 'tools',
+			  className: 'far fa-hand-paper',
+			  title: translate('Déplacer la page courante'),
+			  action: {
+				click: function(event) {
+				  handTool.activateHand(event);
+				}
+			  }
+			},
+			'lasso-tool': {
+			  group: 'tools',
+			  className: 'far fa-object-group',
+			  title: translate('Sélecteur'),
+			  action: {
+				click: function(event) {
+				  lassoTool.activateSelection(event);
+				}
+			  }
+			},
+			'tool-separator': {
+			  group: 'tools',
+			  separator: true
+			},
+			'create.participant-expanded': {
+				group: 'collaboration',
+				className: 'fas fa-vector-square',
+				title: translate('Conteneur'),
+				action: {
+				  dragstart: createParticipant,
+				  click: createParticipant
+				}
+			},
+			'global-connect-tool': {
+				group: 'collaboration',
+				className: 'fas fa-arrows-alt-h',
+				title: translate('Évènement'),
+				action: {
+				click: function(event) {
+					globalConnect.toggle(event);
+				}
+				}
+			},
+			'create.pointer': createAction(
+				'bpmn:UserTask', 'user', 'fas fa-mouse-pointer',
+				translate('Action élémentaire')
+			),
+			'create.link': createAction(
+				'bpmn:ServiceTask', 'user', 'fas fa-link',
+				translate('Phase')
+			),
+			'create.value': createAction(
+				'bpmn:ManualTask', 'user', 'fas fa-bullseye',
+				translate('Objectif visé')
+			)
 		});
+	  }
 	  return actions;
 	};
 

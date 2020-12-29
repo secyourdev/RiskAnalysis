@@ -23,11 +23,16 @@ var valeur_metier_JSON;
 var partie_prenante_JSON;
 var SROV_JSON;
 
-var djs_shape = document.getElementsByClassName('djs-shape')
+var djs_element = document.getElementsByClassName('djs-element')
 var box_schema = document.getElementsByClassName('box_schema')
 var id_conteneur = document.getElementById('id_conteneur')
 var id_choix_value_schema = document.getElementById('id_choix_value_schema')
 var valider_choix_value = document.getElementById('valider_choix_value')
+
+var id_label_choix_multiple_value_schema = document.getElementsByClassName('id_label_choix_multiple_value_schema')
+var id_choix_multiple_select_schema = document.getElementById('id_choix_multiple_value_schema')
+var multiselect_native_select = document.getElementsByClassName('multiselect-native-select')
+var id_choix_multiple_value_schema = document.getElementsByName('id_choix_multiple_value_schema[]')
 
 var canvas = document.getElementById('canvas'); 
 /*------------------------------- SIDEBAR ----------------------------------*/
@@ -244,9 +249,6 @@ function recuperation_valeur_metier_fn(){
             $.ajax({
                 url: 'content/php/atelier3b/selection_valeur_metier.php',
                 type: 'POST',
-                data: {
-                    id_scenario_strategique: modifier_schema[i].parentNode.parentNode.id,
-                },
                 dataType: 'html',
                 success: function (resultat) {
                     valeur_metier_JSON = JSON.parse(resultat);
@@ -305,13 +307,16 @@ function enregistrement_schema_fn(schema_file){
 
 /*------------------------- SELECTION SUR SCHEMA ----------------------------*/
 function selection_conteneur(){
-    for(let i=0;i<djs_shape.length;i++){
-        if(djs_shape[i].classList[2]=='selected'){
-            if(djs_shape[i].dataset.elementId.substring(0,11)=='Participant'){
+    for(let i=0;i<djs_element.length;i++){
+        if(djs_element[i].classList[2]=='selected'){
+            if(djs_element[i].dataset.elementId.substring(0,11)=='Participant'){
                 return 'conteneur'
             }
+            else if (djs_element[i].dataset.elementId.substring(0,4)=='Flow'){
+                return 'fleche'
+            }
             else{
-                return djs_shape[i].childNodes[0].childNodes[0].classList[0]
+                return djs_element[i].childNodes[0].childNodes[0].classList[0]
             }
         }
     }
@@ -333,26 +338,47 @@ function selection_sr(){
 function choix_donnees(){
     if(selection=='schema_partie_prenante'){
         id_conteneur.style.display='none'
+        id_label_choix_multiple_value_schema[0].style.display="none"
+        id_choix_multiple_select_schema.style.display='none'
+        multiselect_native_select[0].style.display='none'
         id_choix_value_schema.style.display='inline'
         titre_parametre_schema.innerHTML = "Choix de la partie partante"
         modifier_modal_parametres(partie_prenante_JSON)      
     }
     else if(selection=='schema_source_de_risque'){
         id_conteneur.style.display='none'
+        id_label_choix_multiple_value_schema[0].style.display="none"
+        id_choix_multiple_select_schema.style.display='none'
+        multiselect_native_select[0].style.display='none'
         id_choix_value_schema.style.display='inline'
         titre_parametre_schema.innerHTML = "Choix de la source de risque"
         modifier_modal_parametres(SROV_JSON)
     }
     else if(selection=='schema_valeur_de_metier'){
         id_conteneur.style.display='none'
+        id_label_choix_multiple_value_schema[0].style.display="none"
+        id_choix_multiple_select_schema.style.display='none'
+        multiselect_native_select[0].style.display='none'
         id_choix_value_schema.style.display='inline'
         titre_parametre_schema.innerHTML = "Choix de la valeur métier"
         modifier_modal_parametres(valeur_metier_JSON)
     }
     else if(selection=='conteneur'){
         id_choix_value_schema.style.display='none'
+        id_label_choix_multiple_value_schema[0].style.display="none"
+        id_choix_multiple_select_schema.style.display='none'
+        multiselect_native_select[0].style.display='none'
         id_conteneur.style.display='inline'
         titre_parametre_schema.innerHTML = "Titre du conteneur"
+        id_conteneur.value=''
+    }
+    else if(selection=='fleche'){
+        id_choix_value_schema.style.display='none'
+        id_label_choix_multiple_value_schema[0].style.display="flex"
+        id_choix_multiple_select_schema.style.display='inline'
+        multiselect_native_select[0].style.display='inline'
+        id_conteneur.style.display='inline'
+        titre_parametre_schema.innerHTML = "Titre de la relation"
         id_conteneur.value=''
     }
 }
@@ -381,15 +407,14 @@ function modifier_value_schema(){
     }
 }
 
-function disableEnterKey(event) {
-	var event = event || window.event;
-	if(event.keyCode==46) {
-		if (event.preventDefault) {
-			event.preventDefault();
-			event.stopPropagation();
-		} else {
-			event.returnValue = false;
-			event.cancelBubble = true;
-		}		
-	}
+function recuperation_valeur_multiselect(){
+    var table_multiselect = new Array();
+    let j=0
+    for(let i=0;i<id_choix_multiple_value_schema[0].length;i++){
+        if(id_choix_multiple_value_schema[0][i].selected){
+            table_multiselect[j] = id_choix_multiple_value_schema[0][i].innerHTML
+            j++
+        }
+    }
+    return table_multiselect;
 }

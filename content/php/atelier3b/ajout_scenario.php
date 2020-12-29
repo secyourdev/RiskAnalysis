@@ -9,7 +9,6 @@ $results["message"] = [];
 
 $nom_scenario_strategique = $_POST['nom_scenario_strategique'];
 $id_source_de_risque = $_POST['id_source_de_risque'];
-$id_evenement_redoute = $_POST['id_evenement_redoute'];
 
 // Verification du nom_scenario_strategique
 if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $nom_scenario_strategique)) {
@@ -21,11 +20,6 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $id_source_de
   $results["error"] = true;
   $_SESSION['message_error'] = "Identifiant source de risque invalide";
 }
-// Verification du id_evenement_redoute
-if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $id_evenement_redoute)) {
-  $results["error"] = true;
-  $_SESSION['message_error'] = "Identifiant événement redouté invalide";
-}
 
 $id_atelier = '3.b';
 $id_projet = $_SESSION['id_projet'];
@@ -34,11 +28,11 @@ $image = 'data:application/xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22U
 
 $insere = $bdd->prepare(
   'INSERT INTO S_scenario_strategique 
-  (id_scenario_strategique, nom_scenario_strategique, images, id_atelier, id_source_de_risque, id_evenement_redoute, id_projet)
+  (id_scenario_strategique, nom_scenario_strategique, images, id_atelier, id_source_de_risque, id_projet)
    VALUES 
-   ( ?, ?, ?, ?, ?, ?, ?)'
+   ( ?, ?, ?, ?, ?, ?)'
 );
-$recupere_scenarios_existants = $bdd->prepare("SELECT nom_scenario_strategique FROM S_scenario_strategique WHERE S_scenario_strategique.id_projet = ?");
+$recupere_scenarios_existants = $bdd->prepare("SELECT id_source_de_risque FROM S_scenario_strategique WHERE S_scenario_strategique.id_projet = ?");
 
 if ($results["error"] === false && isset($_POST['validerscenario'])) {
 
@@ -47,14 +41,13 @@ if ($results["error"] === false && isset($_POST['validerscenario'])) {
   $result_scenarios_existants = $recupere_scenarios_existants->fetchAll(PDO::FETCH_COLUMN);
 
 
-  if (!in_array($nom_scenario_strategique, $result_scenarios_existants)) {
+  if (!in_array($id_source_de_risque, $result_scenarios_existants)) {
   $insere->bindParam(1, $id_scenario);
   $insere->bindParam(2, $nom_scenario_strategique);
   $insere->bindParam(3, $image);
   $insere->bindParam(4, $id_atelier);
   $insere->bindParam(5, $id_source_de_risque);
-  $insere->bindParam(6, $id_evenement_redoute);
-  $insere->bindParam(7, $id_projet);
+  $insere->bindParam(6, $id_projet);
 
   $insere->execute();
   $_SESSION['message_success'] = "Le scénario stratégique a bien été ajouté !";
