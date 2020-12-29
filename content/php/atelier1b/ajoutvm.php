@@ -10,10 +10,9 @@ $nomvm = $_POST['nomvm'];
 $nature = $_POST['nature'];
 $descriptionvm = $_POST['descriptionvm'];
 
-$id_valeur_metier = "valeur_metier";
 $id_atelier = "1.b";
 
-$inserevm = $bdd->prepare('INSERT INTO J_valeur_metier(id_valeur_metier, nom_valeur_metier, nature_valeur_metier, description_valeur_metier, id_atelier, id_projet) VALUES (?,?,?,?,?,?)');
+$inserevm = $bdd->prepare('INSERT INTO J_valeur_metier(nom_valeur_metier, nature_valeur_metier, description_valeur_metier, id_atelier, id_projet) VALUES (?,?,?,?,?)');
 
 
 // Verification du nom de la valeur métier
@@ -35,12 +34,11 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–
 }
 
 if ($results["error"] === false && isset($_POST['validervm'])) {
-  $inserevm->bindParam(1, $id_valeur_metier);
-  $inserevm->bindParam(2, $nomvm);
-  $inserevm->bindParam(3, $nature);
-  $inserevm->bindParam(4, $descriptionvm);
-  $inserevm->bindParam(5, $id_atelier);
-  $inserevm->bindParam(6, $getid_projet);
+   $inserevm->bindParam(1, $nomvm);
+  $inserevm->bindParam(2, $nature);
+  $inserevm->bindParam(3, $descriptionvm);
+  $inserevm->bindParam(4, $id_atelier);
+  $inserevm->bindParam(5, $getid_projet);
   $inserevm->execute();
 
   $_SESSION['message_success_2'] = "La valeur métier a bien été ajoutée !";

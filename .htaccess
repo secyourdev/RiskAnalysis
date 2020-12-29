@@ -9,6 +9,7 @@ RewriteRule ^index&([0-9]+)$ /RiskAnalysis/index.php?id_utilisateur=$1/* [L]
 RewriteRule ^mode_expert&([0-9]+)&([0-9]+)$ /RiskAnalysis/mode_expert.php?id_utilisateur=$1&id_projet=$2/* [L]
 RewriteRule ^planification&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/gantt/planification.php?id_utilisateur=$1&id_projet=$2/* [L]
 RewriteRule ^index_documentaire&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/index_documentaire/index_doc.php?id_utilisateur=$1&id_projet=$2/* [L]
+RewriteRule ^activite&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/activite/activite.php?id_utilisateur=$1&id_projet=$2/* [L]
 
 # Faire que le code PHP ressemble à du html
 AddType application/x-httpd-php .htm .html
@@ -28,3 +29,5 @@ AddType application/x-httpd-php .htm .html
 Header always set Strict-Transport-Security "max-age=15552001; includeSubDomains;"
 #php_flag session.cookie_httponly on
 #php_flag session.cookie_secure on
+
+

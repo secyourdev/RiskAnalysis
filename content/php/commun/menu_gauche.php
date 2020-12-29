@@ -40,7 +40,11 @@
                     <i class="fas fa-fw fa-tasks"></i>
                     <span>Planification</span></a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link projet_link" href="activite&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-file-alt"></i>
+                    <span>Activités</span></a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link projet_link" href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
                     <i class="fas fa-fw fa-file-alt"></i>

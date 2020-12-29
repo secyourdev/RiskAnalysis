@@ -39,7 +39,7 @@ foreach ($result_interne as $row) {
 
 $data = array(
   'data_interne' => $data_interne,
-  'data_externe' => $data_externe,
+  'data_externe' => $data_externe
 );
 
 mysqli_close($connect);
