@@ -1,7 +1,7 @@
 <?php
 $getid_projet = intval($_GET['id_projet']);
 include("content/php/bdd/connexion_sqli.php");
-$query1 = "SELECT S_scenario_strategique.id_scenario_strategique, nom_scenario_strategique, description_source_de_risque, objectif_vise, nom_evenement_redoute, id_risque, nom_chemin_d_attaque_strategique, niveau_de_gravite FROM S_scenario_strategique 
+$query1 = "SELECT S_scenario_strategique.id_scenario_strategique, S_scenario_strategique.nom_scenario_strategique, S_scenario_strategique.description_source_de_risque, S_scenario_strategique.objectif_vise, S_scenario_strategique.nom_evenement_redoute, S_scenario_strategique.id_risque, S_scenario_strategique.nom_chemin_d_attaque_strategique, S_scenario_strategique.niveau_de_gravite FROM S_scenario_strategique 
 INNER JOIN P_SROV ON S_scenario_strategique.id_source_de_risque = P_SROV.id_source_de_risque 
 INNER JOIN M_evenement_redoute ON S_scenario_strategique.id_evenement_redoute = M_evenement_redoute.id_evenement_redoute
 INNER JOIN T_chemin_d_attaque_strategique On S_scenario_strategique.id_scenario_strategique = T_chemin_d_attaque_strategique.id_scenario_strategique

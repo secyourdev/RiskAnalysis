@@ -42,25 +42,38 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link projet_link" href="activite&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i class="fas fa-fw fa-file-alt"></i>
+                    <i class="fas fa-fw fa-clipboard-list"></i>
                     <span>Activités</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link projet_link" href="activite&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-check-square"></i>
+                    <span>Revues</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link projet_link" href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
                     <i class="fas fa-fw fa-file-alt"></i>
                     <span>Index documentaire</span></a>
             </li>
-
             <li class="nav-item">
-                <a class="nav-link projet_link" href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i class="fas fa-fw fa-code-branch"></i>
-                    <span>Version du produit</span></a>
+                <a class="nav-link projet_link" href="gconf&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-sitemap"></i>
+                    <span>Gestion de configuration</span></a>
             </li>
-
             <li class="nav-item">
                 <a class="nav-link projet_link" href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i class="fas fa-fw fas fa-sitemap"></i>
+                    <i class="fas fa-fw fa-file-contract"></i>
+                    <span>Spécification</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link projet_link" href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-boxes"></i>
                     <span>Architecture</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link projet_link" href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-align-center"></i>
+                    <span>Test</span></a>
             </li>
 
             <!-- Divider -->

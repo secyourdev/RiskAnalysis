@@ -10,6 +10,7 @@ RewriteRule ^mode_expert&([0-9]+)&([0-9]+)$ /RiskAnalysis/mode_expert.php?id_uti
 RewriteRule ^planification&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/gantt/planification.php?id_utilisateur=$1&id_projet=$2/* [L]
 RewriteRule ^index_documentaire&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/index_documentaire/index_doc.php?id_utilisateur=$1&id_projet=$2/* [L]
 RewriteRule ^activite&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/activite/activite.php?id_utilisateur=$1&id_projet=$2/* [L]
+RewriteRule ^gconf&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/gconf/gconf.php?id_utilisateur=$1&id_projet=$2/* [L]
 
 # Faire que le code PHP ressemble à du html
 AddType application/x-httpd-php .htm .html
