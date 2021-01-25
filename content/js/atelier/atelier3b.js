@@ -22,6 +22,7 @@ var selection;
 var valeur_metier_JSON;
 var partie_prenante_JSON;
 var SROV_JSON;
+var fleche_JSON;
 
 var djs_element = document.getElementsByClassName('djs-element')
 var box_schema = document.getElementsByClassName('box_schema')
@@ -182,6 +183,8 @@ recuperation_partie_prenante_fn()
 /*------------------------- SELECTION SUR SCHEMA ----------------------------*/
 canvas.addEventListener('mouseup',function(){
     selection = selection_conteneur() 
+    console.log(selection);
+    suppression_fleche()
     removeOptions(id_choix_value_schema);
     choix_donnees();
 })
@@ -190,29 +193,30 @@ valider_choix_value.addEventListener('click', function(){
     if(id_choix_value_schema.style.display!='none'){
         document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_choix_value_schema.selectedOptions[0].innerHTML
 
-        if(selection=='schema_partie_prenante'){
-            $.ajax({
-                url: 'content/php/atelier3b/ajout_schema_lien_SS_PP.php',
-                type: 'POST',
-                data: {
-                    id_scenario_strategique: id_scenario_strategique_schema,
-                    id_partie_prenante : id_choix_value_schema.selectedOptions[0].value
-                }
-            })
-        }
-        else if(selection=='schema_valeur_de_metier'){
-            $.ajax({
-                url: 'content/php/atelier3b/ajout_schema_lien_SS_VM.php',
-                type: 'POST',
-                data: {
-                    id_scenario_strategique: id_scenario_strategique_schema,
-                    id_valeur_metier : id_choix_value_schema.selectedOptions[0].value
-                }
-            })
-        }       
+        // if(selection=='schema_partie_prenante'){
+        //     $.ajax({
+        //         url: 'content/php/atelier3b/ajout_schema_lien_SS_PP.php',
+        //         type: 'POST',
+        //         data: {
+        //             id_scenario_strategique: id_scenario_strategique_schema,
+        //             id_partie_prenante : id_choix_value_schema.selectedOptions[0].value
+        //         }
+        //     })
+        // }
+        // else if(selection=='schema_valeur_de_metier'){
+        //     $.ajax({
+        //         url: 'content/php/atelier3b/ajout_schema_lien_SS_VM.php',
+        //         type: 'POST',
+        //         data: {
+        //             id_scenario_strategique: id_scenario_strategique_schema,
+        //             id_valeur_metier : id_choix_value_schema.selectedOptions[0].value
+        //         }
+        //     })
+        // }       
     }
     else if(id_conteneur.style.display!='none'){
-        document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_conteneur.value
+        document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_conteneur.value;
+        ajout_fleche();
     }
 
     $('#parametre_schema_scenarios_strategiques').modal('hide')
@@ -322,6 +326,78 @@ function selection_conteneur(){
     }
 }
 
+function selection_nom_fleche(){
+    for(let i=0;i<djs_element.length;i++){
+        if(djs_element[i].classList[2]=='selected'){
+            if (djs_element[i].dataset.elementId.substring(0,4)=='Flow'){
+                return djs_element[i].dataset.elementId;
+            }
+        }
+    }
+}
+
+function ajout_fleche(){
+    if(selection=='fleche'){
+        if(fleche_JSON==''){
+            $.ajax({
+                url: 'content/php/atelier3b/ajout_EI_ER.php',
+                type: 'POST',
+                data:  {
+                    id_fleche : selection_nom_fleche(),
+                    id_scenario_strategique: id_scenario_strategique_schema,
+                    numero_chemin : recuperation_valeur_multiselect()[0],
+                    valeur_chemin : id_conteneur.value
+                }
+            })
+        }
+        else{
+            $.ajax({
+                url: 'content/php/atelier3b/modification_EI_ER.php',
+                type: 'POST',
+                data:  {
+                    id_fleche : selection_nom_fleche(),
+                    id_scenario_strategique: id_scenario_strategique_schema,
+                    numero_chemin : recuperation_valeur_multiselect()[0],
+                    valeur_chemin : id_conteneur.value
+                }
+            })
+        }
+    }
+}
+
+function recuperation_fleche(){
+    $.ajax({
+        url: 'content/php/atelier3b/selection_EI_ER.php',
+        type: 'POST',
+        data: {
+            id_fleche : selection_nom_fleche(),
+            id_scenario_strategique: id_scenario_strategique_schema
+        },
+        success: function (resultat) {
+            fleche_JSON = JSON.parse(resultat);
+        }
+    })
+}
+
+function suppression_fleche(){
+    for(let i=0;i<djs_element.length;i++){
+        if(djs_element[i].classList[2]=='selected'){
+            if (djs_element[i].dataset.elementId.substring(0,4)=='Flow'){
+                document.getElementsByClassName('entry fas fa-trash-alt')[0].addEventListener('click',function(){
+                    $.ajax({
+                        url: 'content/php/atelier3b/suppression_EI_ER.php',
+                        type: 'POST',
+                        data:  {
+                            id_fleche : selection_nom_fleche(),
+                            id_scenario_strategique: id_scenario_strategique_schema
+                        }
+                    })
+                })
+            }
+        }
+    }
+}
+
 function selection_sr(){
     canvas.addEventListener('mouseup',function(event){
         for(let i=0;i<djs_shape.length;i++){
@@ -373,13 +449,21 @@ function choix_donnees(){
         id_conteneur.value=''
     }
     else if(selection=='fleche'){
+        recuperation_fleche();
         id_choix_value_schema.style.display='none'
         id_label_choix_multiple_value_schema[0].style.display="flex"
         id_choix_multiple_select_schema.style.display='inline'
         multiselect_native_select[0].style.display='inline'
         id_conteneur.style.display='inline'
         titre_parametre_schema.innerHTML = "Titre de la relation"
-        id_conteneur.value=''
+        sleep(100).then(() => {
+            if(fleche_JSON!=''){
+                id_conteneur.value=fleche_JSON[0][1];
+            }
+            else{
+                id_conteneur.value=''
+            }
+        });
     }
 }
 
