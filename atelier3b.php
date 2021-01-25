@@ -649,9 +649,13 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
           <select class="form-control" name="id_choix_value_schema" id="id_choix_value_schema">
             <option value="" selected>...</option>
           </select>
-          
-          <label class='id_label_choix_multiple_value_schema' for="id_choix_multiple_value_schema">Chemin</label>
-          <select class="form-control" id="id_choix_multiple_value_schema" name="id_choix_multiple_value_schema[]" multiple="multiple">
+         
+          <label class='id_choix_value_fleche' for="id_choix_multiple_value_schema">Chemin</label>
+          <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_choix_multiple_value_schema" id="id_choix_multiple_value_schema" required>
+          <select class="form-control" name="id_choix_value_fleche" id="id_choix_value_fleche">
+            <option value="" selected>...</option>
+          </select>
+          <!-- <select class="form-control" id="id_choix_multiple_value_schema" name="id_choix_multiple_value_schema[]" multiple="multiple">
             <option value="1">Chemin 1</option>
             <option value="2">Chemin 2</option>
             <option value="3">Chemin 3</option>
@@ -703,7 +707,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
               });
 
               
-          </script>
+          </script> -->
         </div>
 
         <div class="modal-footer perso_middle_modal_footer">

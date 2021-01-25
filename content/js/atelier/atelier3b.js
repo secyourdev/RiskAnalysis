@@ -23,17 +23,19 @@ var valeur_metier_JSON;
 var partie_prenante_JSON;
 var SROV_JSON;
 var fleche_JSON;
+var chemin_JSON;
 
 var djs_element = document.getElementsByClassName('djs-element')
 var box_schema = document.getElementsByClassName('box_schema')
 var id_conteneur = document.getElementById('id_conteneur')
 var id_choix_value_schema = document.getElementById('id_choix_value_schema')
+var id_choix_value_fleche = document.getElementById('id_choix_value_fleche')
 var valider_choix_value = document.getElementById('valider_choix_value')
 
 var id_label_choix_multiple_value_schema = document.getElementsByClassName('id_label_choix_multiple_value_schema')
 var id_choix_multiple_select_schema = document.getElementById('id_choix_multiple_value_schema')
 var multiselect_native_select = document.getElementsByClassName('multiselect-native-select')
-var id_choix_multiple_value_schema = document.getElementsByName('id_choix_multiple_value_schema[]')
+var id_choix_multiple_value_schema = document.getElementById('id_choix_multiple_value_schema')
 
 var canvas = document.getElementById('canvas'); 
 /*------------------------------- SIDEBAR ----------------------------------*/
@@ -180,39 +182,53 @@ recuperation_schema_fn()
 recuperation_valeur_metier_fn()
 recuperation_SROV_fn()
 recuperation_partie_prenante_fn()
+recuperation_chemin_fn()
 /*------------------------- SELECTION SUR SCHEMA ----------------------------*/
 canvas.addEventListener('mouseup',function(){
     selection = selection_conteneur() 
     console.log(selection);
     suppression_fleche()
     removeOptions(id_choix_value_schema);
+    removeOptions(id_choix_value_fleche);
     choix_donnees();
 })
 
 valider_choix_value.addEventListener('click', function(){
-    if(id_choix_value_schema.style.display!='none'){
+    if(id_choix_value_schema.style.display!='none'&&id_choix_value_schema.style.display!='none'){
         document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_choix_value_schema.selectedOptions[0].innerHTML
-
-        // if(selection=='schema_partie_prenante'){
-        //     $.ajax({
-        //         url: 'content/php/atelier3b/ajout_schema_lien_SS_PP.php',
-        //         type: 'POST',
-        //         data: {
-        //             id_scenario_strategique: id_scenario_strategique_schema,
-        //             id_partie_prenante : id_choix_value_schema.selectedOptions[0].value
-        //         }
-        //     })
-        // }
-        // else if(selection=='schema_valeur_de_metier'){
-        //     $.ajax({
-        //         url: 'content/php/atelier3b/ajout_schema_lien_SS_VM.php',
-        //         type: 'POST',
-        //         data: {
-        //             id_scenario_strategique: id_scenario_strategique_schema,
-        //             id_valeur_metier : id_choix_value_schema.selectedOptions[0].value
-        //         }
-        //     })
-        // }       
+        if(selection=='schema_partie_prenante'){
+            $.ajax({
+                url: 'content/php/atelier3b/ajout_schema_lien_SS_PP.php',
+                type: 'POST',
+                data: {
+                    id_partie_prenante : id_choix_value_schema.selectedOptions[0].value,
+                    id_fleche : id_choix_value_fleche.selectedOptions[0].value,
+                    id_scenario_strategique: id_scenario_strategique_schema
+                }
+            })
+        }
+        else if(selection=='schema_valeur_de_metier'){
+            $.ajax({
+                url: 'content/php/atelier3b/ajout_schema_lien_SS_VM.php',
+                type: 'POST',
+                data: {
+                    id_valeur_metier : id_choix_value_schema.selectedOptions[0].value,
+                    id_fleche: id_choix_value_fleche.selectedOptions[0].value,
+                    id_scenario_strategique: id_scenario_strategique_schema
+                }
+            })
+        }
+        else if(selection=='schema_source_de_risque'){
+            $.ajax({
+                url: 'content/php/atelier3b/ajout_schema_lien_SS_SR.php',
+                type: 'POST',
+                data: {
+                    id_source_de_risque : id_choix_value_schema.selectedOptions[0].value,
+                    id_fleche: id_choix_value_fleche.selectedOptions[0].value,
+                    id_scenario_strategique: id_scenario_strategique_schema
+                }
+            })
+        }       
     }
     else if(id_conteneur.style.display!='none'){
         document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_conteneur.value;
@@ -297,6 +313,25 @@ function recuperation_partie_prenante_fn(){
         });
     }
 }
+
+/*------------- RECUPERATION CHEMINS PROJET POUR SCHEMA -------------------*/
+function recuperation_chemin_fn(){
+    for(let i=0;i<lenght_modifier_schema;i++){
+        modifier_schema[i].addEventListener('click',function(){
+
+            $.ajax({
+                url: 'content/php/atelier3b/selection_chemin.php',
+                type: 'POST',
+                data: {
+                    id_scenario_strategique: modifier_schema[i].parentNode.parentNode.id,
+                },
+                success: function (resultat) {
+                    chemin_JSON = JSON.parse(resultat);
+                }
+            })
+        });
+    }
+}
 /*----------------------- AJOUT DU SCHEMA SUR BDD ---------------------------*/
 function enregistrement_schema_fn(schema_file){     
     $.ajax({
@@ -345,7 +380,7 @@ function ajout_fleche(){
                 data:  {
                     id_fleche : selection_nom_fleche(),
                     id_scenario_strategique: id_scenario_strategique_schema,
-                    numero_chemin : recuperation_valeur_multiselect()[0],
+                    numero_chemin : id_choix_multiple_value_schema.value,/*recuperation_valeur_multiselect()[0],*/
                     valeur_chemin : id_conteneur.value
                 }
             })
@@ -357,7 +392,7 @@ function ajout_fleche(){
                 data:  {
                     id_fleche : selection_nom_fleche(),
                     id_scenario_strategique: id_scenario_strategique_schema,
-                    numero_chemin : recuperation_valeur_multiselect()[0],
+                    numero_chemin : id_choix_multiple_value_schema.value,/*recuperation_valeur_multiselect()[0],*/
                     valeur_chemin : id_conteneur.value
                 }
             })
@@ -414,36 +449,43 @@ function selection_sr(){
 function choix_donnees(){
     if(selection=='schema_partie_prenante'){
         id_conteneur.style.display='none'
-        id_label_choix_multiple_value_schema[0].style.display="none"
+        id_label_choix_multiple_value_schema[0].style.display="flex"
         id_choix_multiple_select_schema.style.display='none'
-        multiselect_native_select[0].style.display='none'
+        id_choix_value_fleche.style.display='inline'
+        //multiselect_native_select[0].style.display='none'
         id_choix_value_schema.style.display='inline'
         titre_parametre_schema.innerHTML = "Choix de la partie partante"
-        modifier_modal_parametres(partie_prenante_JSON)      
+        modifier_modal_parametres(partie_prenante_JSON,id_choix_value_schema)
+        modifier_modal_parametres(chemin_JSON,id_choix_value_fleche)
     }
     else if(selection=='schema_source_de_risque'){
         id_conteneur.style.display='none'
-        id_label_choix_multiple_value_schema[0].style.display="none"
+        id_label_choix_multiple_value_schema[0].style.display="flex"
         id_choix_multiple_select_schema.style.display='none'
-        multiselect_native_select[0].style.display='none'
+        id_choix_value_fleche.style.display='inline'
+        //multiselect_native_select[0].style.display='none'
         id_choix_value_schema.style.display='inline'
         titre_parametre_schema.innerHTML = "Choix de la source de risque"
-        modifier_modal_parametres(SROV_JSON)
+        modifier_modal_parametres(SROV_JSON,id_choix_value_schema)
+        modifier_modal_parametres(chemin_JSON,id_choix_value_fleche)
     }
     else if(selection=='schema_valeur_de_metier'){
         id_conteneur.style.display='none'
-        id_label_choix_multiple_value_schema[0].style.display="none"
+        id_label_choix_multiple_value_schema[0].style.display="flex"
         id_choix_multiple_select_schema.style.display='none'
-        multiselect_native_select[0].style.display='none'
+        id_choix_value_fleche.style.display='inline'
+        //multiselect_native_select[0].style.display='none'
         id_choix_value_schema.style.display='inline'
         titre_parametre_schema.innerHTML = "Choix de la valeur métier"
-        modifier_modal_parametres(valeur_metier_JSON)
+        modifier_modal_parametres(valeur_metier_JSON,id_choix_value_schema)
+        modifier_modal_parametres(chemin_JSON,id_choix_value_fleche)
     }
     else if(selection=='conteneur'){
         id_choix_value_schema.style.display='none'
         id_label_choix_multiple_value_schema[0].style.display="none"
         id_choix_multiple_select_schema.style.display='none'
-        multiselect_native_select[0].style.display='none'
+        id_choix_value_fleche.style.display='none'
+        //multiselect_native_select[0].style.display='none'
         id_conteneur.style.display='inline'
         titre_parametre_schema.innerHTML = "Titre du conteneur"
         id_conteneur.value=''
@@ -453,15 +495,18 @@ function choix_donnees(){
         id_choix_value_schema.style.display='none'
         id_label_choix_multiple_value_schema[0].style.display="flex"
         id_choix_multiple_select_schema.style.display='inline'
-        multiselect_native_select[0].style.display='inline'
+        id_choix_value_fleche.style.display='none'
+        //multiselect_native_select[0].style.display='inline'
         id_conteneur.style.display='inline'
         titre_parametre_schema.innerHTML = "Titre de la relation"
         sleep(100).then(() => {
             if(fleche_JSON!=''){
                 id_conteneur.value=fleche_JSON[0][1];
+                id_choix_multiple_select_schema.value=fleche_JSON[0][0];
             }
             else{
                 id_conteneur.value=''
+                id_choix_multiple_select_schema.value=''
             }
         });
     }
@@ -474,12 +519,12 @@ function removeOptions(selectElement) {
     }
 }
 
-function modifier_modal_parametres(table){
+function modifier_modal_parametres(table,selector){
     for(let i=0;i<table.length;i++){
         var option = document.createElement('option')
         option.value = table[i][0]
         option.innerHTML = table[i][1]
-        id_choix_value_schema.appendChild(option)
+        selector.appendChild(option)
     }  
 }
 
