@@ -457,11 +457,57 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
               <!-- Begin Page Content -->
               <div id="fixed_page" class="container-fluid">
                 <!-- Content Row -->
-                <div class="row fondu">               
+                <div class="row fondu">     
+                  <!-- Area Card -->
+                    <div id="gen_doc" class="col-xl-12 col-lg-12">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="row perso_no_margin">
+                                <div class="card-header col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                    <h6 class="m-0">Génération documentaire</h6>
+                                </div>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                              <?php 
+                              // Defining variables 
+                              $filename = ""; 
+
+                              // Removing the redundant HTML characters if any exist. 
+                              function test_input($data) { 
+                                $data = trim($data); 
+                                $data = stripslashes($data); 
+                                $data = htmlspecialchars($data); 
+                                return $data; 
+                              }
+
+                              // Checking for a POST request 
+                              if ($_SERVER["REQUEST_METHOD"] == "POST") { 
+                                $filename = test_input($_POST["filename"]); 
+                                include("pro_version/gen_doc/vendor/phpoffice/phpword/samples/GenerationDoc.php");
+                              } 
+                              ?> 
+                        
+                              <h2>Génération du rapport</h2> 
+                              <form method="post" action="<?php echo '/RiskAnalysis/mode_expert&'.$_SESSION['id_utilisateur'].'&'.$_SESSION['id_projet']?>">
+                                  Filename :   
+                                  <input type="text" name="filename"> 
+                                  <input type="submit" name="submit"
+                                        value="Submit"> 
+                              </form> 
+                        
+                              <?php 
+                              if ($_SERVER["REQUEST_METHOD"] == "POST") { 
+                                  echo "<BR>Your file : " ;
+                                  echo "<a href='http://localhost/RiskAnalysis/temp/$filename_download'>$filename_download</a>" ;
+                                } 
+                              ?> 
+                            </div>         
+                        </div>
+                    </div>
                   <!-- Area Card -->
                     <div id="mesure_de_securite" class="col-xl-12 col-lg-12">
                         <div class="card shadow mb-4">
-
                             <!-- Card Header - Dropdown -->
                             <div class="row perso_no_margin">
                                 <div class="card-header col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">

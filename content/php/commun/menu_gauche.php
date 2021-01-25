@@ -40,23 +40,40 @@
                     <i class="fas fa-fw fa-tasks"></i>
                     <span>Planification</span></a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link projet_link" href="activite&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-clipboard-list"></i>
+                    <span>Activités</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link projet_link" href="activite&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-check-square"></i>
+                    <span>Revues</span></a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link projet_link" href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
                     <i class="fas fa-fw fa-file-alt"></i>
                     <span>Index documentaire</span></a>
             </li>
-
             <li class="nav-item">
-                <a class="nav-link projet_link" href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i class="fas fa-fw fa-code-branch"></i>
-                    <span>Version du produit</span></a>
+                <a class="nav-link projet_link" href="gconf&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-sitemap"></i>
+                    <span>Gestion de configuration</span></a>
             </li>
-
             <li class="nav-item">
                 <a class="nav-link projet_link" href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i class="fas fa-fw fas fa-sitemap"></i>
+                    <i class="fas fa-fw fa-file-contract"></i>
+                    <span>Spécification</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link projet_link" href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-boxes"></i>
                     <span>Architecture</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link projet_link" href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-align-center"></i>
+                    <span>Test</span></a>
             </li>
 
             <!-- Divider -->
@@ -66,8 +83,8 @@
             <div class="sidebar-heading">Ateliers</div>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier1"
+            <li class="nav-item py-1">
+                <a class="nav-link collapsed py-1" href="#" data-toggle="collapse" data-target="#Atelier1"
                     aria-expanded="true" aria-controls="Atelier1">
                     <i>
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
@@ -162,8 +179,8 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier2"
+            <li class="nav-item py-1">
+                <a class="nav-link collapsed py-1" href="#" data-toggle="collapse" data-target="#Atelier2"
                     aria-expanded="true" aria-controls="Atelier2">
                     <i>
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
@@ -234,8 +251,8 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier3"
+            <li class="nav-item py-1">
+                <a class="nav-link collapsed py-1" href="#" data-toggle="collapse" data-target="#Atelier3"
                     aria-expanded="true" aria-controls="Atelier3">
                     <i>
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
@@ -314,8 +331,8 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier4"
+            <li class="nav-item py-1">
+                <a class="nav-link collapsed py-1" href="#" data-toggle="collapse" data-target="#Atelier4"
                     aria-expanded="true" aria-controls="Atelier4">
                     <i>
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
@@ -374,8 +391,8 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier5"
+            <li class="nav-item py-1">
+                <a class="nav-link collapsed py-1" href="#" data-toggle="collapse" data-target="#Atelier5"
                     aria-expanded="true" aria-controls="Atelier5">
                     <i>
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
