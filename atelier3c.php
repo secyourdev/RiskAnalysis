@@ -314,8 +314,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <tr>
                                 <th>ID</th>
                                 <th>Scénario stratégique</th>
-                                <th>Source de risque : Objectif visé</th>
-                                <th>Evénement redouté</th>
+                                <th>Source de risque/Objectif visé</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -326,7 +325,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <td>' . $row["id_scenario_strategique"] . '</td>
                         <td>' . $row["nom_scenario_strategique"] . '</td>
                         <td>' . $row["description_source_de_risque"] . ' : ' . $row["objectif_vise"] . '</td>
-                        <td>' . $row["nom_evenement_redoute"] . '</td>
                         </tr>
                         ';
                               }

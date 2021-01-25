@@ -32,7 +32,7 @@ var id_choix_value_schema = document.getElementById('id_choix_value_schema')
 var id_choix_value_fleche = document.getElementById('id_choix_value_fleche')
 var valider_choix_value = document.getElementById('valider_choix_value')
 
-var id_label_choix_multiple_value_schema = document.getElementsByClassName('id_label_choix_multiple_value_schema')
+var id_label_choix_multiple_value_schema = document.getElementsByClassName('id_choix_value_fleche')
 var id_choix_multiple_select_schema = document.getElementById('id_choix_multiple_value_schema')
 var multiselect_native_select = document.getElementsByClassName('multiselect-native-select')
 var id_choix_multiple_value_schema = document.getElementById('id_choix_multiple_value_schema')

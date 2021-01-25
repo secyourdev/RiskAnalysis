@@ -22,14 +22,10 @@ $query_scenario_strategique =
 S_scenario_strategique.id_scenario_strategique,
 nom_scenario_strategique, 
 S_scenario_strategique.id_source_de_risque, 
-S_scenario_strategique.id_evenement_redoute, 
-nom_evenement_redoute, 
-niveau_de_gravite, 
 P_SROV.description_source_de_risque, 
 objectif_vise 
-FROM S_scenario_strategique, M_evenement_redoute, P_SROV 
-WHERE S_scenario_strategique.id_evenement_redoute = M_evenement_redoute.id_evenement_redoute 
-AND S_scenario_strategique.id_source_de_risque = P_SROV.id_source_de_risque 
+FROM S_scenario_strategique, P_SROV 
+WHERE S_scenario_strategique.id_source_de_risque = P_SROV.id_source_de_risque 
 AND S_scenario_strategique.id_projet = $getid_projet
 ORDER BY id_scenario_strategique ASC";
 $result_scenario_strategique = mysqli_query($connect, $query_scenario_strategique);

@@ -650,7 +650,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             <option value="" selected>...</option>
           </select>
          
-          <label class='id_choix_value_fleche' for="id_choix_multiple_value_schema">Chemin</label>
+          <label class='id_choix_value_fleche' for="id_choix_value_fleche">Chemin</label>
           <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_choix_multiple_value_schema" id="id_choix_multiple_value_schema" required>
           <select class="form-control" name="id_choix_value_fleche" id="id_choix_value_fleche">
             <option value="" selected>...</option>
