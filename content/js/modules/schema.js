@@ -222,6 +222,10 @@ for(let i=0;i<fleche.length;i++){
     console.log("id_dest : "+fleche[i][8]);
     console.log('\n')
 }
+
+// Créé un sous tableau EI et ER 
+
+
 // faire un tableau regroupant toute les données à envoyé sur la bdd
 // envoyer les données sur la bdd tout en vérifiant que les anciennes données ont été supprimé 
 // pour cela, on supprime à chaque fois toutes les données du scénario stratégique pour créer des

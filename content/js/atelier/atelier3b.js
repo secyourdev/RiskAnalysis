@@ -187,8 +187,7 @@ canvas.addEventListener('mouseup',function(){
     selection = selection_conteneur() 
     removeOptions(id_choix_value_schema);
     choix_donnees();
-    if(ER_radio_button.checked) onERButton()   
-    else onEIButton()
+    EI_radio_button.checked=true
 })
 
 ER_radio_button.addEventListener('click',function(){
@@ -207,8 +206,9 @@ valider_choix_value.addEventListener('click', function(){
     else if(button_EI_IR.style.display!='none'){
         if(EI_radio_button.checked)
             document.getElementsByClassName('djs-direct-editing-content')[0].innerText=EI_radio_button.value;
-        else
-        document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_choix_value_schema.selectedOptions[0].innerHTML
+        else{
+            document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_choix_value_schema.selectedOptions[0].innerHTML
+        }
     }
 
     $('#parametre_schema_scenarios_strategiques').modal('hide')
@@ -419,12 +419,14 @@ function onERButton(){
     id_choix_value_schema.style.display='inline'
     id_choix_value_schema_label.style.display='inline'  
     id_choix_value_schema_label.innerText="Événement redouté" 
-    modifier_modal_parametres(evenement_redoutes_JSON,id_choix_value_schema)       
+    modifier_modal_parametres(evenement_redoutes_JSON,id_choix_value_schema)    
+  
 }
 
 function onEIButton(){
     id_choix_value_schema.style.display='none'
-    id_choix_value_schema_label.style.display='none'
+    id_choix_value_schema_label.style.display='none'  
+    removeOptions(id_choix_value_schema);   
 }
 
 
