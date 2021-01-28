@@ -839,6 +839,12 @@ h6 {
     flex-direction: row-reverse;
 }
 
+.perso_header_center {
+    display        : flex;
+    justify-content: center;
+}
+
+
 .perso_icon_btn {
     border          : none;
     background-color: var(--card-content-color);
