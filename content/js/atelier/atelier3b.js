@@ -22,6 +22,7 @@ var selection;
 var valeur_metier_JSON;
 var partie_prenante_JSON;
 var SROV_JSON;
+var evenement_redoutes_JSON;
 
 var djs_element = document.getElementsByClassName('djs-element')
 var box_schema = document.getElementsByClassName('box_schema')
@@ -180,11 +181,22 @@ recuperation_schema_fn()
 recuperation_valeur_metier_fn()
 recuperation_SROV_fn()
 recuperation_partie_prenante_fn()
+recuperation_evenement_redoute_fn()
 /*------------------------- SELECTION SUR SCHEMA ----------------------------*/
 canvas.addEventListener('mouseup',function(){
     selection = selection_conteneur() 
     removeOptions(id_choix_value_schema);
     choix_donnees();
+    if(ER_radio_button.checked) onERButton()   
+    else onEIButton()
+})
+
+ER_radio_button.addEventListener('click',function(){
+    onERButton()
+})
+
+EI_radio_button.addEventListener('click',function(){
+    onEIButton()
 })
 
 valider_choix_value.addEventListener('click', function(){
@@ -193,12 +205,10 @@ valider_choix_value.addEventListener('click', function(){
     else if(id_conteneur.style.display!='none')
         document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_conteneur.value;
     else if(button_EI_IR.style.display!='none'){
-        if(EI_radio_button.checked){
+        if(EI_radio_button.checked)
             document.getElementsByClassName('djs-direct-editing-content')[0].innerText=EI_radio_button.value;
-        }
-        else{
-            // Créer un dropdown avec les ER
-        }
+        else
+        document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_choix_value_schema.selectedOptions[0].innerHTML
     }
 
     $('#parametre_schema_scenarios_strategiques').modal('hide')
@@ -280,6 +290,23 @@ function recuperation_partie_prenante_fn(){
     }
 }
 
+/*--------- RECUPERATION EVENEMENT REDOUTES PROJET POUR SCHEMA --------------*/
+function recuperation_evenement_redoute_fn(){
+    for(let i=0;i<lenght_modifier_schema;i++){
+        modifier_schema[i].addEventListener('click',function(){
+
+            $.ajax({
+                url: 'content/php/atelier3b/selection_ER.php',
+                type: 'POST',
+                success: function (resultat) {
+                    evenement_redoutes_JSON = JSON.parse(resultat);
+                }
+            })
+        });
+    }
+}
+
+
 /*----------------------- AJOUT DU SCHEMA SUR BDD ---------------------------*/
 function enregistrement_schema_fn(schema_file){     
     $.ajax({
@@ -353,14 +380,14 @@ function choix_donnees(){
         id_conteneur.style.display='inline'
         id_choix_value_schema_label.innerText="Conteneur"
         titre_parametre_schema.innerHTML = "Titre du conteneur"
-        id_conteneur=''
+        id_conteneur.innerText=''
     }
     else if(selection=='fleche'){
         id_conteneur.style.display='none'
         id_choix_value_schema.style.display='none'
+        id_choix_value_schema_label.style.display='none'     
         button_EI_IR.style.display='flex'
         titre_parametre_schema.innerHTML = "Titre de la relation"
-        id_choix_value_schema_label.innerText="Relation"      
     }
 }
 
@@ -387,6 +414,19 @@ function modifier_value_schema(){
         }
     }
 }
+
+function onERButton(){
+    id_choix_value_schema.style.display='inline'
+    id_choix_value_schema_label.style.display='inline'  
+    id_choix_value_schema_label.innerText="Événement redouté" 
+    modifier_modal_parametres(evenement_redoutes_JSON,id_choix_value_schema)       
+}
+
+function onEIButton(){
+    id_choix_value_schema.style.display='none'
+    id_choix_value_schema_label.style.display='none'
+}
+
 
 function recuperation_valeur_multiselect(){
     var table_multiselect = new Array();

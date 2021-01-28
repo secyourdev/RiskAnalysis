@@ -134,7 +134,7 @@ xmlDoc = parser.parseFromString(xml_file,"application/xml");
 var fleche = new Array(); 
 
 for(let i=0;i<xmlDoc.getElementsByTagName("messageFlow").length;i++){
-    fleche[i] = new Array(4);
+    fleche[i] = new Array();
 }
 
 for(let i=0;i<xmlDoc.getElementsByTagName("messageFlow").length;i++){
@@ -147,8 +147,8 @@ for(let i=0;i<xmlDoc.getElementsByTagName("messageFlow").length;i++){
 for(let i=0;i<xmlDoc.getElementsByTagName("messageFlow").length;i++){
     fleche[i][0]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[0].value
     fleche[i][1]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[1].value
-    fleche[i][2]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[2].value
-    fleche[i][5]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[3].value
+    fleche[i][3]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[2].value
+    fleche[i][6]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[3].value
 }
 
 for(let i=0;i<xmlDoc.getElementsByTagName("process").length;i++){
@@ -164,11 +164,11 @@ for(let i=0;i<xmlDoc.getElementsByTagName("process").length;i++){
                 alert("Veuillez compléter les informations manquantes dans l'événement !");
                 return 0;
             }
-            else if(xmlDoc.getElementsByTagName("process")[i].children[j].attributes[0].value==fleche[k][2]){
-                fleche[k][3]=xmlDoc.getElementsByTagName("process")[i].children[j].attributes[1].value
+            else if(xmlDoc.getElementsByTagName("process")[i].children[j].attributes[0].value==fleche[k][3]){
+                fleche[k][4]=xmlDoc.getElementsByTagName("process")[i].children[j].attributes[1].value
             }
-            else if(xmlDoc.getElementsByTagName("process")[i].children[j].attributes[0].value==fleche[k][5]){
-                fleche[k][6]=xmlDoc.getElementsByTagName("process")[i].children[j].attributes[1].value
+            else if(xmlDoc.getElementsByTagName("process")[i].children[j].attributes[0].value==fleche[k][6]){
+                fleche[k][7]=xmlDoc.getElementsByTagName("process")[i].children[j].attributes[1].value
             } 
         }  
     }
@@ -176,28 +176,35 @@ for(let i=0;i<xmlDoc.getElementsByTagName("process").length;i++){
 
 for(let i=0;i<SROV_JSON.length;i++){
     for(let k=0;k<fleche.length;k++){
-        if(SROV_JSON[i][1]==fleche[k][3])
-            fleche[k][4]=SROV_JSON[i][0];
-        else if(SROV_JSON[i][1]==fleche[k][6])
-            fleche[k][7]=SROV_JSON[i][0];
+        if(SROV_JSON[i][1]==fleche[k][4])
+            fleche[k][5]=SROV_JSON[i][0];
+        else if(SROV_JSON[i][1]==fleche[k][7])
+            fleche[k][8]=SROV_JSON[i][0];
     }
 }
 
 for(let i=0;i<valeur_metier_JSON.length;i++){
     for(let k=0;k<fleche.length;k++){
-        if(valeur_metier_JSON[i][1]==fleche[k][3])
-            fleche[k][4]=valeur_metier_JSON[i][0];
-        else if(valeur_metier_JSON[i][1]==fleche[k][6])
-            fleche[k][7]=valeur_metier_JSON[i][0];
+        if(valeur_metier_JSON[i][1]==fleche[k][4])
+            fleche[k][5]=valeur_metier_JSON[i][0];
+        else if(valeur_metier_JSON[i][1]==fleche[k][7])
+            fleche[k][8]=valeur_metier_JSON[i][0];
     }
 }
 
 for(let i=0;i<partie_prenante_JSON.length;i++){
     for(let k=0;k<fleche.length;k++){
-        if(partie_prenante_JSON[i][1]==fleche[k][3])
-            fleche[k][4]=partie_prenante_JSON[i][0];
-        else if(partie_prenante_JSON[i][1]==fleche[k][6])
-            fleche[k][7]=partie_prenante_JSON[i][0];
+        if(partie_prenante_JSON[i][1]==fleche[k][4])
+            fleche[k][5]=partie_prenante_JSON[i][0];
+        else if(partie_prenante_JSON[i][1]==fleche[k][7])
+            fleche[k][8]=partie_prenante_JSON[i][0];
+    }
+}
+
+for(let i=0;i<evenement_redoutes_JSON.length;i++){
+    for(let k=0;k<fleche.length;k++){
+        if(evenement_redoutes_JSON[i][1]==fleche[k][1])
+            fleche[k][2]=evenement_redoutes_JSON[i][0];       
     }
 }
 
@@ -206,12 +213,13 @@ for(let i=0;i<fleche.length;i++){
     console.log(i + ":")
     console.log("id : "+fleche[i][0]);
     console.log("nom : "+fleche[i][1]);
-    console.log("Source : "+fleche[i][2]);
-    console.log("Name : "+fleche[i][3]);
-    console.log("id : "+fleche[i][4]);
-    console.log("Destination : "+fleche[i][5]);
-    console.log("Name : "+fleche[i][6]);
-    console.log("id : "+fleche[i][7]);
+    console.log("id_ER : "+fleche[i][2]);
+    console.log("Source : "+fleche[i][3]);
+    console.log("Name : "+fleche[i][4]);
+    console.log("id_source : "+fleche[i][5]);
+    console.log("Destination : "+fleche[i][6]);
+    console.log("Name : "+fleche[i][7]);
+    console.log("id_dest : "+fleche[i][8]);
     console.log('\n')
 }
 // faire un tableau regroupant toute les données à envoyé sur la bdd

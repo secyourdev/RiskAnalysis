@@ -644,12 +644,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
       </div>
       <div class="modal-body perso_modal_body">
         <div class="form-group col-12">
-          <label id='id_choix_value_schema_label' for="id_choix_value_schema">Valeur</label>
-          <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_conteneur" id="id_conteneur" required>
-          <select class="form-control" name="id_choix_value_schema" id="id_choix_value_schema">
-            <option value="" selected>...</option>
-          </select>
-          
           <div id="button_EI_IR" class="row perso_no_margin">
             <div class="card-header perso_header_center col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
               <input type="radio" id="EI_radio_button" name="radio" value="EI"><label for="EI_radio_button">EI</label>
@@ -659,6 +653,12 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             <input type="radio" id="ER_radio_button" name="radio" value="ER"><label for="ER_radio_button">ER</label>
             </div>
           </div>
+
+          <label id='id_choix_value_schema_label' for="id_choix_value_schema">Valeur</label>
+          <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_conteneur" id="id_conteneur" required>
+          <select class="form-control" name="id_choix_value_schema" id="id_choix_value_schema">
+            <option value="" selected>...</option>
+          </select>
 
           <!-- <label class='id_choix_value_fleche' for="id_choix_value_fleche">Chemin</label>
           <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_choix_multiple_value_schema" id="id_choix_multiple_value_schema" required>
