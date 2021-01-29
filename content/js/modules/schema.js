@@ -118,12 +118,12 @@ async function saveFileBDD(e) {
     var result = await bpmnModeler.saveXML({ format: true });
     var url = 'data:application/xml,' + encodeURIComponent(result.xml);
     var value = parserXML(result.xml);
-    if(value!=0){
+    //if(value!=0){
         enregistrement_schema_fn(url);
         $('#button_schema_scenarios_strategiques').modal('hide');
         alert('Le schéma du scénario stratégique a bien été enregistré !')
         e.preventDefault()
-    }
+    //}
 }
 /*---------------------------- PARSER XML ----------------------------------*/
 var parser, xmlDoc, test;
@@ -223,8 +223,32 @@ for(let i=0;i<fleche.length;i++){
     console.log('\n')
 }
 
-// Créé un sous tableau EI et ER 
+$.ajax({
+    url: 'content/php/atelier3b/suppression_EI.php',
+    type: 'POST',
+    data:{
+        id_scenario_strategique: id_scenario_strategique_schema
+    }
+})
 
+    // Ajout des EI/ER dans la base de données
+    for(let i=0;i<fleche.length;i++){
+        if(fleche[i][1]=="EI"){
+            $.ajax({
+                url: 'content/php/atelier3b/ajout_EI.php',
+                type: 'POST',
+                data:{
+                    id_fleche: fleche[i][0],
+                    valeur_chemin: fleche[i][1],
+                    id_scenario_strategique: id_scenario_strategique_schema,
+                    id_source : fleche[i][5],
+                    id_schema_source : fleche[i][3],
+                    id_destination : fleche[i][8],
+                    id_schema_destination : fleche[i][6],
+                }
+            })
+        }
+    }
 
 // faire un tableau regroupant toute les données à envoyé sur la bdd
 // envoyer les données sur la bdd tout en vérifiant que les anciennes données ont été supprimé 
