@@ -127,7 +127,6 @@ async function saveFileBDD(e) {
 }
 /*---------------------------- PARSER XML ----------------------------------*/
 var parser, xmlDoc, test;
-var max_children_lenght=0
 function parserXML(xml_file){
 parser = new DOMParser();
 xmlDoc = parser.parseFromString(xml_file,"application/xml");
@@ -148,13 +147,7 @@ for(let i=0;i<xmlDoc.getElementsByTagName("messageFlow").length;i++){
     fleche[i][0]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[0].value
     fleche[i][1]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[1].value
     fleche[i][3]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[2].value
-    fleche[i][6]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[3].value
-}
-
-for(let i=0;i<xmlDoc.getElementsByTagName("process").length;i++){
-    var max_children_lenght_n1 = xmlDoc.getElementsByTagName("process")[i].children.length
-    if(max_children_lenght<max_children_lenght_n1)
-        max_children_lenght=max_children_lenght_n1
+    fleche[i][7]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[3].value
 }
 
 for(let i=0;i<xmlDoc.getElementsByTagName("process").length;i++){
@@ -167,37 +160,10 @@ for(let i=0;i<xmlDoc.getElementsByTagName("process").length;i++){
             else if(xmlDoc.getElementsByTagName("process")[i].children[j].attributes[0].value==fleche[k][3]){
                 fleche[k][4]=xmlDoc.getElementsByTagName("process")[i].children[j].attributes[1].value
             }
-            else if(xmlDoc.getElementsByTagName("process")[i].children[j].attributes[0].value==fleche[k][6]){
-                fleche[k][7]=xmlDoc.getElementsByTagName("process")[i].children[j].attributes[1].value
+            else if(xmlDoc.getElementsByTagName("process")[i].children[j].attributes[0].value==fleche[k][7]){
+                fleche[k][8]=xmlDoc.getElementsByTagName("process")[i].children[j].attributes[1].value
             } 
         }  
-    }
-}
-
-for(let i=0;i<SROV_JSON.length;i++){
-    for(let k=0;k<fleche.length;k++){
-        if(SROV_JSON[i][1]==fleche[k][4])
-            fleche[k][5]=SROV_JSON[i][0];
-        else if(SROV_JSON[i][1]==fleche[k][7])
-            fleche[k][8]=SROV_JSON[i][0];
-    }
-}
-
-for(let i=0;i<valeur_metier_JSON.length;i++){
-    for(let k=0;k<fleche.length;k++){
-        if(valeur_metier_JSON[i][1]==fleche[k][4])
-            fleche[k][5]=valeur_metier_JSON[i][0];
-        else if(valeur_metier_JSON[i][1]==fleche[k][7])
-            fleche[k][8]=valeur_metier_JSON[i][0];
-    }
-}
-
-for(let i=0;i<partie_prenante_JSON.length;i++){
-    for(let k=0;k<fleche.length;k++){
-        if(partie_prenante_JSON[i][1]==fleche[k][4])
-            fleche[k][5]=partie_prenante_JSON[i][0];
-        else if(partie_prenante_JSON[i][1]==fleche[k][7])
-            fleche[k][8]=partie_prenante_JSON[i][0];
     }
 }
 
@@ -208,6 +174,45 @@ for(let i=0;i<evenement_redoutes_JSON.length;i++){
     }
 }
 
+for(let i=0;i<SROV_JSON.length;i++){
+    for(let k=0;k<fleche.length;k++){
+        if(SROV_JSON[i][1]==fleche[k][4]){
+            fleche[k][5]=SROV_JSON[i][0];
+            fleche[k][6]="SROV";
+        }
+        if(SROV_JSON[i][1]==fleche[k][8]){
+            fleche[k][9]=SROV_JSON[i][0];
+            console.log(fleche[k][9]);
+            fleche[k][10]="SROV";
+        }
+    }
+}
+
+for(let i=0;i<valeur_metier_JSON.length;i++){
+    for(let k=0;k<fleche.length;k++){
+        if(valeur_metier_JSON[i][1]==fleche[k][4]){
+            fleche[k][5]=valeur_metier_JSON[i][0];
+            fleche[k][6]="Valeur Métier";
+        }
+        if(valeur_metier_JSON[i][1]==fleche[k][8]){
+            fleche[k][9]=valeur_metier_JSON[i][0];
+            fleche[k][10]="Valeur Métier";
+        }
+    }
+}
+
+for(let i=0;i<partie_prenante_JSON.length;i++){
+    for(let k=0;k<fleche.length;k++){
+        if(partie_prenante_JSON[i][1]==fleche[k][4]){
+            fleche[k][5]=partie_prenante_JSON[i][0];
+            fleche[k][6]="Partie Prenante";
+        }
+        if(partie_prenante_JSON[i][1]==fleche[k][8]){
+            fleche[k][9]=partie_prenante_JSON[i][0];
+            fleche[k][10]="Partie Prenante";
+        }
+    }
+}
 
 for(let i=0;i<fleche.length;i++){
     console.log(i + ":")
@@ -217,9 +222,11 @@ for(let i=0;i<fleche.length;i++){
     console.log("Source : "+fleche[i][3]);
     console.log("Name : "+fleche[i][4]);
     console.log("id_source : "+fleche[i][5]);
-    console.log("Destination : "+fleche[i][6]);
-    console.log("Name : "+fleche[i][7]);
-    console.log("id_dest : "+fleche[i][8]);
+    console.log("type_source : " + fleche[i][6]);
+    console.log("Destination : "+fleche[i][7]);
+    console.log("Name : "+fleche[i][8]);
+    console.log("id_dest : "+fleche[i][9]);
+    console.log("type_destination : " + fleche[i][10]);
     console.log('\n')
 }
 
@@ -231,7 +238,15 @@ $.ajax({
     }
 })
 
-    // Ajout des EI/ER dans la base de données
+$.ajax({
+    url: 'content/php/atelier3b/suppression_ER.php',
+    type: 'POST',
+    data:{
+        id_scenario_strategique: id_scenario_strategique_schema
+    }
+})
+
+// Ajout des EI/ER dans la base de données
     for(let i=0;i<fleche.length;i++){
         if(fleche[i][1]=="EI"){
             $.ajax({
@@ -242,9 +257,29 @@ $.ajax({
                     valeur_chemin: fleche[i][1],
                     id_scenario_strategique: id_scenario_strategique_schema,
                     id_source : fleche[i][5],
+                    type_source : fleche[i][6],
                     id_schema_source : fleche[i][3],
-                    id_destination : fleche[i][8],
-                    id_schema_destination : fleche[i][6],
+                    id_destination : fleche[i][9],
+                    id_schema_destination : fleche[i][7],
+                    type_destination : fleche[i][10],
+                }
+            })
+        }
+        else{
+            $.ajax({
+                url: 'content/php/atelier3b/ajout_ER.php',
+                type: 'POST',
+                data:{
+                    id_fleche: fleche[i][0],
+                    valeur_chemin: fleche[i][1],
+                    id_evenement_redoute: fleche[i][2],
+                    id_scenario_strategique: id_scenario_strategique_schema,
+                    id_source : fleche[i][5],
+                    type_source : fleche[i][6],
+                    id_schema_source : fleche[i][3],
+                    id_destination : fleche[i][9],
+                    id_schema_destination : fleche[i][7],
+                    type_destination : fleche[i][10],
                 }
             })
         }
