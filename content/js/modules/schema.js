@@ -118,12 +118,12 @@ async function saveFileBDD(e) {
     var result = await bpmnModeler.saveXML({ format: true });
     var url = 'data:application/xml,' + encodeURIComponent(result.xml);
     var value = parserXML(result.xml);
-    //if(value!=0){
+    if(value!=0){
         enregistrement_schema_fn(url);
         $('#button_schema_scenarios_strategiques').modal('hide');
         alert('Le schéma du scénario stratégique a bien été enregistré !')
         e.preventDefault()
-    //}
+    }
 }
 /*---------------------------- PARSER XML ----------------------------------*/
 var parser, xmlDoc, test;
@@ -145,9 +145,16 @@ for(let i=0;i<xmlDoc.getElementsByTagName("messageFlow").length;i++){
 
 for(let i=0;i<xmlDoc.getElementsByTagName("messageFlow").length;i++){
     fleche[i][0]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[0].value
-    fleche[i][1]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[1].value
-    fleche[i][3]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[2].value
-    fleche[i][7]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[3].value
+    if(xmlDoc.getElementsByTagName("messageFlow")[i].attributes[1].value.substring(0,2)=="EI"){
+        fleche[i][1]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[1].value.substring(0,2)
+        fleche[i][2]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[1].value.substring(5,xmlDoc.getElementsByTagName("messageFlow")[i].attributes[1].value.length)
+    }
+    else{
+        fleche[i][1]= "ER"
+        fleche[i][2]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[1].value
+    }
+    fleche[i][4]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[2].value
+    fleche[i][8]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[3].value
 }
 
 for(let i=0;i<xmlDoc.getElementsByTagName("process").length;i++){
@@ -157,11 +164,11 @@ for(let i=0;i<xmlDoc.getElementsByTagName("process").length;i++){
                 alert("Veuillez compléter les informations manquantes dans l'événement !");
                 return 0;
             }
-            else if(xmlDoc.getElementsByTagName("process")[i].children[j].attributes[0].value==fleche[k][3]){
-                fleche[k][4]=xmlDoc.getElementsByTagName("process")[i].children[j].attributes[1].value
+            else if(xmlDoc.getElementsByTagName("process")[i].children[j].attributes[0].value==fleche[k][4]){
+                fleche[k][5]=xmlDoc.getElementsByTagName("process")[i].children[j].attributes[1].value
             }
-            else if(xmlDoc.getElementsByTagName("process")[i].children[j].attributes[0].value==fleche[k][7]){
-                fleche[k][8]=xmlDoc.getElementsByTagName("process")[i].children[j].attributes[1].value
+            else if(xmlDoc.getElementsByTagName("process")[i].children[j].attributes[0].value==fleche[k][8]){
+                fleche[k][9]=xmlDoc.getElementsByTagName("process")[i].children[j].attributes[1].value
             } 
         }  
     }
@@ -169,47 +176,46 @@ for(let i=0;i<xmlDoc.getElementsByTagName("process").length;i++){
 
 for(let i=0;i<evenement_redoutes_JSON.length;i++){
     for(let k=0;k<fleche.length;k++){
-        if(evenement_redoutes_JSON[i][1]==fleche[k][1])
-            fleche[k][2]=evenement_redoutes_JSON[i][0];       
+        if(evenement_redoutes_JSON[i][1]==fleche[k][2])
+            fleche[k][3]=evenement_redoutes_JSON[i][0];       
     }
 }
 
 for(let i=0;i<SROV_JSON.length;i++){
     for(let k=0;k<fleche.length;k++){
-        if(SROV_JSON[i][1]==fleche[k][4]){
-            fleche[k][5]=SROV_JSON[i][0];
-            fleche[k][6]="SROV";
+        if(SROV_JSON[i][1]==fleche[k][5]){
+            fleche[k][6]=SROV_JSON[i][0];
+            fleche[k][7]="SROV";
         }
-        if(SROV_JSON[i][1]==fleche[k][8]){
-            fleche[k][9]=SROV_JSON[i][0];
-            console.log(fleche[k][9]);
-            fleche[k][10]="SROV";
+        if(SROV_JSON[i][1]==fleche[k][9]){
+            fleche[k][10]=SROV_JSON[i][0];
+            fleche[k][11]="SROV";
         }
     }
 }
 
 for(let i=0;i<valeur_metier_JSON.length;i++){
     for(let k=0;k<fleche.length;k++){
-        if(valeur_metier_JSON[i][1]==fleche[k][4]){
-            fleche[k][5]=valeur_metier_JSON[i][0];
-            fleche[k][6]="Valeur Métier";
+        if(valeur_metier_JSON[i][1]==fleche[k][5]){
+            fleche[k][6]=valeur_metier_JSON[i][0];
+            fleche[k][7]="Valeur Métier";
         }
-        if(valeur_metier_JSON[i][1]==fleche[k][8]){
-            fleche[k][9]=valeur_metier_JSON[i][0];
-            fleche[k][10]="Valeur Métier";
+        if(valeur_metier_JSON[i][1]==fleche[k][9]){
+            fleche[k][10]=valeur_metier_JSON[i][0];
+            fleche[k][11]="Valeur Métier";
         }
     }
 }
 
 for(let i=0;i<partie_prenante_JSON.length;i++){
     for(let k=0;k<fleche.length;k++){
-        if(partie_prenante_JSON[i][1]==fleche[k][4]){
-            fleche[k][5]=partie_prenante_JSON[i][0];
-            fleche[k][6]="Partie Prenante";
+        if(partie_prenante_JSON[i][1]==fleche[k][5]){
+            fleche[k][6]=partie_prenante_JSON[i][0];
+            fleche[k][7]="Partie Prenante";
         }
-        if(partie_prenante_JSON[i][1]==fleche[k][8]){
-            fleche[k][9]=partie_prenante_JSON[i][0];
-            fleche[k][10]="Partie Prenante";
+        if(partie_prenante_JSON[i][1]==fleche[k][9]){
+            fleche[k][10]=partie_prenante_JSON[i][0];
+            fleche[k][11]="Partie Prenante";
         }
     }
 }
@@ -217,16 +223,17 @@ for(let i=0;i<partie_prenante_JSON.length;i++){
 for(let i=0;i<fleche.length;i++){
     console.log(i + ":")
     console.log("id : "+fleche[i][0]);
-    console.log("nom : "+fleche[i][1]);
-    console.log("id_ER : "+fleche[i][2]);
-    console.log("Source : "+fleche[i][3]);
-    console.log("Name : "+fleche[i][4]);
-    console.log("id_source : "+fleche[i][5]);
-    console.log("type_source : " + fleche[i][6]);
-    console.log("Destination : "+fleche[i][7]);
-    console.log("Name : "+fleche[i][8]);
-    console.log("id_dest : "+fleche[i][9]);
-    console.log("type_destination : " + fleche[i][10]);
+    console.log("type : "+fleche[i][1]);
+    console.log("EI/ER_value : "+fleche[i][2]);
+    console.log("id_ER : "+fleche[i][3]);
+    console.log("Source : "+fleche[i][4]);
+    console.log("Name : "+fleche[i][5]);
+    console.log("id_source : "+fleche[i][6]);
+    console.log("type_source : " + fleche[i][7]);
+    console.log("Destination : "+fleche[i][8]);
+    console.log("Name : "+fleche[i][9]);
+    console.log("id_dest : "+fleche[i][10]);
+    console.log("type_destination : " + fleche[i][11]);
     console.log('\n')
 }
 
@@ -254,34 +261,38 @@ $.ajax({
                 type: 'POST',
                 data:{
                     id_fleche: fleche[i][0],
-                    valeur_chemin: fleche[i][1],
+                    valeur_chemin: fleche[i][2],
                     id_scenario_strategique: id_scenario_strategique_schema,
-                    id_source : fleche[i][5],
-                    type_source : fleche[i][6],
-                    id_schema_source : fleche[i][3],
-                    id_destination : fleche[i][9],
-                    id_schema_destination : fleche[i][7],
-                    type_destination : fleche[i][10],
+                    id_source : fleche[i][6],
+                    type_source : fleche[i][7],
+                    id_schema_source : fleche[i][4],
+                    id_destination : fleche[i][10],
+                    id_schema_destination : fleche[i][8],
+                    type_destination : fleche[i][11],
                 }
             })
         }
-        else{
+        else if(fleche[i][3]!=null){
             $.ajax({
                 url: 'content/php/atelier3b/ajout_ER.php',
                 type: 'POST',
                 data:{
                     id_fleche: fleche[i][0],
-                    valeur_chemin: fleche[i][1],
-                    id_evenement_redoute: fleche[i][2],
+                    valeur_chemin: fleche[i][2],
+                    id_evenement_redoute: fleche[i][3],
                     id_scenario_strategique: id_scenario_strategique_schema,
-                    id_source : fleche[i][5],
-                    type_source : fleche[i][6],
-                    id_schema_source : fleche[i][3],
-                    id_destination : fleche[i][9],
-                    id_schema_destination : fleche[i][7],
-                    type_destination : fleche[i][10],
+                    id_source : fleche[i][6],
+                    type_source : fleche[i][7],
+                    id_schema_source : fleche[i][4],
+                    id_destination : fleche[i][10],
+                    id_schema_destination : fleche[i][8],
+                    type_destination : fleche[i][11],
                 }
             })
+        }
+        else{
+            alert("Votre schéma comporte des erreurs sur les valeurs des chemins !")
+            return 0;
         }
     }
 

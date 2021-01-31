@@ -198,14 +198,21 @@ EI_radio_button.addEventListener('click',function(){
     onEIButton()
 })
 
+id_conteneur.addEventListener('keydown', function(event){
+    if(((event.keyCode == 8 || event.keyCode == 46) && id_conteneur.value.length == 5) || event.keyCode == 13){
+        event.preventDefault()
+    }
+})
+id_conteneur.value = "EI : "
 valider_choix_value.addEventListener('click', function(){
     if(id_choix_value_schema.style.display!='none')
         document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_choix_value_schema.selectedOptions[0].innerHTML   
     else if(id_conteneur.style.display!='none')
         document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_conteneur.value;
     else if(button_EI_IR.style.display!='none'){
-        if(EI_radio_button.checked)
-            document.getElementsByClassName('djs-direct-editing-content')[0].innerText=EI_radio_button.value;
+        if(EI_radio_button.checked){
+            document.getElementsByClassName('djs-direct-editing-content')[0].innerText="EI : "+id_conteneur.value;
+        }
         else{
             document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_choix_value_schema.selectedOptions[0].innerHTML
         }
@@ -383,9 +390,9 @@ function choix_donnees(){
         id_conteneur.innerText=''
     }
     else if(selection=='fleche'){
-        id_conteneur.style.display='none'
         id_choix_value_schema.style.display='none'
-        id_choix_value_schema_label.style.display='none'     
+        id_conteneur.style.display='inline'
+        id_choix_value_schema_label.style.display='none'  
         button_EI_IR.style.display='flex'
         titre_parametre_schema.innerHTML = "Titre de la relation"
     }
@@ -416,6 +423,7 @@ function modifier_value_schema(){
 }
 
 function onERButton(){
+    id_conteneur.style.display='none'
     id_choix_value_schema.style.display='inline'
     id_choix_value_schema_label.style.display='inline'  
     id_choix_value_schema_label.innerText="Événement redouté" 
@@ -425,7 +433,9 @@ function onERButton(){
 
 function onEIButton(){
     id_choix_value_schema.style.display='none'
-    id_choix_value_schema_label.style.display='none'  
+    id_conteneur.style.display='inline'
+    id_choix_value_schema_label.style.display='inline'  
+    id_choix_value_schema_label.innerText="EI"
     removeOptions(id_choix_value_schema);   
 }
 
