@@ -462,7 +462,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <th>Nom du scénario stratégique</th>
                                 <th>Chemin d'attaque stratégique</th>
                                 <th>Description</th>
-                                <th>Partie prenante</th>
+                                <th>Gravité</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -475,7 +475,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <td>' . $row["nom_scenario_strategique"] . '</td>
                                 <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
                                 <td>' . $row["description_chemin_d_attaque_strategique"] . '</td>
-                                <td>' . $row["nom_partie_prenante"] . '</td>
+                                <td>' . $row["gravite"] . '</td>
                                 </tr>
                                 ';
                               }
@@ -500,26 +500,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             }
                         ?>
                         </div>
-
-                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
-                        ?>
-                                <!-- bouton Ajouter une nouvelle ligne -->
-                                <div class="text-center">
-                                  <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_chemin_attaque">Ajouter un chemin d'attaque</button>
-                                </div>
-                        <?php
-                              }
-                              else if (isset($userdroit['ecriture'])){
-                                if($userdroit['ecriture']=='Réalisation'){
-                        ?>
-                                  <!-- bouton Ajouter une nouvelle ligne -->
-                                  <div class="text-center">
-                                    <button type="button" class="btn perso_btn_primary shadow-none btn-bougé" data-toggle="modal" data-target="#ajout_ligne_chemin_attaque">Ajouter un chemin d'attaque</button>
-                                  </div>
-                        <?php
-                                }
-                              }                          
-                        ?>
                       </div>
                     </div>
                   </div>
@@ -660,64 +640,18 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             <option value="" selected>...</option>
           </select>
 
-          <!-- <label class='id_choix_value_fleche' for="id_choix_value_fleche">Chemin</label>
-          <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_choix_multiple_value_schema" id="id_choix_multiple_value_schema" required>
-          <select class="form-control" name="id_choix_value_fleche" id="id_choix_value_fleche">
-            <option value="" selected>...</option>
-          </select> -->
-          <!-- <select class="form-control" id="id_choix_multiple_value_schema" name="id_choix_multiple_value_schema[]" multiple="multiple">
-            <option value="1">Chemin 1</option>
-            <option value="2">Chemin 2</option>
-            <option value="3">Chemin 3</option>
-            <option value="4">Chemin 4</option>
-            <option value="5">Chemin 5</option>
-            <option value="6">Chemin 6</option>
-            <option value="7">Chemin 7</option>
-            <option value="8">Chemin 8</option>
-            <option value="9">Chemin 9</option>
-            <option value="10">Chemin 10</option>
+          <label id='id_chemin_value_schema_label' for="id_chemin_value_schema">Chemin</label>
+          <select class="form-control" id="id_chemin_value_schema" name="id_chemin_value_schema">
+            <option value="C1">Chemin 1</option>
+            <option value="C2">Chemin 2</option>
+            <option value="C3">Chemin 3</option>
+            <option value="C4">Chemin 4</option>
+            <option value="C5">Chemin 5</option>
+            <option value="C6">Chemin 6</option>
+            <option value="C7">Chemin 7</option>
+            <option value="C8">Chemin 8</option>
+            <option value="C9">Chemin 9</option>
           </select>
-          <script type="text/javascript">
-              $(document).ready(function() {
-                  $('#id_choix_multiple_value_schema').multiselect({
-                    buttonWidth: '100%'
-                  })
-                  
-                  $('#choix_valeur_schema_close').on('click', function() {
-                     $('option', $('#id_choix_multiple_value_schema')).each(function(element) {
-                        $(this).removeAttr('selected').prop('selected', false);
-                        $('#id_choix_multiple_value_schema').multiselect('refresh');
-                     });
-                  });
-
-                  $('#valider_choix_value').on('click', function() {
-                     $('option', $('#id_choix_multiple_value_schema')).each(function(element) {
-                        $(this).removeAttr('selected').prop('selected', false);
-                        $('#id_choix_multiple_value_schema').multiselect('refresh');
-                     });
-                  });
-
-                  document.onkeydown = function(event){
-                    if(event.keyCode==27){
-                      $('option', $('#id_choix_multiple_value_schema')).each(function(element) {
-                        $(this).removeAttr('selected').prop('selected', false);
-                        $('#id_choix_multiple_value_schema').multiselect('refresh');
-                      });
-                    }
-                  }
-
-                  window.onclick = function(event) {
-                    if (event.target == document.getElementById('parametre_schema_scenarios_strategiques')) {
-                      $('option', $('#id_choix_multiple_value_schema')).each(function(element) {
-                        $(this).removeAttr('selected').prop('selected', false);
-                        $('#id_choix_multiple_value_schema').multiselect('refresh');
-                      });
-                    }
-                  }
-              });
-
-              
-          </script> -->
         </div>
 
         <div class="modal-footer perso_middle_modal_footer">
@@ -727,76 +661,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     </div>
   </div>
 </div>
-<!---------------------------------------------------------------------------------------------------------------- 
------------------------------------ modal Ajout d'un chemin d'attaque stratégique --------------------------------
---------------------------------------------------------------------------------------------------------------- -->
-        <div class="modal fade" id="ajout_ligne_chemin_attaque" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ajout d'un chemin d'attaque stratégique</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body perso_modal_body">
-                <form method="post" action="content/php/atelier3b/ajout_chemin.php" class="user" id="form_chemin_attaque">
-                  <fieldset>
-
-                    <div class=" form-group col-12">
-                    <label class="titre_input" for="id_risque">ID du risque</label>
-                      <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_risque" id="id_risque" placeholder="ID du risque" required>
-                    </div>
-
-                    <div class="form-group col-12">
-                      <label for="chemin_d_attaque_strategique">Chemin d'attaque stratégique</label>
-                      <textarea class="form-control perso_text_area" name="chemin_d_attaque_strategique" id="chemin_d_attaque_strategique" rows="3" required></textarea>
-                    </div>
-
-                    <div class="form-group col-12">
-                      <label for="description">Description</label>
-                      <textarea class="form-control perso_text_area" name="description" id="description" rows="3" required></textarea>
-                    </div>
-
-                    <div class="form-group col-12">
-                      <label for="Select_nom_scenario_strategique">Scénario stratégique</label>
-                      <select class="form-control" name="nom_scenario_strategique" id="Select_nom_scenario_strategique" required>
-                        <option value="" selected>...</option>
-                        <?php
-                        while ($row = mysqli_fetch_array($result_id_scenario_strategique)) //selection.php
-                        {
-                          echo '
-                        <option id="nom_scenario_strategique" value="' . $row["id_scenario_strategique"] . '">' . $row["nom_scenario_strategique"] . '</option>
-                        ';
-                        }
-                        ?>
-                      </select>
-                    </div>
-                    <div class="form-group col-12">
-                      <label for="Select_nom_scenario_strategique">Partie prenante</label>
-                      <select class="form-control" name="nom_partie_prenante" id="nom_partie_prenante" required>
-                        <option value="">...</option>
-                        <?php
-                        while ($row = mysqli_fetch_array($result_id_partie_prenante)) //selection.php
-                        {
-                          echo '
-                        <option id="partie_prenante" value="' . $row["id_partie_prenante"] . '">' . $row["nom_partie_prenante"] . '</option>
-                        ';
-                        }
-                        ?>
-                      </select>
-                    </div>
-
-                    <!-- bouton Ajouter -->
-                    <div class="modal-footer perso_middle_modal_footer">
-                      <input type="submit" name="validerchemin" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
-                    </div>
-                  </fieldset>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
 <?php
 }
 ?>

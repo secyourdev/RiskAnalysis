@@ -35,14 +35,7 @@ if ($input["action"] === 'edit') {
     }
 }
 
-if ($input["action"] === 'delete') {
-  
-    $delete = $bdd->prepare("DELETE FROM `T_chemin_d_attaque_strategique` WHERE `id_chemin_d_attaque_strategique`=?");
-    $delete->bindParam(1, $input["id_chemin_d_attaque_strategique"]);
-    $delete->execute();
 
-    $_SESSION['message_success_3'] = "Le chemin d'attaque a bien été supprimé !";
-}
 
 
 echo json_encode($input);

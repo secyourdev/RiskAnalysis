@@ -49,9 +49,9 @@ for(let h=0;h<modifier_schema.length;h++){
     })
 }    
 
-canvas.addEventListener('mouseover',function(){
-    sleep(500).then(() => {troncate_text_schema();});
-})
+// canvas.addEventListener('mouseover',function(){
+//     sleep(500).then(() => {troncate_text_schema();});
+// })
 /*----------------------------------------------------------------------------*/
 /*------------------------------- FONCTIONS ----------------------------------*/
 /*------------------------- TRONCATURE TEXTE SCHEMA --------------------------*/
@@ -61,7 +61,7 @@ function troncate_text_schema(){
             for(let j=1;j<text_schema[i].parentNode.childElementCount;j++){
                 text_schema[i].parentNode.children[j].style.display='none'
             }
-            text_schema[i].parentNode.children[0].innerHTML = text_schema[i].parentNode.children[0].innerHTML.substring(0,text_schema[i].parentNode.children[0].innerHTML.length-3)+'...'
+            //text_schema[i].parentNode.children[0].innerHTML = text_schema[i].parentNode.children[0].innerHTML+'...'
         }
     }
 }
@@ -126,7 +126,7 @@ async function saveFileBDD(e) {
     }
 }
 /*---------------------------- PARSER XML ----------------------------------*/
-var parser, xmlDoc, test;
+var parser, xmlDoc, test, chemin_JSON_EI_ER, chemin_JSON_EI_EI, chemin_JSON_ER_ER;
 function parserXML(xml_file){
 parser = new DOMParser();
 xmlDoc = parser.parseFromString(xml_file,"application/xml");
@@ -145,16 +145,11 @@ for(let i=0;i<xmlDoc.getElementsByTagName("messageFlow").length;i++){
 
 for(let i=0;i<xmlDoc.getElementsByTagName("messageFlow").length;i++){
     fleche[i][0]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[0].value
-    if(xmlDoc.getElementsByTagName("messageFlow")[i].attributes[1].value.substring(0,2)=="EI"){
-        fleche[i][1]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[1].value.substring(0,2)
-        fleche[i][2]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[1].value.substring(5,xmlDoc.getElementsByTagName("messageFlow")[i].attributes[1].value.length)
-    }
-    else{
-        fleche[i][1]= "ER"
-        fleche[i][2]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[1].value
-    }
+    fleche[i][1]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[1].value.substring(5,7)
+    fleche[i][2]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[1].value.substring(10,xmlDoc.getElementsByTagName("messageFlow")[i].attributes[1].value.length)
     fleche[i][4]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[2].value
     fleche[i][8]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[3].value
+    fleche[i][12]= xmlDoc.getElementsByTagName("messageFlow")[i].attributes[1].value.substring(0,2)
 }
 
 for(let i=0;i<xmlDoc.getElementsByTagName("process").length;i++){
@@ -234,6 +229,7 @@ for(let i=0;i<fleche.length;i++){
     console.log("Name : "+fleche[i][9]);
     console.log("id_dest : "+fleche[i][10]);
     console.log("type_destination : " + fleche[i][11]);
+    console.log("chemin : " +fleche[i][12])
     console.log('\n')
 }
 
@@ -269,6 +265,7 @@ $.ajax({
                     id_destination : fleche[i][10],
                     id_schema_destination : fleche[i][8],
                     type_destination : fleche[i][11],
+                    id_chemin : fleche[i][12]
                 }
             })
         }
@@ -287,6 +284,7 @@ $.ajax({
                     id_destination : fleche[i][10],
                     id_schema_destination : fleche[i][8],
                     type_destination : fleche[i][11],
+                    id_chemin : fleche[i][12]
                 }
             })
         }
@@ -295,6 +293,39 @@ $.ajax({
             return 0;
         }
     }
+    //Ajout des chemins 
+    $.ajax({
+        url: 'content/php/atelier3b/selection_chemin_EI_ER.php',
+        type: 'POST',
+        data:{
+            id_scenario_strategique: id_scenario_strategique_schema
+        },
+        success: function (resultat) {
+            chemin_JSON_EI_ER = JSON.parse(resultat);
+        }
+    })
+
+    $.ajax({
+        url: 'content/php/atelier3b/selection_chemin_EI_EI.php',
+        type: 'POST',
+        data:{
+            id_scenario_strategique: id_scenario_strategique_schema
+        },
+        success: function (resultat) {
+            chemin_JSON_EI_EI = JSON.parse(resultat);
+        }
+    })
+
+    // $.ajax({
+    //     url: 'content/php/atelier3b/selection_chemin_ER_ER.php',
+    //     type: 'POST',
+    //     data:{
+    //         id_scenario_strategique: id_scenario_strategique_schema
+    //     },
+    //     success: function (resultat) {
+    //         chemin_JSON_ER_ER = JSON.parse(resultat);
+    //     }
+    // })
 
 // faire un tableau regroupant toute les données à envoyé sur la bdd
 // envoyer les données sur la bdd tout en vérifiant que les anciennes données ont été supprimé 

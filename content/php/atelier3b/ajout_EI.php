@@ -19,6 +19,7 @@ $type_source = $_POST['type_source'];
 $id_destination = $_POST['id_destination'];
 $id_schema_destination = $_POST['id_schema_destination'];
 $type_destination = $_POST['type_destination'];
+$id_chemin = $_POST['id_chemin'];
 
 // Verification de l'ID flèche
 if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-\_.:,'\"–]{0,100}$/", $id_fleche)) {
@@ -62,21 +63,28 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-\_.:,'\"�
     $_SESSION['message_error'] = "Identifiant Schéma Destination invalide";
 }
 
+// Verification de l'id chemin
+if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-\_.:,'\"–]{0,100}$/", $id_chemin)) {
+    $results["error"] = true;
+    $_SESSION['message_error'] = "Identifiant Chemin invalide";
+}
+
+
 //ajout des EI dans la base de données
 if($type_source=="SROV"&&$type_destination=="Partie Prenante"){
-    $insere = $bdd->prepare("INSERT INTO TA_EI (id_fleche,valeur_chemin,id_scenario_strategique,id_source,id_schema_source,id_destination,id_schema_destination,id_projet,id_atelier) VALUES (?,?,?,?,?,?,?,?,?)");
+    $insere = $bdd->prepare("INSERT INTO TA_EI (id_fleche,valeur_chemin,id_scenario_strategique,id_source,id_schema_source,id_destination,id_schema_destination,id_chemin,id_projet,id_atelier) VALUES (?,?,?,?,?,?,?,?,?,?)");
     $type=true;
 }
 else if($type_source=="Partie Prenante"&&$type_destination=="SROV"){
-    $insere = $bdd->prepare("INSERT INTO TA_EI (id_fleche,valeur_chemin,id_scenario_strategique,id_destination,id_schema_destination,id_source,id_schema_source,id_projet,id_atelier) VALUES (?,?,?,?,?,?,?,?,?)");
+    $insere = $bdd->prepare("INSERT INTO TA_EI (id_fleche,valeur_chemin,id_scenario_strategique,id_destination,id_schema_destination,id_source,id_schema_source,id_chemin,id_projet,id_atelier) VALUES (?,?,?,?,?,?,?,?,?,?)");
     $type=true;
 }
 else if($type_source=="Partie Prenante"&&$type_destination=="Partie Prenante"){
-    $insere = $bdd->prepare("INSERT INTO TA_EI (id_fleche,valeur_chemin,id_scenario_strategique,id_source_2,id_schema_source,id_destination,id_schema_destination,id_projet,id_atelier) VALUES (?,?,?,?,?,?,?,?,?)");
+    $insere = $bdd->prepare("INSERT INTO TA_EI (id_fleche,valeur_chemin,id_scenario_strategique,id_source_2,id_schema_source,id_destination,id_schema_destination,id_chemin,id_projet,id_atelier) VALUES (?,?,?,?,?,?,?,?,?,?)");
     $type=true;
 }
 
-if ($type==true&&isset($id_fleche)&&isset($valeur_chemin)&&isset($id_scenario_strategique)&&isset($id_source)&&isset($id_schema_source)&&isset($id_destination)&&isset($id_schema_destination)&&isset($get_id_projet)&&isset($id_atelier)&&$results["error"]!=true) {
+if ($type==true&&isset($id_fleche)&&isset($valeur_chemin)&&isset($id_scenario_strategique)&&isset($id_source)&&isset($id_schema_source)&&isset($id_destination)&&isset($id_schema_destination)&&isset($id_chemin)&&isset($get_id_projet)&&isset($id_atelier)&&$results["error"]!=true) {
     $insere->bindParam(1, $id_fleche);
     $insere->bindParam(2, $valeur_chemin);
     $insere->bindParam(3, $id_scenario_strategique);
@@ -84,8 +92,9 @@ if ($type==true&&isset($id_fleche)&&isset($valeur_chemin)&&isset($id_scenario_st
     $insere->bindParam(5, $id_schema_source);
     $insere->bindParam(6, $id_destination);
     $insere->bindParam(7, $id_schema_destination);
-    $insere->bindParam(8, $get_id_projet);
-    $insere->bindParam(9, $id_atelier);
+    $insere->bindParam(8, $id_chemin);
+    $insere->bindParam(9, $get_id_projet);
+    $insere->bindParam(10, $id_atelier);
     $insere->execute();
 
     $results["error"] = false;
@@ -93,6 +102,6 @@ if ($type==true&&isset($id_fleche)&&isset($valeur_chemin)&&isset($id_scenario_st
 }
 
 else{
-    echo 'toto';
+    echo 'Erreur !';
 }
 ?>
