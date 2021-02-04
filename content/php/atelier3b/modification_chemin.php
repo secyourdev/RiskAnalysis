@@ -39,6 +39,14 @@ if ($input["action"] === 'edit') {
         $update->bindParam(4, $input["id_chemin_d_attaque_strategique"]);
         $update->execute();
 
+        $description_scenario_operationnel = "Scenario opérationnel pour : " . $chemin_d_attaque_strategique;
+
+        $update_scenario_operationnel = $bdd->prepare("UPDATE `U_scenario_operationnel` SET `id_risque`=?, `nom_scenario_operationnel`=? WHERE `id_chemin_d_attaque_strategique`=?");
+        $update_scenario_operationnel->bindParam(1, $id_risque);
+        $update_scenario_operationnel->bindParam(2, $description_scenario_operationnel);
+        $update_scenario_operationnel->bindParam(3, $input["id_chemin_d_attaque_strategique"]);
+        $update_scenario_operationnel->execute();
+
         $_SESSION['message_success_3'] = "Le chemin d'attaque a bien été modifié !";
     }
 }

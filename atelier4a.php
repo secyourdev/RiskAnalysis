@@ -278,7 +278,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <td>' . $row["objectif_vise"] . '</td>
                         <td>' . $row["nom_evenement_redoute"] . '</td>
                         <td>' . $row["id_risque"] . '</td>
-                        <td>' . $row["nom_scenario_strategique"] . '</td>
+                        <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
                         <td>' . $row["niveau_de_gravite"] . '</td>
                         </tr>
                         ';

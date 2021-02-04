@@ -1,5 +1,5 @@
 --
--- sauvegarde20210204-171826.sql.gz
+-- sauvegarde20210204-183350.sql.gz
 SET FOREIGN_KEY_CHECKS =  0 ;
 
 DROP TABLE IF EXISTS `A_utilisateur`;
@@ -2036,7 +2036,7 @@ INSERT INTO `R_partie_prenante` VALUES ('41','Utilisateur','Utilisateur','Intern
 INSERT INTO `R_partie_prenante` VALUES ('42','Matériel','Ordinateur','Interne','4','4','1','1','16','1','1','1','1','4','4','3','3','1.78','3.a','25','21','Critique');
 INSERT INTO `R_partie_prenante` VALUES ('43','Logiciel','Logiciel de coffre fort','Interne','4','4','1','1','16','1','1','1','1','4','4','3','2','2.67','3.a','25','21','Critique');
 INSERT INTO `R_partie_prenante` VALUES ('47','CAT1','PP1','Interne','1','1','1','1','1','1','1','1','1',NULL,NULL,NULL,NULL,NULL,'3.a','17','17','Pas critique');
-INSERT INTO `R_partie_prenante` VALUES ('88','Informatique','Exécutable','Interne','4','4','1','1','16','1','1','1','1','2','2','3','4','0.33','3.a','28','24','Critique');
+INSERT INTO `R_partie_prenante` VALUES ('88','Informatique','Exécutable','Interne','4','4','1','1','16','1','1','1','1','1','2','3','4','0.17','3.a','28','24','Critique');
 INSERT INTO `R_partie_prenante` VALUES ('89','Informatique','Ordinateur','Externe','4','4','2','1','8','1','1','1','1','4','2','2','2','2','3.a','28','24','Critique');
 INSERT INTO `R_partie_prenante` VALUES ('90','Clients','Utilisateur','Externe','4','4','1','1','16','1','1','1','1','1','1','2','2','0.25','3.a','28','24','Critique');
 INSERT INTO `R_partie_prenante` VALUES ('92','Service logistique','CarlosPP','Interne','1','3','2','4','0.38','1','1','1','1','1','1','1','1','1','3.a','158','63','Critique');
@@ -2102,10 +2102,10 @@ INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('9','','C9',NULL,NULL,'103'
 INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('19','R6','C1','TEST','TEST','105','28','3.b');
 INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('20','','C2',NULL,NULL,'105','28','3.b');
 INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('21','','C3',NULL,NULL,'105','28','3.b');
-INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('22','','C4',NULL,NULL,'105','28','3.b');
-INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('23','','C5',NULL,NULL,'105','28','3.b');
-INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('24','','C6',NULL,NULL,'105','28','3.b');
-INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('25','','C7',NULL,NULL,'105','28','3.b');
+INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('22','R7','C4','','','105','28','3.b');
+INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('23','R8','C5','','','105','28','3.b');
+INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('24','R9','C6','','','105','28','3.b');
+INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('25','R10','C7','','','105','28','3.b');
 INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('26','','C8',NULL,NULL,'105','28','3.b');
 INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('27','','C9',NULL,NULL,'105','28','3.b');
 
@@ -2140,15 +2140,15 @@ CREATE TABLE `UA_EI` (
   CONSTRAINT `UA_EI_R_partie_prenante_FK_source` FOREIGN KEY (`id_source_2`) REFERENCES `R_partie_prenante` (`id_partie_prenante`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `UA_EI_S_scenario_strategique_FK` FOREIGN KEY (`id_scenario_strategique`) REFERENCES `S_scenario_strategique` (`id_scenario_strategique`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `UA_EI_T_chemin_d_attaque_strategique_FK` FOREIGN KEY (`id_chemin_d_attaque_strategique`, `id_risque`) REFERENCES `T_chemin_d_attaque_strategique` (`id_chemin_d_attaque_strategique`, `id_risque`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=594 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=629 DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `UA_EI` VALUES ('587','Flow_19tr17p','Joyston','103',NULL,'88','Activity_1mkmphm','89','Activity_0tt2j9m','3',NULL,'28','3.b');
-INSERT INTO `UA_EI` VALUES ('588','Flow_0236dju','Alice','103',NULL,'89','Activity_1otxh6c','89','Activity_0tt2j9m','2',NULL,'28','3.b');
-INSERT INTO `UA_EI` VALUES ('589','Flow_0xt8e3f','Bob','103','76',NULL,'Activity_0dz6b4r','89','Activity_1otxh6c','2',NULL,'28','3.b');
-INSERT INTO `UA_EI` VALUES ('590','Flow_1kyhzq4','Pierrot','103','76',NULL,'Activity_0dz6b4r','88','Activity_1mkmphm','1',NULL,'28','3.b');
-INSERT INTO `UA_EI` VALUES ('591','Flow_1awenc9','Pierrot','103','76',NULL,'Activity_0dz6b4r','88','Activity_1mkmphm','3',NULL,'28','3.b');
 INSERT INTO `UA_EI` VALUES ('592','Flow_19tr17p','Joyston','105',NULL,'88','Activity_1mkmphm','89','Activity_0tt2j9m','21',NULL,'28','3.b');
 INSERT INTO `UA_EI` VALUES ('593','Flow_0236dju','Alice','105',NULL,'89','Activity_1otxh6c','89','Activity_0tt2j9m','20',NULL,'28','3.b');
+INSERT INTO `UA_EI` VALUES ('624','Flow_19tr17p','Joyston','103',NULL,'88','Activity_1mkmphm','89','Activity_0tt2j9m','3',NULL,'28','3.b');
+INSERT INTO `UA_EI` VALUES ('625','Flow_0236dju','Alice','103',NULL,'89','Activity_1otxh6c','89','Activity_0tt2j9m','2',NULL,'28','3.b');
+INSERT INTO `UA_EI` VALUES ('626','Flow_0xt8e3f','Bob','103','76',NULL,'Activity_0dz6b4r','89','Activity_1otxh6c','2',NULL,'28','3.b');
+INSERT INTO `UA_EI` VALUES ('627','Flow_1kyhzq4','Pierrot','103','76',NULL,'Activity_0dz6b4r','88','Activity_1mkmphm','1',NULL,'28','3.b');
+INSERT INTO `UA_EI` VALUES ('628','Flow_1awenc9','Pierrot','103','76',NULL,'Activity_0dz6b4r','88','Activity_1mkmphm','3',NULL,'28','3.b');
 
 
 DROP TABLE IF EXISTS `UA_ER`;
@@ -2181,18 +2181,18 @@ CREATE TABLE `UA_ER` (
   CONSTRAINT `UA_ER_R_partie_prenante_FK_source` FOREIGN KEY (`id_source`) REFERENCES `R_partie_prenante` (`id_partie_prenante`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `UA_ER_S_scenario_strategique_FK` FOREIGN KEY (`id_scenario_strategique`) REFERENCES `S_scenario_strategique` (`id_scenario_strategique`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `UA_ER_T_chemin_d_attaque_strategique_FK` FOREIGN KEY (`id_chemin_d_attaque_strategique`, `id_risque`) REFERENCES `T_chemin_d_attaque_strategique` (`id_chemin_d_attaque_strategique`, `id_risque`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=386 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=411 DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `UA_ER` VALUES ('376','Flow_142qo7y','Clé de chiffrement volée','91','103','88','Activity_1mkmphm','112','Activity_18qvk7c','1',NULL,'28','3.b');
-INSERT INTO `UA_ER` VALUES ('377','Flow_07u8n2k','Vol des mots de passe du portefeuille','94','103','89','Activity_1dbb86f','192','Activity_1hml31o','6',NULL,'28','3.b');
-INSERT INTO `UA_ER` VALUES ('378','Flow_1il9ly7','Authentification','97','103','89','Activity_1dbb86f','142','Activity_1561c18','5',NULL,'28','3.b');
-INSERT INTO `UA_ER` VALUES ('379','Flow_1yj31gj','Chiffrement','98','103','89','Activity_1dbb86f','193','Activity_1gqoe8u','4',NULL,'28','3.b');
-INSERT INTO `UA_ER` VALUES ('380','Flow_1hvxe2z','Modification de la fonction de génération de mot de passe','96','103','89','Activity_1dbb86f','192','Activity_1hml31o','8',NULL,'28','3.b');
 INSERT INTO `UA_ER` VALUES ('381','Flow_07u8n2k','Vol des mots de passe du portefeuille','94','105','89','Activity_1dbb86f','192','Activity_1hml31o','24',NULL,'28','3.b');
 INSERT INTO `UA_ER` VALUES ('382','Flow_142qo7y','Clé de chiffrement volée','91','105','88','Activity_1mkmphm','112','Activity_18qvk7c','19',NULL,'28','3.b');
 INSERT INTO `UA_ER` VALUES ('383','Flow_1il9ly7','Authentification','97','105','89','Activity_1dbb86f','142','Activity_1561c18','23',NULL,'28','3.b');
 INSERT INTO `UA_ER` VALUES ('384','Flow_007zg33','Vol du mot de passe maitre','93','105','89','Activity_1dbb86f','192','Activity_1hml31o','25',NULL,'28','3.b');
 INSERT INTO `UA_ER` VALUES ('385','Flow_1yj31gj','Chiffrement','98','105','89','Activity_1dbb86f','193','Activity_1gqoe8u','22',NULL,'28','3.b');
+INSERT INTO `UA_ER` VALUES ('406','Flow_07u8n2k','Vol des mots de passe du portefeuille','94','103','89','Activity_1dbb86f','192','Activity_1hml31o','6',NULL,'28','3.b');
+INSERT INTO `UA_ER` VALUES ('407','Flow_142qo7y','Clé de chiffrement volée','91','103','88','Activity_1mkmphm','112','Activity_18qvk7c','1',NULL,'28','3.b');
+INSERT INTO `UA_ER` VALUES ('408','Flow_1il9ly7','Authentification','97','103','89','Activity_1dbb86f','142','Activity_1561c18','5',NULL,'28','3.b');
+INSERT INTO `UA_ER` VALUES ('409','Flow_1yj31gj','Chiffrement','98','103','89','Activity_1dbb86f','193','Activity_1gqoe8u','4',NULL,'28','3.b');
+INSERT INTO `UA_ER` VALUES ('410','Flow_1hvxe2z','Modification de la fonction de génération de mot de passe','96','103','89','Activity_1dbb86f','192','Activity_1hml31o','8',NULL,'28','3.b');
 
 
 DROP TABLE IF EXISTS `U_scenario_operationnel`;
@@ -2216,7 +2216,7 @@ CREATE TABLE `U_scenario_operationnel` (
   CONSTRAINT `U_scenario_operationnel_G_atelier_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `U_scenario_operationnel_M_evenement_redoute1_FK` FOREIGN KEY (`id_evenement_redoute`) REFERENCES `M_evenement_redoute` (`id_evenement_redoute`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `U_scenario_operationnel_T_chemin_d_attaque_strategique0_FK` FOREIGN KEY (`id_chemin_d_attaque_strategique`, `id_risque`) REFERENCES `T_chemin_d_attaque_strategique` (`id_chemin_d_attaque_strategique`, `id_risque`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `U_scenario_operationnel` VALUES ('22',NULL,'Scenario opérationnel pour : Titre chemin attaque','1',NULL,'4.a','31','R3s','13','15');
 INSERT INTO `U_scenario_operationnel` VALUES ('27',NULL,'Scenario opérationnel pour : Test',NULL,NULL,'4.a','36','R3s','13','15');
@@ -2318,7 +2318,7 @@ CREATE TABLE `Y_mesure` (
   KEY `Y_mesure_G_atelier0_FK` (`id_atelier`),
   CONSTRAINT `Y_mesure_F_projet_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `Y_mesure_G_atelier0_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=140 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `Y_mesure` VALUES ('61','MS3','Mesure super','15','5.b');
 INSERT INTO `Y_mesure` VALUES ('62','MS3','Mesure','15','5.b');
@@ -2350,7 +2350,6 @@ INSERT INTO `Y_mesure` VALUES ('91','Formation en cyber sécurité','Sensibilise
 INSERT INTO `Y_mesure` VALUES ('92','Sécurisation du PC','Sécurisation du PC','25','3.c');
 INSERT INTO `Y_mesure` VALUES ('93','Process de développement sécurisé','Mettre en place un process de développement sécurisé','25','3.c');
 INSERT INTO `Y_mesure` VALUES ('94','ASLR','Mise en place de l''ASLR','25','5.b');
-INSERT INTO `Y_mesure` VALUES ('109','Développement sécurisé','Mettre en place un développement sécurisé lors de la création du logiciel','28','3.c');
 INSERT INTO `Y_mesure` VALUES ('110','Limiter les attaques par modification d''adresse de retour','Mettre en place du ASLR afin d''utiliser des adresses de retour différents à chaque exécution','28','3.c');
 INSERT INTO `Y_mesure` VALUES ('111','Mettre en place des expressions réguilières','Réfléchir sur les caractères à autoriser dans les champs pour limiter les injections','28','3.c');
 INSERT INTO `Y_mesure` VALUES ('112','Gérer correctement le stockage ','Interdire les dépassements de mémoire tampon - BufferOverFlow','28','3.c');
@@ -2359,6 +2358,11 @@ INSERT INTO `Y_mesure` VALUES ('114','Sensibiliser les utilisateurs','Sensibilis
 INSERT INTO `Y_mesure` VALUES ('128','aaa','aaaaa','25','3.c');
 INSERT INTO `Y_mesure` VALUES ('129','Formation en cyber sécurité','hhhh','158','3.c');
 INSERT INTO `Y_mesure` VALUES ('134','TEST','TEST','28','3.c');
+INSERT INTO `Y_mesure` VALUES ('135','Mesure1','Mesure1 Toto','28','3.c');
+INSERT INTO `Y_mesure` VALUES ('136','Développement sécurisé','Mettre en place un développement sécurisé lors de la création du logiciel','28','3.c');
+INSERT INTO `Y_mesure` VALUES ('137','TEST','TEST','28','3.c');
+INSERT INTO `Y_mesure` VALUES ('138','TEST2','TEST2','28','3.c');
+INSERT INTO `Y_mesure` VALUES ('139','TEST3','TEST3','28','3.c');
 
 
 DROP TABLE IF EXISTS `ZA_traitement_de_securite`;
@@ -2380,7 +2384,7 @@ CREATE TABLE `ZA_traitement_de_securite` (
   CONSTRAINT `ZA_traitement_de_securite_F_projet0_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ZA_traitement_de_securite_G_atelier_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ZA_traitement_de_securite_Y_mesure1_FK` FOREIGN KEY (`id_mesure`) REFERENCES `Y_mesure` (`id_mesure`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ZA_traitement_de_securite` VALUES ('46','Gouvernance','','+','0000-00-00','','A lancer','5.b','15','61');
 INSERT INTO `ZA_traitement_de_securite` VALUES ('47','Gouvernance','','+','0000-00-00','','A lancer','5.b','15','62');
@@ -2410,7 +2414,6 @@ INSERT INTO `ZA_traitement_de_securite` VALUES ('74',NULL,NULL,NULL,NULL,NULL,NU
 INSERT INTO `ZA_traitement_de_securite` VALUES ('75',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','25','92');
 INSERT INTO `ZA_traitement_de_securite` VALUES ('76',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','25','93');
 INSERT INTO `ZA_traitement_de_securite` VALUES ('77',NULL,NULL,NULL,NULL,NULL,NULL,'5.b','25','94');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('88','Protection','NA','+++','2020-10-09','Anthony','A lancer','3.c','28','109');
 INSERT INTO `ZA_traitement_de_securite` VALUES ('89','Protection','NA','+++','2020-10-09','Joyston','A lancer','3.c','28','110');
 INSERT INTO `ZA_traitement_de_securite` VALUES ('90','Protection','NA','+++','2020-10-09','Joyston','A lancer','3.c','28','111');
 INSERT INTO `ZA_traitement_de_securite` VALUES ('91','Protection','NA','+++','2020-10-09','Joyston','A lancer','3.c','28','112');
@@ -2419,6 +2422,28 @@ INSERT INTO `ZA_traitement_de_securite` VALUES ('93','Gouvernance','NA','+','202
 INSERT INTO `ZA_traitement_de_securite` VALUES ('107',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','25','128');
 INSERT INTO `ZA_traitement_de_securite` VALUES ('108',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','158','129');
 INSERT INTO `ZA_traitement_de_securite` VALUES ('112',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','28','134');
+INSERT INTO `ZA_traitement_de_securite` VALUES ('113',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','28','135');
+INSERT INTO `ZA_traitement_de_securite` VALUES ('115',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','28','134');
+INSERT INTO `ZA_traitement_de_securite` VALUES ('116',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','28','138');
+INSERT INTO `ZA_traitement_de_securite` VALUES ('117',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','28','139');
+
+
+DROP TABLE IF EXISTS `ZB_comporter_2`;
+CREATE TABLE `ZB_comporter_2` (
+  `id_mesure` int(11) NOT NULL,
+  `id_partie_prenante` int(11) NOT NULL,
+  `id_projet` int(11) NOT NULL,
+  PRIMARY KEY (`id_mesure`,`id_partie_prenante`),
+  KEY `ZB_comporter_2_R_partie_prenante_FK` (`id_partie_prenante`),
+  KEY `F_projet_id_projet` (`id_projet`),
+  CONSTRAINT `ZB_comporter_2_R_partie_prenante_FK` FOREIGN KEY (`id_partie_prenante`) REFERENCES `R_partie_prenante` (`id_partie_prenante`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `ZB_comporter_2_Y_mesure_FK` FOREIGN KEY (`id_mesure`) REFERENCES `Y_mesure` (`id_mesure`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `ZB_comporter_2` VALUES ('134','89','28');
+INSERT INTO `ZB_comporter_2` VALUES ('135','88','28');
+INSERT INTO `ZB_comporter_2` VALUES ('138','88','28');
+INSERT INTO `ZB_comporter_2` VALUES ('139','90','28');
 
 
 DROP TABLE IF EXISTS `ZC_version`;
