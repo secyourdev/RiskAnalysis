@@ -8,6 +8,7 @@ $results["error"] = false;
 $results["message"] = [];
 
 $id_partie_prenante = $_POST['partie_prenante'];
+$id_chemin_d_attaque_strategique = $_POST['chemins'];
 
 // Pour les régles du référentiel
 $nom_mesure = $_POST['nommesure'];
@@ -28,7 +29,7 @@ $id_atelier = '3.c';
 
 $insere_mesure = $bdd->prepare("INSERT INTO Y_mesure (id_mesure, nom_mesure, description_mesure, id_projet, id_atelier) VALUES (?,?,?, $getid_projet ,'$id_atelier')");
 $recupere_mesure = $bdd->prepare("SELECT id_mesure FROM Y_mesure WHERE nom_mesure = ? AND description_mesure = ? AND id_projet = $getid_projet");
-$insere_comporte = $bdd->prepare("INSERT INTO ZB_comporter_2 (id_mesure, id_partie_prenante, id_projet) VALUES (?,?,?)");
+$insere_comporte = $bdd->prepare("INSERT INTO ZB_comporter_2 (id_mesure, id_partie_prenante, id_chemin_d_attaque_strategique, id_projet) VALUES (?,?,?,?)");
 $insere_traitement = $bdd->prepare('INSERT INTO ZA_traitement_de_securite (id_traitement_de_securite, id_atelier, id_projet, id_mesure) VALUES (?, ?, ?, ?)');
 
 
@@ -49,7 +50,8 @@ if ($results["error"] === false && isset($_POST['validermesure1'])) {
   // insere dans comporte2
   $insere_comporte->bindParam(1, $id_mesure[0]);
   $insere_comporte->bindParam(2, $id_partie_prenante);
-  $insere_comporte->bindParam(3, $getid_projet);
+  $insere_comporte->bindParam(3, $id_chemin_d_attaque_strategique);
+  $insere_comporte->bindParam(4, $getid_projet);
   $insere_comporte->execute();
 
   // insere dans traitement de sécurité

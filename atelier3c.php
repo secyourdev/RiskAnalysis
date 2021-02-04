@@ -314,6 +314,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <tr>
                                 <th>ID</th>
                                 <th>Partie prenante</th>
+                                <th>N° de risque</th>
                                 <th>Nom mesure de sécurité</th>
                                 <th>Description mesure de sécurité</th>
                               </tr>
@@ -325,6 +326,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <tr>
                         <td>' . $row["id_mesure"] . '</td>
                         <td>' . $row["nom_partie_prenante"] . '</td>
+                        <td>' . $row["id_risque"] . '</td>
                         <td>' . $row["nom_mesure"] . '</td>
                         <td>' . $row["description_mesure"] . '</td>
                         </tr>
@@ -557,6 +559,21 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         {
                           echo '
                           <option value="'.$row["id_partie_prenante"].'">'.$row["nom_partie_prenante"].'</option>
+                        ';
+                        }
+                        ?>
+                        </select>
+                      </div>
+
+                      <div class="form-group col-12">
+                        <label for="chemins">Chemin d'attaque stratégique</label>
+                        <select class="form-control" id="chemins" name="chemins">
+                        <option value="" selected>...</option>
+                        <?php
+                        while ($row = mysqli_fetch_array($result_chemin)) //selection.php
+                        {
+                          echo '
+                          <option value="'.$row["id_chemin_d_attaque_strategique"].'">'.$row["id_risque"].' - '.$row["id_chemin"].' - '.$row["nom_chemin_d_attaque_strategique"].'</option>
                         ';
                         }
                         ?>
