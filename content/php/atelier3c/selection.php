@@ -3,67 +3,21 @@ $getid_projet = intval($_GET['id_projet']);
 include("content/php/bdd/connexion_sqli.php");
 
 //affichage tableau partie prenante
-
 $query_partie_prenante = "SELECT * FROM R_partie_prenante WHERE id_projet = $getid_projet";
 $result_partie_prenante = mysqli_query($connect, $query_partie_prenante);
-//$result_partie_prenante2 = mysqli_query($connect, $query_partie_prenante);
-//$result_partie_prenante3 = mysqli_query($connect, $query_partie_prenante);
-
-// $query_categorie_partie_prenante = "SELECT categorie_partie_prenante FROM R_partie_prenante";
-// $result_categorie_partie_prenante = mysqli_query($connect, $query_categorie_partie_prenante);
-
-//affichage tableau scenario
-// $query_chemin_d_attaque = "SELECT * FROM chemin_d_attaque_strategique ORDER BY id_chemin_d_attaque_strategique ASC";
-// $result_chemin_d_attaque = mysqli_query($connect, $query_chemin_d_attaque);
-
-$query_chemin_d_attaque = "SELECT DISTINCT T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique, 
-T_chemin_d_attaque_strategique.nom_chemin_d_attaque_strategique, 
-T_chemin_d_attaque_strategique.id_chemin
-FROM S_scenario_strategique, T_chemin_d_attaque_strategique, UA_ER, M_evenement_redoute
-WHERE T_chemin_d_attaque_strategique.id_scenario_strategique = S_scenario_strategique.id_scenario_strategique 
-AND T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = UA_ER.id_chemin_d_attaque_strategique
-AND UA_ER.id_evenement_redoute = M_evenement_redoute.id_evenement_redoute
-AND T_chemin_d_attaque_strategique.id_projet = $getid_projet
-ORDER BY T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique ASC";
-
-$result_chemin_d_attaque = mysqli_query($connect, $query_chemin_d_attaque);
-// echo '
-//     <option value="" selected>...</option>
-//     ';
-//     while($row = $result_chemin_d_attaque->fetch(PDO::FETCH_ASSOC))
-//     {
-//       echo '
-//       <option value="'.$row["id_chemin_d_attaque_strategique"].'">'.$row["id_chemin"].'-'.$row["nom_chemin_d_attaque_strategique"].'</option>
-//       ';
-//     }
-
-//tableau scénario stratégique
-$query_scenario_strategique =
-"SELECT 
-S_scenario_strategique.id_scenario_strategique,
-nom_scenario_strategique, 
-S_scenario_strategique.id_source_de_risque, 
-P_SROV.description_source_de_risque, 
-objectif_vise 
-FROM S_scenario_strategique, P_SROV 
-WHERE S_scenario_strategique.id_source_de_risque = P_SROV.id_source_de_risque 
-AND S_scenario_strategique.id_projet = $getid_projet
-ORDER BY id_scenario_strategique ASC";
-$result_scenario_strategique = mysqli_query($connect, $query_scenario_strategique);
-
+$result_partie_prenante2 = mysqli_query($connect, $query_partie_prenante);
 
 $query_mesure1 = "SELECT
 Y_mesure.id_mesure,
-T_chemin_d_attaque_strategique.id_risque,
-T_chemin_d_attaque_strategique.nom_chemin_d_attaque_strategique,
+R_partie_prenante.nom_partie_prenante,
 Y_mesure.nom_mesure,
 Y_mesure.description_mesure
-FROM T_chemin_d_attaque_strategique
+FROM R_partie_prenante
 INNER JOIN ZB_comporter_2
-ON T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = ZB_comporter_2.id_chemin_d_attaque_strategique
+ON R_partie_prenante.id_partie_prenante = ZB_comporter_2.id_partie_prenante
 INNER JOIN Y_mesure
 ON Y_mesure.id_mesure = ZB_comporter_2.id_mesure
-WHERE T_chemin_d_attaque_strategique.id_projet = $getid_projet";
+WHERE Y_mesure.id_projet = $getid_projet";
 
 $query_mesure2 = "SELECT DISTINCT 
 R_partie_prenante.id_partie_prenante,
@@ -78,20 +32,16 @@ penetration_residuelle,
 maturite_residuelle,
 confiance_residuelle,
 niveau_de_menace_residuelle
-FROM T_chemin_d_attaque_strategique
+FROM R_partie_prenante
 INNER JOIN ZB_comporter_2
-ON T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = ZB_comporter_2.id_chemin_d_attaque_strategique
+ON R_partie_prenante.id_partie_prenante = ZB_comporter_2.id_partie_prenante
 INNER JOIN Y_mesure
 ON Y_mesure.id_mesure = ZB_comporter_2.id_mesure
-INNER JOIN R_partie_prenante
-ON T_chemin_d_attaque_strategique.id_partie_prenante = R_partie_prenante.id_partie_prenante
-WHERE T_chemin_d_attaque_strategique.id_projet = $getid_projet";
+WHERE Y_mesure.id_projet = $getid_projet";
 
 
 $result_mesure1 = mysqli_query($connect, $query_mesure1);
 $result_mesure2 = mysqli_query($connect, $query_mesure2);
 
-
-
-$query_referentiel = "SELECT * FROM N_socle_de_securite WHERE id_projet = $getid_projet";
-$result_referentiel = mysqli_query($connect, $query_referentiel);
+// $query_referentiel = "SELECT * FROM N_socle_de_securite WHERE id_projet = $getid_projet";
+// $result_referentiel = mysqli_query($connect, $query_referentiel);
