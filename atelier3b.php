@@ -459,6 +459,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <tr>
                                 <th>ID</th>
                                 <th>ID du risque</th>
+                                <th>ID du chemin</th>
                                 <th>Nom du scénario stratégique</th>
                                 <th>Chemin d'attaque stratégique</th>
                                 <th>Description</th>
@@ -472,10 +473,11 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <tr>
                                 <td>' . $row["id_chemin_d_attaque_strategique"] . '</td>
                                 <td>' . $row["id_risque"] . '</td>
+                                <td>' . $row["id_chemin"] . '</td>
                                 <td>' . $row["nom_scenario_strategique"] . '</td>
                                 <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
                                 <td>' . $row["description_chemin_d_attaque_strategique"] . '</td>
-                                <td>' . $row["gravite"] . '</td>
+                                <td>' . $row["niveau_de_gravite"] . '</td>
                                 </tr>
                                 ';
                               }

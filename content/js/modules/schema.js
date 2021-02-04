@@ -49,9 +49,9 @@ for(let h=0;h<modifier_schema.length;h++){
     })
 }    
 
-// canvas.addEventListener('mouseover',function(){
-//     sleep(500).then(() => {troncate_text_schema();});
-// })
+canvas.addEventListener('mouseover',function(){
+    sleep(500).then(() => {troncate_text_schema();});
+})
 /*----------------------------------------------------------------------------*/
 /*------------------------------- FONCTIONS ----------------------------------*/
 /*------------------------- TRONCATURE TEXTE SCHEMA --------------------------*/
@@ -127,6 +127,9 @@ async function saveFileBDD(e) {
 }
 /*---------------------------- PARSER XML ----------------------------------*/
 var parser, xmlDoc, test, chemin_JSON_EI_ER, chemin_JSON_EI_EI, chemin_JSON_ER_ER;
+var chemin_valeur =  ['C1','C2','C3','C4','C5','C6','C7','C8','C9']
+var EI_ER = new Array();
+
 function parserXML(xml_file){
 parser = new DOMParser();
 xmlDoc = parser.parseFromString(xml_file,"application/xml");
@@ -294,28 +297,49 @@ $.ajax({
         }
     }
     //Ajout des chemins 
-    $.ajax({
-        url: 'content/php/atelier3b/selection_chemin_EI_ER.php',
-        type: 'POST',
-        data:{
-            id_scenario_strategique: id_scenario_strategique_schema
-        },
-        success: function (resultat) {
-            chemin_JSON_EI_ER = JSON.parse(resultat);
-        }
-    })
+    // $.ajax({
+    //     url: 'content/php/atelier3b/selection_chemin_EI_ER.php',
+    //     type: 'POST',
+    //     data:{
+    //         id_scenario_strategique: id_scenario_strategique_schema
+    //     },
+    //     success: function (resultat) {
+    //         chemin_JSON_EI_ER = JSON.parse(resultat);
+    //     }
+    // })
 
-    $.ajax({
-        url: 'content/php/atelier3b/selection_chemin_EI_EI.php',
-        type: 'POST',
-        data:{
-            id_scenario_strategique: id_scenario_strategique_schema
-        },
-        success: function (resultat) {
-            chemin_JSON_EI_EI = JSON.parse(resultat);
-        }
-    })
+    // $.ajax({
+    //     url: 'content/php/atelier3b/selection_chemin_EI_EI.php',
+    //     type: 'POST',
+    //     data:{
+    //         id_scenario_strategique: id_scenario_strategique_schema
+    //     },
+    //     // success: function (resultat) {
+    //     //     chemin_JSON_EI_EI = JSON.parse(resultat);
+    //     //     console.log(chemin_JSON_EI_EI);
 
+    //     //     for(let i=0;i<chemin_valeur.length;i++){
+    //     //         EI_ER[i] = new Array()
+    //     //     }
+
+    //     //     for(let i=0;i<chemin_JSON_EI_EI.length;i++){
+    //     //         let k=0;
+    //     //         for(let j=0;j<chemin_JSON_EI_EI.length;j++){
+    //     //             console.log(chemin_JSON_EI_EI[i][1]+'=='+chemin_JSON_EI_EI[j][1]);
+    //     //             if(chemin_JSON_EI_EI[i][1]==chemin_JSON_EI_EI[j][1]){
+    //     //                 EI_ER[i][k]=chemin_JSON_EI_EI[i][0];
+    //     //                 EI_ER[i][k+1]=chemin_JSON_EI_EI[j][0];
+    //     //                 k++;
+    //     //                 //console.log(EI_ER[i][k])
+    //     //             }
+    //     //             else 
+    //     //                 console.log('erreur');
+    //     //         }
+    //     //     }
+    //     // }
+    // })
+
+    
     // $.ajax({
     //     url: 'content/php/atelier3b/selection_chemin_ER_ER.php',
     //     type: 'POST',

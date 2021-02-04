@@ -16,11 +16,16 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–
     $_SESSION['message_error'] = "Identifiant scénario invalide";
 }
 
-$search_path_EI_EI_for_schema = $bdd->prepare("SELECT TA_EI.id_EI, TA_EI.id_chemin FROM TA_EI WHERE TA_EI.id_projet=? AND TA_EI.id_scenario_strategique=?");
-$search_path_EI_EI_for_schema->bindParam(1, $get_id_projet);
-$search_path_EI_EI_for_schema->bindParam(2, $id_scenario_strategique);
-$search_path_EI_EI_for_schema->execute();
+$chemin_valeur = ['C1','C2','C3','C4','C5','C6','C7','C8','C9'];
+
+for($i=0;$i<count($chemin_valeur);++$i){
+    $search_path_EI_EI_for_schema = $bdd->prepare("SELECT TA_EI.id_EI FROM TA_EI WHERE TA_EI.id_chemin=? AND TA_EI.id_projet=? AND TA_EI.id_scenario_strategique=?");
+    $search_path_EI_EI_for_schema->bindParam(1, $chemin_valeur[$i]);
+    $search_path_EI_EI_for_schema->bindParam(2, $get_id_projet);
+    $search_path_EI_EI_for_schema->bindParam(3, $id_scenario_strategique);
+    $search_path_EI_EI_for_schema->execute();
     
+
 $array_EI_EI = array();
 
 while($ecriture_EI_EI = $search_path_EI_EI_for_schema->fetch()){
@@ -28,5 +33,7 @@ while($ecriture_EI_EI = $search_path_EI_EI_for_schema->fetch()){
 }
 
 echo json_encode($array_EI_EI);
+
+}
 
 ?>

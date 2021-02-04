@@ -16,10 +16,10 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–
     $_SESSION['message_error'] = "Identifiant scénario invalide";
 }
 
-$search_path_EI_ER_for_schema = $bdd->prepare("SELECT TA_EI.id_EI, TA_ER.id_ER, TA_ER.id_chemin FROM TA_EI INNER JOIN TA_ER ON TA_EI.id_chemin = TA_ER.id_chemin WHERE TA_EI.id_projet=? AND TA_EI.id_scenario_strategique=?");
-$search_path_EI_ER_for_schema->bindParam(1, $get_id_projet);
-$search_path_EI_ER_for_schema->bindParam(2, $id_scenario_strategique);
-$search_path_EI_ER_for_schema->execute();
+$search_path_for_schema = $bdd->prepare("SELECT TA_EI.id_EI, TA_ER.id_ER, TA_ER.id_chemin FROM TA_EI INNER JOIN TA_ER ON TA_EI.id_chemin = TA_ER.id_chemin WHERE TA_EI.id_projet=? AND TA_EI.id_scenario_strategique=?");
+$search_path_for_schema->bindParam(1, $get_id_projet);
+$search_path_for_schema->bindParam(2, $id_scenario_strategique);
+$search_path_for_schema->execute();
 
 $ER_EI=$search_path_EI_ER_for_schema->fetch();
 

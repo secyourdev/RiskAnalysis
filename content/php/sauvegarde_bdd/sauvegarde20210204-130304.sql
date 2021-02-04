@@ -1,5 +1,5 @@
 --
--- sauvegarde20210201-170450.sql.gz
+-- sauvegarde20210204-130304.sql.gz
 SET FOREIGN_KEY_CHECKS =  0 ;
 
 DROP TABLE IF EXISTS `A_utilisateur`;
@@ -2058,7 +2058,7 @@ CREATE TABLE `S_scenario_strategique` (
   CONSTRAINT `S_scenario_strategique_F_projet2_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `S_scenario_strategique_G_atelier_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `S_scenario_strategique_P_SROV0_FK` FOREIGN KEY (`id_source_de_risque`) REFERENCES `P_SROV` (`id_source_de_risque`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `S_scenario_strategique` VALUES ('13','MonScénarStratégique',NULL,'3.b','14','15');
 INSERT INTO `S_scenario_strategique` VALUES ('16','SS1','Microsoft_logo_(2012)_modified.svg.png','3.b','18','17');
@@ -2069,11 +2069,42 @@ INSERT INTO `S_scenario_strategique` VALUES ('43','Vol du mot de passe principal
 INSERT INTO `S_scenario_strategique` VALUES ('71','Vol de mot de passe avancé','data:application/xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Cdefinitions%20xmlns%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F20100524%2FMODEL%22%20xmlns%3Abpmndi%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F20100524%2FDI%22%20xmlns%3Aomgdc%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FDD%2F20100524%2FDC%22%20xmlns%3Axsi%3D%22http%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema-instance%22%20xmlns%3Adi%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FDD%2F20100524%2FDI%22%20targetNamespace%3D%22%22%20xsi%3AschemaLocation%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F20100524%2FMODEL%20http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F2.0%2F20100501%2FBPMN20.xsd%22%3E%0A%20%20%3Ccollaboration%20id%3D%22Collaboration_0n85r8a%22%3E%0A%20%20%20%20%3Cparticipant%20id%3D%22Participant_0s2lx66%22%20name%3D%22Source%20de%20risque%22%20processRef%3D%22Process_0qqwoep%22%20%2F%3E%0A%20%20%20%20%3Cparticipant%20id%3D%22Participant_1p5a95g%22%20name%3D%22%C3%89cosyst%C3%A8me%22%20processRef%3D%22Process_0r4d8dh%22%20%2F%3E%0A%20%20%20%20%3Cparticipant%20id%3D%22Participant_1lsp20e%22%20name%3D%22Objectif%20vis%C3%A9%22%20processRef%3D%22Process_0a2q3ig%22%20%2F%3E%0A%20%20%20%20%3CmessageFlow%20id%3D%22Flow_00l3opd%22%20sourceRef%3D%22Activity_0ynt8a1%22%20targetRef%3D%22Activity_04r7d64%22%20%2F%3E%0A%20%20%20%20%3CmessageFlow%20id%3D%22Flow_1fhjlg3%22%20sourceRef%3D%22Activity_04r7d64%22%20targetRef%3D%22Activity_1l4ainw%22%20%2F%3E%0A%20%20%20%20%3CmessageFlow%20id%3D%22Flow_0m2kef5%22%20sourceRef%3D%22Activity_0gne4uo%22%20targetRef%3D%22Activity_04r7d64%22%20%2F%3E%0A%20%20%20%20%3CmessageFlow%20id%3D%22Flow_1qpvxym%22%20sourceRef%3D%22Activity_04r7d64%22%20targetRef%3D%22Activity_0wlqifq%22%20%2F%3E%0A%20%20%3C%2Fcollaboration%3E%0A%20%20%3Cprocess%20id%3D%22Process_0qqwoep%22%3E%0A%20%20%20%20%3CuserTask%20id%3D%22Activity_0ynt8a1%22%20name%3D%22Membre%20de%20la%20famille%22%3E%0A%20%20%20%20%20%20%3Coutgoing%3EFlow_0r0h5qt%3C%2Foutgoing%3E%0A%20%20%20%20%3C%2FuserTask%3E%0A%20%20%20%20%3CserviceTask%20id%3D%22Activity_0gne4uo%22%3E%0A%20%20%20%20%20%20%3Cincoming%3EFlow_0r0h5qt%3C%2Fincoming%3E%0A%20%20%20%20%3C%2FserviceTask%3E%0A%20%20%20%20%3CsequenceFlow%20id%3D%22Flow_0r0h5qt%22%20sourceRef%3D%22Activity_0ynt8a1%22%20targetRef%3D%22Activity_0gne4uo%22%20%2F%3E%0A%20%20%3C%2Fprocess%3E%0A%20%20%3Cprocess%20id%3D%22Process_0r4d8dh%22%3E%0A%20%20%20%20%3CserviceTask%20id%3D%22Activity_04r7d64%22%20name%3D%22CarlosPP%22%20%2F%3E%0A%20%20%3C%2Fprocess%3E%0A%20%20%3Cprocess%20id%3D%22Process_0a2q3ig%22%3E%0A%20%20%20%20%3CmanualTask%20id%3D%22Activity_1l4ainw%22%20%2F%3E%0A%20%20%20%20%3CmanualTask%20id%3D%22Activity_0wlqifq%22%20%2F%3E%0A%20%20%3C%2Fprocess%3E%0A%20%20%3Cbpmndi%3ABPMNDiagram%20id%3D%22sid-74620812-92c4-44e5-949c-aa47393d3830%22%3E%0A%20%20%20%20%3Cbpmndi%3ABPMNPlane%20id%3D%22sid-cdcae759-2af7-4a6d-bd02-53f3352a731d%22%20bpmnElement%3D%22Collaboration_0n85r8a%22%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Participant_0s2lx66_di%22%20bpmnElement%3D%22Participant_0s2lx66%22%20isHorizontal%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22230%22%20y%3D%22100%22%20width%3D%22300%22%20height%3D%22640%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNEdge%20id%3D%22Flow_0r0h5qt_di%22%20bpmnElement%3D%22Flow_0r0h5qt%22%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22380%22%20y%3D%22250%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22380%22%20y%3D%22320%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22430%22%20y%3D%22320%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22430%22%20y%3D%22390%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNEdge%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Activity_0ynt8a1_di%22%20bpmnElement%3D%22Activity_0ynt8a1%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22330%22%20y%3D%22170%22%20width%3D%22100%22%20height%3D%2280%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Activity_0gne4uo_di%22%20bpmnElement%3D%22Activity_0gne4uo%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22380%22%20y%3D%22390%22%20width%3D%22100%22%20height%3D%2280%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Participant_1p5a95g_di%22%20bpmnElement%3D%22Participant_1p5a95g%22%20isHorizontal%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22550%22%20y%3D%22100%22%20width%3D%22300%22%20height%3D%22640%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Activity_04r7d64_di%22%20bpmnElement%3D%22Activity_04r7d64%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22690%22%20y%3D%22180%22%20width%3D%22100%22%20height%3D%2280%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Participant_1lsp20e_di%22%20bpmnElement%3D%22Participant_1lsp20e%22%20isHorizontal%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22870%22%20y%3D%22100%22%20width%3D%22300%22%20height%3D%22640%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Activity_1l4ainw_di%22%20bpmnElement%3D%22Activity_1l4ainw%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22960%22%20y%3D%22220%22%20width%3D%22100%22%20height%3D%2280%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Activity_0wlqifq_di%22%20bpmnElement%3D%22Activity_0wlqifq%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22980%22%20y%3D%22370%22%20width%3D%22100%22%20height%3D%2280%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNEdge%20id%3D%22Flow_00l3opd_di%22%20bpmnElement%3D%22Flow_00l3opd%22%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22430%22%20y%3D%22209%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22690%22%20y%3D%22209%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNEdge%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNEdge%20id%3D%22Flow_1fhjlg3_di%22%20bpmnElement%3D%22Flow_1fhjlg3%22%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22790%22%20y%3D%22221%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22966%22%20y%3D%22221%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNEdge%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNEdge%20id%3D%22Flow_0m2kef5_di%22%20bpmnElement%3D%22Flow_0m2kef5%22%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22450%22%20y%3D%22390%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22450%22%20y%3D%22325%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22730%22%20y%3D%22325%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22730%22%20y%3D%22260%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNEdge%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNEdge%20id%3D%22Flow_1qpvxym_di%22%20bpmnElement%3D%22Flow_1qpvxym%22%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22745%22%20y%3D%22260%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22745%22%20y%3D%22315%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%221010%22%20y%3D%22315%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%221010%22%20y%3D%22370%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNEdge%3E%0A%20%20%20%20%3C%2Fbpmndi%3ABPMNPlane%3E%0A%20%20%20%20%3Cbpmndi%3ABPMNLabelStyle%20id%3D%22sid-e0502d32-f8d1-41cf-9c4a-cbb49fecf581%22%3E%0A%20%20%20%20%20%20%3Comgdc%3AFont%20name%3D%22Arial%22%20size%3D%2211%22%20isBold%3D%22false%22%20isItalic%3D%22false%22%20isUnderline%3D%22false%22%20isStrikeThrough%3D%22false%22%20%2F%3E%0A%20%20%20%20%3C%2Fbpmndi%3ABPMNLabelStyle%3E%0A%20%20%20%20%3Cbpmndi%3ABPMNLabelStyle%20id%3D%22sid-84cb49fd-2f7c-44fb-8950-83c3fa153d3b%22%3E%0A%20%20%20%20%20%20%3Comgdc%3AFont%20name%3D%22Arial%22%20size%3D%2212%22%20isBold%3D%22false%22%20isItalic%3D%22false%22%20isUnderline%3D%22false%22%20isStrikeThrough%3D%22false%22%20%2F%3E%0A%20%20%20%20%3C%2Fbpmndi%3ABPMNLabelStyle%3E%0A%20%20%3C%2Fbpmndi%3ABPMNDiagram%3E%0A%3C%2Fdefinitions%3E%0A','3.b','88','158');
 INSERT INTO `S_scenario_strategique` VALUES ('93','SCE2','data:application/xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Cdefinitions%20xmlns%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F20100524%2FMODEL%22%20xmlns%3Abpmndi%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F20100524%2FDI%22%20xmlns%3Aomgdc%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FDD%2F20100524%2FDC%22%20xmlns%3Axsi%3D%22http%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema-instance%22%20targetNamespace%3D%22%22%20xsi%3AschemaLocation%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F20100524%2FMODEL%20http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F2.0%2F20100501%2FBPMN20.xsd%22%3E%0A%20%20%3Ccollaboration%20id%3D%22Collaboration_0n85r8a%22%3E%0A%20%20%20%20%3Cparticipant%20id%3D%22Participant_0s2lx66%22%20name%3D%22Source%20de%20risque%22%20processRef%3D%22Process_0qqwoep%22%20%2F%3E%0A%20%20%20%20%3Cparticipant%20id%3D%22Participant_1p5a95g%22%20name%3D%22%C3%89cosyst%C3%A8me%22%20processRef%3D%22Process_0r4d8dh%22%20%2F%3E%0A%20%20%20%20%3Cparticipant%20id%3D%22Participant_1lsp20e%22%20name%3D%22Objectif%20vis%C3%A9%22%20processRef%3D%22Process_0a2q3ig%22%20%2F%3E%0A%20%20%3C%2Fcollaboration%3E%0A%20%20%3Cprocess%20id%3D%22Process_0qqwoep%22%3E%0A%20%20%20%20%3CuserTask%20id%3D%22Activity_0ynt8a1%22%20%2F%3E%0A%20%20%3C%2Fprocess%3E%0A%20%20%3Cprocess%20id%3D%22Process_0r4d8dh%22%20%2F%3E%0A%20%20%3Cprocess%20id%3D%22Process_0a2q3ig%22%20%2F%3E%0A%20%20%3Cbpmndi%3ABPMNDiagram%20id%3D%22sid-74620812-92c4-44e5-949c-aa47393d3830%22%3E%0A%20%20%20%20%3Cbpmndi%3ABPMNPlane%20id%3D%22sid-cdcae759-2af7-4a6d-bd02-53f3352a731d%22%20bpmnElement%3D%22Collaboration_0n85r8a%22%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Participant_0s2lx66_di%22%20bpmnElement%3D%22Participant_0s2lx66%22%20isHorizontal%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22230%22%20y%3D%22100%22%20width%3D%22300%22%20height%3D%22640%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Activity_0ynt8a1_di%22%20bpmnElement%3D%22Activity_0ynt8a1%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22330%22%20y%3D%22170%22%20width%3D%22100%22%20height%3D%2280%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Participant_1p5a95g_di%22%20bpmnElement%3D%22Participant_1p5a95g%22%20isHorizontal%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22550%22%20y%3D%22100%22%20width%3D%22300%22%20height%3D%22640%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Participant_1lsp20e_di%22%20bpmnElement%3D%22Participant_1lsp20e%22%20isHorizontal%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22870%22%20y%3D%22100%22%20width%3D%22300%22%20height%3D%22640%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%3C%2Fbpmndi%3ABPMNPlane%3E%0A%20%20%20%20%3Cbpmndi%3ABPMNLabelStyle%20id%3D%22sid-e0502d32-f8d1-41cf-9c4a-cbb49fecf581%22%3E%0A%20%20%20%20%20%20%3Comgdc%3AFont%20name%3D%22Arial%22%20size%3D%2211%22%20isBold%3D%22false%22%20isItalic%3D%22false%22%20isUnderline%3D%22false%22%20isStrikeThrough%3D%22false%22%20%2F%3E%0A%20%20%20%20%3C%2Fbpmndi%3ABPMNLabelStyle%3E%0A%20%20%20%20%3Cbpmndi%3ABPMNLabelStyle%20id%3D%22sid-84cb49fd-2f7c-44fb-8950-83c3fa153d3b%22%3E%0A%20%20%20%20%20%20%3Comgdc%3AFont%20name%3D%22Arial%22%20size%3D%2212%22%20isBold%3D%22false%22%20isItalic%3D%22false%22%20isUnderline%3D%22false%22%20isStrikeThrough%3D%22false%22%20%2F%3E%0A%20%20%20%20%3C%2Fbpmndi%3ABPMNLabelStyle%3E%0A%20%20%3C%2Fbpmndi%3ABPMNDiagram%3E%0A%3C%2Fdefinitions%3E%0A','3.b','88','158');
 INSERT INTO `S_scenario_strategique` VALUES ('97','fgdfgfd','data:application/xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Cdefinitions%20xmlns%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F20100524%2FMODEL%22%20xmlns%3Abpmndi%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F20100524%2FDI%22%20xmlns%3Aomgdc%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FDD%2F20100524%2FDC%22%20xmlns%3Axsi%3D%22http%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema-instance%22%20targetNamespace%3D%22%22%20xsi%3AschemaLocation%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F20100524%2FMODEL%20http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F2.0%2F20100501%2FBPMN20.xsd%22%3E%0A%20%20%3Ccollaboration%20id%3D%22Collaboration_0n85r8a%22%3E%0A%20%20%20%20%3Cparticipant%20id%3D%22Participant_0s2lx66%22%20name%3D%22Source%20de%20risque%22%20processRef%3D%22Process_0qqwoep%22%20%2F%3E%0A%20%20%20%20%3Cparticipant%20id%3D%22Participant_1p5a95g%22%20name%3D%22%C3%89cosyst%C3%A8me%22%20processRef%3D%22Process_0r4d8dh%22%20%2F%3E%0A%20%20%20%20%3Cparticipant%20id%3D%22Participant_1lsp20e%22%20name%3D%22Objectif%20vis%C3%A9%22%20processRef%3D%22Process_0a2q3ig%22%20%2F%3E%0A%20%20%3C%2Fcollaboration%3E%0A%20%20%3Cprocess%20id%3D%22Process_0qqwoep%22%3E%0A%20%20%20%20%3CuserTask%20id%3D%22Activity_0ynt8a1%22%20%2F%3E%0A%20%20%3C%2Fprocess%3E%0A%20%20%3Cprocess%20id%3D%22Process_0r4d8dh%22%20%2F%3E%0A%20%20%3Cprocess%20id%3D%22Process_0a2q3ig%22%20%2F%3E%0A%20%20%3Cbpmndi%3ABPMNDiagram%20id%3D%22sid-74620812-92c4-44e5-949c-aa47393d3830%22%3E%0A%20%20%20%20%3Cbpmndi%3ABPMNPlane%20id%3D%22sid-cdcae759-2af7-4a6d-bd02-53f3352a731d%22%20bpmnElement%3D%22Collaboration_0n85r8a%22%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Participant_0s2lx66_di%22%20bpmnElement%3D%22Participant_0s2lx66%22%20isHorizontal%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22230%22%20y%3D%22100%22%20width%3D%22300%22%20height%3D%22640%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Activity_0ynt8a1_di%22%20bpmnElement%3D%22Activity_0ynt8a1%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22330%22%20y%3D%22170%22%20width%3D%22100%22%20height%3D%2280%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Participant_1p5a95g_di%22%20bpmnElement%3D%22Participant_1p5a95g%22%20isHorizontal%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22550%22%20y%3D%22100%22%20width%3D%22300%22%20height%3D%22640%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Participant_1lsp20e_di%22%20bpmnElement%3D%22Participant_1lsp20e%22%20isHorizontal%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22870%22%20y%3D%22100%22%20width%3D%22300%22%20height%3D%22640%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%3C%2Fbpmndi%3ABPMNPlane%3E%0A%20%20%20%20%3Cbpmndi%3ABPMNLabelStyle%20id%3D%22sid-e0502d32-f8d1-41cf-9c4a-cbb49fecf581%22%3E%0A%20%20%20%20%20%20%3Comgdc%3AFont%20name%3D%22Arial%22%20size%3D%2211%22%20isBold%3D%22false%22%20isItalic%3D%22false%22%20isUnderline%3D%22false%22%20isStrikeThrough%3D%22false%22%20%2F%3E%0A%20%20%20%20%3C%2Fbpmndi%3ABPMNLabelStyle%3E%0A%20%20%20%20%3Cbpmndi%3ABPMNLabelStyle%20id%3D%22sid-84cb49fd-2f7c-44fb-8950-83c3fa153d3b%22%3E%0A%20%20%20%20%20%20%3Comgdc%3AFont%20name%3D%22Arial%22%20size%3D%2212%22%20isBold%3D%22false%22%20isItalic%3D%22false%22%20isUnderline%3D%22false%22%20isStrikeThrough%3D%22false%22%20%2F%3E%0A%20%20%20%20%3C%2Fbpmndi%3ABPMNLabelStyle%3E%0A%20%20%3C%2Fbpmndi%3ABPMNDiagram%3E%0A%3C%2Fdefinitions%3E%0A','3.b','88','158');
-INSERT INTO `S_scenario_strategique` VALUES ('102','test','data:application/xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Cdefinitions%20xmlns%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F20100524%2FMODEL%22%20xmlns%3Abpmndi%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F20100524%2FDI%22%20xmlns%3Aomgdc%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FDD%2F20100524%2FDC%22%20xmlns%3Axsi%3D%22http%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema-instance%22%20xmlns%3Adi%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FDD%2F20100524%2FDI%22%20targetNamespace%3D%22%22%20xsi%3AschemaLocation%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F20100524%2FMODEL%20http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F2.0%2F20100501%2FBPMN20.xsd%22%3E%0A%20%20%3Ccollaboration%20id%3D%22Collaboration_0n85r8a%22%3E%0A%20%20%20%20%3Cparticipant%20id%3D%22Participant_0s2lx66%22%20name%3D%22Source%20de%20risque%22%20processRef%3D%22Process_0qqwoep%22%20%2F%3E%0A%20%20%20%20%3Cparticipant%20id%3D%22Participant_1p5a95g%22%20name%3D%22%C3%89cosyst%C3%A8me%22%20processRef%3D%22Process_0r4d8dh%22%20%2F%3E%0A%20%20%20%20%3Cparticipant%20id%3D%22Participant_1lsp20e%22%20name%3D%22Objectif%20vis%C3%A9%22%20processRef%3D%22Process_0a2q3ig%22%20%2F%3E%0A%20%20%20%20%3CmessageFlow%20id%3D%22Flow_14fa0zb%22%20name%3D%22EI%22%20sourceRef%3D%22Activity_1y4ml2e%22%20targetRef%3D%22Activity_0ynt8a1%22%20%2F%3E%0A%20%20%20%20%3CmessageFlow%20id%3D%22Flow_10111kc%22%20name%3D%22EI%22%20sourceRef%3D%22Activity_0ynt8a1%22%20targetRef%3D%22Activity_1uhvplt%22%20%2F%3E%0A%20%20%20%20%3CmessageFlow%20id%3D%22Flow_0dspse8%22%20name%3D%22EI%22%20sourceRef%3D%22Activity_0ynt8a1%22%20targetRef%3D%22Activity_0s1s47h%22%20%2F%3E%0A%20%20%3C%2Fcollaboration%3E%0A%20%20%3Cprocess%20id%3D%22Process_0qqwoep%22%3E%0A%20%20%20%20%3CuserTask%20id%3D%22Activity_0ynt8a1%22%20name%3D%22Officine%20sp%C3%A9cialis%C3%A9e%22%20%2F%3E%0A%20%20%3C%2Fprocess%3E%0A%20%20%3Cprocess%20id%3D%22Process_0r4d8dh%22%3E%0A%20%20%20%20%3CserviceTask%20id%3D%22Activity_1y4ml2e%22%20name%3D%22Utilisateur%22%20%2F%3E%0A%20%20%20%20%3CserviceTask%20id%3D%22Activity_1uhvplt%22%20name%3D%22Utilisateur%22%20%2F%3E%0A%20%20%20%20%3CserviceTask%20id%3D%22Activity_0s1s47h%22%20name%3D%22Utilisateur%22%20%2F%3E%0A%20%20%3C%2Fprocess%3E%0A%20%20%3Cprocess%20id%3D%22Process_0a2q3ig%22%20%2F%3E%0A%20%20%3Cbpmndi%3ABPMNDiagram%20id%3D%22sid-74620812-92c4-44e5-949c-aa47393d3830%22%3E%0A%20%20%20%20%3Cbpmndi%3ABPMNPlane%20id%3D%22sid-cdcae759-2af7-4a6d-bd02-53f3352a731d%22%20bpmnElement%3D%22Collaboration_0n85r8a%22%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Participant_0s2lx66_di%22%20bpmnElement%3D%22Participant_0s2lx66%22%20isHorizontal%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22230%22%20y%3D%22100%22%20width%3D%22300%22%20height%3D%22640%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Activity_0ynt8a1_di%22%20bpmnElement%3D%22Activity_0ynt8a1%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22330%22%20y%3D%22170%22%20width%3D%22100%22%20height%3D%2280%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Participant_1p5a95g_di%22%20bpmnElement%3D%22Participant_1p5a95g%22%20isHorizontal%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22550%22%20y%3D%22100%22%20width%3D%22300%22%20height%3D%22640%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Activity_1y4ml2e_di%22%20bpmnElement%3D%22Activity_1y4ml2e%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22640%22%20y%3D%22170%22%20width%3D%22100%22%20height%3D%2280%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Activity_1uhvplt_di%22%20bpmnElement%3D%22Activity_1uhvplt%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22640%22%20y%3D%22310%22%20width%3D%22100%22%20height%3D%2280%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Activity_0s1s47h_di%22%20bpmnElement%3D%22Activity_0s1s47h%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22620%22%20y%3D%22420%22%20width%3D%22100%22%20height%3D%2280%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Participant_1lsp20e_di%22%20bpmnElement%3D%22Participant_1lsp20e%22%20isHorizontal%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22870%22%20y%3D%22100%22%20width%3D%22300%22%20height%3D%22640%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNEdge%20id%3D%22Flow_14fa0zb_di%22%20bpmnElement%3D%22Flow_14fa0zb%22%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22640%22%20y%3D%22217%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22430%22%20y%3D%22217%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cbpmndi%3ABPMNLabel%3E%0A%20%20%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22530%22%20y%3D%22199%22%20width%3D%2211%22%20height%3D%2214%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNLabel%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNEdge%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNEdge%20id%3D%22Flow_10111kc_di%22%20bpmnElement%3D%22Flow_10111kc%22%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22393%22%20y%3D%22250%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22393%22%20y%3D%22330%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22640%22%20y%3D%22330%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cbpmndi%3ABPMNLabel%3E%0A%20%20%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22511%22%20y%3D%22312%22%20width%3D%2211%22%20height%3D%2214%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNLabel%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNEdge%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNEdge%20id%3D%22Flow_0dspse8_di%22%20bpmnElement%3D%22Flow_0dspse8%22%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22430%22%20y%3D%22210%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22490%22%20y%3D%22210%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22490%22%20y%3D%22460%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cdi%3Awaypoint%20x%3D%22620%22%20y%3D%22460%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cbpmndi%3ABPMNLabel%3E%0A%20%20%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22500%22%20y%3D%22332%22%20width%3D%2211%22%20height%3D%2214%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNLabel%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNEdge%3E%0A%20%20%20%20%3C%2Fbpmndi%3ABPMNPlane%3E%0A%20%20%20%20%3Cbpmndi%3ABPMNLabelStyle%20id%3D%22sid-e0502d32-f8d1-41cf-9c4a-cbb49fecf581%22%3E%0A%20%20%20%20%20%20%3Comgdc%3AFont%20name%3D%22Arial%22%20size%3D%2211%22%20isBold%3D%22false%22%20isItalic%3D%22false%22%20isUnderline%3D%22false%22%20isStrikeThrough%3D%22false%22%20%2F%3E%0A%20%20%20%20%3C%2Fbpmndi%3ABPMNLabelStyle%3E%0A%20%20%20%20%3Cbpmndi%3ABPMNLabelStyle%20id%3D%22sid-84cb49fd-2f7c-44fb-8950-83c3fa153d3b%22%3E%0A%20%20%20%20%20%20%3Comgdc%3AFont%20name%3D%22Arial%22%20size%3D%2212%22%20isBold%3D%22false%22%20isItalic%3D%22false%22%20isUnderline%3D%22false%22%20isStrikeThrough%3D%22false%22%20%2F%3E%0A%20%20%20%20%3C%2Fbpmndi%3ABPMNLabelStyle%3E%0A%20%20%3C%2Fbpmndi%3ABPMNDiagram%3E%0A%3C%2Fdefinitions%3E%0A','3.b','75','28');
+INSERT INTO `S_scenario_strategique` VALUES ('103','test','data:application/xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Cdefinitions%20xmlns%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F20100524%2FMODEL%22%20xmlns%3Abpmndi%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F20100524%2FDI%22%20xmlns%3Aomgdc%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FDD%2F20100524%2FDC%22%20xmlns%3Axsi%3D%22http%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema-instance%22%20targetNamespace%3D%22%22%20xsi%3AschemaLocation%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F20100524%2FMODEL%20http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F2.0%2F20100501%2FBPMN20.xsd%22%3E%0A%20%20%3Ccollaboration%20id%3D%22Collaboration_0n85r8a%22%3E%0A%20%20%20%20%3Cparticipant%20id%3D%22Participant_0s2lx66%22%20name%3D%22Source%20de%20risque%22%20processRef%3D%22Process_0qqwoep%22%20%2F%3E%0A%20%20%20%20%3Cparticipant%20id%3D%22Participant_1p5a95g%22%20name%3D%22%C3%89cosyst%C3%A8me%22%20processRef%3D%22Process_0r4d8dh%22%20%2F%3E%0A%20%20%20%20%3Cparticipant%20id%3D%22Participant_1lsp20e%22%20name%3D%22Objectif%20vis%C3%A9%22%20processRef%3D%22Process_0a2q3ig%22%20%2F%3E%0A%20%20%3C%2Fcollaboration%3E%0A%20%20%3Cprocess%20id%3D%22Process_0qqwoep%22%3E%0A%20%20%20%20%3CuserTask%20id%3D%22Activity_0ynt8a1%22%20%2F%3E%0A%20%20%3C%2Fprocess%3E%0A%20%20%3Cprocess%20id%3D%22Process_0r4d8dh%22%20%2F%3E%0A%20%20%3Cprocess%20id%3D%22Process_0a2q3ig%22%20%2F%3E%0A%20%20%3Cbpmndi%3ABPMNDiagram%20id%3D%22sid-74620812-92c4-44e5-949c-aa47393d3830%22%3E%0A%20%20%20%20%3Cbpmndi%3ABPMNPlane%20id%3D%22sid-cdcae759-2af7-4a6d-bd02-53f3352a731d%22%20bpmnElement%3D%22Collaboration_0n85r8a%22%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Participant_0s2lx66_di%22%20bpmnElement%3D%22Participant_0s2lx66%22%20isHorizontal%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22230%22%20y%3D%22100%22%20width%3D%22300%22%20height%3D%22640%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Activity_0ynt8a1_di%22%20bpmnElement%3D%22Activity_0ynt8a1%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22330%22%20y%3D%22170%22%20width%3D%22100%22%20height%3D%2280%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Participant_1p5a95g_di%22%20bpmnElement%3D%22Participant_1p5a95g%22%20isHorizontal%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22550%22%20y%3D%22100%22%20width%3D%22300%22%20height%3D%22640%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Participant_1lsp20e_di%22%20bpmnElement%3D%22Participant_1lsp20e%22%20isHorizontal%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22870%22%20y%3D%22100%22%20width%3D%22300%22%20height%3D%22640%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%3C%2Fbpmndi%3ABPMNPlane%3E%0A%20%20%20%20%3Cbpmndi%3ABPMNLabelStyle%20id%3D%22sid-e0502d32-f8d1-41cf-9c4a-cbb49fecf581%22%3E%0A%20%20%20%20%20%20%3Comgdc%3AFont%20name%3D%22Arial%22%20size%3D%2211%22%20isBold%3D%22false%22%20isItalic%3D%22false%22%20isUnderline%3D%22false%22%20isStrikeThrough%3D%22false%22%20%2F%3E%0A%20%20%20%20%3C%2Fbpmndi%3ABPMNLabelStyle%3E%0A%20%20%20%20%3Cbpmndi%3ABPMNLabelStyle%20id%3D%22sid-84cb49fd-2f7c-44fb-8950-83c3fa153d3b%22%3E%0A%20%20%20%20%20%20%3Comgdc%3AFont%20name%3D%22Arial%22%20size%3D%2212%22%20isBold%3D%22false%22%20isItalic%3D%22false%22%20isUnderline%3D%22false%22%20isStrikeThrough%3D%22false%22%20%2F%3E%0A%20%20%20%20%3C%2Fbpmndi%3ABPMNLabelStyle%3E%0A%20%20%3C%2Fbpmndi%3ABPMNDiagram%3E%0A%3C%2Fdefinitions%3E%0A','3.b','75','28');
 
 
-DROP TABLE IF EXISTS `TA_EI`;
-CREATE TABLE `TA_EI` (
+DROP TABLE IF EXISTS `T_chemin_d_attaque_strategique`;
+CREATE TABLE `T_chemin_d_attaque_strategique` (
+  `id_chemin_d_attaque_strategique` int(11) NOT NULL AUTO_INCREMENT,
+  `id_risque` varchar(50) NOT NULL,
+  `id_chemin` varchar(50) DEFAULT NULL,
+  `nom_chemin_d_attaque_strategique` varchar(100) DEFAULT NULL,
+  `description_chemin_d_attaque_strategique` varchar(1000) DEFAULT NULL,
+  `id_scenario_strategique` int(11) NOT NULL,
+  `gravite` int(11) DEFAULT NULL,
+  `id_projet` int(11) NOT NULL,
+  `id_atelier` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_chemin_d_attaque_strategique`,`id_risque`),
+  KEY `T_chemin_d_attaque_strategique_F_projet_FK` (`id_projet`),
+  KEY `T_chemin_d_attaque_strategique_G_atelier_FK` (`id_atelier`),
+  KEY `T_chemin_d_attaque_strategique_S_scenario_strategique_FK` (`id_scenario_strategique`),
+  CONSTRAINT `T_chemin_d_attaque_strategique_F_projet_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `T_chemin_d_attaque_strategique_G_atelier_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `T_chemin_d_attaque_strategique_S_scenario_strategique_FK` FOREIGN KEY (`id_scenario_strategique`) REFERENCES `S_scenario_strategique` (`id_scenario_strategique`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('1','','C1',NULL,NULL,'103',NULL,'28','3.b');
+INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('2','','C2',NULL,NULL,'103',NULL,'28','3.b');
+INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('3','','C3',NULL,NULL,'103',NULL,'28','3.b');
+INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('4','','C4',NULL,NULL,'103',NULL,'28','3.b');
+INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('5','','C5',NULL,NULL,'103',NULL,'28','3.b');
+INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('6','','C6',NULL,NULL,'103',NULL,'28','3.b');
+INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('7','','C7',NULL,NULL,'103',NULL,'28','3.b');
+INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('8','','C8',NULL,NULL,'103',NULL,'28','3.b');
+INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('9','','C9',NULL,NULL,'103',NULL,'28','3.b');
+
+
+DROP TABLE IF EXISTS `UA_EI`;
+CREATE TABLE `UA_EI` (
   `id_EI` int(11) NOT NULL AUTO_INCREMENT,
   `id_fleche` varchar(50) NOT NULL,
   `valeur_chemin` varchar(100) NOT NULL,
@@ -2083,159 +2114,26 @@ CREATE TABLE `TA_EI` (
   `id_schema_source` varchar(50) NOT NULL,
   `id_destination` int(11) DEFAULT NULL,
   `id_schema_destination` varchar(50) NOT NULL,
+  `id_chemin_d_attaque_strategique` int(100) NOT NULL,
+  `id_risque` varchar(50) DEFAULT NULL,
   `id_projet` int(11) NOT NULL,
   `id_atelier` varchar(50) NOT NULL,
   PRIMARY KEY (`id_EI`,`id_fleche`),
-  KEY `TA_EI_F_projet_FK` (`id_projet`),
-  KEY `TA_EI_G_atelier_FK` (`id_atelier`),
-  KEY `TA_EI_S_scenario_strategique_FK` (`id_scenario_strategique`),
-  KEY `TA_EI_P_SROV_FK_source` (`id_source`),
-  KEY `TA_EI_R_partie_prenante_FK_source` (`id_source_2`),
-  KEY `TA_EI_R_partie_prenante_FK_destination` (`id_destination`),
-  CONSTRAINT `TA_EI_F_projet_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `TA_EI_G_atelier_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `TA_EI_P_SROV_FK_source` FOREIGN KEY (`id_source`) REFERENCES `P_SROV` (`id_source_de_risque`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `TA_EI_R_partie_prenante_FK_destination` FOREIGN KEY (`id_destination`) REFERENCES `R_partie_prenante` (`id_partie_prenante`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `TA_EI_R_partie_prenante_FK_source` FOREIGN KEY (`id_source_2`) REFERENCES `R_partie_prenante` (`id_partie_prenante`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `TA_EI_S_scenario_strategique_FK` FOREIGN KEY (`id_scenario_strategique`) REFERENCES `S_scenario_strategique` (`id_scenario_strategique`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `UA_EI_F_projet_FK` (`id_projet`),
+  KEY `UA_EI_G_atelier_FK` (`id_atelier`),
+  KEY `UA_EI_S_scenario_strategique_FK` (`id_scenario_strategique`),
+  KEY `UA_EI_P_SROV_FK_source` (`id_source`),
+  KEY `UA_EI_R_partie_prenante_FK_source` (`id_source_2`),
+  KEY `UA_EI_R_partie_prenante_FK_destination` (`id_destination`),
+  KEY `UA_EI_T_chemin_d_attaque_strategique_FK` (`id_chemin_d_attaque_strategique`,`id_risque`),
+  CONSTRAINT `UA_EI_F_projet_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `UA_EI_G_atelier_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `UA_EI_P_SROV_FK_source` FOREIGN KEY (`id_source`) REFERENCES `P_SROV` (`id_source_de_risque`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `UA_EI_R_partie_prenante_FK_destination` FOREIGN KEY (`id_destination`) REFERENCES `R_partie_prenante` (`id_partie_prenante`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `UA_EI_R_partie_prenante_FK_source` FOREIGN KEY (`id_source_2`) REFERENCES `R_partie_prenante` (`id_partie_prenante`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `UA_EI_S_scenario_strategique_FK` FOREIGN KEY (`id_scenario_strategique`) REFERENCES `S_scenario_strategique` (`id_scenario_strategique`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `UA_EI_T_chemin_d_attaque_strategique_FK` FOREIGN KEY (`id_chemin_d_attaque_strategique`, `id_risque`) REFERENCES `T_chemin_d_attaque_strategique` (`id_chemin_d_attaque_strategique`, `id_risque`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=410 DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO `TA_EI` VALUES ('215','Flow_14fa0zb','EI','102','75',NULL,'Activity_0ynt8a1','90','Activity_1y4ml2e','28','3.b');
-INSERT INTO `TA_EI` VALUES ('216','Flow_10111kc','EI','102','75',NULL,'Activity_0ynt8a1','90','Activity_1uhvplt','28','3.b');
-INSERT INTO `TA_EI` VALUES ('217','Flow_0dspse8','EI','102','75',NULL,'Activity_0ynt8a1','90','Activity_0s1s47h','28','3.b');
-INSERT INTO `TA_EI` VALUES ('263','Flow_0rk9qlc','EI','43','74',NULL,'Activity_1jgyde6','88','Activity_19pwwsa','28','3.b');
-INSERT INTO `TA_EI` VALUES ('264','Flow_000luqq','EI','43',NULL,'88','Activity_19pwwsa','88','Activity_1a3xwhg','28','3.b');
-INSERT INTO `TA_EI` VALUES ('405','Flow_0236dju','Alice','42',NULL,'89','Activity_1otxh6c','89','Activity_0tt2j9m','28','3.b');
-INSERT INTO `TA_EI` VALUES ('406','Flow_19tr17p','Joyston','42',NULL,'88','Activity_1mkmphm','89','Activity_0tt2j9m','28','3.b');
-INSERT INTO `TA_EI` VALUES ('407','Flow_0xt8e3f','Bob','42','76',NULL,'Activity_0dz6b4r','89','Activity_1otxh6c','28','3.b');
-INSERT INTO `TA_EI` VALUES ('408','Flow_1kyhzq4','Pierrot','42','76',NULL,'Activity_0dz6b4r','88','Activity_1mkmphm','28','3.b');
-INSERT INTO `TA_EI` VALUES ('409','Flow_1awenc9','Pierrot','42','76',NULL,'Activity_0dz6b4r','88','Activity_1mkmphm','28','3.b');
-
-
-DROP TABLE IF EXISTS `TA_ER`;
-CREATE TABLE `TA_ER` (
-  `id_ER` int(11) NOT NULL AUTO_INCREMENT,
-  `id_fleche` varchar(50) NOT NULL,
-  `valeur_chemin` varchar(100) NOT NULL,
-  `id_evenement_redoute` int(11) NOT NULL,
-  `id_scenario_strategique` int(11) DEFAULT NULL,
-  `id_source` int(11) DEFAULT NULL,
-  `id_schema_source` varchar(50) NOT NULL,
-  `id_destination` int(11) DEFAULT NULL,
-  `id_schema_destination` varchar(50) NOT NULL,
-  `id_EI` int(11) DEFAULT NULL,
-  `id_projet` int(11) NOT NULL,
-  `id_atelier` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_ER`,`id_fleche`),
-  KEY `TA_ER_F_projet_FK` (`id_projet`),
-  KEY `TA_ER_G_atelier_FK` (`id_atelier`),
-  KEY `TA_ER_S_scenario_strategique_FK` (`id_scenario_strategique`),
-  KEY `TA_ER_M_evenement_redoute_FK` (`id_evenement_redoute`),
-  KEY `TA_ER_R_partie_prenante_FK_source` (`id_source`),
-  KEY `TA_ER_J_valeur_metier_FK_destination` (`id_destination`),
-  KEY `TA_ER_TA_EI_FK` (`id_EI`),
-  CONSTRAINT `TA_ER_F_projet_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `TA_ER_G_atelier_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `TA_ER_J_valeur_metier_FK_destination` FOREIGN KEY (`id_destination`) REFERENCES `J_valeur_metier` (`id_valeur_metier`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `TA_ER_M_evenement_redoute_FK` FOREIGN KEY (`id_evenement_redoute`) REFERENCES `M_evenement_redoute` (`id_evenement_redoute`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `TA_ER_R_partie_prenante_FK_source` FOREIGN KEY (`id_source`) REFERENCES `R_partie_prenante` (`id_partie_prenante`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `TA_ER_S_scenario_strategique_FK` FOREIGN KEY (`id_scenario_strategique`) REFERENCES `S_scenario_strategique` (`id_scenario_strategique`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `TA_ER_TA_EI_FK` FOREIGN KEY (`id_EI`) REFERENCES `TA_EI` (`id_EI`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=226 DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO `TA_ER` VALUES ('221','Flow_1il9ly7','Authentification','97','42','89','Activity_1dbb86f','142','Activity_1561c18',NULL,'28','3.b');
-INSERT INTO `TA_ER` VALUES ('222','Flow_142qo7y','Clé de chiffrement volée','91','42','88','Activity_1mkmphm','112','Activity_18qvk7c',NULL,'28','3.b');
-INSERT INTO `TA_ER` VALUES ('223','Flow_07u8n2k','Vol des mots de passe du portefeuille','94','42','89','Activity_1dbb86f','192','Activity_1hml31o',NULL,'28','3.b');
-INSERT INTO `TA_ER` VALUES ('224','Flow_007zg33','Vol du mot de passe maitre','93','42','89','Activity_1dbb86f','192','Activity_1hml31o',NULL,'28','3.b');
-INSERT INTO `TA_ER` VALUES ('225','Flow_1yj31gj','Chiffrement','98','42','89','Activity_1dbb86f','193','Activity_1gqoe8u',NULL,'28','3.b');
-
-
-DROP TABLE IF EXISTS `TB_fleche`;
-CREATE TABLE `TB_fleche` (
-  `id_fleche` int(11) NOT NULL AUTO_INCREMENT,
-  `valeur_fleche` varchar(50) NOT NULL,
-  `valeur_chemin` varchar(100) NOT NULL,
-  `id_scenario_strategique` int(11) DEFAULT NULL,
-  `id_projet` int(11) NOT NULL,
-  `id_atelier` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_fleche`,`valeur_fleche`),
-  KEY `TB_fleche_F_projet_FK` (`id_projet`),
-  KEY `TB_fleche_G_atelier_FK` (`id_atelier`),
-  KEY `TB_fleche_S_scenario_strategique_FK` (`id_scenario_strategique`),
-  CONSTRAINT `TB_fleche_F_projet_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `TB_fleche_G_atelier_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `TB_fleche_S_scenario_strategique_FK` FOREIGN KEY (`id_scenario_strategique`) REFERENCES `S_scenario_strategique` (`id_scenario_strategique`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO `TB_fleche` VALUES ('2','Flow_1kyhzq4','C1','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('3','Flow_1kyhzq4','C1','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('4','Flow_1kyhzq4','C1','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('5','Flow_1kyhzq4','C1','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('6','Flow_1kyhzq4','C1','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('7','Flow_1kyhzq4','C1','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('8','Flow_1kyhzq4','C1','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('9','Flow_1kyhzq4','C1','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('10','Flow_1kyhzq4','C1','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('11','Flow_1kyhzq4','C1','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('12','Flow_1kyhzq4','C1','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('13','Flow_1kyhzq4','C1','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('14','Flow_1kyhzq4','C1','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('15','Flow_1kyhzq4','C1','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('16','Flow_1kyhzq4','C1','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('17','Flow_1kyhzq4','C1','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('18','Flow_1kyhzq4','C1','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('19','Flow_1kyhzq4','C1','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('20','Flow_1kyhzq4','C1','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('21','Flow_1kyhzq4','C1','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('22','Flow_1kyhzq4','C1','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('23','Flow_0xt8e3f','C2','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('24','Flow_0236dju','C2','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('25','Flow_142qo7y','C1','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('26','Flow_19tr17p','C3','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('27','Flow_1awenc9','C3','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('28','Flow_1yj31gj','C4','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('29','Flow_1il9ly7','C5','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('30','Flow_07u8n2k','C6','42','28','3.b');
-INSERT INTO `TB_fleche` VALUES ('31','Flow_007zg33','C7','42','28','3.b');
-
-
-DROP TABLE IF EXISTS `T_chemin_d_attaque_strategique`;
-CREATE TABLE `T_chemin_d_attaque_strategique` (
-  `id_chemin_d_attaque_strategique` int(11) NOT NULL AUTO_INCREMENT,
-  `id_risque` varchar(50) NOT NULL,
-  `nom_chemin_d_attaque_strategique` varchar(100) DEFAULT NULL,
-  `description_chemin_d_attaque_strategique` varchar(1000) DEFAULT NULL,
-  `id_scenario_strategique` int(11) NOT NULL,
-  `id_partie_prenante` int(11) NOT NULL,
-  `id_projet` int(11) NOT NULL,
-  `id_atelier` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_chemin_d_attaque_strategique`,`id_risque`),
-  KEY `T_chemin_d_attaque_strategique_F_projet1_FK` (`id_projet`),
-  KEY `T_chemin_d_attaque_strategique_G_atelier2_FK` (`id_atelier`),
-  KEY `T_chemin_d_attaque_strategique_R_partie_prenante0_FK` (`id_partie_prenante`),
-  KEY `T_chemin_d_attaque_strategique_S_scenario_strategique_FK` (`id_scenario_strategique`),
-  CONSTRAINT `T_chemin_d_attaque_strategique_F_projet1_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `T_chemin_d_attaque_strategique_G_atelier2_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `T_chemin_d_attaque_strategique_R_partie_prenante0_FK` FOREIGN KEY (`id_partie_prenante`) REFERENCES `R_partie_prenante` (`id_partie_prenante`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `T_chemin_d_attaque_strategique_S_scenario_strategique_FK` FOREIGN KEY (`id_scenario_strategique`) REFERENCES `S_scenario_strategique` (`id_scenario_strategique`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('31','R3s','Titre chemin attaque','test','13','24','15','3.b');
-INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('36','R3s','Test','description','13','26','15','3.b');
-INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('37','R3s','R3','R3','13','29','15','3.b');
-INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('38','R3s','R4','R4','13','30','15','3.b');
-INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('39','R3s','R5','R5','13','31','15','3.b');
-INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('40','R1','CAS1','CAS1','16','32','17','3.b');
-INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('41','R2','CAS2','CAS2','16','33','17','3.b');
-INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('42','R3','CAS3','CAS3','16','34','17','3.b');
-INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('43','R4','CAS4','CAS4','16','35','17','3.b');
-INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('47','Chemin 1','Attaque de Durand','Anonymous attaque de SSI de la société DURAND','13','37','15','3.b');
-INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('48','R1','Exploitation d''un bug dans le logiciel','Le hacker trouve un bug dans le logiciel ','17','43','25','3.b');
-INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('49','R2','Installation d''un trojan sur le PC','Le hacker installe un trojan sur le PC','17','42','25','3.b');
-INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('50','R3','Social engineering','Les hackers récupèrent le mot de passe de la base par social engineering','17','41','25','3.b');
-INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('62','R3','Social engineering','Une connaissance ou un hackeur essaye de soudoyer la victime afin de soutirer des informations','43','90','28','3.b');
-INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('66','R5','ffff','ffff','71','92','158','3.b');
-INSERT INTO `T_chemin_d_attaque_strategique` VALUES ('80','CASun','ccccc','ccccc','71','92','158','3.b');
 
 
 DROP TABLE IF EXISTS `U_scenario_operationnel`;

@@ -108,7 +108,7 @@ $(document).ready(function () {
         columns: {
             identifier: [0, 'id_chemin_d_attaque_strategique'],
             editable: [
-                [3, 'chemin_d_attaque_strategique'],[4, 'description'],
+                [1, 'id_risque'],[4, 'chemin_d_attaque_strategique'],[5, 'description'],
             ],
             checkboxeditable: []
         },
@@ -164,7 +164,7 @@ $("#editable_table_scenario_strategique > tbody > tr > td:nth-child(5)").each(fu
 });
 
 /*-------------------------- Couleurs chemin > gravité ----------------------*/
-$("#editable_table_chemin_d_attaque > tbody > tr > td:nth-child(6)").each(function () {
+$("#editable_table_chemin_d_attaque > tbody > tr > td:nth-child(7)").each(function () {
     if ($(this)[0].innerText == "1") { $(this)[0].classList.add('fond-vert'); }
     if ($(this)[0].innerText == "2") { $(this)[0].classList.add('fond-orange'); }
     if ($(this)[0].innerText == "3") { $(this)[0].classList.add('fond-orange'); }

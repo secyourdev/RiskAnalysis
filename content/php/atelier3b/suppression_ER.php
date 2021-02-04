@@ -17,7 +17,7 @@ if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s\-.:,'\"–
 }
 
 //suppression des EI dans la base de données 
-$suppression = $bdd->prepare("DELETE FROM TA_ER WHERE id_scenario_strategique=? AND id_projet=? AND id_atelier=?");
+$suppression = $bdd->prepare("DELETE FROM UA_ER WHERE id_scenario_strategique=? AND id_projet=? AND id_atelier=?");
 if (isset($id_scenario_strategique)&&isset($get_id_projet)&&isset($id_atelier)) {
     $suppression->bindParam(1, $id_scenario_strategique);
     $suppression->bindParam(2, $get_id_projet);

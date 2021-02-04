@@ -359,7 +359,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             <thead>
                               <tr>
                                 <th>ID</th>
-                                <th>Partie prenante</th>
                                 <th>ID Risque</th>
                                 <th>Chemin d'attaque stratégique</th>
                                 <th>Nom mesure de sécurité</th>
@@ -372,7 +371,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 echo '
                         <tr>
                         <td>' . $row["id_mesure"] . '</td>
-                        <td>' . $row["nom_partie_prenante"] . '</td>
                         <td>' . $row["id_risque"] . '</td>
                         <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
                         <td>' . $row["nom_mesure"] . '</td>
@@ -599,24 +597,17 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   <fieldset>
                     <div class="row">
                       <div class="form-group col-6">
-                        <label for="partieprenante1">Partie prenante</label>
-                        <select class="form-control" id="partieprenante1" , name="partieprenante1">
-                          <option value="" selected>...</option>
-                          <?php
-                          while ($row = mysqli_fetch_array($result_partie_prenante2)) //selection.php
-                          {
-                            echo '
-                          <option id="nom_partie_prenante" value="' . $row["id_partie_prenante"] . '">' . $row["nom_partie_prenante"] . '</option>
-                          ';
-                          }
-                          ?>
-                        </select>
-                        <script src="content/js/modules/chemins.js"></script>
-                      </div>
-                      <div class="form-group col-6">
                         <label for="chemins">Chemin d'attaque stratégique</label>
                         <select class="form-control" id="chemins" name="chemins">
-                          <option value="" selected>Choisissez une partie prenante</option>
+                        <option value="" selected>...</option>
+                        <?php
+                        while ($row = mysqli_fetch_array($result_chemin_d_attaque)) //selection.php
+                        {
+                          echo '
+                          <option value="'.$row["id_chemin_d_attaque_strategique"].'">'.$row["id_chemin"].' - '.$row["nom_chemin_d_attaque_strategique"].'</option>
+                        ';
+                        }
+                        ?>
                         </select>
                       </div>
 

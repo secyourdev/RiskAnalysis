@@ -20,17 +20,20 @@ AND P_SROV.id_projet = $getid_projet
 ORDER BY id_scenario_strategique ASC";
 
 $query_chemin_d_attaque = 
-"SELECT T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique, 
+"SELECT DISTINCT T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique, 
 T_chemin_d_attaque_strategique.id_risque, 
 T_chemin_d_attaque_strategique.nom_chemin_d_attaque_strategique, 
 T_chemin_d_attaque_strategique.description_chemin_d_attaque_strategique, 
 T_chemin_d_attaque_strategique.id_scenario_strategique, 
+T_chemin_d_attaque_strategique.id_chemin,
 S_scenario_strategique.nom_scenario_strategique, 
-T_chemin_d_attaque_strategique.gravite
-FROM S_scenario_strategique, T_chemin_d_attaque_strategique
+M_evenement_redoute.niveau_de_gravite
+FROM S_scenario_strategique, T_chemin_d_attaque_strategique, UA_ER, M_evenement_redoute
 WHERE T_chemin_d_attaque_strategique.id_scenario_strategique = S_scenario_strategique.id_scenario_strategique 
+AND T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = UA_ER.id_chemin_d_attaque_strategique
+AND UA_ER.id_evenement_redoute = M_evenement_redoute.id_evenement_redoute
 AND T_chemin_d_attaque_strategique.id_projet = $getid_projet
-ORDER BY id_chemin_d_attaque_strategique ASC";
+ORDER BY T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique ASC";
 
 
 

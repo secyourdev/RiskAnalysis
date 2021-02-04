@@ -31,8 +31,7 @@ $id_atelier = '3.c';
 
 $insere_mesure = $bdd->prepare("INSERT INTO Y_mesure (id_mesure, nom_mesure, description_mesure,id_projet, id_atelier) VALUES (?,?,?, $getid_projet ,'$id_atelier')");
 
-
-$recupere_mesure = $bdd->prepare("SELECT id_mesure FROM Y_mesure WHERE nom_mesure = ? AND description_mesure = ? AND id_projet = $getid_projet");
+$recupere_mesure = $bsdd->prepare("SELECT id_mesure FROM Y_mesure WHERE nom_mesure = ? AND description_mesure = ? AND id_projet = $getid_projet");
 
 $recupere_risque = $bdd->prepare("SELECT id_risque FROM T_chemin_d_attaque_strategique WHERE id_chemin_d_attaque_strategique = ? AND id_projet = $getid_projet");
 

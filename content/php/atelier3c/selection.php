@@ -6,15 +6,36 @@ include("content/php/bdd/connexion_sqli.php");
 
 $query_partie_prenante = "SELECT * FROM R_partie_prenante WHERE id_projet = $getid_projet";
 $result_partie_prenante = mysqli_query($connect, $query_partie_prenante);
-$result_partie_prenante2 = mysqli_query($connect, $query_partie_prenante);
-$result_partie_prenante3 = mysqli_query($connect, $query_partie_prenante);
+//$result_partie_prenante2 = mysqli_query($connect, $query_partie_prenante);
+//$result_partie_prenante3 = mysqli_query($connect, $query_partie_prenante);
 
-$query_categorie_partie_prenante = "SELECT categorie_partie_prenante FROM R_partie_prenante";
-$result_categorie_partie_prenante = mysqli_query($connect, $query_categorie_partie_prenante);
+// $query_categorie_partie_prenante = "SELECT categorie_partie_prenante FROM R_partie_prenante";
+// $result_categorie_partie_prenante = mysqli_query($connect, $query_categorie_partie_prenante);
 
 //affichage tableau scenario
-$query_chemin_d_attaque = "SELECT * FROM chemin_d_attaque_strategique ORDER BY id_chemin_d_attaque_strategique ASC";
+// $query_chemin_d_attaque = "SELECT * FROM chemin_d_attaque_strategique ORDER BY id_chemin_d_attaque_strategique ASC";
+// $result_chemin_d_attaque = mysqli_query($connect, $query_chemin_d_attaque);
+
+$query_chemin_d_attaque = "SELECT DISTINCT T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique, 
+T_chemin_d_attaque_strategique.nom_chemin_d_attaque_strategique, 
+T_chemin_d_attaque_strategique.id_chemin
+FROM S_scenario_strategique, T_chemin_d_attaque_strategique, UA_ER, M_evenement_redoute
+WHERE T_chemin_d_attaque_strategique.id_scenario_strategique = S_scenario_strategique.id_scenario_strategique 
+AND T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = UA_ER.id_chemin_d_attaque_strategique
+AND UA_ER.id_evenement_redoute = M_evenement_redoute.id_evenement_redoute
+AND T_chemin_d_attaque_strategique.id_projet = $getid_projet
+ORDER BY T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique ASC";
+
 $result_chemin_d_attaque = mysqli_query($connect, $query_chemin_d_attaque);
+// echo '
+//     <option value="" selected>...</option>
+//     ';
+//     while($row = $result_chemin_d_attaque->fetch(PDO::FETCH_ASSOC))
+//     {
+//       echo '
+//       <option value="'.$row["id_chemin_d_attaque_strategique"].'">'.$row["id_chemin"].'-'.$row["nom_chemin_d_attaque_strategique"].'</option>
+//       ';
+//     }
 
 //tableau scénario stratégique
 $query_scenario_strategique =
@@ -33,7 +54,6 @@ $result_scenario_strategique = mysqli_query($connect, $query_scenario_strategiqu
 
 $query_mesure1 = "SELECT
 Y_mesure.id_mesure,
-nom_partie_prenante, 
 T_chemin_d_attaque_strategique.id_risque,
 T_chemin_d_attaque_strategique.nom_chemin_d_attaque_strategique,
 Y_mesure.nom_mesure,
@@ -43,8 +63,6 @@ INNER JOIN ZB_comporter_2
 ON T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = ZB_comporter_2.id_chemin_d_attaque_strategique
 INNER JOIN Y_mesure
 ON Y_mesure.id_mesure = ZB_comporter_2.id_mesure
-INNER JOIN R_partie_prenante
-ON T_chemin_d_attaque_strategique.id_partie_prenante = R_partie_prenante.id_partie_prenante
 WHERE T_chemin_d_attaque_strategique.id_projet = $getid_projet";
 
 $query_mesure2 = "SELECT DISTINCT 
