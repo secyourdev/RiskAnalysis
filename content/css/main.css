@@ -839,6 +839,11 @@ h6 {
     flex-direction: row-reverse;
 }
 
+.perso_header_center {
+    display        : flex;
+    justify-content: center;
+}
+
 .perso_icon_btn {
     border          : none;
     background-color: var(--card-content-color);
@@ -1180,8 +1185,8 @@ h6 {
     margin    : 0rem;
 }
 
-.id_label_choix_multiple_value_schema{
-    margin-top: 2rem;
+.id_choix_value_fleche{
+    margin-top: 1rem;
 }
 
 /*------------------------------------------------------------------------------ */
@@ -1571,15 +1576,20 @@ h6 {
     text-align: center;
   }
 
-  .needs-discussion:not(.djs-connection) .djs-visual > :nth-child(1) {
+.needs-discussion:not(.djs-connection) .djs-visual > :nth-child(1) {
     stroke: rgba(66, 180, 21, 0.7) !important; /* color elements as red */
-  }
+}
 
-  #save-button {
+#save-button {
     position: fixed;
     bottom: 20px;
     left: 20px;
-  }
+}
+
+#id_chemin_value_schema_label{
+    padding-top: 25px;
+}
+
 
 /*------------------------------------------------------------------------------ */
 /*------------------ Système de plannification - Gantt ------------------------- */

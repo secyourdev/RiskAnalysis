@@ -94,7 +94,7 @@ else{
             <a class="perso_color_dark_blue" href="">Condition d'utilisation | Politique de confidentialité</a>
           </div>
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; CYBER RISK MANAGER 2020 by SecYourDev</span>
+            <span>Copyright &copy; CYBER RISK MANAGER 2021 by SecYourDev</span>
           </div>
         </div>  
       </div>

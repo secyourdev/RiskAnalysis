@@ -278,7 +278,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <td>' . $row["objectif_vise"] . '</td>
                         <td>' . $row["nom_evenement_redoute"] . '</td>
                         <td>' . $row["id_risque"] . '</td>
-                        <td>' . $row["nom_scenario_strategique"] . '</td>
+                        <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
                         <td>' . $row["niveau_de_gravite"] . '</td>
                         </tr>
                         ';
@@ -516,7 +516,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             <footer id="footer" class="sticky-footer bg-white">
               <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                  <span>Copyright &copy; CYBER RISK MANAGER 2020 by SecYourDev</span>
+                  <span>Copyright &copy; CYBER RISK MANAGER 2021 by SecYourDev</span>
                 </div>
               </div>
             </footer>

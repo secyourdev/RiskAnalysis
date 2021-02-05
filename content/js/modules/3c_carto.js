@@ -27,7 +27,6 @@ $.post("content/php/atelier3c/chart.php", function (data) {
     var labels = [];
 
     for (var i in data['data_interne3a']) {
-        console.log(data['data_interne3a'])
         menace.push(data['data_interne3a'][i].menace); //valeur de menace - pronfondeur en axe y
         exposition.push(data['data_interne3a'][i].exposition); //taille du points
         if(data['data_interne3a'][i].exposition < 3){
@@ -60,7 +59,6 @@ $.post("content/php/atelier3c/chart.php", function (data) {
     var fiabilite_interne_residuelle = [];
 
     for (var i in data['data_interne3c']) {
-        console.log(data['data_interne3c'])
         menace_interne_residuelle.push(data['data_interne3c'][i].menace_interne_residuelle); //valeur de menace_interne_residuelle - pronfondeur en axe y
         exposition_interne_residuelle.push(data['data_interne3c'][i].exposition_interne_residuelle); //taille du points
         if(data['data_interne3c'][i].exposition_interne_residuelle < 3){

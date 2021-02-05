@@ -8,7 +8,7 @@ var label_scenariostrategique = document.getElementById("nom_scenario_strategiqu
 var id_risque = document.getElementById("id_risque");
 var cheminattaque = document.getElementById("chemin_d_attaque_strategique")
 var cheminattaque_description = document.getElementById("description")
-var label_id_risque = document.getElementById("id_risque").previousSibling.previousSibling
+//var label_id_risque = document.getElementById("id_risque").previousSibling.previousSibling
 
 var parametre_schema_scenarios_strategiques = document.getElementById('parametre_schema_scenarios_strategiques')
 var titre_parametre_schema = document.getElementById('titre_parametre_schema')
@@ -22,17 +22,20 @@ var selection;
 var valeur_metier_JSON;
 var partie_prenante_JSON;
 var SROV_JSON;
+var evenement_redoutes_JSON;
+var fleche_JSON;
 
 var djs_element = document.getElementsByClassName('djs-element')
 var box_schema = document.getElementsByClassName('box_schema')
 var id_conteneur = document.getElementById('id_conteneur')
 var id_choix_value_schema = document.getElementById('id_choix_value_schema')
+var id_choix_value_schema_label = document.getElementById('id_choix_value_schema_label')
+var id_chemin_value_schema = document.getElementById('id_chemin_value_schema')
+var id_chemin_value_schema_label = document.getElementById('id_chemin_value_schema_label')
 var valider_choix_value = document.getElementById('valider_choix_value')
-
-var id_label_choix_multiple_value_schema = document.getElementsByClassName('id_label_choix_multiple_value_schema')
-var id_choix_multiple_select_schema = document.getElementById('id_choix_multiple_value_schema')
-var multiselect_native_select = document.getElementsByClassName('multiselect-native-select')
-var id_choix_multiple_value_schema = document.getElementsByName('id_choix_multiple_value_schema[]')
+var button_EI_IR = document.getElementById('button_EI_IR')
+var EI_radio_button = document.getElementById('EI_radio_button')
+var ER_radio_button = document.getElementById('ER_radio_button')
 
 var canvas = document.getElementById('canvas'); 
 /*------------------------------- SIDEBAR ----------------------------------*/
@@ -93,7 +96,7 @@ $(document).ready(function () {
         restoreButton: false,
         onSuccess: function (data, textStatus, jqXHR) {
             if (data.action == 'delete') {
-                $('#' + data.id_evenement_redoutes).remove();
+                $('#' + data.id_scenario_strategique).remove();
             }
         }
     });
@@ -105,16 +108,12 @@ $(document).ready(function () {
         columns: {
             identifier: [0, 'id_chemin_d_attaque_strategique'],
             editable: [
-                [3, 'chemin_d_attaque_strategique'],[4, 'description'],
+                [1, 'id_risque'],[4, 'chemin_d_attaque_strategique'],[5, 'description'],
             ],
             checkboxeditable: []
         },
         restoreButton: false,
-        onSuccess: function (data, textStatus, jqXHR) {
-            if (data.action == 'delete') {
-                $('#' + data.id_evenement_redoutes).remove();
-            }
-        }
+        deleteButton: false
     });
 });
 
@@ -127,25 +126,25 @@ setSortTable('editable_table_chemin_d_attaque');
 OURJQUERYFN.setFilterTable("#rechercher_chemin_d_attaque","#editable_table_chemin_d_attaque tbody tr")
 /*------------------------------ LABELS CACHES ------------------------------*/
 label_scenariostrategique.style.display="none"
-label_id_risque.style.display="none"
+//label_id_risque.style.display="none"
 /*----------------------- -- VERIFICATION DES CHAMPS -- ------------------------*/
 scenariostrategique.addEventListener('keyup',function(event){
     verify_input(scenariostrategique.value,regex_nom,scenariostrategique)
     activate_label(scenariostrategique.value,label_scenariostrategique)
 }) 
 
-id_risque.addEventListener('keyup',function(event){
-    verify_input(id_risque.value,regex_nom,id_risque)
-    activate_label(id_risque.value,label_id_risque)
-}) 
+// id_risque.addEventListener('keyup',function(event){
+//     verify_input(id_risque.value,regex_nom,id_risque)
+//     activate_label(id_risque.value,label_id_risque)
+// }) 
 
-cheminattaque.addEventListener('keyup',function(event){
-    verify_textarea(cheminattaque.value,regex_nom,cheminattaque)
-})
+// cheminattaque.addEventListener('keyup',function(event){
+//     verify_textarea(cheminattaque.value,regex_nom,cheminattaque)
+// })
 
-cheminattaque_description.addEventListener('keyup',function(event){
-    verify_textarea(cheminattaque_description.value,regex_description,cheminattaque_description)
-})
+// cheminattaque_description.addEventListener('keyup',function(event){
+//     verify_textarea(cheminattaque_description.value,regex_description,cheminattaque_description)
+// })
 /*--------------------------- Couleurs 1.c > gravité --------------------------*/
 $("#editable_table > tbody > tr > td:nth-child(10)").each(function () {
     if ($(this)[0].innerText == "1") { $(this)[0].classList.add('fond-vert'); }
@@ -157,6 +156,15 @@ $("#editable_table > tbody > tr > td:nth-child(10)").each(function () {
 
 /*-------------------------- Couleurs scénario > gravité ---------------------*/
 $("#editable_table_scenario_strategique > tbody > tr > td:nth-child(5)").each(function () {
+    if ($(this)[0].innerText == "1") { $(this)[0].classList.add('fond-vert'); }
+    if ($(this)[0].innerText == "2") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "3") { $(this)[0].classList.add('fond-orange'); }
+    if ($(this)[0].innerText == "4") { $(this)[0].classList.add('fond-rouge'); }
+    if ($(this)[0].innerText == "5") { $(this)[0].classList.add('fond-rouge'); }
+});
+
+/*-------------------------- Couleurs chemin > gravité ----------------------*/
+$("#editable_table_chemin_d_attaque > tbody > tr > td:nth-child(7)").each(function () {
     if ($(this)[0].innerText == "1") { $(this)[0].classList.add('fond-vert'); }
     if ($(this)[0].innerText == "2") { $(this)[0].classList.add('fond-orange'); }
     if ($(this)[0].innerText == "3") { $(this)[0].classList.add('fond-orange'); }
@@ -179,40 +187,42 @@ recuperation_schema_fn()
 recuperation_valeur_metier_fn()
 recuperation_SROV_fn()
 recuperation_partie_prenante_fn()
+recuperation_evenement_redoute_fn()
 /*------------------------- SELECTION SUR SCHEMA ----------------------------*/
 canvas.addEventListener('mouseup',function(){
     selection = selection_conteneur() 
     removeOptions(id_choix_value_schema);
     choix_donnees();
+    EI_radio_button.checked=true
 })
 
-valider_choix_value.addEventListener('click', function(){
-    if(id_choix_value_schema.style.display!='none'){
-        document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_choix_value_schema.selectedOptions[0].innerHTML
+ER_radio_button.addEventListener('click',function(){
+    onERButton()
+})
 
-        if(selection=='schema_partie_prenante'){
-            $.ajax({
-                url: 'content/php/atelier3b/ajout_schema_lien_SS_PP.php',
-                type: 'POST',
-                data: {
-                    id_scenario_strategique: id_scenario_strategique_schema,
-                    id_partie_prenante : id_choix_value_schema.selectedOptions[0].value
-                }
-            })
+EI_radio_button.addEventListener('click',function(){
+    onEIButton()
+})
+
+// id_conteneur.addEventListener('keydown', function(event){
+//     if(((event.keyCode == 8 || event.keyCode == 46) && id_conteneur.value.length == 5) || event.keyCode == 13){
+//         event.preventDefault()
+//     }
+// })
+
+valider_choix_value.addEventListener('click', function(){
+    if(id_choix_value_schema.style.display!='none'&&button_EI_IR.style.display=='none')
+        document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_choix_value_schema.selectedOptions[0].innerHTML   
+    else if(id_conteneur.style.display!='none'&&button_EI_IR.style.display=='none')
+        document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_conteneur.value;
+    else if(button_EI_IR.style.display!='none'){
+        if(EI_radio_button.checked){
+            document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_chemin_value_schema.value + " - EI : " + id_conteneur.value;
         }
-        else if(selection=='schema_valeur_de_metier'){
-            $.ajax({
-                url: 'content/php/atelier3b/ajout_schema_lien_SS_VM.php',
-                type: 'POST',
-                data: {
-                    id_scenario_strategique: id_scenario_strategique_schema,
-                    id_valeur_metier : id_choix_value_schema.selectedOptions[0].value
-                }
-            })
-        }       
-    }
-    else if(id_conteneur.style.display!='none'){
-        document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_conteneur.value
+        else if(ER_radio_button.checked){
+            document.getElementsByClassName('djs-direct-editing-content')[0].innerText=id_chemin_value_schema.value + " - ER : " + id_choix_value_schema.selectedOptions[0].innerHTML
+        }
+        //ajout_fleche()
     }
 
     $('#parametre_schema_scenarios_strategiques').modal('hide')
@@ -293,6 +303,23 @@ function recuperation_partie_prenante_fn(){
         });
     }
 }
+
+/*--------- RECUPERATION EVENEMENT REDOUTES PROJET POUR SCHEMA --------------*/
+function recuperation_evenement_redoute_fn(){
+    for(let i=0;i<lenght_modifier_schema;i++){
+        modifier_schema[i].addEventListener('click',function(){
+
+            $.ajax({
+                url: 'content/php/atelier3b/selection_ER.php',
+                type: 'POST',
+                success: function (resultat) {
+                    evenement_redoutes_JSON = JSON.parse(resultat);
+                }
+            })
+        });
+    }
+}
+
 /*----------------------- AJOUT DU SCHEMA SUR BDD ---------------------------*/
 function enregistrement_schema_fn(schema_file){     
     $.ajax({
@@ -335,51 +362,113 @@ function selection_sr(){
     })
 }
 
+function selection_nom_fleche(){
+    for(let i=0;i<djs_element.length;i++){
+        if(djs_element[i].classList[2]=='selected'){
+            if (djs_element[i].dataset.elementId.substring(0,4)=='Flow'){
+                return djs_element[i].dataset.elementId;
+            }
+        }
+    }
+}
+
+function ajout_fleche(){
+    if(selection=='fleche'){
+        if(fleche_JSON==''){
+            $.ajax({
+                url: 'content/php/atelier3b/ajout_fleche.php',
+                type: 'POST',
+                data:  {
+                    valeur_fleche : selection_nom_fleche(),
+                    valeur_chemin : id_chemin_value_schema.value,
+                    id_scenario_strategique: id_scenario_strategique_schema
+                    
+                }
+            })
+        }
+        else{
+            $.ajax({
+                url: 'content/php/atelier3b/modification_fleche.php',
+                type: 'POST',
+                data:  {
+                    valeur_fleche : selection_nom_fleche(),
+                    valeur_chemin : id_chemin_value_schema.value,
+                    id_scenario_strategique: id_scenario_strategique_schema
+                }
+            })
+        }
+    }
+}
+
+function recuperation_fleche(){
+    $.ajax({
+        url: 'content/php/atelier3b/selection_fleche.php',
+        type: 'POST',
+        data: {
+            valeur_fleche : selection_nom_fleche(),
+            id_scenario_strategique: id_scenario_strategique_schema
+        },
+        success: function (resultat) {
+            fleche_JSON = JSON.parse(resultat);
+        }
+    })
+}
+
 function choix_donnees(){
     if(selection=='schema_partie_prenante'){
         id_conteneur.style.display='none'
-        id_label_choix_multiple_value_schema[0].style.display="none"
-        id_choix_multiple_select_schema.style.display='none'
-        multiselect_native_select[0].style.display='none'
+        button_EI_IR.style.display='none'
+        id_chemin_value_schema.style.display = 'none'
+        id_chemin_value_schema_label.style.display = 'none'
+        id_choix_value_schema_label.style.display = 'flex'
         id_choix_value_schema.style.display='inline'
+        id_choix_value_schema_label.innerText="Partie Prenante"        
         titre_parametre_schema.innerHTML = "Choix de la partie partante"
-        modifier_modal_parametres(partie_prenante_JSON)      
+        modifier_modal_parametres(partie_prenante_JSON,id_choix_value_schema)
     }
     else if(selection=='schema_source_de_risque'){
         id_conteneur.style.display='none'
-        id_label_choix_multiple_value_schema[0].style.display="none"
-        id_choix_multiple_select_schema.style.display='none'
-        multiselect_native_select[0].style.display='none'
+        button_EI_IR.style.display='none'
+        id_chemin_value_schema.style.display = 'none'
+        id_chemin_value_schema_label.style.display = 'none'
+        id_choix_value_schema_label.style.display = 'flex'
         id_choix_value_schema.style.display='inline'
+        id_choix_value_schema_label.innerText="Source de Risque"
         titre_parametre_schema.innerHTML = "Choix de la source de risque"
-        modifier_modal_parametres(SROV_JSON)
+        modifier_modal_parametres(SROV_JSON,id_choix_value_schema)
     }
     else if(selection=='schema_valeur_de_metier'){
         id_conteneur.style.display='none'
-        id_label_choix_multiple_value_schema[0].style.display="none"
-        id_choix_multiple_select_schema.style.display='none'
-        multiselect_native_select[0].style.display='none'
-        id_choix_value_schema.style.display='inline'
+        button_EI_IR.style.display='none'
+        id_chemin_value_schema.style.display = 'none'
+        id_chemin_value_schema_label.style.display = 'none'
+        id_choix_value_schema_label.style.display = 'flex'
+        id_choix_value_schema.style.display='inline'    
+        id_choix_value_schema_label.innerText="Valeur métier"       
         titre_parametre_schema.innerHTML = "Choix de la valeur métier"
-        modifier_modal_parametres(valeur_metier_JSON)
+        modifier_modal_parametres(valeur_metier_JSON,id_choix_value_schema)
     }
     else if(selection=='conteneur'){
         id_choix_value_schema.style.display='none'
-        id_label_choix_multiple_value_schema[0].style.display="none"
-        id_choix_multiple_select_schema.style.display='none'
-        multiselect_native_select[0].style.display='none'
+        button_EI_IR.style.display='none'
+        id_chemin_value_schema.style.display = 'none'
+        id_chemin_value_schema_label.style.display = 'none'
+        id_choix_value_schema_label.style.display = 'none'
         id_conteneur.style.display='inline'
+        id_choix_value_schema_label.innerText="Conteneur"
         titre_parametre_schema.innerHTML = "Titre du conteneur"
-        id_conteneur.value=''
+        id_conteneur.innerText=''
     }
     else if(selection=='fleche'){
+        recuperation_fleche()
         id_choix_value_schema.style.display='none'
-        id_label_choix_multiple_value_schema[0].style.display="flex"
-        id_choix_multiple_select_schema.style.display='inline'
-        multiselect_native_select[0].style.display='inline'
         id_conteneur.style.display='inline'
+        id_choix_value_schema_label.style.display='none'  
+        id_chemin_value_schema.style.display = 'inline'
+        id_chemin_value_schema_label.style.display = 'flex'
+        button_EI_IR.style.display='flex'
+        //id_conteneur.value = "EI : "
         titre_parametre_schema.innerHTML = "Titre de la relation"
-        id_conteneur.value=''
     }
 }
 
@@ -390,12 +479,12 @@ function removeOptions(selectElement) {
     }
 }
 
-function modifier_modal_parametres(table){
+function modifier_modal_parametres(table,selector){
     for(let i=0;i<table.length;i++){
         var option = document.createElement('option')
         option.value = table[i][0]
         option.innerHTML = table[i][1]
-        id_choix_value_schema.appendChild(option)
+        selector.appendChild(option)
     }  
 }
 
@@ -406,6 +495,23 @@ function modifier_value_schema(){
         }
     }
 }
+
+function onERButton(){
+    id_conteneur.style.display='none'
+    id_choix_value_schema.style.display='inline'
+    id_choix_value_schema_label.style.display='inline'  
+    id_choix_value_schema_label.innerText="Événement redouté" 
+    modifier_modal_parametres(evenement_redoutes_JSON,id_choix_value_schema)    
+  
+}
+
+function onEIButton(){
+    id_choix_value_schema.style.display='none'
+    id_conteneur.style.display='inline'
+    id_choix_value_schema_label.style.display='none'  
+    removeOptions(id_choix_value_schema);   
+}
+
 
 function recuperation_valeur_multiselect(){
     var table_multiselect = new Array();

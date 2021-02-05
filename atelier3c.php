@@ -291,54 +291,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   </div>
 
                   <!-- Area Card -->
-                  <div id="scenarios_strategiques" class="col-xl-12 col-lg-12">
-                    <div class="card shadow mb-4">
-                      <!-- Card Header - Dropdown -->
-                      <div class="row perso_no_margin">
-                          <div class="card-header col-8 col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
-                              <h6 class="m-0">Liste des scénarios stratégiques établis à l'atelier 3.b</h6>
-                          </div>
-                          <div class="card-header perso_header_right col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                            <a class="download_table_button" id="button_download_scenarios_strategiques">
-                              <i class="fas fa-download fa-lg text-gray-400"></i>
-                            </a>
-                          </div>    
-                      </div>
-                      <!-- Card Body -->
-                      <div class="card-body">
-                        <!--text-->
-                        <div class="table-responsive">
-                          <input type="text" class="rechercher_input" id="rechercher_scenario_strategique" placeholder="Rechercher">
-                          <table id="editable_table_scenario_strategique" class="table table-bordered table-striped">
-                            <thead>
-                              <tr>
-                                <th>ID</th>
-                                <th>Scénario stratégique</th>
-                                <th>Source de risque : Objectif visé</th>
-                                <th>Evénement redouté</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <?php
-                              while ($row = mysqli_fetch_array($result_scenario_strategique)) {
-                                echo '
-                        <tr>
-                        <td>' . $row["id_scenario_strategique"] . '</td>
-                        <td>' . $row["nom_scenario_strategique"] . '</td>
-                        <td>' . $row["description_source_de_risque"] . ' : ' . $row["objectif_vise"] . '</td>
-                        <td>' . $row["nom_evenement_redoute"] . '</td>
-                        </tr>
-                        ';
-                              }
-                              ?>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Area Card -->
                   <div id="mesure_de_securite" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
@@ -362,8 +314,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <tr>
                                 <th>ID</th>
                                 <th>Partie prenante</th>
-                                <th>ID Risque</th>
-                                <th>Chemin d'attaque stratégique</th>
+                                <th>N° de risque</th>
                                 <th>Nom mesure de sécurité</th>
                                 <th>Description mesure de sécurité</th>
                               </tr>
@@ -376,7 +327,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <td>' . $row["id_mesure"] . '</td>
                         <td>' . $row["nom_partie_prenante"] . '</td>
                         <td>' . $row["id_risque"] . '</td>
-                        <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
                         <td>' . $row["nom_mesure"] . '</td>
                         <td>' . $row["description_mesure"] . '</td>
                         </tr>
@@ -561,7 +511,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             <footer id="footer" class="sticky-footer bg-white">
               <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                  <span>Copyright &copy; CYBER RISK MANAGER 2020 by SecYourDev</span>
+                  <span>Copyright &copy; CYBER RISK MANAGER 2021 by SecYourDev</span>
                 </div>
               </div>
             </footer>
@@ -600,34 +550,42 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                 <form method="post" action="content/php/atelier3c/ajout_mesure.php" class="user" id="formpp1">
                   <fieldset>
                     <div class="row">
-                      <div class="form-group col-6">
-                        <label for="partieprenante1">Partie prenante</label>
-                        <select class="form-control" id="partieprenante1" , name="partieprenante1">
-                          <option value="" selected>...</option>
-                          <?php
-                          while ($row = mysqli_fetch_array($result_partie_prenante2)) //selection.php
-                          {
-                            echo '
-                          <option id="nom_partie_prenante" value="' . $row["id_partie_prenante"] . '">' . $row["nom_partie_prenante"] . '</option>
-                          ';
-                          }
-                          ?>
-                        </select>
-                        <script src="content/js/modules/chemins.js"></script>
-                      </div>
-                      <div class="form-group col-6">
-                        <label for="chemins">Chemin d'attaque stratégique</label>
-                        <select class="form-control" id="chemins" name="chemins">
-                          <option value="" selected>Choisissez une partie prenante</option>
+                      <div class="form-group col-12">
+                        <label for="partie_prenante">Partie Prenante</label>
+                        <select class="form-control" id="partie_prenante" name="partie_prenante">
+                        <option value="" selected>...</option>
+                        <?php
+                        while ($row = mysqli_fetch_array($result_partie_prenante2)) //selection.php
+                        {
+                          echo '
+                          <option value="'.$row["id_partie_prenante"].'">'.$row["nom_partie_prenante"].'</option>
+                        ';
+                        }
+                        ?>
                         </select>
                       </div>
 
-                      <div class="form-group col-6">
+                      <div class="form-group col-12">
+                        <label for="chemins">Chemin d'attaque stratégique</label>
+                        <select class="form-control" id="chemins" name="chemins">
+                        <option value="" selected>...</option>
+                        <?php
+                        while ($row = mysqli_fetch_array($result_chemin)) //selection.php
+                        {
+                          echo '
+                          <option value="'.$row["id_chemin_d_attaque_strategique"].'">'.$row["id_risque"].' - '.$row["id_chemin"].' - '.$row["nom_chemin_d_attaque_strategique"].'</option>
+                        ';
+                        }
+                        ?>
+                        </select>
+                      </div>
+
+                      <div class="form-group col-12">
                         <label class="titre_input" for="nommesure">Nom de la mesure de sécurité</label>
                         <input type="text" class="perso_form shadow-none form-control form-control-user" name="nommesure" id="nommesure" placeholder="Nom de la mesure de sécurité" required>
                       </div>
 
-                      <div class="form-group col-6">
+                      <div class="form-group col-12">
                         <label for="descriptionmesure">Description de la mesure de sécurité</label>
                         <textarea class="form-control perso_text_area" name="descriptionmesure" id="descriptionmesure" rows="3"></textarea>
                       </div>
