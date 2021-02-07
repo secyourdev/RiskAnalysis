@@ -9,14 +9,11 @@ $input = filter_input_array(INPUT_POST);
 $results["error"] = false;
 $results["message"] = [];
 
-// print $input["id_socle_securite"];
-
 if ($input["action"] === 'edit') {
 
     $nom_risque_residuelle = mysqli_real_escape_string($connect, $input['nom_risque_residuelle']);
     $description_risque_residuelle = mysqli_real_escape_string($connect, $input['description_risque_residuelle']);
     $vraisemblance_residuelle = mysqli_real_escape_string($connect, $input['vraisemblance_residuelle']);
-    // $risque_residuel = mysqli_real_escape_string($connect, $input['risque_residuel']);
     $gestion_risque_residuelle = mysqli_real_escape_string($connect, $input['gestion_risque_residuelle']);
 
 
@@ -52,15 +49,5 @@ if ($input["action"] === 'edit') {
         $_SESSION['message_success'] = "L'évaluation et documentation des risques résiduels a été correctement modifié !";
     }
 }
-
-// if ($input["action"] === 'delete') {
-//     $query =
-//         "DELETE FROM N_socle_de_securite 
-//     WHERE id_socle_securite = '" . $input["id_socle_securite"] . "'
-//     AND id_atelier = '1.d' AND id_projet = $getid_projet";
-//     // print $query;
-//     mysqli_query($connect, $query);
-// }
-
 
 echo json_encode($input);

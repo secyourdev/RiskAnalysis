@@ -18,16 +18,20 @@ $exec_nb_niveau_vraisemblance = mysqli_query($connect, $query_nb_niveau_vraisemb
 $result_nb_niveau_vraisemblance = mysqli_fetch_array($exec_nb_niveau_vraisemblance);
 
 
-$query = "SELECT X_revaluation_du_risque.vraisemblance_residuelle, M_evenement_redoute.niveau_de_gravite, T_chemin_d_attaque_strategique.id_risque
-FROM X_revaluation_du_risque INNER JOIN T_chemin_d_attaque_strategique ON X_revaluation_du_risque.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique INNER JOIN S_scenario_strategique ON T_chemin_d_attaque_strategique.id_scenario_strategique = S_scenario_strategique.id_scenario_strategique  INNER JOIN M_evenement_redoute ON S_scenario_strategique.id_evenement_redoute = M_evenement_redoute.id_evenement_redoute
-WHERE M_evenement_redoute.id_projet = $getid_projet
-AND S_scenario_strategique.id_projet = $getid_projet
-AND X_revaluation_du_risque.id_projet = $getid_projet";
+$query = "SELECT 
+T_chemin_d_attaque_strategique.id_risque,
+X_revaluation_du_risque.vraisemblance_residuelle,
+M_evenement_redoute.niveau_de_gravite
+FROM U_scenario_operationnel,T_chemin_d_attaque_strategique, X_revaluation_du_risque, ZB_comporter_2, Y_mesure, UA_ER, M_evenement_redoute
+WHERE U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique
+AND T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = X_revaluation_du_risque.id_chemin_d_attaque_strategique
+AND T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = ZB_comporter_2.id_chemin_d_attaque_strategique
+AND T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = UA_ER.id_chemin_d_attaque_strategique
+AND ZB_comporter_2.id_mesure = Y_mesure.id_mesure
+AND UA_ER.id_evenement_redoute = M_evenement_redoute.id_evenement_redoute
+AND U_scenario_operationnel.id_projet = $getid_projet";
 
 $result = mysqli_query($connect, $query);
-
-
-
 
 $query_exist_bareme = "SELECT id_bareme_risque, vraisemblance, gravite, bareme FROM DB_bareme_risque WHERE id_projet = $getid_projet";
 
@@ -52,12 +56,6 @@ if ($bool_exist) {
     );
   }
 }
-
-
-
-
-
-
 
 $data_dim = array();
 $echelle_vraisemblance = $result_nb_niveau_vraisemblance['nb_niveau_echelle'];

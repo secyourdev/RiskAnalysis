@@ -27,25 +27,29 @@ $id_atelier = '3.c';
     $_SESSION['message_error'] = "Description mesure de sécurité invalide";
   }
 
-$insere_mesure = $bdd->prepare("INSERT INTO Y_mesure (id_mesure, nom_mesure, description_mesure, id_projet, id_atelier) VALUES (?,?,?, $getid_projet ,'$id_atelier')");
-$recupere_mesure = $bdd->prepare("SELECT id_mesure FROM Y_mesure WHERE nom_mesure = ? AND description_mesure = ? AND id_projet = $getid_projet");
+$insere_mesure = $bdd->prepare("INSERT INTO Y_mesure (nom_mesure, description_mesure, id_projet, id_atelier) VALUES (?,?,?,?)");
+$recupere_mesure = $bdd->prepare("SELECT id_mesure FROM Y_mesure WHERE nom_mesure = ? AND description_mesure = ? AND id_projet = ?");
 $insere_comporte = $bdd->prepare("INSERT INTO ZB_comporter_2 (id_mesure, id_partie_prenante, id_chemin_d_attaque_strategique, id_projet) VALUES (?,?,?,?)");
-$insere_traitement = $bdd->prepare('INSERT INTO ZA_traitement_de_securite (id_traitement_de_securite, id_atelier, id_projet, id_mesure) VALUES (?, ?, ?, ?)');
+$insere_traitement = $bdd->prepare('INSERT INTO ZA_traitement_de_securite (id_traitement_de_securite, id_atelier, id_projet, id_mesure) VALUES (?,?,?,?)');
 
 
 
 if ($results["error"] === false && isset($_POST['validermesure1'])) {
-  // insere mesure
-  $insere_mesure->bindParam(1, $nom_mesure);
-  $insere_mesure->bindParam(2, $nom_mesure);
-  $insere_mesure->bindParam(3, $description_mesure);
-  $insere_mesure->execute();
-
   // recupere l'id de la mesure
   $recupere_mesure->bindParam(1, $nom_mesure);
   $recupere_mesure->bindParam(2, $description_mesure);
+  $recupere_mesure->bindParam(3, $getid_projet);
   $recupere_mesure->execute();
   $id_mesure = $recupere_mesure->fetch();
+
+  if($id_mesure[0]==NULL){
+    // insere mesure
+    $insere_mesure->bindParam(1, $nom_mesure);
+    $insere_mesure->bindParam(2, $description_mesure);
+    $insere_mesure->bindParam(3, $getid_projet);
+    $insere_mesure->bindParam(4, $id_atelier);
+    $insere_mesure->execute();
+  }
 
   // insere dans comporte2
   $insere_comporte->bindParam(1, $id_mesure[0]);
