@@ -18,7 +18,7 @@ $exec_nb_niveau_vraisemblance = mysqli_query($connect, $query_nb_niveau_vraisemb
 $result_nb_niveau_vraisemblance = mysqli_fetch_array($exec_nb_niveau_vraisemblance);
 
 
-$query = "SELECT 
+$query = "SELECT DISTINCT 
 T_chemin_d_attaque_strategique.id_risque,
 X_revaluation_du_risque.vraisemblance_residuelle,
 M_evenement_redoute.niveau_de_gravite
