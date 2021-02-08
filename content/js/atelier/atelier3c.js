@@ -42,8 +42,8 @@ $(document).ready(function () {
         columns: {
             identifier: [0, 'id_mesure'],
             editable: [
-                [2, 'nom_mesure_securite'],
-                [3, 'description_mesure_securite']
+                [3, 'nom_mesure_securite'],
+                [4, 'description_mesure_securite']
             ]
         },
         restoreButton: false,

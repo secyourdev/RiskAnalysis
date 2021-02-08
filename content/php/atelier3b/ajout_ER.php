@@ -3,6 +3,7 @@ session_start();
 $get_id_projet = $_SESSION['id_projet'];
 $id_atelier = '3.b';
 $id_atelier_4a = '4.a';
+$id_atelier_5c = '5.c';
 
 include("../bdd/connexion.php");
 
@@ -123,7 +124,7 @@ if ($type==true&&isset($id_fleche)&&isset($valeur_chemin)&&isset($id_evenement_r
     $select_scenario_operationnel->bindParam(3, $id_atelier_4a);
     $select_scenario_operationnel->execute();
     $id_scenario_operationnel=$select_scenario_operationnel->fetch();
-     
+   
     $images = 'data:application/xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Cdefinitions%20xmlns%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F20100524%2FMODEL%22%20xmlns%3Abpmndi%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F20100524%2FDI%22%20xmlns%3Aomgdc%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FDD%2F20100524%2FDC%22%20xmlns%3Axsi%3D%22http%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema-instance%22%20targetNamespace%3D%22%22%20xsi%3AschemaLocation%3D%22http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F20100524%2FMODEL%20http%3A%2F%2Fwww.omg.org%2Fspec%2FBPMN%2F2.0%2F20100501%2FBPMN20.xsd%22%3E%0A%20%20%3Ccollaboration%20id%3D%22Collaboration_1k3yu97%22%3E%0A%20%20%20%20%3Cparticipant%20id%3D%22Participant_1rohhf4%22%20name%3D%22Conna%C3%AEtre%22%20processRef%3D%22Process_15x29ag%22%20%2F%3E%0A%20%20%20%20%3Cparticipant%20id%3D%22Participant_1t9xvhs%22%20name%3D%22Rentrer%22%20processRef%3D%22Process_1t81gon%22%20%2F%3E%0A%20%20%20%20%3Cparticipant%20id%3D%22Participant_1asmakh%22%20name%3D%22Trouver%22%20processRef%3D%22Process_0r1jzs8%22%20%2F%3E%0A%20%20%20%20%3Cparticipant%20id%3D%22Participant_0sudgxn%22%20name%3D%22Exploiter%22%20processRef%3D%22Process_01j45oj%22%20%2F%3E%0A%20%20%3C%2Fcollaboration%3E%0A%20%20%3Cprocess%20id%3D%22Process_15x29ag%22%20%2F%3E%0A%20%20%3Cprocess%20id%3D%22Process_1t81gon%22%20%2F%3E%0A%20%20%3Cprocess%20id%3D%22Process_0r1jzs8%22%20%2F%3E%0A%20%20%3Cprocess%20id%3D%22Process_01j45oj%22%20%2F%3E%0A%20%20%3Cbpmndi%3ABPMNDiagram%20id%3D%22sid-74620812-92c4-44e5-949c-aa47393d3830%22%3E%0A%20%20%20%20%3Cbpmndi%3ABPMNPlane%20id%3D%22sid-cdcae759-2af7-4a6d-bd02-53f3352a731d%22%20bpmnElement%3D%22Collaboration_1k3yu97%22%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Participant_1rohhf4_di%22%20bpmnElement%3D%22Participant_1rohhf4%22%20isHorizontal%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22230%22%20y%3D%22180%22%20width%3D%22300%22%20height%3D%22640%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Participant_1t9xvhs_di%22%20bpmnElement%3D%22Participant_1t9xvhs%22%20isHorizontal%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22540%22%20y%3D%22180%22%20width%3D%22300%22%20height%3D%22640%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Participant_1asmakh_di%22%20bpmnElement%3D%22Participant_1asmakh%22%20isHorizontal%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%22850%22%20y%3D%22180%22%20width%3D%22300%22%20height%3D%22640%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%20%20%3Cbpmndi%3ABPMNShape%20id%3D%22Participant_0sudgxn_di%22%20bpmnElement%3D%22Participant_0sudgxn%22%20isHorizontal%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%3Comgdc%3ABounds%20x%3D%221160%22%20y%3D%22180%22%20width%3D%22300%22%20height%3D%22640%22%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fbpmndi%3ABPMNShape%3E%0A%20%20%20%20%3C%2Fbpmndi%3ABPMNPlane%3E%0A%20%20%20%20%3Cbpmndi%3ABPMNLabelStyle%20id%3D%22sid-e0502d32-f8d1-41cf-9c4a-cbb49fecf581%22%3E%0A%20%20%20%20%20%20%3Comgdc%3AFont%20name%3D%22Arial%22%20size%3D%2211%22%20isBold%3D%22false%22%20isItalic%3D%22false%22%20isUnderline%3D%22false%22%20isStrikeThrough%3D%22false%22%20%2F%3E%0A%20%20%20%20%3C%2Fbpmndi%3ABPMNLabelStyle%3E%0A%20%20%20%20%3Cbpmndi%3ABPMNLabelStyle%20id%3D%22sid-84cb49fd-2f7c-44fb-8950-83c3fa153d3b%22%3E%0A%20%20%20%20%20%20%3Comgdc%3AFont%20name%3D%22Arial%22%20size%3D%2212%22%20isBold%3D%22false%22%20isItalic%3D%22false%22%20isUnderline%3D%22false%22%20isStrikeThrough%3D%22false%22%20%2F%3E%0A%20%20%20%20%3C%2Fbpmndi%3ABPMNLabelStyle%3E%0A%20%20%3C%2Fbpmndi%3ABPMNDiagram%3E%0A%3C%2Fdefinitions%3E%0A';
 
     if($id_scenario_operationnel[0]!=null){
@@ -148,6 +149,21 @@ if ($type==true&&isset($id_fleche)&&isset($valeur_chemin)&&isset($id_evenement_r
         $insere_scenario_operationnel->bindParam(4, $get_id_projet);
         $insere_scenario_operationnel->bindParam(5, $id_atelier_4a);
         $insere_scenario_operationnel->execute();
+    }
+
+    $select_reeval = $bdd->prepare("SELECT id_revaluation FROM X_revaluation_du_risque WHERE id_chemin_d_attaque_strategique=? AND id_projet=? AND id_atelier=?");
+    $select_reeval->bindParam(1, $id_chemin_d_attaque_strategique[0]);
+    $select_reeval->bindParam(2, $get_id_projet);
+    $select_reeval->bindParam(3, $id_atelier_5c);
+    $select_reeval->execute();
+    $id_revaluation=$select_reeval->fetch();
+
+    if($id_revaluation[0]==null){
+        $insere_reeval = $bdd->prepare('INSERT INTO X_revaluation_du_risque (id_atelier, id_chemin_d_attaque_strategique, id_projet) VALUES (?,?,?)');
+        $insere_reeval->bindParam(1, $id_atelier_5c);
+        $insere_reeval->bindParam(2, $id_chemin_d_attaque_strategique[0]);
+        $insere_reeval->bindParam(3, $get_id_projet);
+        $insere_reeval->execute();    
     }
 
     $results["error"] = false;

@@ -1,5 +1,5 @@
 --
--- sauvegarde20210204-201604.sql.gz
+-- sauvegarde20210207-163012.sql.gz
 SET FOREIGN_KEY_CHECKS =  0 ;
 
 DROP TABLE IF EXISTS `A_utilisateur`;
@@ -2297,51 +2297,15 @@ CREATE TABLE `Y_mesure` (
   KEY `Y_mesure_G_atelier0_FK` (`id_atelier`),
   CONSTRAINT `Y_mesure_F_projet_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `Y_mesure_G_atelier0_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=140 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=160 DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `Y_mesure` VALUES ('61','MS3','Mesure super','15','5.b');
-INSERT INTO `Y_mesure` VALUES ('62','MS3','Mesure','15','5.b');
-INSERT INTO `Y_mesure` VALUES ('63','MS3','fdgfdgdfg','14','3.c');
-INSERT INTO `Y_mesure` VALUES ('64','MS3','fdgdfg','14','3.c');
-INSERT INTO `Y_mesure` VALUES ('65','MS3','fghfghfgh','14','3.c');
-INSERT INTO `Y_mesure` VALUES ('66','MS3','ghjghjghjghj','14','5.b');
-INSERT INTO `Y_mesure` VALUES ('67','MS3','g','14','5.b');
-INSERT INTO `Y_mesure` VALUES ('68','MS3','g','14','5.b');
-INSERT INTO `Y_mesure` VALUES ('69','MS3','rrrr','14','5.b');
-INSERT INTO `Y_mesure` VALUES ('70','MS3','vff','14','5.b');
-INSERT INTO `Y_mesure` VALUES ('71','MS3','dfgdfg','15','5.b');
-INSERT INTO `Y_mesure` VALUES ('72','MS3','dfdfd','14','5.b');
-INSERT INTO `Y_mesure` VALUES ('73','MS3','dfgdfgdf','15','5.b');
-INSERT INTO `Y_mesure` VALUES ('78','MS3','DESC','15','5.b');
-INSERT INTO `Y_mesure` VALUES ('79','MS3','MS3','15','3.c');
-INSERT INTO `Y_mesure` VALUES ('80','MS3','MS4','15','3.c');
-INSERT INTO `Y_mesure` VALUES ('81','MS3','MS5','15','3.c');
-INSERT INTO `Y_mesure` VALUES ('82','MS1','MS1','17','3.c');
-INSERT INTO `Y_mesure` VALUES ('83','MS2','MS2','17','3.c');
-INSERT INTO `Y_mesure` VALUES ('84','MS3','MS3','17','3.c');
-INSERT INTO `Y_mesure` VALUES ('85','MS4','MS4','17','3.c');
-INSERT INTO `Y_mesure` VALUES ('86','MS2','MS2','17','3.c');
-INSERT INTO `Y_mesure` VALUES ('87','MS5','MS5','17','5.b');
-INSERT INTO `Y_mesure` VALUES ('88','Redondance','Avoir plusieurs fournisseurs','15','3.c');
-INSERT INTO `Y_mesure` VALUES ('89','Formation en cyber','Former la société','15','5.b');
-INSERT INTO `Y_mesure` VALUES ('90','Audit de sécurité','Audit tous les ans du SI du transporteur','15','5.b');
-INSERT INTO `Y_mesure` VALUES ('91','Formation en cyber sécurité','Sensibiliser à la cybersécurité','25','3.c');
-INSERT INTO `Y_mesure` VALUES ('92','Sécurisation du PC','Sécurisation du PC','25','3.c');
-INSERT INTO `Y_mesure` VALUES ('93','Process de développement sécurisé','Mettre en place un process de développement sécurisé','25','3.c');
-INSERT INTO `Y_mesure` VALUES ('94','ASLR','Mise en place de l''ASLR','25','5.b');
-INSERT INTO `Y_mesure` VALUES ('110','Limiter les attaques par modification d''adresse de retour','Mettre en place du ASLR afin d''utiliser des adresses de retour différents à chaque exécution','28','3.c');
-INSERT INTO `Y_mesure` VALUES ('111','Mettre en place des expressions réguilières','Réfléchir sur les caractères à autoriser dans les champs pour limiter les injections','28','3.c');
-INSERT INTO `Y_mesure` VALUES ('112','Gérer correctement le stockage ','Interdire les dépassements de mémoire tampon - BufferOverFlow','28','3.c');
-INSERT INTO `Y_mesure` VALUES ('113','Sécuriser le PC de la victime','Inciter la victime à sécuriser son PC pour limiter les mésaventures','28','3.c');
-INSERT INTO `Y_mesure` VALUES ('114','Sensibiliser les utilisateurs','Sensibiliser et former les utilisateurs à une bonne utilisation du logiciel ','28','3.c');
-INSERT INTO `Y_mesure` VALUES ('128','aaa','aaaaa','25','3.c');
-INSERT INTO `Y_mesure` VALUES ('129','Formation en cyber sécurité','hhhh','158','3.c');
-INSERT INTO `Y_mesure` VALUES ('134','TEST','TEST','28','3.c');
-INSERT INTO `Y_mesure` VALUES ('135','Mesure1','Mesure1 Toto','28','3.c');
-INSERT INTO `Y_mesure` VALUES ('136','Développement sécurisé','Mettre en place un développement sécurisé lors de la création du logiciel','28','3.c');
-INSERT INTO `Y_mesure` VALUES ('137','TEST','TEST','28','3.c');
-INSERT INTO `Y_mesure` VALUES ('138','TEST2','TEST2','28','3.c');
-INSERT INTO `Y_mesure` VALUES ('139','TEST3','TEST3','28','3.c');
+INSERT INTO `Y_mesure` VALUES ('145','Mesure 5b','Mesure 5b','28','5.b');
+INSERT INTO `Y_mesure` VALUES ('148','TEST','TEST','28','5.b');
+INSERT INTO `Y_mesure` VALUES ('151','Mesure 2','Mesure 2','28','3.c');
+INSERT INTO `Y_mesure` VALUES ('156','Mesure 2','Mesure 2','28','5.b');
+INSERT INTO `Y_mesure` VALUES ('157','dssdss','dsdsds','28','5.b');
+INSERT INTO `Y_mesure` VALUES ('158','Mesure 2tyytr','Mesure 2trtrt','28','5.b');
+INSERT INTO `Y_mesure` VALUES ('159','Joyston ','Joyston','28','5.b');
 
 
 DROP TABLE IF EXISTS `ZA_traitement_de_securite`;
@@ -2363,66 +2327,40 @@ CREATE TABLE `ZA_traitement_de_securite` (
   CONSTRAINT `ZA_traitement_de_securite_F_projet0_FK` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ZA_traitement_de_securite_G_atelier_FK` FOREIGN KEY (`id_atelier`) REFERENCES `G_atelier` (`id_atelier`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ZA_traitement_de_securite_Y_mesure1_FK` FOREIGN KEY (`id_mesure`) REFERENCES `Y_mesure` (`id_mesure`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=133 DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `ZA_traitement_de_securite` VALUES ('46','Gouvernance','','+','0000-00-00','','A lancer','5.b','15','61');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('47','Gouvernance','','+','0000-00-00','','A lancer','5.b','15','62');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('48','Gouvernance','fdgdfgdf','+','0000-00-00','fdgdfgdf','A lancer','3.c','14','64');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('49',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','14','65');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('50',NULL,NULL,NULL,NULL,NULL,NULL,'5.b','14','66');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('51',NULL,NULL,NULL,NULL,NULL,NULL,'5.b','14','67');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('52','Gouvernance','','+','0000-00-00','yyyy','A lancer','5.b','14','69');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('53',NULL,NULL,NULL,NULL,NULL,NULL,'5.b','14','70');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('54',NULL,NULL,NULL,NULL,NULL,NULL,'5.b','15','71');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('55',NULL,NULL,NULL,NULL,NULL,NULL,'5.b','14','72');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('56','Gouvernance','','+','0000-00-00','','A lancer','5.b','15','73');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('61','Gouvernance','','+','0000-00-00','','A lancer','5.b','15','78');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('62','Gouvernance','','+','0000-00-00','','A lancer','3.c','15','79');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('63',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','15','80');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('64',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','15','81');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('65','Protection','Ok','++','2020-08-28','Joyston','Terminé','3.c','17','82');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('66','Gouvernance','OK','+','2020-08-27','Eric','A lancer','3.c','17','83');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('67','Gouvernance','OK','+','2020-09-01','Jean','A lancer','3.c','17','84');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('68','Protection','OK','+++','2021-01-01','Pierre','En cours','3.c','17','85');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('69','Gouvernance','','+','0000-00-00','','En cours','3.c','17','86');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('70',NULL,NULL,NULL,NULL,NULL,NULL,'5.b','17','87');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('71',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','15','88');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('72',NULL,NULL,NULL,NULL,NULL,NULL,'5.b','15','89');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('73',NULL,NULL,NULL,NULL,NULL,NULL,'5.b','15','90');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('74',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','25','91');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('75',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','25','92');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('76',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','25','93');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('77',NULL,NULL,NULL,NULL,NULL,NULL,'5.b','25','94');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('89','Protection','NA','+++','2020-10-09','Joyston','A lancer','3.c','28','110');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('90','Protection','NA','+++','2020-10-09','Joyston','A lancer','3.c','28','111');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('91','Protection','NA','+++','2020-10-09','Joyston','A lancer','3.c','28','112');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('92','Defense','NA','++','2020-10-09','Lucas','A lancer','3.c','28','113');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('93','Gouvernance','NA','+','2020-10-09','Mustapha','A lancer','3.c','28','114');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('107',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','25','128');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('108',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','158','129');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('112',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','28','134');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('113',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','28','135');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('115',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','28','134');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('116',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','28','138');
-INSERT INTO `ZA_traitement_de_securite` VALUES ('117',NULL,NULL,NULL,NULL,NULL,NULL,'3.c','28','139');
+INSERT INTO `ZA_traitement_de_securite` VALUES ('125',NULL,NULL,NULL,NULL,NULL,NULL,'5.b','28','151');
+INSERT INTO `ZA_traitement_de_securite` VALUES ('128',NULL,NULL,NULL,NULL,NULL,NULL,'5.b','28','151');
+INSERT INTO `ZA_traitement_de_securite` VALUES ('129',NULL,NULL,NULL,NULL,NULL,NULL,'5.b','28','157');
+INSERT INTO `ZA_traitement_de_securite` VALUES ('130',NULL,NULL,NULL,NULL,NULL,NULL,'5.b','28','151');
+INSERT INTO `ZA_traitement_de_securite` VALUES ('131',NULL,NULL,NULL,NULL,NULL,NULL,'5.b','28','158');
+INSERT INTO `ZA_traitement_de_securite` VALUES ('132',NULL,NULL,NULL,NULL,NULL,NULL,'5.b','28','159');
 
 
 DROP TABLE IF EXISTS `ZB_comporter_2`;
 CREATE TABLE `ZB_comporter_2` (
   `id_mesure` int(11) NOT NULL,
-  `id_partie_prenante` int(11) NOT NULL,
+  `id_partie_prenante` int(11) DEFAULT NULL,
+  `id_chemin_d_attaque_strategique` int(11) NOT NULL,
   `id_projet` int(11) NOT NULL,
-  PRIMARY KEY (`id_mesure`,`id_partie_prenante`),
+  PRIMARY KEY (`id_mesure`,`id_chemin_d_attaque_strategique`),
+  KEY `ZB_comporter_2_Y_mesure_FK` (`id_mesure`),
   KEY `ZB_comporter_2_R_partie_prenante_FK` (`id_partie_prenante`),
-  KEY `F_projet_id_projet` (`id_projet`),
+  KEY `ZB_comporter_2_T_chemin_d_attaque_strategique_FK` (`id_chemin_d_attaque_strategique`),
+  KEY `ZB_comporter_2_F_projet` (`id_projet`),
+  CONSTRAINT `ZB_comporter_2_F_projet` FOREIGN KEY (`id_projet`) REFERENCES `F_projet` (`id_projet`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ZB_comporter_2_R_partie_prenante_FK` FOREIGN KEY (`id_partie_prenante`) REFERENCES `R_partie_prenante` (`id_partie_prenante`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `ZB_comporter_2_T_chemin_d_attaque_strategique_FK` FOREIGN KEY (`id_chemin_d_attaque_strategique`) REFERENCES `T_chemin_d_attaque_strategique` (`id_chemin_d_attaque_strategique`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ZB_comporter_2_Y_mesure_FK` FOREIGN KEY (`id_mesure`) REFERENCES `Y_mesure` (`id_mesure`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `ZB_comporter_2` VALUES ('134','89','28');
-INSERT INTO `ZB_comporter_2` VALUES ('135','88','28');
-INSERT INTO `ZB_comporter_2` VALUES ('138','88','28');
-INSERT INTO `ZB_comporter_2` VALUES ('139','90','28');
+INSERT INTO `ZB_comporter_2` VALUES ('151','88','4','28');
+INSERT INTO `ZB_comporter_2` VALUES ('151',NULL,'5','28');
+INSERT INTO `ZB_comporter_2` VALUES ('151',NULL,'8','28');
+INSERT INTO `ZB_comporter_2` VALUES ('151',NULL,'24','28');
+INSERT INTO `ZB_comporter_2` VALUES ('157',NULL,'6','28');
+INSERT INTO `ZB_comporter_2` VALUES ('158',NULL,'24','28');
+INSERT INTO `ZB_comporter_2` VALUES ('159',NULL,'25','28');
 
 
 DROP TABLE IF EXISTS `ZC_version`;
@@ -2638,3 +2576,19 @@ CREATE TABLE `ZZ_G_Exigence` (
   `id_projet` int(11) NOT NULL,
   PRIMARY KEY (`id_exigence`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+DROP TABLE IF EXISTS `ZZ_H_gconf`;
+CREATE TABLE `ZZ_H_gconf` (
+  `id_conf` int(11) NOT NULL AUTO_INCREMENT,
+  `data_conf` blob DEFAULT NULL,
+  `version_conf` int(11) NOT NULL,
+  `id_projet` int(11) NOT NULL,
+  PRIMARY KEY (`id_conf`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `ZZ_H_gconf` VALUES ('1','{"name":"Produit A","title":"12 093 123","children":[{"name":"Mécanique","title":"02 345 678"},{"name":"Carte électronique","title":"12 345 678","children":[{"name":"Logiciel A","title":"12 345 321"},{"name":"Logiciel B","title":"90 876 987"}]},{"name":"Batterie A","title":"34 543 765"},{"name":"Connecteur","title":"12 098 098"}]}','0','158');
+INSERT INTO `ZZ_H_gconf` VALUES ('2','{"name":"Produit A","title":"12 093 123","children":[{"name":"Mécanique","title":"02 345 678"},{"name":"Carte électronique","title":"12 345 678","children":[{"name":"Logiciel A","title":"12 345 321","children":[{"name":"aaa","title":"123 456 789"}]},{"name":"Logiciel B","title":"90 876 987"}]},{"name":"Batterie A","title":"34 543 765"},{"name":"Connecteur","title":"12 098 098"}]}','0','158');
+INSERT INTO `ZZ_H_gconf` VALUES ('3','{"name":"Produit A","title":"12 093 123","children":[{"name":"Mécanique","title":"02 345 678"},{"name":"Carte électronique","title":"12 345 678","children":[{"name":"Logiciel A","title":"12 345 321"},{"name":"Logiciel B","title":"90 876 987"}]},{"name":"Batterie A","title":"34 543 765"},{"name":"Connecteur","title":"12 098 098"}]}','0','158');
+INSERT INTO `ZZ_H_gconf` VALUES ('4','{"name":"Produit A","title":"12 093 123","children":[{"name":"Mécanique","title":"02 345 678"},{"name":"Carte électronique","title":"12 345 678","children":[{"name":"Logiciel A","title":"12 345 321"},{"name":"Logiciel B","title":"90 876 987"}]},{"name":"Batterie A","title":"34 543 765"},{"name":"Connecteur","title":"12 098 098"}]}','0','158');
+INSERT INTO `ZZ_H_gconf` VALUES ('5','{"name":"Produit A","title":"12 093 123","children":[{"name":"Mécanique","title":"02 345 678"},{"name":"Carte électronique","title":"12 345 678","children":[{"name":"Logiciel A","title":"12 345 321"}]},{"name":"Batterie A","title":"34 543 765"},{"name":"Connecteur","title":"12 098 098"}]}','0','158');

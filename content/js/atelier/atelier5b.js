@@ -31,7 +31,6 @@ $(document).ready(function () {
             editable: [
                 [1, "nom_mesure"],
                 [2, "description_mesure"],
-                // [3, "id_risque"],
                 [5, 'principe_de_securite', '{"Gouvernance" : "Gouvernance", "Protection" : "Protection", "Defense" : "Defense", "Resilience" : "Resilience"}'],
                 [6, "responsable"],
                 [7, "difficulte_traitement_de_securite"],
@@ -41,11 +40,10 @@ $(document).ready(function () {
         },
         restoreButton: false,
         onSuccess: function (data, textStatus, jqXHR) {
-            /*if (data.action == 'delete') {
-                $('#' + data.id_evenement_redoutes).remove();
+            if (data.action == 'delete') {
+                $('#' + data.id_traitement_de_securite).remove();
             
-            }*/
-            //console.log(data.action);
+            }
         },
         onFail: function (data, textStatus, jqXHR) {
             /*if (data.action == 'delete') {
@@ -57,9 +55,10 @@ $(document).ready(function () {
     });
 });
 /*--------------------------- SORT & FILTER TABLES --------------------------*/
-
+setSortTable('editable_table');
+OURJQUERYFN.setFilterTable("#rechercher_pacs","#editable_table tbody tr")
 /*--------------------------- Couleurs pacs > statut --------------------------*/
-$("#editable_table > tbody > tr > td:nth-child(10)").each(function () {
+$("#editable_table > tbody > tr > td:nth-child(11)").each(function () {
     if ($(this)[0].innerText == "Terminé") { $(this)[0].classList.add('fond-vert'); }
     if ($(this)[0].innerText == "En cours") { $(this)[0].classList.add('fond-orange'); }
     if ($(this)[0].innerText == "A lancer") { $(this)[0].classList.add('fond-rouge'); }

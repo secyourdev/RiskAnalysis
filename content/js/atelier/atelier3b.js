@@ -8,7 +8,6 @@ var label_scenariostrategique = document.getElementById("nom_scenario_strategiqu
 var id_risque = document.getElementById("id_risque");
 var cheminattaque = document.getElementById("chemin_d_attaque_strategique")
 var cheminattaque_description = document.getElementById("description")
-//var label_id_risque = document.getElementById("id_risque").previousSibling.previousSibling
 
 var parametre_schema_scenarios_strategiques = document.getElementById('parametre_schema_scenarios_strategiques')
 var titre_parametre_schema = document.getElementById('titre_parametre_schema')

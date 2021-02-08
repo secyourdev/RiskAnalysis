@@ -13,14 +13,14 @@ for(let i=1;i<length_sous_atelier;i++){
     }
 }
 
-if(window.innerHeight<973)
+if(window.innerHeight<1920)
         rounded_button.style.display='none'
 else
         rounded_button.style.display='inline'
 
 window.addEventListener('resize', function(){
     accordionSidebar.classList.remove('toggled')
-    if(window.innerHeight<973)
+    if(window.innerHeight<1920)
         rounded_button.style.display='none'
     else
         rounded_button.style.display='inline'
