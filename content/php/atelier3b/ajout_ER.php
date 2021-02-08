@@ -118,6 +118,7 @@ if ($type==true&&isset($id_fleche)&&isset($valeur_chemin)&&isset($id_evenement_r
     $insere->bindParam(11, $id_atelier);
     $insere->execute();
 
+
     $select_scenario_operationnel = $bdd->prepare("SELECT id_scenario_operationnel FROM U_scenario_operationnel WHERE id_chemin_d_attaque_strategique=? AND id_projet=? AND id_atelier=?");
     $select_scenario_operationnel->bindParam(1, $id_chemin_d_attaque_strategique[0]);
     $select_scenario_operationnel->bindParam(2, $get_id_projet);

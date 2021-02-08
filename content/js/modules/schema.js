@@ -122,6 +122,7 @@ async function saveFileBDD(e) {
         enregistrement_schema_fn(url);
         $('#button_schema_scenarios_strategiques').modal('hide');
         alert('Le schéma du scénario stratégique a bien été enregistré !')
+        location.reload()
         e.preventDefault()
     }
 }
