@@ -524,9 +524,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                           <label for="descriptionmesure">Description de la mesure de sécurité</label>
                           <textarea class="form-control perso_text_area" name="descriptionmesure" id="descriptionmesure" rows="3"></textarea>
                         </div>
-
                       </div>
-
                       <!-- bouton Valider -->
                       <div class="modal-footer perso_middle_modal_footer">
                         <input type="submit" name="ajouterregle" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>

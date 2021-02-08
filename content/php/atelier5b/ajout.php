@@ -1,48 +1,22 @@
 <?php
 session_start();
-include("../bdd/connexion.php");
 $get_id_projet = $_SESSION['id_projet'];
+
+include("../bdd/connexion.php");
 
 $results["error"] = false;
 $results["message"] = [];
 
 $id_chemin_d_attaque_strategique = $_POST['chemin'];
-// print $id_chemin;
-// $id_mesure = "id_mesure";
-// $id_traitement = "id_traitement";
 $nom_mesure = $_POST['nommesure'];
-// print $nom_mesure;
 $description_mesure = $_POST['descriptionmesure'];
-// $dependance = $_POST['dependance'];
-// $penetration = $_POST['penetration'];
-// $maturite = $_POST['maturite'];
-// $confiance = $_POST['confiance'];
-// echo $dependance;
-// echo $penetration;
-// echo $maturite;
-// echo $confiance;
 $id_atelier = "5.b";
+
 $insere_mesure = $bdd->prepare('INSERT INTO Y_mesure (nom_mesure, description_mesure, id_projet, id_atelier) VALUES (?,?,?,?)');
 $recupere_mesure = $bdd->prepare('SELECT `id_mesure` FROM Y_mesure WHERE nom_mesure = ? AND description_mesure = ? AND id_projet = ?');
 $insere_comporte = $bdd->prepare('INSERT INTO ZB_comporter_2 (id_mesure, id_chemin_d_attaque_strategique, id_projet) VALUES (?,?,?)');
 $insere_traitement = $bdd->prepare('INSERT INTO ZA_traitement_de_securite (id_traitement_de_securite, id_atelier, id_projet, id_mesure) VALUES (?,?,?,?)');
-
 $recupere_comporte = $bdd->prepare('SELECT id_mesure, id_chemin_d_attaque_strategique FROM ZB_comporter_2 WHERE id_projet=?');
-
-$recupere_risque = $bdd->prepare('SELECT id_risque FROM T_chemin_d_attaque_strategique WHERE id_chemin_d_attaque_strategique = ?');
-$recupere_id_pp = $bdd->prepare('SELECT id_partie_prenante FROM T_chemin_d_attaque_strategique WHERE id_chemin_d_attaque_strategique = ?');
-$recupere_pp = $bdd->prepare('SELECT ponderation_dependance, ponderation_penetration, ponderation_maturite, ponderation_confiance FROM R_partie_prenante WHERE id_partie_prenante = ?');
-
-// $updatechemin = $bdd->prepare(
-//   'UPDATE T_chemin_d_attaque_strategique
-//   SET dependance_residuelle = ?,
-//   penetration_residuelle = ?,
-//   maturite_residuelle = ?,
-//   confiance_residuelle = ?,
-//   niveau_de_menace_residuelle = ?
-//   WHERE id_chemin_d_attaque_strategique = ?
-//   '
-// );
 
 // Verification du nom de la mesure
 if (!preg_match("/^[a-zA-Z0-9éèàêâùïüëç\'\s-]{0,100}$/", $nom_mesure)) {
@@ -61,8 +35,6 @@ if ($results["error"] === false && isset($_POST['ajouterregle'])) {
   $recupere_comporte->bindParam(1, $id_projet);
   $recupere_comporte->execute();
   $result_comporte = $recupere_comporte->fetchAll(PDO::FETCH_COLUMN);
-
-  echo $result_comporte;
 
   // Récupérer id de la mesure
   $recupere_mesure->bindParam(1, $nom_mesure);
