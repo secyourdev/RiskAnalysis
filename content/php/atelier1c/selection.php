@@ -28,10 +28,10 @@ $resultvm = mysqli_query($connect, $queryvm);
 
 //Requêtes relatives à la génération du rapport
 
-$rq_echelle ="SELECT nom_echelle AS 'Nom de l''échelle' , echelle_gravite AS 'Échelle de gravité' FROM DA_echelle";
+$rq_echelle ="SELECT nom_echelle AS 'Nom de l''échelle' , echelle_gravite AS 'Échelle de gravité' FROM DA_echelle WHERE id_projet = $getid_projet";
 $rq_echelle_tab = mysqli_query($connect, $rq_echelle);
 
-$rq_niveau = "SELECT valeur_niveau AS 'Valeur du niveau', description_niveau AS 'Description du niveau' FROM DA_niveau";
+$rq_niveau = "SELECT valeur_niveau AS 'Valeur du niveau', description_niveau AS 'Description du niveau' FROM DA_niveau WHERE id_projet = $getid_projet";
 $rq_niveau_tab = mysqli_query($connect, $rq_niveau);
 
 
