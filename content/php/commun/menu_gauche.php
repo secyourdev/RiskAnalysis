@@ -1,3 +1,6 @@
+        <!-- Script ? -->
+        <script src="content/js/rapport/ajax_tables.js"></script>
+        
         <!-- Left Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion side_bar_scroll" id="accordionSidebar">
             <!-- Sidebar - Brand -->
@@ -81,6 +84,8 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">Ateliers</div>
+            
+            <button type="button" class="btn btn-secondary btn-sm" onclick="myAjax()">Rapport</button>
 
             <!-- Nav Item - Charts -->
             <li class="nav-item py-1">

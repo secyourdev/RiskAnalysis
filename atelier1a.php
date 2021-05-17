@@ -51,7 +51,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
     <script src="content/vendor/sheet-js/xlsx.full.min.js"></script>
     <script src="content/vendor/sheet-js/FileSaver.js"></script>
-    <script src="content/js/rapport/ajax_tables.js"></script>
+    
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
@@ -149,7 +149,6 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-                      <button type="button" class="btn btn-secondary btn-sm" onclick="myAjax()">Rapport</button>
                         <!-- Dark Mode toggle switch -->
 
                         <label class="theme-switch" for="checkbox_dark_theme">

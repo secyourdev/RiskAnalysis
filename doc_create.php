@@ -17,7 +17,7 @@ function doc_create(){
   include("content/php/atelier1c/selection.php");
   include("content/php/atelier1d/selection.php");
   // //atelier 2
-  // include("content/php/atelier2a/selection.php");
+  include("content/php/atelier2a/selection.php");
   // include("content/php/atelier2b/selection.php");
   // include("content/php/atelier2c/selection.php");
   // //atelier 3
@@ -56,8 +56,14 @@ function doc_create(){
 
   $tab_echelle = genere_tableau_rapport($rq_echelle_tab);
   $tab_niveau  = genere_tableau_rapport($rq_niveau_tab);
+
+  //1.d///////////////////////////////////////////////////////////////
   $tab_socle_sec = genere_tableau_rapport($rq_socle_sec_tab);
   $tab_regle = genere_tableau_rapport($rq_regle_tab);
+
+  ///atelier2*******************************************************************************
+  //2.a/////////////////////////////////////////////////////////////////
+  $tab_srov = genere_tableau_rapport($rq_srov_tab);
 
 
   ////inclusion tableaux
@@ -71,6 +77,7 @@ function doc_create(){
   $template->setComplexBlock('da_niveau', $tab_niveau);
   $template->setComplexBlock('n_socle_de_securite', $tab_socle_sec);
   $template->setComplexBlock('o_regle', $tab_regle);
+  $template->setComplexBlock('p_srov1', $tab_srov);
 
 
   /////sauvegarder fichier

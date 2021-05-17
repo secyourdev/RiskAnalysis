@@ -104,6 +104,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             <!-- Heading -->
             <div class="sidebar-heading">Ateliers</div>
 
+
             <!-- Nav Item - Charts -->
             <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Atelier1" aria-expanded="true" aria-controls="Atelier1">
