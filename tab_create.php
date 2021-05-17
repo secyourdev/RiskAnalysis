@@ -10,7 +10,7 @@ use PhpOffice\PhpWord\SimpleType\TblWidth;
 //atelier 1
 include("content/php/atelier1a/selection.php");
 include("content/php/atelier1b/selection.php");
-// include("content/php/atelier1c/selection.php");
+include("content/php/atelier1c/selection.php");
 // include("content/php/atelier1d/selection.php");
 // //atelier 2
 // include("content/php/atelier2a/selection.php");

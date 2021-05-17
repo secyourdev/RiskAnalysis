@@ -14,7 +14,7 @@ function doc_create(){
   //atelier 1
   include("content/php/atelier1a/selection.php");
   include("content/php/atelier1b/selection.php");
-  // include("content/php/atelier1c/selection.php");
+  include("content/php/atelier1c/selection.php");
   // include("content/php/atelier1d/selection.php");
   // //atelier 2
   // include("content/php/atelier2a/selection.php");
@@ -41,11 +41,22 @@ function doc_create(){
   //$a_utilisateur=$result_grp_user
   //$h_raci =
   ////tableaux
+
+  ///atelier1*************************************************************************
+  //1.a//////////////////////////////////////////////////////////
   $tab_acteurs = genere_tableau_rapport($rq_tab_acteurs);
   $tab_raci = genere_tableau_rapport($rq_tab_raci);
+
+  //1.b/////////////////////////////////////////////////////////
   $tab_vm = genere_tableau_rapport($rq_vm_tab);
   $tab_biens = genere_tableau_rapport($rq_biens_tab);
   $tab_mission = genere_tableau_rapport($rq_mission_tab);
+
+  //1.c/////////////////////////////////////////////////////////////
+
+  $tab_echelle = genere_tableau_rapport($rq_echelle_tab);
+  $tab_niveau  = genere_tableau_rapport($rq_niveau_tab);
+
 
   ////inclusion tableaux
 
@@ -54,6 +65,8 @@ function doc_create(){
   $template->setComplexBlock('j_valeur_metier', $tab_vm);
   $template->setComplexBlock('k_bien_support', $tab_biens);
   $template->setComplexBlock('i_mission', $tab_mission);
+  $template->setComplexBlock('da_echelle', $tab_echelle);
+  $template->setComplexBlock('da_niveau', $tab_niveau);
 
 
   /////sauvegarder fichier
