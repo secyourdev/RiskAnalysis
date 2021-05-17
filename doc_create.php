@@ -19,7 +19,7 @@ function doc_create(){
   // //atelier 2
   include("content/php/atelier2a/selection.php");
   // include("content/php/atelier2b/selection.php");
-  // include("content/php/atelier2c/selection.php");
+  include("content/php/atelier2c/selection.php");
   // //atelier 3
   // include("content/php/atelier3a/selection.php");
   // include("content/php/atelier3b/selection.php");
@@ -64,6 +64,13 @@ function doc_create(){
   ///atelier2*******************************************************************************
   //2.a/////////////////////////////////////////////////////////////////
   $tab_srov = genere_tableau_rapport($rq_srov_tab);
+  $tab_srov3 = genere_tableau_rapport($rq_srov3_tab);
+
+
+  //2.b///////////////////////////////////////////////////////////////
+//TO DO SYS DYN
+
+//2.c///////////////////////////
 
 
   ////inclusion tableaux
@@ -78,6 +85,7 @@ function doc_create(){
   $template->setComplexBlock('n_socle_de_securite', $tab_socle_sec);
   $template->setComplexBlock('o_regle', $tab_regle);
   $template->setComplexBlock('p_srov1', $tab_srov);
+  $template->setComplexBlock('p_srov3', $tab_srov3);
 
 
   /////sauvegarder fichier
