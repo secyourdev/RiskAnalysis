@@ -101,7 +101,7 @@ function genere_tableau_rapport($rq){
 ////////////////////////////////////////////////////////////////////////////////
 //fonction générant les tableaux dis 'dynamique' (avec case de couleur)
 //Tableau atelier 1c
-function tab_dyn1c_3b($rq){
+function tab_dyn1c_3b_4b($rq){
 
     $array = mysqli_fetch_all($rq,MYSQLI_NUM);
            //style *****************************************************************

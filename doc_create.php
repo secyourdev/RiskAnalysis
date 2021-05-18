@@ -25,12 +25,12 @@ function doc_create(){
   include("content/php/atelier3b/selection.php");
   include("content/php/atelier3c/selection.php");
   // //atelier 4
-  // include("/RiskAnalysis/content/php/atelier4a/selection.php");
-  // include("/RiskAnalysis/content/php/atelier4b/selection.php");
+  // include("content/php/atelier4a/selection.php");
+  include("content/php/atelier4b/selection.php");
   // //atelier 5
-  // include("/RiskAnalysis/content/php/atelier5a/selection.php");
-  // include("/RiskAnalysis/content/php/atelier5b/selection.php");
-  // include("/RiskAnalysis/content/php/atelier5c/selection.php");
+  // include("content/php/atelier5a/selection.php");
+  // include("content/php/atelier5b/selection.php");
+  // include("content/php/atelier5c/selection.php");
   ////////////////////////////////////////////////////////////////////////////////
   //include
   include("tab_create.php");
@@ -57,7 +57,7 @@ function doc_create(){
   $tab_echelle = genere_tableau_rapport($rq_echelle_tab);
   $tab_niveau  = genere_tableau_rapport($rq_niveau_tab);
   /*tab dynamiques***********************************/
-  $tab_evred = tab_dyn1c_3b($rq_evred_tab);
+  $tab_evred = tab_dyn1c_3b_4b($rq_evred_tab);
 
   //1.d///////////////////////////////////////////////////////////////
   $tab_socle_sec = genere_tableau_rapport($rq_socle_sec_tab);
@@ -81,10 +81,14 @@ function doc_create(){
 
   //3.b //////////////////////////////////////
 
-  $tab_cidt = tab_dyn1c_3b($rq_cidt_tab);
+  $tab_cidt = tab_dyn1c_3b_4b($rq_cidt_tab);
 
   //3.c////////////////////////////////////////////////
   $tab_partie2 = tab_dyn2b_3a_3c($rq_partie2_tab);
+
+  ///atelier 4*************************************************************
+  //4.b/////////////////////////////////////////////////
+  $tab_eval_vrai = tab_dyn1c_3b_4b($rq_eval_vrai_tab);
 
 
   ////inclusion tableaux
@@ -106,6 +110,7 @@ function doc_create(){
   $template->setComplexBlock('r_partie_prenante2', $tab_partie2);
 
   $template->setComplexBlock('m_evenement_redoute2', $tab_cidt);
+  $template->setComplexBlock('eval_vrai', $tab_eval_vrai);
 
 
   /////sauvegarder fichier
