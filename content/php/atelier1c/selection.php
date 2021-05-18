@@ -34,5 +34,9 @@ $rq_echelle_tab = mysqli_query($connect, $rq_echelle);
 $rq_niveau = "SELECT valeur_niveau AS 'Valeur du niveau', description_niveau AS 'Description du niveau' FROM DA_niveau WHERE id_projet = $getid_projet";
 $rq_niveau_tab = mysqli_query($connect, $rq_niveau);
 
+$rq_evred = "SELECT nom_valeur_metier AS 'Valeur métier', nom_evenement_redoute AS 'Nom de l''événement redouté', description_evenement_redoute AS 'Description de l''événement redouté', impact AS 'Impacts', confidentialite AS 'Confidentialité', integrite AS 'Intégrité',disponibilite AS 'Disponibilité', tracabilite AS 'Traçabilité', niveau_de_gravite AS 'Gravité' FROM M_evenement_redoute INNER JOIN J_valeur_metier on M_evenement_redoute.id_valeur_metier = J_valeur_metier.id_valeur_metier WHERE M_evenement_redoute.id_projet = $getid_projet";
+$rq_evred_tab = mysqli_query($connect, $rq_evred);
+
+
 
 ?>
