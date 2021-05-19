@@ -51,7 +51,7 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
     <script src="content/vendor/sheet-js/xlsx.full.min.js"></script>
     <script src="content/vendor/sheet-js/FileSaver.js"></script>
-    
+
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">

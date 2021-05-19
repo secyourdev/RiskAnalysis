@@ -82,6 +82,7 @@ function doc_create(){
   //3.b //////////////////////////////////////
 
   $tab_cidt = tab_dyn1c_3b_4b($rq_cidt_tab);
+  $tab_srov4 = genere_tableau_rapport($rq_srov4_tab);
 
   //3.c////////////////////////////////////////////////
   $tab_partie2 = tab_dyn2b_3a_3c($rq_partie2_tab);
@@ -108,7 +109,7 @@ function doc_create(){
   $template->setComplexBlock('m_evenement_redoute', $tab_evred);
   $template->setComplexBlock('r_partie_prenante1', $tab_partie);
   $template->setComplexBlock('r_partie_prenante2', $tab_partie2);
-
+  $template->setComplexBlock('p_srov4', $tab_srov4);
   $template->setComplexBlock('m_evenement_redoute2', $tab_cidt);
   $template->setComplexBlock('eval_vrai', $tab_eval_vrai);
 

@@ -77,3 +77,6 @@ $result_scenario_op = mysqli_query($connect, $query_scenario_op);
 
 $rq_cidt = "SELECT nom_valeur_metier AS 'Valeur métier', nom_evenement_redoute AS 'Nom de l''événement redouté', description_evenement_redoute AS 'Description de l''événement redouté', impact AS 'Impacts', confidentialite AS 'C', integrite AS 'I',disponibilite AS 'D', tracabilite AS 'T', niveau_de_gravite AS 'Gravité' FROM M_evenement_redoute INNER JOIN J_valeur_metier on M_evenement_redoute.id_valeur_metier = J_valeur_metier.id_valeur_metier WHERE M_evenement_redoute.id_projet = $getid_projet";
 $rq_cidt_tab = mysqli_query($connect, $rq_cidt);
+
+$rq_srov4 = "SELECT type_d_attaquant_source_de_risque AS 'Type d''attaquant', profil_de_l_attaquant_source_de_risque AS 'Profile de l''attaquant', description_source_de_risque AS 'Description source de risque', objectif_vise AS 'Objectifs visés', description_objectif_vise AS 'Description de l''objectif' FROM P_SROV WHERE id_projet = $getid_projet AND id_atelier = '3b'";
+$rq_srov4_tab = mysqli_query($connect, $rq_srov4);
