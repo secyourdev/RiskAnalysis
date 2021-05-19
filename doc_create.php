@@ -29,8 +29,8 @@ function doc_create(){
   include("content/php/atelier4b/selection.php");
   // //atelier 5
   // include("content/php/atelier5a/selection.php");
-  // include("content/php/atelier5b/selection.php");
-  // include("content/php/atelier5c/selection.php");
+  include("content/php/atelier5b/selection.php");
+  include("content/php/atelier5c/selection.php");
   ////////////////////////////////////////////////////////////////////////////////
   //include
   include("tab_create.php");
@@ -90,7 +90,11 @@ function doc_create(){
   //4.b/////////////////////////////////////////////////
   $tab_eval_vrai = tab_dyn1c_3b_4b($rq_eval_vrai_tab);
 
-
+  ///atelier 5*************************************************************
+  //5.b/////////////////////////////////////////////////
+  $tab_plan_amelio = genere_tableau_rapport($rq_plan_amelio_tab);
+  //5.c/////////////////////////////////////////////////
+  $tab_eval_risk_resi = genere_tableau_rapport($qr_eval_risk_resi_tab);
   ////inclusion tableaux
 
   $template->setComplexBlock('acteurs', $tab_acteurs);
@@ -111,7 +115,8 @@ function doc_create(){
 
   $template->setComplexBlock('m_evenement_redoute2', $tab_cidt);
   $template->setComplexBlock('eval_vrai', $tab_eval_vrai);
-
+  $template->setComplexBlock('za_traitement_de_securite', $tab_plan_amelio);
+  $template->setComplexBlock('x_revaluation_du_risque', $tab_eval_risk_resi);
 
   /////sauvegarder fichier
 

@@ -25,7 +25,7 @@ include("content/php/atelier2c/selection.php");
 // include("content/php/atelier4b/selection.php");
 // //atelier 5
 // include("content/php/atelier5a/selection.php");
-// include("content/php/atelier5b/selection.php");
+ include("content/php/atelier5b/selection.php");
 // include("content/php/atelier5c/selection.php");
 ////////////////////////////////////////////////////////////////////////////////
 
