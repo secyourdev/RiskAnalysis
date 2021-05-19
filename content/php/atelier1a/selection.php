@@ -5,12 +5,6 @@ $getid_projet = $_SESSION['id_projet'];
 $query = "SELECT DISTINCT id_utilisateur,nom,prenom,poste FROM `H_RACI` NATURAL JOIN A_utilisateur WHERE id_projet =$getid_projet ORDER BY id_utilisateur ASC";
 $acteur_choisi = mysqli_query($connect, $query);
 
-$rq_acteurs = "SELECT DISTINCT nom,prenom,poste FROM `H_RACI` NATURAL JOIN A_utilisateur WHERE id_projet =$getid_projet ORDER BY id_utilisateur ASC";
-$rq_tab_acteurs = mysqli_query($connect, $rq_acteurs);
-
-$rq_raci = "SELECT DISTINCT nom, prenom, id_atelier, ecriture FROM H_RACI NATURAL JOIN A_utilisateur WHERE id_projet=$getid_projet";
-$rq_tab_raci = mysqli_query($connect, $rq_raci);
-
 
 $query2 = "SELECT DISTINCT id_utilisateur FROM `H_RACI` NATURAL JOIN A_utilisateur WHERE id_projet =$getid_projet ORDER BY id_utilisateur ASC";
 $RACI_id_user = mysqli_query($connect, $query2);
@@ -30,4 +24,14 @@ $query_RACI_user = "SELECT id_utilisateur,nom,prenom FROM C_impliquer NATURAL JO
 $result_RACI_user  = mysqli_query($connect, $query_RACI_user);
 $query_resp_risque_residuel= "SELECT DISTINCT id_utilisateur,nom,prenom FROM `H_RACI` NATURAL JOIN A_utilisateur WHERE id_projet =$getid_projet ORDER BY id_utilisateur ASC";
 $result_risques_residuels  = mysqli_query($connect, $query_resp_risque_residuel);
+
+//Requêtes relatives à la génération de rapport
+
+$rq_acteurs = "SELECT DISTINCT nom AS 'Nom',prenom AS 'Prénom',poste AS 'Poste' FROM `H_RACI` NATURAL JOIN A_utilisateur WHERE id_projet =$getid_projet ORDER BY id_utilisateur ASC";
+$rq_tab_acteurs = mysqli_query($connect, $rq_acteurs);
+
+$rq_raci = "SELECT DISTINCT nom AS 'Nom', prenom AS 'Prénom', CONCAT(id_atelier,' ',nom_atelier) AS 'Atelier', ecriture AS 'Écriture' FROM H_RACI NATURAL JOIN A_utilisateur NATURAL JOIN G_atelier WHERE id_projet=$getid_projet";
+$rq_tab_raci = mysqli_query($connect, $rq_raci);
+
+
 ?>

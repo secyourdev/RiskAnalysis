@@ -21,10 +21,10 @@ $resultbien = mysqli_query($connect, $querybien);
 $querymission = "SELECT DISTINCT I_mission.id_mission, I_mission.nom_mission, I_mission.description_mission FROM I_mission WHERE id_projet=$getid_projet";
 $resultmission = mysqli_query($connect, $querymission);
 
-$rq_vm = "SELECT nom_valeur_metier, nature_valeur_metier, description_valeur_metier FROM J_valeur_metier WHERE id_projet=$getid_projet";
+$rq_vm = "SELECT nom_valeur_metier AS 'Valeur Métier', nature_valeur_metier AS 'Nature', description_valeur_metier AS 'Description' FROM J_valeur_metier WHERE id_projet=$getid_projet";
 $rq_vm_tab = mysqli_query($connect, $rq_vm);
 
-$rq_biens = "SELECT nom_bien_support, description_bien_support FROM K_bien_support WHERE id_projet=$getid_projet";
+$rq_biens = "SELECT nom_bien_support AS 'Bien support', description_bien_support AS 'Description' FROM K_bien_support WHERE id_projet=$getid_projet";
 $rq_biens_tab =  mysqli_query($connect, $rq_biens);
 
 $rq_mission = "SELECT nom_mission AS 'Nom de la mission', description_mission AS 'Description de la mission', responsable AS 'Responsable', nom_valeur_metier AS 'Valeur Métier', nom_responsable_vm AS 'Responsable de la valeur métier', nom_bien_support AS 'Bien Support', nom_responsable_bs AS 'Responsable du bien support' FROM I_mission NATURAL JOIN J_valeur_metier NATURAL JOIN K_bien_support NATURAL JOIN L_couple_VMBS WHERE id_projet=$getid_projet";
