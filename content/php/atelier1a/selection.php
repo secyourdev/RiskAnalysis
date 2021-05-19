@@ -5,6 +5,7 @@ $getid_projet = $_SESSION['id_projet'];
 $query = "SELECT DISTINCT id_utilisateur,nom,prenom,poste FROM `H_RACI` NATURAL JOIN A_utilisateur WHERE id_projet =$getid_projet ORDER BY id_utilisateur ASC";
 $acteur_choisi = mysqli_query($connect, $query);
 
+<<<<<<< HEAD
 $rq_acteurs = "SELECT DISTINCT nom,prenom,poste FROM `H_RACI` NATURAL JOIN A_utilisateur WHERE id_projet =$getid_projet ORDER BY id_utilisateur ASC";
 $rq_tab_acteurs = mysqli_query($connect, $rq_acteurs);
 
@@ -12,6 +13,8 @@ $rq_raci = "SELECT DISTINCT nom, prenom, id_atelier, ecriture FROM H_RACI NATURA
 $rq_tab_raci = mysqli_query($connect, $rq_raci);
 
 
+=======
+>>>>>>> origin/Carlos
 $query2 = "SELECT DISTINCT id_utilisateur FROM `H_RACI` NATURAL JOIN A_utilisateur WHERE id_projet =$getid_projet ORDER BY id_utilisateur ASC";
 $RACI_id_user = mysqli_query($connect, $query2);
 
@@ -30,4 +33,8 @@ $query_RACI_user = "SELECT id_utilisateur,nom,prenom FROM C_impliquer NATURAL JO
 $result_RACI_user  = mysqli_query($connect, $query_RACI_user);
 $query_resp_risque_residuel= "SELECT DISTINCT id_utilisateur,nom,prenom FROM `H_RACI` NATURAL JOIN A_utilisateur WHERE id_projet =$getid_projet ORDER BY id_utilisateur ASC";
 $result_risques_residuels  = mysqli_query($connect, $query_resp_risque_residuel);
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> origin/Carlos

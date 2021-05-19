@@ -291,6 +291,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   </div>
 
                   <!-- Area Card -->
+<<<<<<< HEAD
                   <div id="scenarios_strategiques" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
@@ -339,6 +340,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                   </div>
 
                   <!-- Area Card -->
+=======
+>>>>>>> origin/Carlos
                   <div id="mesure_de_securite" class="col-xl-12 col-lg-12">
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
@@ -362,8 +365,12 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <tr>
                                 <th>ID</th>
                                 <th>Partie prenante</th>
+<<<<<<< HEAD
                                 <th>ID Risque</th>
                                 <th>Chemin d'attaque stratégique</th>
+=======
+                                <th>N° de risque</th>
+>>>>>>> origin/Carlos
                                 <th>Nom mesure de sécurité</th>
                                 <th>Description mesure de sécurité</th>
                               </tr>
@@ -376,7 +383,10 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <td>' . $row["id_mesure"] . '</td>
                         <td>' . $row["nom_partie_prenante"] . '</td>
                         <td>' . $row["id_risque"] . '</td>
+<<<<<<< HEAD
                         <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
+=======
+>>>>>>> origin/Carlos
                         <td>' . $row["nom_mesure"] . '</td>
                         <td>' . $row["description_mesure"] . '</td>
                         </tr>
@@ -561,7 +571,11 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             <footer id="footer" class="sticky-footer bg-white">
               <div class="container my-auto">
                 <div class="copyright text-center my-auto">
+<<<<<<< HEAD
                   <span>Copyright &copy; CYBER RISK MANAGER 2020 by SecYourDev</span>
+=======
+                  <span>Copyright &copy; CYBER RISK MANAGER 2021 by SecYourDev</span>
+>>>>>>> origin/Carlos
                 </div>
               </div>
             </footer>
@@ -600,6 +614,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                 <form method="post" action="content/php/atelier3c/ajout_mesure.php" class="user" id="formpp1">
                   <fieldset>
                     <div class="row">
+<<<<<<< HEAD
                       <div class="form-group col-6">
                         <label for="partieprenante1">Partie prenante</label>
                         <select class="form-control" id="partieprenante1" , name="partieprenante1">
@@ -623,15 +638,53 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       </div>
 
                       <div class="form-group col-6">
+=======
+                      <div class="form-group col-12">
+                        <label for="partie_prenante">Partie Prenante</label>
+                        <select class="form-control" id="partie_prenante" name="partie_prenante">
+                        <option value="" selected>...</option>
+                        <?php
+                        while ($row = mysqli_fetch_array($result_partie_prenante2)) //selection.php
+                        {
+                          echo '
+                          <option value="'.$row["id_partie_prenante"].'">'.$row["nom_partie_prenante"].'</option>
+                        ';
+                        }
+                        ?>
+                        </select>
+                      </div>
+
+                      <div class="form-group col-12">
+                        <label for="chemins">Chemin d'attaque stratégique</label>
+                        <select class="form-control" id="chemins" name="chemins">
+                        <option value="" selected>...</option>
+                        <?php
+                        while ($row = mysqli_fetch_array($result_chemin)) //selection.php
+                        {
+                          echo '
+                          <option value="'.$row["id_chemin_d_attaque_strategique"].'">'.$row["id_risque"].' - '.$row["id_chemin"].' - '.$row["nom_chemin_d_attaque_strategique"].'</option>
+                        ';
+                        }
+                        ?>
+                        </select>
+                      </div>
+
+                      <div class="form-group col-12">
+>>>>>>> origin/Carlos
                         <label class="titre_input" for="nommesure">Nom de la mesure de sécurité</label>
                         <input type="text" class="perso_form shadow-none form-control form-control-user" name="nommesure" id="nommesure" placeholder="Nom de la mesure de sécurité" required>
                       </div>
 
+<<<<<<< HEAD
                       <div class="form-group col-6">
+=======
+                      <div class="form-group col-12">
+>>>>>>> origin/Carlos
                         <label for="descriptionmesure">Description de la mesure de sécurité</label>
                         <textarea class="form-control perso_text_area" name="descriptionmesure" id="descriptionmesure" rows="3"></textarea>
                       </div>
                     </div>
+<<<<<<< HEAD
                     
                   </fieldset>
               </div>
@@ -640,6 +693,15 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                 <input type="submit" name="validermesure1" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
               </div>
               </form>
+=======
+                    <!-- bouton Ajouter -->
+                    <div class="modal-footer perso_middle_modal_footer">
+                      <input type="submit" name="validermesure1" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+>>>>>>> origin/Carlos
             </div>
           </div>
         </div>

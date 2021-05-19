@@ -459,10 +459,18 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <tr>
                                 <th>ID</th>
                                 <th>ID du risque</th>
+<<<<<<< HEAD
                                 <th>Nom du scénario stratégique</th>
                                 <th>Chemin d'attaque stratégique</th>
                                 <th>Description</th>
                                 <th>Partie prenante</th>
+=======
+                                <th>ID du chemin</th>
+                                <th>Nom du scénario stratégique</th>
+                                <th>Chemin d'attaque stratégique</th>
+                                <th>Description</th>
+                                <th>Gravité</th>
+>>>>>>> origin/Carlos
                               </tr>
                             </thead>
                             <tbody>
@@ -472,10 +480,18 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 <tr>
                                 <td>' . $row["id_chemin_d_attaque_strategique"] . '</td>
                                 <td>' . $row["id_risque"] . '</td>
+<<<<<<< HEAD
                                 <td>' . $row["nom_scenario_strategique"] . '</td>
                                 <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
                                 <td>' . $row["description_chemin_d_attaque_strategique"] . '</td>
                                 <td>' . $row["nom_partie_prenante"] . '</td>
+=======
+                                <td>' . $row["id_chemin"] . '</td>
+                                <td>' . $row["nom_scenario_strategique"] . '</td>
+                                <td>' . $row["nom_chemin_d_attaque_strategique"] . '</td>
+                                <td>' . $row["description_chemin_d_attaque_strategique"] . '</td>
+                                <td>' . $row["niveau_de_gravite"] . '</td>
+>>>>>>> origin/Carlos
                                 </tr>
                                 ';
                               }
@@ -500,6 +516,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             }
                         ?>
                         </div>
+<<<<<<< HEAD
 
                         <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
                         ?>
@@ -520,6 +537,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                                 }
                               }                          
                         ?>
+=======
+>>>>>>> origin/Carlos
                       </div>
                     </div>
                   </div>
@@ -532,7 +551,11 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             <footer id="footer" class="sticky-footer bg-white">
               <div class="container my-auto">
                 <div class="copyright text-center my-auto">
+<<<<<<< HEAD
                   <span>Copyright &copy; CYBER RISK MANAGER 2020 by SecYourDev</span>
+=======
+                  <span>Copyright &copy; CYBER RISK MANAGER 2021 by SecYourDev</span>
+>>>>>>> origin/Carlos
                 </div>
               </div>
             </footer>
@@ -644,11 +667,26 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
       </div>
       <div class="modal-body perso_modal_body">
         <div class="form-group col-12">
+<<<<<<< HEAD
           <label for="id_choix_value_schema">Valeur</label>
+=======
+          <div id="button_EI_IR" class="row perso_no_margin">
+            <div class="card-header perso_header_center col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+              <input type="radio" id="EI_radio_button" name="radio" value="EI"><label for="EI_radio_button">EI</label>
+            </div>
+
+            <div class="card-header perso_header_center col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <input type="radio" id="ER_radio_button" name="radio" value="ER"><label for="ER_radio_button">ER</label>
+            </div>
+          </div>
+
+          <label id='id_choix_value_schema_label' for="id_choix_value_schema">Valeur</label>
+>>>>>>> origin/Carlos
           <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_conteneur" id="id_conteneur" required>
           <select class="form-control" name="id_choix_value_schema" id="id_choix_value_schema">
             <option value="" selected>...</option>
           </select>
+<<<<<<< HEAD
           
           <label class='id_label_choix_multiple_value_schema' for="id_choix_multiple_value_schema">Chemin</label>
           <select class="form-control" id="id_choix_multiple_value_schema" name="id_choix_multiple_value_schema[]" multiple="multiple">
@@ -704,6 +742,21 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
 
               
           </script>
+=======
+
+          <label id='id_chemin_value_schema_label' for="id_chemin_value_schema">Chemin</label>
+          <select class="form-control" id="id_chemin_value_schema" name="id_chemin_value_schema">
+            <option value="C1">Chemin 1</option>
+            <option value="C2">Chemin 2</option>
+            <option value="C3">Chemin 3</option>
+            <option value="C4">Chemin 4</option>
+            <option value="C5">Chemin 5</option>
+            <option value="C6">Chemin 6</option>
+            <option value="C7">Chemin 7</option>
+            <option value="C8">Chemin 8</option>
+            <option value="C9">Chemin 9</option>
+          </select>
+>>>>>>> origin/Carlos
         </div>
 
         <div class="modal-footer perso_middle_modal_footer">
@@ -713,6 +766,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
     </div>
   </div>
 </div>
+<<<<<<< HEAD
 <!---------------------------------------------------------------------------------------------------------------- 
 ----------------------------------- modal Ajout d'un chemin d'attaque stratégique --------------------------------
 --------------------------------------------------------------------------------------------------------------- -->
@@ -783,6 +837,8 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             </div>
           </div>
         </div>
+=======
+>>>>>>> origin/Carlos
 <?php
 }
 ?>

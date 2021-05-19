@@ -388,6 +388,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             <tbody>
                               <?php
                               while ($row = mysqli_fetch_array($result_pacs)) {
+<<<<<<< HEAD
                                 echo '
                               <tr>
                               <td>' . $row["id_traitement_de_securite"] . '</td>
@@ -403,6 +404,25 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <td>' . $row["statut"] . '</td>
                               </tr>
                               ';
+=======
+                                if($row["id_traitement_de_securite"]!=null){
+                                    echo '
+                                  <tr>
+                                  <td>' . $row["id_traitement_de_securite"] . '</td>
+                                  <td>' . $row["nom_mesure"] . '</td>
+                                  <td>' . $row["description_mesure"] . '</td>
+                                  <td>' . $row["Y_id_atelier"] . '</td>
+                                  <td>' . $row["id_risque"] . '</td>
+                                  <td>' . $row["principe_de_securite"] . '</td>
+                                  <td>' . $row["responsable"] . '</td>
+                                  <td>' . $row["difficulte_traitement_de_securite"] . '</td>
+                                  <td>' . $row["cout_traitement_de_securite"] . '</td>
+                                  <td>' . $row["date_traitement_de_securite"] . '</td>
+                                  <td>' . $row["statut"] . '</td>
+                                  </tr>
+                                  ';
+                                }
+>>>>>>> origin/Carlos
                               }
                               ?>
                             </tbody>
@@ -460,7 +480,11 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
               <footer id="footer" class="sticky-footer bg-white">
                 <div class="container my-auto">
                   <div class="copyright text-center my-auto">
+<<<<<<< HEAD
                     <span>Copyright &copy; CYBER RISK MANAGER 2020 by SecYourDev</span>
+=======
+                    <span>Copyright &copy; CYBER RISK MANAGER 2021 by SecYourDev</span>
+>>>>>>> origin/Carlos
                   </div>
                 </div>
               </footer>
@@ -507,7 +531,11 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             while ($row = mysqli_fetch_array($resultchemin)) 
                             {
                               echo '
+<<<<<<< HEAD
                         <option id="id_chemin" value="' . $row["id_chemin_d_attaque_strategique"] . '">'.$row["id_risque"].'-'.$row["nom_chemin_d_attaque_strategique"].'</option>
+=======
+                        <option id="id_chemin" value="'. $row["id_chemin_d_attaque_strategique"].'">'.$row["id_risque"].' - '.$row["id_chemin"].' - '.$row["nom_chemin_d_attaque_strategique"].'</option>
+>>>>>>> origin/Carlos
                         ';
                             }
                             ?>
@@ -522,9 +550,13 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                           <label for="descriptionmesure">Description de la mesure de sécurité</label>
                           <textarea class="form-control perso_text_area" name="descriptionmesure" id="descriptionmesure" rows="3"></textarea>
                         </div>
+<<<<<<< HEAD
 
                       </div>
 
+=======
+                      </div>
+>>>>>>> origin/Carlos
                       <!-- bouton Valider -->
                       <div class="modal-footer perso_middle_modal_footer">
                         <input type="submit" name="ajouterregle" value="Ajouter" class="btn perso_btn_primary shadow-none"></input>

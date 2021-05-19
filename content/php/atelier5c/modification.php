@@ -9,14 +9,20 @@ $input = filter_input_array(INPUT_POST);
 $results["error"] = false;
 $results["message"] = [];
 
+<<<<<<< HEAD
 // print $input["id_socle_securite"];
 
+=======
+>>>>>>> origin/Carlos
 if ($input["action"] === 'edit') {
 
     $nom_risque_residuelle = mysqli_real_escape_string($connect, $input['nom_risque_residuelle']);
     $description_risque_residuelle = mysqli_real_escape_string($connect, $input['description_risque_residuelle']);
     $vraisemblance_residuelle = mysqli_real_escape_string($connect, $input['vraisemblance_residuelle']);
+<<<<<<< HEAD
     // $risque_residuel = mysqli_real_escape_string($connect, $input['risque_residuel']);
+=======
+>>>>>>> origin/Carlos
     $gestion_risque_residuelle = mysqli_real_escape_string($connect, $input['gestion_risque_residuelle']);
 
 
@@ -53,6 +59,7 @@ if ($input["action"] === 'edit') {
     }
 }
 
+<<<<<<< HEAD
 // if ($input["action"] === 'delete') {
 //     $query =
 //         "DELETE FROM N_socle_de_securite 
@@ -63,4 +70,6 @@ if ($input["action"] === 'edit') {
 // }
 
 
+=======
+>>>>>>> origin/Carlos
 echo json_encode($input);

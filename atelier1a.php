@@ -51,14 +51,21 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
     <script src="content/vendor/sheet-js/xlsx.full.min.js"></script>
     <script src="content/vendor/sheet-js/FileSaver.js"></script>
+<<<<<<< HEAD
     
+=======
+>>>>>>> origin/Carlos
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
 	<link rel="icon" href="content/img/logo_cyber_risk_manager.png" type="image/png">
 </head>
 
+<<<<<<< HEAD
 <?php
+=======
+<?php 
+>>>>>>> origin/Carlos
 if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSION['id_utilisateur'])
 {
   if(isset($userdroit['ecriture'])||$userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
@@ -228,8 +235,13 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         <!--NOM ETUDE-->
                                         <div class="form-group">
                                             <label class="titre_input" for="nom_etude">Nom</label>
+<<<<<<< HEAD
                                             <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
                                             ?>
+=======
+                                            <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){ 
+                                            ?>        
+>>>>>>> origin/Carlos
                                                     <input type="text"
                                                         class="perso_form shadow-none form-control form-control-user"
                                                         id="nom_etude" placeholder="Nom" required>
@@ -247,7 +259,11 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         </div>
                                             <?php
                                                     }
+<<<<<<< HEAD
                                                     else {
+=======
+                                                    else { 
+>>>>>>> origin/Carlos
                                             ?>
                                                         </br>
                                                         <label id="nom_etude" class="no_modification"></label>
@@ -255,17 +271,29 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                             <?php
                                                     }
                                                 }
+<<<<<<< HEAD
                                             ?>
+=======
+                                            ?>                   
+>>>>>>> origin/Carlos
 
                                         <!--OBJECTIF ETUDE-->
                                         <div class="form-group">
                                             <label class="titre_textarea" for="objectif_atteindre">Objectif à atteindre</label>
+<<<<<<< HEAD
                                             <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
+=======
+                                            <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){         
+>>>>>>> origin/Carlos
                                             ?>
                                                 <textarea class="form-control perso_text_area" id="objectif_atteindre" rows="3"></textarea>
                                         </div>
                                             <?php
+<<<<<<< HEAD
                                                 }
+=======
+                                                } 
+>>>>>>> origin/Carlos
                                                 else if(isset($userdroit['ecriture'])){
                                                     if($userdroit['ecriture']=='Réalisation'){
                                             ?>
@@ -273,7 +301,11 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         </div>
                                             <?php
                                                     }
+<<<<<<< HEAD
                                                     else {
+=======
+                                                    else { 
+>>>>>>> origin/Carlos
                                             ?>
                                                         </br>
                                                         <label id="objectif_atteindre" class="no_modification"></label>
@@ -281,20 +313,34 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                             <?php
                                                     }
                                                 }
+<<<<<<< HEAD
                                             ?>
                                         <!--CADRE TEMPOREL ETUDE-->
+=======
+                                            ?>                    
+                                        <!--CADRE TEMPOREL ETUDE-->                            
+>>>>>>> origin/Carlos
                                         <div class="form-group">
                                             <label class="titre_input" for="cadre_temporel">Cadre Temporel</label>
                                             </br>
                                             <!-- Etape 1 -->
                                             <div class="container ">
                                                 <form>
+<<<<<<< HEAD
                                                     <div class="row ">
                                                         <label class="titre_input" for="cadre_temporel">Atelier 1 : </label>
                                                         <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
                                                         ?>
                                                         <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px"
                                                                     id="cadre_temporel" placeholder="Cadre temporel" required>
+=======
+                                                    <div class="row ">  
+                                                        <label class="titre_input" for="cadre_temporel">Atelier 1 : </label>
+                                                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
+                                                        ?>
+                                                        <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px" 
+                                                                    id="cadre_temporel" placeholder="Cadre temporel" required>                                                           
+>>>>>>> origin/Carlos
                                                     </div>
                                                         <?php
                                                             }
@@ -302,11 +348,19 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                                 if($userdroit['ecriture']=='Réalisation'){
                                                         ?>
                                                                     <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px"
+<<<<<<< HEAD
                                                                     id="cadre_temporel" placeholder="Cadre temporel" required>
                                                     </div>
                                                         <?php
                                                                 }
                                                                 else {
+=======
+                                                                    id="cadre_temporel" placeholder="Cadre temporel" required>                                                                
+                                                    </div>
+                                                        <?php
+                                                                }
+                                                                else { 
+>>>>>>> origin/Carlos
                                                         ?>
                                                         </br>
                                                         <label id="cadre_temporel" class="no_modification"></label>
@@ -315,18 +369,28 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                                 }
                                                             }
                                                         ?>
+<<<<<<< HEAD
                                                     <div class="row ">
                                                         <label class="titre_input" for="cadre_temporel">Atelier 2 : </label>
                                                         <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
                                                         ?>
                                                             <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px"
                                                                     id="cadre_temporel_etape_2" placeholder="Cadre temporel" required>
+=======
+                                                    <div class="row ">  
+                                                        <label class="titre_input" for="cadre_temporel">Atelier 2 : </label>
+                                                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
+                                                        ?>
+                                                            <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px" 
+                                                                    id="cadre_temporel_etape_2" placeholder="Cadre temporel" required>                                                           
+>>>>>>> origin/Carlos
                                                     </div>
                                                         <?php
                                                             }
                                                             else if(isset($userdroit['ecriture'])){
                                                                 if($userdroit['ecriture']=='Réalisation'){
                                                         ?>
+<<<<<<< HEAD
                                                                     <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px"
                                                                     id="cadre_temporel_etape_2" placeholder="Cadre temporel" required>
                                                     </div>
@@ -337,16 +401,37 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                         </br>
                                                         <label id="cadre_temporel_etape_2" class="no_modification"></label>
                                                     </div>
+=======
+                                                                    <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px" 
+                                                                    id="cadre_temporel_etape_2" placeholder="Cadre temporel" required>                                                                
+                                                    </div>
+                                            <?php
+                                                    }
+                                                    else { 
+                                            ?>
+                                                        </br>
+                                                        <label id="cadre_temporel_etape_2" class="no_modification"></label>
+                                                    </div>                                       
+>>>>>>> origin/Carlos
                                             <?php
                                                     }
                                                 }
                                             ?>
+<<<<<<< HEAD
                                                     <div class="row ">
                                                         <label class="titre_input" for="cadre_temporel">Atelier 3 : </label>
                                                         <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
                                                         ?>
                                                             <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px"
                                                                     id="cadre_temporel_etape_3" placeholder="Cadre temporel" required>
+=======
+                                                    <div class="row ">  
+                                                        <label class="titre_input" for="cadre_temporel">Atelier 3 : </label>
+                                                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
+                                                        ?>
+                                                            <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px" 
+                                                                    id="cadre_temporel_etape_3" placeholder="Cadre temporel" required>                                                           
+>>>>>>> origin/Carlos
                                                     </div>
                                                         <?php
                                                             }
@@ -354,6 +439,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                                 if($userdroit['ecriture']=='Réalisation'){
                                                         ?>
                                                                     <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px"
+<<<<<<< HEAD
                                                                     id="cadre_temporel_etape_3" placeholder="Cadre temporel" required>
                                                     </div>
                                             <?php
@@ -363,16 +449,36 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                         </br>
                                                         <label id="cadre_temporel_etape_3" class="no_modification"></label>
                                                     </div>
+=======
+                                                                    id="cadre_temporel_etape_3" placeholder="Cadre temporel" required>                                                                
+                                                    </div>
+                                            <?php
+                                                    }
+                                                    else { 
+                                            ?>
+                                                        </br>
+                                                        <label id="cadre_temporel_etape_3" class="no_modification"></label>
+                                                    </div>                                       
+>>>>>>> origin/Carlos
                                             <?php
                                                     }
                                                 }
                                             ?>
+<<<<<<< HEAD
                                                     <div class="row ">
                                                         <label class="titre_input" for="cadre_temporel">Atelier 4 : </label>
                                                         <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
                                                         ?>
                                                             <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px"
                                                                     id="cadre_temporel_etape_4" placeholder="Cadre temporel" required>
+=======
+                                                    <div class="row ">  
+                                                        <label class="titre_input" for="cadre_temporel">Atelier 4 : </label>
+                                                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
+                                                        ?>
+                                                            <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px" 
+                                                                    id="cadre_temporel_etape_4" placeholder="Cadre temporel" required>                                                           
+>>>>>>> origin/Carlos
                                                     </div>
                                                         <?php
                                                             }
@@ -380,6 +486,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                                 if($userdroit['ecriture']=='Réalisation'){
                                                         ?>
                                                                     <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px"
+<<<<<<< HEAD
                                                                     id="cadre_temporel_etape_4" placeholder="Cadre temporel" required>
                                                     </div>
                                             <?php
@@ -389,16 +496,36 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                         </br>
                                                         <label id="cadre_temporel_etape_4" class="no_modification"></label>
                                                     </div>
+=======
+                                                                    id="cadre_temporel_etape_4" placeholder="Cadre temporel" required>                                                                
+                                                    </div>
+                                            <?php
+                                                    }
+                                                    else { 
+                                            ?>
+                                                        </br>
+                                                        <label id="cadre_temporel_etape_4" class="no_modification"></label>
+                                                    </div>                                       
+>>>>>>> origin/Carlos
                                             <?php
                                                     }
                                                 }
                                             ?>
+<<<<<<< HEAD
                                                     <div class="row ">
                                                         <label class="titre_input" for="cadre_temporel">Atelier 5 : </label>
                                                         <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
                                                         ?>
                                                             <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px"
                                                                     id="cadre_temporel_etape_5" placeholder="Cadre temporel" required>
+=======
+                                                    <div class="row ">  
+                                                        <label class="titre_input" for="cadre_temporel">Atelier 5 : </label>
+                                                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
+                                                        ?>
+                                                            <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px" 
+                                                                    id="cadre_temporel_etape_5" placeholder="Cadre temporel" required>                                                           
+>>>>>>> origin/Carlos
                                                     </div>
                                                         <?php
                                                             }
@@ -406,6 +533,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                                 if($userdroit['ecriture']=='Réalisation'){
                                                         ?>
                                                                     <input type="date" class="perso_form shadow-none form-control form-control-user" style="width:150px"
+<<<<<<< HEAD
                                                                     id="cadre_temporel_etape_5" placeholder="Cadre temporel" required>
                                                     </div>
                                             <?php
@@ -415,27 +543,53 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                         </br>
                                                         <label id="cadre_temporel_etape_5" class="no_modification"></label>
                                                     </div>
+=======
+                                                                    id="cadre_temporel_etape_5" placeholder="Cadre temporel" required>                                                                
+                                                    </div>
+                                            <?php
+                                                    }
+                                                    else { 
+                                            ?>
+                                                        </br>
+                                                        <label id="cadre_temporel_etape_5" class="no_modification"></label>
+                                                    </div>                                       
+>>>>>>> origin/Carlos
                                             <?php
                                                     }
                                                 }
                                             ?>
                                                 </form>
                                             </div>
+<<<<<<< HEAD
                                         </div>
 
                                        <!-- Duree des cycles stratégiques et oprétionnels-->
+=======
+                                        </div>  
+
+                                       <!-- Duree des cycles stratégiques et oprétionnels-->                            
+>>>>>>> origin/Carlos
                                        <div class="form-group">
                                             <label class="titre_input" for="duree_cycles">Durée des cycles stratégiques et opérationnels</label>
                                             </br>
                                             <!-- Cycle strategique -->
                                             <div class="container ">
                                                 <form>
+<<<<<<< HEAD
                                                     <div class="row ">
                                                         <label class="titre_input" for="duree_cycles">Durée des cycles stratégiques : </label>
                                                         <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
                                                         ?>
                                                         <input type="text" class="perso_form shadow-none form-control form-control-user" style="width:200px"
                                                                     id="cycle_strategique" placeholder="Durée des cycles stratégiques" required>
+=======
+                                                    <div class="row ">  
+                                                        <label class="titre_input" for="duree_cycles">Durée des cycles stratégiques : </label>
+                                                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
+                                                        ?>
+                                                        <input type="text" class="perso_form shadow-none form-control form-control-user" style="width:200px" 
+                                                                    id="cycle_strategique" placeholder="Durée des cycles stratégiques" required>                                                           
+>>>>>>> origin/Carlos
                                                     </div>
                                                         <?php
                                                             }
@@ -443,11 +597,19 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                                 if($userdroit['ecriture']=='Réalisation'){
                                                         ?>
                                                                     <input type="text" class="perso_form shadow-none form-control form-control-user" style="width:200px"
+<<<<<<< HEAD
                                                                     id="cycle_strategique" placeholder="Durée des cycles stratégiques" required>
                                                     </div>
                                                         <?php
                                                                 }
                                                                 else {
+=======
+                                                                    id="cycle_strategique" placeholder="Durée des cycles stratégiques" required>                                                                
+                                                    </div>
+                                                        <?php
+                                                                }
+                                                                else { 
+>>>>>>> origin/Carlos
                                                         ?>
                                                         </br>
                                                         <label id="cycle_strategique" class="no_modification"></label>
@@ -456,18 +618,28 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                                 }
                                                             }
                                                         ?>
+<<<<<<< HEAD
                                                     <div class="row ">
                                                         <label class="titre_input" for="duree_cycles">Durée des cycles opérationnels : </label>
                                                         <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
                                                         ?>
                                                             <input type="text" class="perso_form shadow-none form-control form-control-user" style="width:200px"
                                                                     id="cycle_operationnel" placeholder="Durée des cycles opérationnels" required>
+=======
+                                                    <div class="row ">  
+                                                        <label class="titre_input" for="duree_cycles">Durée des cycles opérationnels : </label>
+                                                        <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
+                                                        ?>
+                                                            <input type="text" class="perso_form shadow-none form-control form-control-user" style="width:200px" 
+                                                                    id="cycle_operationnel" placeholder="Durée des cycles opérationnels" required>                                                           
+>>>>>>> origin/Carlos
                                                     </div>
                                                         <?php
                                                             }
                                                             else if(isset($userdroit['ecriture'])){
                                                                 if($userdroit['ecriture']=='Réalisation'){
                                                         ?>
+<<<<<<< HEAD
                                                                     <input type="text" class="perso_form shadow-none form-control form-control-user" style="width:200px"
                                                                     id="cycle_operationnel" placeholder="Durée des cycles opérationnels" required>
                                                     </div>
@@ -485,11 +657,34 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                 </form>
                                             </div>
                                         </div>
+=======
+                                                                    <input type="text" class="perso_form shadow-none form-control form-control-user" style="width:200px" 
+                                                                    id="cycle_operationnel" placeholder="Durée des cycles opérationnels" required>                                                                
+                                                    </div>
+                                            <?php
+                                                    }
+                                                    else { 
+                                            ?>
+                                                        </br>
+                                                        <label id="cycle_operationnel" class="no_modification"></label>
+                                                    </div>                                       
+                                            <?php
+                                                    }
+                                                }
+                                            ?> 
+                                                </form>
+                                            </div>
+                                        </div>  
+>>>>>>> origin/Carlos
 
                                         <!--Confidentialite-->
                                         <div class="form-group">
                                             <label class="titre_input" for="confidentialite"> Niveau de confidentialité</label>
+<<<<<<< HEAD
                                             <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
+=======
+                                            <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
+>>>>>>> origin/Carlos
                                             ?>
                                             <select class="form-control" id="confidentialite">
                                                 <option value="" selected>...</option>
@@ -514,7 +709,11 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         </div>
                                             <?php
                                                     }
+<<<<<<< HEAD
                                                     else {
+=======
+                                                    else { 
+>>>>>>> origin/Carlos
                                             ?>
                                                     </br>
                                                     <label id="confidentialite" class="no_modification"></label>
@@ -522,13 +721,21 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                             <?php
                                                     }
                                                 }
+<<<<<<< HEAD
                                             ?>
+=======
+                                            ?>  
+>>>>>>> origin/Carlos
 
                                         <!--RISQUE ETUDE-->
                                         <div class="form-group">
                                             <label class="titre_input" for="respo_acceptation_risque">Personne responsable d'accepter
                                                 les risques résiduels au terme de l'étude</label>
+<<<<<<< HEAD
                                             <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
+=======
+                                            <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){       
+>>>>>>> origin/Carlos
                                             ?>
                                             <select class="form-control" id="respo_acceptation_risque">
                                                 <option value="" selected>...</option>
@@ -561,7 +768,11 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         </div>
                                             <?php
                                                     }
+<<<<<<< HEAD
                                                     else {
+=======
+                                                    else { 
+>>>>>>> origin/Carlos
                                             ?>
                                                     </br>
                                                     <label id="respo_acceptation_risque" class="no_modification"></label>
@@ -569,7 +780,11 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                             <?php
                                                     }
                                                 }
+<<<<<<< HEAD
                                             ?>
+=======
+                                            ?>  
+>>>>>>> origin/Carlos
                                     </form>
                                 </div>
                             </div>
@@ -587,11 +802,19 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                     <a class="download_table_button" id="button_download_acteurs">
                                         <i class="fas fa-download fa-lg text-gray-400"></i>
                                     </a>
+<<<<<<< HEAD
                                     </div>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
+=======
+                                    </div>    
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){                                     
+>>>>>>> origin/Carlos
                                     ?>
                                             <form>
                                                 <fieldset>
@@ -609,17 +832,29 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                                 ?>
                                                             </select>
                                                     </div>
+<<<<<<< HEAD
 
                                                     <div class='message_success'>
                                                     <?php
+=======
+                                                    
+                                                    <div class='message_success'>
+                                                    <?php 
+>>>>>>> origin/Carlos
                                                         if(isset($_SESSION['message_success'])){
                                                             echo $_SESSION['message_success'];
                                                             unset($_SESSION['message_success']);
                                                         }
                                                     ?>
+<<<<<<< HEAD
                                                     </div>
                                                     <div class='message_error'>
                                                     <?php
+=======
+                                                    </div> 
+                                                    <div class='message_error'>
+                                                    <?php                
+>>>>>>> origin/Carlos
                                                         if(isset($_SESSION['message_error'])){
                                                             echo $_SESSION['message_error'];
                                                             unset($_SESSION['message_error']);
@@ -654,23 +889,39 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                                     ?>
                                                                 </select>
                                                         </div>
+<<<<<<< HEAD
 
                                                         <div class='message_success'>
                                                         <?php
+=======
+                                                        
+                                                        <div class='message_success'>
+                                                        <?php 
+>>>>>>> origin/Carlos
                                                             if(isset($_SESSION['message_success'])){
                                                                 echo $_SESSION['message_success'];
                                                                 unset($_SESSION['message_success']);
                                                             }
                                                         ?>
+<<<<<<< HEAD
                                                         </div>
                                                         <div class='message_error'>
                                                         <?php
+=======
+                                                        </div> 
+                                                        <div class='message_error'>
+                                                        <?php                
+>>>>>>> origin/Carlos
                                                             if(isset($_SESSION['message_error'])){
                                                                 echo $_SESSION['message_error'];
                                                                 unset($_SESSION['message_error']);
                                                             }
                                                         ?>
+<<<<<<< HEAD
                                                         </div>
+=======
+                                                        </div>            
+>>>>>>> origin/Carlos
 
                                                         <div>
                                                             <button type="button" id='ajouter_user' name="ajouter_user" class="btn perso_btn shadow-none">Ajouter</button>
@@ -680,8 +931,13 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                 </br>
                                     <?php
                                             }
+<<<<<<< HEAD
                                         }
                                     ?>
+=======
+                                        }   
+                                    ?>   
+>>>>>>> origin/Carlos
 
                                     <!--tableau-->
                                     <div class="table-responsive">
@@ -713,15 +969,25 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         </table>
 
                                         <div class='message_success'>
+<<<<<<< HEAD
                                         <?php
+=======
+                                        <?php 
+>>>>>>> origin/Carlos
                                             if(isset($_SESSION['message_success_2'])){
                                                 echo $_SESSION['message_success_2'];
                                                 unset($_SESSION['message_success_2']);
                                             }
                                         ?>
+<<<<<<< HEAD
                                         </div>
                                         <div class='message_error'>
                                         <?php
+=======
+                                        </div> 
+                                        <div class='message_error'>
+                                        <?php                
+>>>>>>> origin/Carlos
                                             if(isset($_SESSION['message_error_2'])){
                                                 echo $_SESSION['message_error_2'];
                                                 unset($_SESSION['message_error_2']);
@@ -776,7 +1042,11 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                     }
                                                     ?>
                                                 </tr>
+<<<<<<< HEAD
                                                 <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
+=======
+                                                <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){                                     
+>>>>>>> origin/Carlos
                                                 ?>
                                                         <tr>
                                                             <th scope="col">Modification générale</th>
@@ -791,8 +1061,13 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                                                 </tr>
                                                 <?php
                                                             }
+<<<<<<< HEAD
                                                         }
                                                 ?>
+=======
+                                                        }   
+                                                ?> 
+>>>>>>> origin/Carlos
                                             </thead>
 
                                             <tbody class="raci_th">
@@ -864,7 +1139,11 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <footer id="footer" class="sticky-footer bg-white">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
+<<<<<<< HEAD
                             <span>Copyright &copy; CYBER RISK MANAGER 2020 by SecYourDev</span>
+=======
+                            <span>Copyright &copy; CYBER RISK MANAGER 2021 by SecYourDev</span>
+>>>>>>> origin/Carlos
                         </div>
                     </div>
                 </footer>
@@ -879,7 +1158,11 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
+<<<<<<< HEAD
     </a>
+=======
+    </a>                                                
+>>>>>>> origin/Carlos
 
     <!-- Open the right menu-->
     <a class="open_menu rounded">
@@ -930,7 +1213,11 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
     <script src="content/js/modules/set_filter_sort_table.js"></script>
     <script src="content/js/modules/dateString.js"></script>
     <script src="content/js/modules/export_table_to_excel.js"></script>
+<<<<<<< HEAD
     <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){
+=======
+    <?php if($userinfo['type_compte']=='Administrateur Logiciel'||$userdroit_chef_de_projet['id_utilisateur']==$getid){    
+>>>>>>> origin/Carlos
     ?>
         <script src="content/js/atelier/atelier1a.js"></script>
     <?php
@@ -939,14 +1226,22 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
             if($userdroit['ecriture']=='Réalisation'){
     ?>
                 <script src="content/js/atelier/atelier1a.js"></script>
+<<<<<<< HEAD
     <?php
+=======
+    <?php 
+>>>>>>> origin/Carlos
             }
             else{
     ?>
                 <script src="content/js/atelier/atelier1a_no_modification.js"></script>
     <?php
             }
+<<<<<<< HEAD
         }
+=======
+        }        
+>>>>>>> origin/Carlos
     ?>
     <script src="content/js/modules/sort_table.js"></script>
 </body>
@@ -964,4 +1259,8 @@ else{
 else{
   header('Location: connexion');
 }
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> origin/Carlos

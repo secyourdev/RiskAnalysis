@@ -69,7 +69,11 @@ if (typeof jQuery === 'undefined') {
               onDraw: function() { return; },
               onSuccess: function () {  /*location.reload();*/ return; },
               onFail: function() { return; },
+<<<<<<< HEAD
               onAlways: function() {location.reload();  return;},
+=======
+              onAlways: function() {location.reload(); return;},
+>>>>>>> origin/Carlos
               onAjax: function() { return; }
           };
   

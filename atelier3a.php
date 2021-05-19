@@ -469,7 +469,11 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
               <footer id="footer" class="sticky-footer bg-white">
                 <div class="container my-auto">
                   <div class="copyright text-center my-auto">
+<<<<<<< HEAD
                     <span>Copyright &copy; CYBER RISK MANAGER 2020 by SecYourDev</span>
+=======
+                    <span>Copyright &copy; CYBER RISK MANAGER 2021 by SecYourDev</span>
+>>>>>>> origin/Carlos
                   </div>
                 </div>
               </footer>

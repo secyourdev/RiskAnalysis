@@ -1,7 +1,11 @@
 <?php
+<<<<<<< HEAD
 // $getid_projet = intval($_GET['id_projet']);
 
 $getid_projet = $_SESSION['id_projet'];
+=======
+$getid_projet = intval($_GET['id_projet']);
+>>>>>>> origin/Carlos
 include("content/php/bdd/connexion_sqli.php");
 
 $query = "SELECT * FROM M_evenement_redoute INNER JOIN J_valeur_metier on M_evenement_redoute.id_valeur_metier = J_valeur_metier.id_valeur_metier WHERE M_evenement_redoute.id_projet = $getid_projet";
@@ -26,6 +30,7 @@ $resultechelle2 = mysqli_query($connect, $queryechelle);
 $result = mysqli_query($connect, $query);
 $resultvm = mysqli_query($connect, $queryvm);
 
+<<<<<<< HEAD
 //Requêtes relatives à la génération du rapport
 
 $rq_echelle ="SELECT nom_echelle AS 'Nom de l''échelle' , echelle_gravite AS 'Échelle de gravité' FROM DA_echelle WHERE id_projet = $getid_projet";
@@ -40,3 +45,7 @@ $rq_evred_tab = mysqli_query($connect, $rq_evred);
 
 
 ?>
+=======
+
+?>
+>>>>>>> origin/Carlos

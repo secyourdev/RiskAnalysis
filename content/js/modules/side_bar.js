@@ -13,14 +13,22 @@ for(let i=1;i<length_sous_atelier;i++){
     }
 }
 
+<<<<<<< HEAD
 if(window.innerHeight<973)
+=======
+if(window.innerHeight<1920)
+>>>>>>> origin/Carlos
         rounded_button.style.display='none'
 else
         rounded_button.style.display='inline'
 
 window.addEventListener('resize', function(){
     accordionSidebar.classList.remove('toggled')
+<<<<<<< HEAD
     if(window.innerHeight<973)
+=======
+    if(window.innerHeight<1920)
+>>>>>>> origin/Carlos
         rounded_button.style.display='none'
     else
         rounded_button.style.display='inline'
