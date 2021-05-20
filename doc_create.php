@@ -1,12 +1,16 @@
 <?php
 session_start();
+$id_projet = $_SESSION['id_projet'];
+
 require_once 'bootstrap.php';
 use PhpOffice\PhpWord\Element\Field;
 use PhpOffice\PhpWord\Element\Table;
 use PhpOffice\PhpWord\Element\TextRun;
 use PhpOffice\PhpWord\SimpleType\TblWidth;
+include("content/php/bdd/connexion_sqli.php");
 
 function doc_create(){
+  global $id_projet;
   ////////////////////////////////////////////////////////////////////////////////
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -29,19 +33,30 @@ function doc_create(){
   include("content/php/atelier4b/selection.php");
   // //atelier 5
   // include("content/php/atelier5a/selection.php");
-  // include("content/php/atelier5b/selection.php");
-  // include("content/php/atelier5c/selection.php");
+  include("content/php/atelier5b/selection.php");
+  include("content/php/atelier5c/selection.php");
   ////////////////////////////////////////////////////////////////////////////////
   //include
   include("tab_create.php");
   ////////////////////////////////////////////////////////////////////////////////
 
   $template = new \PhpOffice\PhpWord\TemplateProcessor('Template.docx');
-  //////requetes
-  //$a_utilisateur=$result_grp_user
-  //$h_raci =
-  ////tableaux
 
+  $rq_titre = mysqli_query($connect,"SELECT nom_projet FROM F_projet WHERE id_projet = $id_projet");
+  $rq_projet = mysqli_query($connect, "SELECT * FROM F_projet WHERE id_projet = $id_projet");
+  $tab_projet = mysqli_fetch_all($rq_projet, MYSQLI_NUM);
+  $nom_projet = mysqli_fetch_all($rq_titre, MYSQLI_NUM)[0][0];
+
+  $template -> setValue('Titre', $nom_projet);
+  $template -> setValue('nomProjet', $nom_projet);
+  //$template -> setValue('Objectif', $tab_projet[3]);
+
+
+
+
+
+
+  ////tableaux
   ///atelier1*************************************************************************
   //1.a//////////////////////////////////////////////////////////
   $tab_acteurs = genere_tableau_rapport($rq_tab_acteurs);
@@ -88,8 +103,16 @@ function doc_create(){
   $tab_partie2 = tab_dyn2b_3a_3c($rq_partie2_tab);
 
   ///atelier 4*************************************************************
+  //4.a/////////////////////////////////////////////////
+//  $tab_scen_op= genere_tableau_rapport($tab_scen_op);
   //4.b/////////////////////////////////////////////////
   $tab_eval_vrai = tab_dyn1c_3b_4b($rq_eval_vrai_tab);
+
+  ///atelier 5*************************************************************
+  //5.b/////////////////////////////////////////////////
+  $tab_plan_amelio = genere_tableau_rapport($rq_plan_amelio_tab);
+  //5.c/////////////////////////////////////////////////
+  $tab_eval_risk_resi = genere_tableau_rapport($qr_eval_risk_resi_tab);
 
 
   ////inclusion tableaux
@@ -112,6 +135,9 @@ function doc_create(){
   $template->setComplexBlock('p_srov4', $tab_srov4);
   $template->setComplexBlock('m_evenement_redoute2', $tab_cidt);
   $template->setComplexBlock('eval_vrai', $tab_eval_vrai);
+  $template->setComplexBlock('za_traitement_de_securite', $tab_plan_amelio);
+  $template->setComplexBlock('last_table', $tab_eval_risk_resi);
+  //$template->setComplexBlock('u_scenario_operationnel', $tab_scen_op);
 
 
   /////sauvegarder fichier
