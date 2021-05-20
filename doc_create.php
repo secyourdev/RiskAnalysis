@@ -29,7 +29,7 @@ function doc_create(){
   include("content/php/atelier3b/selection.php");
   include("content/php/atelier3c/selection.php");
   // //atelier 4
-  // include("content/php/atelier4a/selection.php");
+  include("content/php/atelier4a/selection.php");
   include("content/php/atelier4b/selection.php");
   // //atelier 5
   // include("content/php/atelier5a/selection.php");
@@ -98,14 +98,21 @@ function doc_create(){
 
   $tab_cidt = tab_dyn1c_3b_4b($rq_cidt_tab);
   $tab_srov4 = genere_tableau_rapport($rq_srov4_tab);
+  $tab_chemin_attaque = genere_tableau_rapport($rq_chemin_attaque_tab);
 
   //3.c////////////////////////////////////////////////
   $tab_partie2 = tab_dyn2b_3a_3c($rq_partie2_tab);
+  $tab_scenar_strat = genere_tableau_rapport($rq_scenar_strat_tab);
 
   ///atelier 4*************************************************************
   //4.a/////////////////////////////////////////////////
-//  $tab_scen_op= genere_tableau_rapport($tab_scen_op);
+  $tab_scen_strat_etabli= genere_tableau_rapport($rq_scen_strat_tab);
+  //$tab_scen_op= genere_tableau_rapport($rq_scen_op);
+  $tab_mode_op= genere_tableau_rapport($rq_mode_op_tab);
   //4.b/////////////////////////////////////////////////
+  $tab_echelle_b = tab_dyn1c_3b_4b($rq_echelle_b_tab);
+  $tab_vraisemblance_b = tab_dyn1c_3b_4b($rq_vraisemblance_tab);
+
   $tab_eval_vrai = tab_dyn1c_3b_4b($rq_eval_vrai_tab);
 
   ///atelier 5*************************************************************
@@ -137,7 +144,12 @@ function doc_create(){
   $template->setComplexBlock('eval_vrai', $tab_eval_vrai);
   $template->setComplexBlock('za_traitement_de_securite', $tab_plan_amelio);
   $template->setComplexBlock('last_table', $tab_eval_risk_resi);
-  //$template->setComplexBlock('u_scenario_operationnel', $tab_scen_op);
+  $template->setComplexBlock('t_chemin_d_attaque_strategique', $tab_chemin_attaque);
+  $template->setComplexBlock('s_scenario_strategique3', $tab_scen_strat_etabli);
+  $template->setComplexBlock('mode_operatoire', $tab_mode_op);
+  $template -> setComplexBlock('s_scenario_strategique2', $tab_scenar_strat);
+  $template -> setComplexBlock('da_echelle1', $tab_echelle_b);
+  $template -> setComplexBlock('u_scenario_operationnel', $tab_vraisemblance_b);
 
 
   /////sauvegarder fichier

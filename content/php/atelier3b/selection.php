@@ -80,3 +80,6 @@ $rq_cidt_tab = mysqli_query($connect, $rq_cidt);
 
 $rq_srov4 = "SELECT type_d_attaquant_source_de_risque AS 'Type d''attaquant', profil_de_l_attaquant_source_de_risque AS 'Profile de l''attaquant', description_source_de_risque AS 'Description source de risque', objectif_vise AS 'Objectifs visés', description_objectif_vise AS 'Description de l''objectif' FROM P_SROV WHERE id_projet = $getid_projet AND choix_source_de_risque = 'P1'";
 $rq_srov4_tab = mysqli_query($connect, $rq_srov4);
+
+$rq_chemin_attaque = "SELECT id_risque AS 'ID du risque',nom_scenario_strategique AS 'Nom du scénario startégique',nom_chemin_d_attaque_strategique AS 'Chemin d''attaque startégique', description_chemin_d_attaque_strategique AS 'Description', nom_partie_prenante AS 'Partie prenante' FROM T_chemin_d_attaque_strategique NATURAL JOIN R_partie_prenante NATURAL JOIN S_scenario_strategique WHERE id_projet= $getid_projet";
+$rq_chemin_attaque_tab = mysqli_query($connect, $rq_chemin_attaque);

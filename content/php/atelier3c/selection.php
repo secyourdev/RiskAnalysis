@@ -84,5 +84,8 @@ $result_mesure2 = mysqli_query($connect, $query_mesure2);
 $query_referentiel = "SELECT * FROM N_socle_de_securite WHERE id_projet = $getid_projet";
 $result_referentiel = mysqli_query($connect, $query_referentiel);
 
-$rq_partie2 = " SELECT categorie_partie_prenante AS 'Catégorie', nom_partie_prenante AS 'Partie prenante', type AS 'Type', dependance_partie_prenante AS 'Dépendance', penetration_partie_prenante AS 'Pénétration', maturite_partie_prenante AS 'Maturité', confiance_partie_prenante AS 'Confiance', niveau_de_menace_partie_prenante AS 'Niveau de menace', criticite AS 'Criticité' FROM R_partie_prenante WHERE id_projet = $getid_projet";
+$rq_partie2 = "SELECT categorie_partie_prenante AS 'Catégorie', nom_partie_prenante AS 'Partie prenante', type AS 'Type', dependance_partie_prenante AS 'Dépendance', penetration_partie_prenante AS 'Pénétration', maturite_partie_prenante AS 'Maturité', confiance_partie_prenante AS 'Confiance', niveau_de_menace_partie_prenante AS 'Niveau de menace', criticite AS 'Criticité' FROM R_partie_prenante WHERE id_projet = $getid_projet";
 $rq_partie2_tab = mysqli_query($connect, $rq_partie2);
+
+$rq_scenar_strat = "SELECT nom_scenario_strategique AS 'Scénario stratégique', CONCAT(description_source_de_risque,': ',objectif_vise) AS 'Source de risque: Objectif visé', nom_evenement_redoute AS 'Événement redouté' FROM S_scenario_strategique NATURAL JOIN P_SROV NATURAL JOIN M_evenement_redoute WHERE id_projet =$getid_projet AND id_atelier = '3.c'";
+$rq_scenar_strat_tab = mysqli_query($connect, $rq_scenar_strat);

@@ -20,4 +20,6 @@ $resulttest = mysqli_query($connect, $querytest);
 
 $rq_partie = "SELECT categorie_partie_prenante AS 'Catégorie', nom_partie_prenante AS 'Partie prenante', type AS 'Type', dependance_partie_prenante AS 'Dépendance', ponderation_dependance AS 'Facteur de pondération dépendance', penetration_partie_prenante AS 'Pénétration', ponderation_penetration AS 'Facteur de pondération pénétration', maturite_partie_prenante AS 'Maturité', ponderation_maturite AS 'Facteur de pondération maturité', confiance_partie_prenante AS 'Confiance', ponderation_confiance AS 'Facteur de pondération confiance', niveau_de_menace_partie_prenante AS 'Niveau de Menace', criticite AS 'Criticité' FROM R_partie_prenante WHERE id_projet = $getid_projet ";
 $rq_partie_tab = mysqli_query($connect, $rq_partie);
+
+
 ?>

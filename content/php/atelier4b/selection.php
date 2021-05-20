@@ -59,6 +59,12 @@ AND T_chemin_d_attaque_strategique.id_projet = $getid_projet";
 $rq_eval_vrai_tab = mysqli_query($connect, $rq_eval_vrai);
 
 
+$rq_echelle_b= "SELECT nom_echelle AS'Nom de l''échelle',echelle_gravite  AS 'Echelle de la gravité' FROM DA_echelle WHERE id_projet = $getid_projet";
+$rq_vraisemblance= "SELECT valeur_niveau AS'Valeur du niveau',description_niveau  AS 'Description du niveau' FROM DA_niveau  WHERE id_projet = $getid_projet";
+
+$rq_echelle_b_tab = mysqli_query($connect, $rq_echelle_b);
+$rq_vraisemblance_tab= mysqli_query($connect, $rq_vraisemblance);
+
 
 
 ?>
