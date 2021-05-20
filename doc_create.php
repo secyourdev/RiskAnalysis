@@ -62,7 +62,7 @@ function doc_create(){
   $template -> setValue('niveauConfidentialite',$projet[13]);
   // $template -> setValue('responsable',$projet[4]);
   $template -> setValue('version', $projet[mysqli_num_fields($rq_donnees_principales_res)-1]);
-  //$template -> setValue('responsable', $respo[0]);
+  $template -> setValue('responsable', $respo[0]);
 
 
 

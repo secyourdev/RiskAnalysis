@@ -36,7 +36,7 @@ $rq_tab_raci = mysqli_query($connect, $rq_raci);
 $rq_donnees_principales = "SELECT *,num_version FROM F_projet NATURAL JOIN ZC_version WHERE id_projet = $getid_projet";
 $rq_donnees_principales_res = mysqli_query($connect, $rq_donnees_principales);
 
-$rq_respo = "SELECT A_utilisateur.nom,A_utilisateur.prenom FROM A_utilisateur NATURAL JOIN F_projet WHERE A_utilisateur.id_utilisateur = F_projet.responsable_risque_residuel AND id_projet = $getid_projet";
+$rq_respo ="SELECT CONCAT(A_utilisateur.nom,' ',A_utilisateur.prenom) FROM F_projet INNER JOIN A_utilisateur ON F_projet.responsable_risque_residuel = A_utilisateur.id_utilisateur WHERE id_projet=$getid_projet";
 $rq_respo_res = mysqli_query($connect, $rq_respo);
 
 
