@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 
 // $getid_projet = intval($_GET['id_projet']);
 
@@ -16,29 +15,6 @@ WHERE S_scenario_strategique.id_projet = $getid_projet
 ";
 
 $query2 = "SELECT
-=======
-$getid_projet = intval($_GET['id_projet']);
-include("content/php/bdd/connexion_sqli.php");
-
-$query1 = "SELECT DISTINCT 
-T_chemin_d_attaque_strategique.id_risque, 
-T_chemin_d_attaque_strategique.nom_chemin_d_attaque_strategique, 
-S_scenario_strategique.id_scenario_strategique, 
-S_scenario_strategique.nom_scenario_strategique, 
-M_evenement_redoute.nom_evenement_redoute,
-M_evenement_redoute.niveau_de_gravite,
-P_SROV.description_source_de_risque, 
-P_SROV.objectif_vise
-FROM S_scenario_strategique, T_chemin_d_attaque_strategique, UA_ER, M_evenement_redoute, P_SROV
-WHERE T_chemin_d_attaque_strategique.id_scenario_strategique = S_scenario_strategique.id_scenario_strategique 
-AND T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = UA_ER.id_chemin_d_attaque_strategique
-AND UA_ER.id_evenement_redoute = M_evenement_redoute.id_evenement_redoute
-AND S_scenario_strategique.id_source_de_risque = P_SROV.id_source_de_risque
-AND T_chemin_d_attaque_strategique.id_projet = $getid_projet
-ORDER BY T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique ASC";
-
-$query2 = "SELECT 
->>>>>>> origin/Carlos
 U_scenario_operationnel.id_scenario_operationnel,
 T_chemin_d_attaque_strategique.id_risque,
 T_chemin_d_attaque_strategique.nom_chemin_d_attaque_strategique,
@@ -46,27 +22,16 @@ U_scenario_operationnel.description_scenario_operationnel
 FROM U_scenario_operationnel,T_chemin_d_attaque_strategique
 WHERE U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique
 AND U_scenario_operationnel.id_projet = $getid_projet
-<<<<<<< HEAD
 AND T_chemin_d_attaque_strategique.id_projet = $getid_projet";
 $query3 = "SELECT * FROM U_scenario_operationnel WHERE id_projet = $getid_projet";
 $query4 = "SELECT * FROM W_mode_operatoire INNER JOIN U_scenario_operationnel
 ON W_mode_operatoire.id_scenario_operationnel = U_scenario_operationnel.id_scenario_operationnel WHERE U_scenario_operationnel.id_projet = $getid_projet";
-=======
-ORDER BY T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique ASC";
-
-$query3 = "SELECT * FROM U_scenario_operationnel WHERE id_projet = $getid_projet";
-
-$query4 = "SELECT * FROM W_mode_operatoire INNER JOIN U_scenario_operationnel
-ON W_mode_operatoire.id_scenario_operationnel = U_scenario_operationnel.id_scenario_operationnel WHERE U_scenario_operationnel.id_projet = $getid_projet";
-
->>>>>>> origin/Carlos
 $queryprojet = "SELECT echelle_vraisemblance FROM F_projet NATURAL JOIN DA_echelle WHERE F_projet.id_projet = $getid_projet";
 
 $result1 = mysqli_query($connect, $query1);
 $result2 = mysqli_query($connect, $query2);
 $result3 = mysqli_query($connect, $query3);
 $result4 = mysqli_query($connect, $query4);
-<<<<<<< HEAD
 $resultprojet = mysqli_query($connect, $queryprojet);
 
 // browse image
@@ -83,6 +48,3 @@ $rq_mode_op= "SELECT nom_scenario_operationnel AS'Scénario opérationnel', desc
 $rq_scen_strat_tab = mysqli_query($connect, $rq_scen_strat);
 $rq_mode_op_tab= mysqli_query($connect, $rq_mode_op);
 ?>
-=======
-$resultprojet = mysqli_query($connect, $queryprojet);
->>>>>>> origin/Carlos

@@ -1,10 +1,6 @@
 <?php
-<<<<<<< HEAD
 // $getid_projet = intval($_GET['id_projet']);
 $getid_projet = $_SESSION['id_projet'];
-=======
-$getid_projet = intval($_GET['id_projet']);
->>>>>>> origin/Carlos
 include("content/php/bdd/connexion_sqli.php");
 
 $query1 = "SELECT I_mission.id_mission,I_mission.nom_mission,I_mission.description_mission,I_mission.responsable,J_valeur_metier.nom_valeur_metier,L_couple_VMBS.nom_responsable_vm,K_bien_support.nom_bien_support,L_couple_VMBS.nom_responsable_bs FROM `L_couple_VMBS` NATURAL JOIN I_mission NATURAL JOIN J_valeur_metier NATURAL JOIN K_bien_support WHERE I_mission.id_projet=$getid_projet ORDER BY I_mission.id_mission ASC";
@@ -24,7 +20,6 @@ $resultbien = mysqli_query($connect, $querybien);
 
 $querymission = "SELECT DISTINCT I_mission.id_mission, I_mission.nom_mission, I_mission.description_mission FROM I_mission WHERE id_projet=$getid_projet";
 $resultmission = mysqli_query($connect, $querymission);
-<<<<<<< HEAD
 
 $rq_vm = "SELECT nom_valeur_metier AS 'Valeur Métier', nature_valeur_metier AS 'Nature', description_valeur_metier AS 'Description' FROM J_valeur_metier WHERE id_projet=$getid_projet";
 $rq_vm_tab = mysqli_query($connect, $rq_vm);
@@ -34,5 +29,3 @@ $rq_biens_tab =  mysqli_query($connect, $rq_biens);
 
 $rq_mission = "SELECT nom_mission AS 'Nom de la mission', description_mission AS 'Description de la mission', responsable AS 'Responsable', nom_valeur_metier AS 'Valeur Métier', nom_responsable_vm AS 'Responsable de la valeur métier', nom_bien_support AS 'Bien Support', nom_responsable_bs AS 'Responsable du bien support' FROM I_mission NATURAL JOIN J_valeur_metier NATURAL JOIN K_bien_support NATURAL JOIN L_couple_VMBS WHERE id_projet=$getid_projet";
 $rq_mission_tab = mysqli_query($connect, $rq_mission);
-=======
->>>>>>> origin/Carlos

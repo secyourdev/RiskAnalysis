@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 // $getid_projet = intval($_GET['id_projet']);
 
 
@@ -7,12 +6,6 @@ $getid_projet = $_SESSION['id_projet'];
 include("content/php/bdd/connexion_sqli.php");
 
 $query3 = "SELECT
-=======
-$getid_projet = intval($_GET['id_projet']);
-include("content/php/bdd/connexion_sqli.php");
-
-$query3 = "SELECT 
->>>>>>> origin/Carlos
 U_scenario_operationnel.id_scenario_operationnel,
 T_chemin_d_attaque_strategique.id_risque,
 T_chemin_d_attaque_strategique.nom_chemin_d_attaque_strategique,
@@ -51,7 +44,6 @@ $resultechelle2 = mysqli_query($connect, $queryechelle);
 $result = mysqli_query($connect, $query);
 $resultvm = mysqli_query($connect, $queryvm);
 
-<<<<<<< HEAD
 //Requêtes relatives à la génération du RA Rapport
 
 $rq_eval_vrai = "SELECT
@@ -76,8 +68,3 @@ $rq_vraisemblance_tab= mysqli_query($connect, $rq_vraisemblance);
 
 
 ?>
-=======
-
-?>
-
->>>>>>> origin/Carlos
