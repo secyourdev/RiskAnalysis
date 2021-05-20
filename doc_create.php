@@ -43,14 +43,26 @@ function doc_create(){
   $template = new \PhpOffice\PhpWord\TemplateProcessor('Template.docx');
 
   $rq_titre = mysqli_query($connect,"SELECT nom_projet FROM F_projet WHERE id_projet = $id_projet");
-  $rq_projet = mysqli_query($connect, "SELECT * FROM F_projet WHERE id_projet = $id_projet");
-  $tab_projet = mysqli_fetch_all($rq_projet, MYSQLI_NUM);
+
   $nom_projet = mysqli_fetch_all($rq_titre, MYSQLI_NUM)[0][0];
+  $projet = mysqli_fetch_row($rq_donnees_principales_res);
+  $respo = mysqli_fetch_row($rq_respo_res);
+  //echo '<pre>'; print_r($projet);echo '</pre>';
 
   $template -> setValue('Titre', $nom_projet);
   $template -> setValue('nomProjet', $nom_projet);
-  //$template -> setValue('Objectif', $tab_projet[3]);
-
+  $template -> setValue('Objectif', $projet[3]);
+  $template -> setValue('jj/mm/aaaa1', $projet[5]);
+  $template -> setValue('jj/mm/aaaa2', $projet[6]);
+  $template -> setValue('jj/mm/aaaa3', $projet[7]);
+  $template -> setValue('jj/mm/aaaa4', $projet[8]);
+  $template -> setValue('jj/mm/aaaa5', $projet[9]);
+  $template -> setValue('dure1',$projet[14]);// stratégique
+  $template -> setValue('dure2',$projet[15]);// opérationnel
+  $template -> setValue('niveauConfidentialite',$projet[13]);
+  // $template -> setValue('responsable',$projet[4]);
+  $template -> setValue('version', $projet[mysqli_num_fields($rq_donnees_principales_res)-1]);
+  $template -> setValue('responsable', $respo[0]);
 
 
 

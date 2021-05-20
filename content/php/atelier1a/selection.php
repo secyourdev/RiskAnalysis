@@ -33,5 +33,13 @@ $rq_tab_acteurs = mysqli_query($connect, $rq_acteurs);
 $rq_raci = "SELECT DISTINCT nom AS 'Nom', prenom AS 'Prénom', CONCAT(id_atelier,' ',nom_atelier) AS 'Atelier', ecriture AS 'Écriture' FROM H_RACI NATURAL JOIN A_utilisateur NATURAL JOIN G_atelier WHERE id_projet=$getid_projet";
 $rq_tab_raci = mysqli_query($connect, $rq_raci);
 
+//*************************1.a Données Principales////////////////////////////
+$rq_donnees_principales = "SELECT *,num_version FROM F_projet NATURAL JOIN ZC_version WHERE id_projet = $getid_projet";
+$rq_donnees_principales_res = mysqli_query($connect, $rq_donnees_principales);
+
+$rq_respo = "SELECT A_utilisateur.nom,A_utilisateur.prenom FROM A_utilisateur NATURAL JOIN F_projet WHERE A_utilisateur.id_utilisateur = F_projet.responsable_risque_residuel AND id_projet = $getid_projet";
+$rq_respo_res = mysqli_query($connect, $rq_respo);
+
+
 
 ?>
