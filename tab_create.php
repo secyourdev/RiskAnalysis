@@ -5,8 +5,13 @@ use PhpOffice\PhpWord\Element\Field;
 use PhpOffice\PhpWord\Element\Table;
 use PhpOffice\PhpWord\Element\TextRun;
 use PhpOffice\PhpWord\SimpleType\TblWidth;
-////////////////////////////////////////////////////////////////////////////////
-///fonction générant les tableau dits 'static' (sans couleur)
+
+
+
+
+
+
+///fonction générant les tableaux dits 'static' (sans couleur)
 function genere_tableau_rapport($rq){
  $style_table = array(
  'borderColor' => 'black',
@@ -77,11 +82,12 @@ function genere_tableau_rapport($rq){
        }
        return $table;
 }
-////////////////////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////////////////////
-//fonction générant les tableaux dis 'dynamique' (avec case de couleur)
-//Tableau atelier 1c/3b/4b
+
+
+//Fonctions générant les tableaux dis 'dynamique' (avec case de couleur)
+
+//Tableaux ateliers 1c/3b/4b
 function tab_dyn1c_3b_4b($rq){
     $style_table = array(
    'borderColor' => 'black',
@@ -174,7 +180,7 @@ function tab_dyn1c_3b_4b($rq){
          return $table;
        }
 
-//tableau atelier 2b/3a/3c ET 1D
+//tableaux ateliers 2b/3a/3c
 function tab_dyn2b_3a_3c($rq){
     $style_table = array(
    'borderColor' => 'black',
@@ -262,7 +268,7 @@ function tab_dyn2b_3a_3c($rq){
          }
 
 
-
+//tableua atelier 1d
 function tab_dyn_1d($rq){
              $style_table = array(
             'borderColor' => 'black',
@@ -344,8 +350,4 @@ function tab_dyn_1d($rq){
                   }
 
 
-//
-//tableau atelier 3a & 3c
-
-////////////////////////////////////////////////////////////////////////////////
 ?>
