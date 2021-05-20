@@ -510,11 +510,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
         <footer id="footer" class="sticky-footer bg-white">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-<<<<<<< HEAD
               <span>Copyright &copy; CYBER RISK MANAGER 2020 by SecYourDev</span>
-=======
-              <span>Copyright &copy; CYBER RISK MANAGER 2021 by SecYourDev</span>
->>>>>>> origin/Carlos
             </div>
           </div>
         </footer>
