@@ -191,11 +191,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                       <!-- Card Body -->
                       <div class="card-body">
                         <p>Le but de cet atelier est de réaliser une synthèse des scénarios de risque identifiés et de définir une stratégie de traitement du risque. Cette stratégie aboutit à la définition de mesures de
-<<<<<<< HEAD
-                          sécuriité, recensées dans un plan d'amélioration continue de la sécurité (PACS). Les risques résiduels sont ensuite identifiés ainsi que le cadre de suivi de ces risques.
-=======
                           sécurité, recensées dans un plan d'amélioration continue de la sécurité (PACS). Les risques résiduels sont ensuite identifiés ainsi que le cadre de suivi de ces risques.
->>>>>>> origin/Carlos
                         </p>
                         <!--text-->
                       </div>
@@ -214,7 +210,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             <a class="download_table_button" id="button_download_evaluation_documentation_risques_risiduels">
                               <i class="fas fa-download fa-lg text-gray-400"></i>
                             </a>
-                          </div>    
+                          </div>
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
@@ -239,7 +235,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                             </thead>
                             <tbody>
                               <?php
-                              
+
                               while ($row = mysqli_fetch_array($result)) {
                                 $risque = $row["vraisemblance"] * $row["niveau_de_gravite"];
                                 echo '
@@ -293,7 +289,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                           <a class="download_table_button" id="btn-Convert-Html2Image_avant">
                               <i class="fas fa-download fa-lg text-gray-400"></i>
                           </a>
-                        </div>    
+                        </div>
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
@@ -444,7 +440,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                           <a class="download_table_button" id="btn-Convert-Html2Image_apres">
                               <i class="fas fa-download fa-lg text-gray-400"></i>
                           </a>
-                        </div>    
+                        </div>
                       </div>
                       <!-- Card Body -->
                       <div class="card-body">
@@ -590,11 +586,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
               <footer id="footer" class="sticky-footer bg-white">
                 <div class="container my-auto">
                   <div class="copyright text-center my-auto">
-<<<<<<< HEAD
-                    <span>Copyright &copy; CYBER RISK MANAGER 2020 by SecYourDev</span>
-=======
                     <span>Copyright &copy; CYBER RISK MANAGER 2021 by SecYourDev</span>
->>>>>>> origin/Carlos
                   </div>
                 </div>
               </footer>
@@ -615,7 +607,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
             <i class="fas fa-bars"></i>
           </a>
 
-          <!-- -------------------------------------------------------------------------------------------------------------- 
+          <!-- --------------------------------------------------------------------------------------------------------------
           ----------------------------------------- modal ajout de ligne ----------------------------------------------------
           --------------------------------------------------------------------------------------------------------------- -->
           <div class="modal fade" id="ajout_vraisemblance_résiduelle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
