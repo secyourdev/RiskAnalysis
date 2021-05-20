@@ -62,7 +62,7 @@ function doc_create(){
   $template -> setValue('niveauConfidentialite',$projet[13]);
   // $template -> setValue('responsable',$projet[4]);
   $template -> setValue('version', $projet[mysqli_num_fields($rq_donnees_principales_res)-1]);
-  $template -> setValue('responsable', $respo[0]);
+  //$template -> setValue('responsable', $respo[0]);
 
 
 
@@ -83,11 +83,11 @@ function doc_create(){
 
   $tab_echelle = genere_tableau_rapport($rq_echelle_tab);
   $tab_niveau  = genere_tableau_rapport($rq_niveau_tab);
-  /*tab dynamiques***********************************/
+
   $tab_evred = tab_dyn1c_3b_4b($rq_evred_tab);
 
   //1.d///////////////////////////////////////////////////////////////
-  $tab_socle_sec = genere_tableau_rapport($rq_socle_sec_tab);
+  $tab_socle_sec = tab_dyn_1d($rq_socle_sec_tab);
   $tab_regle = genere_tableau_rapport($rq_regle_tab);
 
   ///atelier2*******************************************************************************
