@@ -35,7 +35,6 @@ $(document).ready(function () {
     });
 });
 
-<<<<<<< HEAD
 
 $(document).ready(function () {
     $('#editable_table_scenario_strategique').Tabledit({
@@ -51,8 +50,6 @@ $(document).ready(function () {
 });
 
 
-=======
->>>>>>> origin/Carlos
 $(document).ready(function () {
     $('#editable_table_mesure').Tabledit({
         url: 'content/php/atelier3c/modification_mesure1.php',
@@ -60,23 +57,14 @@ $(document).ready(function () {
         columns: {
             identifier: [0, 'id_mesure'],
             editable: [
-<<<<<<< HEAD
                 [4, 'nom_mesure_securite'],
                 [5, 'description_mesure_securite']
-=======
-                [3, 'nom_mesure_securite'],
-                [4, 'description_mesure_securite']
->>>>>>> origin/Carlos
             ]
         },
         restoreButton: false,
         onSuccess: function (data, textStatus, jqXHR) {
             if (data.action == 'delete') {
-<<<<<<< HEAD
                 $('#' + data.id_evenement_redoutes).remove();
-=======
-                $('#' + data.id_mesure).remove();
->>>>>>> origin/Carlos
             }
         }
     });
@@ -111,11 +99,8 @@ $(document).ready(function () {
 /*--------------------------- SORT & FILTER TABLES --------------------------*/
 setSortTable('editable_table');
 OURJQUERYFN.setFilterTable("#rechercher_partie_prenante", "#editable_table tbody tr")
-<<<<<<< HEAD
 setSortTable('editable_table_scenario_strategique');
 OURJQUERYFN.setFilterTable("#rechercher_scenario_strategique", "#editable_table_scenario_strategique tbody tr")
-=======
->>>>>>> origin/Carlos
 setSortTable('editable_table_mesure');
 OURJQUERYFN.setFilterTable("#rechercher_mesure", "#editable_table_mesure tbody tr")
 setSortTable('editable_table_mesure2');
@@ -205,9 +190,6 @@ function fleche_resize(){
 var d = new Date();
 
 export_table_to_excel('editable_table','#button_download_parties_prenantes','parties_prenantes_'+d.YYYYMMDDHHMMSS()+'.xlsx')
-<<<<<<< HEAD
 export_table_to_excel('editable_table_scenario_strategique','#button_download_scenarios_strategiques','scenarios_strategiques_'+d.YYYYMMDDHHMMSS()+'.xlsx')
-=======
->>>>>>> origin/Carlos
 export_table_to_excel('editable_table_mesure','#button_download_mesure_de_securite','mesure_de_securite_'+d.YYYYMMDDHHMMSS()+'.xlsx')
 export_table_to_excel('editable_table_mesure2','#button_download_evaluation','evaluation_'+d.YYYYMMDDHHMMSS()+'.xlsx')

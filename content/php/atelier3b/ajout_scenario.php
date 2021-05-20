@@ -34,11 +34,6 @@ $insere = $bdd->prepare(
 );
 $recupere_scenarios_existants = $bdd->prepare("SELECT id_source_de_risque FROM S_scenario_strategique WHERE S_scenario_strategique.id_projet = ?");
 
-<<<<<<< HEAD
-=======
-$ajout_chemin = $bdd->prepare("INSERT INTO `T_chemin_d_attaque_strategique`(`id_chemin`, `id_scenario_strategique`, `id_projet`, `id_atelier`) VALUES (?,?,?,?)");
-
->>>>>>> origin/Carlos
 if ($results["error"] === false && isset($_POST['validerscenario'])) {
 
   $recupere_scenarios_existants->bindParam(1, $id_projet);
@@ -56,27 +51,6 @@ if ($results["error"] === false && isset($_POST['validerscenario'])) {
 
   $insere->execute();
   $_SESSION['message_success'] = "Le scénario stratégique a bien été ajouté !";
-<<<<<<< HEAD
-=======
-
-  $recupere_id_scenario = $bdd->prepare("SELECT id_scenario_strategique FROM S_scenario_strategique WHERE nom_scenario_strategique=? AND id_projet=? AND id_atelier=?");
-  $recupere_id_scenario->bindParam(1, $nom_scenario_strategique);
-  $recupere_id_scenario->bindParam(2, $id_projet);
-  $recupere_id_scenario->bindParam(3, $id_atelier);
-  $recupere_id_scenario->execute();
-
-  $id_scenario_recupere=$recupere_id_scenario->fetch();
-
-  $id_chemin = ['C1','C2','C3','C4','C5','C6','C7','C8','C9'];
-
-  for($i=0;$i<count($id_chemin);++$i){
-    $ajout_chemin->bindParam(1, $id_chemin[$i]);
-    $ajout_chemin->bindParam(2, $id_scenario_recupere[0]);
-    $ajout_chemin->bindParam(3, $id_projet);
-    $ajout_chemin->bindParam(4, $id_atelier);
-    $ajout_chemin->execute();
-  }
->>>>>>> origin/Carlos
   } else {
     $_SESSION['message_error'] = "Le scénario stratégique entré existe déjà !";
   }

@@ -26,13 +26,7 @@ if($array==null){
 }
 }
 
-<<<<<<< HEAD
 echo json_encode($array);
 
 
 ?>
-=======
-echo json_encode($array)
-
-?>
->>>>>>> origin/Carlos

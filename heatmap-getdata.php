@@ -20,21 +20,10 @@ $result_nb_niveau_vraisemblance = mysqli_fetch_array($exec_nb_niveau_vraisemblan
 //$_SESSION['message_success'] = "Message : Projet : ".$getid_projet." - ".$result_nb_niveau_vraisemblance['nb_niveau_echelle'];
 
 $query = "SELECT U_scenario_operationnel.vraisemblance, M_evenement_redoute.niveau_de_gravite, T_chemin_d_attaque_strategique.id_risque
-<<<<<<< HEAD
 FROM U_scenario_operationnel INNER JOIN T_chemin_d_attaque_strategique ON U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique INNER JOIN S_scenario_strategique ON T_chemin_d_attaque_strategique.id_scenario_strategique = S_scenario_strategique.id_scenario_strategique  INNER JOIN M_evenement_redoute ON S_scenario_strategique.id_evenement_redoute = M_evenement_redoute.id_evenement_redoute
 WHERE M_evenement_redoute.id_projet = $getid_projet
 AND S_scenario_strategique.id_projet = $getid_projet
 AND U_scenario_operationnel.id_projet = $getid_projet";
-=======
-FROM U_scenario_operationnel, UA_ER, T_chemin_d_attaque_strategique, M_evenement_redoute
-WHERE U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique 
-AND T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = UA_ER.id_chemin_d_attaque_strategique
-AND UA_ER.id_evenement_redoute = M_evenement_redoute.id_evenement_redoute
-AND U_scenario_operationnel.id_projet = $getid_projet
-AND UA_ER.id_projet = $getid_projet
-AND T_chemin_d_attaque_strategique.id_projet = $getid_projet
-AND M_evenement_redoute.id_projet = $getid_projet";
->>>>>>> origin/Carlos
 
 $result = mysqli_query($connect, $query);
 
