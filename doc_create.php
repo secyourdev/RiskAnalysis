@@ -60,7 +60,6 @@ function doc_create(){
   $template -> setValue('dure1',$projet[14]);// stratégique
   $template -> setValue('dure2',$projet[15]);// opérationnel
   $template -> setValue('niveauConfidentialite',$projet[13]);
-  // $template -> setValue('responsable',$projet[4]);
   $template -> setValue('version', $projet[mysqli_num_fields($rq_donnees_principales_res)-1]);
   $template -> setValue('responsable', $respo[0]);
 

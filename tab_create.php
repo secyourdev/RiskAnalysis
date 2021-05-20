@@ -13,34 +13,26 @@ use PhpOffice\PhpWord\SimpleType\TblWidth;
 
 ///fonction générant les tableaux dits 'static' (sans couleur)
 function genere_tableau_rapport($rq){
- $style_table = array(
- 'borderColor' => 'black',
- 'borderSize' => 6,
- 'cellMargin'  => 100,
- //'valign' => 'both',
- //'layout' => 'autofit',
- 'align'  => 'center'
- //'layout' => \PhpOffice\PhpWord\Style\Table::LAYOUT_FIXED
+  $style_table = array(
+      'borderColor' => 'black',
+      'borderSize' => 6,
+      'cellMargin' => 100,
+      //'valign' => 'both',
+
+      //'layout' => 'autofit',
+      'align'  => 'center'
   );
 
   $first_cells_style = array(
-    'bgColor' => 'white',
-    'align'  => 'center'
+      'bgColor' => '#DCDCDC',
+      'valign'  => 'center',
+       'layout' => 'autofit'
+      // 'width' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(4)
   );
-
-  $blue_cell_style = array(
-    'bgColor' => '858796',
-    'align'  => 'center'
-  );
-
-  $grey_cell_style = array(
-    'bgColor' => 'F5F5F5',
-    'align'  => 'center'
-  );
-
   $cell_style_basic = array(
-  'bgColor' => 'white',
-  'align'  => 'center'
+    'bgColor' => 'white',
+    'valign'  => 'center',
+    'layout' => 'autofit'
   );
 
   $first_row_style = array(
@@ -69,13 +61,7 @@ function genere_tableau_rapport($rq){
                }
 
                else{
-                   if($i%2 == 0){
-                       $table->addCell(1, $blue_cell_style)->addText($array[$i][$j]);
-
-                   }
-                   else{
-                       $table->addCell(1, $cell_style_basic)->addText($array[$i][$j]);
-                   }
+                 $table->addCell(1, $cell_style_basic)->addText($array[$i][$j]);
                }
 
            }
@@ -89,37 +75,30 @@ function genere_tableau_rapport($rq){
 
 //Tableaux ateliers 1c/3b/4b
 function tab_dyn1c_3b_4b($rq){
-    $style_table = array(
-   'borderColor' => 'black',
-   'borderSize' => 6,
-   'cellMargin'  => 100,
-   //'valign' => 'both',
-   'layout' => 'autofit',
-   'align'  => 'center'
+  $style_table = array(
+      'borderColor' => 'black',
+      'borderSize' => 6,
+      'cellMargin' => 100,
+      //'valign' => 'both',
+
+      //'layout' => 'autofit',
+      'align'  => 'center'
   );
 
   $first_cells_style = array(
-   'bgColor' => 'white',
-   'align'  => 'center'
+      'bgColor' => '#DCDCDC',
+      'valign'  => 'center',
+       'layout' => 'autofit'
+      // 'width' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(4)
   );
-
-  $blue_cell_style = array(
-   'bgColor' => '858796',
-   'align'  => 'center'
-  );
-
-  $grey_cell_style = array(
-   'bgColor' => 'F5F5F5',
-   'align'  => 'center'
-  );
-
   $cell_style_basic = array(
-  'bgColor' => 'white',
-  'align'  => 'center'
+    'bgColor' => 'white',
+    'valign'  => 'center',
+    'layout' => 'autofit'
   );
 
   $first_row_style = array(
-  'tblHeader' => true
+    'tblHeader' => true
   );
     $array = mysqli_fetch_all($rq,MYSQLI_NUM);
 
@@ -182,37 +161,30 @@ function tab_dyn1c_3b_4b($rq){
 
 //tableaux ateliers 2b/3a/3c
 function tab_dyn2b_3a_3c($rq){
-    $style_table = array(
-   'borderColor' => 'black',
-   'borderSize' => 6,
-   'cellMargin'  => 100,
-   //'valign' => 'both',
-   'layout' => 'autofit',
-   'align'  => 'center'
+  $style_table = array(
+      'borderColor' => 'black',
+      'borderSize' => 6,
+      'cellMargin' => 100,
+      //'valign' => 'both',
+
+      //'layout' => 'autofit',
+      'align'  => 'center'
   );
 
   $first_cells_style = array(
-   'bgColor' => 'white',
-   'align'  => 'center'
+      'bgColor' => '#DCDCDC',
+      'valign'  => 'center',
+       'layout' => 'autofit'
+      // 'width' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(4)
   );
-
-  $blue_cell_style = array(
-   'bgColor' => '858796',
-   'align'  => 'center'
-  );
-
-  $grey_cell_style = array(
-   'bgColor' => 'F5F5F5',
-   'align'  => 'center'
-  );
-
   $cell_style_basic = array(
-  'bgColor' => 'white',
-  'align'  => 'center'
+    'bgColor' => 'white',
+    'valign'  => 'center',
+    'layout' => 'autofit'
   );
 
   $first_row_style = array(
-  'tblHeader' => true
+    'tblHeader' => true
   );
 
 
@@ -270,38 +242,31 @@ function tab_dyn2b_3a_3c($rq){
 
 //tableua atelier 1d
 function tab_dyn_1d($rq){
-             $style_table = array(
-            'borderColor' => 'black',
-            'borderSize' => 6,
-            'cellMargin'  => 100,
-            //'valign' => 'both',
-            'layout' => 'autofit',
-            'align'  => 'center'
-           );
+  $style_table = array(
+      'borderColor' => 'black',
+      'borderSize' => 6,
+      'cellMargin' => 100,
+      //'valign' => 'both',
 
-           $first_cells_style = array(
-            'bgColor' => 'white',
-            'align'  => 'center'
-           );
+      //'layout' => 'autofit',
+      'align'  => 'center'
+  );
 
-           $blue_cell_style = array(
-            'bgColor' => '858796',
-            'align'  => 'center'
-           );
+  $first_cells_style = array(
+      'bgColor' => '#DCDCDC',
+      'valign'  => 'center',
+       'layout' => 'autofit'
+      // 'width' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(4)
+  );
+  $cell_style_basic = array(
+    'bgColor' => 'white',
+    'valign'  => 'center',
+    'layout' => 'autofit'
+  );
 
-           $grey_cell_style = array(
-            'bgColor' => 'F5F5F5',
-            'align'  => 'center'
-           );
-
-           $cell_style_basic = array(
-           'bgColor' => 'white',
-           'align'  => 'center'
-           );
-
-           $first_row_style = array(
-           'tblHeader' => true
-           );
+  $first_row_style = array(
+    'tblHeader' => true
+  );
 
 
                $array = mysqli_fetch_all($rq,MYSQLI_NUM);
