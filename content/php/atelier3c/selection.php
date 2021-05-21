@@ -21,10 +21,10 @@ $result_chemin_d_attaque = mysqli_query($connect, $query_chemin_d_attaque);
 //tableau scénario stratégique
 $query_scenario_strategique =
 "SELECT
-S_scenario_strategique.id_scenario_strategique,
+id_scenario_strategique,
 nom_scenario_strategique,
-S_scenario_strategique.id_source_de_risque,
-S_scenario_strategique.id_evenement_redoute,
+id_source_de_risque,
+id_evenement_redoute,
 nom_evenement_redoute,
 niveau_de_gravite,
 P_SROV.description_source_de_risque,

@@ -127,10 +127,10 @@ function tab_dyn1c_3b_4b($rq){
                       $table -> addCell(1, array('bgColor' => 'green'))->addText($array[$i][$j]);
                       break;
                      case 2:
-                      $table -> addCell(1, array('bgColor' => 'yellow'))->addText($array[$i][$j]);
+                      $table -> addCell(1, array('bgColor' => 'orange'))->addText($array[$i][$j]);
                       break;
                      case 3:
-                      $table -> addCell(1, array('bgColor' => 'yellow'))->addText($array[$i][$j]);
+                      $table -> addCell(1, array('bgColor' => 'orange'))->addText($array[$i][$j]);
                       break;
                      case 4:
                       $table -> addCell(1, array('bgColor' => 'red'))->addText($array[$i][$j]);
@@ -219,7 +219,7 @@ function tab_dyn2b_3a_3c($rq){
                         $table -> addCell(1, array('bgColor' => 'green'))->addText($array[$i][$j]);
                         break;
                        case "Moyenne":
-                        $table -> addCell(1, array('bgColor' => 'yellow'))->addText($array[$i][$j]);
+                        $table -> addCell(1, array('bgColor' => 'orange'))->addText($array[$i][$j]);
                         break;
                        case "Élevée":
                         $table -> addCell(1, array('bgColor' => 'red'))->addText($array[$i][$j]);
@@ -297,7 +297,7 @@ function tab_dyn_1d($rq){
                                  $table -> addCell(1, array('bgColor' => 'green'))->addText($array[$i][$j]);
                                  break;
                                 case "Appliqué avec restriction":
-                                 $table -> addCell(1, array('bgColor' => 'yellow'))->addText($array[$i][$j]);
+                                 $table -> addCell(1, array('bgColor' => 'orange'))->addText($array[$i][$j]);
                                  break;
                                 case "Non appliqué":
                                  $table -> addCell(1, array('bgColor' => 'red'))->addText($array[$i][$j]);
