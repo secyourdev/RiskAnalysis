@@ -41,7 +41,7 @@ function doc_create(){
   ////////////////////////////////////////////////////////////////////////////////
 
   $template = new \PhpOffice\PhpWord\TemplateProcessor('Template.docx');
-
+/*****************    Atelier 1.1.1*********************************************************************/
   $rq_titre = mysqli_query($connect,"SELECT nom_projet FROM F_projet WHERE id_projet = $id_projet");
 
   $nom_projet = mysqli_fetch_all($rq_titre, MYSQLI_NUM)[0][0];
@@ -63,11 +63,17 @@ function doc_create(){
   $template -> setValue('version', $projet[mysqli_num_fields($rq_donnees_principales_res)-1]);
   $template -> setValue('responsable', $respo[0]);
 
+  /*********************Seuils*******************************************************************/
+
+$rq_seuils = mysqli_query($connect, "SELECT seuil_danger,seuil_controle, seuil_veille FROM Q_seuil WHERE id_projet = $id_projet ");
+$row_seuil = mysqli_fetch_assoc($rq_seuils);//, MYSQLI_ASSOC);
+$template -> setValue('danger', $row_seuil['seuil_danger'][0]);
+$template -> setValue('contrôle', $row_seuil['seuil_controle'][0]);
+$template -> setValue('veille', $row_seuil['seuil_veille'][0]);
 
 
 
-
-  ////tableaux
+/****************************************Tableaux**********************************************/
   ///atelier1*************************************************************************
   //1.a//////////////////////////////////////////////////////////
   $tab_acteurs = genere_tableau_rapport($rq_tab_acteurs);
