@@ -43,10 +43,12 @@ function doc_create(){
   $template = new \PhpOffice\PhpWord\TemplateProcessor('Template.docx');
 /*****************    Atelier 1.1.1*********************************************************************/
   $rq_titre = mysqli_query($connect,"SELECT nom_projet FROM F_projet WHERE id_projet = $id_projet");
+  $rq_version_for_1a = mysqli_query($connect,"SELECT num_version FROM ZC_version WHERE id_projet= $id_projet");
 
   $nom_projet = mysqli_fetch_all($rq_titre, MYSQLI_NUM)[0][0];
   $projet = mysqli_fetch_assoc($rq_donnees_principales_res);
   $respo = mysqli_fetch_row($rq_respo_res);
+  $version = mysqli_fetch_row($rq_version_for_1a);
   //echo '<pre>'; print_r($projet);echo '</pre>';
 
   $template -> setValue('Titre', $nom_projet);
@@ -60,7 +62,7 @@ function doc_create(){
   $template -> setValue('dure1',$projet['duree_strategique']);// stratégique
   $template -> setValue('dure2',$projet['duree_operationnel']);// opérationnel
   $template -> setValue('niveauConfidentialite',$projet['confidentialite']);
-  $template -> setValue('version', "EN COURS");
+  $template -> setValue('version', $version[0]);
   $template -> setValue('responsable', $respo[0]);
 
   /*********************Seuils*******************************************************************/
