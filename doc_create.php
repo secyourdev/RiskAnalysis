@@ -45,22 +45,22 @@ function doc_create(){
   $rq_titre = mysqli_query($connect,"SELECT nom_projet FROM F_projet WHERE id_projet = $id_projet");
 
   $nom_projet = mysqli_fetch_all($rq_titre, MYSQLI_NUM)[0][0];
-  $projet = mysqli_fetch_row($rq_donnees_principales_res);
+  $projet = mysqli_fetch_assoc($rq_donnees_principales_res);
   $respo = mysqli_fetch_row($rq_respo_res);
   //echo '<pre>'; print_r($projet);echo '</pre>';
 
   $template -> setValue('Titre', $nom_projet);
-  $template -> setValue('nomProjet', $nom_projet);
-  $template -> setValue('Objectif', $projet[3]);
-  $template -> setValue('jj/mm/aaaa1', $projet[5]);
-  $template -> setValue('jj/mm/aaaa2', $projet[6]);
-  $template -> setValue('jj/mm/aaaa3', $projet[7]);
-  $template -> setValue('jj/mm/aaaa4', $projet[8]);
-  $template -> setValue('jj/mm/aaaa5', $projet[9]);
-  $template -> setValue('dure1',$projet[14]);// stratégique
-  $template -> setValue('dure2',$projet[15]);// opérationnel
-  $template -> setValue('niveauConfidentialite',$projet[13]);
-  $template -> setValue('version', $projet[mysqli_num_fields($rq_donnees_principales_res)-1]);
+  $template -> setValue('nomProjet', $projet['nom_projet']);
+  $template -> setValue('Objectif', $projet['objectif_projet']);
+  $template -> setValue('jj/mm/aaaa1', date("d-m-Y",strtotime($projet['cadre_temporel'])));
+  $template -> setValue('jj/mm/aaaa2', date("d-m-Y",strtotime($projet['cadre_temporel_etape_2'])));
+  $template -> setValue('jj/mm/aaaa3', date("d-m-Y",strtotime($projet['cadre_temporel_etape_3'])));
+  $template -> setValue('jj/mm/aaaa4', date("d-m-Y",strtotime($projet['cadre_temporel_etape_4'])));
+  $template -> setValue('jj/mm/aaaa5', date("d-m-Y",strtotime($projet['cadre_temporel_etape_5'])));
+  $template -> setValue('dure1',$projet['duree_strategique']);// stratégique
+  $template -> setValue('dure2',$projet['duree_operationnel']);// opérationnel
+  $template -> setValue('niveauConfidentialite',$projet['confidentialite']);
+  $template -> setValue('version', "EN COURS");
   $template -> setValue('responsable', $respo[0]);
 
   /*********************Seuils*******************************************************************/
