@@ -117,6 +117,7 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
 
   $tab_cidt = tab_dyn1c_3b_4b($rq_cidt_tab);
   $tab_srov4 = genere_tableau_rapport($rq_srov4_tab);
+  $tab_scenar_strat1 = genere_tableau_rapport($rq_scenar_strat3b_tab);
   $tab_chemin_attaque = genere_tableau_rapport($rq_chemin_attaque_tab);
 
   //3.c////////////////////////////////////////////////
@@ -159,6 +160,7 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
   $template->setComplexBlock('r_partie_prenante1', $tab_partie);
   $template->setComplexBlock('r_partie_prenante2', $tab_partie2);
   $template->setComplexBlock('p_srov4', $tab_srov4);
+  $template -> setComplexBlock('s_scenario_strategique1', $tab_scenar_strat1);
   $template->setComplexBlock('m_evenement_redoute2', $tab_cidt);
   $template->setComplexBlock('eval_vrai', $tab_eval_vrai);
   $template->setComplexBlock('za_traitement_de_securite', $tab_plan_amelio);
