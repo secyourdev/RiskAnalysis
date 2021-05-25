@@ -315,4 +315,86 @@ function tab_dyn_1d($rq){
                   }
 
 
+function tab_raci($rq_first, $rq_atelier, $rq_raci){
+
+                    $style_table = array(
+                        'borderColor' => 'black',
+                        'borderSize' => 6,
+                        'cellMargin' => 100,
+                        //'valign' => 'both',
+
+                        //'layout' => 'autofit',
+                        'align'  => 'center'
+                    );
+
+                    $first_cells_style = array(
+                        'bgColor' => '#DCDCDC',
+                        'valign'  => 'center',
+                         'layout' => 'autofit'
+                        // 'width' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(4)
+                    );
+                    $cell_style_basic = array(
+                      'bgColor' => 'white',
+                      'valign'  => 'center',
+                      'layout' => 'autofit'
+                    );
+
+                    $first_row_style = array(
+                      'tblHeader' => true
+                    );
+
+                    $first_row = mysqli_fetch_all($rq_first);
+                    $tab_atelier = mysqli_fetch_all($rq_atelier);
+                    $array = mysqli_fetch_all($rq_raci);
+
+                    $nb_col = mysqli_fetch_fields($rq_first);
+                    $nb_first = mysqli_num_rows($rq_first);
+                    $nb_row = mysqli_num_rows($rq_raci);
+                    // print_r($array);
+
+                    $table = new Table($style_table);
+                    $vvar=true;
+                    for($i = 0; $i < 15; $i ++){
+                      if($i == 0){
+                        $table->addRow(1,$first_row_style);
+                      }
+                      else{
+                        $table->addRow();
+                        $vvar=true;
+                      }
+                      for($j = -1; $j< $nb_first; $j++){
+
+                        if($i == 0){
+                          if($j == -1){
+                            $table->addCell(1,$cell_style_basic)-> addText(" # ");
+                          }
+                          else{
+                          $table->addCell(1,$first_cells_style)-> addText($first_row[$j][0]);
+                          }
+                        }
+                        else{
+                          if($j == -1){
+                            //for($l = 0; $l < 15; $l++){
+                              $i--;
+                              $table->addCell(1,$cell_style_basic)-> addText($tab_atelier[$i][0]);
+                              $i++;
+                            //}
+                          }
+                          else if($vvar){
+                            for($k = 0; $k <$nb_first ; $k++){
+                              $table -> addCell(1, $cell_style_basic)->addText($array[$k][2]);
+                              if($k%($nb_first-1)==0){$vvar=false;}
+                            }
+
+                          }
+                        }
+                      }
+                    }
+
+                    return $table;
+
+
+}
+
+
 ?>

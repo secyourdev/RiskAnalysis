@@ -79,7 +79,7 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
   ///atelier1*************************************************************************
   //1.a//////////////////////////////////////////////////////////
   $tab_acteurs = genere_tableau_rapport($rq_tab_acteurs);
-  $tab_raci = genere_tableau_rapport($rq_tab_raci);
+  $tab_raci = tab_raci($rq_first_tab, $rq_atelier_raci_tab, $rq_raci_tab);
 
   //1.b/////////////////////////////////////////////////////////
   $tab_vm = genere_tableau_rapport($rq_vm_tab);
