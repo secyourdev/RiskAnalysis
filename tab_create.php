@@ -326,11 +326,11 @@ function tab_raci($rq_first, $rq_atelier, $rq_raci){
                     $first_cells_style = array(
                         'bgColor' => '#DCDCDC',
                         'valign'  => 'center',
-                         'layout' => 'autofit',
-                         'textDirection'=>\PhpOffice\PhpWord\Style\Cell::TEXT_DIR_BTLR,
-                         'height' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(3),
-                         'cantSplit' => 'true',
-                         'cellMargin' => 100
+                        'layout' => 'autofit',
+                        'textDirection'=>\PhpOffice\PhpWord\Style\Cell::TEXT_DIR_BTLR,
+                        'height' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(3),
+                        'cantSplit' => 'true',
+                        'cellMargin' => 100
                         // 'width' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(4)
                     );
                     $cell_style_basic = array(
@@ -343,7 +343,8 @@ function tab_raci($rq_first, $rq_atelier, $rq_raci){
                       'tblHeader' => true,
                       'height' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(30),
                       'cantSplit' => 'true',
-                      'cellMargin' => 100
+                      'cellMargin' => 100,
+                      'exactHeight' => 1700
                     );
 
                     $first_row = mysqli_fetch_all($rq_first); //Contient noms prénoms
