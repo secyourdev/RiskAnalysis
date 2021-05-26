@@ -1,6 +1,6 @@
 <?php
 //session_start();
-require_once 'bootstrap.php';
+require_once 'content/bootstrap.php';
 use PhpOffice\PhpWord\Element\Field;
 use PhpOffice\PhpWord\Element\Table;
 use PhpOffice\PhpWord\Element\TextRun;

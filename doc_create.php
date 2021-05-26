@@ -11,33 +11,10 @@ include("content/php/bdd/connexion_sqli.php");
 
 function doc_create(){
   global $id_projet;
-  ////////////////////////////////////////////////////////////////////////////////
-
-  ////////////////////////////////////////////////////////////////////////////////
-  //include_atelier
-  //atelier 1
-  include("content/php/atelier1a/selection.php");
-  include("content/php/atelier1b/selection.php");
-  include("content/php/atelier1c/selection.php");
-  include("content/php/atelier1d/selection.php");
-  // //atelier 2
-  include("content/php/atelier2a/selection.php");
-  include("content/php/atelier2b/selection.php");
-  include("content/php/atelier2c/selection.php");
-  // //atelier 3
-  include("content/php/atelier3a/selection.php");
-  include("content/php/atelier3b/selection.php");
-  include("content/php/atelier3c/selection.php");
-  // //atelier 4
-  include("content/php/atelier4a/selection.php");
-  include("content/php/atelier4b/selection.php");
-  // //atelier 5
-  // include("content/php/atelier5a/selection.php");
-  include("content/php/atelier5b/selection.php");
-  include("content/php/atelier5c/selection.php");
-  ////////////////////////////////////////////////////////////////////////////////
-  //include
-  include("tab_create.php");
+  
+  // //include
+   include("tab_create.php");
+   include("content/php/export/selection_export.php");
   ////////////////////////////////////////////////////////////////////////////////
 
   $template = new \PhpOffice\PhpWord\TemplateProcessor('Template.docx');
