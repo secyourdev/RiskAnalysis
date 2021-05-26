@@ -7,10 +7,6 @@ use PhpOffice\PhpWord\Element\TextRun;
 use PhpOffice\PhpWord\SimpleType\TblWidth;
 
 
-
-
-
-
 ///fonction générant les tableaux dits 'static' (sans couleur)
 function genere_tableau_rapport($rq){
   $style_table = array(
