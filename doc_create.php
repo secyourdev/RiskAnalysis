@@ -11,7 +11,7 @@ include("content/php/bdd/connexion_sqli.php");
 
 function doc_create(){
   global $id_projet;
-  
+
   // //include
    include("tab_create.php");
    include("content/php/export/selection_export.php");
@@ -113,6 +113,7 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
   $tab_eval_vrai = tab_dyn1c_3b_4b($rq_eval_vrai_tab);
 
   ///atelier 5*************************************************************
+  $tab_carto5a = tab_carto($qr_carto_into_tab);
   //5.b/////////////////////////////////////////////////
   $tab_plan_amelio = genere_tableau_rapport($rq_plan_amelio_tab);
   //5.c/////////////////////////////////////////////////
@@ -148,6 +149,8 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
   $template -> setComplexBlock('s_scenario_strategique2', $tab_scenar_strat);
   $template -> setComplexBlock('da_echelle1', $tab_echelle_b);
   $template -> setComplexBlock('u_scenario_operationnel', $tab_vraisemblance_b);
+
+  $template -> setComplexBlock('Cartographie4', $tab_carto5a);
 
 
   /////sauvegarder fichier

@@ -71,9 +71,9 @@ $rq_srov_tab = mysqli_query($connect, $rq_srov);
 //requetes atelier 2.b
 $rq_srov2 = "SELECT profil_de_l_attaquant_source_de_risque AS 'Profil d''attaquant', description_source_de_risque AS 'Description source du risque', objectif_vise AS 'Objectif visé', description_objectif_vise AS 'Description de l''objectif', motivation AS 'Motivation', ressources AS 'Ressources', activite AS 'Activité', mode_operatoire AS 'Mode opératoire', secteur_d_activite AS 'Secteur d''activité', arsenal_d_attaque AS 'Arsenal d''attaque', faits_d_armes AS 'Fait d''armes', pertinence AS 'Pertinence' FROM P_SROV WHERE id_projet = $getid_projet";
 $rq_srov2_tab = mysqli_query($connect,$rq_srov2);
-
+/*
 ////////////////////////////////////////////////////////////////////////////////
-//requetes atelier 2.c
+//requetes atelier 2.c*/
 $rq_srov3 = "SELECT profil_de_l_attaquant_source_de_risque AS 'Profil d''attaquant', description_source_de_risque AS 'Description source du risque', objectif_vise AS 'Objectif visé', description_objectif_vise AS 'Description de l''objectif', motivation AS 'Motivation', ressources AS 'Ressources', activite AS 'Activité', mode_operatoire AS 'Mode opératoire', secteur_d_activite AS 'Secteur d''activité', arsenal_d_attaque AS 'Arsenal d''attaque', faits_d_armes AS 'Fait d''armes', pertinence AS 'Pertinence', choix_source_de_risque AS 'Choix P1/P2' FROM P_SROV WHERE id_projet = $getid_projet";
 $rq_srov3_tab = mysqli_query($connect, $rq_srov3);
 
@@ -82,8 +82,8 @@ $rq_srov3_tab = mysqli_query($connect, $rq_srov3);
 $rq_partie = "SELECT categorie_partie_prenante AS 'Catégorie', nom_partie_prenante AS 'Partie prenante', type AS 'Type', dependance_partie_prenante AS 'Dépendance', ponderation_dependance AS 'Facteur de pondération dépendance', penetration_partie_prenante AS 'Pénétration', ponderation_penetration AS 'Facteur de pondération pénétration', maturite_partie_prenante AS 'Maturité', ponderation_maturite AS 'Facteur de pondération maturité', confiance_partie_prenante AS 'Confiance', ponderation_confiance AS 'Facteur de pondération confiance', niveau_de_menace_partie_prenante AS 'Niveau de Menace', criticite AS 'Criticité' FROM R_partie_prenante WHERE id_projet = $getid_projet ";
 $rq_partie_tab = mysqli_query($connect, $rq_partie);
 
-////////////////////////////////////////////////////////////////////////////////
-//requetes atelier 3.b
+/*////////////////////////////////////////////////////////////////////////////////
+//requetes atelier 3.b////*/
 $rq_cidt = "SELECT nom_valeur_metier AS 'Valeur métier', nom_evenement_redoute AS 'Nom de l''événement redouté', description_evenement_redoute AS 'Description de l''événement redouté', impact AS 'Impacts', confidentialite AS 'C', integrite AS 'I',disponibilite AS 'D', tracabilite AS 'T', niveau_de_gravite AS 'Gravité' FROM M_evenement_redoute INNER JOIN J_valeur_metier on M_evenement_redoute.id_valeur_metier = J_valeur_metier.id_valeur_metier WHERE M_evenement_redoute.id_projet = $getid_projet";
 $rq_cidt_tab = mysqli_query($connect, $rq_cidt);
 
@@ -183,5 +183,11 @@ FROM  X_revaluation_du_risque, M_evenement_redoute, U_scenario_operationnel, Y_m
 WHERE U_scenario_operationnel.id_projet = $getid_projet";*/
 
 $qr_eval_risk_resi_tab = mysqli_query($connect, $qr_eval_risk_resi);
+////////////////////////////////////////////////////////////////////////////////
+//requetes atelier 5 a,b,c pour transformation cartographie => tableau
+$qr_carto_into ="SELECT T_chemin_d_attaque_strategique.id_risque,gravite,vraisemblance,bareme
+FROM DB_bareme_risque, T_chemin_d_attaque_strategique
+WHERE DB_bareme_risque.id_projet=$getid_projet";
+$qr_carto_into_tab = mysqli_query($connect, $qr_carto_into);
 
 ?>

@@ -429,121 +429,45 @@ function tab_raci($rq_first, $rq_atelier, $rq_raci){
 
 }
 
-// function tab_raci($rq_first, $rq_atelier, $rq_raci){
-//   $style_table = array(
-//       'borderColor' => 'black',
-//       'borderSize' => 6,
-//       'cellMargin' => 100,
-//       //'valign' => 'both',
-//
-//       //'layout' => 'autofit',
-//       'align'  => 'center'
-//   );
-//
-//   $first_cells_style = array(
-//       'bgColor' => '#DCDCDC',
-//       'valign'  => 'center',
-//        'layout' => 'autofit'
-//       // 'width' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(4)
-//   );
-//   $cell_style_basic = array(
-//     'bgColor' => 'white',
-//     'valign'  => 'center',
-//     'layout' => 'autofit'
-//   );
-//
-//   $first_row_style = array(
-//     'tblHeader' => true,
-//
-//   );
-//
-//   $first_row = mysqli_fetch_all($rq_first);
-//   $tab_atelier = mysqli_fetch_all($rq_atelier);
-//   $array = mysqli_fetch_all($rq_raci);
-//
-//   $nb_col = mysqli_fetch_fields($rq_first);
-//   $nb_first = mysqli_num_rows($rq_first);
-//   $nb_row = mysqli_num_rows($rq_raci);
-//   // print_r($array);
-//
-//   $table = new Table($style_table);
-//
-//   for($i = 0; $i < $nb_first; $i++){
-//     //Création de la structure des lignes
-//     if($i == 0){
-//       $table->addRow(1,$first_row_style);
-//     }
-//     else{
-//       $table->addRow();
-//       $vvar = true;
-//     }
-//     //Fin création structure
-//
-//
-//     //Remplissage des lignes
-//
-//     for($j = -1; $j < $nb_col; $j++ ){
-//       if($i == 0 && $j = -1){
-//         $table->addCell(1,$cell_style_basic)-> addText(" # ");
-//       }
-//       else if($i == 0){
-//         $table->addCell(1,$first_cells_style)-> addText($tab_atelier[$j][0]);
-//       }
-//       else if($j == -1){
-//         $table->addCell(1,$cell_style_basic)-> addText($first_row[$i][0]);
-//       }
-//       else if($vvar){
-//         for($k = 0; $k <$nb_col ; $k++){
-//             $table -> addCell(1, $cell_style_basic)->addText($array[$k][2]);
-//             if($k%($nb_col-1)==0){
-//               $vvar=false;
-//             }
-//         }
-//       }
-//     }
-//   }
-//   return $table;
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////création fonction cartographie into tableau:
-//
-// function tab_carto($rq_carto_into){
-//   $style_table = array(
-//       'borderColor' => 'black',
-//       'borderSize' => 6,
-//       'cellMargin' => 100,
-//       'align'  => 'center'
-//   );
-//
-//   $first_cells_style = array(
-//       'bgColor' => '#DCDCDC',
-//       'valign'  => 'center',
-//        'layout' => 'autofit'
-//       // 'width' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(4)
-//   );
-//   $cell_style_basic = array(
-//     'bgColor' => 'white',
-//     'valign'  => 'center',
-//     'layout' => 'autofit'
-//   );
-//
-//   $first_row_style = array(
-//     'tblHeader' => true
-//   );
-//
-//   $text_style = array(
-//     'align' => 'center',
-//     'valign' => 'both'
-//   );
 
-  //$table = new Table($style_table);
-  /*
+function tab_carto($rq_carto_into){
+  $style_table = array(
+      'borderColor' => 'black',
+      'borderSize' => 6,
+      'cellMargin' => 100,
+      'align'  => 'center'
+  );
+
+  $first_cells_style = array(
+      'bgColor' => '#DCDCDC',
+      'valign'  => 'center',
+       'layout' => 'autofit'
+      // 'width' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(4)
+  );
+  $cell_style_basic = array(
+    'bgColor' => 'white',
+    'valign'  => 'center',
+    'layout' => 'autofit'
+  );
+
+  $first_row_style = array(
+    'tblHeader' => true
+  );
+
+  $text_style = array(
+    'align' => 'center',
+    'valign' => 'both'
+  );
+
+  $table = new Table($style_table);
+
   $first_cells_style_borderless = array(
     'bgColor' => 'FFFFFF',
     'valign'  => 'center',
     'layout' => 'autofit',
-    'borderColor' =>'FFFFFF',
-    'borderSize' => 1
-// );
+    'borderColor' =>'white',
+    'borderSize' => 6
+);
   //$first_row = mysqli_fetch_all($rq_carto_into);
 
   $array = mysqli_fetch_all($rq_carto_into);
@@ -556,39 +480,98 @@ function tab_raci($rq_first, $rq_atelier, $rq_raci){
 
 
 
-  for($i = 0; $i < 6; $i++){
-    //Création de la structure des lignes
-    if($i == 0){
-      $table->addRow(1,$first_cells_style_borderless);
-    }
-    else{
-      $table->addRow();
-      $vvar = true;
-    }
+  // for($i = -1; $i < 6; $i++){
+  //   //Création de la structure des lignes
+  //   if($i == 0){
+  //     $table->addRow(1,$first_cells_style_borderless);
+  //   }
+  //   else{
+  //     $table->addRow();
+  //     $vvar = true;
+  //   }
     //Fin création structure
 
 
     //Remplissage des lignes
+    for($i = -1; $i < 6; $i++){
+      if($i == 0){
+          $table->addRow(1,$first_cells_style_borderless);
+        }
+        else{
+          $table->addRow();
+          // $vvar = true;
+        }
 
-    for($j = -1; $j < 6; $j++ ){
-      if($i == 0 && $j == -1){
-        $table->addCell(1,$first_cells_style_borderless)-> addText(" Gravité ");
-      }
-   else if($i == 0){
-        $table->addCell(1,$first_cells_style_borderless)-> addText("d ");
-      }
-      else if($i == 6 && $j == 6){
-        $table->addCell(1,$first_cells_style_borderless)-> addText(" Vraisemblance ");
-      }
-      else if($i == 6){
-        $table->addCell(1,$first_cells_style_borderless)-> addText("d ");
+
+
+    for($j = -1; $j < 5; $j++ ){
+      if($i == -1){
+        if($j == -1){
+          $table->addCell(1,$first_cells_style_borderless)-> addText(" Gravité ");
+        }
+        else{
+            $table->addCell(1,$first_cells_style_borderless)-> addText(" ");
+        }
       }
       else{
-        $table->addCell(1,$first_cells_style_borderless)-> addText("d");
+        if($j == -1 && $i != -1 && $i != 5){
+          $table->addCell(1,$first_cells_style_borderless)-> addText(5-$i);
+        }
+        else if($i == 5 && $j == 4){
+            $table->addCell(1,$first_cells_style_borderless)-> addText(" Vraisemblance ");
+        }
+        else if($i == 5 && $j !=-1){
+          $table->addCell(1,$first_cells_style_borderless)-> addText($j+1);
+        }
+        else if($j == 4 && $i !=5 ){
+          $table->addCell(1,$first_cells_style_borderless)-> addText("  ");
+
+        }
+        else if($j == -1 && $i ==5 ){
+          $table->addCell(1,$first_cells_style_borderless)-> addText("  ");
+
+        }
+        else{
+          $table->addCell(1,$cell_style_basic)-> addText("vide1 ");
+        }
+
       }
+  }
+}
 
-    }
-  }*
 
-  //return $table;
-}*/
+
+  return $table;
+}
+// for($j = 0; $j < 6; $j++){
+//   switch($i){
+//     case $i == 0:
+//       if($j == 0){
+//         $table -> addCell(1, $cell_style_basic)->addText('Gravité');
+//       }
+//     case $i == 1:
+//       if($j == 0){
+//         $table -> addCell(1, $cell_style_basic)->addText('5');
+//       }
+//     case $i == 2:
+//       if($j == 0){
+//         $table -> addCell(1, $cell_style_basic)->addText('4');
+//       }
+//     case $i == 3:
+//       if($j == 0){
+//         $table -> addCell(1, $cell_style_basic)->addText('3');
+//       }
+//     case $i == 4:
+//       if($j == 0){
+//         $table -> addCell(1, $cell_style_basic)->addText('2');
+//       }
+//     case $i == 5:
+//       if($j == 0){
+//         $table -> addCell(1, $cell_style_basic)->addText('1');
+//       }
+//     case $i == 6:
+//       if($j > 0){
+//         $table -> addCell(1, $cell_style_basic)->addText($j);
+//       }
+//    }
+// }
