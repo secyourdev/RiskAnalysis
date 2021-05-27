@@ -317,7 +317,8 @@ function tab_raci($rq_first, $rq_atelier, $rq_raci){
                         'borderColor' => 'black',
                         'borderSize' => 6,
                         'cellMargin' => 100,
-                        'valign' => 'center',
+                        'alignement' => 'center',
+                        // 'valign' => 'center',
 
                         //'layout' => 'autofit',
                         'align'  => 'center'
@@ -344,13 +345,14 @@ function tab_raci($rq_first, $rq_atelier, $rq_raci){
                       'height' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(30),
                       'cantSplit' => 'true',
                       'cellMargin' => 100,
-                      'exactHeight' => 1700
+                      'align' => 'center',
+                      'valign' => 'center'
                     );
 
                     $first_row = mysqli_fetch_all($rq_first); //Contient noms prénoms
                     $tab_atelier = mysqli_fetch_all($rq_atelier); //Contient id atelier
                     $array = mysqli_fetch_all($rq_raci); // Contient les écritures
-                    $doge=0;
+                    $array_index=0;
                     $nb_col = mysqli_fetch_fields($rq_first);
                     $nb_first = mysqli_num_rows($rq_first);
                     $nb_row = mysqli_num_rows($rq_raci);
@@ -361,7 +363,7 @@ function tab_raci($rq_first, $rq_atelier, $rq_raci){
                     $vvar=true;
                     for($i = 0; $i < $nb_first; $i ++){
                       if($i == 0){
-                        $table->addRow(1,$first_row_style);
+                        $table->addRow(\PhpOffice\PhpWord\Shared\Converter::cmToTwip(6.5),$first_row_style);
                       }
                       else{
                         $table->addRow();
@@ -387,8 +389,8 @@ function tab_raci($rq_first, $rq_atelier, $rq_raci){
                           }
                           else if($vvar){
                             for($k = 0; $k <$nb_atelier ; $k++){
-                              $table -> addCell(1, $cell_style_basic)->addText($array[$doge][2][0], $cell_style_basic);
-                              $doge++;
+                              $table -> addCell(1, $cell_style_basic)->addText($array[$array_index][2][0], $cell_style_basic);
+                              $array_index++;
                               if($k%(14)==0){$vvar=false;}
                             }
 
