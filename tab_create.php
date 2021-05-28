@@ -532,6 +532,11 @@ function tab_carto($rq_carto_into){
 
         }
         else{
+          for($k = 0; $k < mysqli_num_rows($rq_carto_into); $k++){
+            if($array[$k][1] == $i && $array[$k][2] == $j){
+              $table->addCell(1,$cell_style_basic)-> addText($array[$k][3]);
+            }
+          }
           $table->addCell(1,$cell_style_basic)-> addText("vide1 ");
         }
 
