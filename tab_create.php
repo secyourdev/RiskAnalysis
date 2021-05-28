@@ -6,39 +6,45 @@ use PhpOffice\PhpWord\Element\Table;
 use PhpOffice\PhpWord\Element\TextRun;
 use PhpOffice\PhpWord\SimpleType\TblWidth;
 
-
+$min_size_of_row = \PhpOffice\PhpWord\Shared\Converter::cmToTwip(10);
 ///fonction générant les tableaux dits 'static' (sans couleur)
 function genere_tableau_rapport($rq){
-  $style_table = array(
-      'borderColor' => 'black',
-      'borderSize' => 6,
-      'cellMargin' => 100,
-      //'valign' => 'both',
+  global $min_size_of_row;
 
-      //'layout' => 'autofit',
-      'align'  => 'center'
-  );
+  //Feuilles de styles
+    //S'applique au tableau
+    $table_style = array(
+      'borderColor' => 'black', //Couleur des bordures
+      'borderSize' => 6, //Taille des bordures en TWIP
+      'align' => 'center',  //Alignement du tableau
+      'unit' => \PhpOffice\PhpWord\SimpleType\TblWidth::PERCENT,
+      'width' => 101*50
 
-  $first_cells_style = array(
-      'bgColor' => '#DCDCDC',
-      'valign'  => 'center',
-       'layout' => 'autofit'
-      // 'width' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(4)
-  );
-  $cell_style_basic = array(
-    'bgColor' => 'white',
-    'valign'  => 'center',
-    'layout' => 'autofit'
-  );
+    );
 
-  $first_row_style = array(
-    'tblHeader' => true
-  );
+    
 
-  $text_style = array(
-    'align' => 'center',
-    'valign' => 'both'
-  );
+    $first_row_style = array(
+      'tblHeader' => true
+    );
+
+    $row_style = array(
+
+    );
+
+    $first_cells_style= array(
+      'bgColor' => 'DCDCDC', //Couelur de fond de la première ligne
+      'valign' => 'center'
+    );
+
+    $cell_style = array(
+      'valign' => 'center'
+    );
+    $text_style =array(
+    'align' => 'center'
+    );
+
+
   $array = mysqli_fetch_all($rq,MYSQLI_NUM);
          //style *****************************************************************
 
@@ -47,22 +53,22 @@ function genere_tableau_rapport($rq){
 
 
        //création des tableaux*************************************
-       $table = new Table($style_table);
+       $table = new Table($table_style);
        for($i = -1; $i < $nb_row; $i ++){
          if($i == -1 ){
-           $table->addRow(1,$first_row_style);
+           $table->addRow($min_size_of_row,$first_row_style);
          }
          else{
-           $table->addRow();
+           $table->addRow($min_size_of_row);
          }
            for($j = 0; $j<$nb_col;$j++){
                if($i ==-1){
                    $finfo= mysqli_fetch_field_direct($rq,$j);
-                   $table->addCell(1, $first_cells_style)->addText($finfo->name,array('bold'=> true), $text_style);
+                   $table->addCell($min_size_of_row, $first_cells_style)->addText($finfo->name,array('bold'=> true), $text_style);
                }
 
                else{
-                 $table->addCell(1, $cell_style_basic)->addText($array[$i][$j],array(), $text_style);
+                 $table->addCell(1, $cell_style)->addText($array[$i][$j],array(), $text_style);
                }
 
            }
@@ -76,35 +82,40 @@ function genere_tableau_rapport($rq){
 
 //Tableaux ateliers 1c/3b/4b
 function tab_dyn1c_3b_4b($rq){
-  $style_table = array(
-      'borderColor' => 'black',
-      'borderSize' => 6,
-      'cellMargin' => 100,
-      //'valign' => 'both',
+  global $min_size_of_row;
 
-      //'layout' => 'autofit',
-      'align'  => 'center'
-  );
+  //Feuilles de styles
+    //S'applique au tableau
+    $table_style = array(
+      'borderColor' => 'black', //Couleur des bordures
+      'borderSize' => 6, //Taille des bordures en TWIP
+      'align' => 'center',  //Alignement du tableau
+      'unit' => \PhpOffice\PhpWord\SimpleType\TblWidth::PERCENT,
+      'width' => 100*50
 
-  $first_cells_style = array(
-      'bgColor' => '#DCDCDC',
-      'valign'  => 'center',
-       'layout' => 'autofit'
-      // 'width' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(4)
-  );
-  $cell_style_basic = array(
-    'bgColor' => 'white',
-    'valign'  => 'center',
-    'layout' => 'autofit'
-  );
+    );
 
-  $first_row_style = array(
-    'tblHeader' => true
-  );
-  $text_style = array(
-    'align' => 'center',
-    'valign' => 'both'
-  );
+    
+
+    $first_row_style = array(
+      'tblHeader' => true
+    );
+
+    $row_style = array(
+
+    );
+
+    $first_cells_style= array(
+      'bgColor' => 'DCDCDC', //Couelur de fond de la première ligne
+      'valign' => 'center'
+    );
+
+    $cell_style = array(
+      'valign' => 'center'
+    );
+    $text_style =array(
+    'align' => 'center'
+    );
     $array = mysqli_fetch_all($rq,MYSQLI_NUM);
 
 
@@ -113,13 +124,13 @@ function tab_dyn1c_3b_4b($rq){
 
 
          //création des tableaux*************************************
-         $table = new Table($style_table);
+         $table = new Table($table_style);
          for($i = -1; $i < $nb_row; $i ++){
            if($i == -1 ){
-             $table->addRow(1,$first_row_style);
+             $table->addRow($min_size_of_row,$first_row_style);
            }
            else{
-             $table->addRow();
+             $table->addRow($min_size_of_row);
            }
              for($j = 0; $j<$nb_col;$j++){
                  if($i ==-1){
@@ -129,26 +140,26 @@ function tab_dyn1c_3b_4b($rq){
                  else if($j == $nb_col-1){
                    switch($array[$i][$j]){
                      case 1:
-                      $table -> addCell(1, array('bgColor' => 'green'))->addText($array[$i][$j],array(),$text_style);
+                      $table -> addCell(1, array('bgColor' => 'green', 'valign' => 'center'))->addText($array[$i][$j],array(),$text_style);
                       break;
                      case 2:
-                      $table -> addCell(1, array('bgColor' => 'orange'))->addText($array[$i][$j],array(),$text_style);
+                      $table -> addCell(1, array('bgColor' => 'orange', 'valign' => 'center'))->addText($array[$i][$j],array(),$text_style);
                       break;
                      case 3:
-                      $table -> addCell(1, array('bgColor' => 'orange'))->addText($array[$i][$j],array(),$text_style);
+                      $table -> addCell(1, array('bgColor' => 'orange', 'valign' => 'center'))->addText($array[$i][$j],array(),$text_style);
                       break;
                      case 4:
-                      $table -> addCell(1, array('bgColor' => 'red'))->addText($array[$i][$j],array(),$text_style);
+                      $table -> addCell(1, array('bgColor' => 'red', 'valign' => 'center'))->addText($array[$i][$j],array(),$text_style);
                       break;
                      case 5:
-                      $table -> addCell(1, array('bgColor' => 'red'))->addText($array[$i][$j],array(),$text_style);
+                      $table -> addCell(1, array('bgColor' => 'red', 'valign' => 'center'))->addText($array[$i][$j],array(),$text_style);
                       break;
                      default:
-                      $table -> addCell(1, $cell_style_basic)->addText($array[$i][$j],array(),$text_style);
+                      $table -> addCell(1, $cell_style)->addText($array[$i][$j],array(),$text_style);
                     }
                   }
                     else{
-                      $table->addCell(1, $cell_style_basic)->addText($array[$i][$j],array(),$text_style);
+                      $table->addCell(1, $cell_style)->addText($array[$i][$j],array(),$text_style);
                     }
                      /*if($i%2 == 0){
                          $table->addCell(1, $blue_cell_style)->addText($array[$i][$j]);
@@ -166,122 +177,131 @@ function tab_dyn1c_3b_4b($rq){
 
 //tableaux ateliers 2b/3a/3c
 function tab_dyn2b_3a_3c($rq){
-$style_table = array(
-'borderColor' => 'black',
-'borderSize' => 6,
-'cellMargin' => 100,
-//'valign' => 'both',
+  global $min_size_of_row;
 
-//'layout' => 'autofit',
-'align'  => 'center'
-);
+  //Feuilles de styles
+    //S'applique au tableau
+    $table_style = array(
+      'borderColor' => 'black', //Couleur des bordures
+      'borderSize' => 6, //Taille des bordures en TWIP
+      'align' => 'center',  //Alignement du tableau
+      'unit' => \PhpOffice\PhpWord\SimpleType\TblWidth::PERCENT,
+      'width' => 101*50
 
-$first_cells_style = array(
-'bgColor' => '#DCDCDC',
-'valign'  => 'center',
-'layout' => 'autofit'
-// 'width' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(4)
-);
-$cell_style_basic = array(
-'bgColor' => 'white',
-'valign'  => 'center',
-'layout' => 'autofit'
-);
+    );
 
-$first_row_style = array(
-'tblHeader' => true
-);
+    
 
-$text_style = array(
-  'align' => 'center',
-  'valign' => 'both'
-);
+    $first_row_style = array(
+      'tblHeader' => true,
+      'cantSplit' => true
+    );
 
+    $row_style = array(
 
-$array = mysqli_fetch_all($rq,MYSQLI_NUM);
-      //style *****************************************************************
+    );
 
+    $first_cells_style= array(
+      'bgColor' => 'DCDCDC', //Couelur de fond de la première ligne
+      'valign' => 'center'
+    );
 
-    $nb_row = mysqli_num_rows($rq);
-    $nb_col = mysqli_num_fields($rq);
+    $cell_style = array(
+      'valign' => 'center'
+    );
+    $text_style =array(
+    'align' => 'center'
+    );
 
 
-    //création des tableaux*************************************
-    $table = new Table($style_table);
-    for($i = -1; $i < $nb_row; $i ++){
-      if($i == -1 ){
-        $table->addRow(1,$first_row_style);
-      }
-      else{
-        $table->addRow();
-      }
-        for($j = 0; $j<$nb_col;$j++){
-            if($i ==-1){
-                $finfo= mysqli_fetch_field_direct($rq,$j);
-                $table->addCell(1, $first_cells_style)->addText($finfo->name,array('bold'=> true),array(),$text_style);
-            }
-            else if($j == $nb_col-1){
-              switch($array[$i][$j]){
-                case "Faible":
-                $table -> addCell(1, array('bgColor' => 'green'))->addText($array[$i][$j],array(),$text_style);
-                break;
-                case "Pas critique":
-                $table -> addCell(1, array('bgColor' => 'green'))->addText($array[$i][$j],array(),$text_style);
-                break;
-                case "Moyenne":
-                $table -> addCell(1, array('bgColor' => 'orange'))->addText($array[$i][$j],array(),$text_style);
-                break;
-                case "Élevée":
-                $table -> addCell(1, array('bgColor' => 'red'))->addText($array[$i][$j],array(),$text_style);
-                break;
-                case "Critique":
-                  $table -> addCell(1, array('bgColor' => 'red'))->addText($array[$i][$j],array(),$text_style);
-                  break;
-                default:
-                $table -> addCell(1, $cell_style_basic)->addText($array[$i][$j],array(),$text_style);
-              }
-            }
-              else{
-                $table->addCell(1, $cell_style_basic)->addText($array[$i][$j],array(),$text_style);
-              }
+  $array = mysqli_fetch_all($rq,MYSQLI_NUM);
+        //style *****************************************************************
+
+
+      $nb_row = mysqli_num_rows($rq);
+      $nb_col = mysqli_num_fields($rq);
+
+
+      //création des tableaux*************************************
+      $table = new Table($table_style);
+      for($i = -1; $i < $nb_row; $i ++){
+        if($i == -1 ){
+          $table->addRow($min_size_of_row,$first_row_style);
         }
+        else{
+          $table->addRow($min_size_of_row);
+        }
+          for($j = 0; $j<$nb_col;$j++){
+              if($i ==-1){
+                  $finfo= mysqli_fetch_field_direct($rq,$j);
+                  $table->addCell($min_size_of_row, $first_cells_style)->addText($finfo->name,array('bold'=> true),array(),$text_style);
+              }
+              else if($j == $nb_col-1){
+                switch($array[$i][$j]){
+                  case "Faible":
+                  $table -> addCell(1, array('bgColor' => 'green','valign' => 'center'))->addText($array[$i][$j],array(),$text_style);
+                  break;
+                  case "Pas critique":
+                  $table -> addCell(1, array('bgColor' => 'green','valign' => 'center'))->addText($array[$i][$j],array(),$text_style);
+                  break;
+                  case "Moyenne":
+                  $table -> addCell(1, array('bgColor' => 'orange','valign' => 'center'))->addText($array[$i][$j],array(),$text_style);
+                  break;
+                  case "Élevée":
+                  $table -> addCell(1, array('bgColor' => 'red','valign' => 'center'))->addText($array[$i][$j],array(),$text_style);
+                  break;
+                  case "Critique":
+                    $table -> addCell(1, array('bgColor' => 'red','valign' => 'center'))->addText($array[$i][$j],array(),$text_style);
+                    break;
+                  default:
+                  $table -> addCell(1, $cell_style)->addText($array[$i][$j],array(),$text_style);
+                }
+              }
+                else{
+                  $table->addCell(1, $cell_style)->addText($array[$i][$j],array(),$text_style);
+                }
+          }
+      }
+      return $table;
     }
-    return $table;
-  }
 
 
 //tableua atelier 1d
 function tab_dyn_1d($rq){
-  $style_table = array(
-      'borderColor' => 'black',
-      'borderSize' => 6,
-      'cellMargin' => 100,
-      //'valign' => 'both',
+  global $min_size_of_row;
 
-      //'layout' => 'autofit',
-      'align'  => 'center'
-  );
+  //Feuilles de styles
+    //S'applique au tableau
+    $table_style = array(
+      'borderColor' => 'black', //Couleur des bordures
+      'borderSize' => 6, //Taille des bordures en TWIP
+      'align' => 'center',  //Alignement du tableau
+      'unit' => \PhpOffice\PhpWord\SimpleType\TblWidth::PERCENT,
+      'width' => 100*50
 
-  $first_cells_style = array(
-      'bgColor' => '#DCDCDC',
-      'valign'  => 'center',
-       'layout' => 'autofit'
-      // 'width' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(4)
-  );
-  $cell_style_basic = array(
-    'bgColor' => 'white',
-    'valign'  => 'center',
-    'layout' => 'autofit'
-  );
+    );
 
-  $first_row_style = array(
-    'tblHeader' => true
-  );
+    
 
-  $text_style = array(
-    'align' => 'center',
-    'valign' => 'both'
-  );
+    $first_row_style = array(
+      'tblHeader' => true
+    );
+
+    $row_style = array(
+
+    );
+
+    $first_cells_style= array(
+      'bgColor' => 'DCDCDC', //Couelur de fond de la première ligne
+      'valign' => 'center'
+    );
+
+    $cell_style = array(
+      'valign' => 'center'
+    );
+    $text_style =array(
+    'align' => 'center'
+    );
 
 
                $array = mysqli_fetch_all($rq,MYSQLI_NUM);
@@ -293,13 +313,13 @@ function tab_dyn_1d($rq){
 
 
                     //création des tableaux*************************************
-                    $table = new Table($style_table);
+                    $table = new Table($table_style);
                     for($i = -1; $i < $nb_row; $i ++){
                       if($i == -1 ){
-                        $table->addRow(1,$first_row_style);
+                        $table->addRow($min_size_of_row,$first_row_style);
                       }
                       else{
-                        $table->addRow();
+                        $table->addRow($min_size_of_row);
                       }
                         for($j = 0; $j<$nb_col;$j++){
                             if($i ==-1){
@@ -309,20 +329,20 @@ function tab_dyn_1d($rq){
                             else if($j == 2){
                               switch($array[$i][$j]){
                                 case "Appliqué sans restriction":
-                                 $table -> addCell(1, array('bgColor' => 'green'))->addText($array[$i][$j],array(),$text_style);
+                                 $table -> addCell(1, array('bgColor' => 'green', 'valign' => 'center'))->addText($array[$i][$j],array(),$text_style);
                                  break;
                                 case "Appliqué avec restriction":
-                                 $table -> addCell(1, array('bgColor' => 'orange'))->addText($array[$i][$j],array(),$text_style);
+                                 $table -> addCell(1, array('bgColor' => 'orange', 'valign' => 'center'))->addText($array[$i][$j],array(),$text_style);
                                  break;
                                 case "Non appliqué":
-                                 $table -> addCell(1, array('bgColor' => 'red'))->addText($array[$i][$j],array(),$text_style);
+                                 $table -> addCell(1, array('bgColor' => 'red', 'valign' => 'center'))->addText($array[$i][$j],array(),$text_style);
                                  break;
                                 default:
-                                 $table -> addCell(1, $cell_style_basic)->addText($array[$i][$j],array(),$text_style);
+                                 $table -> addCell(1, $cell_style)->addText($array[$i][$j],array(),$text_style);
                                }
                              }
                                else{
-                                 $table->addCell(1, $cell_style_basic)->addText($array[$i][$j],array(),$text_style);
+                                 $table->addCell(1, $cell_style)->addText($array[$i][$j],array(),$text_style);
                                }
                         }
                     }
@@ -431,35 +451,42 @@ function tab_raci($rq_first, $rq_atelier, $rq_raci){
 
 
 function tab_carto($rq_carto_into){
-  $style_table = array(
-      'borderColor' => 'black',
-      'borderSize' => 6,
-      'cellMargin' => 100,
-      'align'  => 'center'
-  );
+  global $min_size_of_row;
 
-  $first_cells_style = array(
-      'bgColor' => '#DCDCDC',
-      'valign'  => 'center',
-       'layout' => 'autofit'
-      // 'width' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(4)
-  );
-  $cell_style_basic = array(
-    'bgColor' => 'white',
-    'valign'  => 'center',
-    'layout' => 'autofit'
-  );
+  //Feuilles de styles
+    //S'applique au tableau
+    $table_style = array(
+      'borderColor' => 'black', //Couleur des bordures
+      'borderSize' => 6, //Taille des bordures en TWIP
+      'align' => 'center',  //Alignement du tableau
+      'unit' => \PhpOffice\PhpWord\SimpleType\TblWidth::PERCENT,
+      'width' => 100*50
 
-  $first_row_style = array(
-    'tblHeader' => true
-  );
+    );
 
-  $text_style = array(
-    'align' => 'center',
-    'valign' => 'both'
-  );
+    
 
-  $table = new Table($style_table);
+    $first_row_style = array(
+      'tblHeader' => true
+    );
+
+    $row_style = array(
+
+    );
+
+    $first_cells_style= array(
+      'bgColor' => 'DCDCDC', //Couelur de fond de la première ligne
+      'valign' => 'center'
+    );
+
+    $cell_style = array(
+      'valign' => 'center'
+    );
+    $text_style =array(
+    'align' => 'center'
+    );
+
+  $table = new Table($table_style);
 
   $first_cells_style_borderless = array(
     'bgColor' => 'FFFFFF',
@@ -468,85 +495,85 @@ function tab_carto($rq_carto_into){
     'borderColor' =>'white',
     'borderSize' => 6
 );
-  //$first_row = mysqli_fetch_all($rq_carto_into);
+    //$first_row = mysqli_fetch_all($rq_carto_into);
 
-  $array = mysqli_fetch_all($rq_carto_into);
+    $array = mysqli_fetch_all($rq_carto_into);
 
-  // $nb_col = mysqli_fetch_fields($rq_first);
-  // $nb_first = mysqli_num_rows($rq_first);
-  // $nb_row = mysqli_num_rows($rq_carto_into);
-  // print_r($array);
-
-
-
-
-  // for($i = -1; $i < 6; $i++){
-  //   //Création de la structure des lignes
-  //   if($i == 0){
-  //     $table->addRow(1,$first_cells_style_borderless);
-  //   }
-  //   else{
-  //     $table->addRow();
-  //     $vvar = true;
-  //   }
-    //Fin création structure
-
-
-    //Remplissage des lignes
-    for($i = -1; $i < 6; $i++){
-      if($i == 0){
-          $table->addRow(1,$first_cells_style_borderless);
-        }
-        else{
-          $table->addRow();
-          // $vvar = true;
-        }
+    // $nb_col = mysqli_fetch_fields($rq_first);
+    // $nb_first = mysqli_num_rows($rq_first);
+    // $nb_row = mysqli_num_rows($rq_carto_into);
+    // print_r($array);
 
 
 
-    for($j = -1; $j < 5; $j++ ){
-      if($i == -1){
-        if($j == -1){
-          $table->addCell(1,$first_cells_style_borderless)-> addText(" Gravité ");
-        }
-        else{
-            $table->addCell(1,$first_cells_style_borderless)-> addText(" ");
-        }
-      }
-      else{
-        if($j == -1 && $i != -1 && $i != 5){
-          $table->addCell(1,$first_cells_style_borderless)-> addText(5-$i);
-        }
-        else if($i == 5 && $j == 4){
-            $table->addCell(1,$first_cells_style_borderless)-> addText(" Vraisemblance ");
-        }
-        else if($i == 5 && $j !=-1){
-          $table->addCell(1,$first_cells_style_borderless)-> addText($j+1);
-        }
-        else if($j == 4 && $i !=5 ){
-          $table->addCell(1,$first_cells_style_borderless)-> addText("  ");
 
-        }
-        else if($j == -1 && $i ==5 ){
-          $table->addCell(1,$first_cells_style_borderless)-> addText("  ");
+    // for($i = -1; $i < 6; $i++){
+    //   //Création de la structure des lignes
+    //   if($i == 0){
+    //     $table->addRow(1,$first_cells_style_borderless);
+    //   }
+    //   else{
+    //     $table->addRow();
+    //     $vvar = true;
+    //   }
+      //Fin création structure
 
-        }
-        else{
-          for($k = 0; $k < mysqli_num_rows($rq_carto_into); $k++){
-            if($array[$k][1] == $i && $array[$k][2] == $j){
-              $table->addCell(1,$cell_style_basic)-> addText($array[$k][3]);
-            }
+
+      //Remplissage des lignes
+      for($i = -1; $i < 6; $i++){
+        if($i == 0){
+            $table->addRow(1,$first_cells_style_borderless);
           }
-          $table->addCell(1,$cell_style_basic)-> addText("vide1 ");
+          else{
+            $table->addRow();
+            // $vvar = true;
+          }
+
+
+
+      for($j = -1; $j < 5; $j++ ){
+        if($i == -1){
+          if($j == -1){
+            $table->addCell(1,$first_cells_style_borderless)-> addText(" Gravité ");
+          }
+          else{
+              $table->addCell(1,$first_cells_style_borderless)-> addText(" ");
+          }
         }
+        else{
+          if($j == -1 && $i != -1 && $i != 5){
+            $table->addCell(1,$first_cells_style_borderless)-> addText(5-$i);
+          }
+          else if($i == 5 && $j == 4){
+              $table->addCell(1,$first_cells_style_borderless)-> addText(" Vraisemblance ");
+          }
+          else if($i == 5 && $j !=-1){
+            $table->addCell(1,$first_cells_style_borderless)-> addText($j+1);
+          }
+          else if($j == 4 && $i !=5 ){
+            $table->addCell(1,$first_cells_style_borderless)-> addText("  ");
 
-      }
+          }
+          else if($j == -1 && $i ==5 ){
+            $table->addCell(1,$first_cells_style_borderless)-> addText("  ");
+
+          }
+          else{
+            for($k = 0; $k < mysqli_num_rows($rq_carto_into); $k++){
+              if($array[$k][1] == $i && $array[$k][2] == $j){
+                $table->addCell(1,$cell_style)-> addText($array[$k][3]);
+              }
+            }
+            $table->addCell(1,$cell_style)-> addText("vide1 ");
+          }
+
+        }
+    }
   }
-}
 
 
 
-  return $table;
+    return $table;
 }
 // for($j = 0; $j < 6; $j++){
 //   switch($i){
