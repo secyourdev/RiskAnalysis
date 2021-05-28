@@ -499,81 +499,137 @@ function tab_carto($rq_carto_into){
 
     $array = mysqli_fetch_all($rq_carto_into);
 
-    // $nb_col = mysqli_fetch_fields($rq_first);
-    // $nb_first = mysqli_num_rows($rq_first);
-    // $nb_row = mysqli_num_rows($rq_carto_into);
-    // print_r($array);
+  // $nb_col = mysqli_fetch_fields($rq_first);
+  // $nb_first = mysqli_num_rows($rq_first);
+  $nb_row = mysqli_num_rows($rq_carto_into);
+  // print_r($array);
 
 
 
 
-    // for($i = -1; $i < 6; $i++){
-    //   //Création de la structure des lignes
-    //   if($i == 0){
-    //     $table->addRow(1,$first_cells_style_borderless);
-    //   }
-    //   else{
-    //     $table->addRow();
-    //     $vvar = true;
-    //   }
-      //Fin création structure
+  // for($i = -1; $i < 6; $i++){
+  //   //Création de la structure des lignes
+  //   if($i == 0){
+  //     $table->addRow(1,$first_cells_style_borderless);
+  //   }
+  //   else{
+  //     $table->addRow();
+    $vvar = false;
+    $compte=0;
+    $x=0;
+    $y=0;
+  //   }
+    //Fin création structure
 
 
-      //Remplissage des lignes
-      for($i = -1; $i < 6; $i++){
-        if($i == 0){
-            $table->addRow(1,$first_cells_style_borderless);
-          }
-          else{
-            $table->addRow();
-            // $vvar = true;
-          }
-
-
-
-      for($j = -1; $j < 5; $j++ ){
-        if($i == -1){
-          if($j == -1){
-            $table->addCell(1,$first_cells_style_borderless)-> addText(" Gravité ");
-          }
-          else{
-              $table->addCell(1,$first_cells_style_borderless)-> addText(" ");
-          }
+    //Remplissage des lignes
+    for($i = -1; $i < 6; $i++){
+      if($i == 0){
+          $table->addRow(1,$first_cells_style_borderless);
         }
         else{
-          if($j == -1 && $i != -1 && $i != 5){
-            $table->addCell(1,$first_cells_style_borderless)-> addText(5-$i);
-          }
-          else if($i == 5 && $j == 4){
-              $table->addCell(1,$first_cells_style_borderless)-> addText(" Vraisemblance ");
-          }
-          else if($i == 5 && $j !=-1){
-            $table->addCell(1,$first_cells_style_borderless)-> addText($j+1);
-          }
-          else if($j == 4 && $i !=5 ){
-            $table->addCell(1,$first_cells_style_borderless)-> addText("  ");
+          $table->addRow();
+          //$vvar = false;
+        }
 
-          }
-          else if($j == -1 && $i ==5 ){
-            $table->addCell(1,$first_cells_style_borderless)-> addText("  ");
 
-          }
-          else{
-            for($k = 0; $k < mysqli_num_rows($rq_carto_into); $k++){
-              if($array[$k][1] == $i && $array[$k][2] == $j){
-                $table->addCell(1,$cell_style)-> addText($array[$k][3]);
-              }
-            }
-            $table->addCell(1,$cell_style)-> addText("vide1 ");
-          }
+
+    for($j = -1; $j < 5; $j++ ){
+      if($i == -1){
+        if($j == -1){
+          $table->addCell(1,$first_cells_style_borderless)-> addText(" Gravité ");
+        }
+        else{
+            $table->addCell(1,$first_cells_style_borderless)-> addText(" ");
+        }
+      }
+      else{
+        if($j == -1 && $i != -1 && $i != 5){
+          $table->addCell(1,$first_cells_style_borderless)-> addText(5-$i);
+        }
+        else if($i == 5 && $j == 4){
+            $table->addCell(1,$first_cells_style_borderless)-> addText(" Vraisemblance ");
+        }
+        else if($i == 5 && $j !=-1){
+          $table->addCell(1,$first_cells_style_borderless)-> addText($j+1);
+        }
+        else if($j == 4 && $i !=5 ){
+          $table->addCell(1,$first_cells_style_borderless)-> addText("  ");
 
         }
-    }
-  }
+        else if($j == -1 && $i ==5 ){
+          $table->addCell(1,$first_cells_style_borderless)-> addText("  ");
+
+        }
+        else{
+          // if($vvar){
+          //   $table->addCell(1,$cell_style)-> addText($array[$compte][0]);
+          //   $vvar=false;
+          // echo($compte.'    ');
+
+          // //echo($array[$compte][1].'    ');
+          // //echo($array[$compte][2].'    ');
+          // //echo($array[$compte][3].'    ');
+          // //echo('  $x =  '.$x.' $y = '.$y.' |[||| ');
+          // }
+          // else{
+          // $table->addCell(1,$cell_style)-> addText("vide1");
+          // }
+          for($k = ($compte+1); $k < $nb_row; $k++){
+            
+            if($array[$k][1] == $x && $array[$k][2] == $y){
+              /*if($compte > $k){
+                $k=$compte;
+              }*/
+              $vvar=true;
+              
+              $compte=$k;
+              //$table->addCell(1,$cell_style_basic)-> addText($array[$compte][0]);
+              //echo($array[$k][0].";".$array[$k][1]. ";".$array[$k][2]. " jaaaaaj");
+              break;
+            }
+          }
+          
+          
+          if($vvar){
+            $table->addCell(1,$cell_style)-> addText($array[$compte][0]);
+            $vvar=false;
+           //echo($compte.'    ');
+
+          //echo($array[$compte][1].'    ');
+          //echo($array[$compte][2].'    ');
+          //echo($array[$compte][3].'    ');
+          //echo('  $x =  '.$x.' $y = '.$y.' |[||| ');
+          }
+          else{
+          $table->addCell(1,$cell_style)-> addText("vide1");
+          }
+         
+
+        }
+        /*else{
+          for($k = 0; $k < $nb_row; $k++){
+            if($array[$k][1] == $i && $array[$k][2] == $j){
+              $o=1;//$table->addCell(1,$cell_style_basic)-> addText($array[$k][3]);
+            }else{
+              $o=0;
+            }
+          }
+          //$table->addCell(1,$cell_style_basic)-> addText("vide1 ");
+        }*/
+
+      }
+      
+     
+  }//fin de la bocule $J
+
+  $x+=1;
+  $y+=1; 
+}//fin de la boucle $I
 
 
 
-    return $table;
+  return $table;
 }
 // for($j = 0; $j < 6; $j++){
 //   switch($i){
