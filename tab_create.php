@@ -529,7 +529,7 @@ function tab_carto($rq_carto){
     $a=0;
 
 
-    $tab = array_fill(0,5 , []);
+    $tab = array_fill(0,5 , [' ']);
     $empty_string = "";
    //print_r($tab);
 
@@ -537,12 +537,12 @@ function tab_carto($rq_carto){
 
                        for($i = 5; $i >=0; $i--){
 
-                         for($j = 0; $j < 4; $j++){
-                           for($k = 0; $k < mysqli_num_rows($rq_carto);$k++){
+                         for($j = 1; $j < 6; $j++){
+                           for($k = 0; $k < mysqli_num_rows($rq_carto)-1;$k++){
                              //$tab[$i][$compte] = $compte;
                              if(5-$i == $array[$k][2] && $j == $array[$k][1]){
 
-                               $tab[$i][$compte] = $compte;
+                               $tab[$i][$j-1] = $array[$k][0];
                                // if($compte==mysqli_num_rows($rq_carto)-1){
                                //   $compte=mysqli_num_rows($rq_carto)+1;
                                //   $tab[$i][$compte] = $array[mysqli_num_rows($rq_carto)+1][0];
@@ -553,7 +553,7 @@ function tab_carto($rq_carto){
 
                              }
                              else{
-                               $tab[$i][$j] = "ceci est du vide mdr";//$empty_string;
+                               $tab[$i][$j] = $empty_string;
                              }
                            }
 
