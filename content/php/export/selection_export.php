@@ -20,7 +20,7 @@ $rq_raci = "SELECT id_atelier,nom, ecriture FROM H_RACI, A_utilisateur WHERE H_R
 /*"SELECT id_atelier,nom, ecriture FROM H_RACI, A_utilisateur WHERE H_RACI.id_utilisateur = A_utilisateur.id_utilisateur AND id_projet =$getid_projet";/* ORDER BY  H_RACI.id_atelier,A_utilisateur.id_utilisateur";*/
 $rq_raci_tab = mysqli_query($connect,$rq_raci);
 
-$rq_atelier_raci = "SELECT  DISTINCT/* H_RACI.id_atelier*/CONCAT(H_RACI.id_atelier,' ',nom_atelier) FROM H_RACI, G_atelier WHERE H_RACI.id_atelier = G_atelier.id_atelier AND id_projet = $getid_projet";
+$rq_atelier_raci = "SELECT  DISTINCT/* H_RACI.id_atelier*/H_RACI.id_atelier FROM H_RACI, G_atelier WHERE H_RACI.id_atelier = G_atelier.id_atelier AND id_projet = $getid_projet";
 $rq_atelier_raci_tab = mysqli_query($connect, $rq_atelier_raci);
 
 //*************************1.a Données Principales////////////////////////////
