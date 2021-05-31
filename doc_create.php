@@ -113,7 +113,7 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
   $tab_eval_vrai = tab_dyn1c_3b_4b($rq_eval_vrai_tab);
 
   ///atelier 5*************************************************************
-  $tab_carto5a = tab_carto($qr_carto_into_tab);
+  $tab_carto5a = tab_carto($rq_carto_tab);
   //5.b/////////////////////////////////////////////////
   $tab_plan_amelio = genere_tableau_rapport($rq_plan_amelio_tab);
   //5.c/////////////////////////////////////////////////

@@ -190,4 +190,23 @@ FROM DB_bareme_risque, T_chemin_d_attaque_strategique
 WHERE DB_bareme_risque.id_projet=$getid_projet";
 $qr_carto_into_tab = mysqli_query($connect, $qr_carto_into);
 
+$rq_carto = "SELECT
+T_chemin_d_attaque_strategique.id_risque,
+U_scenario_operationnel.vraisemblance,
+M_evenement_redoute.niveau_de_gravite
+FROM U_scenario_operationnel,T_chemin_d_attaque_strategique, S_scenario_strategique,UA_ER, M_evenement_redoute
+WHERE T_chemin_d_attaque_strategique.id_scenario_strategique = S_scenario_strategique.id_scenario_strategique
+AND T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = UA_ER.id_chemin_d_attaque_strategique
+AND UA_ER.id_evenement_redoute = M_evenement_redoute.id_evenement_redoute
+AND T_chemin_d_attaque_strategique.id_projet = $getid_projet
+AND U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique
+AND U_scenario_operationnel.id_projet = $getid_projet
+ORDER BY T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique ASC";
+$rq_carto_tab = mysqli_query($connect, $rq_carto);
+
+
+
+
+
+
 ?>
