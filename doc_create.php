@@ -104,7 +104,7 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
   ///atelier 4*************************************************************
   //4.a/////////////////////////////////////////////////
   $tab_scen_strat_etabli= genere_tableau_rapport($rq_scen_strat_tab);
-  //$tab_scen_op= genere_tableau_rapport($rq_scen_op);
+  // $tab_scen_op= genere_tableau_rapport($rq_scen_op_tab);
   $tab_mode_op= genere_tableau_rapport($rq_mode_op_tab);
   //4.b/////////////////////////////////////////////////
   $tab_echelle_b = tab_dyn1c_3b_4b($rq_echelle_b_tab);
@@ -121,35 +121,67 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
 
 
   ////inclusion tableaux
-
+///1.a
   $template->setComplexBlock('acteurs', $tab_acteurs);
   $template->setComplexBlock('h_raci', $tab_raci);
+  ///1.b
   $template->setComplexBlock('j_valeur_metier', $tab_vm);
   $template->setComplexBlock('k_bien_support', $tab_biens);
   $template->setComplexBlock('i_mission', $tab_mission);
+
+  ///1.c
   $template->setComplexBlock('da_echelle', $tab_echelle);
   $template->setComplexBlock('da_niveau', $tab_niveau);
+
+  ///1.d
   $template->setComplexBlock('n_socle_de_securite', $tab_socle_sec);
   $template->setComplexBlock('o_regle', $tab_regle);
+
+
+  ///2.a
   $template->setComplexBlock('p_srov1', $tab_srov);
+
+  ///2.b
   $template->setComplexBlock('p_srov2', $tab_srov2);
+
+
+  //2.c
   $template->setComplexBlock('p_srov3', $tab_srov3);
+
+
   $template->setComplexBlock('m_evenement_redoute', $tab_evred);
+
+  ///3a
   $template->setComplexBlock('r_partie_prenante1', $tab_partie);
-  $template->setComplexBlock('r_partie_prenante2', $tab_partie2);
+
+
+
   $template->setComplexBlock('p_srov4', $tab_srov4);
   $template -> setComplexBlock('s_scenario_strategique1', $tab_scenar_strat1);
+
+  //3.b
   $template->setComplexBlock('m_evenement_redoute2', $tab_cidt);
   $template->setComplexBlock('eval_vrai', $tab_eval_vrai);
   $template->setComplexBlock('za_traitement_de_securite', $tab_plan_amelio);
   $template->setComplexBlock('last_table', $tab_eval_risk_resi);
   $template->setComplexBlock('t_chemin_d_attaque_strategique', $tab_chemin_attaque);
+
+  ///3.c
+  $template->setComplexBlock('r_partie_prenante2', $tab_partie2);
+  //TO DO Mesure de sécurité
+  // TO DO Evaluation
+
+  //4.a
   $template->setComplexBlock('s_scenario_strategique3', $tab_scen_strat_etabli);
   $template->setComplexBlock('mode_operatoire', $tab_mode_op);
   $template -> setComplexBlock('s_scenario_strategique2', $tab_scenar_strat);
-  $template -> setComplexBlock('da_echelle1', $tab_echelle_b);
-  $template -> setComplexBlock('u_scenario_operationnel', $tab_vraisemblance_b);
+  //TO DO Remplacer startégique 2 plchlder scenario_operationel
 
+  ///4.b
+  $template -> setComplexBlock('da_echelle1', $tab_echelle_b);
+
+
+///5.a
   $template -> setComplexBlock('Cartographie4', $tab_carto5a);
 
 

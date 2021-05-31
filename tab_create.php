@@ -415,7 +415,7 @@ function tab_raci($rq_first, $rq_atelier, $rq_raci){
 
                     for($i = 0; $i < $nb_first; $i ++){
                       if($i == 0){
-                        $table->addRow(\PhpOffice\PhpWord\Shared\Converter::cmToTwip(6.5),$first_row_style);
+                        $table->addRow(1,$first_row_style);
                       }
                       else{
                         $table->addRow();
@@ -497,10 +497,12 @@ function tab_carto($rq_carto){
 
   $first_cells_style_borderless = array(
     'bgColor' => 'FFFFFF',
-    'valign'  => 'center',
-    'layout' => 'autofit',
     'borderColor' =>'white',
     'borderSize' => 6
+);
+
+$text_right = array(
+  'align' => 'right'
 );
     //$first_row = mysqli_fetch_all($rq_carto_into);
 
@@ -538,7 +540,7 @@ function tab_carto($rq_carto){
                        for($i = 5; $i >=0; $i--){
 
                          for($j = 1; $j < 6; $j++){
-                           for($k = 0; $k < mysqli_num_rows($rq_carto)-1;$k++){
+                           for($k = 0; $k < mysqli_num_rows($rq_carto);$k++){
                              //$tab[$i][$compte] = $compte;
                              if(5-$i == $array[$k][2] && $j == $array[$k][1]){
 
@@ -581,7 +583,7 @@ function tab_carto($rq_carto){
     for($j = -1; $j < 5; $j++ ){
       if($i == -1){
         if($j == -1){
-          $table->addCell(1,$first_cells_style_borderless)-> addText(" Gravité ");
+          $table->addCell(1,$first_cells_style_borderless)-> addText(" Gravité ",$text_right);
         }
         else{
             $table->addCell(1,$first_cells_style_borderless)-> addText(" ");
@@ -589,7 +591,7 @@ function tab_carto($rq_carto){
       }
       else{
         if($j == -1 && $i != -1 && $i != 5){
-          $table->addCell(1,$first_cells_style_borderless)-> addText(5-$i);
+          $table->addCell(1,$first_cells_style_borderless)-> addText(5-$i,$text_right);
         }
         else if($i == 5 && $j == 4){
             $table->addCell(1,$first_cells_style_borderless)-> addText(" Vraisemblance ");
@@ -606,8 +608,29 @@ function tab_carto($rq_carto){
 
         }
         else{
-
-          $table->addCell(1,$cell_style)-> addText($tab[$i][$j]);
+          if($i == 0){
+            if($j == 0) $table->addCell(1,array('bgColor' => 'orange'))-> addText($tab[$i][$j]);
+            else $table->addCell(1,array('bgColor' => 'red'))-> addText($tab[$i][$j],$text_style);
+          }
+          else if($i == 1){
+            if($j == 0 || $j == 1) $table->addCell(1,array('bgColor' => 'orange'))-> addText($tab[$i][$j],$text_style);
+            else $table->addCell(1,array('bgColor' => 'red'))-> addText($tab[$i][$j],$text_style);
+          }
+          else if($i == 2){
+            if($j == 0 ) $table->addCell(1,array('bgColor' => 'green'))-> addText($tab[$i][$j]);
+            else if($j == 1 || $j ==2)$table->addCell(1,array('bgColor' => 'orange'))-> addText($tab[$i][$j],$text_style);
+            else $table->addCell(1,array('bgColor' => 'red'))-> addText($tab[$i][$j],$text_style);
+          }
+          else if($i == 3){
+            if($j <= 1 ) $table->addCell(1,array('bgColor' => 'green'))-> addText($tab[$i][$j],$text_style);
+            else $table->addCell(1,array('bgColor' => 'orange'))-> addText($tab[$i][$j],$text_style);
+          }
+          else if($i == 4){
+            if($j <= 2 ) $table->addCell(1,array('bgColor' => 'green'))-> addText($tab[$i][$j],$text_style);
+            else $table->addCell(1,array('bgColor' => 'orange'))-> addText($tab[$i][$j],$text_style);
+          }
+          else{
+          $table->addCell(1,$cell_style)-> addText($tab[$i][$j],$text_style);}
         // for($k=0;$k<mysqli_num_rows($rq_carto);$k++){
         //     /*if($j==3){
         //       $k=0;
