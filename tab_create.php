@@ -161,13 +161,6 @@ function tab_dyn1c_3b_4b($rq){
                     else{
                       $table->addCell(1, $cell_style)->addText($array[$i][$j],array(),$text_style);
                     }
-                     /*if($i%2 == 0){
-                         $table->addCell(1, $blue_cell_style)->addText($array[$i][$j]);
-
-                     }
-                     else{
-                         $table->addCell(1, $cell_style_basic)->addText($array[$i][$j]);
-                     }*/
 
 
              }
@@ -355,38 +348,22 @@ function tab_raci($rq_first, $rq_atelier, $rq_raci){
                     $style_table = array(
                         'borderColor' => 'black',
                         'borderSize' => 6,
-                        // 'cellMargin(Top)' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(10),
-                        // 'cellMargin(Right)' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(10),
-                        // 'cellMargin(Bottom)' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(10),
-                        // 'cellMargin(Left)' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(10),
-                        // 'alignement' => 'center',
-                        // 'valign' => 'center',
-
-                        //'layout' => 'autofit',
                         'align'  => 'center'
                     );
 
                     $first_cells_style = array(
                         'bgColor' => '#DCDCDC',
                         'valign'  => 'bottom',
-                         //'layout' => 'autofit',
                          'textDirection'=>\PhpOffice\PhpWord\Style\Cell::TEXT_DIR_BTLR,
                          'cantSplit' => 'true',
-                         //'cellMargin' => 100
-                        // 'width' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(4)
                     );
                     $cell_style_basic = array(
                       'bgColor' => 'white',
                       'align'  => 'alignment'
-                      //'layout' => 'autofit'
                     );
 
                     $first_row_style = array(
                       'tblHeader' => true,
-                      // 'cantSplit' => 'true',
-                      //'cellMargin' => 100,
-                      //'align' => 'center',
-                      //'valign' => 'center'
                     );
 
                     $text_style = array(
@@ -499,87 +476,53 @@ function tab_carto($rq_carto){
     'bgColor' => 'FFFFFF',
     'borderColor' =>'white',
     'borderSize' => 6
-);
+  );
 
-$text_right = array(
+  $text_right = array(
   'align' => 'right'
-);
-    //$first_row = mysqli_fetch_all($rq_carto_into);
+  );
+   
 
-    $array = mysqli_fetch_all($rq_carto);
+  $array = mysqli_fetch_all($rq_carto);
 
-    // print_r($array);
+  $compte=0;
+  $k = 0;
 
-  // $nb_col = mysqli_fetch_fields($rq_first);
-  // $nb_first = mysqli_num_rows($rq_first);
-  // $nb_row = mysqli_num_rows($rq_carto_into);
-  // print_r($array);
-
-
-
-
-  // for($i = -1; $i < 6; $i++){
-  //   //Création de la structure des lignes
-  //   if($i == 0){
-  //     $table->addRow(1,$first_cells_style_borderless);
-  //   }
-  //   else{
-  //     $table->addRow();
-    $vvar = false;
-    $compte=0;
-    $k = 0;
-    $a=0;
-
-
-    $tab = array_fill(0,5 , [' ']);
-    $empty_string = "";
-   //print_r($tab);
+  //Création array contenu
+  $tab = array_fill(0,5 , [' ']);
+  $empty_string = "";
 
 
 
-                       for($i = 5; $i >=0; $i--){
+  for($i = 5; $i >=0; $i--){
 
-                         for($j = 1; $j < 6; $j++){
-                           for($k = 0; $k < mysqli_num_rows($rq_carto);$k++){
-                             //$tab[$i][$compte] = $compte;
-                             if(5-$i == $array[$k][2] && $j == $array[$k][1]){
-
-                               $tab[$i][$j-1] = $array[$k][0];
-                               // if($compte==mysqli_num_rows($rq_carto)-1){
-                               //   $compte=mysqli_num_rows($rq_carto)+1;
-                               //   $tab[$i][$compte] = $array[mysqli_num_rows($rq_carto)+1][0];
-                               // }
-                               $compte ++;
-
-
-
-                             }
-                             else{
-                               $tab[$i][$j] = $empty_string;
-                             }
-                           }
-
-                         }
-                       }
-
-
-
-  //   }
-    //Fin création structure
-
-
-    //Remplissage des lignes
-    for($i = -1; $i < 6; $i++){
-      if($i == 0){
-          $table->addRow(1,$first_cells_style_borderless);
+    for($j = 1; $j < 6; $j++){
+      for($k = 0; $k < mysqli_num_rows($rq_carto);$k++){
+        if(5-$i == $array[$k][2] && $j == $array[$k][1]){
+          $tab[$i][$j-1] = $array[$k][0];          
+          $compte ++;
         }
         else{
-          $table->addRow();
-          //$vvar = false;
+          $tab[$i][$j] = $empty_string;
         }
+      }
+    }
+  }
+  //Fin création array contenu
+    
 
 
+    //Création strcucture
+  for($i = -1; $i < 6; $i++){
+    if($i == 0){
+        $table->addRow(1,$first_cells_style_borderless);
+      }
+    else{
+      $table->addRow();
+    }
+    //Fin création structure
 
+    //Remplissage des lignes
     for($j = -1; $j < 5; $j++ ){
       if($i == -1){
         if($j == -1){
@@ -631,113 +574,9 @@ $text_right = array(
           }
           else{
           $table->addCell(1,$cell_style)-> addText($tab[$i][$j],$text_style);}
-        // for($k=0;$k<mysqli_num_rows($rq_carto);$k++){
-        //     /*if($j==3){
-        //       $k=0;
-        //     }*/
-        //
-        //     if($i == $array[$k][2] && $j == $array[$k][1]){
-        //       $table->addCell(1,$cell_style)-> addText($array[$k][0]);
-        //     }
-        //     else{
-        //       $table->addCell(1,$cell_style)-> addText("vide  ");
-        //     }
-        // //     }
-        // $table->addCell(1,$cell_style)-> addText($i." -- ".$j);
-
           }
       }
-  }//fin de la bocule $J
-  // $x+=1;
-  // $y+=1;
-}//fin de la boucle $I
-
-
-
+    }
+  }
   return $table;
 }
-// for($j = 0; $j < 6; $j++){
-//   switch($i){
-//     case $i == 0:
-//       if($j == 0){
-//         $table -> addCell(1, $cell_style_basic)->addText('Gravité');
-//       }
-//     case $i == 1:
-//       if($j == 0){
-//         $table -> addCell(1, $cell_style_basic)->addText('5');
-//       }
-//     case $i == 2:
-//       if($j == 0){
-//         $table -> addCell(1, $cell_style_basic)->addText('4');
-//       }
-//     case $i == 3:
-//       if($j == 0){
-//         $table -> addCell(1, $cell_style_basic)->addText('3');
-//       }
-//     case $i == 4:
-//       if($j == 0){
-//         $table -> addCell(1, $cell_style_basic)->addText('2');
-//       }
-//     case $i == 5:
-//       if($j == 0){
-//         $table -> addCell(1, $cell_style_basic)->addText('1');
-//       }
-//     case $i == 6:
-//       if($j > 0){
-//         $table -> addCell(1, $cell_style_basic)->addText($j);
-//       }
-//    }
-// }
-
-/*
-else{
-  // if($vvar){
-  //   $table->addCell(1,$cell_style)-> addText($array[$compte][0]);
-  //   $vvar=false;
-  // echo($compte.'    ');
-
-  // //echo($array[$compte][1].'    ');
-  // //echo($array[$compte][2].'    ');
-  // //echo($array[$compte][3].'    ');
-  // //echo('  $x =  '.$x.' $y = '.$y.' |[||| ');
-  // }
-  // else{
-  // $table->addCell(1,$cell_style)-> addText("vide1");
-  // }
-  for($k = ($compte+1); $k < $nb_row; $k++){
-
-    if($array[$k][1] == $x && $array[$k][2] == $y){
-      /*if($compte > $k){
-        $k=$compte;
-      }*/
-  //     $vvar=true;
-  //
-  //     $compte=$k;
-  //     //$table->addCell(1,$cell_style_basic)-> addText($array[$compte][0]);
-  //     //echo($array[$k][0].";".$array[$k][1]. ";".$array[$k][2]. " jaaaaaj");
-  //     break;
-  //   }
-  // }
-  //
-  //
-  // if($vvar){
-  //   $table->addCell(1,$cell_style)-> addText($array[$compte][0]);
-  //   $vvar=false;
-  //  //echo($compte.'    ');
-  //
-  // //echo($array[$compte][1].'    ');
-  // //echo($array[$compte][2].'    ');
-  // //echo($array[$compte][3].'    ');
-  // //echo('  $x =  '.$x.' $y = '.$y.' |[||| ');
-  // }
-
-  /*else{
-    for($k = 0; $k < $nb_row; $k++){
-      if($array[$k][1] == $i && $array[$k][2] == $j){
-        $o=1;//$table->addCell(1,$cell_style_basic)-> addText($array[$k][3]);
-      }else{
-        $o=0;
-      }
-    }
-    //$table->addCell(1,$cell_style_basic)-> addText("vide1 ");
-  }*/
