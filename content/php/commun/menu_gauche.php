@@ -85,7 +85,7 @@
             <!-- Heading -->
             <div class="sidebar-heading">Ateliers </div>
             <br>
-            <button type="button" class="btn btn-primary" onclick="myAjax()">Rapport</button>
+            <a class="btn btn-primary" href="atelier_super-<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">Aterlier Front Page</a>
             <br>
             <!-- Nav Item - Charts -->
             <li class="nav-item py-1">
