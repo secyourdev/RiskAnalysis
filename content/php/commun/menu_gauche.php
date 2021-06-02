@@ -1,5 +1,5 @@
         <!-- Script ? -->
-        <script src="content/js/rapport/ajax_tables.js"></script>
+        <!-- <script src="content/js/rapport/ajax_tables.js"></script> -->
 
         <!-- Left Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-top accordion side_bar_scroll" id="accordionSidebar">

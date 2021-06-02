@@ -36,6 +36,8 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     <!-- JS -->
     <script src="content/vendor/jquery/jquery.js"></script>
     <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
+    <script src="content/js/rapport/ajax_tables.js"></script>
+
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
@@ -138,7 +140,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                    
                     <div class ="col-xs-10">
                         <div class="form-group">
-                            <button type="button" class="btn btn-primary" onclick="myAjax()">Générer Rapport Complet</button>
+                            <button type="button" class="btn btn-primary" onclick="rapport_full()">Générer Rapport Complet</button>
                             <br></br>
 
                             <button type="button" class="btn btn-primary" onclick="myAjax()">Générer Rapport Atelier 1</button>
