@@ -434,7 +434,7 @@ function tab_raci($rq_first, $rq_atelier, $rq_raci){
 }
 
 
-function tab_carto($rq_carto){
+function tab_carto1($rq_carto){
   global $min_size_of_row;
 
   //Feuilles de styles
@@ -481,7 +481,7 @@ function tab_carto($rq_carto){
   $text_right = array(
   'align' => 'right'
   );
-   
+
 
   $array = mysqli_fetch_all($rq_carto);
 
@@ -499,7 +499,7 @@ function tab_carto($rq_carto){
     for($j = 1; $j < 6; $j++){
       for($k = 0; $k < mysqli_num_rows($rq_carto);$k++){
         if(5-$i == $array[$k][2] && $j == $array[$k][1]){
-          $tab[$i][$j-1] = $array[$k][0];          
+          $tab[$i][$j-1] = $array[$k][0];
           $compte ++;
         }
         else{
@@ -509,7 +509,7 @@ function tab_carto($rq_carto){
     }
   }
   //Fin création array contenu
-    
+
 
 
     //Création strcucture
@@ -552,25 +552,25 @@ function tab_carto($rq_carto){
         }
         else{
           if($i == 0){
-            if($j == 0) $table->addCell(1,array('bgColor' => 'orange'))-> addText($tab[$i][$j]);
-            else $table->addCell(1,array('bgColor' => 'red'))-> addText($tab[$i][$j],$text_style);
+            if($j == 0) $table->addCell(1)-> addText($tab[$i][$j]);
+            else $table->addCell(1)-> addText($tab[$i][$j],$text_style);
           }
           else if($i == 1){
-            if($j == 0 || $j == 1) $table->addCell(1,array('bgColor' => 'orange'))-> addText($tab[$i][$j],$text_style);
-            else $table->addCell(1,array('bgColor' => 'red'))-> addText($tab[$i][$j],$text_style);
+            if($j == 0 || $j == 1) $table->addCell(1)-> addText($tab[$i][$j],$text_style);
+            else $table->addCell(1)-> addText($tab[$i][$j],$text_style);
           }
           else if($i == 2){
-            if($j == 0 ) $table->addCell(1,array('bgColor' => 'green'))-> addText($tab[$i][$j]);
-            else if($j == 1 || $j ==2)$table->addCell(1,array('bgColor' => 'orange'))-> addText($tab[$i][$j],$text_style);
-            else $table->addCell(1,array('bgColor' => 'red'))-> addText($tab[$i][$j],$text_style);
+            if($j == 0 ) $table->addCell(1)-> addText($tab[$i][$j]);
+            else if($j == 1 || $j ==2)$table->addCell(1)-> addText($tab[$i][$j],$text_style);
+            else $table->addCell(1)-> addText($tab[$i][$j],$text_style);
           }
           else if($i == 3){
-            if($j <= 1 ) $table->addCell(1,array('bgColor' => 'green'))-> addText($tab[$i][$j],$text_style);
-            else $table->addCell(1,array('bgColor' => 'orange'))-> addText($tab[$i][$j],$text_style);
+            if($j <= 1 ) $table->addCell(1)-> addText($tab[$i][$j],$text_style);
+            else $table->addCell(1)-> addText($tab[$i][$j],$text_style);
           }
           else if($i == 4){
-            if($j <= 2 ) $table->addCell(1,array('bgColor' => 'green'))-> addText($tab[$i][$j],$text_style);
-            else $table->addCell(1,array('bgColor' => 'orange'))-> addText($tab[$i][$j],$text_style);
+            if($j <= 2 ) $table->addCell(1)-> addText($tab[$i][$j],$text_style);
+            else $table->addCell(1)-> addText($tab[$i][$j],$text_style);
           }
           else{
           $table->addCell(1,$cell_style)-> addText($tab[$i][$j],$text_style);}
