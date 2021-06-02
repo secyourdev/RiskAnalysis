@@ -206,5 +206,6 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
 
 if($_POST['action'] == 'call_this') {
   doc_create();
+  echo $_POST['test0'];
 }
   ?>
