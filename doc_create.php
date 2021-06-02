@@ -103,7 +103,10 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
 
   ///atelier 4*************************************************************
   //4.a/////////////////////////////////////////////////
-  $tab_scen_strat_etabli= genere_tableau_rapport($rq_scen_strat_tab);
+  $tab_scen_strat_etabli= tab_dyn1c_3b_4b($rq_scen_strat_tab);
+
+  $tab_scen_strat_etabli_bis= genere_tableau_rapport($rq_scen_strat_tab_bis);
+
   // $tab_scen_op= genere_tableau_rapport($rq_scen_op_tab);
   $tab_mode_op= genere_tableau_rapport($rq_mode_op_tab);
   //4.b/////////////////////////////////////////////////
@@ -173,6 +176,8 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
 
   //4.a
   $template->setComplexBlock('s_scenario_strategique3', $tab_scen_strat_etabli);
+
+   $template->setComplexBlock('scenario_operationel', $tab_scen_strat_etabli_bis);
   $template->setComplexBlock('mode_operatoire', $tab_mode_op);
   $template -> setComplexBlock('s_scenario_strategique2', $tab_scenar_strat);
   //TO DO Remplacer startégique 2 plchlder scenario_operationel
