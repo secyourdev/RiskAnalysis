@@ -6,7 +6,7 @@ function rapport_full() {
                action:'call_this',
           },
            success:function(html) {
-          alert(html);
+               alert(html);
            }
 
       });

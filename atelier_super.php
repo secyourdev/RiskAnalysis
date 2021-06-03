@@ -32,12 +32,12 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     <!-- CSS -->
     <link href="content/css/bootstrap.css" rel="stylesheet">
     <link href="content/css/main.css" rel="stylesheet">
+    <link href="style_atelier_super.css" rel="stylesheet">
 
     <!-- JS -->
     <script src="content/vendor/jquery/jquery.js"></script>
     <script src="content/vendor/jquery-tabledit/jquery.tabledit.js"></script>
     <script src="content/js/rapport/ajax_tables.js"></script>
-
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="content/img/logo_cyber_risk_manager.ico" type="image/x-icon">
@@ -108,55 +108,95 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div id="fixed_page" class="container-fluid">
-                    <div class="row">
-                        <div class="col-xs-8">
-                        <!-- Formulaire -->
-                        <form>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Titre rapport</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrez le titre du rapport">
-                                <br></br>
-
-                                <label for="exampleInputPassword1">Nom de la société</label>                        
-                                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Entrez le nom de votre société">
-                                <br></br>
-                                
-                                <label for="exampleInputPassword1">Adresse société</label>                        
-                                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Entrez l'adresse de votre société (n°, rue, ville, cp)">
-                                <br></br>
+                <div id="fixed_page" class="container-fluid bg-white">
+                        <div class="row">
+                            <div class="col-xs-8 offset-1">
+                            <!-- Formulaire -->
+                            <div class="tritre_col">
+                                <header class="titre_col1">
+                                    <h2 class="titre_col1">Formulaire Rapport</h2>
+                                </header>
                             </div>
-                            
                             <form>
-                            <div class="form-group">
-                                <label for="exampleFormControlFile1">Logo Société</label>
-                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                            </div>
-                            </form>
-                            <br></br>
-                            </form>
-                            <!-- Fin formulaire -->
-                    </div>
-                   
-                    <div class ="col-xs-10">
-                        <div class="form-group">
-                            <button type="button" class="btn btn-primary" onclick="rapport_full()">Générer Rapport Complet</button>
-                            <br></br>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Titre rapport</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrez le titre du rapport">
+                                    <br>
 
-                            <button type="button" class="btn btn-primary" onclick="myAjax()">Générer Rapport Atelier 1</button>
-                            <br></br>
+                                    <label for="exampleInputPassword1">Nom de la société</label>                        
+                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Entrez le nom de votre société">
+                                    <br>
+                                    
+                                    <label for="exampleInputPassword1">Adresse société</label>                        
+                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Entrez l'adresse de votre société (n°, rue, ville, cp)">
+                                    <br>
+
+                                    <label for="exampleInputPassword1">Téléphone société</label>                        
+                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder=" Entrez n° téléphone société">
+                                    <br>
+
+                                    <label for="exampleInputPassword1">Télécopie société</label>                        
+                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Entrez télécopie société">
+                                    <br>
+
+                                    <label for="exampleInputPassword1">Réphérences document</label>                        
+                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Entrez les référances du document">
+                                    <br>
+                                </div>
                                 
-                            <button type="button" class="btn btn-primary" onclick="myAjax()">Générer Rapport Atelier 2</button>
+                                <form>
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1">Logo Société</label>
+                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                </div>
+                                </form>
+                                <br>
+                            </form>
+                                <!-- Fin formulaire -->
+                        
+                    </div>
+                    <div class ="col-xs-10 dif_col">
+                        <div class="tritre_col">
+                            <header class="titre_col2">
+                                <h2 class="titre1_col2">Bonton génération rapport</h2>
+                                <h4 class="sous_titre_col2"> Rapport Word  /  Rapport Excel</h4>
+                            </header>
+                        </div>
+                        <div class="form-group">
+                            <label for="text_bouton" class= "text_bouton">Bouton rapport complet :</label>  
+                            <button type="button" class="button_rapport complet w" id="bouton_rap_comp_w" onclick="rapport_full()">Générer Rapport Complet</button>
+                            /
+                            <button type="button" class="button_rapport complet e" id="bouton_rap_comp_e"onclick="myAjax()">Générer tous les tableaux</button>
+                            <br>
                             <br></br>
-                                                        
+                            <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 1 :</label>
+                            <button type="button" class="button_rapport at1 w" id="bouton_rap_at1_w" onclick="myAjax()">Générer Rapport Atelier 1</button>
+                            /
+                            <button type="button" class="button_rapport at1 e" id="bouton_rap_at1_e"onclick="myAjax()">Générer tableaux At1</button>
+                            <br>
                             <br></br>
-                            <button type="button" class="btn btn-primary" onclick="myAjax()">Générer Rapport Atelier 3</button>
-
+                            <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 2 :</label>    
+                            <button type="button" class="button_rapport at2 w" id="bouton_rap_at2_w" onclick="myAjax()">Générer Rapport Atelier 2</button>
+                            /
+                            <button type="button" class="button_rapport at2 e" id="bouton_rap_at2_e" onclick="myAjax()">Générer tableaux At2</button>
+                            <br>
                             <br></br>
-                            <button type="button" class="btn btn-primary" onclick="myAjax()">Générer Rapport Atelier 4</button>
-
+                            <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 3 :</label>                                                        
+                            <button type="button" class="button_rapport at3 w" id="bouton_rap_at3_w" onclick="myAjax()">Générer Rapport Atelier 3</button>
+                            /
+                            <button type="button" class="button_rapport at3 e" id="bouton_rap_at3_e" onclick="myAjax()">Générer tableaux At3</button>
+                            <br>
                             <br></br>
-                            <button type="button" class="btn btn-primary" onclick="myAjax()">Générer Rapport Atelier 5</button>
+                            <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 4 :</label>
+                            <button type="button" class="button_rapport at4 w" id="bouton_rap_at4_w" onclick="myAjax()">Générer Rapport Atelier 4</button>
+                            /
+                            <button type="button" class="button_rapport at4 e" id="bouton_rap_at4_e" onclick="myAjax()">Générer tableaux At4</button>
+                            <br>
+                            <br></br>
+                            <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 5 :</label>
+                            <button type="button" class="button_rapport at5 w" id="bouton_rap_at5_w" onclick="myAjax()">Générer Rapport Atelier 5</button>
+                            /
+                            <button type="button" class="button_rapport at5 e" id="bouton_rap_at5_e" onclick="myAjax()">Générer tableaux At5</button>
                         </div>
                     </div>
                 </div>
