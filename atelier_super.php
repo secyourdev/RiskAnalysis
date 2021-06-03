@@ -135,12 +135,12 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                     <input type="text" class="form-control" id="exampleInputPassword1" placeholder=" Entrez n° téléphone société">
                                     <br>
 
-                                    <label for="exampleInputPassword1">Télécopie société</label>                        
-                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Entrez télécopie société">
+                                    <label for="exampleInputPassword1">Site internet société</label>                        
+                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Entrez site internet société">
                                     <br>
 
-                                    <label for="exampleInputPassword1">Réphérences document</label>                        
-                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Entrez les référances du document">
+                                    <label for="exampleInputPassword1">Références document</label>                        
+                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Entrez les références du document">
                                     <br>
                                 </div>
                                 
