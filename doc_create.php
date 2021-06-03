@@ -189,6 +189,8 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
 ///5.a
   $template -> setComplexBlock('cartographie5', $tab_carto5a);
 
+  $template ->setUpdateFields(true);
+
 
   /////sauvegarder fichier
 
