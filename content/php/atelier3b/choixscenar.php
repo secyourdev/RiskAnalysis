@@ -13,4 +13,4 @@ $er = $queryer->fetchAll(PDO::FETCH_ASSOC);
 
 echo json_encode($er);
 
-print_r($er);
+// print_r($er);
