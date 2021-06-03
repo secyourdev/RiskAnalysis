@@ -1,4 +1,6 @@
 ﻿$.post("heatmap-getdata.php", function (data) {
+
+	// $tab_colors = [];
 	for (i = 0; i < data['data_dim'].length; i++) {
 		echelle_vraisemblance = data['data_dim'][i]['echelle_vraisemblance'];
 		echelle_gravite = data['data_dim'][i]['echelle_gravite'];
@@ -198,7 +200,7 @@
 					case '1':
 						parent = document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(2) > div")
 						parent.append(id_risque, br)
-						console.log(id_risque, br);
+						// console.log(id_risque, br);
 
 						break;
 					case '2':
@@ -375,6 +377,7 @@
 				sleep(100).then(() => {
 
 					$color_to_send = $("#dataTable > tbody > tr:nth-child(" + i + ") > td:nth-child(" + j + ")")[0].classList[0];
+					//$tab_colors.push($color_to_send);
 
 					switch (i) {
 						case 2:
@@ -393,7 +396,7 @@
 							$gravite_to_send = 1
 							break;
 					}
-					console.log($color_to_send);
+					//console.log($color_to_send);
 
 					$.ajax({
 						url: 'content/php/atelier5b/ajax-heatmap.php',
@@ -404,7 +407,7 @@
 							case_couleur: $color_to_send
 						},
 						success: function () {
-							console.log('traitement du barème fait');
+							//console.log('traitement du barème fait');
 						}
 					});
 				});
@@ -413,7 +416,6 @@
 
 		}
 	}
-
 
 })
 
@@ -430,6 +432,46 @@ $('#dataTable').on('click', "td", function () {
 	}
 });
 
+var tab_couleurs = [];
+$('#dataTable').on('click',function(){
+	var x = document.getElementById("dataTable");
+	//console.log(x);
+	var td = x.getElementsByTagName("td");
+	for(var i = 0; i<td.length;i++){
+		if(td[i].className == "fond-vert"){
+			tab_couleurs.push('vert');
+		}
+		if(td[i].className == "fond-orange"){
+			tab_couleurs.push('orange');
+		}
+		if(td[i].className == "fond-rouge"){
+			tab_couleurs.push('rouge');
+		}
+	}
+
+	console.log(tab_couleurs);
+	$.ajax({
+		url: 'content/php/atelier5b/doc_create.php',
+		type: 'POST',
+		data: {
+			couleur: tab_couleurs
+		},
+		success: function () {
+			//console.log('traitement du barème fait');
+		}
+	});
+	tab_couleurs = [];
+	// console.log(find);
+	// console.log(find[0]);
+	// console.log(find[0].className == "perso_border texte-droite");
+
+});
+// $('#dataTable').on("tbody", function(){
+// 	console.log($(this));
+
+// });
+
+
 $(document).ready(function () {
     var element = $("#dataTable"); // global variable
     $("#btn-Convert-Html2Image").on('click', function () {
@@ -438,7 +480,7 @@ $(document).ready(function () {
 				Canvas2Image.saveAsPNG(canvas,undefined,undefined,"5b-RisqueInitial"); 
 			}
 		});
-    });
+    });	
 });
 
 
