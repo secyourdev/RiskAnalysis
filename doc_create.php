@@ -117,10 +117,15 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
 
   ///atelier 5*************************************************************
   $tab_carto5a = tab_carto1($rq_carto_tab);
+  $tab_carto5b = tab_carto_couleurs($rq_carto_tab2,$rq_couleurs_tab);
+
+
   //5.b/////////////////////////////////////////////////
   $tab_plan_amelio = genere_tableau_rapport($rq_plan_amelio_tab);
   //5.c/////////////////////////////////////////////////
   $tab_eval_risk_resi = genere_tableau_rapport($qr_eval_risk_resi_tab);
+  $tab_carto5c1 = tab_carto_couleurs($rq_carto_tab3,$rq_couleurs_tab2);  
+  $tab_carto5c2 = tab_carto_couleurs($rq_carto_tab4,$rq_couleurs_tab3);
 
 
   ////inclusion tableaux
@@ -188,6 +193,13 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
 
 ///5.a
   $template -> setComplexBlock('cartographie5', $tab_carto5a);
+//5.b
+  $template -> setComplexBlock('cartographie6', $tab_carto5b);
+
+//5.c
+  $template -> setComplexBlock('cartographie7', $tab_carto5c1);
+  $template -> setComplexBlock('cartographie8', $tab_carto5c2);
+
 
   $template ->setUpdateFields(true);
 

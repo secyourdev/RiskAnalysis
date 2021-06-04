@@ -580,3 +580,161 @@ function tab_carto1($rq_carto){
   }
   return $table;
 }
+
+
+function tab_carto_couleurs($rq_carto, $rq_couleur){
+  global $min_size_of_row;
+
+  //Feuilles de styles
+    //S'applique au tableau
+    $table_style = array(
+      'borderColor' => 'black', //Couleur des bordures
+      'borderSize' => 6, //Taille des bordures en TWIP
+      'align' => 'center',  //Alignement du tableau
+      'unit' => \PhpOffice\PhpWord\SimpleType\TblWidth::PERCENT,
+      'width' => 100*50
+
+    );
+
+
+
+    $first_row_style = array(
+      'tblHeader' => true
+    );
+
+    $row_style = array(
+
+    );
+
+    $first_cells_style= array(
+      'bgColor' => 'DCDCDC', //Couelur de fond de la première ligne
+      'valign' => 'center'
+    );
+
+    $cell_style = array(
+      'valign' => 'center'
+    );
+    $text_style =array(
+    'align' => 'center'
+    );
+
+  $table = new Table($table_style);
+
+  $first_cells_style_borderless = array(
+    'bgColor' => 'FFFFFF',
+    'borderColor' =>'white',
+    'borderSize' => 6
+  );
+
+  $text_right = array(
+  'align' => 'right'
+  );
+   
+
+  $array = mysqli_fetch_all($rq_carto);
+  $couleurs = mysqli_fetch_all($rq_couleur, MYSQLI_NUM);
+
+  $tab_couleurs =  array_fill(0,5 , [' ']);
+
+  $compte=0;
+  $compte_c =0;
+  $k = 0;
+
+  //Création array contenu
+  $tab = array_fill(0,5 , [' ']);
+  $empty_string = "";
+
+
+
+  for($i = 4; $i >=0; $i--){
+
+    for($j = 1; $j < 5; $j++){
+      for($k = 0; $k < mysqli_num_rows($rq_carto);$k++){
+        if(5-$i == $array[$k][2] && $j == $array[$k][1]){
+          $tab[$i][$j-1] = $array[$k][0];          
+          $compte ++;
+        }
+        else{
+          $tab[$i][$j] = $empty_string;
+        }
+      }
+    }
+  }
+  //Fin création array contenu
+
+  //Création array couleurs
+  for($i = 4; $i >= 0;$i--){
+    for($j = 0; $j <4; $j++){
+      $tab_couleurs[$i][$j] = $couleurs[$compte_c][0]; 
+      $compte_c ++;
+    }
+  }
+  echo '<pre>'; print_r($tab_couleurs);echo '</pre>';
+  echo '<pre>'; print_r($tab);echo '</pre>';
+    
+
+
+    //Création strcucture
+  for($i = -1; $i < 6; $i++){
+    if($i == 0){
+        $table->addRow(1,$first_cells_style_borderless);
+      }
+    else{
+      $table->addRow();
+    }
+    //Fin création structure
+
+    //Remplissage des lignes
+    for($j = -1; $j < 5; $j++ ){
+      if($i == -1){
+        if($j == -1){
+          $table->addCell(1,$first_cells_style_borderless)-> addText(" Gravité ",$text_right);
+        }
+        else{
+            $table->addCell(1,$first_cells_style_borderless)-> addText(" ");
+        }
+      }
+      else{
+        if($j == -1 && $i != -1 && $i != 5){
+          $table->addCell(1,$first_cells_style_borderless)-> addText(5-$i,$text_right);
+        }
+        else if($i == 5 && $j == 4){
+            $table->addCell(1,$first_cells_style_borderless)-> addText(" Vraisemblance ");
+        }
+        else if($i == 5 && $j !=-1){
+          $table->addCell(1,$first_cells_style_borderless)-> addText($j+1);
+        }
+        else if($j == 4 && $i !=5 ){
+          $table->addCell(1,$first_cells_style_borderless)-> addText("  ");
+
+        }
+        else if($j == -1 && $i ==5 ){
+          $table->addCell(1,$first_cells_style_borderless)-> addText("  ");
+
+        }
+        else{
+          // $table->addCell(1,array('bgColor' => 'white'))-> addText($tab[$i][$j]);
+          switch($tab_couleurs[$i][$j]){
+            
+            case 'fond-vert':
+              $table->addCell(1,array('bgColor' => 'green'))-> addText($tab[$i][$j]);
+              break;
+            case 'fond-orange':
+              $table->addCell(1,array('bgColor' => 'orange'))-> addText($tab[$i][$j]);
+              break;
+
+            case 'fond-rouge':
+              $table->addCell(1,array('bgColor' => 'red'))-> addText($tab[$i][$j]);
+              break;
+
+            default :
+              $table->addCell(1,array('bgColor' => 'blue'))-> addText('Problème bdd');
+
+          
+          }
+        }
+      }
+    }
+  }
+  return $table;
+}

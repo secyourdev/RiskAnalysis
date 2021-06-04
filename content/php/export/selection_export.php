@@ -228,6 +228,18 @@ AND U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaque
 AND U_scenario_operationnel.id_projet = $getid_projet
 ORDER BY T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique ASC";
 $rq_carto_tab = mysqli_query($connect, $rq_carto);
+$rq_carto_tab2 = mysqli_query($connect, $rq_carto);
+$rq_carto_tab3 = mysqli_query($connect, $rq_carto);
+$rq_carto_tab4 = mysqli_query($connect, $rq_carto);
+
+
+
+//*requête couleur <carto></carto>
+$rq_couleurs = "SELECT bareme FROM DB_bareme_risque WHERE id_projet = $getid_projet  
+ORDER BY gravite, vraisemblance";
+$rq_couleurs_tab = mysqli_query($connect,$rq_couleurs);
+$rq_couleurs_tab2 = mysqli_query($connect,$rq_couleurs);
+$rq_couleurs_tab3 = mysqli_query($connect,$rq_couleurs);
 
 
 

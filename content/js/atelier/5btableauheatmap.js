@@ -1,6 +1,5 @@
 ﻿$.post("heatmap-getdata.php", function (data) {
 
-	// $tab_colors = [];
 	for (i = 0; i < data['data_dim'].length; i++) {
 		echelle_vraisemblance = data['data_dim'][i]['echelle_vraisemblance'];
 		echelle_gravite = data['data_dim'][i]['echelle_gravite'];
@@ -366,11 +365,11 @@
 
 
 
-	for (let i = 2; i <= (parseInt(echelle_vraisemblance)) + 1; i++) {
-		// console.log('gravite: ' + i);
+	for (let i = 2; i <= (parseInt(echelle_vraisemblance)) + 2; i++) {
+		console.log('gravite: ' + i);
 
-		for (let j = 2; j <= (parseInt(echelle_vraisemblance)) + 1; j++) {
-			// console.log('vraisemblance: ' + j);
+		for (let j = 2; j <= (parseInt(echelle_vraisemblance)) + 2; j++) {
+			console.log('vraisemblance: ' + j);
 
 			$("#dataTable > tbody > tr:nth-child(" + i + ") > td:nth-child(" + j + ")").on('click', function () {
 
@@ -407,7 +406,7 @@
 							case_couleur: $color_to_send
 						},
 						success: function () {
-							//console.log('traitement du barème fait');
+							console.log('traitement du barème fait');
 						}
 					});
 				});
@@ -432,44 +431,6 @@ $('#dataTable').on('click', "td", function () {
 	}
 });
 
-var tab_couleurs = [];
-$('#dataTable').on('click',function(){
-	var x = document.getElementById("dataTable");
-	//console.log(x);
-	var td = x.getElementsByTagName("td");
-	for(var i = 0; i<td.length;i++){
-		if(td[i].className == "fond-vert"){
-			tab_couleurs.push('vert');
-		}
-		if(td[i].className == "fond-orange"){
-			tab_couleurs.push('orange');
-		}
-		if(td[i].className == "fond-rouge"){
-			tab_couleurs.push('rouge');
-		}
-	}
-
-	console.log(tab_couleurs);
-	$.ajax({
-		url: 'content/php/atelier5b/doc_create.php',
-		type: 'POST',
-		data: {
-			couleur: tab_couleurs
-		},
-		success: function () {
-			//console.log('traitement du barème fait');
-		}
-	});
-	tab_couleurs = [];
-	// console.log(find);
-	// console.log(find[0]);
-	// console.log(find[0].className == "perso_border texte-droite");
-
-});
-// $('#dataTable').on("tbody", function(){
-// 	console.log($(this));
-
-// });
 
 
 $(document).ready(function () {
