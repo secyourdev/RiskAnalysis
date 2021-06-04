@@ -146,9 +146,9 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
   $template->setComplexBlock('da_niveau', $tab_niveau);
 
   ///1.d
-  // $template->setComplexBlock('n_socle_de_securite', $tab_socle_sec);
+  $template->setComplexBlock('n_socle_de_securite', $tab_socle_sec);
   $template->setComplexBlock('o_regle', $tab_regle);
-  $template->setComplexBlock('n_socle_de_securite',$tab_socle_1_d);
+  // $template->setComplexBlock('n_socle_de_securite',$tab_socle_1_d);
 
 
   ///2.a
@@ -174,7 +174,6 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
 
   //3.b
   $template->setComplexBlock('m_evenement_redoute2', $tab_cidt);
-  $template->setComplexBlock('eval_vrai', $tab_eval_vrai);
   $template->setComplexBlock('za_traitement_de_securite', $tab_plan_amelio);
   $template->setComplexBlock('last_table', $tab_eval_risk_resi);
   $template->setComplexBlock('t_chemin_d_attaque_strategique', $tab_chemin_attaque);
@@ -191,8 +190,11 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
   $template -> setComplexBlock('s_scenario_strategique2', $tab_scenar_strat);
 
   ///4.b
-  // $template -> setComplexBlock('da_echelle1', $tab_echelle_b);
-  $template->setComplexBlock('da_echelle1', $tab_h_vrai);
+  $template -> setComplexBlock('da_echelle1', $tab_echelle_b);
+  //$template -> setComplexBlock('u_scenario_operationnel', $?);
+  $template->setComplexBlock('eval_vrai', $tab_h_vrai);
+
+  // $template->setComplexBlock('da_echelle1', $tab_h_vrai);
 
 
 ///5.a

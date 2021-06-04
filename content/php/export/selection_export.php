@@ -181,8 +181,8 @@ WHERE U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaq
 AND U_scenario_operationnel.id_projet = $getid_projet
 AND T_chemin_d_attaque_strategique.id_projet = $getid_projet";
 
-$rq_h_vrai="SELECT DISTINCT T_chemin_d_attaque_strategique.id_risque AS 'N° Risque',nom_chemin_d_attaque_strategique AS 'Chemin d''attaques stratégiques',
-u_scenario_operationnel.nom_scenario_operationnel AS 'Scénario opérationnel',da_echelle.echelle_vraisemblance AS 'Vraisemblance',da_echelle.nom_echelle
+$rq_h_vrai="SELECT DISTINCT T_chemin_d_attaque_strategique.id_risque AS 'N° Risque',nom_chemin_d_attaque_strategique AS 'Chemin d''attaque stratégique',
+u_scenario_operationnel.nom_scenario_operationnel AS 'Scénario opérationnel',u_scenario_operationnel.vraisemblance AS 'Vraisemblance',da_echelle.nom_echelle
 FROM U_scenario_operationnel,T_chemin_d_attaque_strategique,da_echelle,da_niveau
 WHERE U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique
 AND U_scenario_operationnel.id_projet = $getid_projet
