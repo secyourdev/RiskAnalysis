@@ -62,6 +62,25 @@ $rq_regle0 = "SELECT id_regle_affichage AS 'ID de la règle', titre AS 'Titre de
 
 $rq_regle_tab = mysqli_query($connect, $rq_regle0);
 
+$query_socle_sj="SELECT
+n_socle_de_securite.id_socle_securite,
+n_socle_de_securite.nom_referentiel,
+n_socle_de_securite.etat_d_application,
+n_socle_de_securite.etat_de_la_conformite,
+f_projet.cadre_temporel_etape_2,
+nom,prenom
+FROM n_socle_de_securite,f_projet
+NATURAL JOIN a_utilisateur
+WHERE n_socle_de_securite.id_projet=$getid_projet
+AND f_projet.id_projet=$getid_projet";
+$rq_socle_sj_tab = mysqli_query($connect, $query_socle_sj);
+
+
+
+$query_nom_soclee = "SELECT nom_referentiel FROM N_socle_de_securite 
+WHERE id_atelier = '1.d' AND id_projet = $getid_projet ORDER BY id_socle_securite";
+$rq_nom_socle_ok = mysqli_query($connect, $query_nom_soclee);
+
 ////////////////////////////////////////////////////////////////////////////////
 //requetes atelier 2.a
 $rq_srov = "SELECT type_d_attaquant_source_de_risque AS 'Type d''ttaquant', profil_de_l_attaquant_source_de_risque AS 'Profil d''attaquant', description_source_de_risque AS 'Description source de risque', objectif_vise AS 'Objectif visé',description_objectif_vise AS 'Description de l''objectif' FROM P_SROV WHERE id_projet=$getid_projet";
@@ -93,7 +112,19 @@ $rq_srov4_tab = mysqli_query($connect, $rq_srov4);
 $rq_scenar_strat3b = "SELECT nom_scenario_strategique AS ' Nom du Scénario stratégique', CONCAT(P_SROV.description_source_de_risque,' / ', objectif_vise) AS ' Source de risque / Objectif visé' FROM S_scenario_strategique, P_SROV WHERE S_scenario_strategique.id_source_de_risque = P_SROV.id_source_de_risque AND P_SROV.id_projet = $getid_projet ORDER BY id_scenario_strategique ASC";
 $rq_scenar_strat3b_tab = mysqli_query($connect, $rq_scenar_strat3b);
 
-$rq_chemin_attaque = "SELECT id_risque AS 'ID du risque',nom_scenario_strategique AS 'Nom du scénario startégique',nom_chemin_d_attaque_strategique AS 'Chemin d''attaque startégique', description_chemin_d_attaque_strategique AS 'Description', nom_partie_prenante AS 'Partie prenante' FROM T_chemin_d_attaque_strategique NATURAL JOIN R_partie_prenante NATURAL JOIN S_scenario_strategique WHERE id_projet= $getid_projet";
+$rq_chemin_attaque = "SELECT DISTINCT
+T_chemin_d_attaque_strategique.id_risque AS 'ID du risque', 
+T_chemin_d_attaque_strategique.id_chemin AS 'ID du chemin',
+S_scenario_strategique.nom_scenario_strategique AS 'Nom du scénario stratégique' , 
+T_chemin_d_attaque_strategique.nom_chemin_d_attaque_strategique AS 'Chemin d''attaque stratégique' , 
+T_chemin_d_attaque_strategique.description_chemin_d_attaque_strategique AS 'Description' , 
+M_evenement_redoute.niveau_de_gravite AS 'Gravité'
+FROM S_scenario_strategique, T_chemin_d_attaque_strategique, UA_ER, M_evenement_redoute
+WHERE T_chemin_d_attaque_strategique.id_scenario_strategique = S_scenario_strategique.id_scenario_strategique 
+AND T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = UA_ER.id_chemin_d_attaque_strategique
+AND UA_ER.id_evenement_redoute = M_evenement_redoute.id_evenement_redoute
+AND T_chemin_d_attaque_strategique.id_projet = $getid_projet
+ORDER BY T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique ASC";
 $rq_chemin_attaque_tab = mysqli_query($connect, $rq_chemin_attaque);
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -150,6 +181,24 @@ WHERE U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaq
 AND U_scenario_operationnel.id_projet = $getid_projet
 AND T_chemin_d_attaque_strategique.id_projet = $getid_projet";
 
+$rq_h_vrai="SELECT DISTINCT T_chemin_d_attaque_strategique.id_risque AS 'N° Risque',nom_chemin_d_attaque_strategique AS 'Chemin d''attaques stratégiques',
+u_scenario_operationnel.nom_scenario_operationnel AS 'Scénario opérationnel',da_echelle.echelle_vraisemblance AS 'Vraisemblance',da_echelle.nom_echelle
+FROM U_scenario_operationnel,T_chemin_d_attaque_strategique,da_echelle,da_niveau
+WHERE U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique
+AND U_scenario_operationnel.id_projet = $getid_projet
+AND da_echelle.id_projet=$getid_projet
+AND T_chemin_d_attaque_strategique.id_projet = $getid_projet";
+
+
+$rq_h_vrai_tab = mysqli_query($connect, $rq_h_vrai);
+
+$rq_nb_elem_echelle ="SELECT CAST(COUNT(vraisemblance) AS INT) 
+FROM u_scenario_operationnel 
+WHERE id_projet = $getid_projet 
+LIMIT 0, 25";
+$rq_nb_elem_echelle_nb = mysqli_query($connect, $rq_nb_elem_echelle);
+
+
 $rq_eval_vrai_tab = mysqli_query($connect, $rq_eval_vrai);
 
 
@@ -158,7 +207,6 @@ $rq_vraisemblance= "SELECT valeur_niveau AS'Valeur du niveau',description_niveau
 
 $rq_echelle_b_tab = mysqli_query($connect, $rq_echelle_b);
 $rq_vraisemblance_tab= mysqli_query($connect, $rq_vraisemblance);
-
 ////////////////////////////////////////////////////////////////////////////////
 //requetes atelier 5.b
 $rq_plan_amelio = "SELECT  Y_mesure.nom_mesure AS 'Mesure de sécurité', Y_mesure.description_mesure AS 'Description mesure de sécurité', ZA_traitement_de_securite.id_atelier AS 'Atelier', T_chemin_d_attaque_strategique.id_risque AS 'Scénario des risques associés', ZA_traitement_de_securite.principe_de_securite AS 'Principe de sécurité', ZA_traitement_de_securite.responsable AS 'Responsable', ZA_traitement_de_securite.difficulte_traitement_de_securite AS 'Frein et difficultés de mise en oeuvre', ZA_traitement_de_securite.cout_traitement_de_securite AS 'Cout', ZA_traitement_de_securite.date_traitement_de_securite AS 'Échéance', ZA_traitement_de_securite.statut FROM ZA_traitement_de_securite, ZB_comporter_2, Y_mesure, T_chemin_d_attaque_strategique

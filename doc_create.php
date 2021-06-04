@@ -72,6 +72,8 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
 
   //1.d///////////////////////////////////////////////////////////////
   $tab_socle_sec = tab_dyn_1d($rq_socle_sec_tab);
+  $tab_socle_1_d =tab_socle_1_d($rq_socle_sj_tab,$rq_nom_socle_ok);
+  $tab_nom_socle =genere_tableau_rapport($rq_nom_socle_ok);
   $tab_regle = genere_tableau_rapport($rq_regle_tab);
 
   ///atelier2*******************************************************************************
@@ -95,7 +97,7 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
   $tab_cidt = tab_dyn1c_3b_4b($rq_cidt_tab);
   $tab_srov4 = genere_tableau_rapport($rq_srov4_tab);
   $tab_scenar_strat1 = genere_tableau_rapport($rq_scenar_strat3b_tab);
-  $tab_chemin_attaque = genere_tableau_rapport($rq_chemin_attaque_tab);
+  $tab_chemin_attaque = tab_dyn1c_3b_4b($rq_chemin_attaque_tab);
 
   //3.c////////////////////////////////////////////////
   $tab_partie2 = tab_dyn2b_3a_3c($rq_partie2_tab);
@@ -112,6 +114,8 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
   //4.b/////////////////////////////////////////////////
   $tab_echelle_b = tab_dyn1c_3b_4b($rq_echelle_b_tab);
   $tab_vraisemblance_b = tab_dyn1c_3b_4b($rq_vraisemblance_tab);
+  $nb_elem_h=mysqli_fetch_all($rq_nb_elem_echelle_nb,MYSQLI_NUM);
+  $tab_h_vrai = tab_dyn_h_4b($rq_h_vrai_tab, $nb_elem_h);
 
   $tab_eval_vrai = tab_dyn1c_3b_4b($rq_eval_vrai_tab);
 
@@ -142,8 +146,9 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
   $template->setComplexBlock('da_niveau', $tab_niveau);
 
   ///1.d
-  $template->setComplexBlock('n_socle_de_securite', $tab_socle_sec);
+  // $template->setComplexBlock('n_socle_de_securite', $tab_socle_sec);
   $template->setComplexBlock('o_regle', $tab_regle);
+  $template->setComplexBlock('n_socle_de_securite',$tab_socle_1_d);
 
 
   ///2.a
@@ -181,14 +186,13 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
 
   //4.a
   $template->setComplexBlock('s_scenario_strategique3', $tab_scen_strat_etabli);
-
-   $template->setComplexBlock('scenario_operationel', $tab_scen_strat_etabli_bis);
+  $template->setComplexBlock('scenario_operationel', $tab_scen_strat_etabli_bis);
   $template->setComplexBlock('mode_operatoire', $tab_mode_op);
   $template -> setComplexBlock('s_scenario_strategique2', $tab_scenar_strat);
-  //TO DO Remplacer startégique 2 plchlder scenario_operationel
 
   ///4.b
-  $template -> setComplexBlock('da_echelle1', $tab_echelle_b);
+  // $template -> setComplexBlock('da_echelle1', $tab_echelle_b);
+  $template->setComplexBlock('da_echelle1', $tab_h_vrai);
 
 
 ///5.a
