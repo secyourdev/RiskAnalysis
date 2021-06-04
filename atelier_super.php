@@ -135,12 +135,12 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                     <input type="text" class="form-control" id="exampleInputPassword1" placeholder=" Entrez n° téléphone société">
                                     <br>
 
-                                    <label for="exampleInputPassword1">Site internet société</label>                        
-                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Entrez site internet société">
+                                    <label for="exampleInputPassword1">Télécopie société</label>                        
+                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Entrez télécopie société">
                                     <br>
 
-                                    <label for="exampleInputPassword1">Références document</label>                        
-                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Entrez les références du document">
+                                    <label for="exampleInputPassword1">Réphérences document</label>                        
+                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Entrez les référances du document">
                                     <br>
                                 </div>
                                 
@@ -166,35 +166,35 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             <label for="text_bouton" class= "text_bouton">Bouton rapport complet :</label>  
                             <button type="button" class="button_rapport complet w" id="bouton_rap_comp_w" onclick="rapport_full()">Générer Rapport Complet</button>
                             /
-                            <button type="button" class="button_rapport complet e" id="bouton_rap_comp_e"onclick="myAjax()">Générer tous les tableaux</button>
+                            <button type="button" class="button_rapport complet e" id="bouton_rap_comp_e" onclick="myAjax()">Générer tous les tableaux</button>
                             <br>
                             <br></br>
                             <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 1 :</label>
-                            <button type="button" class="button_rapport at1 w" id="bouton_rap_at1_w" onclick="myAjax()">Générer Rapport Atelier 1</button>
+                            <button type="button" class="button_rapport at1 w" id="bouton_rap_at1_w" onclick="rapport_at1()">Générer Rapport Atelier 1</button>
                             /
                             <button type="button" class="button_rapport at1 e" id="bouton_rap_at1_e"onclick="myAjax()">Générer tableaux At1</button>
                             <br>
                             <br></br>
                             <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 2 :</label>    
-                            <button type="button" class="button_rapport at2 w" id="bouton_rap_at2_w" onclick="myAjax()">Générer Rapport Atelier 2</button>
+                            <button type="button" class="button_rapport at2 w" id="bouton_rap_at2_w" onclick="rapport_at2()">Générer Rapport Atelier 2</button>
                             /
                             <button type="button" class="button_rapport at2 e" id="bouton_rap_at2_e" onclick="myAjax()">Générer tableaux At2</button>
                             <br>
                             <br></br>
                             <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 3 :</label>                                                        
-                            <button type="button" class="button_rapport at3 w" id="bouton_rap_at3_w" onclick="myAjax()">Générer Rapport Atelier 3</button>
+                            <button type="button" class="button_rapport at3 w" id="bouton_rap_at3_w" onclick="rapport_at3()">Générer Rapport Atelier 3</button>
                             /
                             <button type="button" class="button_rapport at3 e" id="bouton_rap_at3_e" onclick="myAjax()">Générer tableaux At3</button>
                             <br>
                             <br></br>
                             <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 4 :</label>
-                            <button type="button" class="button_rapport at4 w" id="bouton_rap_at4_w" onclick="myAjax()">Générer Rapport Atelier 4</button>
+                            <button type="button" class="button_rapport at4 w" id="bouton_rap_at4_w" onclick="rapport_at4()">Générer Rapport Atelier 4</button>
                             /
                             <button type="button" class="button_rapport at4 e" id="bouton_rap_at4_e" onclick="myAjax()">Générer tableaux At4</button>
                             <br>
                             <br></br>
                             <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 5 :</label>
-                            <button type="button" class="button_rapport at5 w" id="bouton_rap_at5_w" onclick="myAjax()">Générer Rapport Atelier 5</button>
+                            <button type="button" class="button_rapport at5 w" id="bouton_rap_at5_w" onclick="rapport_at5()">Générer Rapport Atelier 5</button>
                             /
                             <button type="button" class="button_rapport at5 e" id="bouton_rap_at5_e" onclick="myAjax()">Générer tableaux At5</button>
                         </div>
