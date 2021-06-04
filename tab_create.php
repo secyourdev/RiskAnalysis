@@ -449,29 +449,6 @@ function tab_carto1($rq_carto){
     );
 
 
-
-    $first_row_style = array(
-      'tblHeader' => true
-    );
-
-    $row_style = array(
-
-    );
-
-    $first_cells_style= array(
-      'bgColor' => 'DCDCDC', //Couelur de fond de la première ligne
-      'valign' => 'center'
-    );
-
-    $cell_style = array(
-      'valign' => 'center'
-    );
-    $text_style =array(
-    'align' => 'center'
-    );
-
-  $table = new Table($table_style);
-
   $first_cells_style_borderless = array(
     'bgColor' => 'FFFFFF',
     'borderColor' =>'white',
@@ -479,9 +456,11 @@ function tab_carto1($rq_carto){
   );
 
   $text_right = array(
-  'align' => 'right'
+  'align' => 'right',
+  'valign' => 'both'
   );
    
+  $table = new Table($table_style);
 
   $array = mysqli_fetch_all($rq_carto);
 
@@ -526,7 +505,7 @@ function tab_carto1($rq_carto){
     for($j = -1; $j < 5; $j++ ){
       if($i == -1){
         if($j == -1){
-          $table->addCell(1,$first_cells_style_borderless)-> addText(" Gravité ",$text_right);
+          $table->addCell(1,$first_cells_style_borderless)-> addText(" Gravité ",array(),$text_right);
         }
         else{
             $table->addCell(1,$first_cells_style_borderless)-> addText(" ");
@@ -534,13 +513,13 @@ function tab_carto1($rq_carto){
       }
       else{
         if($j == -1 && $i != -1 && $i != 5){
-          $table->addCell(1,$first_cells_style_borderless)-> addText(5-$i,$text_right);
+          $table->addCell(1,$first_cells_style_borderless)-> addText(5-$i,array(),$text_right);
         }
         else if($i == 5 && $j == 4){
             $table->addCell(1,$first_cells_style_borderless)-> addText(" Vraisemblance ");
         }
         else if($i == 5 && $j !=-1){
-          $table->addCell(1,$first_cells_style_borderless)-> addText($j+1);
+          $table->addCell(1,$first_cells_style_borderless)-> addText($j+1,array(),array('align' => 'center'));
         }
         else if($j == 4 && $i !=5 ){
           $table->addCell(1,$first_cells_style_borderless)-> addText("  ");
@@ -551,29 +530,7 @@ function tab_carto1($rq_carto){
 
         }
         else{
-          if($i == 0){
-            if($j == 0) $table->addCell(1,array('bgColor' => 'orange'))-> addText($tab[$i][$j]);
-            else $table->addCell(1,array('bgColor' => 'red'))-> addText($tab[$i][$j],$text_style);
-          }
-          else if($i == 1){
-            if($j == 0 || $j == 1) $table->addCell(1,array('bgColor' => 'orange'))-> addText($tab[$i][$j],$text_style);
-            else $table->addCell(1,array('bgColor' => 'red'))-> addText($tab[$i][$j],$text_style);
-          }
-          else if($i == 2){
-            if($j == 0 ) $table->addCell(1,array('bgColor' => 'green'))-> addText($tab[$i][$j]);
-            else if($j == 1 || $j ==2)$table->addCell(1,array('bgColor' => 'orange'))-> addText($tab[$i][$j],$text_style);
-            else $table->addCell(1,array('bgColor' => 'red'))-> addText($tab[$i][$j],$text_style);
-          }
-          else if($i == 3){
-            if($j <= 1 ) $table->addCell(1,array('bgColor' => 'green'))-> addText($tab[$i][$j],$text_style);
-            else $table->addCell(1,array('bgColor' => 'orange'))-> addText($tab[$i][$j],$text_style);
-          }
-          else if($i == 4){
-            if($j <= 2 ) $table->addCell(1,array('bgColor' => 'green'))-> addText($tab[$i][$j],$text_style);
-            else $table->addCell(1,array('bgColor' => 'orange'))-> addText($tab[$i][$j],$text_style);
-          }
-          else{
-          $table->addCell(1,$cell_style)-> addText($tab[$i][$j],$text_style);}
+          $table->addCell(1)-> addText($tab[$i][$j],array(),array('align' => 'center', 'valign' => 'both'));
           }
       }
     }
@@ -594,28 +551,6 @@ function tab_carto_couleurs($rq_carto, $rq_couleur){
       'unit' => \PhpOffice\PhpWord\SimpleType\TblWidth::PERCENT,
       'width' => 100*50
 
-    );
-
-
-
-    $first_row_style = array(
-      'tblHeader' => true
-    );
-
-    $row_style = array(
-
-    );
-
-    $first_cells_style= array(
-      'bgColor' => 'DCDCDC', //Couelur de fond de la première ligne
-      'valign' => 'center'
-    );
-
-    $cell_style = array(
-      'valign' => 'center'
-    );
-    $text_style =array(
-    'align' => 'center'
     );
 
   $table = new Table($table_style);
@@ -669,8 +604,8 @@ function tab_carto_couleurs($rq_carto, $rq_couleur){
       $compte_c ++;
     }
   }
-  echo '<pre>'; print_r($tab_couleurs);echo '</pre>';
-  echo '<pre>'; print_r($tab);echo '</pre>';
+  // echo '<pre>'; print_r($tab_couleurs);echo '</pre>';
+  // echo '<pre>'; print_r($tab);echo '</pre>';
     
 
 
@@ -688,7 +623,7 @@ function tab_carto_couleurs($rq_carto, $rq_couleur){
     for($j = -1; $j < 5; $j++ ){
       if($i == -1){
         if($j == -1){
-          $table->addCell(1,$first_cells_style_borderless)-> addText(" Gravité ",$text_right);
+          $table->addCell(1,$first_cells_style_borderless)-> addText(" Gravité ",array(),$text_right);
         }
         else{
             $table->addCell(1,$first_cells_style_borderless)-> addText(" ");
@@ -696,13 +631,13 @@ function tab_carto_couleurs($rq_carto, $rq_couleur){
       }
       else{
         if($j == -1 && $i != -1 && $i != 5){
-          $table->addCell(1,$first_cells_style_borderless)-> addText(5-$i,$text_right);
+          $table->addCell(1,$first_cells_style_borderless)-> addText(5-$i,array(),$text_right);
         }
         else if($i == 5 && $j == 4){
             $table->addCell(1,$first_cells_style_borderless)-> addText(" Vraisemblance ");
         }
         else if($i == 5 && $j !=-1){
-          $table->addCell(1,$first_cells_style_borderless)-> addText($j+1);
+          $table->addCell(1,$first_cells_style_borderless)-> addText($j+1,array(),array('align'=>'center'));
         }
         else if($j == 4 && $i !=5 ){
           $table->addCell(1,$first_cells_style_borderless)-> addText("  ");
@@ -717,18 +652,18 @@ function tab_carto_couleurs($rq_carto, $rq_couleur){
           switch($tab_couleurs[$i][$j]){
             
             case 'fond-vert':
-              $table->addCell(1,array('bgColor' => 'green'))-> addText($tab[$i][$j]);
+              $table->addCell(1,array('bgColor' => 'green'))-> addText($tab[$i][$j],array(),array('align'=>'center', 'valign' => 'both'));
               break;
             case 'fond-orange':
-              $table->addCell(1,array('bgColor' => 'orange'))-> addText($tab[$i][$j]);
+              $table->addCell(1,array('bgColor' => 'orange'))-> addText($tab[$i][$j],array(),array('align'=>'center', 'valign' => 'both'));
               break;
 
             case 'fond-rouge':
-              $table->addCell(1,array('bgColor' => 'red'))-> addText($tab[$i][$j]);
+              $table->addCell(1,array('bgColor' => 'red'))-> addText($tab[$i][$j],array(),array('align'=>'center', 'valign' => 'both'));
               break;
 
             default :
-              $table->addCell(1,array('bgColor' => 'blue'))-> addText('Problème bdd');
+              $table->addCell(1,array('bgColor' => 'blue'))-> addText('Problème bdd',array(),array('align'=>'center', 'valign' => 'both'));
 
           
           }
