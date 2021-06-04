@@ -1,4 +1,5 @@
 ﻿$.post("heatmap-getdata.php", function (data) {
+
 	for (i = 0; i < data['data_dim'].length; i++) {
 		echelle_vraisemblance = data['data_dim'][i]['echelle_vraisemblance'];
 		echelle_gravite = data['data_dim'][i]['echelle_gravite'];
@@ -198,7 +199,7 @@
 					case '1':
 						parent = document.querySelector("#dataTable > tbody > tr:nth-child(6) > td:nth-child(2) > div")
 						parent.append(id_risque, br)
-						console.log(id_risque, br);
+						// console.log(id_risque, br);
 
 						break;
 					case '2':
@@ -364,17 +365,18 @@
 
 
 
-	for (let i = 2; i <= (parseInt(echelle_vraisemblance)) + 1; i++) {
-		// console.log('gravite: ' + i);
+	for (let i = 2; i <= (parseInt(echelle_vraisemblance)) + 2; i++) {
+		console.log('gravite: ' + i);
 
-		for (let j = 2; j <= (parseInt(echelle_vraisemblance)) + 1; j++) {
-			// console.log('vraisemblance: ' + j);
+		for (let j = 2; j <= (parseInt(echelle_vraisemblance)) + 2; j++) {
+			console.log('vraisemblance: ' + j);
 
 			$("#dataTable > tbody > tr:nth-child(" + i + ") > td:nth-child(" + j + ")").on('click', function () {
 
 				sleep(100).then(() => {
 
 					$color_to_send = $("#dataTable > tbody > tr:nth-child(" + i + ") > td:nth-child(" + j + ")")[0].classList[0];
+					//$tab_colors.push($color_to_send);
 
 					switch (i) {
 						case 2:
@@ -393,7 +395,7 @@
 							$gravite_to_send = 1
 							break;
 					}
-					console.log($color_to_send);
+					//console.log($color_to_send);
 
 					$.ajax({
 						url: 'content/php/atelier5b/ajax-heatmap.php',
@@ -414,7 +416,6 @@
 		}
 	}
 
-
 })
 
 $('#dataTable').on('click', "td", function () {
@@ -430,6 +431,8 @@ $('#dataTable').on('click', "td", function () {
 	}
 });
 
+
+
 $(document).ready(function () {
     var element = $("#dataTable"); // global variable
     $("#btn-Convert-Html2Image").on('click', function () {
@@ -438,7 +441,7 @@ $(document).ready(function () {
 				Canvas2Image.saveAsPNG(canvas,undefined,undefined,"5b-RisqueInitial"); 
 			}
 		});
-    });
+    });	
 });
 
 

@@ -20,7 +20,7 @@ $rq_raci = "SELECT id_atelier,nom, ecriture FROM H_RACI, A_utilisateur WHERE H_R
 /*"SELECT id_atelier,nom, ecriture FROM H_RACI, A_utilisateur WHERE H_RACI.id_utilisateur = A_utilisateur.id_utilisateur AND id_projet =$getid_projet";/* ORDER BY  H_RACI.id_atelier,A_utilisateur.id_utilisateur";*/
 $rq_raci_tab = mysqli_query($connect,$rq_raci);
 
-$rq_atelier_raci = "SELECT  DISTINCT/* H_RACI.id_atelier*/CONCAT(H_RACI.id_atelier,' ',nom_atelier) FROM H_RACI, G_atelier WHERE H_RACI.id_atelier = G_atelier.id_atelier AND id_projet = $getid_projet";
+$rq_atelier_raci = "SELECT  DISTINCT/* H_RACI.id_atelier*/H_RACI.id_atelier FROM H_RACI, G_atelier WHERE H_RACI.id_atelier = G_atelier.id_atelier AND id_projet = $getid_projet";
 $rq_atelier_raci_tab = mysqli_query($connect, $rq_atelier_raci);
 
 //*************************1.a Données Principales////////////////////////////
@@ -71,9 +71,9 @@ $rq_srov_tab = mysqli_query($connect, $rq_srov);
 //requetes atelier 2.b
 $rq_srov2 = "SELECT profil_de_l_attaquant_source_de_risque AS 'Profil d''attaquant', description_source_de_risque AS 'Description source du risque', objectif_vise AS 'Objectif visé', description_objectif_vise AS 'Description de l''objectif', motivation AS 'Motivation', ressources AS 'Ressources', activite AS 'Activité', mode_operatoire AS 'Mode opératoire', secteur_d_activite AS 'Secteur d''activité', arsenal_d_attaque AS 'Arsenal d''attaque', faits_d_armes AS 'Fait d''armes', pertinence AS 'Pertinence' FROM P_SROV WHERE id_projet = $getid_projet";
 $rq_srov2_tab = mysqli_query($connect,$rq_srov2);
-
+/*
 ////////////////////////////////////////////////////////////////////////////////
-//requetes atelier 2.c
+//requetes atelier 2.c*/
 $rq_srov3 = "SELECT profil_de_l_attaquant_source_de_risque AS 'Profil d''attaquant', description_source_de_risque AS 'Description source du risque', objectif_vise AS 'Objectif visé', description_objectif_vise AS 'Description de l''objectif', motivation AS 'Motivation', ressources AS 'Ressources', activite AS 'Activité', mode_operatoire AS 'Mode opératoire', secteur_d_activite AS 'Secteur d''activité', arsenal_d_attaque AS 'Arsenal d''attaque', faits_d_armes AS 'Fait d''armes', pertinence AS 'Pertinence', choix_source_de_risque AS 'Choix P1/P2' FROM P_SROV WHERE id_projet = $getid_projet";
 $rq_srov3_tab = mysqli_query($connect, $rq_srov3);
 
@@ -82,8 +82,8 @@ $rq_srov3_tab = mysqli_query($connect, $rq_srov3);
 $rq_partie = "SELECT categorie_partie_prenante AS 'Catégorie', nom_partie_prenante AS 'Partie prenante', type AS 'Type', dependance_partie_prenante AS 'Dépendance', ponderation_dependance AS 'Facteur de pondération dépendance', penetration_partie_prenante AS 'Pénétration', ponderation_penetration AS 'Facteur de pondération pénétration', maturite_partie_prenante AS 'Maturité', ponderation_maturite AS 'Facteur de pondération maturité', confiance_partie_prenante AS 'Confiance', ponderation_confiance AS 'Facteur de pondération confiance', niveau_de_menace_partie_prenante AS 'Niveau de Menace', criticite AS 'Criticité' FROM R_partie_prenante WHERE id_projet = $getid_projet ";
 $rq_partie_tab = mysqli_query($connect, $rq_partie);
 
-////////////////////////////////////////////////////////////////////////////////
-//requetes atelier 3.b
+/*////////////////////////////////////////////////////////////////////////////////
+//requetes atelier 3.b////*/
 $rq_cidt = "SELECT nom_valeur_metier AS 'Valeur métier', nom_evenement_redoute AS 'Nom de l''événement redouté', description_evenement_redoute AS 'Description de l''événement redouté', impact AS 'Impacts', confidentialite AS 'C', integrite AS 'I',disponibilite AS 'D', tracabilite AS 'T', niveau_de_gravite AS 'Gravité' FROM M_evenement_redoute INNER JOIN J_valeur_metier on M_evenement_redoute.id_valeur_metier = J_valeur_metier.id_valeur_metier WHERE M_evenement_redoute.id_projet = $getid_projet";
 $rq_cidt_tab = mysqli_query($connect, $rq_cidt);
 
@@ -106,11 +106,36 @@ $rq_scenar_strat_tab = mysqli_query($connect, $rq_scenar_strat);
 
 ////////////////////////////////////////////////////////////////////////////////
 //requetes atelier 4.a
-$rq_scen_strat= "SELECT nom_scenario_strategique AS 'Nom du scnénario stratégique',description_source_de_risque AS 'Description source de risque',objectif_vise AS 'Objectifs visés',nom_evenement_redoute AS 'Événements redoutés',id_risque AS 'N° Risque',nom_chemin_d_attaque_strategique AS 'Chemin d''attaques stratégiques',niveau_de_gravite AS 'Gravité' FROM S_scenario_strategique NATURAL JOIN P_SROV NATURAL JOIN M_evenement_redoute NATURAL JOIN T_chemin_d_attaque_strategique WHERE id_projet = $getid_projet AND id_atelier = '4.a'";
+$rq_scen_strat= "SELECT DISTINCT
+S_scenario_strategique.nom_scenario_strategique AS 'Nom du scénario Stratégique',
+P_SROV.description_source_de_risque AS 'Description source de risque',
+P_SROV.objectif_vise AS 'Objectifs visé',
+M_evenement_redoute.nom_evenement_redoute AS 'Événements redoutés',
+T_chemin_d_attaque_strategique.id_risque AS 'N° risque',
+T_chemin_d_attaque_strategique.nom_chemin_d_attaque_strategique AS 'Chemin d''attaque stratégique',
+M_evenement_redoute.niveau_de_gravite AS 'Gravité'
+FROM S_scenario_strategique, T_chemin_d_attaque_strategique, UA_ER, M_evenement_redoute, P_SROV
+WHERE T_chemin_d_attaque_strategique.id_scenario_strategique = S_scenario_strategique.id_scenario_strategique
+AND T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = UA_ER.id_chemin_d_attaque_strategique
+AND UA_ER.id_evenement_redoute = M_evenement_redoute.id_evenement_redoute
+AND S_scenario_strategique.id_source_de_risque = P_SROV.id_source_de_risque
+AND T_chemin_d_attaque_strategique.id_projet = $getid_projet
+ORDER BY T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique ASC";
+
+$rq_scen_strat_bis="SELECT
+T_chemin_d_attaque_strategique.id_risque AS 'N° du risque',
+T_chemin_d_attaque_strategique.nom_chemin_d_attaque_strategique AS 'Chemin d''attaque stratégique',
+U_scenario_operationnel.description_scenario_operationnel AS 'Scénario opérationnel'
+FROM U_scenario_operationnel,T_chemin_d_attaque_strategique
+WHERE U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique
+AND U_scenario_operationnel.id_projet = $getid_projet
+AND T_chemin_d_attaque_strategique.id_projet = $getid_projet";
 
 $rq_mode_op= "SELECT nom_scenario_operationnel AS'Scénario opérationnel', description_scenario_operationnel AS 'Mode opératoire' FROM U_scenario_operationnel WHERE id_projet = $getid_projet AND id_atelier = '4.a'";
 
+
 $rq_scen_strat_tab = mysqli_query($connect, $rq_scen_strat);
+$rq_scen_strat_tab_bis = mysqli_query($connect, $rq_scen_strat_bis);
 $rq_mode_op_tab= mysqli_query($connect, $rq_mode_op);
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -183,5 +208,44 @@ FROM  X_revaluation_du_risque, M_evenement_redoute, U_scenario_operationnel, Y_m
 WHERE U_scenario_operationnel.id_projet = $getid_projet";*/
 
 $qr_eval_risk_resi_tab = mysqli_query($connect, $qr_eval_risk_resi);
+////////////////////////////////////////////////////////////////////////////////
+//requetes atelier 5 a,b,c pour transformation cartographie => tableau
+$qr_carto_into ="SELECT T_chemin_d_attaque_strategique.id_risque,gravite,vraisemblance,bareme
+FROM DB_bareme_risque, T_chemin_d_attaque_strategique
+WHERE DB_bareme_risque.id_projet=$getid_projet";
+$qr_carto_into_tab = mysqli_query($connect, $qr_carto_into);
+
+$rq_carto = "SELECT
+T_chemin_d_attaque_strategique.id_risque,
+U_scenario_operationnel.vraisemblance,
+M_evenement_redoute.niveau_de_gravite
+FROM U_scenario_operationnel,T_chemin_d_attaque_strategique, S_scenario_strategique,UA_ER, M_evenement_redoute
+WHERE T_chemin_d_attaque_strategique.id_scenario_strategique = S_scenario_strategique.id_scenario_strategique
+AND T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = UA_ER.id_chemin_d_attaque_strategique
+AND UA_ER.id_evenement_redoute = M_evenement_redoute.id_evenement_redoute
+AND T_chemin_d_attaque_strategique.id_projet = $getid_projet
+AND U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique
+AND U_scenario_operationnel.id_projet = $getid_projet
+ORDER BY T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique ASC";
+$rq_carto_tab = mysqli_query($connect, $rq_carto);
+$rq_carto_tab2 = mysqli_query($connect, $rq_carto);
+$rq_carto_tab3 = mysqli_query($connect, $rq_carto);
+$rq_carto_tab4 = mysqli_query($connect, $rq_carto);
+
+
+
+//*requête couleur <carto></carto>
+$rq_couleurs = "SELECT bareme FROM DB_bareme_risque WHERE id_projet = $getid_projet  
+ORDER BY gravite, vraisemblance";
+$rq_couleurs_tab = mysqli_query($connect,$rq_couleurs);
+$rq_couleurs_tab2 = mysqli_query($connect,$rq_couleurs);
+$rq_couleurs_tab3 = mysqli_query($connect,$rq_couleurs);
+
+
+
+
+
+
+
 
 ?>
