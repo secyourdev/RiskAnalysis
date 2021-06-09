@@ -6,7 +6,7 @@ function rapport_full() {
                action:'call_this',
           },
            success:function(html) {
-               alert(html);
+               //alert(html);
            }
 
       });
@@ -21,7 +21,7 @@ function rapport_at1() {
               action:'gene_at1',
          },
           success:function(html) {
-              alert(html);
+              //alert(html);
           }
 
      });
@@ -35,7 +35,7 @@ function rapport_at2() {
               action:'gene_at2',
          },
           success:function(html) {
-              alert(html);
+              //alert(html);
           }
 
      });
@@ -49,7 +49,7 @@ function rapport_at3() {
               action:'gene_at3',
          },
           success:function(html) {
-              alert(html);
+              //alert(html);
           }
 
      });
@@ -63,7 +63,7 @@ function rapport_at4() {
               action:'gene_at4',
          },
           success:function(html) {
-              alert(html);
+              //alert(html);
           }
 
      });
@@ -77,7 +77,7 @@ function rapport_at5() {
               action:'gene_at5',
          },
           success:function(html) {
-              alert(html);
+              //alert(html);
           }
 
      });

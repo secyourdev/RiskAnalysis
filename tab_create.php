@@ -986,7 +986,7 @@ function tab_socle_1_d($rq,$rq_nb){
             $table->addRow();
             }
             else if($memory == $array[$d][0]){
-              print_r($memory);
+              // print_r($memory);
               $table->addRow();
               $table -> addCell(1, array('bgColor' => 'blue'))->addText($array[$d][1]);
               $table->addRow();
@@ -1102,7 +1102,7 @@ function tab_dyn_h_4b($rq,$rq_nb){
             $table->addRow();
             }
             else if($memory == $array[$d][0]){
-              print_r($memory);
+              // print_r($memory);
               $table->addRow();
               $table -> addCell(1, array('bgColor' => 'blue'))->addText($array[$d][4]);
               $table->addRow();
