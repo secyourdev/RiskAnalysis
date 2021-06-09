@@ -296,12 +296,27 @@ $rq_carto_tab4 = mysqli_query($connect, $rq_carto_c2);
 
 
 
-//*requête couleur <carto></carto>
+//*requête couleur
 $rq_couleurs = "SELECT bareme, vraisemblance,gravite FROM DB_bareme_risque WHERE id_projet = $getid_projet  
 ORDER BY vraisemblance, gravite";
 $rq_couleurs_tab = mysqli_query($connect,$rq_couleurs);
 $rq_couleurs_tab2 = mysqli_query($connect,$rq_couleurs);
 $rq_couleurs_tab3 = mysqli_query($connect,$rq_couleurs);
+
+
+//******************************infos genéral front page***************************************/
+//titre
+$rq_titre_rapport = "SELECT nom_doc FROM info_form WHERE id_projet = $getid_projet";
+//Nom societe
+$rq_nom_soci_rapport = "SELECT nom_soci FROM info_form WHERE id_projet = $getid_projet";
+//adresse societe
+$rq_adresse_rapport = "SELECT adresse_soci FROM info_form WHERE id_projet = $getid_projet";
+//telephone societe  
+$rq_tel_soci_rapport = "SELECT num_soci FROM info_form WHERE id_projet = $getid_projet";
+//site societe
+$rq_site_soci_rapport = "SELECT site_soci FROM info_form WHERE id_projet = $getid_projet";
+//reference rapport
+$rq_reference_rapport = "SELECT reph_doc FROM info_form WHERE id_projet = $getid_projet";
 
 
 
