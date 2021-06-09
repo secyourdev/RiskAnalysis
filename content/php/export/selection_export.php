@@ -44,7 +44,7 @@ $rq_mission_tab = mysqli_query($connect, $rq_mission);
 
 ////////////////////////////////////////////////////////////////////////////////
 //requetes atelier 1.c
-$rq_echelle ="SELECT nom_echelle AS 'Nom de l''échelle' , echelle_gravite AS 'Échelle de gravité' FROM DA_echelle WHERE id_projet = $getid_projet";
+$rq_echelle ="SELECT nom_echelle AS 'Nom de l''échelle' , echelle_gravite AS 'Nombre d’échelons de l’échelle' FROM DA_echelle WHERE id_projet = $getid_projet";
 $rq_echelle_tab = mysqli_query($connect, $rq_echelle);
 
 $rq_niveau = "SELECT valeur_niveau AS 'Valeur du niveau', description_niveau AS 'Description du niveau' FROM DA_niveau WHERE id_projet = $getid_projet";
@@ -83,7 +83,7 @@ $rq_nom_socle_ok = mysqli_query($connect, $query_nom_soclee);
 
 ////////////////////////////////////////////////////////////////////////////////
 //requetes atelier 2.a
-$rq_srov = "SELECT type_d_attaquant_source_de_risque AS 'Type d''ttaquant', profil_de_l_attaquant_source_de_risque AS 'Profil d''attaquant', description_source_de_risque AS 'Description source de risque', objectif_vise AS 'Objectif visé',description_objectif_vise AS 'Description de l''objectif' FROM P_SROV WHERE id_projet=$getid_projet";
+$rq_srov = "SELECT type_d_attaquant_source_de_risque AS 'Type d''attaquant', profil_de_l_attaquant_source_de_risque AS 'Profil d''attaquant', description_source_de_risque AS 'Description source de risque', objectif_vise AS 'Objectif visé',description_objectif_vise AS 'Description de l''objectif' FROM P_SROV WHERE id_projet=$getid_projet";
 $rq_srov_tab = mysqli_query($connect, $rq_srov);
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -202,7 +202,7 @@ $rq_nb_elem_echelle_nb = mysqli_query($connect, $rq_nb_elem_echelle);
 $rq_eval_vrai_tab = mysqli_query($connect, $rq_eval_vrai);
 
 
-$rq_echelle_b= "SELECT nom_echelle AS'Nom de l''échelle',echelle_gravite  AS 'Echelle de la gravité' FROM DA_echelle WHERE id_projet = $getid_projet";
+$rq_echelle_b= "SELECT nom_echelle AS'Nom de l''échelle',echelle_gravite  AS 'Nombre de niveaux de l’échelle' FROM DA_echelle WHERE id_projet = $getid_projet";
 $rq_vraisemblance= "SELECT valeur_niveau AS'Valeur du niveau',description_niveau  AS 'Description du niveau' FROM DA_niveau  WHERE id_projet = $getid_projet";
 
 $rq_echelle_b_tab = mysqli_query($connect, $rq_echelle_b);
@@ -275,16 +275,30 @@ AND T_chemin_d_attaque_strategique.id_projet = $getid_projet
 AND U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique
 AND U_scenario_operationnel.id_projet = $getid_projet
 ORDER BY T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique ASC";
+$rq_carto_c2 = "SELECT
+T_chemin_d_attaque_strategique.id_risque,
+X_revaluation_du_risque.vraisemblance_residuelle,
+M_evenement_redoute.niveau_de_gravite,
+U_scenario_operationnel.vraisemblance
+FROM U_scenario_operationnel,T_chemin_d_attaque_strategique, S_scenario_strategique,UA_ER, M_evenement_redoute, X_revaluation_du_risque
+WHERE T_chemin_d_attaque_strategique.id_scenario_strategique = S_scenario_strategique.id_scenario_strategique
+AND T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique = UA_ER.id_chemin_d_attaque_strategique
+AND UA_ER.id_evenement_redoute = M_evenement_redoute.id_evenement_redoute
+AND T_chemin_d_attaque_strategique.id_projet = $getid_projet
+AND U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique
+AND U_scenario_operationnel.id_chemin_d_attaque_strategique = X_revaluation_du_risque.id_chemin_d_attaque_strategique
+AND U_scenario_operationnel.id_projet = $getid_projet
+ORDER BY T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique ASC";
 $rq_carto_tab = mysqli_query($connect, $rq_carto);
 $rq_carto_tab2 = mysqli_query($connect, $rq_carto);
 $rq_carto_tab3 = mysqli_query($connect, $rq_carto);
-$rq_carto_tab4 = mysqli_query($connect, $rq_carto);
+$rq_carto_tab4 = mysqli_query($connect, $rq_carto_c2);
 
 
 
 //*requête couleur <carto></carto>
-$rq_couleurs = "SELECT bareme FROM DB_bareme_risque WHERE id_projet = $getid_projet  
-ORDER BY gravite, vraisemblance";
+$rq_couleurs = "SELECT bareme, vraisemblance,gravite FROM DB_bareme_risque WHERE id_projet = $getid_projet  
+ORDER BY vraisemblance, gravite";
 $rq_couleurs_tab = mysqli_query($connect,$rq_couleurs);
 $rq_couleurs_tab2 = mysqli_query($connect,$rq_couleurs);
 $rq_couleurs_tab3 = mysqli_query($connect,$rq_couleurs);
