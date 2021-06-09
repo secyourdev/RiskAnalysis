@@ -1,6 +1,7 @@
 <?php
 session_start();
-
+$id_projet = $_SESSION['id_projet'];
+include("content/php/bdd/connexion_sqli.php");
 include("content/php/bdd/connexion.php");
 
 if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
@@ -13,6 +14,14 @@ if(isset($_GET['id_utilisateur']) AND $_GET['id_utilisateur'] > 0){
     $reqproject = $bdd->prepare('SELECT nom_projet FROM F_projet WHERE id_projet = ?');
     $reqproject->execute(array($getidproject));
     $projectinfo = $reqproject->fetch();
+
+//remplacement des valeurs du forme existante
+if(!mysqli_num_rows(mysqli_query($connect, "SELECT * FROM info_form WHERE id_projet=$id_projet")) == 0){
+    $donnee_form = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM info_form WHERE id_projet=$id_projet"), MYSQLI_NUM);
+}   
+else{
+    $donnee_form = array(array("", "", "", "", "", "", "", "", "", "", "", "")); 
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -108,6 +117,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
+                
                 <div id="fixed_page" class="container-fluid bg-white">
                         <div class="row">
                             <div class="col-xs-8 offset-1">
@@ -117,44 +127,44 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                     <h2 class="titre_col1">Formulaire Rapport</h2>
                                 </header>
                             </div>
-                            <form>
+                            <iframe name = "iframe" id="iframe" style="display: none;"></iframe>
+                            <form action="trans_info_form.php" method="post" target="iframe">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Titre rapport</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrez le titre du rapport">
+                                    <label for="titre_rapport">Titre rapport</label>
+                                    <input type="text" class="form-control" id="titre_rapport" name ="titre_rapport" aria-describedby="emailHelp" placeholder="Entrez le titre du rapport" value = <?php echo "'{$donnee_form[0][2]}'"?>>
                                     <br>
 
-                                    <label for="exampleInputPassword1">Nom de la société</label>                        
-                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Entrez le nom de votre société">
+                                    <label for="nom_societe">Nom de la société</label>                        
+                                    <input type="text" class="form-control" id="nom_societe" name = "nom_societe" placeholder="Entrez le nom de votre société" value = <?php echo "'{$donnee_form[0][1]}'"?>>
                                     <br>
                                     
-                                    <label for="exampleInputPassword1">Adresse société</label>                        
-                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Entrez l'adresse de votre société (n°, rue, ville, cp)">
+                                    <label for="adresse_societe">Adresse société</label>                        
+                                    <input type="text" class="form-control" id="adresse_societe" name = "adresse_societe" placeholder="Entrez l'adresse de votre société (n°, rue, ville, cp)" value = <?php echo "'{$donnee_form[0][4]}'"?>>
                                     <br>
 
-                                    <label for="exampleInputPassword1">Téléphone société</label>                        
-                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder=" Entrez n° téléphone société">
+                                    <label for="tel_societe">Téléphone société</label>                        
+                                    <input type="text" class="form-control" id="tel_societe" name = "tel_societe" placeholder=" Entrez n° téléphone société" value = <?php echo "'{$donnee_form[0][3]}'"?>>
                                     <br>
 
-                                    <label for="exampleInputPassword1">Télécopie société</label>                        
-                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Entrez télécopie société">
+                                    <label for="site_societe">Site société</label>                        
+                                    <input type="text" class="form-control" id="site_societe" name = "site_societe" placeholder="Entrez site société" value = <?php echo "'{$donnee_form[0][5]}'"?>>
                                     <br>
 
-                                    <label for="exampleInputPassword1">Réphérences document</label>                        
-                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Entrez les référances du document">
+                                    <label for="reph_doc">Réphérences document</label>                        
+                                    <input type="text" class="form-control" id="reph_doc" name = "reph_doc" placeholder="Entrez les référances du document" value = <?php echo "'{$donnee_form[0][7]}'"?>>
                                     <br>
                                 </div>
-                                
-                                <form>
                                 <div class="form-group">
-                                    <label for="exampleFormControlFile1">Logo Société</label>
-                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                    <label for="upload_pic">Logo Société</label>
+                                    <input type="file" class="form-control-file" id="upload_pic" name = "upload_pic" value = <?php echo "'{$donnee_form[0][8]}'"?>>
                                 </div>
-                                </form>
+                                <br>
+                                <button name = "submit" type="submit" class="button_rapport" value="Submit">Enregistrer Information</button>
                                 <br>
                             </form>
-                                <!-- Fin formulaire -->
-                        
-                    </div>
+                            <!-- Fin formulaire -->
+                            
+                        </div>
                     <div class ="col-xs-10 dif_col">
                         <div class="tritre_col">
                             <header class="titre_col2">
