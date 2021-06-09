@@ -197,12 +197,38 @@ FROM u_scenario_operationnel
 WHERE id_projet = $getid_projet 
 LIMIT 0, 25";
 $rq_nb_elem_echelle_nb = mysqli_query($connect, $rq_nb_elem_echelle);
+$rq_h_vrai="SELECT DISTINCT T_chemin_d_attaque_strategique.id_risque AS 'N° Risque',nom_chemin_d_attaque_strategique AS 'Chemin d''attaques stratégiques',
+u_scenario_operationnel.nom_scenario_operationnel AS 'Scénario opérationnel',da_echelle.echelle_vraisemblance AS 'Vraisemblance',da_echelle.nom_echelle
+FROM U_scenario_operationnel,T_chemin_d_attaque_strategique,da_echelle,da_niveau
+WHERE U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique
+AND U_scenario_operationnel.id_projet = $getid_projet
+AND da_echelle.id_projet=$getid_projet
+AND T_chemin_d_attaque_strategique.id_projet = $getid_projet";
+$rq_niv_h="
+SELECT 
+dc_echelle_vraisemblance.nom_echelle,
+da_niveau.valeur_niveau AS 'Valeur du niveau',
+da_niveau.description_niveau AS 'Description du niveau'
+FROM da_niveau, `dc_echelle_vraisemblance`
+WHERE da_niveau.id_projet = $getid_projet
+AND dc_echelle_vraisemblance.id_projet=$getid_projet";
+
+//$rq_nb_h_vrai="SELECT dc_echelle_vraisemblance.nom_echelle FROM `dc_echelle_vraisemblance` WHERE dc_echelle_vraisemblance.id_projet=$getid_projet";
+$rq_niv_h_tab = mysqli_query($connect, $rq_niv_h);
+
+
+$rq_h_vrai_tab = mysqli_query($connect, $rq_h_vrai);
 
 
 $rq_eval_vrai_tab = mysqli_query($connect, $rq_eval_vrai);
 
 
-$rq_echelle_b= "SELECT nom_echelle AS'Nom de l''échelle',echelle_gravite  AS 'Nombre de niveaux de l’échelle' FROM DA_echelle WHERE id_projet = $getid_projet";
+$rq_echelle_b= "
+SELECT 
+dc_echelle_vraisemblance.nom_echelle,dc_echelle_vraisemblance.nb_niveau_echelle
+FROM dc_echelle_vraisemblance
+WHERE dc_echelle_vraisemblance.id_projet=$getid_projet
+";
 $rq_vraisemblance= "SELECT valeur_niveau AS'Valeur du niveau',description_niveau  AS 'Description du niveau' FROM DA_niveau  WHERE id_projet = $getid_projet";
 
 $rq_echelle_b_tab = mysqli_query($connect, $rq_echelle_b);

@@ -113,11 +113,13 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
   $tab_mode_op= genere_tableau_rapport($rq_mode_op_tab);
   //4.b/////////////////////////////////////////////////
   $tab_echelle_b = tab_dyn1c_3b_4b($rq_echelle_b_tab);
-  $tab_vraisemblance_b = tab_dyn1c_3b_4b($rq_vraisemblance_tab);
   $nb_elem_h=mysqli_fetch_all($rq_nb_elem_echelle_nb,MYSQLI_NUM);
-  $tab_h_vrai = tab_dyn_h_4b($rq_h_vrai_tab, $nb_elem_h);
+  //$tab_vraisemblance_b = tab_dyn1c_3b_4b($rq_vraisemblance_tab);
+  $nb_elem_h=mysqli_fetch_all($rq_nb_elem_echelle_nb,MYSQLI_NUM);
+  $tab_h_vrai = tab_dyn_h_4b($rq_h_vrai_tab,$nb_elem_h);
+  $tab_niv_h  =tab_dyn_h_4b_bis($rq_niv_h_tab);
 
-  $tab_eval_vrai = tab_dyn1c_3b_4b($rq_eval_vrai_tab);
+  //$tab_eval_vrai = tab_dyn1c_3b_4b($rq_eval_vrai_tab);
 
   ///atelier 5*************************************************************
   $tab_carto5a = tab_carto1($rq_carto_tab);
@@ -191,10 +193,8 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
 
   ///4.b
   $template -> setComplexBlock('da_echelle1', $tab_echelle_b);
-  //$template -> setComplexBlock('u_scenario_operationnel', $?);
+  $template -> setComplexBlock('u_scenario_operationnel', $tab_niv_h);
   $template->setComplexBlock('eval_vrai', $tab_h_vrai);
-
-  // $template->setComplexBlock('da_echelle1', $tab_h_vrai);
 
 
 ///5.a
