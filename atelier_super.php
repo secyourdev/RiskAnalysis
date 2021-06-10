@@ -159,7 +159,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                     <input type="file" class="form-control-file" id="upload_pic" name = "upload_pic" value = <?php echo "'{$donnee_form[0][8]}'"?>>
                                 </div>
                                 <br>
-                                <button name = "submit" type="submit" class="button_rapport" value="Submit">Enregistrer Information</button>
+                                <button name = "submit" type="submit" class="button_rapport" value="Submit" onclick="rapport_full();rapport_at1();rapport_at2();rapport_at3();rapport_at4();rapport_at5()">Enregistrer Information</button>
                                 <br>
                             </form>
                             <!-- Fin formulaire -->
@@ -173,40 +173,64 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             </header>
                         </div>
                         <div class="form-group">
-                            <label for="text_bouton" class= "text_bouton">Bouton rapport complet :</label>  
-                            <button type="button" class="button_rapport complet w" id="bouton_rap_comp_w" onclick="rapport_full()">Générer Rapport Complet</button>
+                            <label for="text_bouton" class= "text_bouton">Bouton rapport complet :</label>
+                            <a href="Rapport.docx" download>
+                                <button type="button" class="button_rapport complet w" id="bouton_rap_comp_w">Télécharger Rapport Complet</button>
+                            </a>
                             /
-                            <button type="button" class="button_rapport complet e" id="bouton_rap_comp_e" onclick="myAjax()">Générer tous les tableaux</button>
+                            <a href="........." download>
+                                <button type="button" class="button_rapport complet e" id="bouton_rap_comp_e" onclick="myAjax()">Télécharger tableaux</button>
+                            </a>
                             <br>
                             <br></br>
                             <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 1 :</label>
-                            <button type="button" class="button_rapport at1 w" id="bouton_rap_at1_w" onclick="rapport_at1()">Générer Rapport Atelier 1</button>
+                            <a href="Rapport_at1.docx" download>
+                                <button type="button" class="button_rapport at1 w" id="bouton_rap_at1_w">Télécharger Rapport Atelier 1</button>
+                            </a>
                             /
-                            <button type="button" class="button_rapport at1 e" id="bouton_rap_at1_e"onclick="myAjax()">Générer tableaux At1</button>
+                            <a href="........." download>
+                                <button type="button" class="button_rapport at1 e" id="bouton_rap_at1_e"onclick="myAjax()">Télécharger tableaux At1</button>
+                            </a>
                             <br>
                             <br></br>
                             <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 2 :</label>    
-                            <button type="button" class="button_rapport at2 w" id="bouton_rap_at2_w" onclick="rapport_at2()">Générer Rapport Atelier 2</button>
+                            <a href="Rapport_at2.docx" download>
+                                <button type="button" class="button_rapport at2 w" id="bouton_rap_at2_w">Télécharger Rapport Atelier 2</button>
+                            </a>
                             /
-                            <button type="button" class="button_rapport at2 e" id="bouton_rap_at2_e" onclick="myAjax()">Générer tableaux At2</button>
+                            <a href="........." download>
+                                <button type="button" class="button_rapport at2 e" id="bouton_rap_at2_e" onclick="myAjax()">Télécharger tableaux At2</button>
+                            </a>
                             <br>
                             <br></br>
                             <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 3 :</label>                                                        
-                            <button type="button" class="button_rapport at3 w" id="bouton_rap_at3_w" onclick="rapport_at3()">Générer Rapport Atelier 3</button>
+                            <a href="Rapport_at3.docx" download>
+                                <button type="button" class="button_rapport at3 w" id="bouton_rap_at3_w">Télécharger Rapport Atelier 3</button>
+                            </a>
                             /
-                            <button type="button" class="button_rapport at3 e" id="bouton_rap_at3_e" onclick="myAjax()">Générer tableaux At3</button>
+                            <a href="........." download>
+                                <button type="button" class="button_rapport at3 e" id="bouton_rap_at3_e" onclick="myAjax()">Télécharger tableaux At3</button>
+                            </a>
                             <br>
                             <br></br>
                             <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 4 :</label>
-                            <button type="button" class="button_rapport at4 w" id="bouton_rap_at4_w" onclick="rapport_at4()">Générer Rapport Atelier 4</button>
+                            <a href="Rapport_at4.docx" download>
+                                <button type="button" class="button_rapport at4 w" id="bouton_rap_at4_w">Télécharger Rapport Atelier 4</button>
+                            </a>
                             /
-                            <button type="button" class="button_rapport at4 e" id="bouton_rap_at4_e" onclick="myAjax()">Générer tableaux At4</button>
+                            <a href="........." download>
+                                <button type="button" class="button_rapport at4 e" id="bouton_rap_at4_e" onclick="myAjax()">Télécharger tableaux At4</button>
+                            </a>
                             <br>
                             <br></br>
                             <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 5 :</label>
-                            <button type="button" class="button_rapport at5 w" id="bouton_rap_at5_w" onclick="rapport_at5()">Générer Rapport Atelier 5</button>
+                            <a href="Rapport_at5.docx" download>
+                                <button type="button" class="button_rapport at5 w" id="bouton_rap_at5_w">Télécharger Rapport Atelier 5</button>
+                            </a>
                             /
-                            <button type="button" class="button_rapport at5 e" id="bouton_rap_at5_e" onclick="myAjax()">Générer tableaux At5</button>
+                            <a href="........." download>
+                                <button type="button" class="button_rapport at5 e" id="bouton_rap_at5_e" onclick="myAjax()">Télécharger tableaux At5</button>
+                            </a>
                         </div>
                     </div>
                 </div>
