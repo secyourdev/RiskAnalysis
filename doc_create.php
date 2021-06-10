@@ -29,6 +29,15 @@ function doc_create(){
   //echo '<pre>'; print_r($projet);echo '</pre>';
 
   $template -> setValue('Titre', $nom_projet);
+  $template -> setValue('adresse', "jaajdresse");
+
+
+
+
+
+
+
+
   $template -> setValue('nomProjet', $projet['nom_projet']);
   $template -> setValue('Objectif', $projet['objectif_projet']);
   $template -> setValue('jj/mm/aaaa1', date("d-m-Y",strtotime($projet['cadre_temporel'])));
@@ -211,8 +220,8 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
 
 
   /////sauvegarder fichier
-
-  $template -> saveAS('Rapport.docx');
+  $date = date('d_m_y');
+  $template -> saveAS('Rapport'.$_SESSION['id_projet'].' '.$_SESSION['id_utilisateur'].$date.'.docx');
   // $filename = "Rapport.docx";
   // header('Content-Description: File Transfer');
   // header('Content-type: application/force-download');

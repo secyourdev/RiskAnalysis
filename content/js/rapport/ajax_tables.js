@@ -82,3 +82,7 @@ function rapport_at5() {
 
      });
 }
+
+function showDiv() {
+     document.getElementById('btn_gen').style.display = "block";
+   }

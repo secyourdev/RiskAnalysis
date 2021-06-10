@@ -159,22 +159,24 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                     <input type="file" class="form-control-file" id="upload_pic" name = "upload_pic" value = <?php echo "'{$donnee_form[0][8]}'"?>>
                                 </div>
                                 <br>
-                                <button name = "submit" type="submit" class="button_rapport" value="Submit" onclick="rapport_full();rapport_at1();rapport_at2();rapport_at3();rapport_at4();rapport_at5()">Enregistrer Information</button>
+                                <button name = "submit" type="submit" class="button_rapport generation" value="Submit" >Enregistrer Information</button>
+                                <button  class="button_rapport generation"  onclick="rapport_full();rapport_at1();rapport_at2();rapport_at3();rapport_at4();rapport_at5();showDiv()">Génération du Rapport</button>
+                                
                                 <br>
                             </form>
                             <!-- Fin formulaire -->
                             
                         </div>
-                    <div class ="col-xs-10 dif_col">
+                    <div class ="col-xs-10 dif_col bouton_gene" style="display: none;" id="btn_gen">
                         <div class="tritre_col">
                             <header class="titre_col2">
-                                <h2 class="titre1_col2">Bonton génération rapport</h2>
+                                <!-- <h2 class="titre1_col2">Bonton génération rapport</h2> -->
                                 <h4 class="sous_titre_col2"> Rapport Word  /  Rapport Excel</h4>
                             </header>
-                        </div>
-                        <div class="form-group">
-                            <label for="text_bouton" class= "text_bouton">Bouton rapport complet :</label>
-                            <a href="Rapport.docx" download>
+                        
+                        <div class="form-group" >
+                            <!-- <label for="text_bouton" class= "text_bouton">Bouton rapport complet :</label> -->
+                            <a href=<?php  $date = date('d_m_y');echo 'Rapport'.$_SESSION['id_projet'].' '.$_SESSION['id_utilisateur'].$date.'.docx';?> download = <?php $date = date('d_m_y-H_i');echo 'Rapport'.'_'.$date.'.docx';?>>
                                 <button type="button" class="button_rapport complet w" id="bouton_rap_comp_w">Télécharger Rapport Complet</button>
                             </a>
                             /
@@ -183,8 +185,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             </a>
                             <br>
                             <br></br>
-                            <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 1 :</label>
-                            <a href="Rapport_at1.docx" download>
+                            <!-- <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 1 :</label> -->
+                            <a href=<?php  $date = date('d_m_y');echo 'Rapport_at1'.$_SESSION['id_projet'].' '.$_SESSION['id_utilisateur'].$date.'.docx';?> download = <?php $date = date('d_m_y-H_i');echo 'Rapport_atelier1'.'_'.$date.'.docx';?>>
                                 <button type="button" class="button_rapport at1 w" id="bouton_rap_at1_w">Télécharger Rapport Atelier 1</button>
                             </a>
                             /
@@ -193,8 +195,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             </a>
                             <br>
                             <br></br>
-                            <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 2 :</label>    
-                            <a href="Rapport_at2.docx" download>
+                            <!-- <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 2 :</label>     -->
+                            <a href=<?php  $date = date('d_m_y');echo 'Rapport_at2'.$_SESSION['id_projet'].' '.$_SESSION['id_utilisateur'].$date.'.docx';?> download = <?php $date = date('d_m_y-H_i');echo 'Rapport_atelier2'.'_'.$date.'.docx';?>>
                                 <button type="button" class="button_rapport at2 w" id="bouton_rap_at2_w">Télécharger Rapport Atelier 2</button>
                             </a>
                             /
@@ -203,8 +205,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             </a>
                             <br>
                             <br></br>
-                            <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 3 :</label>                                                        
-                            <a href="Rapport_at3.docx" download>
+                            <!-- <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 3 :</label>                                                         -->
+                            <a href=<?php  $date = date('d_m_y');echo 'Rapport_at3'.$_SESSION['id_projet'].' '.$_SESSION['id_utilisateur'].$date.'.docx';?> download = <?php $date = date('d_m_y-H_i');echo 'Rapport_atelier3'.'_'.$date.'.docx';?>>
                                 <button type="button" class="button_rapport at3 w" id="bouton_rap_at3_w">Télécharger Rapport Atelier 3</button>
                             </a>
                             /
@@ -213,8 +215,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             </a>
                             <br>
                             <br></br>
-                            <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 4 :</label>
-                            <a href="Rapport_at4.docx" download>
+                            <!-- <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 4 :</label> -->
+                            <a href=<?php  $date = date('d_m_y');echo 'Rapport_at4'.$_SESSION['id_projet'].' '.$_SESSION['id_utilisateur'].$date.'.docx';?> download = <?php $date = date('d_m_y-H_i');echo 'Rapport_atelier4'.'_'.$date.'.docx';?>>
                                 <button type="button" class="button_rapport at4 w" id="bouton_rap_at4_w">Télécharger Rapport Atelier 4</button>
                             </a>
                             /
@@ -223,8 +225,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             </a>
                             <br>
                             <br></br>
-                            <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 5 :</label>
-                            <a href="Rapport_at5.docx" download>
+                            <!-- <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 5 :</label> -->
+                            <a href=<?php  $date = date('d_m_y');echo 'Rapport_at5'.$_SESSION['id_projet'].' '.$_SESSION['id_utilisateur'].$date.'.docx';?> download = <?php $date = date('d_m_y-H_i');echo 'Rapport_atelier5'.'_'.$date.'.docx';?>>
                                 <button type="button" class="button_rapport at5 w" id="bouton_rap_at5_w">Télécharger Rapport Atelier 5</button>
                             </a>
                             /
@@ -232,6 +234,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                 <button type="button" class="button_rapport at5 e" id="bouton_rap_at5_e" onclick="myAjax()">Télécharger tableaux At5</button>
                             </a>
                         </div>
+                    </div>
                     </div>
                 </div>
                 <!-- End of Main Content -->
