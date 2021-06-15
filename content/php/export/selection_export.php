@@ -81,6 +81,19 @@ $query_nom_soclee = "SELECT nom_referentiel FROM N_socle_de_securite
 WHERE id_atelier = '1.d' AND id_projet = $getid_projet ORDER BY id_socle_securite";
 $rq_nom_socle_ok = mysqli_query($connect, $query_nom_soclee);
 
+
+$rq_regles_socle ="
+SELECT DISTINCT
+n_socle_de_securite.nom_referentiel,
+id_regle_affichage AS 'ID de la règle', titre AS 'Titre de la règle', description AS 'Description de la règle', etat_de_la_regle AS 'État de la règle',
+justification_ecart AS 'Justification des écarts', responsable AS 'Responsable', dates AS 'Date limite de la mise en application'  
+FROM n_socle_de_securite,O_regle 
+WHERE n_socle_de_securite.id_projet= $getid_projet
+AND O_regle.id_projet= $getid_projet
+AND o_regle.id_socle_securite=n_socle_de_securite.id_socle_securite
+";
+$rq_regles_socle_tab = mysqli_query($connect, $rq_regles_socle);
+
 ////////////////////////////////////////////////////////////////////////////////
 //requetes atelier 2.a
 $rq_srov = "SELECT type_d_attaquant_source_de_risque AS 'Type d''attaquant', profil_de_l_attaquant_source_de_risque AS 'Profil d''attaquant', description_source_de_risque AS 'Description source de risque', objectif_vise AS 'Objectif visé',description_objectif_vise AS 'Description de l''objectif' FROM P_SROV WHERE id_projet=$getid_projet";
@@ -333,19 +346,22 @@ $rq_couleurs_tab3 = mysqli_query($connect,$rq_couleurs);
 //******************************infos genéral front page***************************************/
 //titre
 $rq_titre_rapport = "SELECT nom_doc FROM info_form WHERE id_projet = $getid_projet";
+$rq_titre_rapport_tab  = mysqli_query($connect, $rq_titre_rapport);
 //Nom societe
 $rq_nom_soci_rapport = "SELECT nom_soci FROM info_form WHERE id_projet = $getid_projet";
+$rq_nom_soci_rapport_tab  = mysqli_query($connect, $rq_nom_soci_rapport);
 //adresse societe
 $rq_adresse_rapport = "SELECT adresse_soci FROM info_form WHERE id_projet = $getid_projet";
+$rq_adresse_rapport_tab  = mysqli_query($connect, $rq_adresse_rapport);
 //telephone societe  
 $rq_tel_soci_rapport = "SELECT num_soci FROM info_form WHERE id_projet = $getid_projet";
+$rq_tel_soci_rapport_tab  = mysqli_query($connect, $rq_tel_soci_rapport);
 //site societe
 $rq_site_soci_rapport = "SELECT site_soci FROM info_form WHERE id_projet = $getid_projet";
+$rq_site_soci_rapport_tab  = mysqli_query($connect, $rq_site_soci_rapport);
 //reference rapport
 $rq_reference_rapport = "SELECT reph_doc FROM info_form WHERE id_projet = $getid_projet";
-
-
-
+$rq_reference_rapport_tab  = mysqli_query($connect, $rq_reference_rapport);
 
 
 

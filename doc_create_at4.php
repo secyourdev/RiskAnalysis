@@ -17,7 +17,7 @@ function doc_create(){
    include("content/php/export/selection_export.php");
   ////////////////////////////////////////////////////////////////////////////////
 
-  $template = new \PhpOffice\PhpWord\TemplateProcessor('Template_rapport_at4.docx');
+  $template = new \PhpOffice\PhpWord\TemplateProcessor('content\templates\Template_rapport_at4.docx');
 /*****************    Atelier 1.1.1*********************************************************************/
   $rq_titre = mysqli_query($connect,"SELECT nom_projet FROM F_projet WHERE id_projet = $id_projet");
   $rq_version_for_1a = mysqli_query($connect,"SELECT num_version FROM ZC_version WHERE id_projet= $id_projet");
@@ -80,7 +80,8 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
 
   /////sauvegarder fichier
 
-  $template -> saveAS('Rapport_at4.docx');
+  $date = date('d_m_y');
+  $template -> saveAS('report_export\Rapport_at4'.$_SESSION['id_projet'].'_'.$_SESSION['id_utilisateur'].$date.'.docx');
   // $filename = "Rapport.docx";
   // header('Content-Description: File Transfer');
   // header('Content-type: application/force-download');

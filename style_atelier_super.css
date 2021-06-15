@@ -45,6 +45,7 @@
 .w{
     margin-right: 20px;
     margin-left: 20px;
+    width: 240px;
 }
 
 .e{
@@ -61,7 +62,9 @@
 } */
 
 .sous_titre_col2{
-    padding-left: 293px;
+    /* padding-left: 293px; */
+    text-align: center;
+    padding-top: 60px;
 }
 
 .dif_col{
@@ -70,4 +73,13 @@
 
 .tritre_col{
     margin-top: 10px;
+}
+
+.generation{
+    width: 185px;
+}
+
+.bouton_gene{
+    align-items: center;
+     padding-left: 75px;
 }
