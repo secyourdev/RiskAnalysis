@@ -1227,7 +1227,23 @@ function tab_dyn_h_4b_bis($rq){
               $table -> addCell(1, array('bgColor' => 'blue'))->addText($array[$d][4]);
               $table->addRow();
             }*/
-           
+            else if($array[$d][0] != $array[$d-1][0] && $d>0){
+              $table->addRow();
+              $memory=$array[$d][0];
+              
+              $table -> addCell(1, array('bgColor' => 'green'))->addText($array[$d][0]);
+              $table->addRow();
+              //$pass=true;
+
+              //$table -> addCell(1, array('bgColor' => 'blue'))->addText($array[$d][0]);
+             // $table -> addCell(1, array('bgColor' => 'blue'))->addText('nom echelle');
+             // $table -> addCell(1, array('bgColor' => 'blue'))->addText($array[$d][0]);
+              //$table->addRow();
+              $table -> addCell(1, array('bgColor' => 'blue'))->addText(" ");
+              $table -> addCell(1, array('bgColor' => 'blue'))->addText('Valeur du niveau');
+              $table -> addCell(1, array('bgColor' => 'blue'))->addText('Description du niveau');
+              $table->addRow();
+            }
           
            else{
              $table->addRow();
@@ -1281,3 +1297,460 @@ function tab_dyn_h_4b_bis($rq){
 
          return $table;
        }
+
+       function tab_socle_1_d_bis($rq){
+        $style_table = array(
+            'borderColor' => 'black',
+            'borderSize' => 6,
+            'cellMargin' => 100,
+            //'valign' => 'both',
+      
+            //'layout' => 'autofit',
+            'align'  => 'center'
+        );
+      
+        $first_cells_style = array(
+            'bgColor' => '#DCDCDC',
+            'valign'  => 'center',
+             'layout' => 'autofit'
+            // 'width' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(4)
+        );
+        $cell_style_basic = array(
+          'bgColor' => 'white',
+          'valign'  => 'center',
+          'layout' => 'autofit'
+        );
+      
+        $first_row_style = array(
+          'tblHeader' => true
+        );
+          $array = mysqli_fetch_all($rq,MYSQLI_NUM);
+      
+      
+               $nb_row = mysqli_num_rows($rq);
+               $nb_col = mysqli_num_fields($rq);
+               //$id_nom=0;
+               //int vvar = Integer.parseInt(string);
+               //$rq_nb_int=Integer.parseInt($rq_nb);
+      
+               //création des tableaux*************************************
+               $table = new Table($style_table);
+               //$ad=$rq_nb[0];
+               //$jaaj=$array[$ad][4];
+               
+              //$memory=$array[0][0];
+             
+              //echo "-------------".$array[5][0];
+              $pass=false;
+              $tempo="aaa"; 
+               for($d = 0; $d < $nb_row; $d ++){
+                $memory=$array[$d][0];
+                //
+               /*for($i = -1; $i < $rq_nb; $i ++){*/
+                 
+                 /*if($d == 0 ){
+                   $table->addRow(1,$first_row_style);
+                 }*/
+                 
+                 if($d==0 || $pass==true ){
+                  $table->addRow();
+                  $table -> addCell(1, array('bgColor' => 'blue'))->addText($array[0][0]);
+                  $table->addRow();
+                  $table -> addCell(1, array('bgColor' => 'blue'))->addText("  ");
+                  $table -> addCell(1, array('bgColor' => 'blue'))->addText('ID de la règle');
+                  //$table->addRow();
+                  $table -> addCell(1, array('bgColor' => 'blue'))->addText('Titre de la règle');
+                  //$table->addRow();
+                  $table -> addCell(1, array('bgColor' => 'blue'))->addText('Description de la règle');
+                  //$table->addRow();
+                  $table -> addCell(1, array('bgColor' => 'blue'))->addText('État de la règle');
+                  //$table->addRow();
+                  $table -> addCell(1, array('bgColor' => 'blue'))->addText('Justification des écarts');
+                  //$table->addRow();
+                  $table -> addCell(1, array('bgColor' => 'blue'))->addText('Responsable');
+                  //$table->addRow();
+                  $table -> addCell(1, array('bgColor' => 'blue'))->addText('Date limite de la mise en application');
+                  $table->addRow();
+                  $tempo=$array[0][0];
+                
+                  //$table->addRow();
+                  //$table -> addCell(1, array('bgColor' => 'blue'))->addText($array[$d][8]);
+                  
+                  }
+                  /*else if($memory == $array[$d][0]){
+                  
+                    $table->addRow();
+                    $table -> addCell(1, array('bgColor' => 'blue'))->addText($array[$d][1]);
+                    $table->addRow();
+                  }*/
+                  /*else if($array[$d][0] != $memory ){
+                    $table->addRow();
+                    $memory=$array[$d][0];
+                    
+                    $table -> addCell(1, array('bgColor' => 'blue'))->addText($array[$d][0]);
+                    $table->addRow();
+                    $pass=true;
+
+                    //$table -> addCell(1, array('bgColor' => 'blue'))->addText($array[$d][0]);
+
+                    $table -> addCell(1, array('bgColor' => 'blue'))->addText("  ");
+                    $table -> addCell(1, array('bgColor' => 'blue'))->addText('ID de la règle');
+                    //$table->addRow();
+                    $table -> addCell(1, array('bgColor' => 'blue'))->addText('Titre de la règle');
+                    //$table->addRow();
+                    $table -> addCell(1, array('bgColor' => 'blue'))->addText('Description de la règle');
+                    //$table->addRow();
+                    $table -> addCell(1, array('bgColor' => 'blue'))->addText('État de la règle');
+                    //$table->addRow();
+                    $table -> addCell(1, array('bgColor' => 'blue'))->addText('Justification des écarts');
+                    //$table->addRow();
+                    $table -> addCell(1, array('bgColor' => 'blue'))->addText('Responsable');
+                    //$table->addRow();
+                    $table -> addCell(1, array('bgColor' => 'blue'))->addText('Date limite de la mise en application');
+                    $table->addRow();
+                    
+                    
+                  }*/
+                  else if($array[$d][0] != $array[$d-1][0] && $d>0){
+                    $table->addRow();
+                    $memory=$array[$d][0];
+                    
+                    $table -> addCell(1, array('bgColor' => 'green'))->addText($array[$d][0]);
+                    $table->addRow();
+                    //$pass=true;
+
+                    //$table -> addCell(1, array('bgColor' => 'blue'))->addText($array[$d][0]);
+
+                    $table -> addCell(1, array('bgColor' => 'blue'))->addText("  ");
+                    $table -> addCell(1, array('bgColor' => 'blue'))->addText('ID de la règle');
+                    //$table->addRow();
+                    $table -> addCell(1, array('bgColor' => 'blue'))->addText('Titre de la règle');
+                    //$table->addRow();
+                    $table -> addCell(1, array('bgColor' => 'blue'))->addText('Description de la règle');
+                    //$table->addRow();
+                    $table -> addCell(1, array('bgColor' => 'blue'))->addText('État de la règle');
+                    //$table->addRow();
+                    $table -> addCell(1, array('bgColor' => 'blue'))->addText('Justification des écarts');
+                    //$table->addRow();
+                    $table -> addCell(1, array('bgColor' => 'blue'))->addText('Responsable');
+                    //$table->addRow();
+                    $table -> addCell(1, array('bgColor' => 'blue'))->addText('Date limite de la mise en application');
+                    $table->addRow();
+                  }
+                  
+                  
+                 
+                
+                 else{
+                   $table->addRow();
+                   //$tempo=$array[$d][0];
+                 
+      
+                 }
+                 
+                 
+                   for($j = 0; $j<$nb_col;$j++){
+                       if($d ==-1){
+                           $finfo= mysqli_fetch_field_direct($rq,$j);
+                           $table->addCell(1, $first_cells_style)->addText($finfo->name,array('bold'=> true));
+                       }
+                       else if($j == $nb_col-1){
+                         switch($array[$d][$j]){
+                           case 1:
+                            $table -> addCell(1, array('bgColor' => 'green'))->addText($array[$d][$j]);
+                            break;
+                           case 2:
+                            $table -> addCell(1, array('bgColor' => 'orange'))->addText($array[$d][$j]);
+                            break;
+                           case 3:
+                            $table -> addCell(1, array('bgColor' => 'orange'))->addText($array[$d][$j]);
+                            break;
+                           case 4:
+                            $table -> addCell(1, array('bgColor' => 'red'))->addText($array[$d][$j]);
+                            break;
+                           case 5:
+                            $table -> addCell(1, array('bgColor' => 'red'))->addText($array[$d][$j]);
+                            break;
+                           default:
+                            $table -> addCell(1, $cell_style_basic)->addText($array[$d][$j]);
+                          }
+                        }
+                        
+                        /*else if($array[$d][0] != $tempo){
+                          $table->addRow();
+                          break;
+                        }*/
+                        
+                          else{
+                            $table->addCell(1, $cell_style_basic)->addText($array[$d][$j]);
+                            //$tempo=$array[$d][0];
+                            
+                          }
+                           /*if($i%2 == 0){
+                               $table->addCell(1, $blue_cell_style)->addText($array[$i][$j]);
+      
+                           }
+                           else{
+                               $table->addCell(1, $cell_style_basic)->addText($array[$i][$j]);
+                           }*/
+      
+      
+                   }
+                 
+               //}
+              }
+      
+               return $table;
+             } 
+
+             function tab_dyn_h_4b_deux($rq){
+              $style_table = array(
+                  'borderColor' => 'black',
+                  'borderSize' => 6,
+                  'cellMargin' => 100,
+                  //'valign' => 'both',
+            
+                  //'layout' => 'autofit',
+                  'align'  => 'center'
+              );
+            
+              $first_cells_style = array(
+                  'bgColor' => '#DCDCDC',
+                  'valign'  => 'center',
+                   'layout' => 'autofit'
+                  // 'width' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(4)
+              );
+              $cell_style_basic = array(
+                'bgColor' => 'white',
+                'valign'  => 'center',
+                'layout' => 'autofit'
+              );
+            
+              $first_cells_style_borderless = array(
+                'bgColor' => 'FFFFFF',
+                'borderColor' =>'white',
+                'borderSize' => 6
+              );
+              $first_row_style = array(
+                'tblHeader' => true
+              );
+                $array = mysqli_fetch_all($rq,MYSQLI_NUM);
+            
+            
+                     $nb_row = mysqli_num_rows($rq);
+                     $nb_col = mysqli_num_fields($rq);
+                     //$id_nom=0;
+                     //int vvar = Integer.parseInt(string);
+                     //$rq_nb_int=Integer.parseInt($rq_nb);
+            
+                     //création des tableaux*************************************
+                     $table = new Table($style_table);
+                     //$ad=$rq_nb[0];
+                     //$jaaj=$array[$ad][4];
+                     
+                      $memory=$array[0][0];
+                      //print_r($array[4][2]);
+                      $a=0;
+                      $b=0;
+                      $pass=true;
+                     for($d = 0; $d < $nb_row; $d ++){
+                      //
+                     /*for($i = -1; $i < $rq_nb; $i ++){*/
+                       
+                       /*if($d == -1 ){
+                         $table->addRow(1,$first_row_style)->addText($array[$d][0]);
+                       }*/
+            
+                       if($d==0 ){
+                        $table->addRow();
+                        $table -> addCell(1, array('bgColor' => 'blue'))->addText($array[$d][0]);
+                        $table->addRow();
+                        
+                        $table -> addCell(1, array('bgColor' => 'blue'))->addText('Valeur du niveau');
+                        $table -> addCell(1, array('bgColor' => 'blue'))->addText('Description du niveau');
+                        $table->addRow();
+                        }
+                        
+                       else if($memory != $array[$d][0]){
+                        
+                          $table->addRow();
+                          $memory=$array[$d][0];
+                          $table -> addCell(1, array('bgColor' => 'blue'))->addText($array[$d][0]);
+                          $table->addRow();
+                        
+                        $table -> addCell(1, array('bgColor' => 'blue'))->addText('Valeur du niveau');
+                        $table -> addCell(1, array('bgColor' => 'blue'))->addText('Description du niveau');
+                        $table->addRow();
+                        $a=0;
+                        $pass=true;
+                         // $table->addRow();
+                        }
+                        
+                       
+                      
+                       else{
+                      
+                        $table->addRow();
+                        $pass=true;
+            
+                       }
+                       
+                       
+                         for($j = 0; $j<$nb_col;$j++){
+                             if($a== $array[$d][6]){
+                                $table -> addCell(1, array('bgColor' => 'blue'))->addText($a);
+                                $table->addCell(1, $cell_style_basic)->addText($array[$d][$j]);
+                                $table->addRow();
+                                  
+                                 $a =0;
+                                 $pass=false;
+                             }
+                             else if($j == $nb_col-1){
+                               switch($array[$d][$j]){
+                                 case 1:
+                                  $b=0;
+                                  break;
+                                 case 2:
+                                  $b=0;
+                                  break;
+                                 case 3:
+                                  $b=0;
+                                  break;
+                                 case 4:
+                                  $table -> addCell(1,$first_cells_style_borderless)->addText(" ");
+                                  break;
+                                 case 5:
+                                  $table -> addCell(1,$first_cells_style_borderless)->addText(" ");
+                                  break;
+                                 default:
+                                 $table -> addCell(1,$first_cells_style_borderless)->addText(" ");
+                                }
+                              }
+                              else if($j==0){
+                                //table -> addCell(1, array('bgColor' => 'yellow'))->addText($a);
+                                $a+=1;
+                                //$table->addCell(1, $cell_style_basic)->addText($array[$d][1]);
+                               // $table->addRow();
+                                //$pass=true;
+                              }
+
+                                else if($pass==true){
+                                $table -> addCell(1, array('bgColor' => 'blue'))->addText($a);
+                                $table->addCell(1, $cell_style_basic)->addText($array[$d][$j]);
+                                $table->addRow();
+                                
+                                $a+=1;
+                                
+
+                                }
+                                else if($j==5){
+                                  $pass=false;
+                                }
+                                else{
+                                  $pass=false;
+                                }
+                                 /*if($i%2 == 0){
+                                     $table->addCell(1, $blue_cell_style)->addText($array[$i][$j]);
+            
+                                 }
+                                 else{
+                                     $table->addCell(1, $cell_style_basic)->addText($array[$i][$j]);
+                                 }*/
+            
+            
+                         }
+                       
+                     //}
+                    }
+            
+                     return $table;
+                   }
+                   function genere_tableau_rapport_4_b($rq){
+                    global $min_size_of_row;
+                  
+                    //Feuilles de styles
+                      //S'applique au tableau
+                      $table_style = array(
+                        'borderColor' => 'black', //Couleur des bordures
+                        'borderSize' => 6, //Taille des bordures en TWIP
+                        'align' => 'center',  //Alignement du tableau
+                        'unit' => \PhpOffice\PhpWord\SimpleType\TblWidth::PERCENT,
+                        'width' => 101*50
+                  
+                      );
+                  
+                  
+                  
+                      $first_row_style = array(
+                        'tblHeader' => true
+                      );
+                  
+                      $row_style = array(
+                  
+                      );
+                  
+                      $first_cells_style= array(
+                        'bgColor' => 'DCDCDC', //Couelur de fond de la première ligne
+                        'valign' => 'center'
+                      );
+                  
+                      $cell_style = array(
+                        'valign' => 'center'
+                      );
+                      $text_style =array(
+                      'align' => 'center'
+                      );
+                  
+                  
+                    $array = mysqli_fetch_all($rq,MYSQLI_NUM);
+                           //style *****************************************************************
+                  
+                         $nb_row = mysqli_num_rows($rq);
+                         $nb_col = mysqli_num_fields($rq);
+                  
+                  
+                         //création des tableaux*************************************
+                         $table = new Table($table_style);
+                         for($d = -1; $d < $nb_row; $d ++){
+                           if($d == -1 ){
+                             $table->addRow($min_size_of_row,$first_row_style);
+                           }
+                           else{
+                             $table->addRow($min_size_of_row);
+                           }
+                             for($j = 0; $j<$nb_col;$j++){
+                                 if($d ==-1){
+                                     $finfo= mysqli_fetch_field_direct($rq,$j);
+                                     $table->addCell($min_size_of_row, $first_cells_style)->addText($finfo->name,array('bold'=> true), $text_style);
+                                 }
+                                 else if($j == $nb_col-2){
+                                  switch($array[$d][$j]){
+                                    case 1:
+                                     $table -> addCell(1, array('bgColor' => 'green'))->addText($array[$d][$j]);
+                                     break;
+                                    case 2:
+                                     $table -> addCell(1, array('bgColor' => 'orange'))->addText($array[$d][$j]);
+                                     break;
+                                    case 3:
+                                     $table -> addCell(1, array('bgColor' => 'orange'))->addText($array[$d][$j]);
+                                     break;
+                                    case 4:
+                                     $table -> addCell(1, array('bgColor' => 'red'))->addText($array[$d][$j]);
+                                     break;
+                                    case 5:
+                                     $table -> addCell(1, array('bgColor' => 'red'))->addText($array[$d][$j]);
+                                     break;
+                                    default:
+                                     $table -> addCell(1, $cell_style_basic)->addText($array[$d][$j]);
+                                   }
+                                 }
+                                 
+                  
+                                 else{
+                                   $table->addCell(1, $cell_style)->addText($array[$d][$j],array(), $text_style);
+                                 }
+                  
+                             }
+                         }
+                         return $table;
+                  }
