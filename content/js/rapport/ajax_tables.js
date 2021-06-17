@@ -13,6 +13,21 @@ function rapport_full() {
 }
 
 
+function csv_full() {
+     $.ajax({
+          type: "POST",
+          url: 'doc_create.php',
+          data:{
+              action:'csv',
+         },
+          success:function(html) {
+              //alert(html);
+          }
+
+     });
+}
+
+
 function rapport_at1() {
      $.ajax({
           type: "POST",

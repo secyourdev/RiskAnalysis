@@ -3,11 +3,7 @@
     $id_projet = $_SESSION['id_projet'];
     include("content/php/bdd/connexion_sqli.php");
     include("content/php/bdd/connexion.php");
-    
-    $serveur = "localhost";
-    $dbname = "bdd";
-    $user = "root";
-    $pass = "";
+
 
     $titre_rapport = $_POST["titre_rapport"];
     $nom_societe = $_POST["nom_societe"];
@@ -60,7 +56,6 @@
 
     
     //On renvoie l'utilisateur vers la page de remerciement
-    // echo "JAAAAAAAAAAAAAAAAAAAAAAJ !";
 
    
     
