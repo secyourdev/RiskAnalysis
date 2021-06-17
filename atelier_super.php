@@ -160,7 +160,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                 </div>
                                 <br>
                                 <button name = "submit" type="submit" class="button_rapport generation" value="Submit" >Enregistrer Information</button>
-                                <button  class="button_rapport generation"  onclick="rapport_full();rapport_at1();rapport_at2();rapport_at3();rapport_at4();rapport_at5();showDiv()">Génération du Rapport</button>
+                                <button  class="button_rapport generation"  onclick="rapport_full();csv_full();rapport_at1();rapport_at2();rapport_at3();rapport_at4();rapport_at5();showDiv()">Génération du Rapport</button>
                                 
                                 <br>
                             </form>

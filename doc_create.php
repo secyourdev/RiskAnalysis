@@ -95,7 +95,7 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
   //1.c/////////////////////////////////////////////////////////////
 
   $tab_echelle = genere_tableau_rapport($rq_echelle_tab);
-  $tab_niveau  = genere_tableau_rapport($rq_niveau_tab);
+  $tab_niveau  = genere_tableau_rapport_1_3_1_2($rq_niveau_tab);
 
   $tab_evred = tab_dyn1c_3b_4b($rq_evred_tab);
 
