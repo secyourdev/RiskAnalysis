@@ -1162,14 +1162,13 @@ function tab_dyn_h_4b($rq,$rq_nb){
   return $table;
 }
 function tab_dyn_h_4b_bis($rq){
-  $style_table = array(
-      'borderColor' => 'black',
-      'borderSize' => 6,
-      'cellMargin' => 100,
-      //'valign' => 'both',
+  $table_style = array(
+    'borderColor' => 'black', //Couleur des bordures
+    'borderSize' => 6, //Taille des bordures en TWIP
+    'align' => 'center',  //Alignement du tableau
+    'unit' => \PhpOffice\PhpWord\SimpleType\TblWidth::PERCENT,
+    'width' => 100*50
 
-      //'layout' => 'autofit',
-      'align'  => 'center'
   );
 
   $first_cells_style = array(
@@ -1197,7 +1196,7 @@ function tab_dyn_h_4b_bis($rq){
          //$rq_nb_int=Integer.parseInt($rq_nb);
 
          //création des tableaux*************************************
-         $table = new Table($style_table);
+         $table = new Table($table_style);
          //$ad=$rq_nb[0];
          //$jaaj=$array[$ad][4];
          
