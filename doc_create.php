@@ -132,6 +132,9 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
   $tab_partie2 = tab_dyn2b_3a_3c($rq_partie2_tab);
   $tab_scenar_strat = genere_tableau_rapport($rq_scenar_strat_tab);
 
+  $tab_mesure_sec_3=genere_tableau_rapport($rq_mesure_sec_3_tab);
+  $tab_eval_long=genere_tableau_rapport($rq_eval_long_tab);
+
   ///atelier 4*************************************************************
   //4.a/////////////////////////////////////////////////
   $tab_scen_strat_etabli= tab_dyn1c_3b_4b($rq_scen_strat_tab);
@@ -211,8 +214,8 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
 
   ///3.c
   $template->setComplexBlock('r_partie_prenante2', $tab_partie2);
-  //TO DO Mesure de sécurité
-  // TO DO Evaluation
+  $template->setComplexBlock('mesure_de_securite', $tab_mesure_sec_3);
+  $template->setComplexBlock('evaluation', $tab_eval_long);
 
   //4.a
   $template->setComplexBlock('s_scenario_strategique3', $tab_scen_strat_etabli);

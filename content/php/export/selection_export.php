@@ -159,6 +159,36 @@ $rq_partie2_tab = mysqli_query($connect, $rq_partie2);
 $rq_scenar_strat = "SELECT nom_scenario_strategique AS 'Scénario stratégique', CONCAT(description_source_de_risque,': ',objectif_vise) AS 'Source de risque: Objectif visé', nom_evenement_redoute AS 'Événement redouté' FROM S_scenario_strategique NATURAL JOIN P_SROV NATURAL JOIN M_evenement_redoute WHERE id_projet =$getid_projet AND id_atelier = '3.c'";
 $rq_scenar_strat_tab = mysqli_query($connect, $rq_scenar_strat);
 
+//----------------------------------------------------------------------------------------------------------------//
+$rq_mesure_sec_3="SELECT 
+r_partie_prenante.nom_partie_prenante AS 'Partie prenante' ,
+r_partie_prenante.id_partie_prenante AS 'N° de risque',
+y_mesure.nom_mesure AS 'Nom mesure de sécurité',
+y_mesure.description_mesure AS 'Description mesure de sécurité'
+FROM y_mesure,r_partie_prenante
+WHERE y_mesure.id_projet =$getid_projet
+AND r_partie_prenante.id_projet=$getid_projet
+AND y_mesure.id_atelier='3.c'";
+$rq_mesure_sec_3_tab = mysqli_query($connect, $rq_mesure_sec_3);
+
+$rq_eval_long="
+SELECT 
+r_partie_prenante.nom_partie_prenante AS 'Partie prenante',
+r_partie_prenante.dependance_partie_prenante AS 'Dépendance initiale',
+r_partie_prenante.penetration_partie_prenante AS 'Pénétration initiale',
+r_partie_prenante.maturite_partie_prenante AS 'Maturité initiale',
+r_partie_prenante.confiance_partie_prenante AS 'Confiance initiale',
+r_partie_prenante.niveau_de_menace_partie_prenante AS 'Menace initiale',
+r_partie_prenante.dependance_residuelle AS 'Dépendance résiduelle',
+r_partie_prenante.penetration_residuelle AS 'Pénétration résiduelle',
+r_partie_prenante.maturite_residuelle AS 'Maturité résiduelle',
+r_partie_prenante.confiance_residuelle AS 'Confiance résiduelle',
+r_partie_prenante.niveau_de_menace_residuelle AS 'Menace résiduelle'
+FROM r_partie_prenante
+WHERE r_partie_prenante.id_projet=$getid_projet
+";
+$rq_eval_long_tab = mysqli_query($connect, $rq_eval_long);
+
 ////////////////////////////////////////////////////////////////////////////////
 //requetes atelier 4.a
 $rq_scen_strat= "SELECT DISTINCT
@@ -221,18 +251,16 @@ FROM u_scenario_operationnel
 WHERE id_projet = $getid_projet 
 LIMIT 0, 25";
 $rq_nb_elem_echelle_nb = mysqli_query($connect, $rq_nb_elem_echelle);
-$rq_h_vrai="SELECT DISTINCT T_chemin_d_attaque_strategique.id_risque AS 'N° Risque',nom_chemin_d_attaque_strategique AS 'Chemin d''attaques stratégiques',
-u_scenario_operationnel.nom_scenario_operationnel AS 'Scénario opérationnel',da_echelle.echelle_vraisemblance AS 'Vraisemblance',da_echelle.nom_echelle
-FROM U_scenario_operationnel,T_chemin_d_attaque_strategique,da_echelle,da_niveau
-WHERE U_scenario_operationnel.id_chemin_d_attaque_strategique = T_chemin_d_attaque_strategique.id_chemin_d_attaque_strategique
-AND U_scenario_operationnel.id_projet = $getid_projet
-AND da_echelle.id_projet=$getid_projet
-AND T_chemin_d_attaque_strategique.id_projet = $getid_projet";
+
 $rq_niv_h="
-SELECT 
+SELECT DISTINCT
 dc_echelle_vraisemblance.nom_echelle,
 da_niveau.valeur_niveau AS 'Valeur du niveau',
-da_niveau.description_niveau AS 'Description du niveau'
+dc_echelle_vraisemblance.description_niveau_1,
+dc_echelle_vraisemblance.description_niveau_2,
+dc_echelle_vraisemblance.description_niveau_3,
+dc_echelle_vraisemblance.description_niveau_4,
+dc_echelle_vraisemblance.description_niveau_5
 FROM da_niveau, `dc_echelle_vraisemblance`
 WHERE da_niveau.id_projet = $getid_projet
 AND dc_echelle_vraisemblance.id_projet=$getid_projet";
@@ -241,7 +269,7 @@ AND dc_echelle_vraisemblance.id_projet=$getid_projet";
 $rq_niv_h_tab = mysqli_query($connect, $rq_niv_h);
 
 
-$rq_h_vrai_tab = mysqli_query($connect, $rq_h_vrai);
+//$rq_h_vrai_tab = mysqli_query($connect, $rq_h_vrai);
 
 
 $rq_eval_vrai_tab = mysqli_query($connect, $rq_eval_vrai);
