@@ -9,7 +9,7 @@
     $nom_societe = $_POST["nom_societe"];
     $adresse_societe = $_POST["adresse_societe"];
     $tel_societe = $_POST["tel_societe"];
-    $reph_doc = $_POST["reph_doc"];
+    $ref_doc = $_POST["ref_doc"];
     $upload_pic = $_POST["upload_pic"];
     $site_societe = $_POST["site_societe"];
 
@@ -18,14 +18,14 @@
     //On insère les données reçues
     if(mysqli_num_rows(mysqli_query($connect, "SELECT * FROM info_form WHERE id_projet=$id_projet")) == 0){    
         $sth = $bdd->prepare("
-            INSERT INTO info_form(nom_soci, nom_doc, num_soci, adresse_soci, site_soci, reph_doc, logo_soci, id_projet)
-            VALUES(:nom_soci, :nom_doc, :num_soci, :adresse_soci, :site_soci, :reph_doc, :logo_soci, :id_projet)");
+            INSERT INTO info_form(nom_soci, nom_doc, num_soci, adresse_soci, site_soci, ref_doc, logo_soci, id_projet)
+            VALUES(:nom_soci, :nom_doc, :num_soci, :adresse_soci, :site_soci, :ref_doc, :logo_soci, :id_projet)");
         $sth->bindParam(':nom_soci',$nom_societe);
         $sth->bindParam(':nom_doc',$titre_rapport);
         $sth->bindParam(':num_soci',$tel_societe);
         $sth->bindParam(':adresse_soci',$adresse_societe);
         $sth->bindParam(':site_soci',$site_societe);
-        $sth->bindParam(':reph_doc',$reph_doc);
+        $sth->bindParam(':ref_doc',$ref_doc);
         $sth->bindParam(':logo_soci',$upload_pic);
         $sth->bindParam(':id_projet',$id_projet);
         $sth->execute();
@@ -37,7 +37,7 @@
                                                     num_soci = ?,
                                                     adresse_soci = ?,
                                                     site_soci = ?,
-                                                    reph_doc = ?,
+                                                    ref_doc = ?,
                                                     logo_soci = ?
                                                 WHERE id_projet = ?");
         $sth->bindParam(1,$nom_societe);
@@ -45,7 +45,7 @@
         $sth->bindParam(3,$tel_societe);
         $sth->bindParam(4,$adresse_societe);
         $sth->bindParam(5,$site_societe);
-        $sth->bindParam(6,$reph_doc);
+        $sth->bindParam(6,$ref_doc);
         $sth->bindParam(7,$upload_pic);
         $sth->bindParam(8,$id_projet);
         $sth->execute();

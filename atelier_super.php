@@ -150,8 +150,8 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                     <input type="url" class="form-control" id="site_societe" name = "site_societe" placeholder="Entrez site société" value = <?php echo "'{$donnee_form[0][5]}'"?>>
                                     <br>
 
-                                    <label for="reph_doc">Référence document</label>                        
-                                    <input type="text" class="form-control" id="reph_doc" name = "reph_doc" placeholder="Entrez les référances du document" value = <?php echo "'{$donnee_form[0][7]}'"?>>
+                                    <label for="ref_doc">Référence document</label>                        
+                                    <input type="text" class="form-control" id="ref_doc" name = "ref_doc" placeholder="Entrez les référances du document" value = <?php echo "'{$donnee_form[0][7]}'"?>>
                                     <br>
 
                                     <label for="ver">Version rapport</label>                        

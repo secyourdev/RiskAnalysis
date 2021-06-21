@@ -399,7 +399,7 @@ $rq_tel_soci_rapport_tab  = mysqli_query($connect, $rq_tel_soci_rapport);
 $rq_site_soci_rapport = "SELECT site_soci FROM info_form WHERE id_projet = $getid_projet";
 $rq_site_soci_rapport_tab  = mysqli_query($connect, $rq_site_soci_rapport);
 //reference rapport
-$rq_reference_rapport = "SELECT reph_doc FROM info_form WHERE id_projet = $getid_projet";
+$rq_reference_rapport = "SELECT ref_doc FROM info_form WHERE id_projet = $getid_projet";
 $rq_reference_rapport_tab  = mysqli_query($connect, $rq_reference_rapport);
 
 
