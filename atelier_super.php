@@ -143,16 +143,21 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                     <br>
 
                                     <label for="tel_societe">Téléphone société</label>                        
-                                    <input type="text" class="form-control" id="tel_societe" name = "tel_societe" placeholder=" Entrez n° téléphone société" value = <?php echo "'{$donnee_form[0][3]}'"?>>
+                                    <input type="tel" class="form-control" id="tel_societe" name = "tel_societe" pattern="[0-9]{10}" required placeholder=" Entrez n° téléphone société" value = <?php echo "'{$donnee_form[0][3]}'"?>>
                                     <br>
 
                                     <label for="site_societe">Site société</label>                        
-                                    <input type="text" class="form-control" id="site_societe" name = "site_societe" placeholder="Entrez site société" value = <?php echo "'{$donnee_form[0][5]}'"?>>
+                                    <input type="url" class="form-control" id="site_societe" name = "site_societe" placeholder="Entrez site société" value = <?php echo "'{$donnee_form[0][5]}'"?>>
                                     <br>
 
-                                    <label for="reph_doc">Réphérences document</label>                        
+                                    <label for="reph_doc">Référence document</label>                        
                                     <input type="text" class="form-control" id="reph_doc" name = "reph_doc" placeholder="Entrez les référances du document" value = <?php echo "'{$donnee_form[0][7]}'"?>>
                                     <br>
+
+                                    <label for="ver">Version rapport</label>                        
+                                    <input type="text" class="form-control" id="ver" name = "ver" placeholder="0.1" value = <?php echo "'{$donnee_form[0][7]}'"?>>
+                                    <br>
+
                                 </div>
                                 <div class="form-group">
                                     <label for="upload_pic">Logo Société</label>
