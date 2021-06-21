@@ -2,22 +2,24 @@
 session_start();
 $id_projet = $_SESSION['id_projet'];
 
-require_once 'content/bootstrap.php';
+
+require_once '../../bootstrap.php';
 use PhpOffice\PhpWord\Element\Field;
 use PhpOffice\PhpWord\Element\Table;
 use PhpOffice\PhpWord\Element\TextRun;
 use PhpOffice\PhpWord\SimpleType\TblWidth;
-include("content/php/bdd/connexion_sqli.php");
+include("../bdd/connexion_sqli.php");
+
 
 function doc_create(){
   global $id_projet;
 
   // //include
    include("tab_create.php");
-   include("content/php/export/selection_export.php");
+   include("selection_export.php");
   ////////////////////////////////////////////////////////////////////////////////
 
-  $template = new \PhpOffice\PhpWord\TemplateProcessor('content\templates\Template_rapport_at5.docx');
+  $template = new \PhpOffice\PhpWord\TemplateProcessor('..\..\templates\Template_rapport_at2.docx');
 /*****************    Atelier 1.1.1*********************************************************************/
   $rq_titre = mysqli_query($connect,"SELECT nom_projet FROM F_projet WHERE id_projet = $id_projet");
   $rq_version_for_1a = mysqli_query($connect,"SELECT num_version FROM ZC_version WHERE id_projet= $id_projet");
@@ -53,28 +55,36 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
 
 
 /****************************************Tableaux**********************************************/
-  ///atelier 5*************************************************************
-  $tab_carto5a = tab_carto1($rq_carto_tab);
-  //5.b/////////////////////////////////////////////////
-  $tab_plan_amelio = genere_tableau_rapport($rq_plan_amelio_tab);
-  $tab_carto5b = tab_carto_couleurs($rq_carto_tab2,$rq_couleurs_tab);
+  ///atelier2*******************************************************************************
+  //2.a/////////////////////////////////////////////////////////////////
+  $tab_srov = genere_tableau_rapport($rq_srov_tab);
 
-  //5.c/////////////////////////////////////////////////
-  $tab_eval_risk_resi = genere_tableau_rapport($qr_eval_risk_resi_tab);
 
+  //2.b///////////////////////////////////////////////////////////////
+  $tab_srov2 = tab_dyn2b_3a_3c($rq_srov2_tab);
+
+  //2.c///////////////////////////
+
+  $tab_srov3 = genere_tableau_rapport($rq_srov3_tab);
 
   ////inclusion tableaux
-///5.a
-  $template -> setComplexBlock('cartographie5', $tab_carto5a);
-  //5.b
-  $template -> setComplexBlock('cartographie6', $tab_carto5b);
+  ///2.a
+  $template->setComplexBlock('p_srov1', $tab_srov);
+
+  ///2.b
+  $template->setComplexBlock('p_srov2', $tab_srov2);
 
 
+  //2.c
+  $template->setComplexBlock('p_srov3', $tab_srov3);
+
+  $tab_evred = tab_dyn1c_3b_4b($rq_evred_tab);
+  $template->setComplexBlock('m_evenement_redoute', $tab_evred);
 
   /////sauvegarder fichier
 
   $date = date('d_m_y');
-  $template -> saveAS('report_export\Rapport_at5'.$_SESSION['id_projet'].'_'.$_SESSION['id_utilisateur'].$date.'.docx');
+  $template -> saveAS('report_export\Rapport_at2'.$_SESSION['id_projet'].'_'.$_SESSION['id_utilisateur'].$date.'.docx');
   // $filename = "Rapport.docx";
   // header('Content-Description: File Transfer');
   // header('Content-type: application/force-download');
@@ -86,8 +96,8 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
 }
 
 
-if($_POST['action'] == 'gene_at5') {
+if($_POST['action'] == 'gene_at2') {
   doc_create();
-  //echo $_POST['test0'];
+  // echo $_POST['action'];
 }
   ?>

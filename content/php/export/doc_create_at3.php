@@ -2,22 +2,22 @@
 session_start();
 $id_projet = $_SESSION['id_projet'];
 
-require_once 'content/bootstrap.php';
+require_once '../../bootstrap.php';
 use PhpOffice\PhpWord\Element\Field;
 use PhpOffice\PhpWord\Element\Table;
 use PhpOffice\PhpWord\Element\TextRun;
 use PhpOffice\PhpWord\SimpleType\TblWidth;
-include("content/php/bdd/connexion_sqli.php");
+include("../bdd/connexion_sqli.php");
 
 function doc_create(){
   global $id_projet;
 
   // //include
    include("tab_create.php");
-   include("content/php/export/selection_export.php");
+   include("selection_export.php");
   ////////////////////////////////////////////////////////////////////////////////
 
-  $template = new \PhpOffice\PhpWord\TemplateProcessor('content\templates\Template_rapport_at3.docx');
+  $template = new \PhpOffice\PhpWord\TemplateProcessor('..\..\templates\Template_rapport_at3.docx');
 /*****************    Atelier 1.1.1*********************************************************************/
   $rq_titre = mysqli_query($connect,"SELECT nom_projet FROM F_projet WHERE id_projet = $id_projet");
   $rq_version_for_1a = mysqli_query($connect,"SELECT num_version FROM ZC_version WHERE id_projet= $id_projet");

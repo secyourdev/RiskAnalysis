@@ -1,7 +1,7 @@
 function rapport_full() {
       $.ajax({
            type: "POST",
-           url: 'doc_create.php',
+           url: 'content/php/export/doc_create.php',
            data:{
                action:'call_this',
           },
@@ -16,7 +16,7 @@ function rapport_full() {
 function csv_full() {
      $.ajax({
           type: "POST",
-          url: 'doc_create.php',
+          url: 'content/php/export/doc_create.php',
           data:{
               action:'csv',
          },
@@ -31,7 +31,7 @@ function csv_full() {
 function rapport_at1() {
      $.ajax({
           type: "POST",
-          url: 'doc_create_at1.php',
+          url: 'content/php/export/doc_create_at1.php',
           data:{
               action:'gene_at1',
          },
@@ -45,7 +45,7 @@ function rapport_at1() {
 function rapport_at2() {
      $.ajax({
           type: "POST",
-          url: 'doc_create_at2.php',
+          url: 'content/php/export/doc_create_at2.php',
           data:{
               action:'gene_at2',
          },
@@ -59,7 +59,7 @@ function rapport_at2() {
 function rapport_at3() {
      $.ajax({
           type: "POST",
-          url: 'doc_create_at3.php',
+          url: 'content/php/export/doc_create_at3.php',
           data:{
               action:'gene_at3',
          },
@@ -73,7 +73,7 @@ function rapport_at3() {
 function rapport_at4() {
      $.ajax({
           type: "POST",
-          url: 'doc_create_at4.php',
+          url: 'content/php/export/doc_create_at4.php',
           data:{
               action:'gene_at4',
          },
@@ -87,7 +87,7 @@ function rapport_at4() {
 function rapport_at5() {
      $.ajax({
           type: "POST",
-          url: 'doc_create_at5.php',
+          url: 'content/php/export/doc_create_at5.php',
           data:{
               action:'gene_at5',
          },
