@@ -66,7 +66,7 @@ function doc_create(){
   $template -> setValue('dure1',$projet['duree_strategique']);// stratégique
   $template -> setValue('dure2',$projet['duree_operationnel']);// opérationnel
   $template -> setValue('niveauConfidentialite',$projet['confidentialite']);
-  $template -> setValue('nv_conf',$projet['confidentialite']);
+  $template -> setValue('nv_conf',strtoupper($projet['confidentialite']));
   $template -> setValue('version', $version[0]);
   $template -> setValue('ver', $version[0]);
   $template -> setValue('responsable', $respo[0]);
