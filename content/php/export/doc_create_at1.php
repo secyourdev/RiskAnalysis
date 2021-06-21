@@ -19,28 +19,51 @@ function doc_create(){
 
   $template = new \PhpOffice\PhpWord\TemplateProcessor('..\..\templates\Template_rapport_at1.docx');
 /*****************    Atelier 1.1.1*********************************************************************/
-  $rq_titre = mysqli_query($connect,"SELECT nom_projet FROM F_projet WHERE id_projet = $id_projet");
-  $rq_version_for_1a = mysqli_query($connect,"SELECT num_version FROM ZC_version WHERE id_projet= $id_projet");
+$rq_titre = mysqli_query($connect,"SELECT nom_projet FROM F_projet WHERE id_projet = $id_projet");
+$rq_version_for_1a = mysqli_query($connect,"SELECT num_version FROM ZC_version WHERE id_projet= $id_projet");
 
-  $nom_projet = mysqli_fetch_all($rq_titre, MYSQLI_NUM)[0][0];
-  $projet = mysqli_fetch_assoc($rq_donnees_principales_res);
-  $respo = mysqli_fetch_row($rq_respo_res);
-  $version = mysqli_fetch_row($rq_version_for_1a);
-  //echo '<pre>'; print_r($projet);echo '</pre>';
+$nom_projet = mysqli_fetch_all($rq_titre, MYSQLI_NUM)[0][0];
+$projet = mysqli_fetch_assoc($rq_donnees_principales_res);
+$respo = mysqli_fetch_row($rq_respo_res);
+$version = mysqli_fetch_row($rq_version_for_1a);
 
-  $template -> setValue('Titre', $nom_projet);
-  $template -> setValue('nomProjet', $projet['nom_projet']);
-  $template -> setValue('Objectif', $projet['objectif_projet']);
-  $template -> setValue('jj/mm/aaaa1', date("d-m-Y",strtotime($projet['cadre_temporel'])));
-  $template -> setValue('jj/mm/aaaa2', date("d-m-Y",strtotime($projet['cadre_temporel_etape_2'])));
-  $template -> setValue('jj/mm/aaaa3', date("d-m-Y",strtotime($projet['cadre_temporel_etape_3'])));
-  $template -> setValue('jj/mm/aaaa4', date("d-m-Y",strtotime($projet['cadre_temporel_etape_4'])));
-  $template -> setValue('jj/mm/aaaa5', date("d-m-Y",strtotime($projet['cadre_temporel_etape_5'])));
-  $template -> setValue('dure1',$projet['duree_strategique']);// stratégique
-  $template -> setValue('dure2',$projet['duree_operationnel']);// opérationnel
-  $template -> setValue('niveauConfidentialite',$projet['confidentialite']);
-  $template -> setValue('version', $version[0]);
-  $template -> setValue('responsable', $respo[0]);
+
+$titre_rapport = mysqli_fetch_all($rq_titre_rapport_tab);
+$nom_soci = mysqli_fetch_all($rq_nom_soci_rapport_tab);
+$adresse_rapport = mysqli_fetch_all ($rq_adresse_rapport_tab);
+$tel_soci = mysqli_fetch_all($rq_tel_soci_rapport_tab);
+$site_soci = mysqli_fetch_all($rq_site_soci_rapport_tab);
+$reference_rapport = mysqli_fetch_all($rq_reference_rapport_tab);
+
+//echo '<pre>'; print_r($projet);echo '</pre>';
+$template -> setValue('Titre', $titre_rapport[0][0]);
+$template -> setValue('Société', $nom_soci[0][0]);
+$template -> setValue('Adresse société', $adresse_rapport[0][0]);
+$template -> setValue('Téléphone société', $tel_soci[0][0]);
+$template -> setValue('Site', $site_soci[0][0]);
+$template -> setValue('Ref', $reference_rapport[0][0]);
+$template -> setValue('Titre', $nom_projet);
+$template -> setValue('HEADER', $titre_rapport[0][0]);
+
+
+$date_pub = date('d/m/y');
+$template -> setValue('Date_pub', $date_pub);
+
+
+$template -> setValue('nomProjet', $projet['nom_projet']);
+$template -> setValue('Objectif', $projet['objectif_projet']);
+$template -> setValue('jj/mm/aaaa1', date("d-m-Y",strtotime($projet['cadre_temporel'])));
+$template -> setValue('jj/mm/aaaa2', date("d-m-Y",strtotime($projet['cadre_temporel_etape_2'])));
+$template -> setValue('jj/mm/aaaa3', date("d-m-Y",strtotime($projet['cadre_temporel_etape_3'])));
+$template -> setValue('jj/mm/aaaa4', date("d-m-Y",strtotime($projet['cadre_temporel_etape_4'])));
+$template -> setValue('jj/mm/aaaa5', date("d-m-Y",strtotime($projet['cadre_temporel_etape_5'])));
+$template -> setValue('dure1',$projet['duree_strategique']);// stratégique
+$template -> setValue('dure2',$projet['duree_operationnel']);// opérationnel
+$template -> setValue('niveauConfidentialite',$projet['confidentialite']);
+$template -> setValue('nv_conf',$projet['confidentialite']);
+$template -> setValue('version', $version[0]);
+$template -> setValue('ver', $version[0]);
+$template -> setValue('responsable', $respo[0]);
 
   /*********************Seuils*******************************************************************/
 
@@ -90,18 +113,12 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
   ///1.d
   $template->setComplexBlock('n_socle_de_securite', $tab_socle_sec);
   $template->setComplexBlock('o_regle', $tab_regle);
-
+  // $template->setComplexBlock('n_socle_de_securite',$tab_socle_1_d);
   /////sauvegarder fichier
 
   $date = date('d_m_y');
   $template -> saveAS('report_export\Rapport_at1'.$_SESSION['id_projet'].'_'.$_SESSION['id_utilisateur'].$date.'.docx');
-  // $filename = "Rapport.docx";
-  // header('Content-Description: File Transfer');
-  // header('Content-type: application/force-download');
-  // header('Content-Disposition: attachment; filename='.basename($filename));
-  // header('Content-Transfer-Encoding: binary');
-  // header('Content-Length: '.filesize($filename));
-  // readfile($filename);
+  
 
 }
 
