@@ -2,22 +2,22 @@
 session_start();
 $id_projet = $_SESSION['id_projet'];
 
-require_once 'content/bootstrap.php';
+require_once '../../bootstrap.php';
 use PhpOffice\PhpWord\Element\Field;
 use PhpOffice\PhpWord\Element\Table;
 use PhpOffice\PhpWord\Element\TextRun;
 use PhpOffice\PhpWord\SimpleType\TblWidth;
-include("content/php/bdd/connexion_sqli.php");
+include("../bdd/connexion_sqli.php");
 
 function doc_create(){
   global $id_projet;
 
   // //include
    include("tab_create.php");
-   include("content/php/export/selection_export.php");
+   include("selection_export.php");
   ////////////////////////////////////////////////////////////////////////////////
 
-  $template = new \PhpOffice\PhpWord\TemplateProcessor('content\templates\Template_rapport_at1.docx');
+  $template = new \PhpOffice\PhpWord\TemplateProcessor('..\..\templates\Template_rapport_at4.docx');
 /*****************    Atelier 1.1.1*********************************************************************/
   $rq_titre = mysqli_query($connect,"SELECT nom_projet FROM F_projet WHERE id_projet = $id_projet");
   $rq_version_for_1a = mysqli_query($connect,"SELECT num_version FROM ZC_version WHERE id_projet= $id_projet");
@@ -53,48 +53,35 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
 
 
 /****************************************Tableaux**********************************************/
-  ///atelier1*************************************************************************
-  //1.a//////////////////////////////////////////////////////////
-  $tab_acteurs = genere_tableau_rapport($rq_tab_acteurs);
-  $tab_raci = tab_raci($rq_first_tab, $rq_atelier_raci_tab, $rq_raci_tab);
+  ///atelier 4*************************************************************
+  //4.a/////////////////////////////////////////////////
+  $tab_scen_strat_etabli= tab_dyn1c_3b_4b($rq_scen_strat_tab);
+  $tab_scenar_strat = genere_tableau_rapport($rq_scenar_strat_tab);
+  $tab_scen_strat_etabli_bis= genere_tableau_rapport($rq_scen_strat_tab_bis);
 
-  //1.b/////////////////////////////////////////////////////////
-  $tab_vm = genere_tableau_rapport($rq_vm_tab);
-  $tab_biens = genere_tableau_rapport($rq_biens_tab);
-  $tab_mission = genere_tableau_rapport($rq_mission_tab);
+  // $tab_scen_op= genere_tableau_rapport($rq_scen_op_tab);
+  $tab_mode_op= genere_tableau_rapport($rq_mode_op_tab);
+  //4.b/////////////////////////////////////////////////
+  $tab_echelle_b = tab_dyn1c_3b_4b($rq_echelle_b_tab);
+  $tab_vraisemblance_b = tab_dyn1c_3b_4b($rq_vraisemblance_tab);
 
-  //1.c/////////////////////////////////////////////////////////////
-
-  $tab_echelle = genere_tableau_rapport($rq_echelle_tab);
-  $tab_niveau  = genere_tableau_rapport($rq_niveau_tab);
-
-  $tab_evred = tab_dyn1c_3b_4b($rq_evred_tab);
-
-  //1.d///////////////////////////////////////////////////////////////
-  $tab_socle_sec = tab_dyn_1d($rq_socle_sec_tab);
-  $tab_regle = genere_tableau_rapport($rq_regle_tab);
+  $tab_eval_vrai = tab_dyn1c_3b_4b($rq_eval_vrai_tab);
 
   ////inclusion tableaux
-  ///1.a
-  $template->setComplexBlock('acteurs', $tab_acteurs);
-  $template->setComplexBlock('h_raci', $tab_raci);
-  ///1.b
-  $template->setComplexBlock('j_valeur_metier', $tab_vm);
-  $template->setComplexBlock('k_bien_support', $tab_biens);
-  $template->setComplexBlock('i_mission', $tab_mission);
+  //4.a
+  $template->setComplexBlock('s_scenario_strategique3', $tab_scen_strat_etabli);
+  $template->setComplexBlock('scenario_operationel', $tab_scen_strat_etabli_bis);
+  $template->setComplexBlock('mode_operatoire', $tab_mode_op);
+  $template -> setComplexBlock('s_scenario_strategique2', $tab_scenar_strat);
+  //TO DO Remplacer startégique 2 plchlder scenario_operationel
 
-  ///1.c
-  $template->setComplexBlock('da_echelle', $tab_echelle);
-  $template->setComplexBlock('da_niveau', $tab_niveau);
-
-  ///1.d
-  $template->setComplexBlock('n_socle_de_securite', $tab_socle_sec);
-  $template->setComplexBlock('o_regle', $tab_regle);
+  ///4.b
+  $template -> setComplexBlock('da_echelle1', $tab_echelle_b);
 
   /////sauvegarder fichier
 
   $date = date('d_m_y');
-  $template -> saveAS('report_export\Rapport_at1'.$_SESSION['id_projet'].'_'.$_SESSION['id_utilisateur'].$date.'.docx');
+  $template -> saveAS('report_export\Rapport_at4'.$_SESSION['id_projet'].'_'.$_SESSION['id_utilisateur'].$date.'.docx');
   // $filename = "Rapport.docx";
   // header('Content-Description: File Transfer');
   // header('Content-type: application/force-download');
@@ -106,9 +93,8 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
 }
 
 
-if($_POST['action'] == 'gene_at1') {
+if($_POST['action'] == 'gene_at4') {
   doc_create();
   //echo $_POST['test0'];
 }
   ?>
-

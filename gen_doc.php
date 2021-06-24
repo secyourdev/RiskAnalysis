@@ -143,16 +143,21 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                     <br>
 
                                     <label for="tel_societe">Téléphone société</label>                        
-                                    <input type="text" class="form-control" id="tel_societe" name = "tel_societe" placeholder=" Entrez n° téléphone société" value = <?php echo "'{$donnee_form[0][3]}'"?>>
+                                    <input type="tel" class="form-control" id="tel_societe" name = "tel_societe" pattern="[0-9]{10}" required placeholder=" Entrez n° téléphone société" value = <?php echo "'{$donnee_form[0][3]}'"?>>
                                     <br>
 
                                     <label for="site_societe">Site société</label>                        
-                                    <input type="text" class="form-control" id="site_societe" name = "site_societe" placeholder="Entrez site société" value = <?php echo "'{$donnee_form[0][5]}'"?>>
+                                    <input type="url" class="form-control" id="site_societe" name = "site_societe" placeholder="Entrez site société" value = <?php echo "'{$donnee_form[0][5]}'"?>>
                                     <br>
 
-                                    <label for="reph_doc">Réphérences document</label>                        
-                                    <input type="text" class="form-control" id="reph_doc" name = "reph_doc" placeholder="Entrez les référances du document" value = <?php echo "'{$donnee_form[0][7]}'"?>>
+                                    <label for="ref_doc">Référence document</label>                        
+                                    <input type="text" class="form-control" id="ref_doc" name = "ref_doc" placeholder="Entrez les référances du document" value = <?php echo "'{$donnee_form[0][7]}'"?>>
                                     <br>
+
+                                    <label for="ver">Version rapport</label>                        
+                                    <input type="text" class="form-control" id="ver" name = "ver" placeholder="0.1" value = <?php echo "'{$donnee_form[0][7]}'"?>>
+                                    <br>
+
                                 </div>
                                 <div class="form-group">
                                     <label for="upload_pic">Logo Société</label>
@@ -176,7 +181,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                         
                         <div class="form-group" >
                             <!-- <label for="text_bouton" class= "text_bouton">Bouton rapport complet :</label> -->
-                            <a href=<?php  $date = date('d_m_y');echo 'report_export\Rapport'.$_SESSION['id_projet'].'_'.$_SESSION['id_utilisateur'].$date.'.docx';?> download = <?php $date = date('d_m_y-H_i');echo 'Rapport'.'_'.$date.'.docx';?>>
+                            <a href=<?php  $date = date('d_m_y');echo 'content/php/export/report_export/Rapport'.$_SESSION['id_projet'].'_'.$_SESSION['id_utilisateur'].$date.'.docx';?> download = <?php $date = date('d_m_y-H_i');echo 'Rapport'.'_'.$date.'.docx';?>>
                                 <button type="button" class="button_rapport complet w" id="bouton_rap_comp_w">Télécharger Rapport Complet</button>
                             </a>
                             /
@@ -186,7 +191,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             <br>
                             <br></br>
                             <!-- <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 1 :</label> -->
-                            <a href=<?php  $date = date('d_m_y');echo 'report_export\Rapport_at1'.$_SESSION['id_projet'].'_'.$_SESSION['id_utilisateur'].$date.'.docx';?> download = <?php $date = date('d_m_y-H_i');echo 'Rapport_atelier1'.'_'.$date.'.docx';?>>
+                            <a href=<?php  $date = date('d_m_y');echo 'content/php/export/report_export/Rapport_at1'.$_SESSION['id_projet'].'_'.$_SESSION['id_utilisateur'].$date.'.docx';?> download = <?php $date = date('d_m_y-H_i');echo 'Rapport_atelier1'.'_'.$date.'.docx';?>>
                                 <button type="button" class="button_rapport at1 w" id="bouton_rap_at1_w">Télécharger Rapport Atelier 1</button>
                             </a>
                             /
@@ -196,7 +201,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             <br>
                             <br></br>
                             <!-- <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 2 :</label>     -->
-                            <a href=<?php  $date = date('d_m_y');echo 'report_export\Rapport_at2'.$_SESSION['id_projet'].'_'.$_SESSION['id_utilisateur'].$date.'.docx';?> download = <?php $date = date('d_m_y-H_i');echo 'Rapport_atelier2'.'_'.$date.'.docx';?>>
+                            <a href=<?php  $date = date('d_m_y');echo 'content/php/export/report_export/Rapport_at2'.$_SESSION['id_projet'].'_'.$_SESSION['id_utilisateur'].$date.'.docx';?> download = <?php $date = date('d_m_y-H_i');echo 'Rapport_atelier2'.'_'.$date.'.docx';?>>
                                 <button type="button" class="button_rapport at2 w" id="bouton_rap_at2_w">Télécharger Rapport Atelier 2</button>
                             </a>
                             /
@@ -206,7 +211,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             <br>
                             <br></br>
                             <!-- <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 3 :</label>                                                         -->
-                            <a href=<?php  $date = date('d_m_y');echo 'report_export\Rapport_at3'.$_SESSION['id_projet'].'_'.$_SESSION['id_utilisateur'].$date.'.docx';?> download = <?php $date = date('d_m_y-H_i');echo 'Rapport_atelier3'.'_'.$date.'.docx';?>>
+                            <a href=<?php  $date = date('d_m_y');echo 'content/php/export/report_export/Rapport_at3'.$_SESSION['id_projet'].'_'.$_SESSION['id_utilisateur'].$date.'.docx';?> download = <?php $date = date('d_m_y-H_i');echo 'Rapport_atelier3'.'_'.$date.'.docx';?>>
                                 <button type="button" class="button_rapport at3 w" id="bouton_rap_at3_w">Télécharger Rapport Atelier 3</button>
                             </a>
                             /
@@ -216,7 +221,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             <br>
                             <br></br>
                             <!-- <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 4 :</label> -->
-                            <a href=<?php  $date = date('d_m_y');echo 'report_export\Rapport_at4'.$_SESSION['id_projet'].'_'.$_SESSION['id_utilisateur'].$date.'.docx';?> download = <?php $date = date('d_m_y-H_i');echo 'Rapport_atelier4'.'_'.$date.'.docx';?>>
+                            <a href=<?php  $date = date('d_m_y');echo 'content/php/export/report_export/Rapport_at4'.$_SESSION['id_projet'].'_'.$_SESSION['id_utilisateur'].$date.'.docx';?> download = <?php $date = date('d_m_y-H_i');echo 'Rapport_atelier4'.'_'.$date.'.docx';?>>
                                 <button type="button" class="button_rapport at4 w" id="bouton_rap_at4_w">Télécharger Rapport Atelier 4</button>
                             </a>
                             /
@@ -226,7 +231,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                             <br>
                             <br></br>
                             <!-- <label for="text_bouton" class= "text_bouton">Bouton rapport Atelier 5 :</label> -->
-                            <a href=<?php  $date = date('d_m_y');echo 'report_export\Rapport_at5'.$_SESSION['id_projet'].'_'.$_SESSION['id_utilisateur'].$date.'.docx';?> download = <?php $date = date('d_m_y-H_i');echo 'Rapport_atelier5'.'_'.$date.'.docx';?>>
+                            <a href=<?php  $date = date('d_m_y');echo 'content/php/export/report_export/Rapport_at5'.$_SESSION['id_projet'].'_'.$_SESSION['id_utilisateur'].$date.'.docx';?> download = <?php $date = date('d_m_y-H_i');echo 'Rapport_atelier5'.'_'.$date.'.docx';?>>
                                 <button type="button" class="button_rapport at5 w" id="bouton_rap_at5_w">Télécharger Rapport Atelier 5</button>
                             </a>
                             /

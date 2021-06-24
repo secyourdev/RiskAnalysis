@@ -2,22 +2,22 @@
 session_start();
 $id_projet = $_SESSION['id_projet'];
 
-require_once 'content/bootstrap.php';
+require_once '../../bootstrap.php';
 use PhpOffice\PhpWord\Element\Field;
 use PhpOffice\PhpWord\Element\Table;
 use PhpOffice\PhpWord\Element\TextRun;
 use PhpOffice\PhpWord\SimpleType\TblWidth;
-include("content/php/bdd/connexion_sqli.php");
+include("../bdd/connexion_sqli.php");
 
 function doc_create(){
   global $id_projet;
 
   // //include
    include("tab_create.php");
-   include("content/php/export/selection_export.php");
+   include("selection_export.php");
   ////////////////////////////////////////////////////////////////////////////////
 
-  $template = new \PhpOffice\PhpWord\TemplateProcessor('content\templates\Template.docx');
+  $template = new \PhpOffice\PhpWord\TemplateProcessor('..\..\templates\Template.docx');
 /*****************    Atelier 1.1.1*********************************************************************/
   $rq_titre = mysqli_query($connect,"SELECT nom_projet FROM F_projet WHERE id_projet = $id_projet");
   $rq_version_for_1a = mysqli_query($connect,"SELECT num_version FROM ZC_version WHERE id_projet= $id_projet");
@@ -66,7 +66,7 @@ function doc_create(){
   $template -> setValue('dure1',$projet['duree_strategique']);// stratégique
   $template -> setValue('dure2',$projet['duree_operationnel']);// opérationnel
   $template -> setValue('niveauConfidentialite',$projet['confidentialite']);
-  $template -> setValue('nv_conf',$projet['confidentialite']);
+  $template -> setValue('nv_conf',strtoupper($projet['confidentialite']));
   $template -> setValue('version', $version[0]);
   $template -> setValue('ver', $version[0]);
   $template -> setValue('responsable', $respo[0]);
@@ -131,6 +131,9 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
   //3.c////////////////////////////////////////////////
   $tab_partie2 = tab_dyn2b_3a_3c($rq_partie2_tab);
   $tab_scenar_strat = genere_tableau_rapport($rq_scenar_strat_tab);
+
+  $tab_mesure_sec_3=genere_tableau_rapport($rq_mesure_sec_3_tab);
+  $tab_eval_long=genere_tableau_rapport($rq_eval_long_tab);
 
   ///atelier 4*************************************************************
   //4.a/////////////////////////////////////////////////
@@ -211,8 +214,8 @@ $template -> setValue('veille', $row_seuil['seuil_veille'][0]);
 
   ///3.c
   $template->setComplexBlock('r_partie_prenante2', $tab_partie2);
-  //TO DO Mesure de sécurité
-  // TO DO Evaluation
+  $template->setComplexBlock('mesure_de_securite', $tab_mesure_sec_3);
+  $template->setComplexBlock('evaluation', $tab_eval_long);
 
   //4.a
   $template->setComplexBlock('s_scenario_strategique3', $tab_scen_strat_etabli);

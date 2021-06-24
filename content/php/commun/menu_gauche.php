@@ -26,7 +26,7 @@
 
             <!-- Nav Item - Mode -->
             <li class="nav-item">
-                <a class="nav-link" href="atelier_super-<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                <a class="nav-link" href="gen_doc-<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
                     <i class="fas fa-fw fa-clipboard-list"></i>
                     <span>Formulaire / Rapport</span></a>
             </li>
