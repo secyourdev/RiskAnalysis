@@ -12,6 +12,7 @@ RewriteRule ^index_documentaire&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/ind
 RewriteRule ^activite&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/activite/activite.php?id_utilisateur=$1&id_projet=$2/* [L]
 RewriteRule ^spec&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/spec/spec.php?id_utilisateur=$1&id_projet=$2/* [L]
 RewriteRule ^test&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/test/test.php?id_utilisateur=$1&id_projet=$2/* [L]
+RewriteRule ^revue&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/revue/revue.php?id_utilisateur=$1&id_projet=$2/* [L]
 RewriteRule ^gconf&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/gconf/gconf.php?id_utilisateur=$1&id_projet=$2/* [L]
 RewriteRule ^gen_doc-([0-9]+)&([0-9]+)$ /RiskAnalysis/gen_doc.php?id_utilisateur=$1&id_projet=$2/* [L]
 

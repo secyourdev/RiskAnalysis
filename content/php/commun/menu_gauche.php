@@ -48,7 +48,7 @@
                     <span>Activités</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link projet_link" href="activite&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                <a class="nav-link projet_link" href="revue&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
                     <i class="fas fa-fw fa-check-square"></i>
                     <span>Revues</span></a>
             </li>
