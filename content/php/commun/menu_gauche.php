@@ -73,7 +73,7 @@
                     <span>Architecture</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link projet_link" href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                <a class="nav-link projet_link" href="test&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
                     <i class="fas fa-fw fa-align-center"></i>
                     <span>Test</span></a>
             </li>
