@@ -314,7 +314,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                               <tr>
                                 <th>ID</th>
                                 <th>Partie prenante</th>
-                                <th>N° de risque</th>
                                 <th>Nom mesure de sécurité</th>
                                 <th>Description mesure de sécurité</th>
                               </tr>
@@ -326,7 +325,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         <tr>
                         <td>' . $row["id_mesure"] . '</td>
                         <td>' . $row["nom_partie_prenante"] . '</td>
-                        <td>' . $row["id_risque"] . '</td>
                         <td>' . $row["nom_mesure"] . '</td>
                         <td>' . $row["description_mesure"] . '</td>
                         </tr>
@@ -564,22 +562,6 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                         ?>
                         </select>
                       </div>
-
-                      <div class="form-group col-12">
-                        <label for="chemins">Chemin d'attaque stratégique</label>
-                        <select class="form-control" id="chemins" name="chemins">
-                        <option value="" selected>...</option>
-                        <?php
-                        while ($row = mysqli_fetch_array($result_chemin)) //selection.php
-                        {
-                          echo '
-                          <option value="'.$row["id_chemin_d_attaque_strategique"].'">'.$row["id_risque"].' - '.$row["id_chemin"].' - '.$row["nom_chemin_d_attaque_strategique"].'</option>
-                        ';
-                        }
-                        ?>
-                        </select>
-                      </div>
-
                       <div class="form-group col-12">
                         <label class="titre_input" for="nommesure">Nom de la mesure de sécurité</label>
                         <input type="text" class="perso_form shadow-none form-control form-control-user" name="nommesure" id="nommesure" placeholder="Nom de la mesure de sécurité" required>

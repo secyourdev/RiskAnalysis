@@ -520,22 +520,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
                 <div class="modal-body perso_modal_body">
                   <form method="post" action="content/php/atelier1d/ajout_regle.php" class="user" id="formecartPop">
                     <fieldset>
-
-                      <div class="form-group">
-                        <label for="selectnomreferentiel">Nom du référentiel de sécurité</label>
-                        <select class="form-control" name="nomreferentiel" id="nomreferentiel">
-                          <option value="" selected>...</option>
-                          <?php
-                          while ($row = mysqli_fetch_array($result_nom_referentiel2)) //selection.php
-                          {
-                            echo '
-                        <option id="socle_securite" value="' . $row['nom_referentiel'] . '">' . $row['nom_referentiel'] . '</option>
-                        ';
-                          }
-                          ?>
-                        </select>
-                      </div>
-
+                      <input type="hidden" name="nom_socle" id="nom_socle" value="">
                       <div class="form-group">
                         <label class="titre_input" for="id_regle">ID de la régle</label>
                         <input type="text" class="perso_form shadow-none form-control form-control-user" name="id_regle" id="id_regle" placeholder="ID de la règle" required>

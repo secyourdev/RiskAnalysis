@@ -3,10 +3,14 @@ const selectsocle = document.getElementById('nomreferentiel');
 
 selectsocle.selectedIndex = sessionStorage.getItem('selectsocle')
 selectSocle(selectsocle.value);
+selectsocle.selectedIndex = sessionStorage.getItem('selectsocle')
+let nom_socle = document.getElementById('nom_socle');
+nom_socle.value = selectsocle.value;
 
 selectsocle.addEventListener('change', (event) => {
     sessionStorage.setItem('selectsocle',selectsocle.selectedIndex);
     selectSocle(selectsocle.options[selectsocle.options.selectedIndex].value);
+    nom_socle.value = selectsocle.options[selectsocle.options.selectedIndex].value;
     location.reload();
 });
 

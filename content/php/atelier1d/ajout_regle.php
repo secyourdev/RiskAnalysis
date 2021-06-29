@@ -6,7 +6,7 @@ include("../bdd/connexion.php");
 
 $results["error"] = false;
 
-$nom_referentiel = $_POST['nomreferentiel'];
+$nom_referentiel = $_POST['nom_socle'];
 $id_regle_affichage = $_POST['id_regle'];
 $titre = $_POST['titre_regle'];
 $description = $_POST['description'];

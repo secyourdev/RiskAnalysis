@@ -16,7 +16,7 @@ var description = document.getElementById("description");
 
 var label_id_regle = document.getElementById("id_regle").previousSibling.previousSibling
 
-var select_nom_referentiel = document.getElementById('selectnomreferentiel');
+var select_nom_referentiel = document.getElementById('nomreferentiel');
 
 var regex_nom = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
 var regex_description = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ\s-.:,'"–]{0,100}$/
@@ -112,7 +112,7 @@ $("#editable_table_ecart > tbody > tr > td:nth-child(5)").on().each(function () 
 });
 
 /*------------------------- AUTO-COMPLETION ---------------------------*/
-select_nom_referentiel.selectedIndex = sessionStorage.getItem('selectsocle')
+select_nom_referentiel.selectedIndex = sessionStorage.getItem('selectsocle');
 
 /*----------------------------- EXPORT EXCEL --------------------------------*/
 var d = new Date();
