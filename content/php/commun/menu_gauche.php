@@ -53,6 +53,11 @@
                     <span>Revues</span></a>
             </li>
             <li class="nav-item">
+                <a class="nav-link projet_link" href="risque&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-exclamation-triangle"></i>
+                    <span>Alertes & Risques</span></a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link projet_link" href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
                     <i class="fas fa-fw fa-file-alt"></i>
                     <span>Index documentaire</span></a>
