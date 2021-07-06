@@ -68,7 +68,7 @@
                     <span>Spécification</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link projet_link" href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                <a class="nav-link projet_link" href="import_capella&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
                     <i class="fas fa-fw fa-boxes"></i>
                     <span>Architecture</span></a>
             </li>
