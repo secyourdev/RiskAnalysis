@@ -4,5 +4,4 @@
 // Serveur Local 
 //$connect = mysqli_connect("localhost", "root", '', "bdd");
 mysqli_set_charset($connect, "utf8");
-
 ?>
