@@ -102,6 +102,11 @@
                     <i class="fas fa-fw fa-align-center"></i>
                     <span>Actions & Evolutions</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link projet_link" href="tracabilite&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-th-large"></i>
+                    <span>Traçabilité</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider" style="margin-top:15px">
