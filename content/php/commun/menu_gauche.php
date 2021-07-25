@@ -68,8 +68,13 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link projet_link" href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i class="fas fa-fw fa-file-alt"></i>
+                    <i class="fas fa-fw fa-book"></i>
                     <span>Index documentaire</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link projet_link" href="relecture&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-book-reader"></i>
+                    <span>Relecture</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link projet_link" href="gconf&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
