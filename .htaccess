@@ -11,6 +11,7 @@ RewriteRule ^planification&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/gantt/pl
 RewriteRule ^index_documentaire&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/index_documentaire/index_doc.php?id_utilisateur=$1&id_projet=$2/* [L]
 RewriteRule ^activite&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/activite/activite.php?id_utilisateur=$1&id_projet=$2/* [L]
 RewriteRule ^spec&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/spec/spec.php?id_utilisateur=$1&id_projet=$2/* [L]
+RewriteRule ^synthese&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/synthese/synthese.php?id_utilisateur=$1&id_projet=$2/* [L]
 RewriteRule ^relecture&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/relecture/relecture.php?id_utilisateur=$1&id_projet=$2/* [L]
 RewriteRule ^tracabilite&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/tracabilite/tracabilite.php?id_utilisateur=$1&id_projet=$2/* [L]
 RewriteRule ^test&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/test/test.php?id_utilisateur=$1&id_projet=$2/* [L]

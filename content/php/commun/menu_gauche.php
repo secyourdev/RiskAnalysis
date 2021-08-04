@@ -47,14 +47,19 @@
             <div class="sidebar-heading">Projet</div>
 
             <li class="nav-item">
-                <a class="nav-link projet_link" style="margin-top:10px" href="planification&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                <a class="nav-link projet_link" style="margin-top:10px" href="synthese&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
                     <i class="fas fa-fw fa-tasks"></i>
-                    <span>Planification</span></a>
+                    <span>Synthèse</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link projet_link" href="activite&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
                     <i class="fas fa-fw fa-clipboard-list"></i>
                     <span>Activités</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link projet_link" href="planification&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-tasks"></i>
+                    <span>Planification</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link projet_link" href="revue&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
