@@ -165,6 +165,10 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
                                         <p><a href="https://github.com/ycs77/bootstrap-steps" target="_blank">bootstrap-steps</a> - Use MIT License - We have a permission to modify, to distribute, to use on private case and to sell.</p>     
                                         <p><a href="http://tabulator.info/" target="_blank">Tabulator</a> - Use MIT License - We have a permission to modify, to distribute, to use on private case and to sell.</p> 
                                         <p><a href="https://github.com/PHPOffice/PHPWord" target="_blank">PHP WORD</a> - Use GNU Lesser General Public License version 3 - We have a permission to modify, to distribute, to use on private case and to sell.</p> 
+                                        <p><a href="https://github.com/pinussilvestrus/postit-js" target="_blank">postit-js</a> - Use MIT License - We have a permission to modify, to distribute, to use on private case and to sell.</p>
+                                        <p><a href="https://github.com/robicch/jQueryGantt" target="_blank">jQueryGantt</a> - Use MIT License - We have a permission to modify, to distribute, to use on private case and to sell.</p>
+
+                                        
                                     </div>
                                 </div>
                             </div>
