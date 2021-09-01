@@ -57,6 +57,11 @@
                     <span>Activités</span></a>
             </li>
             <li class="nav-item">
+                <a class="nav-link projet_link" href="post-it&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                    <i class="fas fa-fw fa-clipboard-list"></i>
+                    <span>Post-it</span></a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link projet_link" href="planification&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
                     <i class="fas fa-fw fa-tasks"></i>
                     <span>Planification</span></a>
