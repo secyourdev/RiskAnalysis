@@ -46,88 +46,134 @@
             <!-- Heading -->
             <div class="sidebar-heading">Projet</div>
 
-            <li class="nav-item">
-                <a class="nav-link projet_link" style="margin-top:10px" href="synthese&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i class="fas fa-fw fa-tasks"></i>
-                    <span>Synthèse</span></a>
+            <!-- Nav Item - Charts -->
+            <li class="nav-item py-1">
+                <a class="nav-link collapsed py-1" href="#" data-toggle="collapse" data-target="#Management"
+                    aria-expanded="true" aria-controls="Management">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                            <g transform="translate(-1230 -689)">
+                                <path class="number_activity"
+                                    d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
+                                    transform="translate(1230 689)" fill="#ffffffcc" />
+                                <text class="number_activity_text" data-name="1" transform="translate(1242.5 706.19)"
+                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
+                                    font-weight="700">
+                                    <tspan x="-3.432" y="0">1</tspan>
+                                </text>
+                            </g>
+                        </svg>
+                    </i>
+                    <span class="nom_atelier">Management</span>
+                </a>
+                <div id="Management" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item"
+                            href="synthese&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                            <i class="fas fa-fw fa-tasks"></i>
+                            <span id="synthese" title="Synthèse">Synthèse</span>
+                        </a>
+                        <a class="collapse-item"
+                            href="activite&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                            <i class="fas fa-fw fa-clipboard-list"></i>
+                            <span id="activites" title="Activités">Activités</span>
+                        </a>
+                        <a class="collapse-item"
+                            href="post-it&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                            <i class="fas fa-fw fa-clipboard-list"></i>
+                            <span id="post-it1" title="Post-it">Post-it</span>
+                        </a>
+                        <a class="collapse-item"
+                            href="kanban&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                            <i class="fas fa-fw fa-clipboard-list"></i>
+                            <span id="kanban" title="Kanban">Kanban</span>
+                        </a>
+                        <a class="collapse-item"
+                            href="planification&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                            <i class="fas fa-fw fa-tasks"></i>
+                            <span id="planification" title="Planification">Planification</span>
+                        </a>
+                        <a class="collapse-item"
+                            href="revue&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                            <i class="fas fa-fw fa-check-square"></i>
+                            <span id="revue" title="Revues">Revues</span>
+                        </a>
+                        <a class="collapse-item"
+                            href="risque&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                            <i class="fas fa-fw fa-exclamation-triangle"></i>
+                            <span id="risque" title="Alertes & Risques">Alertes & Risques</span>
+                        </a>
+                        <a class="collapse-item"
+                            href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                            <i class="fas fa-fw fa-book"></i>
+                            <span id="index_documentaire" title="Index documentaire">Index documentaire</span>
+                        </a>
+                        <a class="collapse-item" href="action&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                            <i class="fas fa-fw fa-align-center"></i>
+                            <span id="action" title="Actions & Evolutions">Actions & Evolutions</span>
+                        </a>
+                    </div>
+                </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link projet_link" href="activite&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i class="fas fa-fw fa-clipboard-list"></i>
-                    <span>Activités</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link projet_link" href="post-it&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i class="fas fa-fw fa-clipboard-list"></i>
-                    <span>Post-it</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link projet_link" href="planification&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i class="fas fa-fw fa-tasks"></i>
-                    <span>Planification</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link projet_link" href="revue&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i class="fas fa-fw fa-check-square"></i>
-                    <span>Revues</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link projet_link" href="risque&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i class="fas fa-fw fa-exclamation-triangle"></i>
-                    <span>Alertes & Risques</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link projet_link" href="index_documentaire&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i class="fas fa-fw fa-book"></i>
-                    <span>Index documentaire</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link projet_link" href="relecture&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i class="fas fa-fw fa-book-reader"></i>
-                    <span>Relecture</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link projet_link" href="gconf&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i class="fas fa-fw fa-sitemap"></i>
-                    <span>Gestion de configuration</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link projet_link" href="spec&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i class="fas fa-fw fa-file-contract"></i>
-                    <span>Spécification</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link projet_link" href="architecture&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i class="fas fa-fw fa-boxes"></i>
-                    <span>Architecture</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link projet_link" href="import_capella&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i class="fas fa-fw fa-boxes"></i>
-                    <span>Import Capella</span></a>
-            </li>
-            
-            <li class="nav-item">
-                <a class="nav-link projet_link" href="test&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i class="fas fa-fw fa-align-center"></i>
-                    <span>Test</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link projet_link" href="action&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i class="fas fa-fw fa-align-center"></i>
-                    <span>Actions & Evolutions</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link projet_link" href="tracabilite&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
-                    <i class="fas fa-fw fa-th-large"></i>
-                    <span>Traçabilité</span></a>
+            <li class="nav-item py-1">
+                <a class="nav-link collapsed py-1" href="#" data-toggle="collapse" data-target="#Technique"
+                    aria-expanded="true" aria-controls="Technique">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 25 25">
+                            <g transform="translate(-1230 -689)">
+                                <path class="number_activity" d="M12.5,0A12.5,12.5,0,1,1,0,12.5,12.5,12.5,0,0,1,12.5,0Z"
+                                    transform="translate(1230 689)" fill="#ffffffcc" />
+                                <text class="number_activity_text" data-name="2" transform="translate(1242.5 706.19)"
+                                    fill="#394c7a" font-size="13" font-family="SourceSansPro-Bold, Source Sans Pro"
+                                    font-weight="700">
+                                    <tspan x="-3.432" y="0">2</tspan>
+                                </text>
+                            </g>
+                        </svg>
+                    </i>
+                    <span>Technique</span>
+                </a>
+                <div id="Technique" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item"
+                            href="relecture&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                            <i class="fas fa-fw fa-book-reader"></i>
+                            <span id="relecture" title="Relecture">Relecture</span>
+                        </a>
+                        <a class="collapse-item"
+                            href="gconf&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                            <i class="fas fa-fw fa-sitemap"></i>
+                            <span id="gconf"  title="Gestion de configuration">Gestion de configuration</span>
+                        </a>
+                        <a class="collapse-item" href="spec&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                            <i class="fas fa-fw fa-file-contract"></i>
+                            <span id="spec" title="Spécification">Spécification</span>
+                        </a>
+                        <a class="collapse-item" href="architecture&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                            <i class="fas fa-fw fa-boxes"></i>
+                            <span id="architecture" title="Architecture">Architecture</span>
+                        </a>
+                        <a class="collapse-item" href="import_capella&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                            <i class="fas fa-fw fa-boxes"></i>
+                            <span id="import_capella" title="Import Capella">Import Capella</span>
+                        </a>
+                        <a class="collapse-item" href="test&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                            <i class="fas fa-fw fa-align-center"></i>
+                            <span id="test" title="Test">Test</span>
+                        </a>
+                        <a class="collapse-item" href="tracabilite&<?php echo $_SESSION['id_utilisateur'];?>&<?php echo $_SESSION['id_projet'];?>">
+                        <i class="fas fa-fw fa-th-large"></i>
+                            <span id="tracabilite" title="Traçabilité">Traçabilité</span>
+                        </a>
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider" style="margin-top:15px">
 
             <!-- Heading -->
-            <div class="sidebar-heading">Ateliers </div>
+            <div class="sidebar-heading">Ateliers EBIOS RM</div>
             <!-- Nav Item - Charts -->
             <li class="nav-item py-1">
                 <a class="nav-link collapsed py-1" href="#" data-toggle="collapse" data-target="#Atelier1"

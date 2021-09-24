@@ -23,6 +23,7 @@ RewriteRule ^architecture&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/architect
 RewriteRule ^gconf&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/gconf/gconf.php?id_utilisateur=$1&id_projet=$2/* [L]
 RewriteRule ^gen_doc-([0-9]+)&([0-9]+)$ /RiskAnalysis/gen_doc.php?id_utilisateur=$1&id_projet=$2/* [L]
 RewriteRule ^action&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/action/action.php?id_utilisateur=$1&id_projet=$2/* [L]
+RewriteRule ^kanban&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/kanban/kanban.php?id_utilisateur=$1&id_projet=$2/* [L]
 RewriteRule ^import_capella&([0-9]+)&([0-9]+)$ /RiskAnalysis/pro_version/import_capella/import_capella.php?id_utilisateur=$1&id_projet=$2/* [L]
 
 
