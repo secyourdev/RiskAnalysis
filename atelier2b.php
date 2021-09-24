@@ -69,7 +69,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
   <div id="wrapper">
 
     <!-- Left Sidebar -->
-    <?php include("content\php\commun\menu_gauche.php");?>
+    <?php include("content/php/commun/menu_gauche.php");?>
     <!-- End of Left Sidebar -->
 
     <!-- Right Sidebar -->

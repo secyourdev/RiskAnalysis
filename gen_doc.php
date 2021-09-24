@@ -62,7 +62,7 @@ if(isset($_SESSION['id_utilisateur']) AND $userinfo['id_utilisateur'] == $_SESSI
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-        <?php include("content\php\commun\menu_gauche.php");?>
+        <?php include("content/php/commun/menu_gauche.php");?>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">

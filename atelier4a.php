@@ -74,7 +74,7 @@ if (isset($_GET['id_utilisateur']) and $_GET['id_utilisateur'] > 0) {
         <div id="wrapper">
 
           <!-- Left Sidebar -->
-          <?php include("content\php\commun\menu_gauche.php");?>
+          <?php include("content/php/commun/menu_gauche.php");?>
           <!-- End of Left Sidebar -->
 
           <!-- Right Sidebar -->
